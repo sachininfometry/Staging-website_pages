@@ -44,14 +44,6 @@ $use_cases = array(
 		<symbol id="iin-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
 	</svg>
 
-	<header class="iin-nav">
-		<div class="iin-shell iin-nav-inner">
-			<a class="iin-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry"></a>
-			<nav aria-label="Product navigation"><a href="<?php echo esc_url( home_url( '/solutions/' ) ); ?>">Solutions</a><a href="<?php echo esc_url( home_url( '/product/' ) ); ?>">Products</a><a href="<?php echo esc_url( home_url( '/resources/' ) ); ?>">Resources</a><a href="<?php echo esc_url( home_url( '/company/' ) ); ?>">Company</a></nav>
-			<a class="iin-button iin-button-primary" href="<?php echo esc_url( $contact_url ); ?>">Request a Demo</a>
-		</div>
-	</header>
-
 	<section class="iin-hero">
 		<div class="iin-shell iin-hero-grid">
 			<div class="iin-hero-copy">

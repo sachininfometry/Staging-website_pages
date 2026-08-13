@@ -21,12 +21,6 @@ $connectors = array(
 	array( 'mark' => 'A', 'class' => 'is-ads', 'title' => 'Google Ads Connector', 'copy' => 'Ingest campaign data for governed reporting and insights.', 'tag' => 'Real-Time', 'url' => home_url( '/product/google-ads-connector/' ) ),
 );
 
-$use_cases = array(
-	array( 'icon' => 'cloud', 'title' => 'Cloud Data Warehousing', 'copy' => 'Consolidate data from Google Cloud and enterprise sources for analytics and reporting.' ),
-	array( 'icon' => 'chart', 'title' => 'Finance Integration', 'copy' => 'Sync financial and operational data for planning, reporting, and analysis.' ),
-	array( 'icon' => 'nodes', 'title' => 'Marketing Analytics', 'copy' => 'Connect ad platforms, CRM, and analytics tools for real-time insights.' ),
-	array( 'icon' => 'pulse', 'title' => 'Real-Time Data Pipelines', 'copy' => 'Stream events and operational data for real-time analytics and action.' ),
-);
 ?>
 
 <main class="infometry-informatica-product" id="infometry-informatica-product">
@@ -86,12 +80,10 @@ $use_cases = array(
 		<a href="<?php echo esc_url( home_url( '/product/hubspot-connector/' ) ); ?>"><span class="iin-hubspot">⌘</span><div><h3>HubSpot Connector</h3><p>Sync CRM, marketing, and sales data in real time or on a schedule.</p><small>Bi-Directional</small></div></a>
 	</div></div></section>
 
-	<section class="iin-section"><div class="iin-shell iin-dual-grid">
-		<div class="iin-panel iin-how"><div class="iin-heading is-centered"><h2>How It Works</h2></div><div class="iin-steps"><article><svg><use href="#iin-plug"/></svg><b>1. Connect</b><p>Choose your source and destination</p></article><article><svg><use href="#iin-gear"/></svg><b>2. Integrate</b><p>Configure mappings and sync settings</p></article><article><svg><use href="#iin-nodes"/></svg><b>3. Transform</b><p>Orchestrate and enrich data within IDMC</p></article><article><svg><use href="#iin-cloud"/></svg><b>4. Deliver</b><p>Deliver trusted data where it is needed</p></article></div></div>
-		<div class="iin-panel iin-why"><div class="iin-heading is-centered"><h2>Why Infometry Connectors</h2></div><div class="iin-benefits"><article><svg><use href="#iin-shield"/></svg><b>Faster Integration</b><p>Pre-built connectors eliminate weeks of work</p></article><article><svg><use href="#iin-code"/></svg><b>Lower Engineering Effort</b><p>Reduce development complexity</p></article><article><svg><use href="#iin-shield"/></svg><b>Reliable Data Movement</b><p>Production-ready enterprise reliability</p></article><article><svg><use href="#iin-chart"/></svg><b>Scale Confidently</b><p>Enterprise-grade performance and security</p></article></div></div>
+	<section class="iin-section"><div class="iin-shell iin-process-panel">
+		<div class="iin-process-intro"><span class="iin-kicker">Simple by design</span><h2>From Connection to Trusted Data</h2><p>Configure once, automate delivery, and scale without rebuilding pipelines.</p></div>
+		<div class="iin-steps"><article><svg><use href="#iin-plug"/></svg><b>1. Connect</b><p>Choose your source and destination</p></article><article><svg><use href="#iin-gear"/></svg><b>2. Integrate</b><p>Configure mappings and sync settings</p></article><article><svg><use href="#iin-nodes"/></svg><b>3. Transform</b><p>Orchestrate and enrich data within IDMC</p></article><article><svg><use href="#iin-cloud"/></svg><b>4. Deliver</b><p>Deliver trusted data where it is needed</p></article></div>
 	</div></section>
-
-	<section class="iin-section"><div class="iin-shell iin-panel"><div class="iin-heading is-centered"><span class="iin-kicker">Built for your business</span><h2>Use Cases</h2></div><div class="iin-use-grid"><?php foreach ( $use_cases as $use_case ) : ?><article><svg><use href="#iin-<?php echo esc_attr( $use_case['icon'] ); ?>"/></svg><h3><?php echo esc_html( $use_case['title'] ); ?></h3><p><?php echo esc_html( $use_case['copy'] ); ?></p></article><?php endforeach; ?></div></div></section>
 
 	<section class="iin-section iin-cta-wrap"><div class="iin-shell iin-cta"><div class="iin-cta-icon"><svg><use href="#iin-nodes"/></svg></div><div><h2>Connect Your Data. Automate the Flow. Move Faster.</h2><p>Leverage pre-built Informatica connectors to accelerate integration, reduce effort, and unlock the full potential of your data.</p></div><div class="iin-actions"><a class="iin-button iin-button-primary" href="<?php echo esc_url( $contact_url ); ?>">Talk to an Integration Expert →</a><a class="iin-button iin-button-secondary" href="<?php echo esc_url( $contact_url ); ?>">Request a Demo</a></div></div></section>
 

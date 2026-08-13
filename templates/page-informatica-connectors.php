@@ -47,7 +47,7 @@ $use_cases = array(
 	<section class="iin-hero">
 		<div class="iin-shell iin-hero-grid">
 			<div class="iin-hero-copy">
-				<span class="iin-eyebrow">Informatica IDMC Connectors</span>
+				<span class="iin-eyebrow">Informatica IDMC Connections</span>
 				<h1>Connect Anything.<br>Move Data Faster.<br>Scale <em>Without Code.</em></h1>
 				<p>Certified Informatica connectors that connect Google Cloud and enterprise applications through reliable, scalable pipelines—so your data moves where it matters.</p>
 				<div class="iin-actions"><a class="iin-button iin-button-primary" href="#featured-connectors">Explore Connectors <span>→</span></a><a class="iin-button iin-button-secondary" href="<?php echo esc_url( $contact_url ); ?>">Talk to an Integration Expert</a></div>
@@ -55,7 +55,7 @@ $use_cases = array(
 			<div class="iin-orbit" aria-label="Informatica IDMC connecting enterprise sources and destinations">
 				<div class="iin-orbit-ring ring-one"></div><div class="iin-orbit-ring ring-two"></div><div class="iin-orbit-ring ring-three"></div>
 				<div class="iin-orbit-core"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""><strong>Informatica<br>IDMC</strong></div>
-				<div class="iin-orbit-list is-left"><span>Google Drive</span><span>Google Sheets</span><span>BigQuery</span><span>Databases</span></div>
+				<div class="iin-orbit-list is-left"><span>Google Drive</span><span>Google Sheets</span><span>BigQuery</span><span>Database</span></div>
 				<div class="iin-orbit-list is-right"><span>Snowflake</span><span>NetSuite</span><span>Analytics &amp; BI</span><span>Enterprise Apps</span></div>
 			</div>
 		</div>

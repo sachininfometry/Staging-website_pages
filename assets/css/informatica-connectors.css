@@ -270,3 +270,27 @@ body.infometry-informatica-product-page #Content{padding:0!important}
 @media(max-width:1000px){.infometry-informatica-product .iin-demo-calendar,.infometry-informatica-product .iin-demo-form{height:auto;min-height:590px}.infometry-informatica-product .iin-related{padding-top:48px}}
 @media(max-width:620px){.infometry-informatica-product .iin-hero>.iin-shell{width:calc(100% - 28px)}.infometry-informatica-product .iin-hero{padding:54px 0 48px}.infometry-informatica-product .iin-hero-copy{text-align:left}.infometry-informatica-product .iin-hero h1,.infometry-informatica-product .iin-hero-copy>p{margin-inline:0}.infometry-informatica-product .iin-network-node{width:132px}.infometry-informatica-product .iin-demo-section{padding:52px 0 34px}.infometry-informatica-product .iin-demo-calendar,.infometry-informatica-product .iin-demo-form{height:auto;min-height:0}.infometry-informatica-product .iin-demo-form{overflow:visible}.infometry-informatica-product .iin-demo-form .icp-demo-preferences,.infometry-informatica-product .iin-demo-form .wpforms-field-container{grid-template-columns:1fr!important}.infometry-informatica-product .iin-demo-form .wpforms-field-email,.infometry-informatica-product .iin-demo-form .wpforms-field-phone{grid-column:1!important}.infometry-informatica-product .iin-related{padding:44px 0 62px}}
 @media(prefers-reduced-motion:reduce){.infometry-informatica-product .iin-network::before,.infometry-informatica-product .iin-network::after,.infometry-informatica-product .iin-network-core::before,.infometry-informatica-product .iin-network-node,.infometry-informatica-product .iin-network-lines i,.infometry-informatica-product .iin-network-lines i::after{animation:none!important}}
+
+/* Ringless premium SaaS network: quiet depth with restrained data motion. */
+.infometry-informatica-product .iin-network::before{
+	width:420px;height:300px;border:0;border-radius:0;
+	background:radial-gradient(ellipse at center,rgba(14,138,255,.18) 0%,rgba(71,81,232,.07) 42%,transparent 72%);
+	box-shadow:none;filter:blur(20px);animation:iin-network-glow 6s ease-in-out infinite;
+}
+.infometry-informatica-product .iin-network::after{
+	display:none;border:0;box-shadow:none;animation:none;
+}
+.infometry-informatica-product .iin-network-core::before{display:none;border:0;animation:none}
+.infometry-informatica-product .iin-network-core{
+	border:1px solid rgba(159,207,255,.7);
+	box-shadow:0 24px 70px rgba(0,8,44,.46),0 0 55px rgba(20,145,255,.18);
+	animation:iin-core-float 6s ease-in-out infinite;
+}
+.infometry-informatica-product .iin-network-lines i{
+	height:1px;background:linear-gradient(90deg,rgba(92,207,255,.95),rgba(79,142,255,.3) 46%,transparent 100%);
+	box-shadow:0 0 7px rgba(57,184,255,.65);animation:iin-data-soft 3.4s ease-in-out infinite;
+}
+.infometry-informatica-product .iin-network-lines i::after{width:6px;height:6px;box-shadow:0 0 12px rgba(86,205,255,.85);animation:iin-data-pulse 2.4s ease-in-out infinite}
+@keyframes iin-network-glow{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(.94)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
+@keyframes iin-core-float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 5px))}}
+@keyframes iin-data-soft{0%,100%{opacity:.48}50%{opacity:1}}

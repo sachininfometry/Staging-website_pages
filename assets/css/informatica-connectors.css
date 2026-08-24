@@ -4,12 +4,6 @@
 body.infometry-informatica-product-page{margin:0;background:#fff;color:var(--iin-ink);font-family:"Open Sans","Segoe UI",Arial,sans-serif}
 body.infometry-informatica-product-page #Footer,body.infometry-informatica-product-page #Footer_wrapper,body.infometry-informatica-product-page .mfn-footer,body.infometry-informatica-product-page footer#Footer,body.infometry-informatica-product-page #Subheader,body.infometry-informatica-product-page .mfn-rev-slider,body.infometry-informatica-product-page rs-module-wrap{display:none!important}
 body.infometry-informatica-product-page #Content{padding:0!important}
-body.infometry-informatica-product-page #Header_wrapper,body.infometry-informatica-product-page #Header,body.infometry-informatica-product-page #Top_bar{background:#020b2d!important}
-body.infometry-informatica-product-page #Header_wrapper{border-bottom:1px solid rgba(126,171,255,.16)!important;box-shadow:none!important}
-body.infometry-informatica-product-page #Top_bar .menu>li>a,body.infometry-informatica-product-page #Top_bar .menu>li>a span{color:#fff!important}
-body.infometry-informatica-product-page #Top_bar .logo img{filter:none!important}
-body.infometry-informatica-product-page #Top_bar .menu>li:last-child>a span{padding-inline:20px!important;border-radius:7px!important;color:#fff!important;background:linear-gradient(135deg,#0b7cff,#1765f2)!important}
-
 .infometry-informatica-product,.infometry-informatica-product *,.infometry-informatica-product *::before,.infometry-informatica-product *::after{box-sizing:border-box}
 .infometry-informatica-product{overflow:hidden;background:#fff;color:var(--iin-ink);font-size:16px;font-weight:500;line-height:1.6;-webkit-font-smoothing:antialiased}
 .infometry-informatica-product h1,.infometry-informatica-product h2,.infometry-informatica-product h3{font-family:Roboto,"Segoe UI",Arial,sans-serif}
@@ -136,10 +130,6 @@ body.infometry-informatica-product-page #Top_bar .menu>li:last-child>a span{padd
 @media(max-width:560px){.infometry-informatica-product .iin-hero{padding:58px 0 54px}.infometry-informatica-product .iin-featured{padding:62px 0 42px}.infometry-informatica-product .iin-connector-card:first-child,.infometry-informatica-product .iin-connector-card:not(:first-child){display:flex;min-height:285px;padding:25px 22px}.infometry-informatica-product .iin-connector-card:first-child>.iin-brand,.infometry-informatica-product .iin-connector-card:not(:first-child)>.iin-brand{width:66px;height:66px;margin:0 0 18px}.infometry-informatica-product .iin-connector-card:first-child h3{font-size:19px}.infometry-informatica-product .iin-connector-card:first-child>a{margin-top:auto}.infometry-informatica-product .iin-enterprise-panel{padding:46px 18px 24px}.infometry-informatica-product .iin-enterprise-panel::before{left:18px;right:18px}.infometry-informatica-product .iin-benefits{grid-template-columns:1fr}}
 
 /* Informatica brand pass: seamless header/hero and richer, logo-led surfaces. */
-body.infometry-informatica-product-page #Header_wrapper{
-	border-bottom:0!important;
-	box-shadow:none!important;
-}
 .infometry-informatica-product .iin-featured::before{display:none}
 
 .infometry-informatica-product .iin-featured{

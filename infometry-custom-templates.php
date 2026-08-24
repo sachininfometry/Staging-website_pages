@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, and Informatica Connectors page templates.
- * Version: 2.2.0
+ * Version: 2.2.1
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.2.0' );
+define( 'INFOMETRY_CT_VERSION', '2.2.1' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );

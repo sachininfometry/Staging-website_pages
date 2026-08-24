@@ -294,3 +294,20 @@ body.infometry-informatica-product-page #Content{padding:0!important}
 @keyframes iin-network-glow{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(.94)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}}
 @keyframes iin-core-float{0%,100%{transform:translate(-50%,-50%)}50%{transform:translate(-50%,calc(-50% - 5px))}}
 @keyframes iin-data-soft{0%,100%{opacity:.48}50%{opacity:1}}
+
+/* Reference-locked booking form field order and sizing. */
+.infometry-informatica-product .iin-demo-form .icp-demo-form-head{order:1}
+.infometry-informatica-product .iin-demo-form .icp-demo-preferences{order:2}
+.infometry-informatica-product .iin-demo-form .wpforms-field-container{order:3}
+.infometry-informatica-product .iin-demo-form .icp-demo-company{order:4;margin-top:0!important}
+.infometry-informatica-product .iin-demo-form .wpforms-submit-container{order:5}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name>.wpforms-field-label{display:none!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-row{display:grid!important;grid-template-columns:1fr 1fr!important;gap:16px!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-row-block{display:flex!important;width:100%!important;flex-direction:column!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-row-block>input{order:2!important;width:100%!important;max-width:none!important;margin-top:6px!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-sublabel{order:1!important;margin:0!important;color:#15365f!important;font-size:12px!important;font-weight:800!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-sublabel::after{content:" *";color:#f04438}
+.infometry-informatica-product .iin-demo-form .wpforms-field-email input,.infometry-informatica-product .iin-demo-form .wpforms-field-phone input{width:100%!important;max-width:none!important}
+.infometry-informatica-product .iin-demo-form .wpforms-field-email,.infometry-informatica-product .iin-demo-form .wpforms-field-phone{min-width:0!important}
+.infometry-informatica-product .iin-demo-form .icp-demo-company input{max-width:none!important}
+@media(max-width:620px){.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}}

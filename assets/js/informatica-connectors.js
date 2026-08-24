@@ -46,7 +46,14 @@
   }
   if (timeInput) { timeInput.value = timeInput.value || '10:00'; timeInput.addEventListener('change', function () { sync(selected); }); }
   if (timezone) {
-    try { var zone = Intl.DateTimeFormat().resolvedOptions().timeZone; var option = new Option(zone, zone, true, true); timezone.insertBefore(option, timezone.firstChild); timezone.value = zone; } catch (error) {}
+    try {
+      var zone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      var offsetMinutes = -new Date().getTimezoneOffset();
+      var sign = offsetMinutes >= 0 ? '+' : '-';
+      var offset = sign + String(Math.floor(Math.abs(offsetMinutes) / 60)).padStart(2, '0') + ':' + String(Math.abs(offsetMinutes) % 60).padStart(2, '0');
+      var option = new Option(zone + ' (UTC' + offset + ')', zone, true, true);
+      timezone.insertBefore(option, timezone.firstChild); timezone.value = zone;
+    } catch (error) {}
   }
   if (previous) previous.addEventListener('click', function () { shown = new Date(shown.getFullYear(), shown.getMonth() - 1, 1); render(); });
   if (next) next.addEventListener('click', function () { shown = new Date(shown.getFullYear(), shown.getMonth() + 1, 1); render(); });

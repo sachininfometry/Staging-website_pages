@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, and Informatica Connectors page templates.
- * Version: 2.2.2
+ * Version: 2.3.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.2.2' );
+define( 'INFOMETRY_CT_VERSION', '2.3.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -228,7 +228,7 @@ add_filter( 'wpforms_process_before_form_data', 'infometry_ct_conversa_ajax_conf
  */
 function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
 	if (
-		! infometry_ct_should_use_conversa_template()
+		( ! infometry_ct_should_use_conversa_template() && ! infometry_ct_should_use_informatica_template() )
 		|| INFOMETRY_CT_CONVERSA_FORM_ID !== absint( $form_data['id'] )
 	) {
 		return;
@@ -333,7 +333,7 @@ function infometry_ct_is_cloudways_staging_host() {
  * @return bool
  */
 function infometry_ct_disable_staging_recaptcha( $disabled ) {
-	if ( infometry_ct_is_cloudways_staging_host() && infometry_ct_should_use_conversa_template() ) {
+	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() ) ) {
 		return true;
 	}
 
@@ -482,13 +482,23 @@ function infometry_ct_enqueue_assets() {
 
 	if ( $use_informatica ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/informatica-connectors.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/informatica-connectors.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
 		wp_enqueue_style(
 			'infometry-informatica-connectors',
 			INFOMETRY_CT_URL . 'assets/css/informatica-connectors.css',
 			array(),
 			$css_version
+		);
+
+		wp_enqueue_script(
+			'infometry-informatica-connectors',
+			INFOMETRY_CT_URL . 'assets/js/informatica-connectors.js',
+			array(),
+			$js_version,
+			true
 		);
 	}
 }

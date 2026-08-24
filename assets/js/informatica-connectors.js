@@ -4,7 +4,19 @@
   if (!root) return;
 
   var form = root.querySelector('#wpforms-form-379751, .iin-demo-form');
-  if (form) form.classList.add('iin-demo-form');
+  if (form) {
+    form.classList.add('iin-demo-form');
+    var nameRow = form.querySelector('.wpforms-field-name .wpforms-field-row');
+    if (nameRow) {
+      nameRow.classList.add('iin-name-row');
+      Array.prototype.forEach.call(nameRow.querySelectorAll('.wpforms-field-row-block'), function (block) {
+        block.classList.add('iin-name-block');
+        block.style.removeProperty('width');
+        block.style.removeProperty('margin-left');
+        block.style.removeProperty('float');
+      });
+    }
+  }
   var dateInput = root.querySelector('[data-icp-demo-date]');
   var dateDisplay = root.querySelector('[data-icp-demo-date-display]');
   var timeInput = root.querySelector('[data-icp-demo-time]');

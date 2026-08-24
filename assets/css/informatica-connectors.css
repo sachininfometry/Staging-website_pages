@@ -311,3 +311,34 @@ body.infometry-informatica-product-page #Content{padding:0!important}
 .infometry-informatica-product .iin-demo-form .wpforms-field-email,.infometry-informatica-product .iin-demo-form .wpforms-field-phone{min-width:0!important}
 .infometry-informatica-product .iin-demo-form .icp-demo-company input{max-width:none!important}
 @media(max-width:620px){.infometry-informatica-product .iin-demo-form .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}}
+
+/* Normalize WPForms' float/width utilities after inspecting its generated markup. */
+body .infometry-informatica-product form#wpforms-form-379751.iin-demo-form{
+	height:620px!important;min-height:620px!important;margin:0!important;padding:28px 30px!important;
+	justify-content:flex-start!important;align-content:stretch!important;
+}
+body .infometry-informatica-product form#wpforms-form-379751 .icp-demo-form-head{margin:0!important;padding:0 0 13px!important}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-container{width:100%!important;margin:0!important;padding:0!important}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name{display:block!important;width:100%!important;margin:0!important;padding:0 0 10px!important;float:none!important}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .iin-name-row{
+	display:grid!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;
+	grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:16px!important;clear:both!important;
+}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row::before,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row::after{display:none!important;content:none!important}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row-block,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .iin-name-block{
+	dis:flex!important;width:auto!important;min-width:0!important;max-width:none!important;margin:0!important;padding:0!important;
+	float:none!important;clear:none!important;transform:none!important;flex-direction:column!important;
+}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name input,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-email input,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-phone input{
+	dis:block!important;width:100%!important;min-width:0!important;max-width:100%!important;margin-left:0!important;margin-right:0!important;float:none!important;
+}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-email,
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-phone{display:block!important;width:100%!important;min-width:0!important;max-width:none!important;margin:0!important;float:none!important}
+body .infometry-informatica-product form#wpforms-form-379751 .icp-demo-company{width:100%!important;margin:0!important;padding:0!important}
+body .infometry-informatica-product form#wpforms-form-379751 .wpforms-submit-container{width:100%!important;margin-top:auto!important}
+@media(max-width:620px){body .infometry-informatica-product form#wpforms-form-379751.iin-demo-form{height:auto!important;min-height:0!important;padding:24px 18px!important}body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}}

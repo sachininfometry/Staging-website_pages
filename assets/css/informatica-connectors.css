@@ -344,8 +344,10 @@ body .infometry-informatica-product form#wpforms-form-379751 .wpforms-submit-con
 @media(max-width:620px){body .infometry-informatica-product form#wpforms-form-379751.iin-demo-form{height:auto!important;min-height:0!important;padding:24px 18px!important}body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}}
 
 /* Final optical alignment: remove WPForms host offset and match phone to its grid track. */
-.infometry-informatica-product .iin-demo-form-host{height:620px;margin-top:-24px!important;align-self:start}
+.infometry-informatica-product .iin-demo-form-host{height:620px;margin-top:0!important;align-self:start}
 .infometry-informatica-product .iin-demo-form-host>.wpforms-container{height:100%;margin:0!important;padding:0!important}
 body .infometry-informatica-product form#wpforms-form-379751 .wpforms-field-phone input[type=tel],
-body .infometry-informatica-product form#wpforms-form-379751 input[type=tel]{display:block!important;width:100%!important;min-width:100%!important;max-width:none!important;margin-inline:0!important}
+body .infometry-informatica-product form#wpforms-form-379751 input[type=tel],
+body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-field_12{display:block!important;width:100%!important;min-width:100%!important;max-width:none!important;margin-inline:0!important}
+body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-field_12-container{grid-column:2!important;width:100%!important;min-width:0!important;max-width:none!important}
 @media(max-width:1000px){.infometry-informatica-product .iin-demo-form-host{height:auto;margin-top:0!important}}

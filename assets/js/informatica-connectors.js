@@ -16,6 +16,15 @@
         block.style.removeProperty('float');
       });
     }
+    var phoneInput = form.querySelector('.wpforms-field-phone input, input[type="tel"]');
+    if (phoneInput) {
+      phoneInput.style.setProperty('display', 'block', 'important');
+      phoneInput.style.setProperty('width', '100%', 'important');
+      phoneInput.style.setProperty('min-width', '100%', 'important');
+      phoneInput.style.setProperty('max-width', 'none', 'important');
+      phoneInput.style.setProperty('margin-left', '0', 'important');
+      phoneInput.style.setProperty('margin-right', '0', 'important');
+    }
   }
   var dateInput = root.querySelector('[data-icp-demo-date]');
   var dateDisplay = root.querySelector('[data-icp-demo-date-display]');

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, and Informatica Connectors page templates.
- * Version: 2.4.2
+ * Version: 2.5.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.4.2' );
+define( 'INFOMETRY_CT_VERSION', '2.5.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -165,6 +165,93 @@ function infometry_ct_body_classes( $classes ) {
 	return array_unique( $classes );
 }
 add_filter( 'body_class', 'infometry_ct_body_classes' );
+
+/**
+ * Prevent BeTheme from rendering the legacy page slider on plugin templates.
+ *
+ * The custom pages previously hid this output with CSS, leaving the complete
+ * Revolution Slider (including obsolete marketing copy) in crawlable HTML.
+ * Returning a falsey page-option value stops BeTheme before it expands the
+ * slider shortcode, without changing the saved page metadata.
+ *
+ * @param mixed  $value     Short-circuit value for metadata lookup.
+ * @param int    $object_id Post ID being queried.
+ * @param string $meta_key  Metadata key.
+ * @param bool   $single    Whether a single value was requested.
+ * @return mixed
+ */
+function infometry_ct_disable_legacy_slider_meta( $value, $object_id, $meta_key, $single ) {
+	$slider_keys = array(
+		'mfn-post-slider',
+		'mfn-post-slider-layer',
+		'mfn-post-slider-shortcode',
+		'mfn-post-slider-header',
+	);
+
+	if ( ! in_array( $meta_key, $slider_keys, true ) ) {
+		return $value;
+	}
+
+	if ( absint( $object_id ) !== infometry_ct_get_current_page_id() ) {
+		return $value;
+	}
+
+	if (
+		! infometry_ct_should_use_home_template()
+		&& ! infometry_ct_should_use_conversa_template()
+		&& ! infometry_ct_should_use_informatica_template()
+	) {
+		return $value;
+	}
+
+	return $single ? '0' : array( '0' );
+}
+add_filter( 'get_post_metadata', 'infometry_ct_disable_legacy_slider_meta', PHP_INT_MAX, 4 );
+
+/**
+ * Remove Revolution Slider frontend payloads when no legacy slider is used.
+ *
+ * Handles vary by plugin version, so registered asset sources are inspected
+ * rather than relying on a brittle hard-coded handle list.
+ */
+function infometry_ct_dequeue_legacy_slider_assets() {
+	if (
+		! infometry_ct_should_use_home_template()
+		&& ! infometry_ct_should_use_conversa_template()
+		&& ! infometry_ct_should_use_informatica_template()
+	) {
+		return;
+	}
+
+	$asset_groups = array(
+		'style'  => isset( $GLOBALS['wp_styles'] ) ? $GLOBALS['wp_styles'] : null,
+		'script' => isset( $GLOBALS['wp_scripts'] ) ? $GLOBALS['wp_scripts'] : null,
+	);
+
+	foreach ( $asset_groups as $asset_type => $registry ) {
+		if ( ! $registry || empty( $registry->registered ) ) {
+			continue;
+		}
+
+		foreach ( $registry->registered as $handle => $asset ) {
+			$source = isset( $asset->src ) ? (string) $asset->src : '';
+			$haystack = strtolower( $handle . ' ' . $source );
+
+			if ( ! preg_match( '#(?:revslider|revolution|/rs6(?:/|\.|$)|rbtools)#', $haystack ) ) {
+				continue;
+			}
+
+			if ( 'style' === $asset_type ) {
+				wp_dequeue_style( $handle );
+				wp_deregister_style( $handle );
+			} else {
+				wp_dequeue_script( $handle );
+				wp_deregister_script( $handle );
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'infometry_ct_dequeue_legacy_slider_assets', PHP_INT_MAX );
 
 /**
  * Set production-safe labels on the existing WPForms name field.

@@ -89,4 +89,69 @@
   if (previous) previous.addEventListener('click', function () { shown = new Date(shown.getFullYear(), shown.getMonth() - 1, 1); render(); });
   if (next) next.addEventListener('click', function () { shown = new Date(shown.getFullYear(), shown.getMonth() + 1, 1); render(); });
   sync(selected); render();
+
+  var network = root.querySelector('.iin-network');
+  var orbitNodes = network ? Array.prototype.slice.call(network.querySelectorAll('.iin-network-node')) : [];
+  var orbitLines = network ? Array.prototype.slice.call(network.querySelectorAll('.iin-network-lines i')) : [];
+  var orbitFrame = 0;
+  var orbitStart = performance.now();
+  var orbitPausedAt = 0;
+  var orbitPauseStarted = 0;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var desktopOrbit = window.matchMedia('(min-width: 761px)');
+
+  function clearOrbitLayout() {
+    orbitNodes.forEach(function (node) { node.style.removeProperty('transform'); });
+    orbitLines.forEach(function (line) { line.style.removeProperty('width'); line.style.removeProperty('transform'); });
+  }
+
+  function positionOrbit(timestamp) {
+    if (!network || !orbitNodes.length || !desktopOrbit.matches) {
+      clearOrbitLayout();
+      orbitFrame = 0;
+      return;
+    }
+
+    var box = network.getBoundingClientRect();
+    var nodeWidth = orbitNodes[0].getBoundingClientRect().width || 174;
+    var nodeHeight = orbitNodes[0].getBoundingClientRect().height || 62;
+    var radiusX = Math.max(230, Math.min(292, box.width / 2 - nodeWidth / 2 - 8));
+    var radiusY = Math.max(180, Math.min(210, box.height / 2 - nodeHeight / 2 - 16));
+    var orbitNow = orbitPauseStarted || timestamp;
+    var elapsed = reduceMotion.matches ? 0 : orbitNow - orbitStart - orbitPausedAt;
+    var rotation = elapsed / 72000 * Math.PI * 2;
+    var angleStep = Math.PI * 2 / orbitNodes.length;
+
+    orbitNodes.forEach(function (node, index) {
+      var angle = -Math.PI / 2 + index * angleStep + rotation;
+      var x = Math.cos(angle) * radiusX;
+      var y = Math.sin(angle) * radiusY;
+      var distance = Math.sqrt(x * x + y * y);
+      var lineAngle = Math.atan2(y, x) * 180 / Math.PI;
+      node.style.transform = 'translate(-50%, -50%) translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
+      if (orbitLines[index]) {
+        orbitLines[index].style.width = Math.max(62, distance - nodeWidth / 2 - 8).toFixed(2) + 'px';
+        orbitLines[index].style.transform = 'rotate(' + lineAngle.toFixed(2) + 'deg)';
+      }
+    });
+
+    orbitFrame = window.requestAnimationFrame(positionOrbit);
+  }
+
+  function startOrbit() {
+    if (orbitFrame) window.cancelAnimationFrame(orbitFrame);
+    orbitFrame = window.requestAnimationFrame(positionOrbit);
+  }
+
+  if (network && orbitNodes.length) {
+    network.addEventListener('mouseenter', function () { orbitPauseStarted = performance.now(); });
+    network.addEventListener('mouseleave', function () {
+      if (orbitPauseStarted) orbitPausedAt += performance.now() - orbitPauseStarted;
+      orbitPauseStarted = 0;
+    });
+    desktopOrbit.addEventListener('change', startOrbit);
+    reduceMotion.addEventListener('change', startOrbit);
+    window.addEventListener('resize', startOrbit, { passive: true });
+    startOrbit();
+  }
 }());

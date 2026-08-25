@@ -400,3 +400,19 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 @keyframes iin-orbit-drift-three{0%{transform:translate(-50%,-50%) rotate(3deg)}100%{transform:translate(-50%,-50%) rotate(-2deg)}}
 @media(max-width:760px){.infometry-informatica-product .iin-network::before{width:82%;height:48%}.infometry-informatica-product .iin-network::after{width:62%;height:36%}.infometry-informatica-product .iin-network-core::before{width:118vw;height:58%}.infometry-informatica-product .iin-network-node{width:142px}.infometry-informatica-product .iin-node-1{left:0}.infometry-informatica-product .iin-node-4{right:0}.infometry-informatica-product .iin-node-2{left:-4px}.infometry-informatica-product .iin-node-5{right:-4px}.infometry-informatica-product .iin-node-3{left:10px}.infometry-informatica-product .iin-node-6{right:10px}}
 @media(prefers-reduced-motion:reduce){.infometry-informatica-product .iin-network::before,.infometry-informatica-product .iin-network::after,.infometry-informatica-product .iin-network-core::before{animation:none!important}}
+
+/* True planetary motion: equally spaced cards orbit while staying upright. */
+@media(min-width:761px){
+	.infometry-informatica-product .iin-network::before{width:584px;height:420px;transform:translate(-50%,-50%);animation:none}
+	.infometry-informatica-product .iin-network::after{width:458px;height:326px;transform:translate(-50%,-50%);animation:none}
+	.infometry-informatica-product .iin-network-core::before{width:664px;height:476px;transform:translate(-50%,-50%);animation:none}
+	.infometry-informatica-product .iin-network-node{
+		left:50%!important;right:auto!important;top:50%!important;bottom:auto!important;
+		width:174px;min-height:62px;animation:none!important;will-change:transform;
+	}
+	.infometry-informatica-product .iin-network-node:hover{box-shadow:0 20px 46px rgba(10,92,191,.4),0 0 0 1px rgba(255,255,255,.72) inset}
+	.infometry-informatica-product .iin-network-node::after{display:none}
+	.infometry-informatica-product .iin-network-lines i{left:50%;top:50%;transform-origin:0 50%;transition:none;will-change:width,transform}
+	.infometry-informatica-product .iin-network-lines i::after{right:0;animation:iin-orbit-signal 2.8s ease-in-out infinite}
+}
+@keyframes iin-orbit-signal{0%,100%{opacity:.45;transform:scale(.75)}50%{opacity:1;transform:scale(1.35)}}

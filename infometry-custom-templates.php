@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, and Informatica Connectors page templates.
- * Version: 2.5.0
+ * Version: 2.5.1
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.5.0' );
+define( 'INFOMETRY_CT_VERSION', '2.5.1' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -88,7 +88,11 @@ function infometry_ct_should_use_template( $template_slug ) {
  * @return bool
  */
 function infometry_ct_should_use_home_template() {
-	return infometry_ct_should_use_template( INFOMETRY_CT_HOME_TEMPLATE );
+	$page_id = infometry_ct_get_current_page_id();
+
+	return $page_id
+		&& $page_id === absint( get_option( 'page_on_front' ) )
+		&& infometry_ct_should_use_template( INFOMETRY_CT_HOME_TEMPLATE );
 }
 
 /**
@@ -97,6 +101,12 @@ function infometry_ct_should_use_home_template() {
  * @return bool
  */
 function infometry_ct_should_use_conversa_template() {
+	$page_id = infometry_ct_get_current_page_id();
+
+	if ( ! $page_id || 'product/conversational-analytics' !== trim( (string) get_page_uri( $page_id ), '/' ) ) {
+		return false;
+	}
+
 	return infometry_ct_should_use_template( INFOMETRY_CT_CONVERSA_TEMPLATE );
 }
 
@@ -207,6 +217,34 @@ function infometry_ct_disable_legacy_slider_meta( $value, $object_id, $meta_key,
 	return $single ? '0' : array( '0' );
 }
 add_filter( 'get_post_metadata', 'infometry_ct_disable_legacy_slider_meta', PHP_INT_MAX, 4 );
+
+/**
+ * Final guard against legacy Slider Revolution shortcodes on custom pages.
+ *
+ * BeTheme and cache/minification integrations can resolve the slider before
+ * the normal page-option lookup. Short-circuiting the shortcode itself keeps
+ * unrelated banners out of the custom page HTML in that early-load case.
+ *
+ * @param mixed  $output    Short-circuit output. False continues processing.
+ * @param string $shortcode Shortcode tag.
+ * @return mixed
+ */
+function infometry_ct_disable_legacy_slider_shortcode( $output, $shortcode ) {
+	if ( ! in_array( $shortcode, array( 'rev_slider', 'rev_slider_vc' ), true ) ) {
+		return $output;
+	}
+
+	if (
+		! infometry_ct_should_use_home_template()
+		&& ! infometry_ct_should_use_conversa_template()
+		&& ! infometry_ct_should_use_informatica_template()
+	) {
+		return $output;
+	}
+
+	return '';
+}
+add_filter( 'pre_do_shortcode_tag', 'infometry_ct_disable_legacy_slider_shortcode', PHP_INT_MAX, 2 );
 
 /**
  * Remove Revolution Slider frontend payloads when no legacy slider is used.

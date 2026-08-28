@@ -21,6 +21,52 @@ $connectors  = array(
 	array( 'type' => 'ads', 'title' => 'Google Ads Connector', 'short' => 'Google Ads', 'copy' => 'Ingest campaigns, metrics, and performance data from Google Ads to power data-driven insights.', 'url' => home_url( '/product/google-ads-connector/' ) ),
 );
 
+$connector_groups = array(
+	array(
+		'class'    => 'is-infometry',
+		'eyebrow' => 'Built & supported by Infometry',
+		'title'    => 'Infometry Owned',
+		'items'    => array(
+			array( 'name' => 'Google Sheets', 'logo' => 'google_sheets.png' ),
+			array( 'name' => 'Google Drive', 'logo' => 'google_drive.png' ),
+			array( 'name' => 'Google Cloud Pub/Sub', 'logo' => 'google_pubsub.png' ),
+			array( 'name' => 'Google Ads', 'logo' => 'google_ads.png' ),
+			array( 'name' => 'Google BigTable', 'logo' => 'google_bigtable.png' ),
+			array( 'name' => 'Adaptive Insights', 'logo' => 'adaptive_insights.png' ),
+			array( 'name' => 'HubSpot', 'logo' => 'hubspot.png' ),
+		),
+	),
+	array(
+		'class'    => 'is-informatica',
+		'eyebrow' => 'Native enterprise connector portfolio',
+		'title'    => 'Informatica Owned',
+		'items'    => array(
+			array( 'name' => 'SAP ABAP', 'logo' => 'sap_abap.png', 'badge' => 'M' ),
+			array( 'name' => 'Workday', 'logo' => 'workday.png', 'badge' => 'M' ),
+			array( 'name' => 'Concur', 'logo' => 'concur.png' ),
+			array( 'name' => 'Zuora', 'logo' => 'zuora.png' ),
+			array( 'name' => 'Amplitude', 'logo' => 'amplitude.png', 'badge' => 'D' ),
+			array( 'name' => 'Eloqua', 'logo' => 'eloqua.png' ),
+			array( 'name' => 'Twilio Segment', 'logo' => 'twilio_segment.png', 'badge' => 'D' ),
+			array( 'name' => 'Salesforce Pardot', 'logo' => 'salesforce_pardot.png', 'badge' => 'D' ),
+			array( 'name' => 'Oracle BigMachines', 'logo' => 'oracle_bigmachines.png' ),
+			array( 'name' => 'Mixpanel', 'logo' => 'mixpanel.png', 'badge' => 'D' ),
+			array( 'name' => 'Jira Software', 'logo' => 'jira_software.png' ),
+			array( 'name' => 'Microsoft Azure', 'logo' => 'microsoft_azure.png' ),
+		),
+	),
+	array(
+		'class'    => 'is-customer',
+		'eyebrow' => 'Managed by customers',
+		'title'    => 'Customer Owned',
+		'items'    => array(
+			array( 'name' => 'NICE Satmetrix', 'logo' => 'nice_satmetrix.png' ),
+			array( 'name' => 'CallidusCloud', 'logo' => 'calliduscloud.png' ),
+			array( 'name' => 'Litmos', 'logo' => 'litmos.png' ),
+		),
+	),
+);
+
 if ( ! function_exists( 'infometry_iin_connector_logo' ) ) {
 	function infometry_iin_connector_logo( $type ) {
 		$labels = array( 'drive' => 'Google Drive', 'sheets' => 'Google Sheets', 'pubsub' => 'Google Pub/Sub', 'bigtable' => 'Google BigTable', 'ads' => 'Google Ads', 'adaptive' => 'Adaptive Insights', 'hubspot' => 'HubSpot' );
@@ -60,7 +106,25 @@ if ( ! function_exists( 'infometry_iin_connector_logo' ) ) {
 
 	<section class="iin-hero" aria-labelledby="iin-hero-title"><div class="iin-shell iin-hero-grid">
 		<div class="iin-hero-copy"><span class="iin-eyebrow">Informatica Connectors</span><h1 id="iin-hero-title">Informatica Certified Connectors for <em>Seamless Data Integration</em></h1><p>Pre-built, no-code connectors that accelerate data integration on Informatica. Automate workflows end-to-end, connect your enterprise applications, and unlock ecosystems of AI, analytics, and cloud connectivity in hours—not weeks or months.</p><div class="iin-actions"><a class="iin-button iin-button-primary" href="#iin-demo-form">Request a Demo</a><a class="iin-button iin-button-ghost" href="<?php echo esc_url( $contact_url ); ?>">Talk to Sales <span>→</span></a></div></div>
-		<div class="iin-network" aria-label="Informatica connector ecosystem"><div class="iin-network-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="iin-network-core"><span><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""></span><strong>Informatica<br>Connectors</strong></div><?php foreach ( $connectors as $index => $connector ) : ?><a class="iin-network-node iin-node-<?php echo esc_attr( $index + 1 ); ?>" href="<?php echo esc_url( $connector['url'] ); ?>"><?php infometry_iin_connector_logo( $connector['type'] ); ?><b><?php echo esc_html( $connector['short'] ); ?></b></a><?php endforeach; ?><a class="iin-network-node iin-node-6" href="<?php echo esc_url( home_url( '/product/adaptive-insight-connector/' ) ); ?>"><?php infometry_iin_connector_logo( 'adaptive' ); ?><b>Adaptive Insights</b></a><a class="iin-network-node iin-node-7" href="<?php echo esc_url( home_url( '/product/hubspot-connector/' ) ); ?>"><?php infometry_iin_connector_logo( 'hubspot' ); ?><b>HubSpot</b></a></div>
+		<div class="iin-control-center" aria-label="Informatica connector control center">
+			<div class="iin-cc-header"><span>Connector Control Center</span><b>22 connectors · 3 ownership layers</b></div>
+			<div class="iin-cc-body">
+				<aside class="iin-cc-hub"><span class="iin-cc-hub-mark"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""></span><strong>Informatica IDMC</strong><small>Unified connector hub</small><ul><li>Secure pipelines</li><li>No-code scale</li><li>Enterprise ready</li></ul></aside>
+				<div class="iin-cc-groups">
+					<?php foreach ( $connector_groups as $group ) : ?>
+						<section class="iin-cc-group <?php echo esc_attr( $group['class'] ); ?>" aria-label="<?php echo esc_attr( $group['title'] ); ?> connectors">
+							<header><span></span><div><h2><?php echo esc_html( $group['title'] ); ?></h2><small><?php echo esc_html( $group['eyebrow'] ); ?></small></div><b><?php echo esc_html( count( $group['items'] ) ); ?> connectors</b></header>
+							<div class="iin-cc-logos">
+								<?php foreach ( $group['items'] as $item ) : ?>
+									<span class="iin-cc-logo" title="<?php echo esc_attr( $item['name'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo"><?php if ( ! empty( $item['badge'] ) ) : ?><i aria-label="<?php echo 'M' === $item['badge'] ? esc_attr( 'Mass Ingestion Connector' ) : esc_attr( 'Data Loader Connector' ); ?>"><?php echo esc_html( $item['badge'] ); ?></i><?php endif; ?></span>
+								<?php endforeach; ?>
+							</div>
+						</section>
+					<?php endforeach; ?>
+					<div class="iin-cc-key"><span><i>M</i> Mass Ingestion</span><span><i>D</i> Data Loader</span></div>
+				</div>
+			</div>
+		</div>
 	</div></section>
 
 	<section class="iin-featured" id="featured-connectors" aria-labelledby="iin-featured-title"><div class="iin-shell"><div class="iin-heading"><span>Featured</span><h2 id="iin-featured-title">Featured Google Connectors</h2><p>Certified connectors to the most widely used Google services—secure, reliable, and built for scale.</p></div><div class="iin-connector-grid"><?php foreach ( $connectors as $connector ) : ?><article class="iin-connector-card"><?php infometry_iin_connector_logo( $connector['type'] ); ?><h3><?php echo esc_html( $connector['title'] ); ?></h3><p><?php echo esc_html( $connector['copy'] ); ?></p><a href="<?php echo esc_url( $connector['url'] ); ?>">Learn more <span>→</span></a></article><?php endforeach; ?></div></div></section>

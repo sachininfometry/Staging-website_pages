@@ -27,13 +27,13 @@ $connector_groups = array(
 		'eyebrow' => 'Built & supported by Infometry',
 		'title'    => 'Infometry Owned',
 		'items'    => array(
-			array( 'name' => 'Google Sheets', 'logo' => 'sheets-transparent.png', 'viewport' => '--logo-ratio:5.7426;--logo-width:100%;--logo-left:0%;--logo-top:-120.7921%' ),
-			array( 'name' => 'Google Drive', 'logo' => 'drive-transparent.png', 'viewport' => '--logo-ratio:5.8;--logo-width:110.8374%;--logo-left:-5.4187%;--logo-top:-271.4286%' ),
-			array( 'name' => 'Google Cloud Pub/Sub', 'type' => 'pubsub', 'display' => 'Google Cloud Pub/Sub' ),
+			array( 'name' => 'Google Sheets', 'type' => 'sheets', 'display' => 'Google Sheets' ),
+			array( 'name' => 'Google Drive', 'type' => 'drive', 'display' => 'Google Drive' ),
+			array( 'name' => 'Google Cloud Pub/Sub', 'type' => 'pubsub', 'display' => 'Google Pub/Sub' ),
 			array( 'name' => 'Google Ads', 'type' => 'ads', 'display' => 'Google Ads' ),
 			array( 'name' => 'Google BigTable', 'type' => 'bigtable', 'display' => 'Google BigTable' ),
-			array( 'name' => 'Adaptive Insights', 'logo' => 'adaptive-transparent.png', 'viewport' => '--logo-ratio:2.9717;--logo-width:100.5450%;--logo-left:-0.2725%;--logo-top:-3.6437%' ),
-			array( 'name' => 'HubSpot', 'logo' => 'hubspot-transparent.png', 'viewport' => '--logo-ratio:3.5057;--logo-width:109.3443%;--logo-left:-4.5902%;--logo-top:-55.1724%' ),
+			array( 'name' => 'Adaptive Insights', 'type' => 'adaptive', 'display' => 'Adaptive Insights', 'icon' => 'adaptive-symbol.png' ),
+			array( 'name' => 'HubSpot', 'type' => 'hubspot', 'display' => 'HubSpot' ),
 		),
 	),
 	array(
@@ -50,9 +50,9 @@ $connector_groups = array(
 			array( 'name' => 'Twilio Segment', 'logo' => 'segment-supplied.png', 'viewport' => '--logo-ratio:4.7536;--logo-width:101.6768%;--logo-left:-0.9146%;--logo-top:-86.2319%', 'badge' => 'D' ),
 			array( 'name' => 'Salesforce Pardot', 'logo' => 'pardot-supplied.png', 'viewport' => '--logo-ratio:2.5625;--logo-width:100%;--logo-left:0%;--logo-top:0%', 'badge' => 'D' ),
 			array( 'name' => 'Oracle BigMachines', 'logo' => 'bigmachines-supplied.png', 'viewport' => '--logo-ratio:2.2419;--logo-width:109.3525%;--logo-left:-6.4748%;--logo-top:-9.6774%' ),
-			array( 'name' => 'Mixpanel', 'logo' => 'mixpanel.png', 'badge' => 'D' ),
-			array( 'name' => 'Jira Software', 'logo' => 'jira_software.png' ),
-			array( 'name' => 'Microsoft Azure', 'logo' => 'microsoft_azure.png' ),
+			array( 'name' => 'Mixpanel', 'logo' => 'mixpanel-supplied.png', 'viewport' => '--logo-ratio:3.0370;--logo-width:100%;--logo-left:0%;--logo-top:0%' ),
+			array( 'name' => 'Jira Software', 'logo' => 'jira-supplied.png', 'viewport' => '--logo-ratio:7.6340;--logo-width:100%;--logo-left:0%;--logo-top:0%' ),
+			array( 'name' => 'Microsoft Azure', 'logo' => 'azure-supplied.png', 'viewport' => '--logo-ratio:6.7667;--logo-width:110.8374%;--logo-left:-5.4187%;--logo-top:-326.6667%' ),
 		),
 	),
 	array(
@@ -106,8 +106,8 @@ if ( ! function_exists( 'infometry_iin_connector_logo' ) ) {
 
 	<section class="iin-hero" aria-labelledby="iin-hero-title"><div class="iin-shell iin-hero-grid">
 		<div class="iin-hero-copy"><span class="iin-eyebrow">Informatica Connectors</span><h1 id="iin-hero-title">Informatica Certified Connectors for <em>Seamless Data Integration</em></h1><p>Pre-built, no-code connectors that accelerate data integration on Informatica. Automate workflows end-to-end, connect your enterprise applications, and unlock ecosystems of AI, analytics, and cloud connectivity in hours—not weeks or months.</p><div class="iin-actions"><a class="iin-button iin-button-primary" href="#iin-demo-form">Request a Demo</a><a class="iin-button iin-button-ghost" href="<?php echo esc_url( $contact_url ); ?>">Talk to Sales <span>→</span></a></div></div>
-		<div class="iin-control-center" aria-label="Informatica connector control center">
-			<div class="iin-cc-header"><span>Connector Control Center</span><b>22 connectors · 3 ownership layers</b></div>
+		<div class="iin-control-center is-ecosystem" aria-label="Informatica connector ecosystem">
+			<div class="iin-cc-header"><span>Connector Ecosystem</span><b>One platform. Connected possibilities.</b></div>
 			<div class="iin-cc-body">
 				<aside class="iin-cc-hub"><span class="iin-cc-hub-mark"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""></span><strong>Informatica IDMC</strong><small>Unified connector hub</small><ul><li>Secure pipelines</li><li>No-code scale</li><li>Enterprise ready</li></ul></aside>
 				<div class="iin-cc-groups">
@@ -121,14 +121,17 @@ if ( ! function_exists( 'infometry_iin_connector_logo' ) ) {
 										<?php if ( ! empty( $item['viewport'] ) ) : ?>
 											<span class="iin-cc-wordmark" style="<?php echo esc_attr( $item['viewport'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo"></span>
 										<?php elseif ( ! empty( $item['type'] ) ) : ?>
-											<span class="iin-cc-product-mark"><?php infometry_iin_connector_logo( $item['type'] ); ?><span><?php echo esc_html( $item['display'] ); ?></span></span>
+											<span class="iin-cc-product-mark"><?php if ( ! empty( $item['icon'] ) ) : ?><span class="iin-brand"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['icon'] ); ?>" alt=""></span><?php else : ?><?php infometry_iin_connector_logo( $item['type'] ); ?><?php endif; ?><span class="iin-cc-product-label"><span><?php echo esc_html( $item['display'] ); ?></span><?php if ( ! empty( $item['display_second'] ) ) : ?><span><?php echo esc_html( $item['display_second'] ); ?></span><?php endif; ?></span></span>
 										<?php else : ?>
 											<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo">
 										<?php endif; ?>
 									</span>
 								<?php endforeach; ?>
 								<?php if ( count( $visible_items ) < count( $group['items'] ) ) : ?>
-									<span class="iin-cc-more">More</span>
+									<details class="iin-cc-more-menu">
+										<summary class="iin-cc-more">More <span aria-hidden="true">+</span></summary>
+										<div class="iin-cc-more-content"><strong>Additional connectors</strong><ul><?php foreach ( array_slice( $group['items'], count( $visible_items ) ) as $extra_item ) : ?><li title="<?php echo esc_attr( $extra_item['name'] ); ?>"><span class="iin-cc-extra-logo" style="<?php echo esc_attr( $extra_item['viewport'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $extra_item['logo'] ); ?>" alt="<?php echo esc_attr( $extra_item['name'] ); ?> logo"></span></li><?php endforeach; ?></ul></div>
+									</details>
 								<?php endif; ?>
 							</div>
 						</section>

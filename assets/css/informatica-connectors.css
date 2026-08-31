@@ -528,3 +528,153 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 	.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark{font-size:10px;gap:6px}
 	.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark>.iin-brand{width:23px;height:25px;flex-basis:23px}
 }
+
+/* Ecosystem architecture: platform rail, paired portfolios, customer foundation. */
+.infometry-informatica-product .iin-control-center.is-ecosystem {
+	min-height:540px;padding:16px 22px;border-radius:24px;
+	background:radial-gradient(ellipse at 50% 0,rgba(29,103,160,.25),transparent 62%),#081a35;
+	border-color:rgba(121,180,235,.3);box-shadow:0 24px 65px rgba(0,7,28,.38),inset 0 1px rgba(255,255,255,.08);
+}
+.infometry-informatica-product .is-ecosystem::before {
+	inset:0;transform:none;opacity:.25;
+	background-image:radial-gradient(rgba(96,167,229,.35) .7px,transparent .7px);background-size:16px 16px;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-header {height:28px;align-items:start;gap:12px}
+.infometry-informatica-product .is-ecosystem .iin-cc-header span {font-size:11px;letter-spacing:.1em}
+.infometry-informatica-product .is-ecosystem .iin-cc-header b {font-size:10px;letter-spacing:0;text-transform:none;color:#b7cce1}
+.infometry-informatica-product .is-ecosystem .iin-cc-body {display:flex;flex-direction:column;height:auto;gap:14px}
+.infometry-informatica-product .is-ecosystem .iin-cc-body::before {display:none}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub {
+	position:relative;display:grid;grid-template-columns:64px minmax(0,1fr) auto;grid-template-rows:1fr 1fr;
+	column-gap:16px;min-height:88px;padding:12px 18px;margin:0;border-radius:16px;text-align:left;
+	background:linear-gradient(110deg,#163a60,#102845 65%,#123650);border-color:#376284;
+	box-shadow:0 10px 30px rgba(0,8,25,.22),inset 0 1px rgba(255,255,255,.09);
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub::after {
+	content:"";position:absolute;left:50%;top:100%;height:7px;width:2px;background:#76c4f2;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub-mark {
+	grid-column:1;grid-row:1/3;width:60px;height:60px;margin:0;border-radius:16px;
+	background:#fff;border:4px solid #e1f3ff;box-shadow:0 0 24px rgba(59,183,255,.14);
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub-mark img {width:46px;height:46px}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub>strong {grid-column:2;grid-row:1;align-self:end;font-size:20px;line-height:1.25}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub>small {grid-column:2;grid-row:2;align-self:start;margin-top:5px;font-size:11px;font-weight:600;letter-spacing:.02em;text-transform:none;color:#b1e5ff}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub ul {display:grid;grid-column:3;grid-row:1/3;gap:5px;margin:0;width:auto}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub li {padding:0 0 0 12px;border:0;border-radius:0;background:none;font-size:11px;line-height:1.4;font-weight:500;color:#e0ecf8;white-space:nowrap}
+.infometry-informatica-product .is-ecosystem .iin-cc-hub li::before {left:0;width:4px;height:4px}
+.infometry-informatica-product .is-ecosystem .iin-cc-groups {
+	position:relative;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:270px 92px;gap:14px;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-groups::before {
+	content:"";position:absolute;left:22%;right:27%;top:-7px;height:7px;
+	border:1px solid #45759b;border-bottom:0;border-radius:6px 6px 0 0;pointer-events:none;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group {
+	padding:16px 12px 13px;border-radius:15px;border-color:color-mix(in srgb,var(--cc-accent) 27%,#16304d);
+	background:linear-gradient(155deg,color-mix(in srgb,var(--cc-accent) 8%,#0d223f),#0b1b33);
+	box-shadow:0 8px 24px rgba(0,6,24,.18);min-width:0;
+	transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group::before {
+	left:18px;right:18px;top:0;width:auto;height:2px;
+	background:linear-gradient(90deg,transparent,var(--cc-accent),#e8f6ff,var(--cc-accent),transparent);opacity:.8;
+	background-size:250% 100%;animation:iin-ecosystem-flow 7s linear infinite;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group::after {display:none}
+.infometry-informatica-product .is-ecosystem .iin-cc-group header {
+	position:relative;height:60px;grid-template-columns:7px minmax(0,1fr);gap:7px;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group header>span {width:6px;height:6px;margin-top:4px;box-shadow:0 0 10px color-mix(in srgb,var(--cc-accent) 30%,transparent)}
+.infometry-informatica-product .is-ecosystem .iin-cc-group h2 {font-size:15px;line-height:1.15;letter-spacing:-.01em}
+.infometry-informatica-product .is-ecosystem .iin-cc-group header small {font-size:11px;font-weight:500;letter-spacing:0;line-height:1.3;margin-top:5px;text-transform:none;color:color-mix(in srgb,var(--cc-accent) 55%,white)}
+.infometry-informatica-product .is-ecosystem .iin-cc-group header>b {position:absolute;right:0;bottom:6px;font-size:9px;color:#b2c8df;font-weight:500;line-height:1.2;text-transform:none}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-logos {grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logos {grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group .iin-cc-logo {
+	height:38px;padding:5px 7px;border-radius:7px;border-color:#e0eaf3;
+	background:linear-gradient(130deg,#fff,#f0f6fc);box-shadow:0 2px 5px rgba(0,7,29,.12);
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-wordmark {width:min(100%,calc(26px * var(--logo-ratio)))}
+/* Optical sizing: dense wordmarks need less space than marks with tall symbols. */
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logo {padding:2px 7px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-wordmark {
+	width:min(100%,var(--logo-optical-width,90px),calc(32px * var(--logo-ratio)));
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="SAP ABAP"] {--logo-optical-width:76px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Workday"] {--logo-optical-width:80px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Concur"] {--logo-optical-width:90px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Zuora"] {--logo-optical-width:94px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Amplitude"] {--logo-optical-width:100px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Eloqua"] {--logo-optical-width:64px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Twilio Segment"] {--logo-optical-width:98px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Salesforce Pardot"] {--logo-optical-width:82px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Oracle BigMachines"] {--logo-optical-width:72px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-product-mark {
+	font-family:inherit;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:0;
+	gap:6px;justify-content:flex-start;text-align:left;color:#253c53;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-product-label{display:flex;min-width:0;flex-direction:column;justify-content:center;line-height:1.08}
+.infometry-informatica-product .is-ecosystem .iin-cc-product-label>span{display:block;white-space:nowrap}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-product-mark>.iin-brand {width:19px;height:22px;flex-basis:19px}
+.infometry-informatica-product .is-ecosystem .iin-cc-more {
+	height:38px;border-radius:7px;background:linear-gradient(110deg,rgba(255,147,62,.15),rgba(255,147,62,.06));border-color:rgba(255,169,94,.5);box-shadow:none;color:#ffdbbb;font-size:12px;cursor:pointer;list-style:none;gap:10px;
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-more::-webkit-details-marker{display:none}
+.infometry-informatica-product .is-ecosystem .iin-cc-more>span{font-size:18px;font-weight:400;transition:transform .2s}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-menu{position:relative;grid-column:1/-1;min-width:0}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-menu[open]{z-index:5}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-menu[open] .iin-cc-more>span{transform:rotate(45deg)}
+.infometry-informatica-product .is-ecosystem .iin-cc-more:focus-visible{outline:2px solid #ffd0a5;outline-offset:3px}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content{position:absolute;bottom:calc(100% + 8px);left:0;right:0;padding:12px 14px;border:1px solid #ad784e;border-radius:10px;background:#102640;box-shadow:0 12px 30px #0008;color:#e6eff8;font-size:12px;line-height:1.5}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content strong{font-size:11px;color:#ffd0a5}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content ul{display:grid;gap:6px;margin:8px 0 0;padding:0;list-style:none}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content li{display:grid;min-height:34px;margin:0;padding:2px 10px;place-items:center;border:1px solid #cddceb;border-radius:7px;background:linear-gradient(130deg,#fff,#edf5fb);line-height:1.3}
+.infometry-informatica-product .is-ecosystem .iin-cc-extra-logo{position:relative;display:block;overflow:hidden;width:min(100%,calc(var(--extra-logo-height,27px) * var(--logo-ratio)));aspect-ratio:var(--logo-ratio)}
+.infometry-informatica-product .is-ecosystem .iin-cc-extra-logo img{position:absolute;display:block;width:var(--logo-width);max-width:none;height:auto;left:var(--logo-left);top:var(--logo-top);object-fit:initial}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content li[title="Mixpanel"]{--extra-logo-height:27px}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content li[title="Jira Software"]{--extra-logo-height:17px}
+.infometry-informatica-product .is-ecosystem .iin-cc-more-content li[title="Microsoft Azure"]{--extra-logo-height:21px}
+@keyframes iin-ecosystem-flow{from{background-position:150% 0}to{background-position:-100% 0}}
+@media(hover:hover){
+	.infometry-informatica-product .is-ecosystem .iin-cc-group:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--cc-accent) 65%,#16304d);box-shadow:0 12px 28px #0004,0 0 22px color-mix(in srgb,var(--cc-accent) 8%,transparent)}
+	.infometry-informatica-product .is-ecosystem .iin-cc-more:hover{background:rgba(255,147,62,.22);border-color:#ffc28a}
+}
+@media(prefers-reduced-motion:reduce){
+	.infometry-informatica-product .is-ecosystem .iin-cc-group::before{animation:none}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group,.infometry-informatica-product .is-ecosystem .iin-cc-logo,.infometry-informatica-product .is-ecosystem .iin-cc-more>span{transition:none;transform:none}
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer {
+	grid-column:1/-1;display:grid;grid-template-columns:152px minmax(0,1fr);gap:14px;align-items:center;padding:15px;
+	background:linear-gradient(100deg,#192b3b,#10233b);border-color:rgba(224,190,97,.24);
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer header {height:58px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer header>b {left:14px;right:auto;bottom:0}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logos {grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logo {height:44px;padding:2px 8px}
+.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-wordmark {
+	width:min(100%,var(--logo-optical-width,100px),calc(38px * var(--logo-ratio)));
+}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="NICE Satmetrix"] {--logo-optical-width:148px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="CallidusCloud"] {--logo-optical-width:101px}
+.infometry-informatica-product .is-ecosystem .iin-cc-logo[title="Litmos"] {--logo-optical-width:94px}
+@media(max-width:760px){
+	.infometry-informatica-product .iin-control-center.is-ecosystem{padding:18px 14px;min-height:0}
+	.infometry-informatica-product .is-ecosystem .iin-cc-header{margin-bottom:0;height:28px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-header b{display:none}
+	.infometry-informatica-product .is-ecosystem .iin-cc-hub{padding:12px;column-gap:12px;grid-template-columns:56px minmax(0,1fr)}
+	.infometry-informatica-product .is-ecosystem .iin-cc-hub-mark{width:54px;height:54px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-hub-mark img{width:42px;height:42px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-hub>strong{font-size:16px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-hub ul{display:none}
+	.infometry-informatica-product .is-ecosystem .iin-cc-groups{grid-template-columns:1fr;grid-template-rows:auto;gap:14px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-groups::before{left:50%;right:auto;top:-7px;height:7px;border-radius:0;border-top:0;border-right:0}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group{padding:16px 12px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group header{height:66px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logos{grid-template-columns:repeat(2,minmax(0,1fr))}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group .iin-cc-logo{height:42px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer{display:block;padding:16px 12px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer header>b{left:auto;right:0;bottom:8px}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logos{grid-template-columns:1fr}
+	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logo{height:46px}
+}

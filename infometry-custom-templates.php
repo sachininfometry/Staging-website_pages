@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Infometry Custom Templates
- * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, and Informatica Connectors page templates.
- * Version: 2.4.3
+ * Description: Provides isolated Infometry homepage, INFOFISCUS Conversa, Informatica Connectors, and Google Cloud Connectors page templates.
+ * Version: 2.5.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,13 +11,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.4.3' );
+define( 'INFOMETRY_CT_VERSION', '2.5.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
 define( 'INFOMETRY_CT_CONVERSA_TEMPLATE', 'templates/page-infofiscus-conversa.php' );
 define( 'INFOMETRY_CT_INFORMATICA_TEMPLATE', 'templates/page-informatica-connectors.php' );
+define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-connectors.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
+define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 
 /**
  * Expose both plugin templates in the WordPress page-template selector.
@@ -29,6 +31,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_HOME_TEMPLATE ]     = __( 'Home Design Test', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_CONVERSA_TEMPLATE ] = __( 'INFOFISCUS Conversa Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_INFORMATICA_TEMPLATE ] = __( 'Informatica Connectors Product', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE ] = __( 'Google Cloud Connectors Product', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -111,6 +114,15 @@ function infometry_ct_should_use_informatica_template() {
 }
 
 /**
+ * Decide whether the Google Cloud Connectors template is active.
+ * The slug fallback is intentionally restricted to the Cloudways staging host.
+ */
+function infometry_ct_should_use_google_connectors_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE )
+		|| ( infometry_ct_is_cloudways_staging_host() && is_page( 'google-cloud-connectors' ) );
+}
+
+/**
  * Load the selected template from this plugin without modifying BeTheme.
  *
  * @param string $template Resolved template path.
@@ -138,6 +150,13 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	if ( infometry_ct_should_use_google_connectors_template() ) {
+		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE;
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	return $template;
 }
 add_filter( 'page_template', 'infometry_ct_load_page_template', PHP_INT_MAX );
@@ -160,6 +179,10 @@ function infometry_ct_body_classes( $classes ) {
 
 	if ( infometry_ct_should_use_informatica_template() ) {
 		$classes[] = 'infometry-informatica-product-page';
+	}
+
+	if ( infometry_ct_should_use_google_connectors_template() ) {
+		$classes[] = 'infometry-google-connectors-page';
 	}
 
 	return array_unique( $classes );
@@ -227,30 +250,34 @@ add_filter( 'wpforms_process_before_form_data', 'infometry_ct_conversa_ajax_conf
  * @param WP_Post $form      WPForms form post.
  */
 function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
-	if (
-		( ! infometry_ct_should_use_conversa_template() && ! infometry_ct_should_use_informatica_template() )
-		|| INFOMETRY_CT_CONVERSA_FORM_ID !== absint( $form_data['id'] )
-	) {
+	$form_id          = absint( $form_data['id'] );
+	$is_conversa_form = INFOMETRY_CT_CONVERSA_FORM_ID === $form_id
+		&& ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() );
+	$is_google_form   = INFOMETRY_CT_GOOGLE_FORM_ID === $form_id && infometry_ct_should_use_google_connectors_template();
+
+	if ( ! $is_conversa_form && ! $is_google_form ) {
 		return;
 	}
+
+	$field_group = $is_google_form ? 'infometry_google' : 'infometry_conversa';
 	?>
 	<div class="icp-demo-form-head">
-		<strong><?php esc_html_e( 'Request your personalized demo', 'infometry-custom-templates' ); ?></strong>
-		<p><?php esc_html_e( 'Share your details and our analytics team will connect with you.', 'infometry-custom-templates' ); ?></p>
+		<strong><?php echo esc_html( $is_google_form ? __( 'Request your personalized connector demo', 'infometry-custom-templates' ) : __( 'Request your personalized demo', 'infometry-custom-templates' ) ); ?></strong>
+		<p><?php echo esc_html( $is_google_form ? __( 'Share your requirements and our connector team will connect with you.', 'infometry-custom-templates' ) : __( 'Share your details and our analytics team will connect with you.', 'infometry-custom-templates' ) ); ?></p>
 	</div>
 	<div class="icp-form-row icp-demo-preferences">
 		<label>
 			<?php esc_html_e( 'Demo Date', 'infometry-custom-templates' ); ?>
-			<input type="hidden" name="infometry_conversa[preferred_demo_date]" data-icp-demo-date value="">
+			<input type="hidden" name="<?php echo esc_attr( $field_group ); ?>[preferred_demo_date]" data-icp-demo-date value="">
 			<input type="text" data-icp-demo-date-display readonly required>
 		</label>
 		<label>
 			<?php esc_html_e( 'Demo Time', 'infometry-custom-templates' ); ?> <span>*</span>
-			<input type="time" name="infometry_conversa[preferred_demo_time]" data-icp-demo-time required>
+			<input type="time" name="<?php echo esc_attr( $field_group ); ?>[preferred_demo_time]" data-icp-demo-time required>
 		</label>
 		<label>
 			<?php esc_html_e( 'Time Zone', 'infometry-custom-templates' ); ?> <span>*</span>
-			<select name="infometry_conversa[preferred_demo_timezone]" data-icp-demo-timezone required>
+			<select name="<?php echo esc_attr( $field_group ); ?>[preferred_demo_timezone]" data-icp-demo-timezone required>
 				<option value="America/New_York"><?php esc_html_e( 'Eastern Time (ET)', 'infometry-custom-templates' ); ?></option>
 				<option value="America/Chicago"><?php esc_html_e( 'Central Time (CT)', 'infometry-custom-templates' ); ?></option>
 				<option value="America/Denver"><?php esc_html_e( 'Mountain Time (MT)', 'infometry-custom-templates' ); ?></option>
@@ -261,10 +288,12 @@ function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
 			</select>
 		</label>
 	</div>
-	<label class="icp-demo-company">
-		<?php esc_html_e( 'Company', 'infometry-custom-templates' ); ?>
-		<input type="text" name="infometry_conversa[company]" autocomplete="organization">
-	</label>
+	<?php if ( ! $is_google_form ) : ?>
+		<label class="icp-demo-company">
+			<?php esc_html_e( 'Company', 'infometry-custom-templates' ); ?>
+			<input type="text" name="<?php echo esc_attr( $field_group ); ?>[company]" autocomplete="organization">
+		</label>
+	<?php endif; ?>
 	<?php
 }
 add_action( 'wpforms_frontend_output', 'infometry_ct_render_conversa_form_fields', 10, 2 );
@@ -283,12 +312,14 @@ add_action( 'wpforms_frontend_output', 'infometry_ct_render_conversa_form_fields
  * @return array
  */
 function infometry_ct_add_conversa_fields_to_notification( $email, $fields, $entry, $form_data, $notification_id ) {
-	if ( INFOMETRY_CT_CONVERSA_FORM_ID !== absint( $form_data['id'] ) ) {
+	$form_id = absint( $form_data['id'] );
+	if ( INFOMETRY_CT_CONVERSA_FORM_ID !== $form_id && INFOMETRY_CT_GOOGLE_FORM_ID !== $form_id ) {
 		return $email;
 	}
 
-	$details = isset( $_POST['infometry_conversa'] ) && is_array( $_POST['infometry_conversa'] )
-		? wp_unslash( $_POST['infometry_conversa'] )
+	$field_group = INFOMETRY_CT_GOOGLE_FORM_ID === $form_id ? 'infometry_google' : 'infometry_conversa';
+	$details = isset( $_POST[ $field_group ] ) && is_array( $_POST[ $field_group ] )
+		? wp_unslash( $_POST[ $field_group ] )
 		: array();
 
 	$date    = isset( $details['preferred_demo_date'] ) ? sanitize_text_field( $details['preferred_demo_date'] ) : '';
@@ -431,8 +462,9 @@ function infometry_ct_enqueue_assets() {
 	$use_home     = infometry_ct_should_use_home_template();
 	$use_conversa = infometry_ct_should_use_conversa_template();
 	$use_informatica = infometry_ct_should_use_informatica_template();
+	$use_google_connectors = infometry_ct_should_use_google_connectors_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors ) {
 		return;
 	}
 
@@ -500,6 +532,16 @@ function infometry_ct_enqueue_assets() {
 			$js_version,
 			true
 		);
+	}
+
+	if ( $use_google_connectors ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-cloud-connectors.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-cloud-connectors.js';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
+
+		wp_enqueue_style( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/css/google-cloud-connectors.css', array(), $css_version );
+		wp_enqueue_script( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/js/google-cloud-connectors.js', array(), $js_version, true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );

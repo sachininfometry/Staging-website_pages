@@ -444,3 +444,87 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 @media(max-width:1200px){.infometry-informatica-product .iin-control-center{width:min(100%,824px);margin:0 auto 30px;text-align:left}}
 @media(max-width:760px){.infometry-informatica-product .iin-control-center{min-height:0;padding:18px 14px 20px;border-radius:20px}.infometry-informatica-product .iin-cc-header{height:auto;margin-bottom:14px;gap:12px}.infometry-informatica-product .iin-cc-header b{text-align:right}.infometry-informatica-product .iin-cc-body{display:block;height:auto}.infometry-informatica-product .iin-cc-body::before,.infometry-informatica-product .iin-cc-group::before,.infometry-informatica-product .iin-cc-group::after{display:none}.infometry-informatica-product .iin-cc-hub{display:grid;margin-bottom:12px;padding:16px;grid-template-columns:68px 1fr;grid-template-rows:auto auto;text-align:left}.infometry-informatica-product .iin-cc-hub-mark{grid-row:1/3;width:58px;height:58px;margin:0}.infometry-informatica-product .iin-cc-hub-mark img{width:38px;height:38px}.infometry-informatica-product .iin-cc-hub>strong{align-self:end}.infometry-informatica-product .iin-cc-hub>small{align-self:start}.infometry-informatica-product .iin-cc-hub ul{display:none}.infometry-informatica-product .iin-cc-groups{display:grid;grid-template-rows:auto;gap:10px}.infometry-informatica-product .iin-cc-group{padding:14px 12px}.infometry-informatica-product .iin-cc-group header{height:38px}.infometry-informatica-product .iin-cc-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.infometry-informatica-product .iin-cc-logo,.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo{height:42px}.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-logos{grid-template-columns:1fr}.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-logo{height:46px}.infometry-informatica-product .iin-cc-key{justify-content:center;padding-top:5px}}
 @media(max-width:390px){.infometry-informatica-product .iin-cc-header b{display:none}.infometry-informatica-product .iin-cc-group header>b{font-size:6px}.infometry-informatica-product .iin-cc-logo{padding-inline:5px}}
+
+/* Customer lane: contain supplied wordmarks and preserve their original colours. */
+.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-logo {
+	padding:4px 10px;background:linear-gradient(145deg,#fff,#edf5ff);border-color:#c9d9eb;
+	box-shadow:0 3px 9px rgba(0,7,29,.18),inset 0 1px #fff;
+}
+.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-wordmark {
+	position:relative;display:block;overflow:hidden;
+	width:min(100%,calc(28px * var(--logo-ratio)));aspect-ratio:var(--logo-ratio);max-width:100%;
+}
+.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-wordmark img {
+	position:absolute;display:block;width:var(--logo-width);max-width:none;height:auto;
+	left:var(--logo-left);top:var(--logo-top);object-fit:initial;
+}
+@media(max-width:760px){
+	.infometry-informatica-product .iin-cc-group.is-customer .iin-cc-wordmark{width:min(100%,calc(34px * var(--logo-ratio)))}
+}
+
+/* Enterprise lane: wider wordmark tiles within the existing 210px panel. */
+.infometry-informatica-product .iin-cc-more {
+	grid-column:1/-1;display:flex;align-items:center;justify-content:center;height:31px;
+	width:100%;border:1px solid rgba(255,160,83,.55);border-radius:7px;
+	background:linear-gradient(110deg,#172d50,#24395b);box-shadow:inset 0 1px rgba(255,255,255,.06),0 3px 9px rgba(0,7,29,.16);
+	color:#ffd0aa;font-size:11px;font-weight:700;letter-spacing:.025em;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logos {
+	grid-template-columns:repeat(3,minmax(0,1fr));gap:7px 10px;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo {
+	height:31px;padding:3px 10px;border-radius:7px;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo:has(.iin-cc-wordmark) {
+	background:linear-gradient(145deg,#fff,#edf5ff);border-color:#c9d9eb;
+	box-shadow:0 3px 9px rgba(0,7,29,.18),inset 0 1px #fff;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-wordmark {
+	position:relative;display:block;overflow:hidden;
+	width:min(100%,calc(23px * var(--logo-ratio)));aspect-ratio:var(--logo-ratio);max-width:100%;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-wordmark img {
+	position:absolute;display:block;width:var(--logo-width);max-width:none;height:auto;
+	left:var(--logo-left);top:var(--logo-top);object-fit:initial;
+}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo>img {height:23px;max-height:23px}
+.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo i {
+	right:-4px;top:-5px;width:15px;height:15px;font-size:7px;
+}
+@media(max-width:760px){
+	.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+	.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo{height:42px}
+	.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-wordmark{width:min(100%,calc(29px * var(--logo-ratio)))}
+	.infometry-informatica-product .iin-cc-group.is-informatica .iin-cc-logo>img{height:29px;max-height:29px}
+}
+
+/* Top ownership lane only: supplied transparent wordmarks, no baked-in dark crops.
+   Viewports hide transparent source margins without modifying any original pixels. */
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-logo {
+	background:linear-gradient(145deg,#fff,#edf5ff);
+	border-color:#b6d6f4;
+	padding:4px 6px;
+	box-shadow:0 4px 12px rgba(0,7,29,.18),inset 0 1px #fff;
+}
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-wordmark {
+	position:relative;display:block;overflow:hidden;
+	width:min(100%,calc(22px * var(--logo-ratio)));
+	aspect-ratio:var(--logo-ratio);max-width:100%;
+}
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-wordmark img {
+	position:absolute;display:block;width:var(--logo-width);max-width:none;
+	height:auto;left:var(--logo-left);top:var(--logo-top);object-fit:initial;
+}
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark {
+	display:flex;width:100%;min-width:0;align-items:center;justify-content:center;gap:4px;
+	color:#293b52;font-size:8px;font-weight:700;line-height:1.15;
+}
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark>.iin-brand {
+	display:flex;width:18px;height:20px;flex:0 0 18px;align-items:center;justify-content:center;
+}
+.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark svg {width:100%;height:100%}
+@media(max-width:760px){
+	.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-wordmark{width:min(100%,calc(28px * var(--logo-ratio)))}
+	.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark{font-size:10px;gap:6px}
+	.infometry-informatica-product .iin-cc-group.is-infometry .iin-cc-product-mark>.iin-brand{width:23px;height:25px;flex-basis:23px}
+}

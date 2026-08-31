@@ -27,13 +27,13 @@ $connector_groups = array(
 		'eyebrow' => 'Built & supported by Infometry',
 		'title'    => 'Infometry Owned',
 		'items'    => array(
-			array( 'name' => 'Google Sheets', 'logo' => 'google_sheets.png' ),
-			array( 'name' => 'Google Drive', 'logo' => 'google_drive.png' ),
-			array( 'name' => 'Google Cloud Pub/Sub', 'logo' => 'google_pubsub.png' ),
-			array( 'name' => 'Google Ads', 'logo' => 'google_ads.png' ),
-			array( 'name' => 'Google BigTable', 'logo' => 'google_bigtable.png' ),
-			array( 'name' => 'Adaptive Insights', 'logo' => 'adaptive_insights.png' ),
-			array( 'name' => 'HubSpot', 'logo' => 'hubspot.png' ),
+			array( 'name' => 'Google Sheets', 'logo' => 'sheets-transparent.png', 'viewport' => '--logo-ratio:5.7426;--logo-width:100%;--logo-left:0%;--logo-top:-120.7921%' ),
+			array( 'name' => 'Google Drive', 'logo' => 'drive-transparent.png', 'viewport' => '--logo-ratio:5.8;--logo-width:110.8374%;--logo-left:-5.4187%;--logo-top:-271.4286%' ),
+			array( 'name' => 'Google Cloud Pub/Sub', 'type' => 'pubsub', 'display' => 'Google Cloud Pub/Sub' ),
+			array( 'name' => 'Google Ads', 'type' => 'ads', 'display' => 'Google Ads' ),
+			array( 'name' => 'Google BigTable', 'type' => 'bigtable', 'display' => 'Google BigTable' ),
+			array( 'name' => 'Adaptive Insights', 'logo' => 'adaptive-transparent.png', 'viewport' => '--logo-ratio:2.9717;--logo-width:100.5450%;--logo-left:-0.2725%;--logo-top:-3.6437%' ),
+			array( 'name' => 'HubSpot', 'logo' => 'hubspot-transparent.png', 'viewport' => '--logo-ratio:3.5057;--logo-width:109.3443%;--logo-left:-4.5902%;--logo-top:-55.1724%' ),
 		),
 	),
 	array(
@@ -41,15 +41,15 @@ $connector_groups = array(
 		'eyebrow' => 'Native enterprise connector portfolio',
 		'title'    => 'Informatica Owned',
 		'items'    => array(
-			array( 'name' => 'SAP ABAP', 'logo' => 'sap_abap.png', 'badge' => 'M' ),
-			array( 'name' => 'Workday', 'logo' => 'workday.png', 'badge' => 'M' ),
-			array( 'name' => 'Concur', 'logo' => 'concur.png' ),
-			array( 'name' => 'Zuora', 'logo' => 'zuora.png' ),
-			array( 'name' => 'Amplitude', 'logo' => 'amplitude.png', 'badge' => 'D' ),
-			array( 'name' => 'Eloqua', 'logo' => 'eloqua.png' ),
-			array( 'name' => 'Twilio Segment', 'logo' => 'twilio_segment.png', 'badge' => 'D' ),
-			array( 'name' => 'Salesforce Pardot', 'logo' => 'salesforce_pardot.png', 'badge' => 'D' ),
-			array( 'name' => 'Oracle BigMachines', 'logo' => 'oracle_bigmachines.png' ),
+			array( 'name' => 'SAP ABAP', 'logo' => 'sap-supplied.png', 'viewport' => '--logo-ratio:3.4648;--logo-width:100%;--logo-left:0%;--logo-top:0%', 'badge' => 'M' ),
+			array( 'name' => 'Workday', 'logo' => 'workday-supplied.png', 'viewport' => '--logo-ratio:2.4945;--logo-width:106.3609%;--logo-left:-3.2544%;--logo-top:-0.7380%', 'badge' => 'M' ),
+			array( 'name' => 'Concur', 'logo' => 'concur-supplied.png', 'viewport' => '--logo-ratio:4.2353;--logo-width:111.1111%;--logo-left:-5.5556%;--logo-top:-185.2941%' ),
+			array( 'name' => 'Zuora', 'logo' => 'zuora-supplied.png', 'viewport' => '--logo-ratio:4.8729;--logo-width:104.1739%;--logo-left:-2.0870%;--logo-top:-90.6780%' ),
+			array( 'name' => 'Amplitude', 'logo' => 'amplitude-supplied.png', 'viewport' => '--logo-ratio:4.7545;--logo-width:131.3576%;--logo-left:-15.6788%;--logo-top:-115.4545%', 'badge' => 'D' ),
+			array( 'name' => 'Eloqua', 'logo' => 'eloqua-supplied.png', 'viewport' => '--logo-ratio:2.6958;--logo-width:100.4231%;--logo-left:-0.1410%;--logo-top:-2.6616%' ),
+			array( 'name' => 'Twilio Segment', 'logo' => 'segment-supplied.png', 'viewport' => '--logo-ratio:4.7536;--logo-width:101.6768%;--logo-left:-0.9146%;--logo-top:-86.2319%', 'badge' => 'D' ),
+			array( 'name' => 'Salesforce Pardot', 'logo' => 'pardot-supplied.png', 'viewport' => '--logo-ratio:2.5625;--logo-width:100%;--logo-left:0%;--logo-top:0%', 'badge' => 'D' ),
+			array( 'name' => 'Oracle BigMachines', 'logo' => 'bigmachines-supplied.png', 'viewport' => '--logo-ratio:2.2419;--logo-width:109.3525%;--logo-left:-6.4748%;--logo-top:-9.6774%' ),
 			array( 'name' => 'Mixpanel', 'logo' => 'mixpanel.png', 'badge' => 'D' ),
 			array( 'name' => 'Jira Software', 'logo' => 'jira_software.png' ),
 			array( 'name' => 'Microsoft Azure', 'logo' => 'microsoft_azure.png' ),
@@ -60,9 +60,9 @@ $connector_groups = array(
 		'eyebrow' => 'Managed by customers',
 		'title'    => 'Customer Owned',
 		'items'    => array(
-			array( 'name' => 'NICE Satmetrix', 'logo' => 'nice_satmetrix.png' ),
-			array( 'name' => 'CallidusCloud', 'logo' => 'calliduscloud.png' ),
-			array( 'name' => 'Litmos', 'logo' => 'litmos.png' ),
+			array( 'name' => 'NICE Satmetrix', 'logo' => 'satmetrix-supplied.png', 'viewport' => '--logo-ratio:7.7833;--logo-width:107.0664%;--logo-left:-3.4261%;--logo-top:-368.3333%' ),
+			array( 'name' => 'CallidusCloud', 'logo' => 'calliduscloud-supplied.png', 'viewport' => '--logo-ratio:2.6525;--logo-width:105.4313%;--logo-left:-3.8339%;--logo-top:-16.9492%' ),
+			array( 'name' => 'Litmos', 'logo' => 'litmos-supplied.png', 'viewport' => '--logo-ratio:3.8919;--logo-width:111.1111%;--logo-left:-5.5556%;--logo-top:-166.2162%' ),
 		),
 	),
 );
@@ -115,13 +115,24 @@ if ( ! function_exists( 'infometry_iin_connector_logo' ) ) {
 						<section class="iin-cc-group <?php echo esc_attr( $group['class'] ); ?>" aria-label="<?php echo esc_attr( $group['title'] ); ?> connectors">
 							<header><span></span><div><h2><?php echo esc_html( $group['title'] ); ?></h2><small><?php echo esc_html( $group['eyebrow'] ); ?></small></div><b><?php echo esc_html( count( $group['items'] ) ); ?> connectors</b></header>
 							<div class="iin-cc-logos">
-								<?php foreach ( $group['items'] as $item ) : ?>
-									<span class="iin-cc-logo" title="<?php echo esc_attr( $item['name'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo"><?php if ( ! empty( $item['badge'] ) ) : ?><i aria-label="<?php echo 'M' === $item['badge'] ? esc_attr( 'Mass Ingestion Connector' ) : esc_attr( 'Data Loader Connector' ); ?>"><?php echo esc_html( $item['badge'] ); ?></i><?php endif; ?></span>
+								<?php $visible_items = 'is-informatica' === $group['class'] ? array_slice( $group['items'], 0, 9 ) : $group['items']; ?>
+								<?php foreach ( $visible_items as $item ) : ?>
+									<span class="iin-cc-logo" title="<?php echo esc_attr( $item['name'] ); ?>">
+										<?php if ( ! empty( $item['viewport'] ) ) : ?>
+											<span class="iin-cc-wordmark" style="<?php echo esc_attr( $item['viewport'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo"></span>
+										<?php elseif ( ! empty( $item['type'] ) ) : ?>
+											<span class="iin-cc-product-mark"><?php infometry_iin_connector_logo( $item['type'] ); ?><span><?php echo esc_html( $item['display'] ); ?></span></span>
+										<?php else : ?>
+											<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/connectors/' . $item['logo'] ); ?>" alt="<?php echo esc_attr( $item['name'] ); ?> logo">
+										<?php endif; ?>
+									</span>
 								<?php endforeach; ?>
+								<?php if ( count( $visible_items ) < count( $group['items'] ) ) : ?>
+									<span class="iin-cc-more">More</span>
+								<?php endif; ?>
 							</div>
 						</section>
 					<?php endforeach; ?>
-					<div class="iin-cc-key"><span><i>M</i> Mass Ingestion</span><span><i>D</i> Data Loader</span></div>
 				</div>
 			</div>
 		</div>

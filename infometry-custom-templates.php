@@ -364,7 +364,7 @@ function infometry_ct_is_cloudways_staging_host() {
  * @return bool
  */
 function infometry_ct_disable_staging_recaptcha( $disabled ) {
-	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() ) ) {
+	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() || infometry_ct_should_use_google_connectors_template() ) ) {
 		return true;
 	}
 
@@ -383,7 +383,7 @@ add_filter( 'wpforms_frontend_recaptcha_disable', 'infometry_ct_disable_staging_
 function infometry_ct_bypass_staging_recaptcha( $bypass, $entry, $form_data ) {
 	if (
 		infometry_ct_is_cloudways_staging_host()
-		&& INFOMETRY_CT_CONVERSA_FORM_ID === absint( $form_data['id'] )
+		&& in_array( absint( $form_data['id'] ), array( INFOMETRY_CT_CONVERSA_FORM_ID, INFOMETRY_CT_GOOGLE_FORM_ID ), true )
 	) {
 		return true;
 	}

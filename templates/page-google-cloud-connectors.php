@@ -54,7 +54,6 @@ if ( ! function_exists( 'infometry_gcp_connector_icon' ) ) {
 				<h1 id="igc-title">Native Google Integration. <em>No-Code Enterprise Scale.</em></h1>
 				<p>Connect Google applications to Informatica IDMC with secure, Agentic AI-ready connectors engineered for reliable enterprise automation.</p>
 				<div class="igc-actions"><a class="igc-button igc-button-primary" href="#igc-trial">Start a Free Trial</a><a class="igc-button igc-button-ghost" href="<?php echo esc_url( $marketplace_url ); ?>">Explore Marketplace <span>↗</span></a></div>
-				<ul class="igc-proof"><li><strong>5</strong><span>Native Google connectors</span></li><li><strong>0</strong><span>Custom code required</span></li><li><strong>24/7</strong><span>Pipeline automation</span></li></ul>
 			</div>
 
 			<div class="igc-orbit" data-igc-orbit aria-label="Google connector planetary ecosystem">

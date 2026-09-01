@@ -54,14 +54,16 @@ if ( ! function_exists( 'infometry_gcp_connector_icon' ) ) {
 				<h1 id="igc-title">Native Google Integration. <em>No-Code Enterprise Scale.</em></h1>
 				<p>Connect Google applications to Informatica IDMC with secure, Agentic AI-ready connectors engineered for reliable enterprise automation.</p>
 				<div class="igc-actions"><a class="igc-button igc-button-primary" href="#igc-trial">Start a Free Trial</a><a class="igc-button igc-button-ghost" href="<?php echo esc_url( $marketplace_url ); ?>">Explore Marketplace <span>↗</span></a></div>
+				<div class="igc-hero-assurance" aria-label="Built for production"><span class="igc-assurance-label">Built for production</span><div><span><i>✓</i>No-code setup</span><span><i>✓</i>Governed data flow</span><span><i>✓</i>Enterprise ready</span></div></div>
 			</div>
 
-			<div class="igc-orbit" data-igc-orbit aria-label="Google connector planetary ecosystem">
+			<div class="igc-orbit igc-orbit-clean" data-igc-orbit aria-label="Google connector planetary ecosystem">
 				<div class="igc-orbit-ring is-outer"></div><div class="igc-orbit-ring is-inner"></div>
 				<div class="igc-orbit-lines" aria-hidden="true"><?php foreach ( $connectors as $connector ) : ?><i></i><?php endforeach; ?></div>
 				<div class="igc-orbit-core"><span><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""></span><strong>Informatica IDMC</strong><small>Unified integration core</small></div>
+				<div class="igc-orbit-status" aria-hidden="true"><i></i><span>5 connectors synced</span></div>
 				<?php foreach ( $connectors as $index => $connector ) : ?>
-					<a class="igc-orbit-node igc-orbit-node-<?php echo esc_attr( $index + 1 ); ?>" href="<?php echo esc_url( $connector['url'] ); ?>"><span class="igc-brand igc-brand-png"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/google-connectors/' . $connector['orbit_icon'] ); ?>" alt="<?php echo esc_attr( $connector['short'] ); ?> logo"></span><span><b><?php echo esc_html( $connector['short'] ); ?></b><small><?php echo esc_html( $connector['tag'] ); ?></small></span></a>
+					<a class="igc-orbit-node igc-orbit-node-<?php echo esc_attr( $index + 1 ); ?>" href="<?php echo esc_url( $connector['url'] ); ?>"><span class="igc-brand igc-brand-png igc-brand-<?php echo esc_attr( $connector['type'] ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/google-connectors/' . $connector['orbit_icon'] ); ?>" alt="<?php echo esc_attr( $connector['short'] ); ?> logo"></span><span><b><?php echo esc_html( $connector['short'] ); ?></b><small><?php echo esc_html( $connector['tag'] ); ?></small></span></a>
 				<?php endforeach; ?>
 			</div>
 		</div>

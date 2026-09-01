@@ -35,8 +35,9 @@
     }
 
     var bounds = orbit.getBoundingClientRect();
-    var radiusX = Math.max(175, Math.min(285, (bounds.width / 2) - 92));
-    var radiusY = Math.max(138, Math.min(200, (bounds.height / 2) - 74));
+    var radius = Math.max(175, Math.min(220, (bounds.width / 2) - 104, (bounds.height / 2) - 84));
+    var radiusX = radius;
+    var radiusY = radius;
 
     nodes.forEach(function (node, index) {
       var angle = rotation + ((Math.PI * 2 * index) / nodes.length) - (Math.PI / 2);
@@ -59,7 +60,10 @@
       lastTime = time;
     }
 
-    if (!paused && !document.hidden && desktop.matches && !reducedMotion.matches) {
+    var hoverPaused = orbit.matches(':hover');
+    orbit.classList.toggle('is-paused', paused || hoverPaused);
+
+    if (!paused && !hoverPaused && !document.hidden && desktop.matches && !reducedMotion.matches) {
       rotation += ((time - lastTime) / duration) * Math.PI * 2;
     }
 
@@ -73,8 +77,8 @@
     orbit.classList.toggle('is-paused', value);
   }
 
-  orbit.addEventListener('mouseenter', function () { setPaused(true); });
-  orbit.addEventListener('mouseleave', function () { setPaused(false); });
+  orbit.addEventListener('pointerenter', function () { setPaused(true); });
+  orbit.addEventListener('pointerleave', function () { setPaused(false); });
   orbit.addEventListener('focusin', function () { setPaused(true); });
   orbit.addEventListener('focusout', function (event) {
     if (!orbit.contains(event.relatedTarget)) {

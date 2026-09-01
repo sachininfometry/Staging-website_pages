@@ -144,5 +144,19 @@ body.infometry-google-connectors-page #Content{padding:0!important}
 .igc-benefit-grid h3{margin:26px 0 10px;color:#112640;font-size:20px}.igc-benefit-grid p{max-width:480px;margin:0;color:#60748a;font-size:13px;line-height:1.72}
 
 @media(max-width:1050px){.igc-card{grid-template-columns:82px minmax(0,1fr)}.igc-card-drive{grid-template-columns:86px minmax(0,1fr) auto}.igc-card>.igc-brand,.igc-card-top>.igc-brand{width:68px;height:68px;flex-basis:68px}.igc-orbit-node .igc-brand{width:46px;height:46px}}
+
+/* Homepage navy hero and supplied full-colour PNG identities for the orbit. */
+.igc-page .igc-hero{
+	background:
+		radial-gradient(circle at 18% 34%,rgba(11,124,255,.18),transparent 30%),
+		radial-gradient(circle at 88% 78%,rgba(98,54,255,.34),transparent 30%),
+		linear-gradient(118deg,#031033 0%,#020928 60%,#07164a 100%);
+}
+.igc-page .igc-orbit-node .igc-brand-png{
+	display:grid;overflow:hidden;place-items:center;background:#fff;
+}
+.igc-page .igc-orbit-node .igc-brand-png img{
+	display:block;width:100%;height:100%;object-fit:contain;
+}
 @media(max-width:760px){.igc-card{min-height:0;padding:25px;grid-template-columns:70px minmax(0,1fr)}.igc-card-drive{grid-template-columns:70px minmax(0,1fr)}.igc-card>.igc-brand,.igc-card-top>.igc-brand{width:60px;height:60px;flex-basis:60px}.igc-benefit-grid{grid-template-columns:1fr}.igc-benefit-grid article{min-height:195px}}
 @media(max-width:520px){.igc-card{grid-template-columns:58px minmax(0,1fr);column-gap:14px}.igc-card>.igc-brand,.igc-card-top>.igc-brand{width:52px;height:52px;padding:10px;flex-basis:52px}.igc-card h3{font-size:17px}.igc-card p{font-size:12px}.igc-benefit-grid article{padding:27px 25px}}

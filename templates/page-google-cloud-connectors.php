@@ -15,11 +15,11 @@ get_header();
 $contact_url = home_url( '/contact-us/' );
 $marketplace_url = 'https://marketplace.informatica.com/search.html#q=Infometry&t=MP&sort=relevancy';
 $connectors = array(
-	array( 'type' => 'drive', 'title' => 'Google Drive Connector', 'short' => 'Google Drive', 'copy' => 'Schedule and automate secure file uploads, downloads, and fetch operations directly inside Informatica IDMC.', 'url' => home_url( '/product/google-cloud-connectors/google-drive-connector/' ), 'tag' => 'File automation' ),
-	array( 'type' => 'sheets', 'title' => 'Google Sheets Connector', 'short' => 'Google Sheets', 'copy' => 'Automate bi-directional data loads between Google Sheets, cloud applications, warehouses, and data lakes—without code.', 'url' => home_url( '/product/google-cloud-connectors/google-sheets-connector/' ), 'tag' => 'Bi-directional sync' ),
-	array( 'type' => 'pubsub', 'title' => 'Google Pub/Sub Connector', 'short' => 'Google Pub/Sub', 'copy' => 'Power event-driven pipelines with real-time message publishing and subscription retrieval across cloud ecosystems.', 'url' => home_url( '/product/google-cloud-connectors/google-pub-sub/' ), 'tag' => 'Real-time events' ),
-	array( 'type' => 'bigtable', 'title' => 'Google BigTable Connector', 'short' => 'Google BigTable', 'copy' => 'Read, insert, and delete massive-scale NoSQL data with high-performance mappings and governed row-level operations.', 'url' => home_url( '/product/google-cloud-connectors/google-bigtable-connector/' ), 'tag' => 'NoSQL at scale' ),
-	array( 'type' => 'ads', 'title' => 'Google Ads Connector', 'short' => 'Google Ads', 'copy' => 'Bring campaign, ad group, spend, and customer reporting into governed analytics pipelines automatically.', 'url' => home_url( '/product/google-cloud-connectors/google-ads-connector/' ), 'tag' => 'Marketing analytics' ),
+	array( 'type' => 'drive', 'title' => 'Google Drive Connector', 'short' => 'Google Drive', 'copy' => 'Schedule and automate secure file uploads, downloads, and fetch operations directly inside Informatica IDMC.', 'url' => home_url( '/product/google-cloud-connectors/google-drive-connector/' ), 'tag' => 'File automation', 'orbit_icon' => 'google-drive.png' ),
+	array( 'type' => 'sheets', 'title' => 'Google Sheets Connector', 'short' => 'Google Sheets', 'copy' => 'Automate bi-directional data loads between Google Sheets, cloud applications, warehouses, and data lakes—without code.', 'url' => home_url( '/product/google-cloud-connectors/google-sheets-connector/' ), 'tag' => 'Bi-directional sync', 'orbit_icon' => 'google-sheets.png' ),
+	array( 'type' => 'pubsub', 'title' => 'Google Pub/Sub Connector', 'short' => 'Google Pub/Sub', 'copy' => 'Power event-driven pipelines with real-time message publishing and subscription retrieval across cloud ecosystems.', 'url' => home_url( '/product/google-cloud-connectors/google-pub-sub/' ), 'tag' => 'Real-time events', 'orbit_icon' => 'google-pubsub.png' ),
+	array( 'type' => 'bigtable', 'title' => 'Google BigTable Connector', 'short' => 'Google BigTable', 'copy' => 'Read, insert, and delete massive-scale NoSQL data with high-performance mappings and governed row-level operations.', 'url' => home_url( '/product/google-cloud-connectors/google-bigtable-connector/' ), 'tag' => 'NoSQL at scale', 'orbit_icon' => 'google-bigtable.png' ),
+	array( 'type' => 'ads', 'title' => 'Google Ads Connector', 'short' => 'Google Ads', 'copy' => 'Bring campaign, ad group, spend, and customer reporting into governed analytics pipelines automatically.', 'url' => home_url( '/product/google-cloud-connectors/google-ads-connector/' ), 'tag' => 'Marketing analytics', 'orbit_icon' => 'google-ads.png' ),
 );
 
 if ( ! function_exists( 'infometry_gcp_connector_icon' ) ) {
@@ -61,7 +61,7 @@ if ( ! function_exists( 'infometry_gcp_connector_icon' ) ) {
 				<div class="igc-orbit-lines" aria-hidden="true"><?php foreach ( $connectors as $connector ) : ?><i></i><?php endforeach; ?></div>
 				<div class="igc-orbit-core"><span><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png' ); ?>" alt=""></span><strong>Informatica IDMC</strong><small>Unified integration core</small></div>
 				<?php foreach ( $connectors as $index => $connector ) : ?>
-					<a class="igc-orbit-node igc-orbit-node-<?php echo esc_attr( $index + 1 ); ?>" href="<?php echo esc_url( $connector['url'] ); ?>"><?php infometry_gcp_connector_icon( $connector['type'] ); ?><span><b><?php echo esc_html( $connector['short'] ); ?></b><small><?php echo esc_html( $connector['tag'] ); ?></small></span></a>
+					<a class="igc-orbit-node igc-orbit-node-<?php echo esc_attr( $index + 1 ); ?>" href="<?php echo esc_url( $connector['url'] ); ?>"><span class="igc-brand igc-brand-png"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/google-connectors/' . $connector['orbit_icon'] ); ?>" alt="<?php echo esc_attr( $connector['short'] ); ?> logo"></span><span><b><?php echo esc_html( $connector['short'] ); ?></b><small><?php echo esc_html( $connector['tag'] ); ?></small></span></a>
 				<?php endforeach; ?>
 			</div>
 		</div>

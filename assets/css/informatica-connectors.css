@@ -678,3 +678,11 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logos{grid-template-columns:1fr}
 	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logo{height:46px}
 }
+
+/* Featured connector card typography: high contrast and theme-proof font roles. */
+.infometry-informatica-product .iin-connector-card h3{
+	color:#000;font-family:Roboto,"Segoe UI",Arial,sans-serif;font-weight:800;
+}
+.infometry-informatica-product .iin-connector-card p{
+	color:#000;font-family:"Open Sans","Segoe UI",Arial,sans-serif;font-weight:600;
+}

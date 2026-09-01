@@ -678,24 +678,3 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logos{grid-template-columns:1fr}
 	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logo{height:46px}
 }
-
-/* Client review: reduce the complete desktop logo tiles while preserving readability. */
-@media(min-width:761px){
-	.infometry-informatica-product .iin-control-center.is-ecosystem{min-height:0}
-	.infometry-informatica-product .is-ecosystem .iin-cc-groups{grid-template-rows:197px 80px;gap:11px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group{padding:12px 10px 10px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group header{height:48px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-logos,
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logos{gap:6px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group .iin-cc-logo{height:27px;padding:1px 4px;border-radius:5px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logo{padding:1px 4px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-wordmark{width:min(100%,var(--logo-optical-width,90px),calc(24px * var(--logo-ratio)))}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-informatica .iin-cc-logo>img{height:22px;max-height:22px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-product-mark{font-size:10px;gap:5px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-infometry .iin-cc-product-mark>.iin-brand{width:17px;height:19px;flex-basis:17px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-more{height:28px;font-size:10px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer{padding:10px 12px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer header{height:54px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-logo{height:34px;padding:1px 5px}
-	.infometry-informatica-product .is-ecosystem .iin-cc-group.is-customer .iin-cc-wordmark{width:min(100%,var(--logo-optical-width,100px),calc(31px * var(--logo-ratio)))}
-}

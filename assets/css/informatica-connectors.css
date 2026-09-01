@@ -531,7 +531,7 @@ body .infometry-informatica-product form#wpforms-form-379751 #wpforms-379751-fie
 
 /* Ecosystem architecture: platform rail, paired portfolios, customer foundation. */
 .infometry-informatica-product .iin-control-center.is-ecosystem {
-	min-height:540px;padding:16px 22px;border-radius:24px;
+	min-height:540px;margin-top:2px;padding:16px 22px;border-radius:24px;
 	background:radial-gradient(ellipse at 50% 0,rgba(29,103,160,.25),transparent 62%),#081a35;
 	border-color:rgba(121,180,235,.3);box-shadow:0 24px 65px rgba(0,7,28,.38),inset 0 1px rgba(255,255,255,.08);
 }

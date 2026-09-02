@@ -106,6 +106,12 @@
   var form = root.querySelector('#wpforms-form-351429, .igc-demo-form');
   if (form) {
     form.classList.add('igc-demo-form');
+
+    var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (submitButton) {
+      if (submitButton.tagName === 'INPUT') submitButton.value = 'Book a Demo';
+      else submitButton.textContent = 'Book a Demo';
+    }
   }
 
   var dateInput = root.querySelector('[data-icp-demo-date]');

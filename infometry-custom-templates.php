@@ -262,8 +262,8 @@ function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
 	$field_group = $is_google_form ? 'infometry_google' : 'infometry_conversa';
 	?>
 	<div class="icp-demo-form-head">
-		<strong><?php echo esc_html( $is_google_form ? __( 'Request your personalized connector demo', 'infometry-custom-templates' ) : __( 'Request your personalized demo', 'infometry-custom-templates' ) ); ?></strong>
-		<p><?php echo esc_html( $is_google_form ? __( 'Share your requirements and our connector team will connect with you.', 'infometry-custom-templates' ) : __( 'Share your details and our analytics team will connect with you.', 'infometry-custom-templates' ) ); ?></p>
+		<strong><?php esc_html_e( 'Request your personalized demo', 'infometry-custom-templates' ); ?></strong>
+		<p><?php esc_html_e( 'Share your details and our analytics team will connect with you.', 'infometry-custom-templates' ); ?></p>
 	</div>
 	<div class="icp-form-row icp-demo-preferences">
 		<label>

@@ -439,3 +439,41 @@ body.infometry-google-connectors-page #Content{padding:0!important}
 	.igc-page .igc-shell{width:calc(100% - 28px)}
 	.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}
 }
+
+/* Balanced page gutter and a tighter scheduling experience. */
+.igc-page .igc-shell{width:min(calc(100% - 64px),1360px)}
+.igc-page .igc-demo .igc-shell{max-width:1240px}
+.igc-page .igc-demo-grid{grid-template-columns:.92fr 1.08fr;gap:22px}
+.igc-page .igc-demo-calendar{min-height:540px;padding:24px}
+.igc-page .igc-calendar-head{padding-bottom:13px}
+.igc-page .igc-calendar-head button{width:38px;height:38px;border-radius:9px;font-size:23px}
+.igc-page .igc-calendar-days{grid-auto-rows:minmax(35px,1fr);gap:6px}
+.igc-page .igc-selected-date{min-height:44px;margin-top:11px;padding:9px 12px}
+.igc-page .igc-demo-form,
+.igc-page .igc-demo-form-host form{min-height:540px;padding:24px 25px!important;gap:8px!important}
+.igc-page .igc-demo-form-host .icp-demo-form-head{padding:2px 0 13px}
+.igc-page .igc-demo-form-host .icp-demo-form-head strong{font-size:18px}
+.igc-page .igc-demo-form-host .icp-demo-form-head p{margin-top:4px;font-size:11px}
+.igc-page .igc-demo-form-host .wpforms-field{padding-bottom:6px!important}
+.igc-page .igc-demo-form-host input,
+.igc-page .igc-demo-form-host select{height:40px!important;margin-top:5px!important;border-radius:9px!important;font-size:12px!important}
+.igc-page .igc-demo-form-host textarea{min-height:66px!important;margin-top:5px!important;border-radius:9px!important}
+.igc-page .igc-demo-form-host button[type=submit],
+.igc-page .igc-demo-form>button{min-height:44px!important;border-radius:9px!important;font-size:14px!important}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row{
+	display:flex!important;gap:14px!important;align-items:flex-start!important;flex-wrap:nowrap!important;
+}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row-block{
+	clear:none!important;min-width:0!important;width:0!important;flex:1 1 0!important;
+}
+@media(max-width:1000px){
+	.igc-page .igc-demo-grid{grid-template-columns:1fr}
+	.igc-page .igc-demo-calendar,.igc-page .igc-demo-form-host{width:min(100%,680px)}
+}
+@media(max-width:620px){
+	.igc-page .igc-shell{width:calc(100% - 28px)}
+	.igc-page .igc-demo-calendar{min-height:500px;padding:20px 16px}
+	.igc-page .igc-demo-form,.igc-page .igc-demo-form-host form{min-height:0;padding:23px 18px!important}
+	.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row{flex-direction:column!important;gap:7px!important}
+	.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row-block{width:100%!important;flex-basis:auto!important}
+}

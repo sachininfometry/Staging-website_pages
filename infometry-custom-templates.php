@@ -199,7 +199,7 @@ add_filter( 'body_class', 'infometry_ct_body_classes' );
  */
 function infometry_ct_conversa_name_field_properties( $properties, $field, $form_data ) {
 	if (
-		INFOMETRY_CT_CONVERSA_FORM_ID !== absint( $form_data['id'] )
+		! in_array( absint( $form_data['id'] ), array( INFOMETRY_CT_CONVERSA_FORM_ID, INFOMETRY_CT_GOOGLE_FORM_ID ), true )
 		|| 0 !== absint( $field['id'] )
 	) {
 		return $properties;

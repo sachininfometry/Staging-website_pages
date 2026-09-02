@@ -408,3 +408,34 @@ body.infometry-google-connectors-page #Content{padding:0!important}
 	.igc-page .igc-demo-form,.igc-page .igc-demo-form-host form{min-height:0;padding:26px 20px!important}
 	.igc-page .igc-demo-form-host .icp-demo-form-head{padding-top:3px}
 }
+
+/* Keep page content aligned with the site's wide header container. */
+.igc-page .igc-shell{width:min(calc(100% - 44px),1468px)}
+.igc-page .igc-hero-grid>*,.igc-page .igc-intro-grid>*{min-width:0}
+
+/* Brand-accurate accents for the related product cards. */
+.igc-page .igc-related-grid>a::before{height:4px}
+.igc-page .igc-product-drive{color:#1a73e8;background:linear-gradient(145deg,#fff 42%,#edf5ff)}
+.igc-page .igc-product-drive::before{background:linear-gradient(90deg,#34a853 0 27%,#fbbc04 27% 52%,#ea4335 52% 72%,#4285f4 72%)}
+.igc-page .igc-product-ads{color:#168f55;background:linear-gradient(145deg,#fff 42%,#ebf8f1)}
+.igc-page .igc-product-ads::before{background:linear-gradient(90deg,#34a853 0 35%,#fbbc04 35% 57%,#4285f4 57% 84%,transparent)}
+.igc-page .igc-product-conversa{color:#0b79bd;background:linear-gradient(145deg,#fff 42%,#eaf6fc)}
+.igc-page .igc-product-conversa::before{background:linear-gradient(90deg,#062a50,#0b79bd 58%,#2bb7d6)}
+
+/* Normalize the live WPForms name field into two aligned columns. */
+.igc-page form#wpforms-form-351429 .wpforms-field-name>.wpforms-field-label{display:none!important}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row{
+	display:grid!important;max-width:none!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;
+}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row-block{
+	display:flex!important;float:none!important;width:auto!important;margin:0!important;padding:0!important;flex-direction:column!important;
+}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row-block input{order:2}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-sublabel{
+	display:block!important;order:1;margin:0!important;color:#102f56!important;font-size:11px!important;font-weight:800!important;
+}
+.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-sublabel::after{content:" *";color:#e43b35}
+@media(max-width:620px){
+	.igc-page .igc-shell{width:calc(100% - 28px)}
+	.igc-page form#wpforms-form-351429 .wpforms-field-name .wpforms-field-row{grid-template-columns:1fr!important}
+}

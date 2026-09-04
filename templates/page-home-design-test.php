@@ -198,6 +198,20 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 		</div>
 	</section>
 
+	<section class="infometry-why" aria-labelledby="infometry-why-title">
+		<div class="infometry-shell">
+			<header class="infometry-section-head infometry-why-head"><span>Why Infometry</span><h2 id="infometry-why-title">Why Enterprises Choose Infometry</h2></header>
+			<div class="infometry-why-grid">
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-target"/></svg></div><div><h3>Deep Data &amp; Analytics Expertise</h3><p>More than 16 years of experience delivering enterprise <strong>data analytics, integration, cloud modernization, and AI solutions</strong>.</p></div></article>
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-nodes"/></svg></div><div><h3>Technology-Agnostic Approach</h3><p>We work across leading technologies including <strong>Snowflake, Databricks, Informatica, AWS, Azure, GCP, MuleSoft, Matillion, Power BI, Tableau, and Looker</strong>.</p></div></article>
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-grid"/></svg></div><div><h3>Products + Services</h3><p>Combine proven <strong>products, accelerators, consulting, implementation, and managed expertise</strong> instead of starting from scratch.</p></div></article>
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-rocket"/></svg></div><div><h3>Faster Time to Value</h3><p>Pre-built connectors, analytics applications, migration frameworks, and automation accelerators help reduce development effort and accelerate deployment.</p></div></article>
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-users"/></svg></div><div><h3>Business-Focused Analytics</h3><p>We don't just move data. We help organizations turn data into <strong>insights, decisions, automation, and measurable business outcomes</strong>.</p></div></article>
+				<article class="infometry-why-card"><div class="infometry-why-icon"><svg><use href="#i-cloud"/></svg></div><div><h3>AI-Ready Data Foundations</h3><p>Build governed, scalable data platforms that are ready for <strong>advanced analytics, Generative AI, Agentic AI, and enterprise intelligence</strong>.</p></div></article>
+			</div>
+		</div>
+	</section>
+
 	<section class="infometry-customers" aria-labelledby="infometry-customers-title">
 		<div class="infometry-shell">
 			<header class="infometry-section-head infometry-customers-head"><span>Customer success</span><h2 id="infometry-customers-title">Trusted by 150+ Customers Worldwide</h2></header>

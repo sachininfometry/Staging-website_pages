@@ -72,7 +72,7 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 		<div class="infometry-shell infometry-hero-grid">
 			<div class="infometry-hero-copy">
 				<span class="infometry-eyebrow">Conversation Analytics Platform for Enterprise</span>
-				<h1 id="infometry-hero-title">Ask Anything.<br>Get Insights.<br><span>Drive Results.</span></h1>
+				<h2 id="infometry-hero-title">Ask Anything.<br>Get Insights.<br><span>Drive Results.</span></h2>
 				<p>From the C-suite to frontline teams, INFOFISCUS Conversa makes enterprise data accessible to all - no SQL, no bottlenecks. Just natural questions, instant insights, and confident, data-driven decisions.</p>
 				<div class="infometry-actions">
 					<a class="infometry-button infometry-button-primary" href="<?php echo esc_url( $demo_url ); ?>">Request a Demo <span aria-hidden="true">→</span></a>
@@ -129,7 +129,7 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 			<div class="infometry-who-panel">
 				<div class="infometry-who-copy">
 					<span>Who we are</span>
-					<h2 id="infometry-who-title">Infometry is an Enterprise Data Analytics &amp; AI Solutions Company</h2>
+					<h1 id="infometry-who-title">Infometry is an Enterprise Data Analytics &amp; AI Solutions Company</h1>
 					<p><strong>Infometry is a global Data Analytics, AI, Data Integration, and Cloud Modernization company</strong> helping enterprises turn complex data into actionable business outcomes.</p>
 					<p>We combine <strong>data engineering, cloud data platforms, advanced analytics, AI/ML, enterprise integration, and industry expertise</strong> to help organizations modernize their data ecosystems and make faster, smarter decisions.</p>
 					<p>From <strong>Cloud Data Warehouse implementation and migration</strong> to <strong>Data Integration, Predictive &amp; Prescriptive Analytics, Business Intelligence, AI-enabled analytics, and intelligent automation</strong>, our solutions are designed around real business challenges—not just technology.</p>

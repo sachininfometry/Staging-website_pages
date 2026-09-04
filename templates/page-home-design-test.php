@@ -71,7 +71,6 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 		<div class="infometry-orb infometry-orb-two"></div>
 		<div class="infometry-shell infometry-hero-grid">
 			<div class="infometry-hero-copy">
-				<span class="infometry-eyebrow">Conversation Analytics Platform for Enterprise</span>
 				<h2 id="infometry-hero-title">Ask Anything.<br>Get Insights.<br><span>Drive Results.</span></h2>
 				<p>From the C-suite to frontline teams, INFOFISCUS Conversa makes enterprise data accessible to all - no SQL, no bottlenecks. Just natural questions, instant insights, and confident, data-driven decisions.</p>
 				<div class="infometry-actions">

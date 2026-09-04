@@ -137,13 +137,15 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 					<a href="<?php echo esc_url( $about_url ); ?>">Explore Infometry <span aria-hidden="true">→</span></a>
 				</div>
 				<div class="infometry-who-insight">
-					<div class="infometry-who-intro"><span>Built for AI-first enterprises</span><strong>From Enterprise Data<br>to Intelligent Action.</strong></div>
+					<div class="infometry-who-intro"><span>What we do</span><strong>From Data to Decisions:<br>Our Core Capabilities</strong><p>We help enterprises build, modernize, integrate, and activate their data across the complete data and AI lifecycle.</p></div>
 					<div class="infometry-who-pillars">
-						<article><svg><use href="#i-target"/></svg><h3>AI-Powered Analytics</h3><p>Transform trusted enterprise data into real-time insights, recommendations, and conversational intelligence.</p></article>
-						<article><svg><use href="#i-cloud"/></svg><h3>Modern Data Platforms</h3><p>Build scalable, secure, and governed cloud data foundations for AI and analytics.</p></article>
-						<article><svg><use href="#i-rocket"/></svg><h3>AI &amp; Intelligent Automation</h3><p>Accelerate business processes with Agentic AI, automation, and low-code innovation.</p></article>
+						<article><svg><use href="#i-target"/></svg><h3>Data Analytics Services</h3><p>Transform enterprise data into actionable insights with advanced, predictive, and prescriptive analytics.</p><small>Advanced Analytics · Predictive Analytics · Prescriptive Analytics · BI · Data Visualization</small></article>
+						<article><svg><use href="#i-nodes"/></svg><h3>Data Integration &amp; Engineering</h3><p>Connect ERP, CRM, cloud, and on-premises data with scalable integration and engineering solutions.</p><small>Cloud Data Integration · ETL/ELT · API Integration · Data Pipelines · Data Connectivity</small></article>
+						<article><svg><use href="#i-cloud"/></svg><h3>Cloud Data Warehouse Solutions</h3><p>Design, implement, optimize, and modernize scalable cloud data warehouse platforms built for analytics and AI.</p><small>Snowflake · Databricks · AWS · Azure · GCP · Cloud Data Warehousing</small></article>
+						<article><svg><use href="#i-rocket"/></svg><h3>AI/ML &amp; Agentic AI</h3><p>Automate analysis, surface insights, and support smarter decisions with AI/ML and Agentic AI.</p><small>Machine Learning · Generative AI · Agentic AI · Conversational Analytics · Decision Intelligence</small></article>
+						<article><svg><use href="#i-link"/></svg><h3>Data Modernization &amp; Migration</h3><p>Modernize legacy data platforms and accelerate cloud adoption with proven migration frameworks.</p><small>Snowflake Migration · PowerCenter to IDMC · dbt Migration · Cloud Modernization</small></article>
+						<article><svg><use href="#i-grid"/></svg><h3>Intelligent Automation</h3><p>Reduce manual effort and accelerate data operations with low-code, no-code, and intelligent automation.</p><small>Data Testing · Metadata Discovery · DDL Automation · Workflow Automation</small></article>
 					</div>
-					<div class="infometry-who-journey" aria-label="Infometry delivery journey"><span><b>01</b><em>Discover</em><small>Unify enterprise data</small></span><span><b>02</b><em>Modernize</em><small>Build AI-ready platforms</small></span><span><b>03</b><em>Transform</em><small>Deliver trusted business outcomes</small></span></div>
 				</div>
 			</div>
 		</div>

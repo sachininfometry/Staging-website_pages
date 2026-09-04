@@ -146,6 +146,7 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 						<article><svg><use href="#i-link"/></svg><h3>Data Modernization &amp; Migration</h3><p>Modernize legacy data platforms and accelerate cloud adoption with proven migration frameworks.</p><small>Snowflake Migration · PowerCenter to IDMC · dbt Migration · Cloud Modernization</small></article>
 						<article><svg><use href="#i-grid"/></svg><h3>Intelligent Automation</h3><p>Reduce manual effort and accelerate data operations with low-code, no-code, and intelligent automation.</p><small>Data Testing · Metadata Discovery · DDL Automation · Workflow Automation</small></article>
 					</div>
+					<div class="infometry-who-journey" aria-label="Infometry delivery journey"><span><b>01</b><em>Discover</em><small>Unify enterprise data</small></span><span><b>02</b><em>Modernize</em><small>Build AI-ready platforms</small></span><span><b>03</b><em>Transform</em><small>Deliver trusted business outcomes</small></span></div>
 				</div>
 			</div>
 		</div>

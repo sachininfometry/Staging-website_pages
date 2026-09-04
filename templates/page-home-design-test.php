@@ -137,7 +137,7 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 					<a href="<?php echo esc_url( $about_url ); ?>">Explore Infometry <span aria-hidden="true">→</span></a>
 				</div>
 				<div class="infometry-who-insight">
-					<div class="infometry-who-intro"><span>What we do</span><strong>From Data to Decisions:<br>Our Core Capabilities</strong><p>We help enterprises build, modernize, integrate, and activate their data across the complete data and AI lifecycle.</p></div>
+					<div class="infometry-who-intro"><span>What we do</span><strong>From Data to Decisions: Our Core Capabilities</strong><p>We help enterprises build, modernize, integrate, and activate their data across the complete data and AI lifecycle.</p></div>
 					<div class="infometry-who-pillars">
 						<article><svg><use href="#i-target"/></svg><h3>Data Analytics Services</h3><p>Transform enterprise data into actionable insights with advanced, predictive, and prescriptive analytics.</p><small>Advanced Analytics · Predictive Analytics · Prescriptive Analytics · BI · Data Visualization</small></article>
 						<article><svg><use href="#i-nodes"/></svg><h3>Data Integration &amp; Engineering</h3><p>Connect ERP, CRM, cloud, and on-premises data with scalable integration and engineering solutions.</p><small>Cloud Data Integration · ETL/ELT · API Integration · Data Pipelines · Data Connectivity</small></article>

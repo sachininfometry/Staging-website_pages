@@ -129,9 +129,11 @@ $supply_chain_url  = home_url( '/manufacturing-and-supply-chain/' );
 			<div class="infometry-who-panel">
 				<div class="infometry-who-copy">
 					<span>Who we are</span>
-					<h2 id="infometry-who-title">Enterprise Data Solutions. AI-Powered Decisions. Measurable Business Impact.</h2>
-					<p>Infometry helps enterprises modernize data with AI-native products, intelligent automation, and governed cloud platforms.</p>
-					<p>With 16+ years of expertise and 350+ successful transformations, we turn fragmented enterprise data into trusted insights, faster decisions, and measurable business outcomes.</p>
+					<h2 id="infometry-who-title">Infometry is an Enterprise Data Analytics &amp; AI Solutions Company</h2>
+					<p><strong>Infometry is a global Data Analytics, AI, Data Integration, and Cloud Modernization company</strong> helping enterprises turn complex data into actionable business outcomes.</p>
+					<p>We combine <strong>data engineering, cloud data platforms, advanced analytics, AI/ML, enterprise integration, and industry expertise</strong> to help organizations modernize their data ecosystems and make faster, smarter decisions.</p>
+					<p>From <strong>Cloud Data Warehouse implementation and migration</strong> to <strong>Data Integration, Predictive &amp; Prescriptive Analytics, Business Intelligence, AI-enabled analytics, and intelligent automation</strong>, our solutions are designed around real business challenges—not just technology.</p>
+					<p>With <strong>16+ years of expertise and 350+ successful enterprise transformations</strong>, Infometry works across modern data platforms including <strong>Snowflake, Databricks, Informatica, AWS, Azure, GCP, MuleSoft, Matillion, Tableau, Power BI, and more</strong>.</p>
 					<a href="<?php echo esc_url( $about_url ); ?>">Explore Infometry <span aria-hidden="true">→</span></a>
 				</div>
 				<div class="infometry-who-insight">

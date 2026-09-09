@@ -14,6 +14,9 @@ $guide_url       = 'https://drive.google.com/file/d/1I4CiXha4C8v5NXdwIyIIn0pg33J
 $g2_url          = 'https://www.g2.com/products/google-drive-connector-for-informatica-idmc/reviews';
 $sheets_url      = home_url( '/product/google-cloud-connectors/google-sheets-connector/' );
 $bigtable_url    = home_url( '/product/google-cloud-connectors/google-bigtable-connector/' );
+$conversa_url    = home_url( '/product/conversational-analytics/' );
+$accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migration-automation/' );
+$customers_url   = home_url( '/company/customers-partners/' );
 $drive_icon      = INFOMETRY_CT_URL . 'assets/images/google-connectors/google-drive.png';
 $idmc_icon       = INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.png';
 ?>
@@ -114,43 +117,30 @@ $idmc_icon       = INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.pn
 		<p>With built-in Agentic AI, the connector intelligently adapts to data workflows and simplifies decision-making with smart metadata extraction, usage tracking, and automated configurations. Its No-Code design ensures business users and non-technical teams can fully utilize the connector without engineering dependencies.</p>
 	</div></section>
 
-	<section class="igd-learning"><div class="igd-shell">
-		<div class="igd-heading"><span>Product walkthroughs</span><h2>Learn about Infometry's Google Drive Connector</h2></div>
-		<div class="igd-video-grid"><a href="https://www.youtube.com/watch?v=sQVcqMs8u60" class="igd-video-card"><span><i>▶</i><small>Watch on YouTube</small></span><h3>How to upload a file in Google Drive Using Infometry Google drive Connector</h3></a><a href="https://www.youtube.com/watch?v=hfV30oVpQkM&amp;t=33s" class="igd-video-card"><span><i>▶</i><small>Watch on YouTube</small></span><h3>How to get files from Google Drive using Infometry's Connector</h3></a></div>
-	</div></section>
-
-	<section class="igd-usecases"><div class="igd-shell igd-two-column">
-		<div class="igd-section-copy"><span class="igd-label">Real-world workflows</span><h2>Popular Use Cases</h2><p>Connect everyday Drive collaboration with governed enterprise data operations.</p><a class="igd-text-link" href="<?php echo esc_url( $contact_url ); ?>">Contact us <span>→</span></a></div>
-		<div class="igd-use-list"><article><b>01</b><p>Uploading Google Drive files into enterprise databases</p></article><article><b>02</b><p>Commenting on specific files and replying directly through workflows</p></article><article><b>03</b><p>Creating and updating documents directly from Informatica</p></article><article><b>04</b><p>Performing automated, no-code ETL operations across cloud and on-premise environments</p></article><article><b>05</b><p>Using Agentic AI insights to optimize file operations, access control, and collaboration</p></article></div>
-	</div></section>
-
-	<section class="igd-faq"><div class="igd-shell igd-faq-layout">
-		<div><span class="igd-label">Frequently asked questions</span><h2>Everything you need to evaluate the connector.</h2><p>Licensing, onboarding, updates, support and security—answered in one place.</p><a class="igd-text-link" href="<?php echo esc_url( $contact_url ); ?>">Talk to an expert <span>→</span></a></div>
-		<div class="igd-questions">
-			<details open><summary>What are the types of Licenses you offer?<span>+</span></summary><p>We have two licensing Model, Prod and Non-Prod. Infometry connector annual subscription license is charged for a given OrgID. Customers will get unlimited usage of the connectors within an OrgID.</p></details>
-			<details><summary>How Updates on the new features are released to the customer?<span>+</span></summary><p>Infometry Connector team continue to add new features and support newer API releases for each product. Infometry release cycles are synched with the Informatica Cloud platform and customers will get the updates automatically along with IICS release updates. All our new releases are auto-updated at the customer end and are free of charge.</p></details>
-			<details><summary>Whom to contact for Implementation and License?<span>+</span></summary><p>You can contact Infometry at info@infometry.net.</p></details>
-			<details><summary>Is Infometry's Google Drive Connector Certified by Informatica?<span>+</span></summary><p>Yes, all our connectors are 100% Certified by Informatica and also listed on Informatica Marketplace.</p></details>
-			<details><summary>How does your Customer Support work?<span>+</span></summary><p>Our Support is available 24/7 and we provide local time-zone support to all our customers globally.</p></details>
-			<details><summary>How Infometry charge for the connector?<span>+</span></summary><p>All our connectors are charged based on the number of Prod and Non-Prod licenses subscribed by the customer and it’s completely independent of the number or size of the data or rows processed.</p></details>
-			<details><summary>How soon business users can onboard and start using the connector?<span>+</span></summary><p>All our connectors are charged based on the number of Prod and Non-Prod licenses subscribed by the customer and it’s completely independent of the number or size of the data or rows processed.</p></details>
-			<details><summary>What is the validity of the Infometry Connector license?<span>+</span></summary><p>All our licenses are charged annually and are valid for one year.</p></details>
-			<details><summary>How Infometry offers Technical Support?<span>+</span></summary><p>It’s available 24/7 with a turnaround time of 24–48 hours. You can contact Infometry at info@infometry.net.</p></details>
-			<details><summary>How secure is my data?<span>+</span></summary><p>All our connectors and their updates are verified by Informatica before reaching the customer. Our connectors are activated by Informatica and work in your IICS environment. Connectors do not hold any data and ensure highly secure data transfers.</p></details>
+	<footer class="infometry-custom-footer" id="infometry-footer" aria-label="Infometry website footer">
+		<div class="infometry-shell">
+			<div class="infometry-footer-grid">
+				<div class="infometry-footer-connect">
+					<h2>Connect with us</h2>
+					<a class="infometry-footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+					<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
+					<div class="infometry-footer-social" aria-label="Infometry social profiles">
+						<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-facebook.png' ); ?>" alt=""></a>
+						<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-x.png' ); ?>" alt=""></a>
+						<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-linkedin.png' ); ?>" alt=""></a>
+						<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-youtube.png' ); ?>" alt=""></a>
+						<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-pinterest.png' ); ?>" alt=""></a>
+						<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-instagram.png' ); ?>" alt=""></a>
+						<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-g2.png' ); ?>" alt=""></a>
+					</div>
+					<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
+				</div>
+				<nav class="infometry-footer-column" aria-label="Footer products"><h3>Products</h3><a href="<?php echo esc_url( $conversa_url ); ?>">INFOFISCUS Conversa</a><a href="<?php echo esc_url( $connectors_url ); ?>">Google (GCP) Connectors For Informatica IDMC</a><a href="<?php echo esc_url( home_url( '/product/global-cloud-connector/' ) ); ?>">Global Connectors For Informatica IDMC</a><a href="<?php echo esc_url( home_url( '/product/#infofiscus-snowflake-native-apps' ) ); ?>">INFOFISCUS Snowflake Native Apps</a><a href="<?php echo esc_url( home_url( '/product/#pre-built-apps' ) ); ?>">Pre-Built Apps For IDMC and Matillion</a><a href="<?php echo esc_url( $accelerators_url ); ?>">Accelerators</a></nav>
+				<nav class="infometry-footer-column" aria-label="Footer resources"><h3>Resources</h3><a href="<?php echo esc_url( home_url( '/resources/blog/' ) ); ?>">Blog</a><a href="<?php echo esc_url( home_url( '/resources/infometry-case-studies/' ) ); ?>">Case Studies</a><a href="<?php echo esc_url( home_url( '/resources/whitepapers/' ) ); ?>">Whitepapers</a><a href="<?php echo esc_url( home_url( '/resources/gallery/' ) ); ?>">Gallery</a><a href="<?php echo esc_url( home_url( '/resources/webinar/' ) ); ?>">Webinar</a><a href="<?php echo esc_url( home_url( '/resources/press-releases/' ) ); ?>">Press Releases</a></nav>
+				<nav class="infometry-footer-column" aria-label="Footer company"><h3>Company</h3><a href="<?php echo esc_url( $customers_url ); ?>">Customers – Partners</a><a href="<?php echo esc_url( home_url( '/company/careers/' ) ); ?>">Careers</a><a href="<?php echo esc_url( home_url( '/company/life-at-infometry/' ) ); ?>">Life@Infometry</a><a href="<?php echo esc_url( home_url( '/company/testimonials/' ) ); ?>">Testimonials</a></nav>
+			</div>
+			<div class="infometry-footer-bottom"><span>© 2026 Infometry Inc. All Rights Reserved.</span><span>Enabling AI for Every Enterprise</span></div>
 		</div>
-	</div></section>
-
-	<section class="igd-related"><div class="igd-shell">
-		<div class="igd-heading"><span>Explore the portfolio</span><h2>Other Products</h2></div>
-		<div class="igd-related-grid"><article><span>Google Cloud Connector</span><h3>Google Sheets Connector</h3><p>Google Sheet Connector, built with Informatica’s native interface, supports all API operations, including read, write, update, delete, range, and search.</p><a href="<?php echo esc_url( $sheets_url ); ?>">Read more <i>↗</i></a></article><article><span>Google Cloud Connector</span><h3>Google Bigtable Connector</h3><p>The Google Bigtable Connector allows you to read, insert, and delete data from Google Bigtable, including reading columns and inserting data to BigTable.</p><a href="<?php echo esc_url( $bigtable_url ); ?>">Read more <i>↗</i></a></article></div>
-	</div></section>
-
-	<section class="igd-trial" id="freetrial"><div class="igd-shell igd-trial-card">
-		<div><span class="igd-label">30-day access</span><h2>Free Trial</h2><p>See how native, no-code Google Drive connectivity works in your Informatica IDMC environment. Share your details and our connector team will help you get started.</p><ul><li>Unlimited connector operations during your trial</li><li>Implementation and licensing guidance</li><li>24/7 global technical support</li></ul></div>
-		<div class="igd-trial-form"><?php echo do_shortcode( '[wpforms id="351429" title="false" description="false"]' ); ?></div>
-	</div></section>
-
-	<section class="igd-cta"><div class="igd-shell"><div><span>Google Drive × Informatica IDMC</span><h2>Make Google Drive part of your governed data flow.</h2></div><div><a class="igd-button igd-light" href="#freetrial">Start your free trial <span>→</span></a><a href="<?php echo esc_url( $marketplace_url ); ?>">View Marketplace listing ↗</a></div></div></section>
-	<footer class="igd-footer"><div class="igd-shell"><span>© 2026 Infometry Inc.</span><a href="<?php echo esc_url( $connectors_url ); ?>">All Google connectors</a><a href="<?php echo esc_url( $contact_url ); ?>">Contact us</a></div></footer>
+	</footer>
 </main>
 <?php get_footer(); ?>

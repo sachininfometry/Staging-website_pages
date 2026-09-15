@@ -130,8 +130,37 @@ function infometry_ct_should_use_google_drive_template() {
 	$slug = $page_id ? get_post_field( 'post_name', $page_id ) : '';
 
 	return infometry_ct_should_use_template( INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE )
-		|| ( infometry_ct_is_cloudways_staging_host() && is_singular() && 'google-drive-connector' === $slug );
+		|| ( infometry_ct_is_cloudways_staging_host() && is_singular() && 'google-drive-connector' === $slug )
+		|| ( is_404() && infometry_ct_is_staging_google_drive_route() );
 }
+
+/** Match only the Google Drive product URL on the Cloudways staging host. */
+function infometry_ct_is_staging_google_drive_route() {
+	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
+		return false;
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+	return '/product/google-drive-connector' === untrailingslashit( $path );
+}
+
+/** Serve the staging design when its WordPress product post is missing. */
+function infometry_ct_render_missing_staging_google_drive() {
+	if ( ! is_404() || ! infometry_ct_is_staging_google_drive_route() ) {
+		return;
+	}
+
+	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE;
+	if ( ! is_readable( $plugin_template ) ) {
+		return;
+	}
+
+	status_header( 200 );
+	nocache_headers();
+	include $plugin_template;
+	exit;
+}
+add_action( 'template_redirect', 'infometry_ct_render_missing_staging_google_drive', 0 );
 
 /**
  * Load the selected template from this plugin without modifying BeTheme.

@@ -703,3 +703,6 @@ body.page-id-380881 .infometry-home-test {
   color: #fff !important;
   background: var(--industry-accent) !important;
 }
+
+/* Offset the logo asset's transparent left inset (19px of 500px). */
+.infometry-custom-footer .infometry-footer-logo img { transform: translateX(-3.8%); }

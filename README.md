@@ -1,55 +1,77 @@
-# Infometry Custom Templates
+# Infometry Staging Website Pages
 
-Staging-safe WordPress plugin containing the Infometry homepage and INFOFISCUS
-Conversa product-page templates.
-The repository root is the plugin root and is ready for Cloudways Git deployment.
-
-![Infometry homepage preview](docs/homepage-preview.png)
+Staging-only WordPress plugin workspace for testing Infometry page templates before
+promoting approved changes to the live website. This repository and its Git history
+must remain separate from the live `LiveHomepage` repository.
 
 ## Repository contents
 
-- `infometry-custom-templates.php` — main WordPress plugin bootstrap.
-- `templates/page-home-design-test.php` — “Home Design Test” page template.
-- `templates/page-infofiscus-conversa.php` — “INFOFISCUS Conversa Product” page template.
-- `assets/css/` and `assets/js/` — template-scoped frontend assets.
-- `assets/images/` — local design and brand assets.
-- `preview-full.html` — standalone local preview of the complete homepage.
-- `preview-conversa.html` — standalone local preview of the Conversa page.
-- `docs/homepage-preview.png` — current desktop preview.
+- `infometry-custom-templates.php` — staging plugin bootstrap and route handling.
+- `templates/page-home-design-test.php` — homepage template synchronized with live.
+- `templates/page-infofiscus-conversa.php` — INFOFISCUS Conversa template synchronized with live.
+- `templates/page-informatica-connectors.php` — Informatica Connectors template synchronized with live.
+- `templates/page-google-cloud-connectors.php` — staging Google Cloud Connectors template.
+- `templates/page-google-drive-connector.php` — staging Google Drive Connector template.
+- `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
+- `preview-full.html`, `preview-conversa.html`, and `preview-informatica.html` — local previews.
+- `tools/` — preview generation and pre-deployment verification scripts.
 
-## WordPress installation
+## Local development
 
-1. Clone or deploy this repository to
-   `wp-content/plugins/infometry-custom-templates/` on staging.
-2. Activate **Infometry Custom Templates** in WordPress.
-3. On the homepage, select **Home Design Test** under Page Template.
-4. On the Conversa product page, select **INFOFISCUS Conversa Product**.
-5. Update/preview both pages and clear staging caches if needed.
+From this repository root, start a local static server:
 
-Version 2.1.17 does not automatically replace any page. The plugin loads each
-template and its isolated CSS/JavaScript only when that template is selected.
-It does not modify WordPress core, BeTheme files, Theme Options, or the database.
+```bash
+python -m http.server 4190
+```
 
-## Cloudways Git deployment
+Open:
 
-Configure the deployment path so the repository root lands directly in:
+- `http://127.0.0.1:4190/preview-full.html`
+- `http://127.0.0.1:4190/preview-conversa.html`
+- `http://127.0.0.1:4190/preview-informatica.html`
+
+After changing the Informatica PHP template, regenerate its standalone preview:
+
+```bash
+php tools/render-informatica-preview.php
+```
+
+Before every commit or deployment, run:
+
+```powershell
+.\tools\verify-project.ps1 -RegenerateInformaticaPreview
+```
+
+The same checks run in GitHub Actions on every push and pull request.
+
+## WordPress staging installation
+
+Deploy the repository root directly to:
 
 ```text
 public_html/wp-content/plugins/infometry-custom-templates/
 ```
 
-Do not deploy the repository into `public_html/` itself. Deployment only copies
-plugin files; activation and template selection remain explicit staging actions.
+Then activate **Infometry Custom Templates** in the staging WordPress admin. The
+plugin exposes all five templates in the Page Template selector. Staging-only slug
+fallbacks are restricted to the configured Cloudways staging host.
 
-## Local preview
+Important staging routes include:
 
-Serve the repository root with any static HTTP server, for example:
+- `/product/informatica-connectors/`
+- `/product/google-drive-connector/`
+- the WordPress page slug `google-cloud-connectors`
 
-```bash
-python -m http.server 4189
-```
+Deployment copies plugin files only. It does not modify WordPress core, BeTheme,
+Theme Options, or database content.
 
-Then open:
+## Safe promotion workflow
 
-- `http://127.0.0.1:4189/preview-full.html`
-- `http://127.0.0.1:4189/preview-conversa.html`
+1. Create and test new page work in this staging repository.
+2. Run the verification script and visually inspect desktop and mobile layouts.
+3. Deploy the staging repository only to the staging plugin directory.
+4. After approval, copy the approved page-specific changes to the live repository.
+5. Verify the live repository independently before any production deployment.
+
+Never point the staging Git deployment at the live repository or at `public_html/`
+itself.

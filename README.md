@@ -12,8 +12,9 @@ must remain separate from the live `LiveHomepage` repository.
 - `templates/page-informatica-connectors.php` — Informatica Connectors template synchronized with live.
 - `templates/page-google-cloud-connectors.php` — staging Google Cloud Connectors template.
 - `templates/page-google-drive-connector.php` — staging Google Drive Connector template.
+- `templates/page-snowflake-native-apps.php` — staging Snowflake Native Apps redesign.
 - `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
-- `preview-full.html`, `preview-conversa.html`, and `preview-informatica.html` — local previews.
+- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, and `preview-snowflake-native-apps.html` — local previews.
 - `tools/` — preview generation and pre-deployment verification scripts.
 
 ## Local development
@@ -29,17 +30,19 @@ Open:
 - `http://127.0.0.1:4190/preview-full.html`
 - `http://127.0.0.1:4190/preview-conversa.html`
 - `http://127.0.0.1:4190/preview-informatica.html`
+- `http://127.0.0.1:4190/preview-snowflake-native-apps.html`
 
-After changing the Informatica PHP template, regenerate its standalone preview:
+After changing the Informatica or Snowflake PHP template, regenerate its standalone preview:
 
 ```bash
 php tools/render-informatica-preview.php
+php tools/render-snowflake-preview.php
 ```
 
 Before every commit or deployment, run:
 
 ```powershell
-.\tools\verify-project.ps1 -RegenerateInformaticaPreview
+.\tools\verify-project.ps1 -RegenerateInformaticaPreview -RegenerateSnowflakePreview
 ```
 
 The same checks run in GitHub Actions on every push and pull request.
@@ -53,7 +56,7 @@ public_html/wp-content/plugins/infometry-custom-templates/
 ```
 
 Then activate **Infometry Custom Templates** in the staging WordPress admin. The
-plugin exposes all five templates in the Page Template selector. Staging-only slug
+plugin exposes all six templates in the Page Template selector. Staging-only slug
 fallbacks are restricted to the configured Cloudways staging host.
 
 Important staging routes include:
@@ -61,6 +64,7 @@ Important staging routes include:
 - `/product/informatica-connectors/`
 - `/product/google-drive-connector/`
 - the WordPress page slug `google-cloud-connectors`
+- the WordPress page slug `snowflake-native-apps`
 
 Deployment copies plugin files only. It does not modify WordPress core, BeTheme,
 Theme Options, or database content.

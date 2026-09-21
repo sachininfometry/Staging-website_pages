@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry product and landing page templates.
- * Version: 2.6.0
+ * Version: 2.7.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.6.0' );
+define( 'INFOMETRY_CT_VERSION', '2.7.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -19,6 +19,7 @@ define( 'INFOMETRY_CT_CONVERSA_TEMPLATE', 'templates/page-infofiscus-conversa.ph
 define( 'INFOMETRY_CT_INFORMATICA_TEMPLATE', 'templates/page-informatica-connectors.php' );
 define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-connectors.php' );
 define( 'INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE', 'templates/page-google-drive-connector.php' );
+define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake-native-apps.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
@@ -85,6 +86,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_INFORMATICA_TEMPLATE ] = __( 'Informatica Connectors Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE ] = __( 'Google Cloud Connectors Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE ] = __( 'Google Drive Connector Product', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -188,6 +190,12 @@ function infometry_ct_should_use_google_connectors_template() {
 		|| ( infometry_ct_is_cloudways_staging_host() && is_page( 'google-cloud-connectors' ) );
 }
 
+/** Use the Snowflake Native Apps redesign only when selected or on its staging route. */
+function infometry_ct_should_use_snowflake_native_apps_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE )
+		|| ( infometry_ct_is_cloudways_staging_host() && is_page( 'snowflake-native-apps' ) );
+}
+
 /** Decide whether the Google Drive Connector product template is active. */
 function infometry_ct_should_use_google_drive_template() {
 	$page_id = infometry_ct_get_current_page_id();
@@ -270,6 +278,13 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
+		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE;
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	return $template;
 }
 add_filter( 'page_template', 'infometry_ct_load_page_template', PHP_INT_MAX );
@@ -300,6 +315,10 @@ function infometry_ct_body_classes( $classes ) {
 
 	if ( infometry_ct_should_use_google_drive_template() ) {
 		$classes[] = 'infometry-google-drive-page';
+	}
+
+	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
+		$classes[] = 'infometry-snowflake-native-apps-page';
 	}
 
 	return array_unique( $classes );
@@ -656,8 +675,9 @@ function infometry_ct_enqueue_assets() {
 	$use_informatica = infometry_ct_should_use_informatica_template();
 	$use_google_connectors = infometry_ct_should_use_google_connectors_template();
 	$use_google_drive = infometry_ct_should_use_google_drive_template();
+	$use_snowflake_native_apps = infometry_ct_should_use_snowflake_native_apps_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps ) {
 		return;
 	}
 
@@ -742,6 +762,16 @@ function infometry_ct_enqueue_assets() {
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/css/google-drive-connector.css', array(), $css_version );
 	}
+
+	if ( $use_snowflake_native_apps ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/snowflake-native-apps.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/snowflake-native-apps.js';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
+
+		wp_enqueue_style( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/css/snowflake-native-apps.css', array(), $css_version );
+		wp_enqueue_script( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/js/snowflake-native-apps.js', array(), $js_version, true );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );
 
@@ -757,6 +787,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_informatica_template()
 		&& ! infometry_ct_should_use_google_connectors_template()
 		&& ! infometry_ct_should_use_google_drive_template()
+		&& ! infometry_ct_should_use_snowflake_native_apps_template()
 	) {
 		return $urls;
 	}

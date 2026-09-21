@@ -1,5 +1,6 @@
 param(
-    [switch]$RegenerateInformaticaPreview
+    [switch]$RegenerateInformaticaPreview,
+    [switch]$RegenerateSnowflakePreview
 )
 
 $ErrorActionPreference = 'Stop'
@@ -42,6 +43,13 @@ if ($RegenerateInformaticaPreview) {
     }
 }
 
+if ($RegenerateSnowflakePreview) {
+    & $php (Join-Path $PSScriptRoot 'render-snowflake-preview.php')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Snowflake preview generation failed.'
+    }
+}
+
 $requiredFiles = @(
     'infometry-custom-templates.php',
     'templates/page-home-design-test.php',
@@ -49,12 +57,16 @@ $requiredFiles = @(
     'templates/page-informatica-connectors.php',
     'templates/page-google-cloud-connectors.php',
     'templates/page-google-drive-connector.php',
+    'templates/page-snowflake-native-apps.php',
     'assets/css/google-cloud-connectors.css',
     'assets/css/google-drive-connector.css',
     'assets/js/google-cloud-connectors.js',
+    'assets/css/snowflake-native-apps.css',
+    'assets/js/snowflake-native-apps.js',
     'preview-full.html',
     'preview-conversa.html',
-    'preview-informatica.html'
+    'preview-informatica.html',
+    'preview-snowflake-native-apps.html'
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -103,4 +115,4 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "`nProject verification passed: 5 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green
+Write-Host "`nProject verification passed: 6 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green

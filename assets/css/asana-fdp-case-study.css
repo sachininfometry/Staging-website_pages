@@ -1,5 +1,3 @@
-body.infometry-asana-fdp-page #Header_wrapper,
-body.infometry-asana-fdp-page #Header,
 body.infometry-asana-fdp-page #Subheader,
 body.infometry-asana-fdp-page #Footer,
 body.infometry-asana-fdp-page #Footer_wrapper,
@@ -43,17 +41,12 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-heading p, .fdp-two-col p { margin-bottom: 12px; color: var(--fdp-muted); font-size: 15px; line-height: 1.62; }
 .fdp-heading strong { color: var(--fdp-ink); font-size: 15px; }
 
-.fdp-hero { position: relative; min-height: 610px; overflow: hidden; color: #fff; background: radial-gradient(circle at 88% 34%, rgba(0,145,255,.34), transparent 25%), radial-gradient(circle at 65% 95%, rgba(69,61,255,.19), transparent 34%), linear-gradient(120deg, #03142f 0%, #052856 60%, #02142d 100%); }
-.fdp-hero::before { content: ""; position: absolute; inset: 62px -8% 0 45%; opacity: .42; background: repeating-radial-gradient(ellipse at 36% 78%, transparent 0 37px, rgba(39,164,255,.43) 38px 40px, transparent 41px 61px); transform: rotate(-8deg) scale(1.18); mask-image: linear-gradient(90deg, transparent, #000 20%, #000); }
+.fdp-hero { position: relative; min-height: 538px; overflow: hidden; color: #fff; background: radial-gradient(circle at 88% 34%, rgba(0,145,255,.25), transparent 25%), linear-gradient(120deg, #03142f 0%, #052856 60%, #02142d 100%); }
+.fdp-hero::before { content: ""; position: absolute; inset: 0 -8% 0 45%; opacity: .22; background: repeating-radial-gradient(ellipse at 36% 78%, transparent 0 37px, rgba(39,164,255,.43) 38px 40px, transparent 41px 61px); transform: rotate(-8deg) scale(1.18); mask-image: linear-gradient(90deg, transparent, #000 20%, #000); }
 .fdp-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 142px; opacity: .56; background: linear-gradient(160deg, transparent 0 44%, #020e24 45% 56%, transparent 57%), linear-gradient(200deg, transparent 0 48%, #071c3a 49% 67%, transparent 68%); }
-.fdp-nav { position: relative; z-index: 4; display: grid; min-height: 72px; grid-template-columns: 235px 1fr auto; align-items: center; gap: 28px; }
-.fdp-logo img { display: block; width: 205px; height: 49px; object-fit: contain; object-position: left center; }
-.fdp-nav nav { display: flex; justify-content: center; gap: clamp(20px, 2.4vw, 38px); }
-.fdp-nav nav a { color: rgba(255,255,255,.92); font-size: 12px; font-weight: 700; text-transform: none; }
-.fdp-nav nav a:hover { color: #6ac9ff; }
-.fdp-nav-cta, .fdp-button { display: inline-flex; min-height: 44px; padding: 11px 21px; align-items: center; justify-content: center; gap: 10px; border-radius: 4px; color: #fff !important; background: linear-gradient(135deg, #ff9a32, #ff6f1f); font-size: 13px; font-weight: 800; box-shadow: 0 10px 24px rgba(255,112,31,.24); transition: transform .2s ease, box-shadow .2s ease; }
-.fdp-nav-cta:hover, .fdp-button:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 13px 28px rgba(255,112,31,.34); }
-.fdp-hero-grid { position: relative; z-index: 2; display: grid; min-height: 538px; grid-template-columns: minmax(0, 1.03fr) minmax(430px, .97fr); align-items: center; gap: 58px; padding: 40px 0 64px; }
+.fdp-button { display: inline-flex; min-height: 44px; padding: 11px 21px; align-items: center; justify-content: center; gap: 10px; border-radius: 4px; color: #fff !important; background: linear-gradient(135deg, #ff9a32, #ff6f1f); font-size: 13px; font-weight: 800; box-shadow: 0 10px 24px rgba(255,112,31,.24); transition: transform .2s ease, box-shadow .2s ease; }
+.fdp-button:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 13px 28px rgba(255,112,31,.34); }
+.fdp-hero-grid { position: relative; z-index: 2; display: grid; min-height: 538px; grid-template-columns: minmax(0, .98fr) minmax(470px, 1.02fr); align-items: center; gap: 36px; padding: 36px 0 48px; }
 .fdp-hero-copy { max-width: 660px; }
 .fdp-kicker { display: block; margin-bottom: 13px; color: var(--fdp-orange); font-size: 14px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .fdp-hero h1 { max-width: 650px; margin-bottom: 14px; color: #fff; font-size: clamp(38px, 3.5vw, 54px); line-height: 1.03; font-weight: 800; letter-spacing: -.035em; }
@@ -62,18 +55,9 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-tags span { padding: 0 12px; border-right: 1px solid rgba(255,255,255,.4); color: #eaf5ff; font-size: 13px; font-weight: 700; }
 .fdp-tags span:first-child { padding-left: 0; }
 .fdp-tags span:last-child { border-right: 0; }
-.fdp-hero-visual { position: relative; display: grid; min-height: 392px; place-items: center; }
-.fdp-hero-visual::before, .fdp-hero-visual::after { content: ""; position: absolute; border: 1px solid rgba(73,177,255,.25); border-radius: 20px; background: linear-gradient(145deg, rgba(74,170,255,.2), rgba(5,28,65,.18)); backdrop-filter: blur(5px); transform: perspective(600px) rotateY(-17deg) rotateZ(5deg); }
-.fdp-hero-visual::before { width: 318px; height: 218px; right: 0; top: 12%; }
-.fdp-hero-visual::after { width: 252px; height: 178px; left: 9%; bottom: 4%; transform: perspective(600px) rotateY(15deg) rotateZ(-5deg); }
-.fdp-asana-lockup { position: absolute; z-index: 5; left: 0; top: 12%; display: grid; width: 178px; gap: 12px; }
-.fdp-asana-lockup::after { content: ""; width: 100px; height: 1px; grid-row: 2; background: rgba(255,255,255,.25); }
-.fdp-asana-logo { display: block; width: 150px; height: auto; object-fit: contain; }
-.fdp-asana-lockup span { color: rgba(255,255,255,.86); font-size: 14px; line-height: 1.4; }
-.fdp-snow-card { position: relative; z-index: 4; display: grid; width: 255px; min-height: 310px; margin-left: 95px; padding: 38px 21px 22px; grid-template-columns: repeat(3, 1fr); align-content: end; gap: 7px; border: 1px solid rgba(93,190,255,.52); border-radius: 12px; background: linear-gradient(155deg, rgba(28,128,220,.48), rgba(4,32,79,.84)); box-shadow: 0 28px 65px rgba(0,0,0,.3), inset 0 0 35px rgba(54,176,255,.18); }
-.fdp-snow-mark { position: absolute; left: 50%; top: 43px; width: 140px; height: 140px; overflow: hidden; transform: translateX(-50%); filter: drop-shadow(0 12px 25px rgba(13,183,245,.38)); }
-.fdp-snow-mark img { position: absolute; left: 0; top: 0; width: 584px; max-width: none; height: 140px; object-fit: contain; object-position: left center; }
-.fdp-snow-card span { padding-top: 11px; border-top: 1px solid rgba(255,255,255,.25); color: #ccecff; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-align: center; text-transform: uppercase; }
+.fdp-hero-visual { position: relative; min-height: 430px; }
+.fdp-hero-art { position: absolute; inset: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 100%); mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 100%); }
+.fdp-hero-art img { display: block; width: 113.45%; max-width: none; height: 100%; object-fit: cover; object-position: left center; }
 
 .fdp-facts { position: relative; z-index: 6; border-bottom: 1px solid var(--fdp-line); background: #f5faff; box-shadow: 0 -8px 28px rgba(0,25,64,.08); }
 .fdp-facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
@@ -140,8 +124,6 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-footer span { color: #9fb1ce; font-size: 12px; }
 
 @media (max-width: 1050px) {
-  .fdp-nav { grid-template-columns: 210px 1fr auto; }
-  .fdp-nav nav { gap: 20px; }
   .fdp-hero-grid { grid-template-columns: 1fr; }
   .fdp-hero-copy { max-width: 800px; }
   .fdp-hero-visual { display: none; }
@@ -160,10 +142,6 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 @media (max-width: 760px) {
   .fdp-shell { width: min(100% - 32px, 1260px); }
   .fdp-section { padding: 58px 0; }
-  .fdp-nav { min-height: 74px; grid-template-columns: 1fr auto; }
-  .fdp-logo img { width: 185px; height: 48px; }
-  .fdp-nav nav { display: none; }
-  .fdp-nav-cta { min-height: 40px; padding: 9px 13px; font-size: 12px; }
   .fdp-hero { min-height: 0; }
   .fdp-hero-grid { min-height: 0; padding: 60px 0 78px; }
   .fdp-hero h1 { font-size: clamp(36px, 10vw, 48px); }
@@ -183,8 +161,6 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 }
 
 @media (max-width: 420px) {
-  .fdp-nav-cta { display: none; }
-  .fdp-nav { grid-template-columns: 1fr; }
   .fdp-hero-copy > p { font-size: 15px; }
 }
 

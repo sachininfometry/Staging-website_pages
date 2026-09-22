@@ -13,51 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 
 $contact_url = home_url( '/contact-us/' );
-$logo_url    = INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png';
-$menu_items  = array();
-
-// Reuse the active theme's logo and top-level navigation so the case study
-// stays in sync with the staging site's header configuration.
-if ( function_exists( 'mfn_opts_get' ) ) {
-	$theme_logo = mfn_opts_get( 'logo-main-img' );
-	if ( is_string( $theme_logo ) && $theme_logo ) {
-		$logo_url = $theme_logo;
-	}
-}
-
-if ( has_custom_logo() ) {
-	$custom_logo = wp_get_attachment_image_url( get_theme_mod( 'custom_logo' ), 'full' );
-	if ( $custom_logo ) {
-		$logo_url = $custom_logo;
-	}
-}
-
-$menu_locations = get_nav_menu_locations();
-foreach ( array( 'main-menu', 'primary', 'main_nav' ) as $location ) {
-	if ( empty( $menu_locations[ $location ] ) ) {
-		continue;
-	}
-
-	$assigned_items = wp_get_nav_menu_items( $menu_locations[ $location ] );
-	if ( $assigned_items ) {
-		foreach ( $assigned_items as $assigned_item ) {
-			if ( 0 === (int) $assigned_item->menu_item_parent ) {
-				$menu_items[] = $assigned_item;
-			}
-		}
-	}
-	break;
-}
-
-if ( ! $menu_items ) {
-	$menu_items = array(
-		(object) array( 'title' => 'Products', 'url' => home_url( '/product/' ) ),
-		(object) array( 'title' => 'Solutions', 'url' => home_url( '/snowflake-solutions/' ) ),
-		(object) array( 'title' => 'Industries', 'url' => home_url( '/industries/' ) ),
-		(object) array( 'title' => 'Resources', 'url' => home_url( '/resources/' ) ),
-		(object) array( 'title' => 'Company', 'url' => home_url( '/company/' ) ),
-	);
-}
 $challenges  = array(
 	array( 'icon' => 'code', 'title' => 'Tightly coupled processing', 'copy' => 'Extensive custom Python processing and tightly coupled SQL transformations increased implementation and maintenance effort.' ),
 	array( 'icon' => 'refresh', 'title' => 'Full data refreshes', 'copy' => 'Full data refreshes during synchronization resulted in longer processing times and unnecessary compute consumption.' ),
@@ -110,8 +65,7 @@ if ( ! function_exists( 'infometry_fdp_icon' ) ) {
 	</svg>
 
 	<section class="fdp-hero" aria-labelledby="fdp-title">
-		<header class="fdp-nav fdp-shell"><a class="fdp-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $logo_url ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"></a><nav aria-label="Primary navigation"><?php foreach ( array_slice( $menu_items, 0, 5 ) as $menu_item ) : ?><a href="<?php echo esc_url( $menu_item->url ); ?>"><?php echo esc_html( $menu_item->title ); ?></a><?php endforeach; ?></nav><a class="fdp-nav-cta" href="<?php echo esc_url( $contact_url ); ?>">Contact Us</a></header>
-		<div class="fdp-shell fdp-hero-grid"><div class="fdp-hero-copy"><span class="fdp-kicker">Case Study</span><h1 id="fdp-title">Financial Data Platform (FDP 2.0) Modernization on Snowflake</h1><p>Infometry was engaged to assess, redesign, and modernize Asana’s existing Financial Data Platform by implementing a modular Snowflake architecture that simplifies data integration, accelerates financial reporting, strengthens governance, and establishes a scalable foundation for enterprise analytics and future business growth.</p><div class="fdp-tags"><span>Asana</span><span>SaaS</span><span>Snowflake</span><span>Data Modernization</span></div><a class="fdp-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to an Expert <span>→</span></a></div><div class="fdp-hero-visual"><div class="fdp-asana-lockup"><img class="fdp-asana-logo" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/customer-asana-logo.png' ); ?>" alt="Asana"><span>Smarter data.<br>Greater impact.</span></div><div class="fdp-snow-card"><div class="fdp-snow-mark"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/snowflake-logo.png' ); ?>" alt="Snowflake"></div><span>Modernize</span><span>Unify</span><span>Scale</span></div></div></div>
+		<div class="fdp-shell fdp-hero-grid"><div class="fdp-hero-copy"><span class="fdp-kicker">Case Study</span><h1 id="fdp-title">Financial Data Platform (FDP 2.0) Modernization on Snowflake</h1><p>Infometry was engaged to assess, redesign, and modernize Asana’s existing Financial Data Platform by implementing a modular Snowflake architecture that simplifies data integration, accelerates financial reporting, strengthens governance, and establishes a scalable foundation for enterprise analytics and future business growth.</p><div class="fdp-tags"><span>Asana</span><span>SaaS</span><span>Snowflake</span><span>Data Modernization</span></div><a class="fdp-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to an Expert <span>→</span></a></div><div class="fdp-hero-visual"><div class="fdp-hero-art"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-reference.png' ); ?>" alt="Asana and Snowflake financial data platform modernization"></div></div></div>
 	</section>
 
 	<section class="fdp-facts"><div class="fdp-shell fdp-facts-grid"><div><?php infometry_fdp_icon( 'database' ); ?><span><small>Client</small><strong>Asana</strong></span></div><div><?php infometry_fdp_icon( 'users' ); ?><span><small>Industry</small><strong>SaaS</strong></span></div><div><?php infometry_fdp_icon( 'snow' ); ?><span><small>Platform</small><strong>Snowflake</strong></span></div><div><?php infometry_fdp_icon( 'chart' ); ?><span><small>Focus Area</small><strong>Financial Data Platform Modernization</strong></span></div></div></section>

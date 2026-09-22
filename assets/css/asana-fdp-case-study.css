@@ -47,7 +47,7 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 
 .fdp-hero { position: relative; min-height: 680px; overflow: hidden; color: #fff; background: #03142f; }
 .fdp-hero-scene { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
-.fdp-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(3,20,47,.98) 0%, rgba(3,20,47,.94) 29%, rgba(3,20,47,.66) 46%, rgba(3,20,47,.08) 66%, rgba(3,20,47,0) 100%); }
+.fdp-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(2,13,43,.96) 0%, rgba(2,13,43,.45) 18%, transparent 42%), linear-gradient(90deg, rgba(3,20,47,.98) 0%, rgba(3,20,47,.94) 29%, rgba(3,20,47,.66) 46%, rgba(3,20,47,.08) 66%, rgba(3,20,47,0) 100%); }
 .fdp-hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; z-index: 0; height: 150px; background: linear-gradient(180deg, transparent, rgba(2,14,36,.46)); }
 .fdp-button { display: inline-flex; min-height: 44px; padding: 11px 21px; align-items: center; justify-content: center; gap: 10px; border-radius: 4px; color: #fff !important; background: linear-gradient(135deg, #ff9a32, #ff6f1f); font-size: 13px; font-weight: 800; box-shadow: 0 10px 24px rgba(255,112,31,.24); transition: transform .2s ease, box-shadow .2s ease; }
 .fdp-button:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 13px 28px rgba(255,112,31,.34); }
@@ -61,7 +61,7 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-tags span:first-child { padding-left: 0; }
 .fdp-tags span:last-child { border-right: 0; }
 .fdp-hero-visual { position: relative; min-height: 560px; overflow: visible; }
-.fdp-asana-brand { position: absolute; left: 1%; top: 18%; z-index: 4; display: grid; grid-template-columns: 44px auto; align-items: center; column-gap: 10px; color: #fff; }
+.fdp-asana-brand { position: absolute; left: 3%; top: 22%; z-index: 4; display: grid; grid-template-columns: 44px auto; align-items: center; column-gap: 10px; color: #fff; }
 .fdp-asana-brand strong { font: 700 42px/1 "Segoe UI", Arial, sans-serif; letter-spacing: -.04em; }
 .fdp-asana-mark { position: relative; width: 42px; height: 36px; }
 .fdp-asana-mark i { position: absolute; width: 17px; height: 17px; border-radius: 50%; background: #f25b6d; box-shadow: 0 0 10px rgba(242,91,109,.2); }
@@ -69,9 +69,9 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-asana-mark i:nth-child(2) { left: 0; bottom: 0; }
 .fdp-asana-mark i:nth-child(3) { right: 0; bottom: 0; }
 .fdp-asana-tagline { grid-column: 1 / -1; width: 180px; margin-top: 22px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.32); color: rgba(255,255,255,.88); font-size: 17px; line-height: 1.42; }
-.fdp-snow-emblem { position: absolute; z-index: 3; right: 14%; top: 30%; display: grid; width: 235px; height: 250px; place-items: center; }
-.fdp-snow-mark { position: relative; width: 160px; height: 160px; overflow: hidden; filter: drop-shadow(0 12px 28px rgba(13,183,245,.48)); }
-.fdp-snow-mark img { position: absolute; left: 0; top: 0; width: 626px; max-width: none; height: 150px; object-fit: contain; object-position: left center; }
+.fdp-snow-emblem { position: absolute; z-index: 3; left: 42%; top: 30%; display: grid; width: 190px; height: 220px; place-items: center; }
+.fdp-snow-mark { position: relative; width: 132px; height: 132px; overflow: hidden; filter: drop-shadow(0 12px 26px rgba(13,183,245,.46)); }
+.fdp-snow-mark img { position: absolute; left: 0; top: 0; width: 551px; max-width: none; height: 132px; object-fit: contain; object-position: left center; }
 .fdp-visual-values { position: absolute; right: 7%; bottom: 5%; z-index: 5; display: flex; gap: 22px; color: rgba(255,255,255,.82); font-size: 10px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
 .fdp-visual-values span + span::before { content: "|"; margin-right: 22px; color: rgba(255,255,255,.35); }
 
@@ -99,9 +99,11 @@ body.infometry-asana-fdp-page .entry-content { width: 100% !important; max-width
 .fdp-card p, .fdp-solution-grid p { margin: 0; color: var(--fdp-muted); font-size: 14px; line-height: 1.65; }
 
 .fdp-modernization { padding-top: 46px; background: #fff; }
-.fdp-modernization figure, .fdp-technologies figure { margin: 0; overflow: hidden; border: 1px solid #cfe0f1; border-radius: 16px; background: #06142d; box-shadow: 0 18px 42px rgba(6,31,72,.12); }
-.fdp-modernization img, .fdp-technologies img { display: block; width: 100%; height: auto; }
-.fdp-modernization figcaption { padding: 13px 20px; color: #ddecff; background: #071a38; font-size: 13px; text-align: center; }
+.fdp-modernization figure, .fdp-technologies figure { margin: 0; overflow: hidden; border: 1px solid #cfe0f1; border-radius: 16px; box-shadow: 0 18px 42px rgba(6,31,72,.12); }
+.fdp-modernization figure { position: relative; aspect-ratio: 1070 / 312; border-color: #dbe8f5; background: #eef7ff; }
+.fdp-modernization .fdp-before-after-image { position: absolute; left: 0; top: 0; display: block; width: 117.1%; max-width: none; height: auto; transform: translate(-5.59%, -29.07%); }
+.fdp-technologies figure { background: #fff; }
+.fdp-technologies img { display: block; width: 100%; height: auto; }
 
 .fdp-solution { background: linear-gradient(180deg, #fff, #f7fbff); }
 .fdp-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px 28px; }

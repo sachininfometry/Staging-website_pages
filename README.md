@@ -13,8 +13,9 @@ must remain separate from the live `LiveHomepage` repository.
 - `templates/page-google-cloud-connectors.php` — staging Google Cloud Connectors template.
 - `templates/page-google-drive-connector.php` — staging Google Drive Connector template.
 - `templates/page-snowflake-native-apps.php` — staging Snowflake Native Apps redesign.
+- `templates/page-asana-fdp-case-study.php` — staging Asana FDP Snowflake case-study redesign.
 - `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
-- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, and `preview-snowflake-native-apps.html` — local previews.
+- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, and `preview-asana-fdp-case-study.html` — local previews.
 - `tools/` — preview generation and pre-deployment verification scripts.
 
 ## Local development
@@ -31,18 +32,20 @@ Open:
 - `http://127.0.0.1:4190/preview-conversa.html`
 - `http://127.0.0.1:4190/preview-informatica.html`
 - `http://127.0.0.1:4190/preview-snowflake-native-apps.html`
+- `http://127.0.0.1:4190/preview-asana-fdp-case-study.html`
 
 After changing the Informatica or Snowflake PHP template, regenerate its standalone preview:
 
 ```bash
 php tools/render-informatica-preview.php
 php tools/render-snowflake-preview.php
+php tools/render-asana-fdp-preview.php
 ```
 
 Before every commit or deployment, run:
 
 ```powershell
-.\tools\verify-project.ps1 -RegenerateInformaticaPreview -RegenerateSnowflakePreview
+.\tools\verify-project.ps1 -RegenerateInformaticaPreview -RegenerateSnowflakePreview -RegenerateAsanaFdpPreview
 ```
 
 The same checks run in GitHub Actions on every push and pull request.
@@ -56,7 +59,7 @@ public_html/wp-content/plugins/infometry-custom-templates/
 ```
 
 Then activate **Infometry Custom Templates** in the staging WordPress admin. The
-plugin exposes all six templates in the Page Template selector. Staging-only slug
+plugin exposes all seven templates in the Page Template selector. Staging-only slug
 fallbacks are restricted to the configured Cloudways staging host.
 
 Important staging routes include:
@@ -65,6 +68,7 @@ Important staging routes include:
 - `/product/google-drive-connector/`
 - the WordPress page slug `google-cloud-connectors`
 - the WordPress page slug `snowflake-native-apps`
+- `/resources/infometry-case-studies/financial-data-platform-fdp-modernization-on-snowflake/`
 
 Deployment copies plugin files only. It does not modify WordPress core, BeTheme,
 Theme Options, or database content.

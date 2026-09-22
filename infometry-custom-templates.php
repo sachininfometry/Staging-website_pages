@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry product and landing page templates.
- * Version: 2.7.1
+ * Version: 2.8.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.7.1' );
+define( 'INFOMETRY_CT_VERSION', '2.8.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -20,6 +20,7 @@ define( 'INFOMETRY_CT_INFORMATICA_TEMPLATE', 'templates/page-informatica-connect
 define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-connectors.php' );
 define( 'INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE', 'templates/page-google-drive-connector.php' );
 define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake-native-apps.php' );
+define( 'INFOMETRY_CT_ASANA_FDP_TEMPLATE', 'templates/page-asana-fdp-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
@@ -87,6 +88,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE ] = __( 'Google Cloud Connectors Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE ] = __( 'Google Drive Connector Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_ASANA_FDP_TEMPLATE ] = __( 'Asana FDP Snowflake Case Study', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -236,6 +238,40 @@ function infometry_ct_render_staging_google_drive_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_staging_google_drive_route', 0 );
 
+/** Use the redesigned Asana FDP case study when selected or on its staging URL. */
+function infometry_ct_should_use_asana_fdp_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_ASANA_FDP_TEMPLATE )
+		|| infometry_ct_is_staging_asana_fdp_route();
+}
+
+/** Match the existing Asana FDP case-study path only on Cloudways staging. */
+function infometry_ct_is_staging_asana_fdp_route() {
+	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
+		return false;
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+	return '/resources/infometry-case-studies/financial-data-platform-fdp-modernization-on-snowflake' === untrailingslashit( $path );
+}
+
+/** Serve the redesigned case study at the exact staging URL. */
+function infometry_ct_render_staging_asana_fdp_route() {
+	if ( ! infometry_ct_is_staging_asana_fdp_route() ) {
+		return;
+	}
+
+	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_ASANA_FDP_TEMPLATE;
+	if ( ! is_readable( $plugin_template ) ) {
+		return;
+	}
+
+	status_header( 200 );
+	nocache_headers();
+	include $plugin_template;
+	exit;
+}
+add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 0 );
+
 /**
  * Load the selected template from this plugin without modifying BeTheme.
  *
@@ -285,6 +321,13 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	if ( infometry_ct_should_use_asana_fdp_template() ) {
+		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_ASANA_FDP_TEMPLATE;
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	return $template;
 }
 add_filter( 'page_template', 'infometry_ct_load_page_template', PHP_INT_MAX );
@@ -319,6 +362,10 @@ function infometry_ct_body_classes( $classes ) {
 
 	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
 		$classes[] = 'infometry-snowflake-native-apps-page';
+	}
+
+	if ( infometry_ct_should_use_asana_fdp_template() ) {
+		$classes[] = 'infometry-asana-fdp-page';
 	}
 
 	return array_unique( $classes );
@@ -676,8 +723,9 @@ function infometry_ct_enqueue_assets() {
 	$use_google_connectors = infometry_ct_should_use_google_connectors_template();
 	$use_google_drive = infometry_ct_should_use_google_drive_template();
 	$use_snowflake_native_apps = infometry_ct_should_use_snowflake_native_apps_template();
+	$use_asana_fdp = infometry_ct_should_use_asana_fdp_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps && ! $use_asana_fdp ) {
 		return;
 	}
 
@@ -772,6 +820,19 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_style( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/css/snowflake-native-apps.css', array(), $css_version );
 		wp_enqueue_script( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/js/snowflake-native-apps.js', array(), $js_version, true );
 	}
+
+	if ( $use_asana_fdp ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/asana-fdp-case-study.css';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+
+		wp_enqueue_style(
+			'infometry-asana-fdp-fonts',
+			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style( 'infometry-asana-fdp-case-study', INFOMETRY_CT_URL . 'assets/css/asana-fdp-case-study.css', array( 'infometry-asana-fdp-fonts' ), $css_version );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );
 
@@ -788,6 +849,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_google_connectors_template()
 		&& ! infometry_ct_should_use_google_drive_template()
 		&& ! infometry_ct_should_use_snowflake_native_apps_template()
+		&& ! infometry_ct_should_use_asana_fdp_template()
 	) {
 		return $urls;
 	}

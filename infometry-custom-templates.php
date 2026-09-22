@@ -365,6 +365,7 @@ function infometry_ct_body_classes( $classes ) {
 	}
 
 	if ( infometry_ct_should_use_asana_fdp_template() ) {
+		$classes = array_values( array_diff( $classes, array( 'header-transparent', 'template-slider' ) ) );
 		$classes[] = 'infometry-asana-fdp-page';
 	}
 

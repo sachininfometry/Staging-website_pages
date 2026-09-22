@@ -14,6 +14,9 @@ function esc_url(string $value): string { return preview_escape($value); }
 function esc_html(string $value): string { return preview_escape($value); }
 function esc_attr(string $value): string { return preview_escape($value); }
 function home_url(string $path = '/'): string { return 'https://www.infometry.net/' . ltrim($path, '/'); }
+function has_custom_logo(): bool { return false; }
+function get_nav_menu_locations(): array { return array(); }
+function get_bloginfo(string $show = ''): string { return 'Infometry Inc.'; }
 
 function get_header(): void {
 	echo <<<'HTML'

@@ -21,7 +21,7 @@ define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-
 define( 'INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE', 'templates/page-google-drive-connector.php' );
 define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake-native-apps.php' );
 define( 'INFOMETRY_CT_ASANA_FDP_TEMPLATE', 'templates/page-asana-fdp-case-study.php' );
-define( 'INFOMETRY_CT_ASANA_FDP_ASSET_VERSION', '2.9.6' );
+define( 'INFOMETRY_CT_ASANA_FDP_ASSET_VERSION', '2.9.7' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );

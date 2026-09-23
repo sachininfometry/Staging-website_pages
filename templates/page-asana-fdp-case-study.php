@@ -70,7 +70,7 @@ $outcomes = array(
 	</header>
 
 	<section class="ics-hero" aria-labelledby="ics-title">
-		<img class="ics-hero-final" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-final.png' ); ?>" width="1960" height="802" alt="Financial Data Platform FDP 2.0 modernization on Snowflake AI Data Cloud case study banner">
+		<img class="ics-hero-final" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-final.png' ); ?>" width="1960" height="802" alt="" aria-hidden="true">
 		<div class="ics-shell ics-hero-inner">
 			<div class="ics-hero-copy">
 				<p class="ics-kicker">Case Study</p>

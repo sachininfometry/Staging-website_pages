@@ -200,3 +200,12 @@ body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display
 .ics-implementation li:before{content:"✓";left:3px;top:10px;display:grid;width:26px;height:26px;place-items:center;border-radius:8px;color:#fff;background:#078ddd;font-size:14px;box-shadow:0 5px 12px rgba(7,141,221,.22)}
 @media(max-width:1000px){.ics-solution-flow{grid-template-columns:1fr}.ics-solution-flow>i{margin:auto;transform:rotate(90deg)}}
 @media(max-width:800px){.ics-implementation{padding:24px 20px}.ics-implementation>div{grid-template-columns:1fr;gap:0}.ics-implementation h3{font-size:20px}}
+
+/* Consistent brand-blue outcome cards with stronger text contrast. */
+.ics-outcome-grid{gap:10px}
+.ics-outcome-grid article{min-height:270px;padding:22px 18px;border:1px solid rgba(25,185,242,.58);background:rgba(2,36,70,.78);box-shadow:0 12px 26px rgba(0,0,0,.12)}
+.ics-outcome-grid svg,.ics-outcome-grid article:nth-child(4) svg,.ics-outcome-grid article:last-child svg{width:42px;height:42px;color:#16baf1}
+.ics-outcome-grid strong{color:#16c3f4;font-size:34px}
+.ics-outcome-grid h3{min-height:78px;margin-bottom:12px;color:#fff;font-size:15px;font-weight:700;line-height:1.42}
+.ics-outcome-grid p{color:#edf7ff;font-size:14px;font-weight:500;line-height:1.62}
+@media(max-width:720px){.ics-outcome-grid article{min-height:auto}.ics-outcome-grid h3{min-height:auto;font-size:15px}.ics-outcome-grid p{font-size:13px}}

@@ -4,8 +4,51 @@ body.infometry-asana-fdp-page #Header_wrapper,body.infometry-asana-fdp-page #Foo
 @media(max-width:720px){.ics-shell{width:min(100% - 30px,1160px)}.ics-header-inner{height:68px}.ics-logo,.ics-logo img{width:128px}.ics-contact{padding:8px 11px}.ics-hero,.ics-hero-inner{min-height:730px}.ics-hero{background-position:66% center}.ics-hero:before{background:linear-gradient(180deg,rgba(0,35,69,.98),rgba(0,38,74,.92) 65%,rgba(0,38,74,.6))}.ics-hero-inner{padding-top:100px}.ics-hero-copy{width:100%}.ics-hero h1{font-size:34px}.ics-hero-visual{top:410px;right:0;width:100%;height:190px;transform:scale(.72)}.ics-hero-visual .f1,.ics-hero-visual .f2{display:none}.ics-hero-benefits{right:0;bottom:17px;display:grid;grid-template-columns:1fr 1fr;gap:9px 22px}.ics-hero-benefits svg{width:32px;height:32px}.ics-section{padding:36px 0}.ics-client-grid,.ics-objective-grid,.ics-implementation>div{grid-template-columns:1fr}.ics-facts{padding:12px}.ics-objective-art{justify-content:center}.ics-card-grid{grid-template-columns:1fr 1fr}.ics-card-grid article{min-height:225px}.ics-outcome-grid{grid-template-columns:1fr 1fr}.ics-cta .ics-shell{align-items:flex-start;flex-direction:column;gap:22px}.ics-footer-row{justify-content:space-between}.ics-social{gap:11px;margin-left:0}.ics-footer-meta{gap:15px}.ics-footer-meta span:last-child{text-align:right}}
 @media(max-width:430px){.ics-hero h1{font-size:30px}.ics-hero-copy>p:not(.ics-kicker){font-size:13px}.ics-card-grid{grid-template-columns:1fr}.ics-card-grid article{min-height:auto}.ics-outcome-grid{grid-template-columns:1fr}.ics-facts{grid-template-columns:1fr}.ics-facts>div{border-right:0!important;border-bottom:1px solid #d7e9f4!important}.ics-facts>div:last-child{border-bottom:0!important}}
 @media(prefers-reduced-motion:reduce){.ics *{scroll-behavior:auto!important}}
-.ics-hero{background-image:url(../images/case-studies/asana-fdp-hero-reference.png)}
 .ics-header{display:none}
 .ics-hero{min-height:0;background:var(--deep)}
 .ics-hero:before,.ics-hero-inner{display:none}
 .ics-hero-exact{display:block;width:100%;height:auto;margin:0}
+
+/* Approved hero rebuilt as editable HTML/CSS over a clean photographic plate. */
+.ics-header{display:block;top:0;z-index:8;pointer-events:none}
+.ics-header .ics-header-inner{width:calc(100% - clamp(48px,8vw,156px));max-width:none;height:auto;padding-top:clamp(24px,2.7vw,52px);gap:clamp(15px,2vw,38px)}
+.ics-hero-brand{display:flex;align-items:center;gap:clamp(10px,1vw,18px);color:#fff;pointer-events:auto}
+.ics-hero-brand b{font-size:clamp(27px,2.65vw,52px);font-weight:700;letter-spacing:-.045em;line-height:1}
+.ics-brand-dots{display:grid;width:clamp(40px,3.2vw,62px);grid-template-columns:repeat(3,1fr);gap:clamp(4px,.38vw,7px);transform:rotate(-8deg)}
+.ics-brand-dots i{display:block;aspect-ratio:1;border-radius:50%;background:#fff}
+.ics-brand-dots i:nth-child(1),.ics-brand-dots i:nth-child(4),.ics-brand-dots i:nth-child(8){opacity:.2}
+.ics-brand-dots i:nth-child(2),.ics-brand-dots i:nth-child(5),.ics-brand-dots i:nth-child(7){opacity:.55}
+.ics-brand-divider{width:1px;height:clamp(48px,4.1vw,80px);background:rgba(255,255,255,.75)}
+.ics-snowflake-brand{display:flex;align-items:center;gap:clamp(6px,.55vw,11px);color:#fff}.ics-snowflake-brand svg{width:clamp(40px,3.7vw,72px);height:clamp(40px,3.7vw,72px);color:#43c3f3;stroke-width:2.15}.ics-snowflake-brand b{font-size:clamp(27px,2.6vw,51px);font-weight:400;letter-spacing:-.04em}.ics-snowflake-brand sup{align-self:flex-start;margin:7px 0 0 -5px;font-size:10px}
+.ics-hero-exact{display:none}
+.ics-hero{aspect-ratio:1958/803;min-height:0;background:#02264a url(../images/case-studies/asana-fdp-hero-clean.png) center/cover no-repeat}
+.ics-hero:before{display:block;background:linear-gradient(90deg,rgba(0,25,54,.24),transparent 56%)}
+.ics-hero .ics-hero-inner{display:block;width:calc(100% - clamp(48px,8vw,156px));max-width:none;height:100%;min-height:0;padding-top:clamp(118px,9.2vw,180px)}
+.ics-hero-copy{width:43%;max-width:none}
+.ics-kicker{margin-bottom:clamp(9px,1vw,19px);padding-top:0;color:#25bdf0;font-size:clamp(11px,.95vw,19px);font-weight:500;letter-spacing:.42em}
+.ics-kicker:before{display:none}
+.ics .ics-hero h1{margin:0 0 clamp(9px,1vw,20px);color:#fff;font-weight:400;letter-spacing:-.028em;line-height:1.02}
+.ics-title-main,.ics-title-sub,.ics-hero h1 em{display:block}
+.ics-title-main{font-size:clamp(32px,3.15vw,62px);font-weight:800;white-space:nowrap}
+.ics .ics-hero h1 em{color:#2bbcff;font-size:clamp(34px,3.45vw,68px);font-style:normal;font-weight:800;line-height:1.02}
+.ics-title-sub{margin-top:clamp(4px,.5vw,10px);font-size:clamp(27px,2.55vw,50px);font-weight:400;line-height:1.07}
+.ics-hero-copy>p:not(.ics-kicker){max-width:95%;margin-bottom:clamp(12px,1.15vw,23px);color:#fff;font-size:clamp(12px,1.18vw,23px);line-height:1.45}
+.ics-button-light{padding:clamp(11px,1vw,19px) clamp(18px,1.8vw,35px);border-radius:10px;font-size:clamp(12px,1.05vw,21px)}
+.ics-hero-visual{right:1.2%;top:14.5%;width:49%;height:60%}
+.ics-asana-sign{position:absolute;z-index:1;right:1%;top:-8%;display:flex;align-items:center;gap:clamp(5px,.55vw,11px);padding:clamp(6px,.55vw,11px) clamp(9px,.8vw,16px);color:#142e60;background:rgba(255,255,255,.93);border-radius:4px;box-shadow:0 0 22px rgba(169,222,255,.65);transform:rotate(1deg)}.ics-asana-sign i{position:relative;width:clamp(23px,2vw,39px);height:clamp(20px,1.7vw,33px)}.ics-asana-sign i b{position:absolute;width:43%;aspect-ratio:1;border-radius:50%;background:#f45c6d}.ics-asana-sign i b:first-child{left:29%;top:0}.ics-asana-sign i b:nth-child(2){left:0;bottom:0}.ics-asana-sign i b:last-child{right:0;bottom:0}.ics-asana-sign strong{font-size:clamp(18px,1.7vw,33px);letter-spacing:-.05em}
+.ics-cloud{top:29%;left:35%;width:27%;height:38%;border:0;border-radius:48%;background:linear-gradient(160deg,rgba(80,205,255,.95),rgba(0,112,228,.88));filter:drop-shadow(0 0 22px rgba(0,194,255,.75))}
+.ics-cloud:before{left:-22%;width:62%;height:74%}.ics-cloud:after{right:-20%;width:58%;height:70%}
+.ics-cloud svg{width:45%;height:auto;stroke-width:2.2}
+.ics-float{min-width:0;padding:clamp(8px,.75vw,15px) clamp(10px,1vw,20px);border-color:#62d2ff;border-radius:9px;background:linear-gradient(135deg,rgba(9,126,205,.83),rgba(2,65,132,.76));font-size:clamp(9px,.82vw,16px);font-weight:500;box-shadow:0 0 24px rgba(0,182,255,.27)}
+.ics-float svg{width:clamp(24px,2.25vw,44px);height:clamp(24px,2.25vw,44px)}
+.ics-float.f1{top:0;left:14%;width:26%}.ics-float.f2{top:8%;right:5%;width:26%}.ics-float.f3{top:31%;left:3%;width:25%}.ics-float.f4{right:0;bottom:0;width:27%}
+.ics-hero-benefits{left:4%;bottom:8.5%;gap:0;width:42%;justify-content:space-between}
+.ics-hero-benefits span{position:relative;flex:1;gap:clamp(8px,.8vw,15px);font-size:clamp(9px,.72vw,14px);font-weight:500}
+.ics-hero-benefits span:not(:last-child):after{content:"";position:absolute;right:7%;top:5%;width:1px;height:90%;background:rgba(255,255,255,.42)}
+.ics-hero-benefits svg{width:clamp(35px,3.1vw,61px);height:clamp(35px,3.1vw,61px);padding:clamp(7px,.6vw,12px)}
+
+@media(max-width:900px){
+  .ics-header .ics-header-inner{width:calc(100% - 30px);padding-top:18px;gap:12px}.ics-hero-brand b{font-size:25px}.ics-brand-dots{width:32px;gap:3px}.ics-brand-divider{height:38px}.ics-snowflake-brand svg{width:34px;height:34px}.ics-snowflake-brand b{font-size:23px}
+  .ics-hero{aspect-ratio:auto;min-height:730px;background-position:64% center}.ics-hero .ics-hero-inner{width:calc(100% - 30px);min-height:730px;padding-top:95px}.ics-hero-copy{width:100%}.ics-title-main{font-size:34px;white-space:normal}.ics .ics-hero h1 em{font-size:38px}.ics-title-sub{font-size:30px}.ics-hero-copy>p:not(.ics-kicker){max-width:100%;font-size:13px}.ics-hero-visual{top:405px;right:0;width:100%;height:180px}.ics-hero-visual .f1,.ics-hero-visual .f2{display:none}.ics-cloud{left:37%}.ics-hero-benefits{left:15px;right:15px;bottom:18px;width:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px 15px}.ics-hero-benefits span:not(:last-child):after{display:none}
+}
+@media(min-width:901px) and (max-width:1450px){.ics-hero-benefits{bottom:3.5%}.ics-asana-sign{top:-5%}}

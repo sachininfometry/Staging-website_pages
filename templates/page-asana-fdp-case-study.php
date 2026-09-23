@@ -63,24 +63,22 @@ $outcomes = array(
 
 	<header class="ics-header">
 		<div class="ics-shell ics-header-inner">
-			<a class="ics-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry" width="202" height="49"></a>
-			<nav aria-label="Primary navigation">
-				<?php foreach ( $nav_items as $label => $url ) : ?><a class="<?php echo 'Case Studies' === $label ? 'is-active' : ''; ?>" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?>
-			</nav>
-			<a class="ics-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span>→</span></a>
+			<a class="ics-hero-brand" href="<?php echo esc_url( $home_url ); ?>" aria-label="Infometry home"><span class="ics-brand-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><b>infometry</b></a>
+			<span class="ics-brand-divider" aria-hidden="true"></span>
+			<span class="ics-snowflake-brand"><svg aria-hidden="true"><use href="#ics-snow"/></svg><b>snowflake</b><sup>®</sup></span>
 		</div>
 	</header>
 
-	<section class="ics-hero" aria-label="Asana Financial Data Platform modernization case study banner">
-		<img class="ics-hero-exact" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-approved.png' ); ?>" width="1958" height="803" alt="Infometry and Snowflake case study: Financial Data Platform FDP 2.0 modernization on Snowflake AI Data Cloud for Asana">
+	<section class="ics-hero" aria-labelledby="ics-title">
 		<div class="ics-shell ics-hero-inner">
 			<div class="ics-hero-copy">
 				<p class="ics-kicker">Case Study</p>
-				<h1 id="ics-title">Financial Data Platform <em>(FDP 2.0)</em><br>Modernization on<br>Snowflake AI Data Cloud</h1>
+				<h1 id="ics-title"><span class="ics-title-main">Financial Data Platform</span><em>(FDP 2.0)</em><span class="ics-title-sub">Modernization on<br>Snowflake AI Data Cloud</span></h1>
 				<p>How Infometry helped Asana modernize its financial data platform to drive faster insights, greater scalability and smarter decision-making with Snowflake.</p>
 				<a class="ics-button ics-button-light" href="#ics-client">Read the Case Study <span>→</span></a>
 			</div>
 			<div class="ics-hero-visual" aria-label="Snowflake platform benefits">
+				<span class="ics-asana-sign"><i aria-hidden="true"><b></b><b></b><b></b></i><strong>asana</strong></span>
 				<div class="ics-cloud"><svg><use href="#ics-snow"/></svg></div>
 				<span class="ics-float f1"><svg><use href="#ics-chart"/></svg>Real-time<br>Financial Analytics</span>
 				<span class="ics-float f2"><svg><use href="#ics-gear"/></svg>AI-Powered<br>Insights</span>

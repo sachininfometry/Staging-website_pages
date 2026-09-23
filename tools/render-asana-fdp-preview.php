@@ -17,6 +17,7 @@ function home_url(string $path = '/'): string { return 'https://www.infometry.ne
 function has_custom_logo(): bool { return false; }
 function get_nav_menu_locations(): array { return array(); }
 function get_bloginfo(string $show = ''): string { return 'Infometry Inc.'; }
+function wp_date(string $format): string { return date($format); }
 
 function get_header(): void {
 	echo <<<'HTML'

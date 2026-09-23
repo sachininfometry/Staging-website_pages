@@ -21,6 +21,7 @@ define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-
 define( 'INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE', 'templates/page-google-drive-connector.php' );
 define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake-native-apps.php' );
 define( 'INFOMETRY_CT_ASANA_FDP_TEMPLATE', 'templates/page-asana-fdp-case-study.php' );
+define( 'INFOMETRY_CT_ASANA_FDP_ASSET_VERSION', '2.9.0' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
@@ -823,16 +824,13 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	if ( $use_asana_fdp ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/asana-fdp-case-study.css';
-		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
-
 		wp_enqueue_style(
 			'infometry-asana-fdp-fonts',
 			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
 			array(),
 			null
 		);
-		wp_enqueue_style( 'infometry-asana-fdp-case-study', INFOMETRY_CT_URL . 'assets/css/asana-fdp-case-study.css', array( 'infometry-asana-fdp-fonts' ), $css_version );
+		wp_enqueue_style( 'infometry-asana-fdp-case-study', INFOMETRY_CT_URL . 'assets/css/asana-fdp-case-study.css', array( 'infometry-asana-fdp-fonts' ), INFOMETRY_CT_ASANA_FDP_ASSET_VERSION );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );

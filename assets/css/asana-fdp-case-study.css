@@ -203,9 +203,11 @@ body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display
 
 /* Consistent brand-blue outcome cards with stronger text contrast. */
 .ics-outcome-grid{gap:10px}
-.ics-outcome-grid article{min-height:270px;padding:22px 18px;border:1px solid rgba(25,185,242,.58);background:rgba(2,36,70,.78);box-shadow:0 12px 26px rgba(0,0,0,.12)}
-.ics-outcome-grid svg,.ics-outcome-grid article:nth-child(4) svg,.ics-outcome-grid article:last-child svg{width:42px;height:42px;color:#16baf1}
-.ics-outcome-grid strong{color:#16c3f4;font-size:34px}
-.ics-outcome-grid h3{min-height:78px;margin-bottom:12px;color:#fff;font-size:15px;font-weight:700;line-height:1.42}
-.ics-outcome-grid p{color:#edf7ff;font-size:14px;font-weight:500;line-height:1.62}
-@media(max-width:720px){.ics-outcome-grid article{min-height:auto}.ics-outcome-grid h3{min-height:auto;font-size:15px}.ics-outcome-grid p{font-size:13px}}
+.ics-outcome-grid article{display:grid;grid-template-rows:56px 96px 1fr;min-height:300px;padding:24px 20px;border:1px solid rgba(25,185,242,.58);background:rgba(2,36,70,.78);box-shadow:0 12px 26px rgba(0,0,0,.12)}
+.ics-outcome-grid svg,.ics-outcome-grid article:nth-child(4) svg,.ics-outcome-grid article:last-child svg{align-self:start;width:42px;height:42px;margin:0;color:#16baf1}
+.ics-outcome-grid strong{align-self:start;margin:0;color:#16c3f4;font-size:34px;line-height:42px}
+.ics-outcome-grid h3{align-self:start;min-height:0;margin:0;padding-top:12px;color:#fff;font-size:15px;font-weight:700;line-height:1.42}
+.ics-outcome-grid p{align-self:start;margin:0;padding-top:18px;border-top:1px solid rgba(22,186,241,.22);color:#edf7ff;font-size:14px;font-weight:500;line-height:1.62}
+@media(max-width:1000px){.ics-outcome-grid article{grid-template-rows:56px 76px 1fr;min-height:270px}}
+@media(max-width:720px){.ics-outcome-grid article{grid-template-rows:54px auto auto;min-height:auto}.ics-outcome-grid h3{min-height:74px;padding-top:10px;font-size:15px}.ics-outcome-grid p{padding-top:15px;font-size:13px}}
+@media(max-width:430px){.ics-outcome-grid h3{min-height:auto;padding-bottom:15px}}

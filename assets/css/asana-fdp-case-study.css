@@ -152,7 +152,7 @@ body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display
 .ics h1,.ics h2,.ics h3,.ics h4,.ics .ics-button{font-family:"Roboto","Open Sans","Segoe UI",Arial,sans-serif}
 .ics-client,.ics-challenges,.ics-tech{background:#fff}
 .ics-objective,.ics-solution{background:#f4f9fc}
-.ics-outcomes,.ics-cta{background:#052f59}
+.ics-outcomes,.ics-cta{background:radial-gradient(circle at 14% 0,rgba(80,49,255,.28),transparent 30%),radial-gradient(circle at 88% 16%,rgba(12,123,255,.2),transparent 28%),#020b2d}
 .ics-section h2,.ics-cta h2{font-size:clamp(29px,2vw,36px)}
 .ics-section p{font-size:15px;line-height:1.65}
 .ics-challenges h3,.ics-implementation h3{font-family:"Roboto","Open Sans","Segoe UI",Arial,sans-serif;font-size:15px}

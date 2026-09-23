@@ -14,6 +14,9 @@ get_header();
 
 $contact_url = home_url( '/contact-us/' );
 $home_url    = home_url( '/' );
+$conversa_url     = home_url( '/product/conversational-analytics/' );
+$accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migration-automation/' );
+$customers_url    = home_url( '/company/customers-partners/' );
 $nav_items   = array(
 	'Products'    => home_url( '/products/' ),
 	'Solutions'   => home_url( '/solutions/' ),
@@ -113,7 +116,32 @@ $outcomes = array(
 
 	<section class="ics-cta"><div class="ics-shell"><div><h2>Ready to modernize your data platform?</h2><p>Let’s build a scalable, governed and future-ready analytics foundation together.</p></div><a class="ics-button ics-button-orange" href="<?php echo esc_url( $contact_url ); ?>">Talk to an Expert <span>→</span></a></div></section>
 
-	<footer class="ics-footer"><div class="ics-shell"><div class="ics-footer-row"><a class="ics-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry" width="202" height="49"></a><nav><?php foreach ( $nav_items as $label => $url ) : ?><a href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $label ); ?></a><?php endforeach; ?></nav><div class="ics-social"><span>in</span><span>𝕏</span><span>▶</span><span>p</span><span>◎</span><span>G</span></div></div><div class="ics-footer-meta"><span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Infometry Inc. All Rights Reserved.</span><span>Turning Data into What’s Next</span></div></div></footer>
 </main>
+
+<footer class="infometry-custom-footer" id="infometry-footer" aria-label="Infometry website footer">
+	<div class="infometry-shell">
+		<div class="infometry-footer-grid">
+			<div class="infometry-footer-connect">
+				<h2>Connect with us</h2>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
+				<div class="infometry-footer-social" aria-label="Infometry social profiles">
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+				</div>
+				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
+			</div>
+			<nav class="infometry-footer-column" aria-label="Footer products"><h3>Products</h3><a href="<?php echo esc_url( $conversa_url ); ?>">INFOFISCUS Conversa</a><a href="<?php echo esc_url( home_url( '/product/informatica-connectors/' ) ); ?>">Informatica Connectors</a><a href="<?php echo esc_url( home_url( '/product/#infofiscus-snowflake-native-apps' ) ); ?>">INFOFISCUS Snowflake Native Apps</a><a href="<?php echo esc_url( home_url( '/product/#pre-built-apps' ) ); ?>">Pre-Built Apps For IDMC and Matillion</a><a href="<?php echo esc_url( $accelerators_url ); ?>">Accelerators</a></nav>
+			<nav class="infometry-footer-column" aria-label="Footer resources"><h3>Resources</h3><a href="<?php echo esc_url( home_url( '/resources/blog/' ) ); ?>">Blog</a><a href="<?php echo esc_url( home_url( '/resources/infometry-case-studies/' ) ); ?>">Case Studies</a><a href="<?php echo esc_url( home_url( '/resources/whitepapers/' ) ); ?>">Whitepapers</a><a href="<?php echo esc_url( home_url( '/resources/gallery/' ) ); ?>">Gallery</a><a href="<?php echo esc_url( home_url( '/resources/webinar/' ) ); ?>">Webinar</a><a href="<?php echo esc_url( home_url( '/resources/press-releases/' ) ); ?>">Press Releases</a></nav>
+			<nav class="infometry-footer-column" aria-label="Footer company"><h3>Company</h3><a href="<?php echo esc_url( $customers_url ); ?>">Customers – Partners</a><a href="<?php echo esc_url( home_url( '/company/careers/' ) ); ?>">Careers</a><a href="<?php echo esc_url( home_url( '/company/life-at-infometry/' ) ); ?>">Life@Infometry</a><a href="<?php echo esc_url( home_url( '/company/infometry-cares/' ) ); ?>">Infometry Cares</a><a href="<?php echo esc_url( home_url( '/company/testimonials/' ) ); ?>">Testimonials</a></nav>
+		</div>
+		<div class="infometry-footer-bottom"><span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Infometry Inc. All Rights Reserved.</span><span>Enabling AI for Every Enterprise</span></div>
+	</div>
+</footer>
 
 <?php get_footer(); ?>

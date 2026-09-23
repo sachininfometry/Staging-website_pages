@@ -71,7 +71,8 @@ $outcomes = array(
 		</div>
 	</header>
 
-	<section class="ics-hero" aria-labelledby="ics-title">
+	<section class="ics-hero" aria-label="Asana Financial Data Platform modernization case study banner">
+		<img class="ics-hero-exact" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-approved.png' ); ?>" width="1958" height="803" alt="Infometry and Snowflake case study: Financial Data Platform FDP 2.0 modernization on Snowflake AI Data Cloud for Asana">
 		<div class="ics-shell ics-hero-inner">
 			<div class="ics-hero-copy">
 				<p class="ics-kicker">Case Study</p>

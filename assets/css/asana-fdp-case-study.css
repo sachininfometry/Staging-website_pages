@@ -5,3 +5,7 @@ body.infometry-asana-fdp-page #Header_wrapper,body.infometry-asana-fdp-page #Foo
 @media(max-width:430px){.ics-hero h1{font-size:30px}.ics-hero-copy>p:not(.ics-kicker){font-size:13px}.ics-card-grid{grid-template-columns:1fr}.ics-card-grid article{min-height:auto}.ics-outcome-grid{grid-template-columns:1fr}.ics-facts{grid-template-columns:1fr}.ics-facts>div{border-right:0!important;border-bottom:1px solid #d7e9f4!important}.ics-facts>div:last-child{border-bottom:0!important}}
 @media(prefers-reduced-motion:reduce){.ics *{scroll-behavior:auto!important}}
 .ics-hero{background-image:url(../images/case-studies/asana-fdp-hero-reference.png)}
+.ics-header{display:none}
+.ics-hero{min-height:0;background:var(--deep)}
+.ics-hero:before,.ics-hero-inner{display:none}
+.ics-hero-exact{display:block;width:100%;height:auto;margin:0}

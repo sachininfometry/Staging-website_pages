@@ -27,7 +27,7 @@ function get_header(): void {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Asana FDP Snowflake Case Study | Infometry Preview</title>
-	<link rel="stylesheet" href="assets/css/asana-fdp-case-study.css?v=2.8.0">
+	<link rel="stylesheet" href="assets/css/asana-fdp-case-study.css?v=2.8.3">
 </head>
 <body class="infometry-asana-fdp-page">
 HTML;

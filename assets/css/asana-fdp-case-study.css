@@ -358,3 +358,12 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 	.ics-solution-flow .ics-solution-card-head h3{font-size:18px}
 	.ics-solution-flow li{font-size:14px}
 }
+
+/* Outcomes are single statements; only the lead phrase carries emphasis. */
+.ics-outcome-grid article{grid-template-rows:56px 1fr;min-height:300px}
+.ics-outcome-grid .ics-outcome-statement{align-self:start;display:block;margin:0;padding:14px 0 0;border-top:1px solid rgba(22,186,241,.22);color:#edf7ff;font-size:14px;font-weight:500;line-height:1.62}
+.ics-outcome-statement b{display:inline;color:#fff;font-weight:800}
+.ics-outcome-statement span{display:inline;color:#edf7ff;font-weight:500}
+@media(max-width:1000px){.ics-outcome-grid article{grid-template-rows:56px 1fr;min-height:260px}}
+@media(max-width:720px){.ics-outcome-grid article{grid-template-rows:54px 1fr;min-height:235px}.ics-outcome-grid .ics-outcome-statement{min-height:0;padding-top:14px;font-size:13px}}
+@media(max-width:430px){.ics-outcome-grid article{min-height:auto}}

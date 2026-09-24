@@ -76,7 +76,7 @@ $outcomes = array(
 		<img class="ics-hero-final" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-final.png' ); ?>" width="1960" height="802" alt="" aria-hidden="true">
 		<div class="ics-shell ics-hero-inner">
 			<div class="ics-hero-copy">
-				<p class="ics-kicker"><span>Customer Case Study</span><b>Asana × Snowflake</b></p>
+				<p class="ics-kicker">Case Study</p>
 				<h1 id="ics-title"><span class="ics-title-main">Financial Data Platform</span><em>(FDP 2.0)</em><span class="ics-title-sub">Modernization on<br>Snowflake AI Data Cloud</span></h1>
 				<p>How Infometry helped Asana modernize its financial data platform to drive faster insights, greater scalability and smarter decision-making with Snowflake.</p>
 				<a class="ics-button ics-button-light" href="#ics-client">Read the Case Study <span>→</span></a>

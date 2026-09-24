@@ -255,7 +255,7 @@ body.infometry-asana-fdp-page #Header:after,
 body.infometry-asana-fdp-page #Top_bar:before,
 body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!important;box-shadow:none!important}
 
-.ics-hero-benefits span{font-size:14px;font-weight:800;line-height:1.35}
+.ics-hero-benefits span{font-size:13.5px;font-weight:700;line-height:1.35}
 
 .ics-facts>div{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:start;gap:16px;padding:22px}
 .ics-facts svg{align-self:start;margin:0}

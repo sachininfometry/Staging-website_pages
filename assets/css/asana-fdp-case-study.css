@@ -406,4 +406,4 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 @media(prefers-reduced-motion:reduce){.ics-solution-flow article,.ics-solution-icon,.ics-flow-arrow span{transition:none}.ics-solution-flow article:hover,.ics-solution-flow article:hover .ics-solution-icon,.ics-flow-arrow:hover span{transform:none}}
 
 /* Keep hero benefit labels proportional to the supporting hero copy. */
-.ics-hero-benefits span{font-size:clamp(11px,.72vw,13px);font-weight:600;line-height:1.35}
+.ics-hero-benefits span{font-size:14px;font-weight:700;line-height:1.35}

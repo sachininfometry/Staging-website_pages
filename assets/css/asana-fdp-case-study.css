@@ -216,3 +216,17 @@ body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display
 @media(max-width:1000px){.ics-outcome-grid article{grid-template-rows:56px 76px 1fr;min-height:270px}}
 @media(max-width:720px){.ics-outcome-grid article{grid-template-rows:54px auto auto;min-height:auto}.ics-outcome-grid h3{min-height:74px;padding-top:10px;font-size:15px}.ics-outcome-grid p{padding-top:15px;font-size:13px}}
 @media(max-width:430px){.ics-outcome-grid h3{min-height:auto;padding-bottom:15px}}
+
+/* Simple premium hero: open typography, clear case-study identity, minimal chrome. */
+.ics-hero:before{background:linear-gradient(90deg,rgba(0,24,52,.98) 0%,rgba(0,29,60,.9) 35%,rgba(0,34,69,.5) 53%,rgba(0,34,69,.08) 72%,transparent 100%)}
+.ics-hero-copy:before{display:none}
+.ics-kicker{display:inline-flex;width:max-content;margin-bottom:clamp(16px,1.35vw,26px);padding:7px 12px 7px 15px;align-items:center;border:1px solid rgba(94,218,255,.58);border-radius:999px;color:#032d50;background:#35c9f4;font-size:clamp(13px,.92vw,18px);font-weight:800;letter-spacing:.24em;line-height:1;text-shadow:none;box-shadow:0 7px 18px rgba(0,166,224,.18)}
+.ics .ics-hero h1{text-shadow:none}
+.ics-hero-copy>p:not(.ics-kicker){max-width:92%;color:#edf5fb;font-weight:400;line-height:1.52;text-shadow:none}
+.ics-button-light{border-color:rgba(255,255,255,.88);border-radius:10px;box-shadow:0 10px 24px rgba(0,16,44,.2)}
+.ics-button-light:hover{transform:translateY(-1px);box-shadow:0 13px 28px rgba(0,16,44,.25)}
+.ics-hero-benefits{gap:0;width:45%;margin-top:clamp(30px,2.5vw,48px)}
+.ics-hero-benefits span{min-height:58px;padding:0 clamp(13px,1.05vw,21px);border:0;border-radius:0;background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.ics-hero-benefits span:first-child{padding-left:0}
+.ics-hero-benefits span:not(:last-child):after{display:block;content:"";position:absolute;right:0;top:12%;width:1px;height:76%;background:rgba(255,255,255,.3)}
+@media(max-width:900px){.ics-hero:before{background:linear-gradient(180deg,rgba(0,27,57,.98) 0%,rgba(0,31,63,.92) 56%,rgba(0,31,63,.52) 100%)}.ics-kicker{margin-bottom:15px;padding:7px 11px 7px 13px;font-size:12px}.ics-hero-benefits{gap:8px 14px}.ics-hero-benefits span{min-height:50px;padding:0 8px}.ics-hero-benefits span:first-child{padding-left:8px}.ics-hero-benefits span:not(:last-child):after{display:none}}

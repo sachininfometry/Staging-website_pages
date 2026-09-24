@@ -378,3 +378,9 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 .ics-hero-final{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important}
 .ics-hero-benefits svg{width:clamp(35px,3.1vw,61px);height:clamp(35px,3.1vw,61px);min-width:clamp(35px,3.1vw,61px);flex:0 0 clamp(35px,3.1vw,61px);aspect-ratio:1/1}
 @media(max-width:900px){.ics-hero-benefits svg{width:38px;height:38px;min-width:38px;flex-basis:38px}}
+
+/* Modern directional controls for the solution journey. */
+.ics-flow-arrow span{position:relative;overflow:hidden;border:0;color:#fff;background:linear-gradient(135deg,#12bff0 0%,#087bc9 100%);box-shadow:0 10px 26px rgba(8,123,201,.28)}
+.ics-flow-arrow span:after{content:"";position:absolute;inset:1px;border:1px solid rgba(255,255,255,.34);border-radius:inherit;pointer-events:none}
+.ics-flow-arrow span svg{position:relative;z-index:1;width:25px;height:25px;color:#fff;stroke-width:2}
+.ics-flow-arrow small{color:#0873b4}

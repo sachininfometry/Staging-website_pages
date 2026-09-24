@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Asana FDP Snowflake Case Study | Infometry Preview</title>
-	<link rel="stylesheet" href="assets/css/asana-fdp-case-study.css?v=2.13.2">
+	<link rel="stylesheet" href="assets/css/asana-fdp-case-study.css?v=2.13.3">
 	<style>
 		html,body{margin:0}.preview-theme-row{display:flex;height:96px;padding:0 42px;align-items:center}.preview-theme-row img{width:300px;height:auto}.preview-theme-row nav{display:flex;gap:42px;margin-left:auto}.preview-theme-row a{color:#fff;font:600 14px/1.2 Arial,sans-serif;text-decoration:none}.preview-old-slider{height:365px;background:#081735}@media(max-width:767px){.preview-theme-row{height:72px;padding:0 15px}.preview-theme-row img{width:210px}.preview-theme-row nav{display:none}}
 	</style>
@@ -27,6 +27,7 @@
 		<symbol id="ics-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/><path d="m10.5 7.5-4 8m7-8 4 8M8 18h8"/></symbol>
 		<symbol id="ics-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.7.9-1.9-2.1-2.1-1.9.9-1.7-.7L10.8 2h-3l-.7 2.3-1.7.7-1.9-.9-2.1 2.1.9 1.9-.7 1.7-2 .7v3l2 .7.7 1.7-.9 1.9 2.1 2.1 1.9-.9 1.7.7.7 2.3h3l.7-2.3 1.7-.7 1.9.9 2.1-2.1-.9-1.9.7-1.7 2-.7Z" transform="translate(1)"/></symbol>
 		<symbol id="ics-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.5 7l17 10m0-10-17 10M8 4l4 2 4-2M8 20l4-2 4 2M3 11l3 1-3 2m18-3-3 1 3 2"/></symbol>
+		<symbol id="ics-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
 	</svg>
 
 	<header class="ics-header">
@@ -71,9 +72,9 @@
 
 	<section class="ics-section ics-solution" id="ics-solution"><div class="ics-shell"><h2>The Infometry Solution</h2><p>Infometry successfully modernized Asana’s Financial Data Platform by redesigning the architecture using Snowflake best practices and modern data engineering principles.</p><div class="ics-solution-flow">
 		<article class="is-legacy"><div class="ics-solution-card-head"><span class="ics-solution-icon"><svg><use href="#ics-cube"/></svg></span><div><small>01 / Legacy state</small><h3>Existing FDP</h3></div></div><ul><li><svg><use href="#ics-link"/></svg><span>Custom Python + Coupled SQL</span></li><li><svg><use href="#ics-database"/></svg><span>Full data refreshes</span></li><li><svg><use href="#ics-shield"/></svg><span>Limited governance</span></li><li><svg><use href="#ics-cube"/></svg><span>Non-modular architecture</span></li><li><svg><use href="#ics-nodes"/></svg><span>Shared workloads</span></li></ul></article>
-		<i class="ics-flow-arrow"><span>→</span><small>Modernize</small></i>
+		<i class="ics-flow-arrow"><span><svg><use href="#ics-arrow-right"/></svg></span><small>Modernize</small></i>
 		<article class="is-modern"><div class="ics-solution-card-head"><span class="ics-solution-icon"><svg><use href="#ics-snow"/></svg></span><div><small>02 / Modern platform</small><h3>FDP 2.0 on Snowflake</h3></div></div><ul><li><svg><use href="#ics-database"/></svg><span>EDL — Extract, Detailed Load</span></li><li><svg><use href="#ics-nodes"/></svg><span>ESL — Enterprise Staging Layer</span></li><li><svg><use href="#ics-building"/></svg><span>EDW — Enterprise Data Warehouse</span></li><li><svg><use href="#ics-bolt"/></svg><span>Incremental processing</span></li><li><svg><use href="#ics-gear"/></svg><span>Apache Airflow orchestration</span></li><li><svg><use href="#ics-shield"/></svg><span>Data governance &amp; lineage</span></li><li><svg><use href="#ics-cube"/></svg><span>Modular, scalable architecture</span></li></ul></article>
-		<i class="ics-flow-arrow"><span>→</span><small>Enable</small></i>
+		<i class="ics-flow-arrow"><span><svg><use href="#ics-arrow-right"/></svg></span><small>Enable</small></i>
 		<article class="is-foundation"><div class="ics-solution-card-head"><span class="ics-solution-icon"><svg><use href="#ics-chart"/></svg></span><div><small>03 / Business foundation</small><h3>Future-ready capabilities</h3></div></div><ul><li><svg><use href="#ics-nodes"/></svg><span>Integrated data sources</span></li><li><svg><use href="#ics-cube"/></svg><span>Dimensional modeling</span></li><li><svg><use href="#ics-snow"/></svg><span>Snowflake best practices</span></li><li><svg><use href="#ics-shield"/></svg><span>Secure data sharing</span></li><li><svg><use href="#ics-bolt"/></svg><span>Future-ready foundation</span></li></ul></article>
 	</div><div class="ics-implementation"><h3>The implementation included:</h3><div><ul><li>Designed and implemented a layered Enterprise Data Lake (EDL), Enterprise Staging Layer (ESL), and Enterprise Data Platform architecture.</li><li>Replaced full data refreshes with incremental data processing using control and audit frameworks.</li><li>Implemented a standardized dimensional data model with common facts and conformed dimensions.</li><li>Introduced Apache Airflow for enterprise workflow orchestration.</li></ul><ul><li>Strengthened data governance through standardized data models, referential integrity, auditability, and end-to-end lineage.</li><li>Optimized data integration across Zuora, Salesforce, NetSuite, and Product Events.</li><li>Leveraged Snowflake’s AI Data Cloud architecture and secure data sharing capabilities.</li></ul></div></div></div></section>
 

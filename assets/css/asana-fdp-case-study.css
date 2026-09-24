@@ -393,3 +393,14 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 	.ics-hero-benefits span:first-child{padding-left:0}
 	.ics-hero-benefits svg{width:42px;height:42px;min-width:42px;flex-basis:42px;padding:9px}
 }
+
+/* Premium interaction for the solution journey. */
+.ics-solution-flow article{transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.ics-solution-flow article:hover{z-index:3;transform:translateY(-9px);border-color:rgba(8,139,207,.42);box-shadow:0 28px 58px rgba(7,53,89,.17)}
+.ics-solution-flow article.is-modern:hover{border-color:rgba(92,220,255,.82);box-shadow:0 34px 68px rgba(0,83,139,.34)}
+.ics-solution-flow article:hover .ics-solution-icon{transform:scale(1.07) rotate(-3deg)}
+.ics-solution-icon{transition:transform .28s ease,box-shadow .28s ease}
+.ics-flow-arrow span{transition:transform .24s ease,box-shadow .24s ease}
+.ics-flow-arrow:hover span{transform:translateX(4px);box-shadow:0 13px 30px rgba(8,123,201,.4)}
+@media(max-width:900px){.ics-solution-flow article:hover{transform:translateY(-4px)}.ics-flow-arrow:hover span{transform:rotate(90deg) translateX(3px)}}
+@media(prefers-reduced-motion:reduce){.ics-solution-flow article,.ics-solution-icon,.ics-flow-arrow span{transition:none}.ics-solution-flow article:hover,.ics-solution-flow article:hover .ics-solution-icon,.ics-flow-arrow:hover span{transform:none}}

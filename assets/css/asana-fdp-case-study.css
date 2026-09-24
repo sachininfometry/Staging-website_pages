@@ -234,3 +234,71 @@ body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display
 /* Clear, high-contrast case-study label without adding visual clutter. */
 .ics-kicker{padding:10px 18px 10px 21px;overflow:hidden;border:1px solid rgba(69,211,255,.72);color:#76e3ff;background:linear-gradient(135deg,rgba(1,39,76,.96),rgba(3,70,111,.94));font-size:clamp(15px,1.05vw,20px);font-weight:900;letter-spacing:.2em;line-height:1;text-shadow:0 1px 10px rgba(47,207,255,.22);box-shadow:0 9px 24px rgba(0,12,38,.2)}
 @media(max-width:900px){.ics-kicker{padding:9px 14px 9px 17px;font-size:13px;letter-spacing:.18em}}
+
+/* Design-feedback polish: clearer type, symmetric cards and a cleaner architecture story. */
+body.infometry-asana-fdp-page #Header_wrapper,
+body.infometry-asana-fdp-page #Header,
+body.infometry-asana-fdp-page #Top_bar,
+body.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
+body.infometry-asana-fdp-page #Top_bar.is-sticky{
+	border:0!important;
+	border-bottom:0!important;
+	background:transparent!important;
+	box-shadow:none!important;
+	-webkit-backdrop-filter:none!important;
+	backdrop-filter:none!important;
+}
+body.infometry-asana-fdp-page #Header_wrapper:before,
+body.infometry-asana-fdp-page #Header_wrapper:after,
+body.infometry-asana-fdp-page #Header:before,
+body.infometry-asana-fdp-page #Header:after,
+body.infometry-asana-fdp-page #Top_bar:before,
+body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!important;box-shadow:none!important}
+
+.ics-hero-benefits span{font-size:14px;font-weight:800;line-height:1.35}
+
+.ics-facts>div{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:start;gap:16px;padding:22px}
+.ics-facts svg{align-self:start;margin:0}
+.ics-facts span{align-self:start;padding-top:1px;line-height:1.5}
+.ics-facts b{line-height:1.35}
+
+.ics-objective-art{overflow:visible}
+.ics-objective-art>svg{overflow:visible;padding:31px;stroke-width:1.65}
+
+.ics-solution-flow{grid-template-columns:minmax(0,1fr) 58px minmax(0,1.08fr) minmax(0,1fr);gap:0;margin-top:28px;overflow:hidden;border:1px solid #cfe2ee;border-radius:20px;background:#fff;box-shadow:0 20px 46px rgba(7,53,89,.1)}
+.ics-solution-flow article,.ics-solution-flow article.is-modern,.ics-solution-flow article:last-child{position:relative;padding:56px 28px 30px;border:0;border-radius:0;background:#fff;box-shadow:none}
+.ics-solution-flow article.is-modern{background:linear-gradient(180deg,#effaff 0%,#e4f4fc 100%)}
+.ics-solution-flow article:not(:last-child){border-right:1px solid #d9e9f2}
+.ics-solution-flow article:before{content:"01  LEGACY";position:absolute;top:24px;left:28px;color:#6b8297;font-size:11px;font-weight:800;letter-spacing:.16em}
+.ics-solution-flow article.is-modern:before{content:"02  MODERNIZED";color:#007fc9}
+.ics-solution-flow article:last-child:before{content:"03  FOUNDATION"}
+.ics-solution-flow h3{min-height:52px;margin-bottom:12px;font-size:19px;line-height:1.35}
+.ics-solution-flow li{min-height:0;padding:11px 6px 11px 38px;font-size:15px;font-weight:600;line-height:1.45}
+.ics-solution-flow li:before{left:4px;top:10px}
+.ics-solution-flow>i{position:relative;z-index:2;align-self:center;justify-self:center;margin-inline:-23px;background:#fff}
+.ics-implementation{margin-top:26px;padding:30px 32px;border:1px solid #d4e5ef;border-left:5px solid #078ddd;border-radius:14px;background:#fff;box-shadow:0 14px 34px rgba(7,53,89,.07)}
+.ics-implementation h3{font-size:21px}
+.ics-implementation li{padding:11px 0 11px 42px;color:#274f70;font-size:15px;font-weight:600;line-height:1.6}
+
+.ics-outcome-grid{align-items:stretch;gap:10px}
+.ics-outcome-grid article{grid-template-rows:56px 112px minmax(210px,1fr);height:100%;min-height:402px}
+.ics-outcome-grid h3{align-self:stretch;padding:12px 0 16px;display:flex;align-items:flex-start}
+.ics-outcome-grid p{align-self:stretch;display:flex;align-items:flex-end;padding-top:18px}
+
+@media(max-width:1000px){
+	.ics-solution-flow{grid-template-columns:1fr;gap:0;overflow:visible;border:0;background:transparent;box-shadow:none}
+	.ics-solution-flow article,.ics-solution-flow article.is-modern,.ics-solution-flow article:last-child{border:1px solid #d4e5ef;border-radius:16px;box-shadow:0 14px 32px rgba(7,53,89,.07)}
+	.ics-solution-flow article:not(:last-child){border-right:1px solid #d4e5ef}
+	.ics-solution-flow>i{margin:-2px auto;transform:rotate(90deg)}
+	.ics-outcome-grid article{grid-template-rows:56px 92px minmax(150px,1fr);min-height:320px}
+}
+@media(max-width:720px){
+	.ics-hero-benefits span{font-size:14px}
+	.ics-facts>div{padding:18px}
+	.ics-implementation{padding:25px 20px}
+	.ics-implementation li{font-size:15px}
+	.ics-outcome-grid article{grid-template-rows:54px auto auto;min-height:auto}
+	.ics-outcome-grid h3{min-height:78px;padding-bottom:16px}
+	.ics-outcome-grid p{display:block;padding-top:16px}
+}
+@media(max-width:430px){.ics-outcome-grid h3{min-height:auto}}

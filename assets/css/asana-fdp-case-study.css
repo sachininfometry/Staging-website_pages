@@ -387,11 +387,11 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 
 /* Softer outcome emphasis and safer hero-benefit sizing at compact desktops. */
 .ics-outcome-statement b{color:#7bc8ef}
-@media(min-width:901px) and (max-width:1100px){
-	.ics-hero-benefits{width:58%;gap:0}
-	.ics-hero-benefits span{min-width:0;padding-inline:9px;font-size:13px;gap:9px}
+@media(min-width:901px) and (max-width:1250px){
+	.ics-hero-benefits{width:62%;gap:0}
+	.ics-hero-benefits span{min-width:0;padding-inline:7px;font-size:12px;line-height:1.25;gap:7px}
 	.ics-hero-benefits span:first-child{padding-left:0}
-	.ics-hero-benefits svg{width:42px;height:42px;min-width:42px;flex-basis:42px;padding:9px}
+	.ics-hero-benefits svg{width:36px;height:36px;min-width:36px;flex-basis:36px;padding:8px}
 }
 
 /* Premium interaction for the solution journey. */

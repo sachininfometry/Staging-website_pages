@@ -367,3 +367,14 @@ body.infometry-asana-fdp-page #Top_bar:after{display:none!important;border:0!imp
 @media(max-width:1000px){.ics-outcome-grid article{grid-template-rows:56px 1fr;min-height:260px}}
 @media(max-width:720px){.ics-outcome-grid article{grid-template-rows:54px 1fr;min-height:235px}.ics-outcome-grid .ics-outcome-statement{min-height:0;padding-top:14px;font-size:13px}}
 @media(max-width:430px){.ics-outcome-grid article{min-height:auto}}
+
+/* Final color and hero-rendering corrections. */
+.ics-outcome-grid svg,
+.ics-outcome-grid article:nth-child(4) svg,
+.ics-outcome-grid article:last-child svg,
+.ics-outcome-grid strong{color:#ff6a22}
+.ics-outcome-statement b{color:#16baf1}
+
+.ics-hero-final{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important}
+.ics-hero-benefits svg{width:clamp(35px,3.1vw,61px);height:clamp(35px,3.1vw,61px);min-width:clamp(35px,3.1vw,61px);flex:0 0 clamp(35px,3.1vw,61px);aspect-ratio:1/1}
+@media(max-width:900px){.ics-hero-benefits svg{width:38px;height:38px;min-width:38px;flex-basis:38px}}

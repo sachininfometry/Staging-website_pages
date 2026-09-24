@@ -85,7 +85,8 @@ body.infometry-asana-fdp-page #Footer,body.infometry-asana-fdp-page .mfn-footer,
 /* Overlay the existing BeTheme logo/navigation on the supplied banner. */
 body.infometry-asana-fdp-page #Header_wrapper{display:block!important;position:absolute!important;z-index:80!important;top:0!important;left:0!important;right:0!important;width:100%!important;height:96px!important;min-height:0!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important}
 body.infometry-asana-fdp-page #Header{display:block!important;position:relative!important;width:100%!important;height:96px!important;min-height:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
-body.infometry-asana-fdp-page #Top_bar{display:block!important;position:absolute!important;z-index:82!important;top:0!important;left:0!important;width:100%!important;height:96px!important;min-height:96px!important;border:0!important;border-bottom:1px solid rgba(85,177,235,.2)!important;background:rgba(1,17,43,.96)!important;box-shadow:0 8px 26px rgba(0,10,31,.18)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+body.infometry-asana-fdp-page #Top_bar{display:block!important;position:absolute!important;z-index:82!important;top:0!important;left:0!important;width:100%!important;height:96px!important;min-height:96px!important;border:0!important;border-bottom:1px solid transparent!important;background:transparent!important;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+body.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar{border-bottom-color:rgba(85,177,235,.2)!important;background:rgba(1,17,43,.96)!important;box-shadow:0 8px 26px rgba(0,10,31,.18)!important;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 body.infometry-asana-fdp-page #Top_bar.is-sticky{position:fixed!important;height:auto!important;min-height:72px!important;background:#020d2b!important}
 body.infometry-asana-fdp-page #Subheader,
 body.infometry-asana-fdp-page #mfn-rev-slider,
@@ -95,7 +96,7 @@ body.infometry-asana-fdp-page .forcefullwidth_wrapper_tp_banner,
 body.infometry-asana-fdp-page .rev_slider_wrapper,
 body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_wrapper"],
 body.infometry-asana-fdp-page [id^="rev_slider_"][id$="_forcefullwidth"]{display:none!important;visibility:hidden!important;width:0!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}
-@media(max-width:767px){body.infometry-asana-fdp-page #Header_wrapper,body.infometry-asana-fdp-page #Header{height:72px!important}body.infometry-asana-fdp-page #Top_bar{height:72px!important;min-height:72px!important;background:rgba(1,17,43,.97)!important}}
+@media(max-width:767px){body.infometry-asana-fdp-page #Header_wrapper,body.infometry-asana-fdp-page #Header{height:72px!important}body.infometry-asana-fdp-page #Top_bar{height:72px!important;min-height:72px!important;background:transparent!important}body.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar{background:rgba(1,17,43,.97)!important}}
 
 /* Crisp, premium client and objective sections. */
 .ics-client{position:relative;padding:clamp(42px,4vw,64px) 0;background:radial-gradient(circle at 88% 18%,rgba(15,169,232,.08),transparent 26%),#fff}

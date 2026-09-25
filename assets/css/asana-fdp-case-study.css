@@ -418,14 +418,14 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 .ics-hero{
 	background-position:center;
 	background-repeat:no-repeat;
-	background-size:cover;
+	background-size:contain;
 }
 .ics-hero-final{
 	width:100%!important;
 	height:100%!important;
 	max-width:none!important;
 	max-height:none!important;
-	object-fit:cover!important;
+	object-fit:contain!important;
 	object-position:center!important;
 }
 
@@ -460,5 +460,5 @@ body.admin-bar.infometry-asana-fdp-page #Top_bar.is-sticky{top:32px!important}
 @media(max-width:900px){
 	.ics .ics-shell,
 	.ics-hero .ics-hero-inner{width:calc(100% - 30px);max-width:760px}
-	.ics-hero{background-position:62% center;background-size:cover}
+	.ics-hero{background-position:center;background-size:contain}
 }

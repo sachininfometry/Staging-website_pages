@@ -408,28 +408,55 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 /* Keep hero benefit labels proportional to the supporting hero copy. */
 .ics-hero-benefits span{font-size:14px;font-weight:800;line-height:1.35}
 
-/* Final responsive guardrails: preserve artwork proportions and cap wide layouts. */
+/* Final responsive guardrails: cap wide layouts without flattening the mockup. */
 .ics .ics-shell,
 .ics-hero .ics-hero-inner{
 	width:min(calc(100% - clamp(48px,8vw,156px)),1440px);
 	max-width:1440px;
 	margin-inline:auto;
 }
+
+/*
+ * The approved 1960 x 802 artwork is already a complete hero composition.
+ * Render it once in normal document flow: no duplicate HTML copy, no masking,
+ * no dark overlay, and no contain-sized bands above or below the artwork.
+ */
 .ics-hero{
-	background-color:#02264a;
-	background-image:url(../images/case-studies/asana-fdp-hero-final.png);
-	background-position:center;
-	background-repeat:no-repeat;
-	background-size:contain;
+	min-height:0!important;
+	height:auto!important;
+	aspect-ratio:auto!important;
+	background:#02264a!important;
+	overflow:hidden;
 }
-.ics-hero:before{
-	display:block;
-	z-index:0;
-	background:linear-gradient(90deg,#02264a 0%,#02264a 38%,rgba(2,38,74,.96) 42%,rgba(2,38,74,.72) 48%,rgba(2,38,74,.3) 55%,transparent 64%);
+.ics-hero:before,
+.ics-hero:after,
+.ics-hero .ics-hero-inner{display:none!important}
+.ics-hero .ics-hero-final{
+	position:relative!important;
+	z-index:1!important;
+	inset:auto!important;
+	display:block!important;
+	width:100%!important;
+	height:auto!important;
+	max-width:none!important;
+	max-height:none!important;
+	margin:0!important;
+	object-fit:contain!important;
+	object-position:center!important;
+	clip-path:none!important;
+	-webkit-mask-image:none!important;
+	mask-image:none!important;
 }
-.ics-hero-final{
-	display:none!important;
+.ics-hero-art-cta{
+	position:absolute;
+	z-index:4;
+	left:4.1%;
+	top:70%;
+	width:17.2%;
+	height:8%;
+	border-radius:10px;
 }
+.ics-hero-art-cta:focus-visible{outline:3px solid #35c9f4;outline-offset:4px}
 
 /* Keep the top state clear, then add enough contrast once content scrolls underneath. */
 body.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
@@ -462,5 +489,4 @@ body.admin-bar.infometry-asana-fdp-page #Top_bar.is-sticky{top:32px!important}
 @media(max-width:900px){
 	.ics .ics-shell,
 	.ics-hero .ics-hero-inner{width:calc(100% - 30px);max-width:760px}
-	.ics-hero{background-position:center;background-size:contain}
 }

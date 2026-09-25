@@ -431,7 +431,23 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 }
 .ics-hero:after{display:none!important}
 .ics-hero .ics-hero-final{
-	display:none!important;
+	position:absolute!important;
+	z-index:1!important;
+	inset:0!important;
+	display:block!important;
+	width:100%!important;
+	height:100%!important;
+	max-width:none!important;
+	max-height:none!important;
+	margin:0!important;
+	object-fit:fill!important;
+	object-position:center!important;
+	clip-path:none!important;
+	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 39%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.72) 47%,#000 52%,#000 100%)!important;
+	mask-image:linear-gradient(90deg,transparent 0%,transparent 39%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.72) 47%,#000 52%,#000 100%)!important;
+	-webkit-mask-repeat:no-repeat!important;
+	mask-repeat:no-repeat!important;
+	pointer-events:none;
 }
 .ics-hero .ics-hero-inner{
 	position:relative;
@@ -468,7 +484,7 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 .ics-hero-copy>p:not(.ics-kicker){max-width:680px;margin-bottom:clamp(26px,1.8vw,34px);color:#f5f9fd;font-size:clamp(15px,1.12vw,21px);font-weight:400;line-height:1.55}
 .ics-button-light{padding:17px 30px;border-radius:12px;font-size:clamp(15px,1vw,19px);box-shadow:0 14px 32px rgba(0,16,44,.25)}
 
-.ics-hero-visual{display:block!important;right:1%;top:16%;width:48%;height:58%}
+.ics-hero-visual{display:none!important}
 .ics-hero-benefits{
 	position:absolute;
 	left:0;
@@ -520,8 +536,7 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 	.ics-hero-copy{width:100%;max-width:640px}
 	.ics-title-main{font-size:34px;white-space:normal}.ics .ics-hero h1 em{font-size:39px}.ics-title-sub{font-size:30px}
 	.ics-hero-copy>p:not(.ics-kicker){max-width:100%;font-size:14px}
-	.ics-hero-visual{top:410px;right:0;width:100%;height:180px}
-	.ics-hero-visual .f1,.ics-hero-visual .f2{display:none}
+	.ics-hero .ics-hero-final{display:none!important}
 	.ics-hero-benefits{left:0;right:0;bottom:20px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:8px 15px}
 	.ics-hero-benefits span{padding:5px 8px}.ics-hero-benefits span:first-child{padding-left:8px}.ics-hero-benefits span:not(:last-child):after{display:none!important}
 }

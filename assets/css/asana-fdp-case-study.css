@@ -433,10 +433,24 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 body.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
 body.infometry-asana-fdp-page #Top_bar.is-sticky{
 	border-bottom:1px solid rgba(151,205,242,.2)!important;
-	background:rgba(2,18,42,.88)!important;
+	background:rgba(0,0,0,.74)!important;
 	box-shadow:0 8px 28px rgba(0,9,28,.2)!important;
 	-webkit-backdrop-filter:blur(14px) saturate(125%)!important;
 	backdrop-filter:blur(14px) saturate(125%)!important;
+}
+
+/* Keep the sticky logo below the WordPress toolbar for logged-in reviewers. */
+body.admin-bar.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
+body.admin-bar.infometry-asana-fdp-page #Top_bar.is-sticky{top:32px!important}
+
+@media(min-width:601px) and (max-width:782px){
+	body.admin-bar.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
+	body.admin-bar.infometry-asana-fdp-page #Top_bar.is-sticky{top:46px!important}
+}
+
+@media(max-width:600px){
+	body.admin-bar.infometry-asana-fdp-page.mfn-header-scrolled #Top_bar,
+	body.admin-bar.infometry-asana-fdp-page #Top_bar.is-sticky{top:0!important}
 }
 
 @media(max-width:1100px){

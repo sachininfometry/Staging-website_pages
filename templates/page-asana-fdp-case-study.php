@@ -17,7 +17,14 @@ $home_url    = home_url( '/' );
 $conversa_url     = home_url( '/product/conversational-analytics/' );
 $accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migration-automation/' );
 $customers_url    = home_url( '/company/customers-partners/' );
-
+$nav_items   = array(
+	'Products'    => home_url( '/products/' ),
+	'Solutions'   => home_url( '/solutions/' ),
+	'Industries'  => home_url( '/industries/' ),
+	'Case Studies'=> home_url( '/case-studies/' ),
+	'Resources'   => home_url( '/resources/' ),
+	'About'       => home_url( '/company/' ),
+);
 
 $challenges = array(
 	array( 'link', 'Tightly coupled processing', 'Extensive custom Python processing and tightly coupled SQL transformations increased implementation and maintenance effort.' ),

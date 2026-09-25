@@ -440,7 +440,7 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 	max-width:none!important;
 	max-height:none!important;
 	margin:0!important;
-	object-fit:fill!important;
+	object-fit:cover!important;
 	object-position:center!important;
 	clip-path:none!important;
 	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 39%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.72) 47%,#000 52%,#000 100%)!important;

@@ -442,10 +442,10 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 	margin:0!important;
 	object-fit:cover!important;
 	object-position:center!important;
-	transform:translateX(4%)!important;
+	transform:none!important;
 	clip-path:none!important;
-	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 42%,rgba(0,0,0,.16) 45%,rgba(0,0,0,.72) 49%,#000 53%,#000 100%)!important;
-	mask-image:linear-gradient(90deg,transparent 0%,transparent 42%,rgba(0,0,0,.16) 45%,rgba(0,0,0,.72) 49%,#000 53%,#000 100%)!important;
+	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 41.3%,#000 41.8%,#000 100%)!important;
+	mask-image:linear-gradient(90deg,transparent 0%,transparent 41.3%,#000 41.8%,#000 100%)!important;
 	-webkit-mask-repeat:no-repeat!important;
 	mask-repeat:no-repeat!important;
 	pointer-events:none;
@@ -458,7 +458,7 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 	max-width:1600px;
 	min-height:clamp(660px,40vw,760px);
 	height:auto;
-	padding-top:clamp(104px,6vw,118px);
+	padding-top:clamp(132px,7.8vw,148px);
 	padding-bottom:0;
 }
 .ics-hero-copy{width:47%;max-width:740px;isolation:auto}

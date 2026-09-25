@@ -444,8 +444,8 @@ body.infometry-asana-fdp-page .ics .ics-hero-benefits span{font-size:12px!import
 	object-position:center!important;
 	transform:none!important;
 	clip-path:none!important;
-	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 41.3%,#000 41.8%,#000 100%)!important;
-	mask-image:linear-gradient(90deg,transparent 0%,transparent 41.3%,#000 41.8%,#000 100%)!important;
+	-webkit-mask-image:linear-gradient(90deg,transparent 0%,transparent 41.4%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.72) 42.8%,#000 43.4%,#000 100%)!important;
+	mask-image:linear-gradient(90deg,transparent 0%,transparent 41.4%,rgba(0,0,0,.18) 42%,rgba(0,0,0,.72) 42.8%,#000 43.4%,#000 100%)!important;
 	-webkit-mask-repeat:no-repeat!important;
 	mask-repeat:no-repeat!important;
 	pointer-events:none;

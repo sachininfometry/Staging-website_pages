@@ -67,6 +67,9 @@ $requiredFiles = @(
     'templates/page-google-drive-connector.php',
     'templates/page-snowflake-native-apps.php',
     'templates/page-asana-fdp-case-study.php',
+    'templates/page-insurance-snowflake-case-study.php',
+    'assets/css/insurance-snowflake-case-study.css',
+    'assets/images/case-studies/insurance-snowflake/hero-user-supplied.png',
     'assets/css/google-cloud-connectors.css',
     'assets/css/google-drive-connector.css',
     'assets/js/google-cloud-connectors.js',
@@ -79,7 +82,8 @@ $requiredFiles = @(
     'preview-conversa.html',
     'preview-informatica.html',
     'preview-snowflake-native-apps.html',
-    'preview-asana-fdp-case-study.html'
+    'preview-asana-fdp-case-study.html',
+    'preview-insurance-snowflake-case-study.php'
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -128,4 +132,4 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "`nProject verification passed: 7 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green
+Write-Host "`nProject verification passed: 8 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green

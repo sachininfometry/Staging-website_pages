@@ -14,8 +14,9 @@ must remain separate from the live `LiveHomepage` repository.
 - `templates/page-google-drive-connector.php` — staging Google Drive Connector template.
 - `templates/page-snowflake-native-apps.php` — staging Snowflake Native Apps redesign.
 - `templates/page-asana-fdp-case-study.php` — staging Asana FDP Snowflake case-study redesign.
+- `templates/page-insurance-snowflake-case-study.php` — staging insurance Snowflake modernization case study.
 - `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
-- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, and `preview-asana-fdp-case-study.html` — local previews.
+- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, `preview-asana-fdp-case-study.html`, and `preview-insurance-snowflake-case-study.php` — local previews.
 - `tools/` — preview generation and pre-deployment verification scripts.
 
 ## Local development
@@ -33,6 +34,7 @@ Open:
 - `http://127.0.0.1:4190/preview-informatica.html`
 - `http://127.0.0.1:4190/preview-snowflake-native-apps.html`
 - `http://127.0.0.1:4190/preview-asana-fdp-case-study.html`
+- `http://127.0.0.1:4190/preview-insurance-snowflake-case-study.php`
 
 After changing the Informatica or Snowflake PHP template, regenerate its standalone preview:
 
@@ -59,7 +61,7 @@ public_html/wp-content/plugins/infometry-custom-templates/
 ```
 
 Then activate **Infometry Custom Templates** in the staging WordPress admin. The
-plugin exposes all seven templates in the Page Template selector. Staging-only slug
+plugin exposes all eight templates in the Page Template selector. Staging-only slug
 fallbacks are restricted to the configured Cloudways staging host.
 
 Important staging routes include:

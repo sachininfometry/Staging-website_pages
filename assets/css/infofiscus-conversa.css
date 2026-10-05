@@ -14576,11 +14576,11 @@ body .infometry-conversa-product #icp-hero-title {
   }
 }
 
-/* Scale the featured dashboard past its grid track to fill the right and lower hero corners. */
+/* Enlarge the featured dashboard without letting it escape the hero boundary. */
 @media (min-width: 1101px) {
   body .infometry-conversa-product .icp-hero-slider {
-    width: calc(100% + clamp(100px, 8vw, 160px)) !important;
-    max-width: none !important;
+    width: min(calc(100% + clamp(48px, 4vw, 84px)), 1200px) !important;
+    max-width: 1200px !important;
     justify-self: start !important;
   }
 }

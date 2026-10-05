@@ -14556,3 +14556,22 @@ body .infometry-conversa-product #icp-hero-title {
     border-left: 0 !important;
   }
 }
+
+/* Let the dashboard read as the hero's featured visual on large desktops. */
+@media (min-width: 1350px) and (max-resolution: 1.1dppx) {
+  body .infometry-conversa-product > .icp-hero > .icp-shell {
+    width: min(calc(100% - 28px), 1880px) !important;
+    max-width: 1880px !important;
+  }
+
+  body .infometry-conversa-product .icp-hero .icp-hero-grid {
+    grid-template-columns: minmax(520px, .68fr) minmax(0, 1.72fr) !important;
+    gap: clamp(14px, 1.2vw, 22px) !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-slider {
+    width: 100% !important;
+    max-width: 1240px !important;
+    justify-self: start !important;
+  }
+}

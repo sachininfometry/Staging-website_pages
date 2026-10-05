@@ -14403,30 +14403,28 @@ body .infometry-conversa-product .icp-hero-copy > p.icp-eyebrow {
   width: fit-content !important;
   max-width: 100% !important;
   min-height: 0 !important;
-  margin: 0 0 27px !important;
-  padding: 0 !important;
+  margin: 0 0 32px !important;
+  padding: 10px 18px !important;
   align-self: flex-start !important;
   align-items: center !important;
-  gap: 12px !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  color: #a9bee7 !important;
-  background: transparent !important;
+  justify-content: center !important;
+  gap: 0 !important;
+  border: 1px solid #7770ff !important;
+  border-radius: 999px !important;
+  color: #f3f5ff !important;
+  background: rgba(70, 57, 186, .16) !important;
   box-shadow: none !important;
-  font-size: 11px !important;
-  font-weight: 800 !important;
+  font-size: clamp(11px, .9vw, 12px) !important;
+  font-weight: 850 !important;
   line-height: 1.2 !important;
-  letter-spacing: .04em !important;
-  text-transform: none !important;
+  letter-spacing: .025em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
 }
 
 body .infometry-conversa-product .icp-hero-copy > p.icp-eyebrow::before {
-  width: 38px !important;
-  height: 2px !important;
-  flex: 0 0 38px !important;
-  border-radius: 999px !important;
-  background: linear-gradient(90deg, #20c7f5 0%, #536cff 100%) !important;
-  box-shadow: none !important;
+  display: none !important;
+  content: none !important;
 }
 
 body .infometry-conversa-product #icp-hero-title {
@@ -14440,6 +14438,10 @@ body .infometry-conversa-product #icp-hero-title span {
 }
 
 @media (min-width: 701px) {
+  body .infometry-conversa-product section.icp-hero > .icp-shell > .icp-hero-grid {
+    padding-top: clamp(108px, 7.5vw, 124px) !important;
+  }
+
   body .infometry-conversa-product .icp-hero-business-value {
     margin-top: 28px !important;
   }

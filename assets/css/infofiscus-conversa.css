@@ -14576,10 +14576,10 @@ body .infometry-conversa-product #icp-hero-title {
   }
 }
 
-/* Enlarge the featured dashboard without letting it escape the hero boundary. */
+/* Keep the featured dashboard inside its grid track so the right edge never clips. */
 @media (min-width: 1101px) {
   body .infometry-conversa-product .icp-hero-slider {
-    width: min(calc(100% + clamp(48px, 4vw, 84px)), 1200px) !important;
+    width: 100% !important;
     max-width: 1200px !important;
     justify-self: start !important;
   }

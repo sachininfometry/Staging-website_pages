@@ -114,7 +114,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-hero {
 	position: relative;
-	min-height: 710px;
+	min-height: 680px;
 	display: flex;
 	align-items: center;
 	background: var(--sunrise-deep);
@@ -136,7 +136,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	position: absolute;
 	inset: 0;
 	z-index: -2;
-	background: linear-gradient(90deg, rgba(2, 16, 42, .98) 0%, rgba(4, 30, 71, .9) 34%, rgba(5, 35, 76, .35) 62%, rgba(4, 20, 46, .12) 100%);
+	background: linear-gradient(90deg, rgba(2, 16, 42, .99) 0%, rgba(3, 25, 60, .96) 28%, rgba(4, 31, 69, .82) 42%, rgba(5, 35, 76, .24) 61%, rgba(4, 20, 46, .08) 100%);
 }
 
 .sunrise-hero::before {
@@ -148,13 +148,24 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-hero-inner {
-	width: min(100% - 64px, 1400px);
-	padding: 82px 0 70px;
+	width: min(calc(100% - 96px), 1760px);
+	padding: 116px 0 44px;
 }
 
 .sunrise-hero-copy {
-	max-width: 735px;
+	position: relative;
+	max-width: 760px;
 	color: rgba(255, 255, 255, .86);
+}
+
+.sunrise-hero-copy::before {
+	content: "";
+	position: absolute;
+	top: 43px;
+	bottom: 83px;
+	left: -26px;
+	width: 1px;
+	background: linear-gradient(180deg, rgba(34, 200, 246, .75), rgba(34, 200, 246, 0));
 }
 
 .sunrise-eyebrow {
@@ -168,39 +179,52 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-hero h1 {
-	margin-bottom: 22px;
+	margin-bottom: 20px;
 	color: #fff;
-	font-size: clamp(44px, 5.2vw, 76px);
+	font-size: clamp(46px, 3.05vw, 59px);
 	font-weight: 750;
-	line-height: 1.03;
-	letter-spacing: -.055em;
+	line-height: .98;
+	letter-spacing: -.05em;
+}
+
+.sunrise-hero h1 span,
+.sunrise-hero h1 strong {
+	display: block;
 }
 
 .sunrise-hero h1 strong {
+	margin-top: 8px;
 	color: var(--sunrise-cyan);
 	font-weight: inherit;
 }
 
+.sunrise-hero h1 .sunrise-title-tail {
+	margin-top: 8px;
+	font-size: .88em;
+	letter-spacing: -.04em;
+}
+
 .sunrise-hero-copy > p:not(.sunrise-eyebrow) {
-	max-width: 690px;
-	margin-bottom: 28px;
-	font-size: 19px;
-	line-height: 1.6;
+	max-width: 680px;
+	margin-bottom: 22px;
+	color: rgba(255, 255, 255, .82);
+	font-size: 17px;
+	line-height: 1.55;
 }
 
 .sunrise-hero-meta {
 	display: grid;
 	grid-template-columns: .9fr 1.35fr 1.15fr;
 	gap: 10px;
-	margin: 30px 0 30px;
+	margin: 22px 0 22px;
 }
 
 .sunrise-hero-meta span {
 	display: flex;
-	min-height: 76px;
+	min-height: 68px;
 	flex-direction: column;
 	justify-content: center;
-	padding: 13px 15px;
+	padding: 11px 14px;
 	border: 1px solid rgba(77, 194, 255, .42);
 	border-radius: 11px;
 	background: linear-gradient(145deg, rgba(0, 127, 239, .2), rgba(1, 30, 72, .52));
@@ -706,6 +730,9 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-final-inner p { margin-bottom: 22px; }
 
 @media (max-width: 1200px) {
+	.sunrise-hero-inner { width: min(calc(100% - 64px), 1100px); }
+	.sunrise-hero-copy { max-width: 660px; }
+	.sunrise-hero h1 { font-size: clamp(44px, 4.8vw, 55px); }
 	.sunrise-analytics-grid { grid-template-columns: repeat(3, 1fr); }
 	.sunrise-impact-grid { grid-template-columns: repeat(3, 1fr); }
 	.sunrise-architecture { grid-template-columns: repeat(2, 1fr); gap: 14px; }
@@ -715,10 +742,11 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 @media (max-width: 960px) {
 	.sunrise-section { padding: 78px 0; }
-	.sunrise-hero { min-height: 680px; }
+	.sunrise-hero { min-height: 660px; }
 	.sunrise-hero-image { object-position: 62% center; }
 	.sunrise-hero-shade { background: linear-gradient(90deg, rgba(2, 16, 42, .98), rgba(3, 26, 61, .88) 58%, rgba(3, 26, 61, .42)); }
-	.sunrise-hero-copy { max-width: 650px; }
+	.sunrise-hero-copy { max-width: 610px; }
+	.sunrise-hero-copy::before { display: none; }
 	.sunrise-client-grid { grid-template-columns: 1fr; gap: 50px; }
 	.sunrise-orbit { max-width: 560px; width: 100%; margin: 0 auto; }
 	.sunrise-heading-row,
@@ -736,8 +764,11 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	.sunrise-hero { min-height: 760px; align-items: flex-end; }
 	.sunrise-hero-image { object-position: 66% center; }
 	.sunrise-hero-shade { background: linear-gradient(90deg, rgba(2, 15, 39, .97), rgba(3, 25, 58, .78)), linear-gradient(0deg, rgba(3, 19, 44, .95), transparent 60%); }
-	.sunrise-hero-inner { padding: 72px 0 45px; }
-	.sunrise-hero h1 { font-size: clamp(39px, 12vw, 56px); }
+	.sunrise-hero-inner { padding: 76px 0 42px; }
+	.sunrise-hero h1 { font-size: clamp(38px, 11vw, 48px); line-height: 1.02; }
+	.sunrise-hero h1 strong,
+	.sunrise-hero h1 .sunrise-title-tail { margin-top: 5px; }
+	.sunrise-hero h1 .sunrise-title-tail { font-size: .9em; }
 	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 16px; }
 	.sunrise-hero-meta { grid-template-columns: 1fr; gap: 7px; }
 	.sunrise-hero-meta span { min-height: 62px; }

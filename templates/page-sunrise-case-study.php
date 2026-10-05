@@ -72,7 +72,7 @@ $impact = array(
 		<div class="sunrise-shell sunrise-hero-inner">
 			<div class="sunrise-hero-copy">
 				<p class="sunrise-eyebrow"><span></span> Case Study / Sunrun</p>
-				<h1 id="sunrise-title">Powering Enterprise-Wide<br><strong>Data &amp; Analytics</strong> for Sunrun</h1>
+				<h1 id="sunrise-title"><span>Powering Enterprise-Wide</span><strong>Data &amp; Analytics</strong><span class="sunrise-title-tail">for Sunrun</span></h1>
 				<p>How Infometry built an integrated data warehouse, orchestration, and analytics foundation across customer, operational, production, and financial systems.</p>
 				<div class="sunrise-hero-meta">
 					<span><b>Industry</b>Renewable Energy &amp; Residential Solar</span>

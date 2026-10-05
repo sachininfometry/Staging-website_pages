@@ -14543,10 +14543,10 @@ body .infometry-conversa-product .icp-hero-copy > .icp-hero-business-signals {
   }
 }
 
-/* Lighter display weight keeps the large headline crisp instead of bulky. */
+/* Match the strong display weight used by the reference decision heading. */
 body .infometry-conversa-product #icp-hero-title {
-  font-weight: 650 !important;
-  letter-spacing: -.03em !important;
+  font-weight: 850 !important;
+  letter-spacing: -.04em !important;
 }
 
 /* Keep the first benefit accent from extending below its icon and label. */

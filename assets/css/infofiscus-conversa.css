@@ -14028,7 +14028,7 @@ body .infometry-conversa-product .icp-hero-slider {
   min-height: 0 !important;
   max-height: none !important;
   padding: 0 !important;
-  aspect-ratio: 1556 / 1011 !important;
+  aspect-ratio: 1672 / 941 !important;
   justify-self: center !important;
 }
 
@@ -14287,7 +14287,7 @@ body .infometry-conversa-product .icp-hero-slide img {
     height: auto !important;
     min-height: 0 !important;
     max-height: none !important;
-    aspect-ratio: 1556 / 1011 !important;
+    aspect-ratio: 1672 / 941 !important;
   }
 
   body .infometry-conversa-product .icp-demo-form-grid {
@@ -14517,5 +14517,42 @@ body .infometry-conversa-product .icp-hero-copy > .icp-hero-business-signals {
     flex-direction: column !important;
     gap: 8px !important;
     border-left: 1px solid rgba(112, 176, 238, .24) !important;
+  }
+}
+
+/* Close the visual dead space between the hero copy and dashboard artwork. */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero .icp-hero-grid {
+    gap: clamp(12px, 1.4vw, 22px) !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-slider {
+    justify-self: start !important;
+  }
+}
+
+/* Keep the headline visually balanced beside the dashboard on scaled laptops. */
+@media (min-width: 1101px) and (min-resolution: 1.4dppx) {
+  body .infometry-conversa-product .icp-hero-copy {
+    max-width: 560px !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-copy h1 {
+    max-width: 560px !important;
+    font-size: clamp(44px, 4vw, 52px) !important;
+  }
+}
+
+/* Lighter display weight keeps the large headline crisp instead of bulky. */
+body .infometry-conversa-product #icp-hero-title {
+  font-weight: 650 !important;
+  letter-spacing: -.03em !important;
+}
+
+/* Keep the first benefit accent from extending below its icon and label. */
+@media (min-width: 701px) {
+  body .infometry-conversa-product .icp-hero-business-signals span:first-child {
+    padding-left: 14px !important;
+    border-left: 0 !important;
   }
 }

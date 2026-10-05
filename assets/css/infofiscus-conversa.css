@@ -14444,6 +14444,8 @@ body .infometry-conversa-product #icp-hero-title span {
 
   body .infometry-conversa-product .icp-hero-business-value {
     margin-top: 28px !important;
+    padding-left: 0 !important;
+    border-left: 0 !important;
   }
 
   body .infometry-conversa-product .icp-hero .icp-actions {
@@ -14486,6 +14488,14 @@ body .infometry-conversa-product #icp-hero-title span {
     font-weight: 750 !important;
     line-height: 1.32 !important;
   }
+}
+
+body .infometry-conversa-product .icp-hero-copy > .icp-eyebrow,
+body .infometry-conversa-product .icp-hero-copy > #icp-hero-title,
+body .infometry-conversa-product .icp-hero-copy > .icp-hero-business-value,
+body .infometry-conversa-product .icp-hero-copy > .icp-actions,
+body .infometry-conversa-product .icp-hero-copy > .icp-hero-business-signals {
+  margin-left: 0 !important;
 }
 
 @media (max-width: 700px) {

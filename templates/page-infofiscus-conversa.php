@@ -129,7 +129,7 @@ $other_products = array(
 		<div class="icp-shell">
 			<div class="icp-hero-grid">
 				<div class="icp-hero-copy">
-					<p class="icp-eyebrow">INFOFISCUS Conversa</p>
+					<p class="icp-eyebrow">Conversation Analytics Platform for Enterprise</p>
 					<h1 id="icp-hero-title">Trusted Decision<br>Intelligence<br><span>for the Enterprise</span></h1>
 					<div class="icp-hero-business-value">
 						<p>Turn enterprise data into trusted answers, deeper analysis, and decision-ready insights for business teams and leaders.</p>

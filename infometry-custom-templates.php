@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry product and landing page templates.
- * Version: 2.9.0
+ * Version: 2.10.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.9.0' );
+define( 'INFOMETRY_CT_VERSION', '2.10.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
@@ -23,6 +23,7 @@ define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake
 define( 'INFOMETRY_CT_ASANA_FDP_TEMPLATE', 'templates/page-asana-fdp-case-study.php' );
 define( 'INFOMETRY_CT_ASANA_FDP_ASSET_VERSION', '2.15.11' );
 define( 'INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE', 'templates/page-insurance-snowflake-case-study.php' );
+define( 'INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE', 'templates/page-sunrise-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
@@ -92,6 +93,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_ASANA_FDP_TEMPLATE ] = __( 'Asana FDP Snowflake Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE ] = __( 'Insurance Snowflake Modernization Case Study', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE ] = __( 'Sunrise Case Study', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -206,6 +208,22 @@ function infometry_ct_should_use_insurance_snowflake_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE );
 }
 
+/** Use the redesigned Sunrise case study when selected or on its staging URL. */
+function infometry_ct_should_use_sunrise_case_study_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE )
+		|| infometry_ct_is_staging_sunrise_case_study_route();
+}
+
+/** Match the requested business intelligence case-study path only on staging. */
+function infometry_ct_is_staging_sunrise_case_study_route() {
+	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
+		return false;
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+	return '/resources/infometry-case-studies/business-intelligence-data-discovery' === untrailingslashit( $path );
+}
+
 /** Decide whether the Google Drive Connector product template is active. */
 function infometry_ct_should_use_google_drive_template() {
 	$page_id = infometry_ct_get_current_page_id();
@@ -280,6 +298,24 @@ function infometry_ct_render_staging_asana_fdp_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 0 );
 
+/** Serve the Sunrise redesign at the exact requested Cloudways URL. */
+function infometry_ct_render_staging_sunrise_case_study_route() {
+	if ( ! infometry_ct_is_staging_sunrise_case_study_route() ) {
+		return;
+	}
+
+	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE;
+	if ( ! is_readable( $plugin_template ) ) {
+		return;
+	}
+
+	status_header( 200 );
+	nocache_headers();
+	include $plugin_template;
+	exit;
+}
+add_action( 'template_redirect', 'infometry_ct_render_staging_sunrise_case_study_route', 0 );
+
 /**
  * Load the selected template from this plugin without modifying BeTheme.
  *
@@ -343,6 +379,13 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	if ( infometry_ct_should_use_sunrise_case_study_template() ) {
+		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE;
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	return $template;
 }
 add_filter( 'page_template', 'infometry_ct_load_page_template', PHP_INT_MAX );
@@ -386,6 +429,11 @@ function infometry_ct_body_classes( $classes ) {
 
 	if ( infometry_ct_should_use_insurance_snowflake_template() ) {
 		$classes[] = 'infometry-insurance-snowflake-page';
+	}
+
+	if ( infometry_ct_should_use_sunrise_case_study_template() ) {
+		$classes = array_values( array_diff( $classes, array( 'header-transparent', 'template-slider' ) ) );
+		$classes[] = 'infometry-sunrise-case-study-page';
 	}
 
 	return array_unique( $classes );
@@ -745,8 +793,9 @@ function infometry_ct_enqueue_assets() {
 	$use_snowflake_native_apps = infometry_ct_should_use_snowflake_native_apps_template();
 	$use_asana_fdp = infometry_ct_should_use_asana_fdp_template();
 	$use_insurance_snowflake = infometry_ct_should_use_insurance_snowflake_template();
+	$use_sunrise_case_study = infometry_ct_should_use_sunrise_case_study_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study ) {
 		return;
 	}
 
@@ -863,6 +912,18 @@ function infometry_ct_enqueue_assets() {
 		);
 		wp_enqueue_style( 'infometry-insurance-snowflake-case-study', INFOMETRY_CT_URL . 'assets/css/insurance-snowflake-case-study.css', array( 'infometry-insurance-snowflake-fonts' ), $css_version );
 	}
+
+	if ( $use_sunrise_case_study ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/sunrise-case-study.css';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		wp_enqueue_style(
+			'infometry-sunrise-fonts',
+			'https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/css/sunrise-case-study.css', array( 'infometry-sunrise-fonts' ), $css_version );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );
 
@@ -881,6 +942,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_snowflake_native_apps_template()
 		&& ! infometry_ct_should_use_asana_fdp_template()
 		&& ! infometry_ct_should_use_insurance_snowflake_template()
+		&& ! infometry_ct_should_use_sunrise_case_study_template()
 	) {
 		return $urls;
 	}

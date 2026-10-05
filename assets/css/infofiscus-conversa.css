@@ -14575,3 +14575,12 @@ body .infometry-conversa-product #icp-hero-title {
     justify-self: start !important;
   }
 }
+
+/* Scale the featured dashboard past its grid track to fill the right and lower hero corners. */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero-slider {
+    width: calc(100% + clamp(100px, 8vw, 160px)) !important;
+    max-width: none !important;
+    justify-self: start !important;
+  }
+}

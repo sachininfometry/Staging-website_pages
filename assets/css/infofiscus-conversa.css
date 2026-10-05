@@ -14592,8 +14592,8 @@ body .infometry-conversa-product #icp-hero-title {
  */
 @media (min-width: 1101px) {
   body .infometry-conversa-product > .icp-hero > .icp-shell {
-    width: min(calc(100% - clamp(48px, 5vw, 100px)), 1820px) !important;
-    max-width: 1820px !important;
+    width: min(calc(100% - 48px), 1600px) !important;
+    max-width: 1600px !important;
     margin-inline: auto !important;
   }
 
@@ -14611,6 +14611,7 @@ body .infometry-conversa-product #icp-hero-title {
     max-width: 590px !important;
     min-width: 0 !important;
     margin-top: 0 !important;
+    justify-self: center !important;
   }
 
   body .infometry-conversa-product #icp-hero-title,

@@ -144,8 +144,8 @@ $other_products = array(
 
 				<div class="icp-hero-slider" data-icp-hero-slider aria-label="INFOFISCUS Conversa product preview carousel">
 					<figure class="icp-hero-slide is-active"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-home.webp' ); ?>" width="1556" height="1011" fetchpriority="high" loading="eager" decoding="async" alt="INFOFISCUS Conversa home dashboard"></figure>
-					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-storybooks.webp' ); ?>" width="1604" height="980" loading="lazy" decoding="async" alt="INFOFISCUS Conversa storybooks dashboard"></figure>
-					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-connections.webp' ); ?>" width="1558" height="1010" loading="lazy" decoding="async" alt="INFOFISCUS Conversa connections dashboard"></figure>
+					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-revenue-forecast.png' ); ?>" width="1558" height="1010" loading="lazy" decoding="async" alt="INFOFISCUS Conversa revenue forecast analysis dashboard"></figure>
+					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-apac-revenue.png' ); ?>" width="1558" height="1010" loading="lazy" decoding="async" alt="INFOFISCUS Conversa APAC revenue decline analysis dashboard"></figure>
 				</div>
 
 				<div class="icp-dashboard icp-dashboard-legacy" aria-hidden="true">

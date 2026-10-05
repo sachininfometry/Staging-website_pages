@@ -14584,3 +14584,106 @@ body .infometry-conversa-product #icp-hero-title {
     justify-self: start !important;
   }
 }
+
+/*
+ * Canonical responsive scale.
+ * Keep the hero and the following content on the same viewport-based rhythm;
+ * browser zoom / Windows display scaling must not select a different layout.
+ */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product > .icp-hero > .icp-shell {
+    width: min(calc(100% - clamp(48px, 5vw, 100px)), 1820px) !important;
+    max-width: 1820px !important;
+    margin-inline: auto !important;
+  }
+
+  body .infometry-conversa-product .icp-hero .icp-hero-grid {
+    min-height: clamp(690px, 47vw, 880px) !important;
+    height: auto !important;
+    padding: clamp(108px, 7.5vw, 124px) 0 clamp(48px, 4vw, 76px) !important;
+    grid-template-columns: minmax(400px, .78fr) minmax(0, 1.6fr) !important;
+    gap: clamp(22px, 1.8vw, 34px) !important;
+    align-items: start !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-copy {
+    width: 100% !important;
+    max-width: 590px !important;
+    min-width: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  body .infometry-conversa-product #icp-hero-title,
+  body .infometry-conversa-product .icp-hero-copy h1 {
+    width: 100% !important;
+    max-width: 590px !important;
+    font-size: clamp(46px, 3.1vw, 58px) !important;
+    line-height: 1.05 !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-slider {
+    width: 100% !important;
+    max-width: 1200px !important;
+    min-width: 0 !important;
+    margin-top: 0 !important;
+    justify-self: stretch !important;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1320px) {
+  body .infometry-conversa-product .icp-hero .icp-hero-grid {
+    grid-template-columns: minmax(400px, .78fr) minmax(0, 1.22fr) !important;
+  }
+
+  body .infometry-conversa-product #icp-hero-title,
+  body .infometry-conversa-product .icp-hero-copy h1 {
+    font-size: clamp(42px, 3.7vw, 49px) !important;
+  }
+
+  body .infometry-conversa-product .icp-intro .icp-intro-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto !important;
+    gap: 36px !important;
+  }
+
+  body .infometry-conversa-product .icp-intro-showcase-head {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: min(100%, 900px) !important;
+    max-width: 900px !important;
+    margin-inline: auto !important;
+  }
+
+  body .infometry-conversa-product .icp-intro-video-frame {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    width: min(100%, 900px) !important;
+    max-width: 900px !important;
+    margin-inline: auto !important;
+  }
+
+  body .infometry-conversa-product .icp-intro-value-row {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    width: min(100%, 900px) !important;
+    max-width: 900px !important;
+    margin-inline: auto !important;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1320px) {
+  body .infometry-conversa-product > .icp-hero-strip > .icp-shell,
+  body .infometry-conversa-product .icp-intro > .icp-intro-grid {
+    width: calc(100% - clamp(32px, 4vw, 48px)) !important;
+    max-width: 100% !important;
+    margin-inline: auto !important;
+  }
+
+  body .infometry-conversa-product .icp-strip-stats,
+  body .infometry-conversa-product .icp-intro .icp-intro-grid,
+  body .infometry-conversa-product .icp-intro-showcase-head,
+  body .infometry-conversa-product .icp-intro-video-frame,
+  body .infometry-conversa-product .icp-intro-value-row {
+    min-width: 0 !important;
+  }
+}

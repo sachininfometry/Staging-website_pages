@@ -6955,6 +6955,132 @@ body .infometry-conversa-product .icp-footer-bottom p {
   }
 }
 
+/* Reference-aligned Conversa hero messaging and benefit rail. */
+body .infometry-conversa-product .icp-hero-copy .icp-eyebrow {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  margin: 0 0 18px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  color: #c8d8ff !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: .11em !important;
+  text-transform: none !important;
+}
+
+body .infometry-conversa-product .icp-hero-copy .icp-eyebrow::before {
+  content: "";
+  width: 30px;
+  height: 2px;
+  flex: 0 0 30px;
+  background: linear-gradient(90deg, #19c5f5, #655cff);
+}
+
+body .infometry-conversa-product .icp-hero-copy h1 {
+  max-width: 620px !important;
+  font-size: clamp(50px, 4vw, 68px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+}
+
+body .infometry-conversa-product .icp-hero-copy h1 span {
+  color: #4b68ff !important;
+  background: linear-gradient(90deg, #27a9ff 0%, #6958ff 82%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-value {
+  max-width: 585px !important;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-value > p {
+  margin: 0 !important;
+  color: #c8d4eb !important;
+  font-size: clamp(14px, 1.05vw, 16px) !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+}
+
+body .infometry-conversa-product .icp-hero .icp-actions {
+  margin-top: 24px !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals {
+  display: grid !important;
+  max-width: 620px !important;
+  margin-top: 30px !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span,
+body .infometry-conversa-product .icp-hero-business-signals span:first-child {
+  min-height: 62px !important;
+  padding: 0 14px !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+  gap: 9px !important;
+  border-left: 1px solid rgba(119, 159, 224, .22) !important;
+  font-size: 10px !important;
+  white-space: normal !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span:first-child {
+  padding-left: 0 !important;
+  border-left: 0 !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span svg {
+  width: 24px !important;
+  height: 24px !important;
+  flex: 0 0 24px !important;
+  margin-top: 2px !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span b {
+  min-height: 0 !important;
+  color: #dce8fa !important;
+  font-size: 10px !important;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+}
+
+@media (min-width: 1350px) and (max-resolution: 1.1dppx) {
+  body .infometry-conversa-product .icp-hero-copy h1 {
+    max-width: 660px !important;
+    font-size: clamp(66px, 4.05vw, 76px) !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body .infometry-conversa-product .icp-hero-copy h1 {
+    font-size: clamp(42px, 11.5vw, 54px) !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-business-signals {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    row-gap: 16px !important;
+  }
+
+  body .infometry-conversa-product .icp-hero-business-signals span,
+  body .infometry-conversa-product .icp-hero-business-signals span:first-child {
+    min-height: 46px !important;
+    padding: 0 10px !important;
+    border-left: 0 !important;
+  }
+}
+
 /*
  * Desktop browser zoom (150%+): retain the approved five-card persona row.
  * Pointer/hover guards keep the real touch-mobile layout unchanged.

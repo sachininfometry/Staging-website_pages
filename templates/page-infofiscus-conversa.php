@@ -129,17 +129,16 @@ $other_products = array(
 		<div class="icp-shell">
 			<div class="icp-hero-grid">
 				<div class="icp-hero-copy">
-					<p class="icp-eyebrow">Conversation Analytics Platform for Enterprise</p>
-					<h1 id="icp-hero-title">Ask Questions.<br>Find Causes.<br><span>Drive Decisions.</span></h1>
+					<p class="icp-eyebrow">INFOFISCUS Conversa</p>
+					<h1 id="icp-hero-title">Trusted Decision<br>Intelligence<br><span>for the Enterprise</span></h1>
 					<div class="icp-hero-business-value">
-						<strong>Stop Searching Reports and Start Finding Root Causes</strong>
-						<p>AI-powered conversational analytics platform that lets teams query enterprise data in plain English. Turn questions into SQL and get instant insights without searching through dashboards.</p>
-						<div class="icp-hero-business-signals"><span><svg><use href="#icp-i-chart"></use></svg><b>Explain KPI<br>Changes</b></span><span><svg><use href="#icp-i-brain"></use></svg><b>Find Business<br>Drivers</b></span><span><svg><use href="#icp-i-path"></use></svg><b>Prioritize<br>Actions</b></span></div>
+						<p>Turn enterprise data into trusted answers, deeper analysis, and decision-ready insights for business teams and leaders.</p>
 					</div>
 					<div class="icp-actions">
 						<a class="icp-button icp-button-primary" href="#icp-demo-form" data-icp-demo-trigger>Request a Demo <span aria-hidden="true">→</span></a>
-						<a class="icp-button icp-button-secondary" href="https://app.supademo.com/demo/cmrpbnvrk00aozw0jd3ao0z6v?utm_source=link" target="_blank" rel="noopener noreferrer"><span class="icp-play-dot">▶</span> Watch Product Tour</a>
+						<a class="icp-button icp-button-secondary" href="https://app.supademo.com/demo/cmrpbnvrk00aozw0jd3ao0z6v?utm_source=link" target="_blank" rel="noopener noreferrer"><span class="icp-play-dot">▶</span> Explore Conversa</a>
 					</div>
+					<div class="icp-hero-business-signals"><span><svg><use href="#icp-i-chat"></use></svg><b>Trusted<br>Answers</b></span><span><svg><use href="#icp-i-chart"></use></svg><b>Deeper<br>Analysis</b></span><span><svg><use href="#icp-i-shield"></use></svg><b>Enterprise-Grade<br>Security</b></span><span><svg><use href="#icp-i-path"></use></svg><b>Actionable<br>Insights</b></span></div>
 				</div>
 
 				<div class="icp-hero-slider" data-icp-hero-slider aria-label="INFOFISCUS Conversa product preview carousel">

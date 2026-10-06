@@ -258,9 +258,9 @@ $other_products = array(
 	<section class="icp-intro" id="icp-intro" aria-labelledby="icp-intro-title">
 		<div class="icp-shell icp-intro-grid">
 			<div class="icp-intro-showcase-head">
-				<p class="icp-kicker">Enterprise AI. Trusted Insights.</p>
-				<h2 id="icp-intro-title">Meet INFOFISCUS Conversa™: A Conversational Analytics Platform</h2>
-				<p>Conversa is an <strong>enterprise conversational analytics platform</strong> that helps teams <strong>chat with their data</strong> and uncover <strong>AI-powered insights</strong>. Its <strong>no-code decision intelligence capabilities</strong> accelerate <strong>AI-driven decision making</strong> using natural language analytics.</p>
+				<p class="icp-kicker">Stop Searching Reports. Start Investigating What Matters.</p>
+				<h2 id="icp-intro-title">Meet INFOFISCUS Conversa™: An Enterprise Decision Intelligence Platform</h2>
+				<p>Conversa is an <strong>enterprise conversational analytics platform</strong> that helps teams and uncover <strong>AI-powered insights</strong>. Its <strong>no-code decision intelligence capabilities</strong> accelerate <strong>AI-driven decision making</strong> using natural language analytics.</p>
 			</div>
 			<div class="icp-intro-video-frame icp-architecture-frame">
 				<div class="icp-intro-video-bar"><span><i></i><i></i><i></i></span><strong>Business Decision Journey</strong><small>From question to action</small></div>

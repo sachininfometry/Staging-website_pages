@@ -14852,6 +14852,10 @@ body .infometry-conversa-product .icp-workflow-subtitle {
   text-align: center !important;
 }
 
+body .infometry-conversa-product .icp-workflow-row p {
+  font-size: 16px !important;
+}
+
 @media (min-width: 1101px) {
   body .infometry-conversa-product .icp-workflow-row {
     grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
@@ -14946,5 +14950,33 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
     min-width: 0 !important;
     white-space: normal !important;
     text-align: center !important;
+  }
+}
+
+/* Let longer capability copy expand naturally on narrow screens. */
+@media (max-width: 700px) {
+  body .infometry-conversa-product .icp-capabilities .icp-feature-card,
+  body .infometry-conversa-product .icp-capability-carousel.is-hand-slider .icp-feature-card {
+    height: auto !important;
+    min-height: 640px !important;
+  }
+
+  body .infometry-conversa-product .icp-capabilities .icp-feature-card > p {
+    height: auto !important;
+    min-height: 150px !important;
+    overflow: visible !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  body .infometry-conversa-product .icp-capabilities .icp-feature-benefits {
+    height: auto !important;
+    grid-template-rows: repeat(3, minmax(40px, auto)) !important;
+  }
+
+  body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li,
+  body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
   }
 }

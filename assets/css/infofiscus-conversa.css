@@ -14839,3 +14839,98 @@ body .infometry-conversa-product .icp-intro-value-row article::after {
   animation: none !important;
   animation-delay: 0s !important;
 }
+
+/* Content-fit guardrails: preserve the approved design with the revised copy. */
+body .infometry-conversa-product .icp-workflow-subtitle,
+body .infometry-conversa-product .icp-workflow-summary {
+  margin: 10px auto 0 !important;
+  color: rgba(231, 243, 255, .9) !important;
+  font-size: 15px !important;
+  font-weight: 650 !important;
+  line-height: 1.55 !important;
+  text-align: center !important;
+}
+
+body .infometry-conversa-product .icp-workflow-summary {
+  max-width: 980px !important;
+  margin-top: 30px !important;
+}
+
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-workflow-row {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+  }
+
+  body .infometry-conversa-product .icp-workflow-row::before {
+    left: 10% !important;
+    right: 10% !important;
+  }
+
+  body .infometry-conversa-product .icp-workflow-row::after {
+    left: 10% !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+body .infometry-conversa-product .icp-workflow-row article:nth-child(5) {
+  --icp-step-a: #f0abfc;
+  --icp-step-b: #d946ef;
+  --icp-step-c: #a21caf;
+  --icp-step-glow: #d946ef;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-card h3 {
+  min-height: 72px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-card > p {
+  height: 92px !important;
+  min-height: 92px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-benefits {
+  min-height: 175px !important;
+  grid-template-rows: repeat(5, minmax(31px, auto)) !important;
+  gap: 5px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li {
+  min-height: 31px !important;
+  padding-block: 5px !important;
+  font-size: 10.5px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
+  padding-inline: 4px !important;
+  font-size: 9.5px !important;
+  line-height: 1.12 !important;
+  white-space: normal !important;
+  text-align: center !important;
+}
+
+@media (min-width: 701px) {
+  body .infometry-conversa-product .icp-personas .icp-persona-benefits {
+    min-height: 143px !important;
+    grid-template-rows: repeat(4, minmax(32px, 1fr)) !important;
+    gap: 5px !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-benefits li {
+    min-height: 32px !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-tags {
+    min-height: 64px !important;
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+}

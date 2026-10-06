@@ -14689,3 +14689,14 @@ body .infometry-conversa-product #icp-hero-title {
     min-width: 0 !important;
   }
 }
+
+/* Final typography sizes approved for the Conversa hero and introduction. */
+body .infometry-conversa-product .icp-hero-business-value > p {
+  font-size: 17px !important;
+}
+
+@media (min-width: 701px) {
+  body .infometry-conversa-product .icp-intro-showcase-head h2 {
+    font-size: 48px !important;
+  }
+}

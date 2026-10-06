@@ -14815,3 +14815,27 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
     width: min(86vw, 350px) !important;
   }
 }
+
+/* Intro card copy must paint immediately; no staggered loading state. */
+body .infometry-conversa-product .icp-intro-value-row article,
+body .infometry-conversa-product .icp-intro-value-row article > span,
+body .infometry-conversa-product .icp-intro-value-row article > div,
+body .infometry-conversa-product .icp-intro-value-row article strong,
+body .infometry-conversa-product .icp-intro-value-row article small {
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation: none !important;
+  animation-delay: 0s !important;
+  transform: none !important;
+}
+
+body .infometry-conversa-product .icp-intro-value-row article > div {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body .infometry-conversa-product .icp-intro-value-row article::before,
+body .infometry-conversa-product .icp-intro-value-row article::after {
+  animation: none !important;
+  animation-delay: 0s !important;
+}

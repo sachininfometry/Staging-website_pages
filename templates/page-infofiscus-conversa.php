@@ -138,7 +138,7 @@ $other_products = array(
 						<a class="icp-button icp-button-primary" href="#icp-demo-form" data-icp-demo-trigger>Request a Demo <span aria-hidden="true">→</span></a>
 						<a class="icp-button icp-button-secondary" href="https://app.supademo.com/demo/cmrpbnvrk00aozw0jd3ao0z6v?utm_source=link" target="_blank" rel="noopener noreferrer"><span class="icp-play-dot">▶</span> Explore Conversa</a>
 					</div>
-					<div class="icp-hero-business-signals"><span><svg><use href="#icp-i-chat"></use></svg><b>Trusted<br>Answers</b></span><span><svg><use href="#icp-i-chart"></use></svg><b>Deeper<br>Analysis</b></span><span><svg><use href="#icp-i-shield"></use></svg><b>Enterprise-Grade<br>Security</b></span><span><svg><use href="#icp-i-path"></use></svg><b>Actionable<br>Insights</b></span></div>
+					<div class="icp-hero-business-signals"><span><svg><use href="#icp-i-chat"></use></svg><b>Trusted<br>Answers</b></span><span><svg><use href="#icp-i-chart"></use></svg><b>Deeper<br>Analysis</b></span><span><svg><use href="#icp-i-path"></use></svg><b>Actionable<br>Insights</b></span><span><svg><use href="#icp-i-shield"></use></svg><b>Enterprise-Grade Security</b></span></div>
 				</div>
 
 				<div class="icp-hero-slider" data-icp-hero-slider aria-label="INFOFISCUS Conversa product preview carousel">

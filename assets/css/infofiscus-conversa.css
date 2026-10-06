@@ -14888,29 +14888,29 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-card h3 {
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-card > p {
-  height: 92px !important;
-  min-height: 92px !important;
+  height: 110px !important;
+  min-height: 110px !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-benefits {
-  min-height: 175px !important;
-  grid-template-rows: repeat(5, minmax(31px, auto)) !important;
+  min-height: 118px !important;
+  grid-template-rows: repeat(3, minmax(36px, 1fr)) !important;
   gap: 5px !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li {
-  min-height: 31px !important;
+  min-height: 36px !important;
   padding-block: 5px !important;
-  font-size: 10.5px !important;
+  font-size: 11px !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-tags {
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
   padding-inline: 4px !important;
-  font-size: 9.5px !important;
+  font-size: 10.5px !important;
   line-height: 1.12 !important;
   white-space: normal !important;
   text-align: center !important;

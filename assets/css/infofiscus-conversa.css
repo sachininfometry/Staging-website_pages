@@ -14761,8 +14761,8 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-card,
 body .infometry-conversa-product .icp-capability-carousel.is-hand-slider .icp-feature-card {
   flex: 0 0 clamp(310px, 22vw, 350px) !important;
   width: clamp(310px, 22vw, 350px) !important;
-  min-height: 610px !important;
-  height: 610px !important;
+  min-height: 550px !important;
+  height: 550px !important;
   padding: 26px 22px 22px !important;
 }
 
@@ -14773,22 +14773,23 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-card h3 {
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-card > p {
-  height: 200px !important;
-  min-height: 200px !important;
-  margin-bottom: 14px !important;
+  height: 165px !important;
+  min-height: 165px !important;
+  margin-bottom: 12px !important;
   font-size: 15px !important;
   line-height: 1.55 !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-benefits {
-  min-height: 104px !important;
-  grid-template-rows: repeat(2, minmax(44px, auto)) !important;
-  gap: 8px !important;
+  min-height: 92px !important;
+  margin-bottom: 8px !important;
+  grid-template-rows: repeat(2, minmax(40px, auto)) !important;
+  gap: 7px !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li {
-  min-height: 44px !important;
-  padding: 8px 9px 8px 34px !important;
+  min-height: 40px !important;
+  padding: 7px 9px 7px 34px !important;
   font-size: 12px !important;
   line-height: 1.25 !important;
 }
@@ -14796,6 +14797,10 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li {
 body .infometry-conversa-product .icp-capabilities .icp-feature-tags,
 body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
   min-height: 34px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags {
+  margin-top: 8px !important;
 }
 
 body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {

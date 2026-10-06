@@ -14755,3 +14755,58 @@ body .infometry-conversa-product .icp-intro-action .icp-button {
     justify-content: center !important;
   }
 }
+
+/* Roomier capability cards keep every content zone aligned and unbroken. */
+body .infometry-conversa-product .icp-capabilities .icp-feature-card,
+body .infometry-conversa-product .icp-capability-carousel.is-hand-slider .icp-feature-card {
+  flex: 0 0 clamp(310px, 22vw, 350px) !important;
+  width: clamp(310px, 22vw, 350px) !important;
+  min-height: 610px !important;
+  height: 610px !important;
+  padding: 26px 22px 22px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-card h3 {
+  min-height: 52px !important;
+  margin-bottom: 10px !important;
+  font-size: 16px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-card > p {
+  height: 200px !important;
+  min-height: 200px !important;
+  margin-bottom: 14px !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-benefits {
+  min-height: 104px !important;
+  grid-template-rows: repeat(2, minmax(44px, auto)) !important;
+  gap: 8px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-benefits li {
+  min-height: 44px !important;
+  padding: 8px 9px 8px 34px !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags,
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
+  min-height: 34px !important;
+}
+
+body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
+  padding: 6px 8px !important;
+  font-size: 11.5px !important;
+}
+
+@media (max-width: 700px) {
+  body .infometry-conversa-product .icp-capabilities .icp-feature-card,
+  body .infometry-conversa-product .icp-capability-carousel.is-hand-slider .icp-feature-card {
+    flex-basis: min(86vw, 350px) !important;
+    width: min(86vw, 350px) !important;
+  }
+}

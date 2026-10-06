@@ -14700,3 +14700,18 @@ body .infometry-conversa-product .icp-hero-business-value > p {
     font-size: 48px !important;
   }
 }
+
+/* Keep the hero benefits clean and prevent the hyphenated label splitting. */
+body .infometry-conversa-product .icp-hero-business-signals span,
+body .infometry-conversa-product .icp-hero-business-signals span:first-child {
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span:nth-child(3) {
+  padding-inline: 8px !important;
+}
+
+body .infometry-conversa-product .icp-hero-business-signals span:nth-child(3) b {
+  white-space: nowrap !important;
+}

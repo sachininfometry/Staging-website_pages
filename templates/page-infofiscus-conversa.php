@@ -260,7 +260,7 @@ $other_products = array(
 			<div class="icp-intro-showcase-head">
 				<p class="icp-kicker">Stop Searching Reports. Start Investigating What Matters.</p>
 				<h2 id="icp-intro-title">Meet INFOFISCUS Conversa™: An Enterprise Decision Intelligence Platform</h2>
-				<p>Conversa is an <strong>enterprise conversational analytics platform</strong> that helps teams and uncover <strong>AI-powered insights</strong>. Its <strong>no-code decision intelligence capabilities</strong> accelerate <strong>AI-driven decision making</strong> using natural language analytics.</p>
+				<p>Conversa is an <strong>enterprise decision intelligence platform</strong> that helps teams investigate complex business questions, uncover key drivers, and turn governed enterprise data into trusted, decision-ready insights. Its cross-platform intelligence and analytical reasoning capabilities help organizations move from understanding what happened to why it happened—and make better, faster business decisions.</p>
 			</div>
 			<div class="icp-intro-video-frame icp-architecture-frame">
 				<div class="icp-intro-video-bar"><span><i></i><i></i><i></i></span><strong>Business Decision Journey</strong><small>From question to action</small></div>
@@ -286,7 +286,8 @@ $other_products = array(
 					</div>
 				</div>
 			</div>
-			<div class="icp-intro-value-row"><article><span><svg><use href="#icp-i-chat"></use></svg></span><div><strong>Natural Language</strong><small>Transform business questions into optimized SQL with semantic intelligence and AI-powered natural language.</small></div></article><article><span><svg><use href="#icp-i-trust"></use></svg></span><div><strong>Semantic Intelligence</strong><small>A domain-aware semantic layer delivers root causes, key drivers, KPIs, and visualizations from live data.</small></div></article><article><span><svg><use href="#icp-i-trend"></use></svg></span><div><strong>Decision Intelligence</strong><small>A conversational BI and decision intelligence platform delivers instant, AI-powered business insights from enterprise data.</small></div></article></div>
+			<div class="icp-intro-value-row"><article><span><svg><use href="#icp-i-chat"></use></svg></span><div><strong>Ask Naturally</strong><small>Turn complex business questions into guided investigations using natural language and business context.</small></div></article><article><span><svg><use href="#icp-i-trust"></use></svg></span><div><strong>Understand Context</strong><small>Apply governed semantics and business definitions to connect enterprise data with the meaning behind the numbers.</small></div></article><article><span><svg><use href="#icp-i-trend"></use></svg></span><div><strong>Make Decisions</strong><small>Move from what happened to why it happened, uncover drivers and risks, and turn analysis into trusted business decisions.</small></div></article></div>
+			<div class="icp-intro-action"><a class="icp-button icp-button-primary" href="https://app.supademo.com/demo/cmrpbnvrk00aozw0jd3ao0z6v?utm_source=link" target="_blank" rel="noopener noreferrer">See Conversa in Action <span aria-hidden="true">→</span></a></div>
 		</div>
 	</section>
 

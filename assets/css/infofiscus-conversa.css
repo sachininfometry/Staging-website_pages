@@ -14715,3 +14715,43 @@ body .infometry-conversa-product .icp-hero-business-signals span:nth-child(3) {
 body .infometry-conversa-product .icp-hero-business-signals span:nth-child(3) b {
   white-space: nowrap !important;
 }
+
+/* Introduction CTA follows the story cards in every responsive layout. */
+body .infometry-conversa-product .icp-intro-action {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 650px !important;
+  margin-top: -14px !important;
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  justify-content: flex-start !important;
+}
+
+body .infometry-conversa-product .icp-intro-action .icp-button {
+  min-height: 52px !important;
+  padding: 14px 24px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+}
+
+@media (max-width: 1320px) {
+  body .infometry-conversa-product .icp-intro-action {
+    width: min(100%, 900px) !important;
+    max-width: 900px !important;
+    margin: -12px auto 0 !important;
+    grid-column: 1 !important;
+    grid-row: 4 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body .infometry-conversa-product .icp-intro-action {
+    margin-top: -8px !important;
+  }
+
+  body .infometry-conversa-product .icp-intro-action .icp-button {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}

@@ -344,7 +344,6 @@ $other_products = array(
 					</article>
 				<?php endforeach; ?>
 			</div>
-			<p class="icp-workflow-summary">Business Question → Trusted Answer → Investigation → Driver Analysis → Follow-Up → Management Insight</p>
 		</div>
 	</section>
 

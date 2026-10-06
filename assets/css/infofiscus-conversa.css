@@ -10324,6 +10324,11 @@ body .infometry-conversa-product .icp-architecture-flow b {
   }
 }
 
+/* Remove the animated pointer dot from the workflow connector. */
+body .infometry-conversa-product .icp-workflow-row::after {
+  display: none !important;
+}
+
 /* Preserve the joined card design; only round every card's corners. */
 body .infometry-conversa-product .icp-problem .icp-four {
   gap: 0 !important;

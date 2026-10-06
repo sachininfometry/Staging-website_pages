@@ -14980,3 +14980,27 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
     overflow-wrap: anywhere !important;
   }
 }
+
+/* Lock the five audience cards to matching content baselines on desktop. */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-personas .icp-persona-card > p {
+    height: 126px !important;
+    min-height: 126px !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-benefits {
+    height: 142px !important;
+    min-height: 142px !important;
+    grid-template-rows: repeat(3, minmax(44px, 1fr)) !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-benefits li {
+    min-height: 44px !important;
+    height: 100% !important;
+  }
+
+  body .infometry-conversa-product .icp-personas .icp-persona-tags,
+  body .infometry-conversa-product .icp-personas .icp-persona-tags span {
+    min-height: 44px !important;
+  }
+}

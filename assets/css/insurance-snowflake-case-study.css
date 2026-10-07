@@ -80,3 +80,44 @@ body.infometry-insurance-snowflake-page .mfn-footer{display:none!important}
 .infometry-footer-bottom{display:flex;margin-top:40px;padding-top:21px;justify-content:space-between;gap:20px;border-top:1px solid rgba(255,255,255,.18);color:#cbd5f5;font-size:14px;font-weight:500}
 @media(max-width:960px){.infometry-footer-grid{grid-template-columns:repeat(2,1fr);gap:34px}}
 @media(max-width:700px){.infometry-footer-shell{width:min(100% - 32px,1440px)}.infometry-footer-grid{grid-template-columns:1fr;gap:30px}.infometry-footer-bottom{flex-direction:column}}
+
+/* Final layout and contrast pass from the staging design review. */
+body.infometry-insurance-snowflake-page .gcs{--ink:#062a50;--copy:#34516f}
+body.infometry-insurance-snowflake-page .gcs .gcs-shell{width:calc(100% - clamp(60px,5.2vw,100px));max-width:none}
+body.infometry-insurance-snowflake-page .gcs .gcs-hero-inner{width:100%;padding-inline:clamp(30px,2.6vw,50px)}
+body.infometry-insurance-snowflake-page .gcs .gcs-hero h1 em{display:inline}
+body.infometry-insurance-snowflake-page .gcs .gcs-metrics .gcs-metrics-grid{width:calc(100% - clamp(60px,5.2vw,100px))}
+body.infometry-insurance-snowflake-page .gcs .gcs-section,
+body.infometry-insurance-snowflake-page .gcs .gcs-cta{scroll-margin-top:96px}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-client,
+body.infometry-insurance-snowflake-page .gcs .gcs-challenges,
+body.infometry-insurance-snowflake-page .gcs .gcs-tech{background:#fff}
+body.infometry-insurance-snowflake-page .gcs .gcs-objective,
+body.infometry-insurance-snowflake-page .gcs .gcs-architecture,
+body.infometry-insurance-snowflake-page .gcs .gcs-solution{background:linear-gradient(180deg,#edf5fb 0%,#f5f9fc 100%)}
+body.infometry-insurance-snowflake-page .gcs .gcs-section p{color:var(--copy)}
+body.infometry-insurance-snowflake-page .gcs .gcs-photo-card,
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-list,
+body.infometry-insurance-snowflake-page .gcs .gcs-journey article,
+body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid article,
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid span{border-color:#c6ddeb;box-shadow:0 14px 34px rgba(6,55,92,.1)}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-outcomes{color:#fff!important;background:radial-gradient(circle at 87% 10%,rgba(20,171,255,.25),transparent 32%),linear-gradient(135deg,#031d3c 0%,#063d68 100%)!important}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcomes h2{color:#fff!important}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcomes .gcs-outcome-copy>p{color:#dceaf5!important}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid article{border-color:rgba(82,198,255,.48);background:rgba(255,255,255,.1);box-shadow:0 12px 28px rgba(0,13,35,.18)}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid span{color:#f7fbff;font-size:11px}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid span{min-height:94px;padding:14px;background:linear-gradient(180deg,#fff 0%,#f8fbfe 100%)}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid img{display:block;width:100%;max-width:118px;height:48px;max-height:48px;object-fit:contain}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-cta{background:radial-gradient(circle at 88% 16%,rgba(12,123,255,.2),transparent 28%),#020b2d}
+body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:32px}
+
+@media(max-width:760px){
+	body.infometry-insurance-snowflake-page .gcs .gcs-shell,
+	body.infometry-insurance-snowflake-page .gcs .gcs-metrics .gcs-metrics-grid{width:calc(100% - 30px)}
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero-inner{width:100%;padding-inline:15px}
+	body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:22px}
+}

@@ -121,3 +121,83 @@ body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:32px
 	body.infometry-insurance-snowflake-page .gcs .gcs-hero-inner{width:100%;padding-inline:15px}
 	body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:22px}
 }
+
+/* Cohesive spacing, type and component scale across the complete page. */
+body.infometry-insurance-snowflake-page .gcs .gcs-section{padding:44px 0}
+body.infometry-insurance-snowflake-page .gcs .gcs-section h2{margin-bottom:16px;font-size:clamp(28px,2vw,34px)}
+body.infometry-insurance-snowflake-page .gcs .gcs-section-intro{max-width:900px;margin-bottom:24px}
+body.infometry-insurance-snowflake-page .gcs .gcs-section-intro>span{font-size:12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-split{gap:44px}
+body.infometry-insurance-snowflake-page .gcs .gcs-metrics{padding-bottom:8px}
+body.infometry-insurance-snowflake-page .gcs .gcs-metrics article{min-height:104px;padding:16px 18px}
+body.infometry-insurance-snowflake-page .gcs .gcs-metrics span{color:#34516f;font-size:13px}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-grid{gap:40px}
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-list{padding:22px 24px;background:#f5f9fc}
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-list h3{font-size:19px}
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-list ul{gap:9px}
+body.infometry-insurance-snowflake-page .gcs .gcs-challenge-list li{color:#294b69;font-size:13px;line-height:1.45}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-journey{gap:12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey article{min-height:318px;padding:0 17px 16px}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey h3{min-height:38px;margin-bottom:10px;font-size:16px}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey ul{margin-bottom:14px;gap:7px}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey li{color:#35536f;font-size:12px;line-height:1.4}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey li strong{font-size:13px}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey article>p{padding:10px 11px;font-size:11px;line-height:1.45}
+body.infometry-insurance-snowflake-page .gcs .gcs-journey article>p b{font-size:10px}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid{gap:12px;margin-bottom:18px}
+body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid article{min-height:108px;padding:16px;gap:12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid h3{margin-bottom:5px;font-size:14px}
+body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid p{color:#3c5873;font-size:12px;line-height:1.5}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-outcomes .gcs-shell{gap:34px}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid{gap:12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid article{min-height:146px;padding:16px 12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid span{font-size:12px;line-height:1.45}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-tech h2{margin-bottom:22px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid{gap:12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid span{min-height:96px;padding:14px 12px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid img{width:auto;max-width:100%;height:auto;max-height:48px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .has-label{gap:9px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .has-label b{color:#153c60;font-size:13px;line-height:1.2;white-space:nowrap}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-snowflake img{width:31px;height:46px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-sql-server img{width:42px;height:46px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-qlik img{max-width:88px;max-height:42px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-tableau img{max-width:112px;max-height:34px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-mulesoft img{max-width:108px;max-height:38px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-aws img{max-width:68px;max-height:48px}
+body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid .is-informatica img{max-width:112px;max-height:36px}
+
+body.infometry-insurance-snowflake-page .gcs .gcs-cta{padding:34px 0}
+body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:24px;padding-top:52px}
+
+@media(max-width:1024px){
+	body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid{grid-template-columns:repeat(4,1fr)}
+	body.infometry-insurance-snowflake-page .gcs .gcs-journey article{min-height:300px}
+}
+@media(max-width:760px){
+	body.infometry-insurance-snowflake-page .gcs .gcs-section{padding:36px 0}
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero,
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero-inner{min-height:680px}
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero-copy{padding-block:42px}
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero-path{margin-top:28px}
+	body.infometry-insurance-snowflake-page .gcs .gcs-split,
+	body.infometry-insurance-snowflake-page .gcs .gcs-challenge-grid{gap:28px}
+	body.infometry-insurance-snowflake-page .gcs .gcs-solution-grid article{min-height:0}
+	body.infometry-insurance-snowflake-page .gcs .gcs-outcomes .gcs-shell{gap:24px}
+	body.infometry-insurance-snowflake-page .infometry-custom-footer{margin-top:18px;padding-top:42px}
+}
+@media(max-width:480px){
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero,
+	body.infometry-insurance-snowflake-page .gcs .gcs-hero-inner{min-height:700px}
+	body.infometry-insurance-snowflake-page .gcs .gcs-metrics-grid,
+	body.infometry-insurance-snowflake-page .gcs .gcs-outcome-grid{grid-template-columns:repeat(2,1fr)}
+	body.infometry-insurance-snowflake-page .gcs .gcs-metrics article{min-height:94px;border-right:0;border-bottom:1px solid #e1ebf2}
+	body.infometry-insurance-snowflake-page .gcs .gcs-metrics article:nth-child(odd){border-right:1px solid #e1ebf2}
+	body.infometry-insurance-snowflake-page .gcs .gcs-metrics article:nth-last-child(-n+2){border-bottom:0}
+	body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid{grid-template-columns:repeat(2,1fr)}
+	body.infometry-insurance-snowflake-page .gcs .gcs-tech-grid span{min-height:88px}
+}

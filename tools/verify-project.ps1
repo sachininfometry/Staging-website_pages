@@ -70,6 +70,7 @@ $requiredFiles = @(
     'templates/page-insurance-snowflake-case-study.php',
     'assets/css/insurance-snowflake-case-study.css',
     'assets/images/case-studies/insurance-snowflake/hero-user-supplied.png',
+    'assets/images/case-studies/insurance-snowflake/technologies-used-symmetrical.png',
     'assets/css/google-cloud-connectors.css',
     'assets/css/google-drive-connector.css',
     'assets/js/google-cloud-connectors.js',

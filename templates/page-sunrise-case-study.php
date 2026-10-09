@@ -79,6 +79,9 @@ $impact = array(
 					<span><i><svg><use href="#sunrise-pie"/></svg></i><span><b>Portfolio Intelligence</b><small>Finance analytics</small></span></span>
 				</div>
 			</div>
+			<figure class="sunrise-hero-mobile-visual">
+				<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/sunrun-energy-network-at-sunset.png' ); ?>" width="2172" height="724" alt="Sunrun cloud connected to production analytics, customer insights, partner performance, and portfolio insights">
+			</figure>
 		</div>
 	</section>
 

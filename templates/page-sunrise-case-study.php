@@ -67,8 +67,6 @@ $impact = array(
 	</svg>
 
 	<section class="sunrise-hero" aria-labelledby="sunrise-title">
-		<img class="sunrise-hero-image" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrise/sunrise-hero.png' ); ?>" width="2048" height="768" alt="A connected solar neighborhood with cloud-powered analytics">
-		<div class="sunrise-hero-shade" aria-hidden="true"></div>
 		<div class="sunrise-shell sunrise-hero-inner">
 			<div class="sunrise-hero-copy">
 				<p class="sunrise-eyebrow"><span></span> Case Study / Sunrun</p>
@@ -81,6 +79,7 @@ $impact = array(
 				</div>
 				<a class="sunrise-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to our data &amp; analytics experts <svg><use href="#sunrise-arrow"/></svg></a>
 			</div>
+			<figure class="sunrise-hero-visual" role="img" aria-label="Sunrun cloud analytics connecting production, customer, partner, and portfolio insights"></figure>
 		</div>
 	</section>
 

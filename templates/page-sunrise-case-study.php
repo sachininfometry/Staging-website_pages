@@ -69,17 +69,16 @@ $impact = array(
 	<section class="sunrise-hero" aria-labelledby="sunrise-title">
 		<div class="sunrise-shell sunrise-hero-inner">
 			<div class="sunrise-hero-copy">
-				<p class="sunrise-eyebrow"><span></span> Case Study / Sunrun</p>
+				<p class="sunrise-eyebrow">Case Study</p>
 				<h1 id="sunrise-title"><span>Powering Enterprise-Wide</span><strong>Data &amp; Analytics</strong><span class="sunrise-title-tail">for Sunrun</span></h1>
 				<p>How Infometry built an integrated data warehouse, orchestration, and analytics foundation across customer, operational, production, and financial systems.</p>
-				<div class="sunrise-hero-meta">
-					<span><b>Industry</b>Renewable Energy &amp; Residential Solar</span>
-					<span><b>Solution</b>Enterprise Data Warehouse &amp; Analytics</span>
-					<span><b>Technology</b>Oracle Cloud, Informatica Cloud, Tableau</span>
+				<div class="sunrise-hero-path" aria-label="Sunrun analytics outcomes">
+					<span><i><svg><use href="#sunrise-database"/></svg></i><span><b>Unified Data</b><small>Enterprise EDW</small></span></span>
+					<span><i><svg><use href="#sunrise-chart"/></svg></i><span><b>Production Insights</b><small>Solar analytics</small></span></span>
+					<span><i><svg><use href="#sunrise-handshake"/></svg></i><span><b>Partner Performance</b><small>Connected ecosystem</small></span></span>
+					<span><i><svg><use href="#sunrise-pie"/></svg></i><span><b>Portfolio Intelligence</b><small>Finance analytics</small></span></span>
 				</div>
-				<a class="sunrise-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to our data &amp; analytics experts <svg><use href="#sunrise-arrow"/></svg></a>
 			</div>
-			<figure class="sunrise-hero-visual" role="img" aria-label="Sunrun cloud analytics connecting production, customer, partner, and portfolio insights"></figure>
 		</div>
 	</section>
 

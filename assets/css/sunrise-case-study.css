@@ -799,87 +799,121 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	}
 }
 
-/* Keep the Sunrun story and visual in two distinct hero columns. */
+/* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	min-height: 640px;
-	background: linear-gradient(135deg, #03152f 0%, #052b55 100%);
+	min-height: 670px;
+	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
 .sunrise-hero::before {
 	z-index: 0;
-	background: radial-gradient(circle at 16% 42%, rgba(8, 124, 240, .2), transparent 42%);
+	background:
+		linear-gradient(90deg, rgba(1, 20, 46, .99) 0%, rgba(2, 27, 59, .97) 35%, rgba(2, 28, 60, .72) 48%, rgba(2, 25, 54, .12) 68%, transparent 100%),
+		radial-gradient(circle at 16% 48%, rgba(8, 124, 240, .16), transparent 36%);
 }
 
 .sunrise-hero-inner {
-	display: grid;
+	display: flex;
 	width: 100%;
 	max-width: none;
-	min-height: 640px;
-	padding: 0;
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-	align-items: stretch;
+	min-height: 670px;
+	margin: 0;
+	padding: 96px clamp(30px, 2.6vw, 50px) 44px;
+	align-items: center;
 }
 
 .sunrise-hero-copy {
-	display: flex;
-	width: min(100%, 900px);
+	width: min(49%, 820px);
 	max-width: none;
-	min-width: 0;
-	padding: 92px clamp(42px, 5vw, 96px) 54px;
-	flex-direction: column;
-	justify-content: center;
+	padding: 0;
+	transform: none;
 }
 
-.sunrise-hero-copy::before {
-	top: 124px;
-	bottom: 108px;
-	left: clamp(22px, 2.7vw, 52px);
+.sunrise-hero-copy::before { display: none; }
+
+.sunrise-eyebrow {
+	display: inline-flex;
+	width: auto;
+	margin-bottom: 24px;
+	padding: 8px 19px;
+	border: 1px solid var(--sunrise-cyan);
+	border-radius: 999px;
+	color: #57d9ff;
+	font-size: 11px;
+	letter-spacing: .15em;
 }
 
 .sunrise-hero h1 {
+	max-width: 790px;
+	margin-bottom: 28px;
+	font-size: clamp(40px, 3.35vw, 58px);
+	line-height: 1.06;
+}
+
+.sunrise-hero h1 strong,
+.sunrise-hero h1 .sunrise-title-tail { margin-top: 7px; }
+
+.sunrise-hero-copy > p:not(.sunrise-eyebrow) {
 	max-width: 760px;
-	font-size: clamp(42px, 3vw, 58px);
+	margin-bottom: 0;
+	font-size: 17px;
+	line-height: 1.65;
 }
 
-.sunrise-hero-meta {
-	grid-template-columns: .92fr 1.34fr 1.14fr;
+.sunrise-hero-path {
+	display: grid;
+	margin-top: 48px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.sunrise-hero-visual {
-	position: relative;
+.sunrise-hero-path > span {
+	display: flex;
 	min-width: 0;
-	min-height: 640px;
-	margin: 0;
-	overflow: hidden;
-	background: #08244a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) 72% center / cover no-repeat;
+	padding: 0 17px;
+	align-items: center;
+	gap: 12px;
 }
 
-.sunrise-hero-visual::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-	box-shadow: inset 18px 0 32px rgba(1, 18, 43, .2);
+.sunrise-hero-path > span:first-child { padding-left: 0; }
+.sunrise-hero-path > span:not(:last-child) { border-right: 1px solid rgba(90, 208, 255, .35); }
+
+.sunrise-hero-path i {
+	display: grid;
+	flex: 0 0 46px;
+	width: 46px;
+	height: 46px;
+	place-items: center;
+	border: 1px solid rgba(126, 218, 255, .58);
+	border-radius: 50%;
+	color: #23d0ff;
+	background: rgba(0, 48, 88, .35);
 }
 
-@media (max-width: 1200px) {
-	.sunrise-hero-inner { width: 100%; }
-	.sunrise-hero-copy { padding-inline: 36px; }
-	.sunrise-hero h1 { font-size: clamp(38px, 4.1vw, 50px); }
-	.sunrise-hero-meta { grid-template-columns: 1fr; }
-	.sunrise-hero-meta span { min-height: 56px; }
+.sunrise-hero-path svg { width: 22px; height: 22px; }
+.sunrise-hero-path > span > span { display: grid; min-width: 0; }
+.sunrise-hero-path b { color: #fff; font-size: 13px; line-height: 1.2; }
+.sunrise-hero-path small { margin-top: 3px; color: #8bdef7; font-size: 11px; font-weight: 700; line-height: 1.25; }
+
+@media (max-width: 1180px) {
+	.sunrise-hero-copy { width: 60%; }
+	.sunrise-hero h1 { font-size: clamp(39px, 4.5vw, 52px); }
+	.sunrise-hero-path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; }
+	.sunrise-hero-path > span:nth-child(2) { border-right: 0; }
 }
 
-@media (max-width: 900px) {
-	.sunrise-hero,
-	.sunrise-hero-inner { min-height: 0; }
-	.sunrise-hero-inner { grid-template-columns: 1fr; }
-	.sunrise-hero-copy { width: 100%; padding: 76px 32px 42px; }
-	.sunrise-hero-visual { min-height: 430px; }
-}
-
-@media (max-width: 720px) {
-	.sunrise-hero-inner { width: 100%; }
-	.sunrise-hero-copy { padding: 64px 20px 36px; }
-	.sunrise-hero-visual { min-height: 310px; background-position: 72% center; }
+@media (max-width: 760px) {
+	.sunrise-hero { min-height: 760px; background-position: 64% center; }
+	.sunrise-hero::before {
+		background: linear-gradient(180deg, rgba(1, 20, 46, .99) 0%, rgba(2, 27, 59, .96) 62%, rgba(2, 27, 59, .5) 100%);
+	}
+	.sunrise-hero-inner { width: 100%; min-height: 760px; padding: 58px 20px 40px; align-items: flex-start; }
+	.sunrise-hero-copy { width: 100%; }
+	.sunrise-hero h1 { font-size: clamp(36px, 10vw, 46px); }
+	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 15px; }
+	.sunrise-hero-path { margin-top: 34px; }
+	.sunrise-hero-path > span { padding-inline: 8px; gap: 9px; }
+	.sunrise-hero-path > span:first-child { padding-left: 0; }
+	.sunrise-hero-path i { flex-basis: 40px; width: 40px; height: 40px; }
+	.sunrise-hero-path b { font-size: 12px; }
+	.sunrise-hero-path small { font-size: 10px; }
 }

@@ -1680,3 +1680,149 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrise-platform-mark.tableau { width: 158px; height: 64px; }
 	.sunrise-tech-logo img { max-width: 122px; }
 }
+
+/* Simple architecture journey: quiet surfaces, clear hierarchy, no decorative noise. */
+.sunrise-solution {
+	background: #020b2d;
+}
+
+.sunrise-solution::before,
+.sunrise-solution::after { display: none; }
+
+.sunrise-solution .sunrise-solution-intro {
+	margin-bottom: 38px;
+	padding-bottom: 30px;
+	border-color: rgba(132, 190, 255, .18);
+}
+
+.sunrise-solution .sunrise-solution-intro h2 {
+	max-width: 720px;
+	font-size: clamp(38px, 3.1vw, 50px);
+	line-height: 1.08;
+}
+
+.sunrise-solution .sunrise-solution-intro > p {
+	max-width: 520px;
+	color: #aebed8;
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.sunrise-architecture {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.sunrise-flow { display: none; }
+
+.sunrise-architecture article,
+.sunrise-architecture article.featured {
+	position: relative;
+	min-height: 286px;
+	padding: 24px;
+	overflow: hidden;
+	border: 1px solid rgba(132, 190, 255, .2);
+	border-radius: 12px;
+	background: rgba(255, 255, 255, .035);
+	box-shadow: none;
+	transition: border-color .2s ease, background-color .2s ease;
+}
+
+.sunrise-architecture article::after { display: none; }
+
+.sunrise-architecture article:hover,
+.sunrise-architecture article.featured:hover {
+	transform: none;
+	border-color: rgba(83, 206, 255, .55);
+	background: rgba(255, 255, 255, .055);
+	box-shadow: none;
+}
+
+.sunrise-architecture small {
+	display: inline-flex;
+	min-height: 28px;
+	margin-bottom: 21px;
+	padding: 0 11px;
+	align-items: center;
+	border-radius: 999px;
+	color: #70d9ff;
+	background: rgba(52, 183, 255, .1);
+	font-size: 9px;
+	letter-spacing: .09em;
+}
+
+.sunrise-architecture h3 {
+	margin: 19px 0 11px;
+	font-size: 20px;
+	line-height: 1.25;
+}
+
+.sunrise-architecture p,
+.sunrise-architecture li {
+	color: #aebed8;
+	font-size: 12px;
+	line-height: 1.55;
+}
+
+.sunrise-architecture ul { display: grid; gap: 8px; }
+
+.sunrise-architecture li {
+	position: relative;
+	padding: 0 0 0 15px;
+	border: 0;
+}
+
+.sunrise-architecture li::before {
+	content: "";
+	position: absolute;
+	top: .62em;
+	left: 0;
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #45cfff;
+}
+
+.sunrise-platform-mark,
+.sunrise-platform-mark.oracle,
+.sunrise-platform-mark.tableau {
+	width: min(100%, 150px);
+	height: 58px;
+	padding: 9px 12px;
+	border: 0;
+	border-radius: 8px;
+	background: #f8fbff;
+	box-shadow: none;
+}
+
+.sunrise-platform-mark img,
+.sunrise-platform-mark.oracle img { max-width: 126px; max-height: 38px; }
+.sunrise-platform-mark.tableau img { max-height: 34px; }
+
+.sunrise-solution-note {
+	margin-top: 20px;
+	padding: 18px 22px;
+	border: 1px solid rgba(132, 190, 255, .16);
+	border-left: 3px solid #45cfff;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, .035);
+	box-shadow: none;
+}
+
+.sunrise-solution-note svg { width: 30px; height: 30px; flex-basis: 30px; }
+.sunrise-solution-note p { color: #aebed8; font-size: 14px; line-height: 1.6; }
+
+@media (max-width: 1200px) {
+	.sunrise-architecture { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sunrise-architecture article,
+	.sunrise-architecture article.featured { min-height: 260px; }
+}
+
+@media (max-width: 720px) {
+	.sunrise-solution .sunrise-solution-intro { margin-bottom: 28px; }
+	.sunrise-architecture { grid-template-columns: 1fr; gap: 12px; }
+	.sunrise-architecture article,
+	.sunrise-architecture article.featured { min-height: 0; padding: 22px; }
+	.sunrise-solution-note { padding: 17px; }
+}

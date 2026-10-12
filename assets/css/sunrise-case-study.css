@@ -857,12 +857,13 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-tech-list {
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-template-columns: repeat(5, minmax(0, 1fr));
 	gap: 10px;
 }
 
-.sunrise-tech-list span {
+.sunrise-tech-list > span {
 	display: flex;
+	min-width: 0;
 	min-height: 112px;
 	align-items: center;
 	justify-content: center;
@@ -995,7 +996,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	min-height: 640px;
+	min-height: clamp(520px, 33.333vw, 640px);
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
@@ -1010,14 +1011,14 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	display: flex;
 	width: 100%;
 	max-width: none;
-	min-height: 640px;
+	min-height: clamp(520px, 33.333vw, 640px);
 	margin: 0;
-	padding: 78px clamp(30px, 2.6vw, 50px) 36px;
+	padding: clamp(54px, 4vw, 78px) clamp(30px, 2.6vw, 50px) clamp(30px, 2vw, 36px);
 	align-items: center;
 }
 
 .sunrise-hero-copy {
-	width: min(50%, 900px);
+	width: min(45%, 760px);
 	max-width: none;
 	padding: 0;
 	transform: none;
@@ -1038,9 +1039,9 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-hero h1 {
-	max-width: 840px;
+	max-width: 100%;
 	margin-bottom: 22px;
-	font-size: clamp(42px, 3.25vw, 60px);
+	font-size: clamp(36px, 2.7vw, 54px);
 	font-weight: 800;
 	line-height: 1.04;
 	letter-spacing: -.045em;
@@ -1050,7 +1051,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero h1 .sunrise-title-tail { margin-top: 7px; }
 
 .sunrise-hero-copy > p:not(.sunrise-eyebrow) {
-	max-width: 790px;
+	max-width: 680px;
 	margin-bottom: 0;
 	font-size: 17px;
 	line-height: 1.58;
@@ -1091,21 +1092,22 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero-path small { margin-top: 4px; color: #8bdef7; font-size: 11px; font-weight: 700; line-height: 1.25; }
 .sunrise-hero-mobile-visual { display: none; }
 
-@media (max-width: 1180px) {
-	.sunrise-hero-copy { width: 60%; }
-	.sunrise-hero h1 { font-size: clamp(39px, 4.5vw, 52px); }
+@media (max-width: 1320px) {
+	.sunrise-hero-copy { width: 48%; }
+	.sunrise-hero h1 { font-size: clamp(36px, 3.45vw, 46px); }
+	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 15px; }
 	.sunrise-hero-path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; }
 	.sunrise-hero-path > span:nth-child(2) { border-right: 0; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 1024px) {
 	.sunrise-hero { min-height: 0; background: #031b3a; }
 	.sunrise-hero::before {
 		background: radial-gradient(circle at 18% 35%, rgba(8, 124, 240, .16), transparent 42%);
 	}
-	.sunrise-hero-inner { display: block; width: 100%; min-height: 0; padding: 58px 20px 0; }
+	.sunrise-hero-inner { display: block; width: 100%; min-height: 0; padding: 58px 32px 0; }
 	.sunrise-hero-copy { width: 100%; }
-	.sunrise-hero h1 { font-size: clamp(36px, 10vw, 46px); }
+	.sunrise-hero h1 { max-width: 760px; font-size: clamp(38px, 6vw, 50px); }
 	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 15px; }
 	.sunrise-hero-path { margin-top: 34px; }
 	.sunrise-hero-path > span { padding-inline: 8px; gap: 9px; }
@@ -1115,8 +1117,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	.sunrise-hero-path small { font-size: 10px; }
 	.sunrise-hero-mobile-visual {
 		display: block;
-		width: calc(100% + 40px);
-		margin: 36px -20px 0;
+		width: calc(100% + 64px);
+		margin: 36px -32px 0;
 		overflow: hidden;
 		border-top: 1px solid rgba(80, 200, 255, .26);
 		background: #08244a;
@@ -1126,6 +1128,13 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 		width: 100%;
 		height: auto;
 	}
+}
+
+@media (max-width: 600px) {
+	.sunrise-hero-inner { padding: 50px 20px 0; }
+	.sunrise-hero h1 { font-size: clamp(34px, 10vw, 44px); }
+	.sunrise-hero-path { gap: 18px 0; }
+	.sunrise-hero-mobile-visual { width: calc(100% + 40px); margin-inline: -20px; }
 }
 
 /* Premium full-page system from challenge through footer. */
@@ -1347,7 +1356,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-tech-list { gap: 14px; }
 
-.sunrise-tech-list span {
+.sunrise-tech-list > span {
 	min-height: 128px;
 	padding: 18px 12px;
 	border-color: rgba(123, 187, 227, .38);
@@ -1357,7 +1366,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
 
-.sunrise-tech-list span:hover {
+.sunrise-tech-list > span:hover {
 	transform: translateY(-6px);
 	border-color: #77c8ef;
 	box-shadow: 0 22px 42px rgba(16, 83, 132, .13);
@@ -1365,16 +1374,20 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-final-cta {
 	min-height: 390px;
-	background: #04162f;
+	background:
+		radial-gradient(circle at 82% 18%, rgba(34, 200, 246, .16), transparent 30%),
+		linear-gradient(120deg, #03152f 0%, #042d58 62%, #064d78 100%);
 }
 
-.sunrise-final-cta > img { transform: scale(1.04); transition: transform 8s ease; }
-.sunrise-final-cta.is-visible > img { transform: scale(1); }
-
-.sunrise-final-overlay {
-	background:
-		linear-gradient(90deg, rgba(2, 15, 37, .98), rgba(3, 42, 82, .9) 58%, rgba(3, 33, 70, .68)),
-		radial-gradient(circle at 82% 50%, rgba(37, 200, 250, .18), transparent 30%);
+.sunrise-final-cta::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	opacity: .12;
+	background-image: radial-gradient(circle, #58caff 1px, transparent 1.2px);
+	background-size: 12px 12px;
+	mask-image: linear-gradient(110deg, transparent 28%, #000 92%);
+	pointer-events: none;
 }
 
 .sunrise-final-inner {
@@ -1382,9 +1395,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	padding: 48px;
 	border: 1px solid rgba(103, 210, 255, .25);
 	border-radius: 28px;
-	background: linear-gradient(120deg, rgba(3, 29, 62, .8), rgba(10, 81, 137, .38));
+	background: linear-gradient(120deg, rgba(3, 29, 62, .96), rgba(10, 81, 137, .72));
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 28px 70px rgba(0, 0, 0, .22);
-	backdrop-filter: blur(14px);
 }
 
 .sunrise-final-inner p { color: rgba(232, 245, 255, .78); }
@@ -1407,44 +1419,43 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	position: relative;
 	overflow: hidden;
 	margin: 0;
-	padding: 64px 0 24px;
-	color: #c9d7ea;
+	padding: 58px 0 22px;
+	color: #c6d2f5;
 	background:
-		radial-gradient(circle at 14% 0, rgba(27, 145, 239, .26), transparent 30%),
-		radial-gradient(circle at 88% 16%, rgba(34, 200, 246, .14), transparent 28%),
-		#020d20;
-	font-family: "Open Sans", Arial, sans-serif;
+		radial-gradient(circle at 14% 0, rgba(80, 49, 255, .28), transparent 30%),
+		radial-gradient(circle at 88% 16%, rgba(12, 123, 255, .2), transparent 28%),
+		#020b2d;
+	font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
 }
 
 .infometry-custom-footer::before {
 	content: "";
 	position: absolute;
 	inset: 0;
-	opacity: .13;
-	background-image: radial-gradient(circle, #58caff 1px, transparent 1.2px);
-	background-size: 12px 12px;
-	mask-image: linear-gradient(115deg, transparent 22%, #000 80%);
+	opacity: .12;
+	background-image: radial-gradient(circle, #58a4ff 1px, transparent 1.2px);
+	background-size: 10px 10px;
+	mask-image: linear-gradient(115deg, transparent 28%, #000 80%);
 	pointer-events: none;
 }
 
 .infometry-footer-shell { position: relative; z-index: 1; width: min(100% - 64px, 1440px); margin-inline: auto; }
 .infometry-footer-grid { display: grid; grid-template-columns: 1.35fr 1.35fr .8fr .8fr; gap: 54px; }
-.infometry-footer-kicker,
-.infometry-footer-column h3 { margin: 0 0 18px; color: #fff; font-family: "Manrope", "Open Sans", Arial, sans-serif; font-size: 18px; line-height: 1.3; font-weight: 800; }
-.infometry-footer-kicker { color: #66dcff; font-size: 12px; letter-spacing: .13em; text-transform: uppercase; }
-.infometry-footer-logo { display: flex; width: 100%; min-height: 84px; margin: -4px 0 12px; align-items: center; justify-content: flex-start; }
-.infometry-custom-footer .infometry-footer-logo img { display: block; width: 310px; max-width: 100%; height: 82px; object-fit: contain; object-position: left center; transform: translateX(-3.6%); }
-.infometry-footer-connect > p:not(.infometry-footer-kicker) { max-width: 380px; margin: 0 0 18px; color: #dce6f3; font-size: 14px; line-height: 1.75; }
-.infometry-footer-social { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
-.infometry-footer-social a { display: grid; width: 34px; height: 34px; padding: 3px; place-items: center; overflow: hidden; border: 1px solid rgba(139, 210, 255, .24); border-radius: 10px; background: rgba(255, 255, 255, .06); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.infometry-footer-connect h2,
+.infometry-footer-column h3 { margin: 0 0 18px; color: #fff; font-family: "Open Sans", "Segoe UI", Arial, sans-serif; font-size: 20px; line-height: 1.3; font-weight: 800; letter-spacing: 0; }
+.infometry-footer-logo { display: flex; width: 100%; min-height: 92px; margin: -5px 0 12px; align-items: center; justify-content: flex-start; }
+.infometry-custom-footer .infometry-footer-logo img { display: block; width: 320px; max-width: 100%; height: 86px; object-fit: contain; object-position: left center; transform: translateX(-3.8%); }
+.infometry-footer-connect > p { max-width: 370px; margin: 0 0 18px; color: #e2e8ff; font-size: 15px; line-height: 1.7; font-weight: 500; }
+.infometry-footer-social { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 19px; }
+.infometry-footer-social a { display: grid; width: 31px; height: 31px; padding: 2px; place-items: center; overflow: hidden; border: 1px solid rgba(139, 190, 255, .25); border-radius: 9px; background: rgba(255, 255, 255, .06); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
 .infometry-footer-social img { display: block; width: 100%; height: 100%; border-radius: 7px; object-fit: contain; }
-.infometry-footer-social a:hover { transform: translateY(-3px); border-color: #54d6ff; background: linear-gradient(135deg, rgba(12, 114, 220, .88), rgba(20, 185, 230, .72)); }
-.infometry-footer-contact { display: inline-flex; padding: 12px 18px; align-items: center; gap: 10px; border-radius: 10px; color: #fff !important; background: linear-gradient(135deg, #087cf0, #10bfe8); font-size: 14px; font-weight: 800; text-decoration: none !important; box-shadow: 0 12px 26px rgba(0, 112, 225, .26); transition: transform .2s ease, box-shadow .2s ease; }
-.infometry-footer-contact:hover { transform: translateY(-2px); box-shadow: 0 18px 34px rgba(0, 112, 225, .34); }
+.infometry-footer-social a:hover { transform: translateY(-2px); border-color: #54b8ff; background: linear-gradient(135deg, rgba(92, 57, 255, .8), rgba(0, 132, 255, .8)); }
+.infometry-footer-contact { display: inline-flex; padding: 11px 17px; align-items: center; gap: 10px; border-radius: 8px; color: #fff !important; background: linear-gradient(135deg, #6333ff, #087cff); font-size: 14px; font-weight: 800; text-decoration: none !important; box-shadow: 0 9px 22px rgba(34, 92, 255, .24); transition: transform .2s ease, box-shadow .2s ease; }
+.infometry-footer-contact:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(34, 92, 255, .32); }
 .infometry-footer-column { min-width: 0; }
-.infometry-footer-column a { display: block; margin: 0 0 11px; color: #eaf2fb !important; font-size: 14px; line-height: 1.55; font-weight: 500; text-decoration: none !important; transition: color .2s ease, transform .2s ease; }
-.infometry-footer-column a:hover { color: #66d8ff !important; transform: translateX(4px); }
-.infometry-footer-bottom { display: flex; margin-top: 42px; padding-top: 22px; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255, 255, 255, .14); color: #aebfd3; font-size: 13px; font-weight: 500; }
+.infometry-footer-column a { display: block; margin: 0 0 11px; color: #edf2ff !important; font-size: 15px; line-height: 1.55; font-weight: 500; text-decoration: none !important; transition: color .2s ease, transform .2s ease; }
+.infometry-footer-column a:hover { color: #66c5ff !important; transform: translateX(3px); }
+.infometry-footer-bottom { display: flex; margin-top: 40px; padding-top: 21px; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255, 255, 255, .18); color: #cbd5f5; font-size: 14px; font-weight: 500; }
 
 /* Staggered section reveals. */
 .sunrise-challenge.sunrise-motion-ready .sunrise-heading-row,
@@ -1459,7 +1470,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrise-impact.sunrise-motion-ready .sunrise-heading-row,
 .sunrise-impact.sunrise-motion-ready .sunrise-impact-grid article,
 .sunrise-tech.sunrise-motion-ready .sunrise-tech-grid > *,
-.sunrise-tech.sunrise-motion-ready .sunrise-tech-list span,
+.sunrise-tech.sunrise-motion-ready .sunrise-tech-list > span,
 .sunrise-final-cta.sunrise-motion-ready .sunrise-final-inner > *,
 .infometry-custom-footer.sunrise-motion-ready .infometry-footer-grid > *,
 .infometry-custom-footer.sunrise-motion-ready .infometry-footer-bottom {
@@ -1480,7 +1491,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrise-impact.is-visible .sunrise-heading-row,
 .sunrise-impact.is-visible .sunrise-impact-grid article,
 .sunrise-tech.is-visible .sunrise-tech-grid > *,
-.sunrise-tech.is-visible .sunrise-tech-list span,
+.sunrise-tech.is-visible .sunrise-tech-list > span,
 .sunrise-final-cta.is-visible .sunrise-final-inner > *,
 .infometry-custom-footer.is-visible .infometry-footer-grid > *,
 .infometry-custom-footer.is-visible .infometry-footer-bottom {
@@ -1535,4 +1546,94 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.infometry-footer-shell { width: min(100% - 32px, 1440px); }
 	.infometry-footer-grid { grid-template-columns: 1fr; gap: 32px; }
 	.infometry-footer-bottom { flex-direction: column; }
+}
+
+/* Normalize genuine technology logos across architecture and ecosystem cards. */
+.sunrise-platform-mark,
+.sunrise-platform-mark.oracle,
+.sunrise-platform-mark.tableau {
+	position: relative;
+	display: grid;
+	width: min(100%, 170px);
+	height: 68px;
+	padding: 12px 14px;
+	place-items: center;
+	overflow: hidden;
+	border: 1px solid rgba(151, 211, 242, .5);
+	border-radius: 15px;
+	background: rgba(255, 255, 255, .96);
+	box-shadow: 0 12px 28px rgba(0, 0, 0, .13), inset 0 1px 0 #fff;
+}
+
+.sunrise-platform-mark img {
+	display: block;
+	width: 100%;
+	max-width: 142px;
+	height: 43px;
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.sunrise-platform-mark.oracle {
+	border: 1px solid rgba(255, 76, 76, .4);
+}
+
+.sunrise-platform-mark.oracle img {
+	width: 100%;
+	max-width: 142px;
+	height: 46px;
+	max-height: 100%;
+	object-view-box: inset(31% 3% 31% 3%);
+	object-fit: contain;
+}
+
+.sunrise-platform-mark.tableau img { max-height: 39px; }
+
+.sunrise-tech-logo {
+	display: flex;
+	width: 100%;
+	height: 52px;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.sunrise-tech-logo img {
+	display: block;
+	width: 100%;
+	max-width: 132px;
+	height: 44px;
+	max-height: 44px;
+	object-fit: contain;
+}
+
+.sunrise-tech-logo.oracle { position: relative; }
+
+.sunrise-tech-logo.oracle img {
+	width: 100%;
+	max-width: 100%;
+	height: 44px;
+	max-height: 44px;
+	object-view-box: inset(31% 3% 31% 3%);
+	object-fit: contain;
+}
+
+.sunrise-tech-logo.salesforce img { max-width: 92px; max-height: 48px; }
+.sunrise-tech-logo.operational { gap: 8px; color: #143d68; }
+.sunrise-tech-logo.operational svg { width: 27px; height: 27px; color: #087cf0; }
+.sunrise-tech-logo.operational b { color: #143d68; font-size: 13px; line-height: 1.2; }
+
+.sunrise-tech-list > span > small {
+	display: flex;
+	min-height: 2.8em;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+	.sunrise-platform-mark,
+	.sunrise-platform-mark.oracle,
+	.sunrise-platform-mark.tableau { width: 158px; height: 64px; }
+	.sunrise-tech-logo img { max-width: 122px; }
 }

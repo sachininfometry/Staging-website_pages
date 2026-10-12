@@ -128,11 +128,11 @@ $impact = array(
 			<div class="sunrise-architecture">
 				<article><small>01 / Source systems</small><h3>Enterprise data</h3><ul><li>Salesforce CRM &amp; Sales</li><li>Oracle Applications</li><li>Meter &amp; Production</li><li>Contract Systems</li><li>Homegrown Applications</li></ul></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="featured"><small>02 / Integration</small><span class="sunrise-platform-mark">I</span><h3>Informatica Cloud</h3><p>Data integration, transformation, quality, and orchestration.</p></article>
+				<article class="featured"><small>02 / Integration</small><span class="sunrise-platform-mark informatica"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica" width="293" height="78"></span><h3>Informatica Cloud</h3><p>Data integration, transformation, quality, and orchestration.</p></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article><small>03 / Data foundation</small><span class="sunrise-platform-mark oracle">ORACLE</span><h3>Oracle Cloud EDW</h3><p>Standardized enterprise data across the complete solar lifecycle.</p></article>
+				<article><small>03 / Data foundation</small><span class="sunrise-platform-mark oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-oracle.png' ); ?>" alt="Oracle" width="738" height="414"></span><h3>Oracle Cloud EDW</h3><p>Standardized enterprise data across the complete solar lifecycle.</p></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article><small>04 / Business analytics</small><span class="sunrise-platform-mark tableau">＋</span><h3>Tableau</h3><p>Trusted reporting, visualization, and cross-functional insights.</p></article>
+				<article><small>04 / Business analytics</small><span class="sunrise-platform-mark tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-tableau.png' ); ?>" alt="Tableau" width="701" height="156"></span><h3>Tableau</h3><p>Trusted reporting, visualization, and cross-functional insights.</p></article>
 			</div>
 			<div class="sunrise-solution-note"><svg><use href="#sunrise-cloud"/></svg><p><strong>One common analytical foundation.</strong> Integrated data was standardized, transformed, and modeled across customer, sales, partner, production, operational, and financial domains.</p></div>
 		</div>
@@ -165,18 +165,16 @@ $impact = array(
 		<div class="sunrise-shell sunrise-tech-grid">
 			<div><p class="sunrise-overline">Technology ecosystem</p><h2>Built for trusted enterprise analytics</h2></div>
 			<div class="sunrise-tech-list">
-				<span><b>ORACLE</b><small>Cloud Enterprise Data Warehouse</small></span>
-				<span><b class="informatica">◆ Informatica</b><small>Cloud Data Integration &amp; Orchestration</small></span>
-				<span><b class="tableau">＋ tableau</b><small>Business Intelligence &amp; Analytics</small></span>
-				<span><b class="salesforce">☁ Salesforce</b><small>CRM &amp; Sales Data</small></span>
-				<span><b>Operational Systems</b><small>Meter, Production &amp; Homegrown Data</small></span>
+				<span><span class="sunrise-tech-logo oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-oracle.png' ); ?>" alt="Oracle" width="738" height="414"></span><small>Cloud Enterprise Data Warehouse</small></span>
+				<span><span class="sunrise-tech-logo"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica" width="293" height="78"></span><small>Cloud Data Integration &amp; Orchestration</small></span>
+				<span><span class="sunrise-tech-logo"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-tableau.png' ); ?>" alt="Tableau" width="701" height="156"></span><small>Business Intelligence &amp; Analytics</small></span>
+				<span><span class="sunrise-tech-logo salesforce"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-salesforce.png' ); ?>" alt="Salesforce" width="284" height="188"></span><small>CRM &amp; Sales Data</small></span>
+				<span><span class="sunrise-tech-logo operational"><svg aria-hidden="true"><use href="#sunrise-gear"/></svg><b>Operational Systems</b></span><small>Meter, Production &amp; Homegrown Data</small></span>
 			</div>
 		</div>
 	</section>
 
 	<section class="sunrise-final-cta">
-		<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrise/sunrise-hero.png' ); ?>" alt="" width="2048" height="768" aria-hidden="true">
-		<div class="sunrise-final-overlay" aria-hidden="true"></div>
 		<div class="sunrise-shell sunrise-final-inner"><div><p class="sunrise-overline">Turn complexity into clarity</p><h2>Turning complex enterprise data into actionable insights</h2></div><div><p>Infometry helps organizations connect fragmented enterprise data, establish trusted metrics, and create scalable analytics platforms.</p><a class="sunrise-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to our data &amp; analytics experts <svg><use href="#sunrise-arrow"/></svg></a></div></div>
 	</section>
 </main>
@@ -185,7 +183,7 @@ $impact = array(
 	<div class="infometry-footer-shell">
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
-				<p class="infometry-footer-kicker">Connect with us</p>
+				<h2>Connect with us</h2>
 				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">

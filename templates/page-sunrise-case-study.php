@@ -85,12 +85,6 @@ $solutions = array(
 				<p class="sunrise-eyebrow">Case Study</p>
 				<h1 id="sunrise-title"><span>Powering Enterprise-Wide</span><strong>Data &amp; Analytics</strong><span class="sunrise-title-tail">for Sunrun</span></h1>
 				<p>How Infometry built an integrated data warehouse, orchestration, and analytics foundation across customer, operational, production, and financial systems.</p>
-				<div class="sunrise-hero-path" aria-label="Sunrun analytics outcomes">
-					<span><i><svg><use href="#sunrise-database"/></svg></i><span><b>Unified Data</b><small>Enterprise EDW</small></span></span>
-					<span><i><svg><use href="#sunrise-chart"/></svg></i><span><b>Production Insights</b><small>Solar analytics</small></span></span>
-					<span><i><svg><use href="#sunrise-handshake"/></svg></i><span><b>Partner Performance</b><small>Connected ecosystem</small></span></span>
-					<span><i><svg><use href="#sunrise-pie"/></svg></i><span><b>Portfolio Intelligence</b><small>Finance analytics</small></span></span>
-				</div>
 			</div>
 			<figure class="sunrise-hero-mobile-visual">
 				<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/sunrun-energy-network-at-sunset.png' ); ?>" width="2172" height="724" alt="Sunrun cloud connected to production analytics, customer insights, partner performance, and portfolio insights">

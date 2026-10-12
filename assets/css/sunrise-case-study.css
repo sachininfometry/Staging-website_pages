@@ -996,8 +996,11 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
+	width: 100%;
+	max-width: 1440px;
 	height: 575px;
 	min-height: 575px;
+	margin-inline: auto;
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
@@ -1011,22 +1014,13 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero-inner {
 	display: flex;
 	width: 100%;
-	max-width: 1920px;
+	max-width: 1440px;
 	height: 575px;
 	min-height: 575px;
 	margin: 0 auto;
 	padding: 64px 50px 34px;
 	align-items: center;
 }
-
-/* Keep the approved desktop artwork at its design size on ultra-wide screens. */
-@media (min-width: 1800px) {
-	.sunrise-hero {
-		background-position: center center;
-		background-size: 1920px auto;
-	}
-}
-
 .sunrise-hero-copy {
 	width: min(45%, 760px);
 	max-width: none;

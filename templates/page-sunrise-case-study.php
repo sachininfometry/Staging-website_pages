@@ -47,6 +47,15 @@ $impact = array(
 	array( 'users', 'Cross-Functional Insights', 'Connected analysis across customers, sales, production, partners, economics, and portfolios.' ),
 	array( 'chart', 'Scalable Analytics Architecture', 'A future-ready platform designed for new sources, metrics, and business requirements.' ),
 );
+
+$solutions = array(
+	array( 'database', 'Integrated Data from Enterprise Systems', 'Integrated data from Salesforce, Oracle applications, meter and production systems, contract systems, and homegrown applications.' ),
+	array( 'gear', 'Standardized and Governed Data', 'Standardized, transformed, and governed enterprise data for consistent reporting.' ),
+	array( 'database', 'Oracle Cloud Enterprise Data Warehouse', 'Built a common analytical foundation across customer, sales, partner, production, operational, and financial data.' ),
+	array( 'structure', 'Repeatable Data Orchestration', 'Implemented scalable data orchestration pipelines using Informatica Cloud.' ),
+	array( 'document', 'Business Data Models', 'Developed business data models and analytical layers to support reporting and analysis.' ),
+	array( 'chart', 'Analytics and Visualization', 'Enabled reporting and visualization through Tableau.' ),
+);
 ?>
 
 <main class="sunrise-case-study" id="sunrise-main">
@@ -89,59 +98,85 @@ $impact = array(
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-client" id="client">
-		<div class="sunrise-shell sunrise-client-grid">
-			<div class="sunrise-copy-block">
-				<p class="sunrise-overline">Client</p>
-				<h2>Connecting the solar customer and asset lifecycle</h2>
+	<section class="sunrun-facts" aria-label="Case study summary">
+		<div class="sunrise-shell sunrun-facts-grid">
+			<article><span class="sunrise-icon"><svg><use href="#sunrise-users"/></svg></span><p><small>Client</small><strong>Sunrun</strong></p></article>
+			<article><span class="sunrise-icon"><svg><use href="#sunrise-chart"/></svg></span><p><small>Industry</small><strong>Renewable Energy &amp; Residential Solar</strong></p></article>
+			<article><span class="sunrise-icon"><svg><use href="#sunrise-structure"/></svg></span><p><small>Solution</small><strong>Enterprise Data Warehouse, Data Integration &amp; Analytics</strong></p></article>
+			<article><span class="sunrise-icon"><svg><use href="#sunrise-cloud"/></svg></span><p><small>Technology</small><strong>Oracle Cloud, Informatica Cloud, Tableau</strong></p></article>
+		</div>
+	</section>
+
+	<section class="sunrise-section sunrise-client sunrun-overview" id="client">
+		<div class="sunrise-shell sunrise-client-grid sunrun-about-grid">
+			<div class="sunrise-copy-block sunrun-copy-block">
+				<h2>About the Client</h2>
 				<p>Sunrun is a leading residential solar and energy services company with business processes spanning customer acquisition, sales, partner operations, contracts, solar production, customer engagement, project finance, credit, and portfolio management.</p>
-				<p>As the business scaled, these processes generated significant data across Salesforce, Oracle applications, meter and production systems, contract databases, and homegrown applications. Sunrun engaged Infometry to unify this information and provide trusted insights across the business.</p>
+				<p>As the business scaled, these processes generated significant volumes of data across Salesforce, Oracle applications, meter and production systems, contract databases, and multiple homegrown applications.</p>
+				<p>Sunrun engaged Infometry to design and implement an enterprise data and analytics platform that could unify this information and provide trusted insights across the business.</p>
 			</div>
-			<div class="sunrise-orbit" aria-label="Sunrun connected business ecosystem">
-				<div class="sunrise-orbit-ring ring-one"></div><div class="sunrise-orbit-ring ring-two"></div>
-				<div class="sunrise-orbit-core"><span class="sunrise-sun-mark"></span><strong>sunrun</strong><small>Connected enterprise data</small></div>
-				<span class="orbit-node n1"><svg><use href="#sunrise-users"/></svg>Customers</span>
-				<span class="orbit-node n2"><svg><use href="#sunrise-handshake"/></svg>Partners</span>
-				<span class="orbit-node n3"><svg><use href="#sunrise-document"/></svg>Contracts</span>
-				<span class="orbit-node n4"><svg><use href="#sunrise-chart"/></svg>Finance</span>
-				<span class="orbit-node n5"><svg><use href="#sunrise-gear"/></svg>Operations</span>
-				<span class="orbit-node n6"><svg><use href="#sunrise-home"/></svg>Production</span>
+			<figure class="sunrun-client-visual">
+				<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/clean-energy-brighter-tomorrows.png' ); ?>" width="1670" height="942" alt="Solar panels at sunrise with the message Clean Energy. Brighter Tomorrows." loading="lazy" decoding="async">
+			</figure>
+		</div>
+		<div class="sunrise-shell sunrun-objective-grid">
+			<div><h2>Business Objective</h2><p>To build an enterprise data warehouse and analytics platform that could integrate data across customer, sales, partner, operational, production, and financial systems, enabling trusted business metrics and scalable analytics to support data-driven decision-making.</p></div>
+			<div class="sunrun-objective-flow" aria-label="Business objective flow">
+				<span><i><svg><use href="#sunrise-database"/></svg></i><b>Fragmented<br>Data Sources</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
+				<span><i><svg><use href="#sunrise-gear"/></svg></i><b>Enterprise<br>Data Platform</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
+				<span><i><svg><use href="#sunrise-chart"/></svg></i><b>Actionable<br>Business Insights</b></span>
 			</div>
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-challenge" id="challenge">
+	<section class="sunrise-section sunrise-challenge sunrun-dark-section" id="challenge">
 		<div class="sunrise-shell">
-			<div class="sunrise-heading-row"><div><p class="sunrise-overline">The challenge</p><h2>From fragmented systems to a trusted data foundation</h2></div><p>Analytics spanned the entire customer and asset lifecycle, but the data was distributed across multiple operational platforms.</p></div>
+			<div class="sunrun-section-heading"><h2>Business Challenges</h2><p>Sunrun's analytics requirements spanned the entire solar customer and asset lifecycle. However, the underlying data was distributed across multiple operational platforms.</p></div>
 			<div class="sunrise-card-grid">
 				<?php foreach ( $challenges as $item ) : ?>
 					<article><span class="sunrise-icon"><svg><use href="#sunrise-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div></article>
 				<?php endforeach; ?>
 			</div>
-			<div class="sunrise-callout"><svg><use href="#sunrise-target"/></svg><p>Sunrun needed more than isolated reporting. It needed an enterprise data foundation that could connect processes and create consistent business metrics.</p></div>
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-solution" id="solution">
+	<section class="sunrise-section sunrise-solution sunrun-roadmap" id="solution">
 		<div class="sunrise-shell">
-			<div class="sunrise-solution-intro"><div><p class="sunrise-overline">The Infometry solution</p><h2>A unified, analytics-ready enterprise architecture</h2></div><p>Infometry implemented an end-to-end data warehouse, orchestration, and analytics platform designed around Sunrun's business processes—not isolated source systems.</p></div>
-			<div class="sunrise-architecture">
-				<article><small>01 / Source systems</small><h3>Enterprise data</h3><ul><li>Salesforce CRM &amp; Sales</li><li>Oracle Applications</li><li>Meter &amp; Production</li><li>Contract Systems</li><li>Homegrown Applications</li></ul></article>
+			<div class="sunrun-section-heading"><h2>Enterprise Data Architecture &amp; Analytics Roadmap</h2><p>A scalable architecture designed around Sunrun's business processes to enable unified analytics across the customer and solar asset lifecycle.</p></div>
+			<div class="sunrise-architecture sunrun-architecture">
+				<article class="sunrun-source-card"><small>Enterprise Sources</small><div class="sunrun-source-list">
+					<span><i class="brand"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-salesforce-current.png' ); ?>" alt="" width="1254" height="1254"></i><b>Salesforce<em>CRM &amp; Sales Data</em></b></span>
+					<span><i class="brand oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="" width="1529" height="199"></i><b>Oracle Applications<em>Financial &amp; Enterprise Data</em></b></span>
+					<span><i><svg><use href="#sunrise-database"/></svg></i><b>Meter &amp; Production Systems<em>Operational Data</em></b></span>
+					<span><i><svg><use href="#sunrise-document"/></svg></i><b>Contract Systems<em>Contracts Data</em></b></span>
+					<span><i><svg><use href="#sunrise-structure"/></svg></i><b>Homegrown Applications<em>Operational Data</em></b></span>
+				</div></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="featured"><small>02 / Integration</small><span class="sunrise-platform-mark informatica"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica" width="293" height="78"></span><h3>Informatica Cloud</h3><p>Data integration, transformation, quality, and orchestration.</p></article>
+				<article class="featured sunrun-platform-card"><small>Data Integration &amp;<br>Orchestration</small><span class="sunrise-platform-mark informatica"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica Cloud" width="293" height="78"></span><h3>Informatica Cloud</h3><p>Integration, transformation, quality, and orchestration.</p></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article><small>03 / Data foundation</small><span class="sunrise-platform-mark oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-oracle.png' ); ?>" alt="Oracle" width="738" height="414"></span><h3>Oracle Cloud EDW</h3><p>Standardized enterprise data across the complete solar lifecycle.</p></article>
+				<article class="sunrun-platform-card"><small>Enterprise<br>Data Warehouse</small><span class="sunrun-database-mark"><svg><use href="#sunrise-database"/></svg></span><span class="sunrise-platform-mark oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="Oracle Cloud" width="1529" height="199"></span><h3>Oracle Cloud</h3><p>Standardized enterprise data across the complete solar lifecycle.</p></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article><small>04 / Business analytics</small><span class="sunrise-platform-mark tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-tableau.png' ); ?>" alt="Tableau" width="701" height="156"></span><h3>Tableau</h3><p>Trusted reporting, visualization, and cross-functional insights.</p></article>
+				<article class="sunrun-platform-card sunrun-analytics-card"><small>Analytics &amp; Reporting</small><span class="sunrise-platform-mark tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau from Salesforce" width="2172" height="724"></span><span class="sunrun-dashboard-mark"><svg><use href="#sunrise-chart"/></svg></span><h3>Analytics &amp; Reporting</h3></article>
+				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
+				<article class="sunrun-output-card"><small>Business Insights</small><ul><li><svg><use href="#sunrise-document"/></svg>Reports</li><li><svg><use href="#sunrise-chart"/></svg>Dashboards</li><li><svg><use href="#sunrise-target"/></svg>Scorecards</li><li><svg><use href="#sunrise-filter"/></svg>Ad-hoc Analysis</li><li><svg><use href="#sunrise-pie"/></svg>Business Insights</li></ul></article>
 			</div>
-			<div class="sunrise-solution-note"><svg><use href="#sunrise-cloud"/></svg><p><strong>One common analytical foundation.</strong> Integrated data was standardized, transformed, and modeled across customer, sales, partner, production, operational, and financial domains.</p></div>
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-analytics" id="analytics">
+	<section class="sunrise-section sunrun-delivery" id="infometry-solution">
 		<div class="sunrise-shell">
-			<p class="sunrise-overline">Business analytics enabled</p>
-			<div class="sunrise-heading-row"><h2>Insights for every part of the solar business</h2><p>The platform enabled ten strategic analytics initiatives across customer acquisition, asset performance, and portfolio economics.</p></div>
+			<div class="sunrun-section-heading"><h2>The Infometry Solution</h2><p>Infometry designed and implemented an end-to-end enterprise data warehouse, data orchestration, and business analytics platform using Informatica Cloud and Oracle Cloud, with Tableau for reporting and visualization.</p></div>
+			<div class="sunrun-solution-grid">
+				<?php foreach ( $solutions as $item ) : ?>
+					<article><span class="sunrise-icon"><svg><use href="#sunrise-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div></article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="sunrise-section sunrise-analytics sunrun-analytics" id="analytics">
+		<div class="sunrise-shell">
+			<div class="sunrun-section-heading"><h2>Business Analytics Enabled</h2><p>The platform supported a broad range of strategic analytics initiatives across the enterprise.</p></div>
 			<div class="sunrise-analytics-grid">
 				<?php foreach ( $analytics as $item ) : ?>
 					<article><span class="sunrise-icon"><svg><use href="#sunrise-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div></article>
@@ -150,9 +185,9 @@ $impact = array(
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-impact" id="impact">
+	<section class="sunrise-section sunrise-impact sunrun-outcomes" id="impact">
 		<div class="sunrise-shell">
-			<div class="sunrise-heading-row"><div><p class="sunrise-overline">Business impact</p><h2>A scalable foundation for connected decisions</h2></div><p>The solution connected data and insights across multiple areas of the business while creating room for new sources, metrics, and analytical requirements.</p></div>
+			<div class="sunrun-section-heading"><h2>Business Outcomes</h2><p>The solution provided Sunrun with a scalable enterprise analytics foundation capable of connecting data and insights across the business.</p></div>
 			<div class="sunrise-impact-grid">
 				<?php foreach ( $impact as $item ) : ?>
 					<article><span class="sunrise-icon"><svg><use href="#sunrise-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></article>
@@ -161,47 +196,30 @@ $impact = array(
 		</div>
 	</section>
 
-	<section class="sunrise-section sunrise-tech" id="technologies">
-		<div class="sunrise-shell sunrise-tech-grid">
-			<div><p class="sunrise-overline">Technology ecosystem</p><h2>Built for trusted enterprise analytics</h2></div>
+	<section class="sunrise-section sunrise-tech sunrun-tech" id="technologies">
+		<div class="sunrise-shell">
+			<div class="sunrun-section-heading"><h2>Technologies Used</h2></div>
 			<div class="sunrise-tech-list">
-				<span><span class="sunrise-tech-logo oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-oracle.png' ); ?>" alt="Oracle" width="738" height="414"></span><small>Cloud Enterprise Data Warehouse</small></span>
-				<span><span class="sunrise-tech-logo"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica" width="293" height="78"></span><small>Cloud Data Integration &amp; Orchestration</small></span>
-				<span><span class="sunrise-tech-logo"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-tableau.png' ); ?>" alt="Tableau" width="701" height="156"></span><small>Business Intelligence &amp; Analytics</small></span>
-				<span><span class="sunrise-tech-logo salesforce"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/brand-salesforce.png' ); ?>" alt="Salesforce" width="284" height="188"></span><small>CRM &amp; Sales Data</small></span>
-				<span><span class="sunrise-tech-logo operational"><svg aria-hidden="true"><use href="#sunrise-gear"/></svg><b>Operational Systems</b></span><small>Meter, Production &amp; Homegrown Data</small></span>
+				<span><span class="sunrise-tech-logo oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="Oracle" width="1529" height="199"></span><small>Cloud Enterprise Data Warehouse</small></span>
+				<span><span class="sunrise-tech-logo"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica" width="293" height="78"></span><small>Cloud Integration</small></span>
+				<span><span class="sunrise-tech-logo tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau from Salesforce" width="2172" height="724"></span><small>Business Intelligence</small></span>
+				<span><span class="sunrise-tech-logo salesforce"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-salesforce-current.png' ); ?>" alt="Salesforce" width="1254" height="1254"></span><small>CRM &amp; Sales Data</small></span>
+				<span><span class="sunrise-tech-logo oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="Oracle Applications" width="1529" height="199"></span><small>Oracle Applications</small></span>
+				<span><span class="sunrise-tech-logo operational"><svg aria-hidden="true"><use href="#sunrise-gear"/></svg><b>Operational Systems</b></span><small>Meter, Production &amp; Homegrown</small></span>
 			</div>
 		</div>
 	</section>
 
-	<section class="sunrise-final-cta">
-		<div class="sunrise-shell sunrise-final-inner"><div><p class="sunrise-overline">Turn complexity into clarity</p><h2>Turning complex enterprise data into actionable insights</h2></div><div><p>Infometry helps organizations connect fragmented enterprise data, establish trusted metrics, and create scalable analytics platforms.</p><a class="sunrise-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to our data &amp; analytics experts <svg><use href="#sunrise-arrow"/></svg></a></div></div>
+	<section class="sunrise-final-cta sunrun-final-cta">
+		<div class="sunrise-shell sunrise-final-inner"><div><h2>Turning Complex Enterprise Data Into Actionable Insights</h2><p>Infometry helps organizations connect fragmented enterprise data, establish trusted business metrics, and create scalable analytics platforms that support better decisions across the business.</p><a class="sunrise-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to Our Data &amp; Analytics Experts <svg><use href="#sunrise-arrow"/></svg></a></div></div>
 	</section>
 </main>
 
-<footer class="infometry-custom-footer" id="infometry-case-study-footer" aria-label="Infometry website footer">
-	<div class="infometry-footer-shell">
-		<div class="infometry-footer-grid">
-			<div class="infometry-footer-connect">
-				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
-				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
-				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-				</div>
-				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
-			</div>
-			<nav class="infometry-footer-column" aria-label="Footer products"><h3>Products</h3><a href="<?php echo esc_url( $conversa_url ); ?>">INFOFISCUS Conversa</a><a href="<?php echo esc_url( home_url( '/product/informatica-connectors/' ) ); ?>">Informatica Connectors</a><a href="<?php echo esc_url( home_url( '/product/#infofiscus-snowflake-native-apps' ) ); ?>">INFOFISCUS Snowflake Native Apps</a><a href="<?php echo esc_url( home_url( '/product/#pre-built-apps' ) ); ?>">Pre-Built Apps For IDMC and Matillion</a><a href="<?php echo esc_url( $accelerators_url ); ?>">Accelerators</a></nav>
-			<nav class="infometry-footer-column" aria-label="Footer resources"><h3>Resources</h3><a href="<?php echo esc_url( home_url( '/resources/blog/' ) ); ?>">Blog</a><a href="<?php echo esc_url( home_url( '/resources/infometry-case-studies/' ) ); ?>">Case Studies</a><a href="<?php echo esc_url( home_url( '/resources/whitepapers/' ) ); ?>">Whitepapers</a><a href="<?php echo esc_url( home_url( '/resources/gallery/' ) ); ?>">Gallery</a><a href="<?php echo esc_url( home_url( '/resources/webinar/' ) ); ?>">Webinar</a><a href="<?php echo esc_url( home_url( '/resources/press-releases/' ) ); ?>">Press Releases</a></nav>
-			<nav class="infometry-footer-column" aria-label="Footer company"><h3>Company</h3><a href="<?php echo esc_url( $customers_url ); ?>">Customers – Partners</a><a href="<?php echo esc_url( home_url( '/company/careers/' ) ); ?>">Careers</a><a href="<?php echo esc_url( home_url( '/company/life-at-infometry/' ) ); ?>">Life@Infometry</a><a href="<?php echo esc_url( home_url( '/company/infometry-cares/' ) ); ?>">Infometry Cares</a><a href="<?php echo esc_url( home_url( '/company/testimonials/' ) ); ?>">Testimonials</a></nav>
-		</div>
-		<div class="infometry-footer-bottom"><span>© <?php echo esc_html( wp_date( 'Y' ) ); ?> Infometry Inc. All Rights Reserved.</span><span>Enabling AI for Every Enterprise</span></div>
+<footer class="infometry-custom-footer sunrun-compact-footer" id="infometry-case-study-footer" aria-label="Infometry website footer">
+	<div class="sunrise-shell sunrun-footer-inner">
+		<a class="sunrun-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+		<nav aria-label="Footer navigation"><a href="<?php echo esc_url( $conversa_url ); ?>">Products</a><a href="<?php echo esc_url( $accelerators_url ); ?>">Solutions</a><a href="<?php echo esc_url( $customers_url ); ?>">Industries</a><a href="<?php echo esc_url( home_url( '/resources/infometry-case-studies/' ) ); ?>">Resources</a><a href="<?php echo esc_url( home_url( '/company/' ) ); ?>">Company</a></nav>
+		<a class="sunrun-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 	</div>
 </footer>
 

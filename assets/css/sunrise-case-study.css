@@ -1896,3 +1896,434 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrise-analytics-grid article p,
 	.sunrise-impact-grid article p { font-size: 14px; }
 }
+
+/* Reference-aligned Sunrun case-study body. The approved hero above remains unchanged. */
+.sunrun-facts {
+	position: relative;
+	z-index: 3;
+	padding: 0 0 28px;
+	border-bottom: 1px solid #e0edf6;
+	background: linear-gradient(180deg, #eef8ff 0%, #fff 100%);
+}
+
+.sunrun-facts-grid {
+	display: grid;
+	margin-top: -24px;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 14px;
+}
+
+.sunrun-facts article {
+	position: relative;
+	display: flex;
+	min-width: 0;
+	min-height: 126px;
+	padding: 24px 22px;
+	align-items: center;
+	gap: 17px;
+	overflow: hidden;
+	border: 1px solid #d2e6f3;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, .96);
+	box-shadow: 0 16px 38px rgba(13, 69, 108, .10), inset 0 1px 0 #fff;
+	transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.sunrun-facts article::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 4px;
+	background: linear-gradient(90deg, #087cf0, #24c9f5);
+}
+
+.sunrun-facts article:nth-child(2)::before { background: linear-gradient(90deg, #0ca4d8, #48d8d0); }
+.sunrun-facts article:nth-child(3)::before { background: linear-gradient(90deg, #6459df, #179eea); }
+.sunrun-facts article:nth-child(4)::before { background: linear-gradient(90deg, #087cf0, #ff912d); }
+.sunrun-facts article:hover { transform: translateY(-4px); border-color: #9fd6f3; box-shadow: 0 22px 46px rgba(13, 69, 108, .14); }
+.sunrun-facts .sunrise-icon {
+	width: 54px;
+	height: 54px;
+	flex: 0 0 54px;
+	margin: 0;
+	border: 1px solid #bde3f7;
+	border-radius: 15px;
+	color: #078fe6;
+	background: linear-gradient(145deg, #f2fbff, #dff4ff);
+	box-shadow: 0 10px 22px rgba(8, 124, 240, .11);
+}
+.sunrun-facts .sunrise-icon svg { width: 28px; height: 28px; }
+.sunrun-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 14px; line-height: 1.4; }
+.sunrun-facts small { color: #59809d; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.sunrun-facts strong { margin-top: 7px; font-weight: 800; }
+
+.sunrun-overview {
+	padding: 68px 0 0;
+	background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
+}
+
+.sunrun-overview::before,
+.sunrun-overview::after { display: none; }
+
+.sunrun-about-grid {
+	display: grid;
+	grid-template-columns: .96fr 1.04fr;
+	gap: 58px;
+	align-items: center;
+}
+
+.sunrise-client .sunrun-copy-block {
+	padding: 0;
+	overflow: visible;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	backdrop-filter: none;
+}
+
+.sunrise-client .sunrun-copy-block::before,
+.sunrise-client .sunrun-copy-block::after { display: none; }
+
+.sunrise-client .sunrun-copy-block h2,
+.sunrun-objective-grid h2,
+.sunrun-section-heading h2 {
+	position: relative;
+	max-width: none;
+	margin: 0 0 22px;
+	padding-bottom: 10px;
+	color: #071f49;
+	font-size: clamp(30px, 2.5vw, 42px);
+	line-height: 1.08;
+	letter-spacing: -.035em;
+}
+
+.sunrise-client .sunrun-copy-block h2::after,
+.sunrun-objective-grid h2::after,
+.sunrun-section-heading h2::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 46px;
+	height: 3px;
+	border-radius: 999px;
+	background: #ff861c;
+}
+
+.sunrise-client .sunrun-copy-block p {
+	max-width: 690px;
+	margin-bottom: 16px;
+	color: #425b78;
+	font-size: 17px;
+	line-height: 1.65;
+}
+
+.sunrun-client-visual {
+	position: relative;
+	overflow: hidden;
+	margin: 0;
+	border: 1px solid #c7dfef;
+	border-radius: 14px;
+	background: #0a2d55;
+	box-shadow: 0 22px 52px rgba(9, 54, 94, .16);
+}
+
+.sunrun-client-visual img { display: block; width: 100%; height: auto; aspect-ratio: 1670 / 942; object-fit: cover; }
+.sunrun-client-visual figcaption {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: min(43%, 220px);
+	padding: 34px 27px 40px;
+	color: #fff;
+	background: linear-gradient(145deg, rgba(3, 31, 70, .94), rgba(3, 46, 91, .78));
+	font: 800 28px/1.08 "Roboto", "Open Sans", sans-serif;
+}
+
+.sunrun-client-visual figcaption::after { content: ""; display: block; width: 46px; height: 3px; margin-top: 22px; background: #ff861c; }
+
+.sunrun-objective-grid {
+	display: grid;
+	margin-top: 54px;
+	padding: 50px 0 62px;
+	grid-template-columns: .86fr 1.14fr;
+	gap: 52px;
+	align-items: center;
+	border-top: 1px solid #d8e9f5;
+}
+
+.sunrun-objective-grid p { margin: 0; color: #425b78; font-size: 17px; line-height: 1.65; }
+.sunrun-objective-flow {
+	display: grid;
+	min-height: 190px;
+	padding: 26px 30px;
+	grid-template-columns: 1fr 34px 1fr 34px 1fr;
+	align-items: center;
+	gap: 12px;
+	border: 1px solid #cfe5f4;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, .9);
+	box-shadow: 0 15px 36px rgba(16, 75, 117, .08);
+}
+
+.sunrun-objective-flow span { display: grid; justify-items: center; text-align: center; color: #102d58; font-size: 12px; line-height: 1.35; }
+.sunrun-objective-flow i { display: grid; width: 58px; height: 58px; margin-bottom: 13px; place-items: center; border-radius: 14px; color: #078ce8; background: #e6f6ff; }
+.sunrun-objective-flow i svg { width: 31px; height: 31px; }
+.sunrun-objective-flow .sunrun-arrow { width: 24px; height: 24px; color: #0798ee; }
+
+.sunrun-dark-section,
+.sunrun-outcomes {
+	background: radial-gradient(circle at 92% 0, rgba(21, 116, 197, .24), transparent 30%), #02264f;
+}
+
+.sunrun-dark-section { padding: 64px 0 70px; }
+.sunrun-section-heading { margin-bottom: 28px; }
+.sunrun-section-heading h2 { margin-bottom: 10px; font-size: clamp(28px, 2.35vw, 40px); }
+.sunrun-section-heading p { max-width: 1040px; margin: 0; color: #536b85; font-size: 16px; line-height: 1.6; }
+.sunrun-dark-section .sunrun-section-heading h2,
+.sunrun-outcomes .sunrun-section-heading h2 { color: #fff; }
+.sunrun-dark-section .sunrun-section-heading p,
+.sunrun-outcomes .sunrun-section-heading p { color: #c4d5e8; }
+
+.sunrun-dark-section .sunrise-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sunrun-dark-section .sunrise-card-grid article {
+	min-height: 145px;
+	padding: 23px;
+	border: 1px solid rgba(68, 162, 225, .35);
+	border-radius: 10px;
+	background: rgba(2, 35, 73, .72);
+	box-shadow: none;
+}
+.sunrun-dark-section .sunrise-card-grid article::after { display: none; }
+.sunrun-dark-section .sunrise-card-grid h3 { color: #fff; font-size: 18px; }
+.sunrun-dark-section .sunrise-card-grid p { color: #c2d1e1; font-size: 14px; line-height: 1.55; }
+.sunrun-dark-section .sunrise-icon { color: #ff8b21; border: 0; background: transparent; box-shadow: none; }
+
+.sunrun-roadmap {
+	padding: 66px 0 70px;
+	color: #17365f;
+	background: #fff;
+}
+
+.sunrun-roadmap::before,
+.sunrun-roadmap::after { display: none; }
+.sunrun-roadmap .sunrun-section-heading h2 { color: #071f49; }
+
+.sunrun-architecture {
+	display: grid;
+	grid-template-columns: minmax(0, 1.35fr) 28px minmax(0, .9fr) 28px minmax(0, .86fr) 28px minmax(0, 1.05fr) 28px minmax(0, .72fr);
+	gap: 8px;
+	align-items: stretch;
+}
+
+.sunrun-roadmap .sunrun-architecture article,
+.sunrun-roadmap .sunrun-architecture article.featured {
+	min-width: 0;
+	min-height: 320px;
+	padding: 20px 16px;
+	border: 1px solid #cfe3f2;
+	border-radius: 10px;
+	color: #17365f;
+	background: linear-gradient(180deg, #fff, #f8fcff);
+	box-shadow: 0 12px 28px rgba(14, 73, 115, .06);
+}
+
+.sunrun-roadmap .sunrun-architecture article::after { display: none; }
+.sunrun-roadmap .sunrun-architecture small {
+	display: inline-flex;
+	max-width: 100%;
+	min-height: 30px;
+	padding: 7px 11px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	color: #0b315e;
+	background: #eaf7fd;
+	font-size: 10px;
+	font-weight: 800;
+	line-height: 1.25;
+	letter-spacing: .06em;
+	text-align: center;
+	text-transform: uppercase;
+}
+.sunrun-roadmap .sunrun-architecture h3 { color: #0c2d59; font-size: 16px; }
+.sunrun-roadmap .sunrun-architecture p,
+.sunrun-roadmap .sunrun-architecture li { color: #4d6680; font-size: 13px; line-height: 1.5; }
+.sunrun-roadmap .sunrun-architecture li { border-color: #e2edf5; }
+.sunrun-roadmap .sunrise-flow { display: grid; min-width: 0; place-items: center; color: #078fe8; }
+.sunrun-roadmap .sunrise-flow svg { width: 24px; height: 24px; }
+
+.sunrun-source-list { display: grid; margin-top: 26px; gap: 14px; }
+.sunrun-source-list > span { display: grid; min-width: 0; grid-template-columns: 58px minmax(0, 1fr); align-items: center; gap: 10px; }
+.sunrun-source-list i { display: grid; width: 56px; height: 34px; place-items: center; color: #0798ef; }
+.sunrun-source-list i svg { width: 29px; height: 29px; }
+.sunrun-source-list i.brand img { max-width: 40px; max-height: 29px; object-fit: contain; }
+.sunrun-source-list i.brand:not(.oracle) img { object-view-box: inset(14% 0 14% 0); }
+.sunrun-source-list i.brand.oracle img { max-width: 56px; max-height: 18px; }
+.sunrun-source-list b { min-width: 0; color: #0c2d59; font-size: 12px; line-height: 1.25; }
+.sunrun-source-list em { display: block; margin-top: 2px; color: #60758c; font-size: 10px; font-style: normal; font-weight: 500; }
+
+.sunrun-platform-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.sunrun-platform-card .sunrise-platform-mark { width: min(100%, 138px); height: 62px; margin: 32px auto 14px; border: 0; border-radius: 8px; background: #f8fbfe; box-shadow: none; }
+.sunrun-platform-card .sunrise-platform-mark img { max-width: 110px; max-height: 36px; }
+.sunrun-platform-card .sunrise-platform-mark.oracle img { max-width: 122px; height: auto; max-height: 24px; object-view-box: none; }
+.sunrun-platform-card .sunrise-platform-mark.tableau img { max-width: 130px; height: auto; max-height: 44px; }
+.sunrun-platform-card h3 { margin: 0 0 8px; }
+.sunrun-platform-card p { margin: 0; }
+.sunrun-database-mark { display: grid; width: 62px; height: 62px; margin: 24px auto 2px; place-items: center; color: #0798ef; }
+.sunrun-database-mark svg { width: 52px; height: 52px; stroke-width: 1.6; }
+.sunrun-platform-card .sunrun-database-mark + .sunrise-platform-mark { height: 48px; margin: 0 auto 8px; }
+.sunrun-analytics-card .sunrise-platform-mark { margin-top: 28px; }
+.sunrun-dashboard-mark { display: grid; width: 94px; height: 66px; margin: 6px auto 12px; place-items: center; border: 5px solid #72c9f6; border-radius: 4px; color: #0798ef; background: #edf9ff; box-shadow: 0 7px 0 -3px #72c9f6; }
+.sunrun-dashboard-mark svg { width: 54px; height: 42px; }
+.sunrun-analytics-card h3 { margin-top: auto; }
+
+.sunrun-output-card { display: flex; flex-direction: column; }
+.sunrun-output-card ul { display: grid; margin: 24px 0 0; padding: 0; gap: 15px; list-style: none; }
+.sunrun-output-card li { display: grid; min-width: 0; padding: 0; grid-template-columns: 24px minmax(0, 1fr); align-items: center; gap: 8px; border: 0; color: #18375f; font-size: 11px; font-weight: 700; line-height: 1.3; }
+.sunrun-output-card li svg { width: 22px; height: 22px; color: #0798ef; }
+
+/* The roadmap must remain visible when opened directly via its section anchor. */
+.sunrun-roadmap.sunrise-motion-ready .sunrun-architecture > * {
+	opacity: 1;
+	transform: none;
+}
+
+.sunrun-delivery { padding: 20px 0 66px; background: #fff; }
+.sunrun-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.sunrun-solution-grid article {
+	display: flex;
+	min-height: 140px;
+	padding: 22px;
+	gap: 16px;
+	border: 1px solid #d8e7f1;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: 0 10px 25px rgba(23, 78, 118, .055);
+}
+.sunrun-solution-grid .sunrise-icon { width: 40px; height: 40px; flex: 0 0 40px; margin: 0; color: #0795ed; }
+.sunrun-solution-grid h3 { margin: 0 0 7px; color: #0e2d56; font-size: 16px; }
+.sunrun-solution-grid p { margin: 0; color: #5a7088; font-size: 13px; line-height: 1.55; }
+
+.sunrun-analytics { padding: 56px 0 64px; background: linear-gradient(180deg, #edf8ff, #e4f4ff); }
+.sunrun-analytics .sunrise-analytics-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.sunrun-analytics .sunrise-analytics-grid article {
+	min-height: 132px;
+	padding: 18px;
+	border: 1px solid #d2e8f7;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, .88);
+	box-shadow: none;
+}
+.sunrun-analytics .sunrise-analytics-grid article::after { display: none; }
+.sunrun-analytics .sunrise-icon { width: 36px; height: 36px; flex-basis: 36px; margin: 0; color: #078fe9; }
+.sunrun-analytics h3 { margin: 0 0 6px; color: #0f2e58; font-size: 14px; }
+.sunrun-analytics .sunrise-analytics-grid p { font-size: 12px; line-height: 1.5; }
+
+.sunrun-outcomes { padding: 58px 0 64px; }
+.sunrun-outcomes::before { display: none; }
+.sunrun-outcomes .sunrise-impact-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; }
+.sunrun-outcomes .sunrise-impact-grid article {
+	min-height: 205px;
+	padding: 18px 24px;
+	border: 0;
+	border-right: 1px solid rgba(134, 190, 229, .28);
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
+	backdrop-filter: none;
+}
+.sunrun-outcomes .sunrise-impact-grid article:last-child { border-right: 0; }
+.sunrun-outcomes .sunrise-impact-grid article::after { display: none; }
+.sunrun-outcomes .sunrise-impact-grid h3 { margin: 15px 0 9px; color: #fff; font-size: 16px; }
+.sunrun-outcomes .sunrise-impact-grid p { color: #c2d2e3; font-size: 13px; line-height: 1.55; }
+.sunrun-outcomes .sunrise-icon { border: 0; color: #ff8a1f; background: transparent; box-shadow: none; }
+
+.sunrun-tech { padding: 46px 0 52px; background: #fff; }
+.sunrun-tech .sunrun-section-heading { margin-bottom: 20px; }
+.sunrun-tech .sunrise-tech-list { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.sunrun-tech .sunrise-tech-list > span {
+	min-height: 108px;
+	padding: 16px 12px;
+	border: 1px solid #d8e7f1;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 8px 20px rgba(20, 72, 108, .05);
+}
+.sunrun-tech .sunrise-tech-list small { margin-top: 5px; font-size: 11px; }
+.sunrun-tech .sunrise-tech-logo.oracle img { max-width: 140px; height: auto; max-height: 24px; object-view-box: none; }
+.sunrun-tech .sunrise-tech-logo.tableau img { max-width: 145px; height: auto; max-height: 44px; }
+.sunrun-tech .sunrise-tech-logo.salesforce img { max-width: 100px; max-height: 52px; object-view-box: inset(14% 0 14% 0); }
+
+.sunrun-final-cta {
+	min-height: 290px;
+	margin: 0;
+	padding: 58px 0;
+	background:
+		linear-gradient(90deg, rgba(2, 29, 64, .98) 0%, rgba(3, 39, 80, .92) 46%, rgba(2, 37, 76, .28) 76%, rgba(2, 28, 60, .16)),
+		url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
+}
+.sunrun-final-cta::before { display: none; }
+.sunrun-final-cta .sunrise-final-inner { display: block; padding: 0; }
+.sunrun-final-cta .sunrise-final-inner > div { max-width: 720px; padding: 0; border: 0; background: transparent; box-shadow: none; }
+.sunrun-final-cta h2 { max-width: 700px; margin-bottom: 16px; font-size: clamp(32px, 3vw, 46px); }
+.sunrun-final-cta p { max-width: 680px; color: #d3e2ef; font-size: 16px; line-height: 1.6; }
+.sunrun-final-cta .sunrise-button { border-radius: 6px; background: #ff7d19; box-shadow: 0 12px 28px rgba(255, 108, 18, .25); }
+
+.sunrun-compact-footer { padding: 26px 0; border: 0; background: #031c3f; }
+.sunrun-compact-footer::before { display: none; }
+.sunrun-footer-inner { display: grid; grid-template-columns: 250px 1fr auto; align-items: center; gap: 42px; }
+.sunrun-footer-logo img { display: block; width: 210px; height: auto; }
+.sunrun-footer-inner nav { display: flex; justify-content: center; gap: 36px; }
+.sunrun-footer-inner nav a,
+.sunrun-footer-contact { color: #fff; font-size: 11px; font-weight: 700; text-decoration: none; }
+.sunrun-footer-contact { color: #ff9a3d; white-space: nowrap; }
+
+@media (max-width: 1100px) {
+	.sunrun-facts-grid { grid-template-columns: repeat(2, 1fr); }
+	.sunrun-about-grid,
+	.sunrun-objective-grid { grid-template-columns: 1fr; }
+	.sunrun-dark-section .sunrise-card-grid,
+	.sunrun-solution-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sunrun-analytics .sunrise-analytics-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sunrun-outcomes .sunrise-impact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sunrun-outcomes .sunrise-impact-grid article { border-right: 0; border-bottom: 1px solid rgba(134, 190, 229, .28); }
+	.sunrun-tech .sunrise-tech-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.sunrun-footer-inner { grid-template-columns: 1fr auto; }
+	.sunrun-footer-inner nav { display: none; }
+}
+
+@media (max-width: 860px) {
+	.sunrun-architecture { grid-template-columns: 1fr; gap: 12px; }
+	.sunrun-roadmap .sunrise-flow { min-height: 28px; transform: rotate(90deg); }
+	.sunrun-roadmap .sunrun-architecture article,
+	.sunrun-roadmap .sunrun-architecture article.featured { min-height: 0; padding: 22px; }
+	.sunrun-source-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.sunrun-platform-card .sunrise-platform-mark { margin-top: 22px; }
+}
+
+@media (max-width: 720px) {
+	.sunrun-facts { padding-bottom: 20px; }
+	.sunrun-facts-grid { margin-top: -18px; grid-template-columns: 1fr; gap: 10px; }
+	.sunrun-facts article { min-height: 98px; padding: 18px; border: 1px solid #d2e6f3; }
+	.sunrun-overview { padding-top: 50px; }
+	.sunrun-about-grid { gap: 34px; }
+	.sunrun-client-visual figcaption { width: 50%; padding: 24px 18px 28px; font-size: 21px; }
+	.sunrun-objective-grid { margin-top: 38px; padding: 38px 0 50px; gap: 28px; }
+	.sunrun-objective-flow { padding: 22px 14px; grid-template-columns: 1fr; gap: 16px; }
+	.sunrun-objective-flow .sunrun-arrow { transform: rotate(90deg); }
+	.sunrun-dark-section .sunrise-card-grid,
+	.sunrun-solution-grid,
+	.sunrun-analytics .sunrise-analytics-grid,
+	.sunrun-outcomes .sunrise-impact-grid,
+	.sunrun-tech .sunrise-tech-list { grid-template-columns: 1fr; }
+	.sunrun-dark-section .sunrise-card-grid article,
+	.sunrun-solution-grid article,
+	.sunrun-outcomes .sunrise-impact-grid article { min-height: 0; }
+	.sunrun-source-list { grid-template-columns: 1fr; }
+	.sunrun-final-cta { min-height: 0; padding: 50px 0; }
+	.sunrun-footer-inner { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 18px; }
+}

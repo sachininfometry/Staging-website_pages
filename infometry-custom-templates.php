@@ -916,7 +916,9 @@ function infometry_ct_enqueue_assets() {
 
 	if ( $use_sunrise_case_study ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/sunrise-case-study.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/sunrise-case-study.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style(
 			'infometry-sunrise-fonts',
 			'https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap',
@@ -924,6 +926,7 @@ function infometry_ct_enqueue_assets() {
 			null
 		);
 		wp_enqueue_style( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/css/sunrise-case-study.css', array( 'infometry-sunrise-fonts' ), $css_version );
+		wp_enqueue_script( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/js/sunrise-case-study.js', array(), $js_version, true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );

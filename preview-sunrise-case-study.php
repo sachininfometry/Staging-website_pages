@@ -7,6 +7,7 @@ function home_url( $path = '/' ) { return '#' . trim( $path, '/' ); }
 function esc_url( $value ) { return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' ); }
 function esc_html( $value ) { return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' ); }
 function esc_attr( $value ) { return htmlspecialchars( $value, ENT_QUOTES, 'UTF-8' ); }
+function wp_date( $format ) { return date( $format ); }
 ?><!doctype html>
 <html lang="en">
 <head>
@@ -21,5 +22,6 @@ function esc_attr( $value ) { return htmlspecialchars( $value, ENT_QUOTES, 'UTF-
 </head>
 <body class="infometry-sunrise-case-study-page">
 <?php require __DIR__ . '/templates/page-sunrise-case-study.php'; ?>
+<script src="assets/js/sunrise-case-study.js?v=<?php echo rawurlencode( (string) filemtime( __DIR__ . '/assets/js/sunrise-case-study.js' ) ); ?>"></script>
 </body>
 </html>

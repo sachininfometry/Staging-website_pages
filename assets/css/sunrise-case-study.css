@@ -996,7 +996,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	min-height: clamp(520px, 33.333vw, 640px);
+	height: 575px;
+	min-height: 575px;
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
@@ -1011,9 +1012,10 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	display: flex;
 	width: 100%;
 	max-width: none;
-	min-height: clamp(520px, 33.333vw, 640px);
+	height: 575px;
+	min-height: 575px;
 	margin: 0;
-	padding: clamp(54px, 4vw, 78px) clamp(30px, 2.6vw, 50px) clamp(30px, 2vw, 36px);
+	padding: 64px 50px 34px;
 	align-items: center;
 }
 
@@ -1041,7 +1043,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero h1 {
 	max-width: 100%;
 	margin-bottom: 22px;
-	font-size: clamp(36px, 2.7vw, 54px);
+	font-size: 50px;
 	font-weight: 800;
 	line-height: 1.04;
 	letter-spacing: -.045em;
@@ -1094,18 +1096,18 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 @media (max-width: 1320px) {
 	.sunrise-hero-copy { width: 48%; }
-	.sunrise-hero h1 { font-size: clamp(36px, 3.45vw, 46px); }
+	.sunrise-hero h1 { font-size: 44px; }
 	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 15px; }
 	.sunrise-hero-path { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 0; }
 	.sunrise-hero-path > span:nth-child(2) { border-right: 0; }
 }
 
 @media (max-width: 1024px) {
-	.sunrise-hero { min-height: 0; background: #031b3a; }
+	.sunrise-hero { height: auto; min-height: 0; background: #031b3a; }
 	.sunrise-hero::before {
 		background: radial-gradient(circle at 18% 35%, rgba(8, 124, 240, .16), transparent 42%);
 	}
-	.sunrise-hero-inner { display: block; width: 100%; min-height: 0; padding: 58px 32px 0; }
+	.sunrise-hero-inner { display: block; width: 100%; height: auto; min-height: 0; padding: 58px 32px 0; }
 	.sunrise-hero-copy { width: 100%; }
 	.sunrise-hero h1 { max-width: 760px; font-size: clamp(38px, 6vw, 50px); }
 	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: 15px; }
@@ -1224,9 +1226,9 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-solution {
 	background:
-		radial-gradient(circle at 10% 42%, rgba(25, 165, 245, .22), transparent 32%),
-		radial-gradient(circle at 90% 18%, rgba(75, 214, 255, .14), transparent 25%),
-		linear-gradient(135deg, #021329, #063765 57%, #032448);
+		radial-gradient(circle at 14% 0, rgba(80, 49, 255, .28), transparent 30%),
+		radial-gradient(circle at 88% 16%, rgba(12, 123, 255, .2), transparent 28%),
+		#020b2d;
 }
 
 .sunrise-solution::before {
@@ -1247,7 +1249,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	position: relative;
 	overflow: hidden;
 	border-radius: 22px;
-	background: linear-gradient(145deg, rgba(10, 87, 153, .62), rgba(2, 19, 46, .78));
+	background: linear-gradient(145deg, rgba(40, 48, 112, .72), rgba(2, 13, 49, .88));
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09), 0 24px 55px rgba(0, 0, 0, .2);
 	transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
 }
@@ -1271,8 +1273,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-architecture article.featured {
-	background: linear-gradient(150deg, rgba(5, 139, 231, .86), rgba(2, 34, 72, .9));
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 28px 64px rgba(0, 81, 157, .32);
+	background: linear-gradient(150deg, rgba(72, 53, 186, .78), rgba(4, 26, 77, .94));
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 28px 64px rgba(27, 20, 111, .32);
 }
 
 .sunrise-flow svg { animation: sunrise-flow-pulse 2.4s ease-in-out infinite; }
@@ -1280,7 +1282,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-solution-note {
 	margin-top: 28px;
 	border-radius: 18px;
-	background: linear-gradient(120deg, rgba(6, 42, 86, .88), rgba(7, 81, 137, .58));
+	background: linear-gradient(120deg, rgba(25, 29, 91, .92), rgba(7, 49, 112, .68));
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 20px 48px rgba(0, 0, 0, .16);
 }
 
@@ -1298,8 +1300,9 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-impact {
 	color: rgba(255, 255, 255, .76);
 	background:
-		radial-gradient(circle at 86% 18%, rgba(34, 200, 246, .19), transparent 28%),
-		linear-gradient(135deg, #03162f 0%, #052c55 56%, #063c68 100%);
+		radial-gradient(circle at 14% 0, rgba(80, 49, 255, .28), transparent 30%),
+		radial-gradient(circle at 88% 16%, rgba(12, 123, 255, .2), transparent 28%),
+		#020b2d;
 }
 
 .sunrise-impact::before {
@@ -1323,7 +1326,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	min-height: 270px;
 	border-color: rgba(105, 205, 255, .25);
 	border-radius: 22px;
-	background: linear-gradient(145deg, rgba(255, 255, 255, .11), rgba(255, 255, 255, .045));
+	background: linear-gradient(145deg, rgba(82, 74, 170, .24), rgba(255, 255, 255, .045));
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 22px 50px rgba(0, 0, 0, .16);
 	backdrop-filter: blur(12px);
 	transition: transform .3s ease, border-color .3s ease, background .3s ease;
@@ -1332,7 +1335,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-impact-grid article:hover {
 	transform: translateY(-8px);
 	border-color: rgba(87, 214, 255, .62);
-	background: linear-gradient(145deg, rgba(31, 149, 220, .24), rgba(255, 255, 255, .07));
+	background: linear-gradient(145deg, rgba(92, 57, 255, .32), rgba(8, 124, 255, .12));
 }
 
 .sunrise-impact-grid article::after { height: 3px; background: linear-gradient(90deg, #27d1ff, #087cf0); }
@@ -1373,10 +1376,13 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-final-cta {
-	min-height: 390px;
+	min-height: 0;
+	margin-bottom: 48px;
+	padding: 76px 0;
 	background:
-		radial-gradient(circle at 82% 18%, rgba(34, 200, 246, .16), transparent 30%),
-		linear-gradient(120deg, #03152f 0%, #042d58 62%, #064d78 100%);
+		radial-gradient(circle at 14% 0, rgba(80, 49, 255, .28), transparent 30%),
+		radial-gradient(circle at 88% 16%, rgba(12, 123, 255, .2), transparent 28%),
+		#020b2d;
 }
 
 .sunrise-final-cta::before {
@@ -1384,25 +1390,39 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	position: absolute;
 	inset: 0;
 	opacity: .12;
-	background-image: radial-gradient(circle, #58caff 1px, transparent 1.2px);
-	background-size: 12px 12px;
-	mask-image: linear-gradient(110deg, transparent 28%, #000 92%);
+	background-image: radial-gradient(circle, #58a4ff 1px, transparent 1.2px);
+	background-size: 10px 10px;
+	mask-image: linear-gradient(115deg, transparent 28%, #000 80%);
 	pointer-events: none;
 }
 
 .sunrise-final-inner {
-	margin-block: 54px;
-	padding: 48px;
-	border: 1px solid rgba(103, 210, 255, .25);
-	border-radius: 28px;
-	background: linear-gradient(120deg, rgba(3, 29, 62, .96), rgba(10, 81, 137, .72));
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 28px 70px rgba(0, 0, 0, .22);
+	margin-block: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	box-shadow: none;
 }
 
 .sunrise-final-inner p { color: rgba(232, 245, 255, .78); }
 
+.sunrise-final-inner > div:last-child {
+	padding-left: clamp(32px, 4vw, 64px);
+	border-left: 1px solid rgba(255, 255, 255, .18);
+}
+
 .sunrise-button {
-	box-shadow: 0 16px 38px rgba(0, 105, 222, .38), inset 0 1px 0 rgba(255, 255, 255, .28);
+	background: linear-gradient(135deg, #6333ff, #087cff);
+	box-shadow: 0 16px 38px rgba(34, 54, 210, .38), inset 0 1px 0 rgba(255, 255, 255, .28);
+}
+
+@media (max-width: 960px) {
+	.sunrise-final-inner > div:last-child {
+		padding: 28px 0 0;
+		border-top: 1px solid rgba(255, 255, 255, .18);
+		border-left: 0;
+	}
 }
 
 @keyframes sunrise-flow-pulse {
@@ -1542,7 +1562,9 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrise-tech { padding: 64px 0; }
 	.sunrise-tech-grid { padding: 26px 20px; border-radius: 22px; }
 	.sunrise-tech h2 { font-size: 34px; }
-	.sunrise-final-inner { margin-block: 36px; padding: 30px 22px; border-radius: 22px; }
+	.sunrise-final-cta { margin-bottom: 28px; padding: 58px 0; }
+	.sunrise-final-inner { margin-block: 0; padding: 0; border-radius: 0; }
+	.sunrise-final-inner > div:last-child { padding: 24px 0 0; border-top: 1px solid rgba(255, 255, 255, .18); border-left: 0; }
 	.infometry-footer-shell { width: min(100% - 32px, 1440px); }
 	.infometry-footer-grid { grid-template-columns: 1fr; gap: 32px; }
 	.infometry-footer-bottom { flex-direction: column; }

@@ -996,11 +996,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	width: 100%;
-	max-width: 1440px;
 	height: 575px;
 	min-height: 575px;
-	margin-inline: auto;
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 

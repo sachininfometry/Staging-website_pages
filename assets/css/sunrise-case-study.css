@@ -11,8 +11,15 @@
 }
 
 body.infometry-sunrise-case-study-page {
+	overflow-x: hidden;
 	background: #fff;
 	color: var(--sunrise-text);
+}
+
+body.infometry-sunrise-case-study-page #Wrapper,
+body.infometry-sunrise-case-study-page #Content {
+	max-width: 100% !important;
+	overflow-x: hidden;
 }
 
 body.infometry-sunrise-case-study-page #mfn-rev-slider,
@@ -998,7 +1005,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero {
 	height: 605px;
 	min-height: 605px;
-	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / auto 100% no-repeat;
+	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / contain no-repeat;
 }
 
 .sunrise-hero::before {

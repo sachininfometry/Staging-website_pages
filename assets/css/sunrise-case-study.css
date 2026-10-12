@@ -998,7 +998,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero {
 	height: 605px;
 	min-height: 605px;
-	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) center / cover no-repeat;
+	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / auto 100% no-repeat;
 }
 
 .sunrise-hero::before {

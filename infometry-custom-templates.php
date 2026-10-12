@@ -895,7 +895,7 @@ function infometry_ct_enqueue_assets() {
 	if ( $use_asana_fdp ) {
 		wp_enqueue_style(
 			'infometry-asana-fdp-fonts',
-			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
+			'https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
 			array(),
 			null
 		);
@@ -921,7 +921,7 @@ function infometry_ct_enqueue_assets() {
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style(
 			'infometry-sunrise-fonts',
-			'https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Open+Sans:wght@400;500;600;700;800&display=swap',
+			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
 			array(),
 			null
 		);

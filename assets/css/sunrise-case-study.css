@@ -1826,3 +1826,60 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrise-architecture article.featured { min-height: 0; padding: 22px; }
 	.sunrise-solution-note { padding: 17px; }
 }
+
+/* Content typography below the completed hero: Roboto headings and readable Open Sans copy. */
+.sunrise-case-study { font-family: "Open Sans", Arial, sans-serif; font-size: 16px; }
+.sunrise-case-study > section:not(.sunrise-hero) { font-size: 17px; }
+
+.sunrise-case-study > section:not(.sunrise-hero) h2,
+.sunrise-case-study > section:not(.sunrise-hero) h3,
+.infometry-custom-footer h2,
+.infometry-custom-footer h3 {
+	font-family: "Roboto", "Open Sans", Arial, sans-serif;
+}
+
+.sunrise-copy-block > p,
+.sunrise-heading-row > p,
+.sunrise-solution-intro > p {
+	font-size: 17px;
+	line-height: 1.7;
+}
+
+.sunrise-card-grid article p,
+.sunrise-analytics-grid article p,
+.sunrise-impact-grid article p {
+	font-size: 15px;
+	line-height: 1.65;
+}
+
+.sunrise-architecture p,
+.sunrise-architecture li {
+	font-size: 14px;
+	line-height: 1.62;
+}
+
+.sunrise-solution-note p { font-size: 15px; line-height: 1.65; }
+.sunrise-tech-list small { font-size: 11px; line-height: 1.5; }
+
+@media (min-width: 1600px) {
+	.sunrise-case-study > section:not(.sunrise-hero) { font-size: 18px; }
+	.sunrise-copy-block > p,
+	.sunrise-heading-row > p,
+	.sunrise-solution-intro > p { font-size: 18px; }
+	.sunrise-card-grid article p,
+	.sunrise-analytics-grid article p,
+	.sunrise-impact-grid article p { font-size: 16px; }
+	.sunrise-architecture p,
+	.sunrise-architecture li { font-size: 15px; }
+	.sunrise-solution-note p { font-size: 16px; }
+}
+
+@media (max-width: 720px) {
+	.sunrise-case-study > section:not(.sunrise-hero) { font-size: 16px; }
+	.sunrise-copy-block > p,
+	.sunrise-heading-row > p,
+	.sunrise-solution-intro > p { font-size: 16px; }
+	.sunrise-card-grid article p,
+	.sunrise-analytics-grid article p,
+	.sunrise-impact-grid article p { font-size: 14px; }
+}

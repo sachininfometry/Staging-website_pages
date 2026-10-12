@@ -996,8 +996,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	height: 575px;
-	min-height: 575px;
+	height: 605px;
+	min-height: 605px;
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
@@ -1012,10 +1012,10 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	display: flex;
 	width: 100%;
 	max-width: 1440px;
-	height: 575px;
-	min-height: 575px;
+	height: 605px;
+	min-height: 605px;
 	margin: 0 auto;
-	padding: 64px 50px 34px;
+	padding: 84px 50px 34px;
 	align-items: center;
 }
 .sunrise-hero-copy {
@@ -1062,18 +1062,19 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	display: grid;
 	margin-top: 34px;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 22px;
 }
 
 .sunrise-hero-path > span {
 	display: flex;
 	min-width: 0;
-	padding: 0 16px;
+	padding: 0;
 	align-items: center;
-	gap: 13px;
+	gap: 11px;
 }
 
 .sunrise-hero-path > span:first-child { padding-left: 0; }
-.sunrise-hero-path > span:not(:last-child) { border-right: 1px solid rgba(90, 208, 255, .35); }
+.sunrise-hero-path > span:not(:last-child) { border-right: 0; }
 
 .sunrise-hero-path i {
 	display: grid;

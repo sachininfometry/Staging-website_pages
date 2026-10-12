@@ -1008,6 +1008,12 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / contain no-repeat;
 }
 
+@media (min-width: 1600px) {
+	.sunrise-hero {
+		background-size: auto clamp(115%, 34vw, 170%);
+	}
+}
+
 .sunrise-hero::before {
 	z-index: 0;
 	background:

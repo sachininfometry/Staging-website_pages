@@ -801,7 +801,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 /* Match the cleaner image-led hero used by the modern case-study family. */
 .sunrise-hero {
-	min-height: 670px;
+	min-height: 640px;
 	background: #031b3a url(../images/case-studies/sunrun/sunrun-energy-network-at-sunset.png) center / cover no-repeat;
 }
 
@@ -816,14 +816,14 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	display: flex;
 	width: 100%;
 	max-width: none;
-	min-height: 670px;
+	min-height: 640px;
 	margin: 0;
-	padding: 96px clamp(30px, 2.6vw, 50px) 44px;
+	padding: 78px clamp(30px, 2.6vw, 50px) 36px;
 	align-items: center;
 }
 
 .sunrise-hero-copy {
-	width: min(49%, 820px);
+	width: min(50%, 900px);
 	max-width: none;
 	padding: 0;
 	transform: none;
@@ -834,7 +834,7 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-eyebrow {
 	display: inline-flex;
 	width: auto;
-	margin-bottom: 24px;
+	margin-bottom: 22px;
 	padding: 8px 19px;
 	border: 1px solid var(--sunrise-cyan);
 	border-radius: 999px;
@@ -844,34 +844,36 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 .sunrise-hero h1 {
-	max-width: 790px;
-	margin-bottom: 28px;
-	font-size: clamp(40px, 3.35vw, 58px);
-	line-height: 1.06;
+	max-width: 840px;
+	margin-bottom: 22px;
+	font-size: clamp(42px, 3.25vw, 60px);
+	font-weight: 800;
+	line-height: 1.04;
+	letter-spacing: -.045em;
 }
 
 .sunrise-hero h1 strong,
 .sunrise-hero h1 .sunrise-title-tail { margin-top: 7px; }
 
 .sunrise-hero-copy > p:not(.sunrise-eyebrow) {
-	max-width: 760px;
+	max-width: 790px;
 	margin-bottom: 0;
 	font-size: 17px;
-	line-height: 1.65;
+	line-height: 1.58;
 }
 
 .sunrise-hero-path {
 	display: grid;
-	margin-top: 48px;
+	margin-top: 34px;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .sunrise-hero-path > span {
 	display: flex;
 	min-width: 0;
-	padding: 0 17px;
+	padding: 0 16px;
 	align-items: center;
-	gap: 12px;
+	gap: 13px;
 }
 
 .sunrise-hero-path > span:first-child { padding-left: 0; }
@@ -879,9 +881,9 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-hero-path i {
 	display: grid;
-	flex: 0 0 46px;
-	width: 46px;
-	height: 46px;
+	flex: 0 0 44px;
+	width: 44px;
+	height: 44px;
 	place-items: center;
 	border: 1px solid rgba(126, 218, 255, .58);
 	border-radius: 50%;
@@ -891,8 +893,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 .sunrise-hero-path svg { width: 22px; height: 22px; }
 .sunrise-hero-path > span > span { display: grid; min-width: 0; }
-.sunrise-hero-path b { color: #fff; font-size: 13px; line-height: 1.2; }
-.sunrise-hero-path small { margin-top: 3px; color: #8bdef7; font-size: 11px; font-weight: 700; line-height: 1.25; }
+.sunrise-hero-path b { color: #fff; font-size: 14px; line-height: 1.22; }
+.sunrise-hero-path small { margin-top: 4px; color: #8bdef7; font-size: 11px; font-weight: 700; line-height: 1.25; }
 .sunrise-hero-mobile-visual { display: none; }
 
 @media (max-width: 1180px) {

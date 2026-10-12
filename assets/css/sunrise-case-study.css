@@ -1011,12 +1011,20 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 .sunrise-hero-inner {
 	display: flex;
 	width: 100%;
-	max-width: none;
+	max-width: 1920px;
 	height: 575px;
 	min-height: 575px;
-	margin: 0;
+	margin: 0 auto;
 	padding: 64px 50px 34px;
 	align-items: center;
+}
+
+/* Keep the approved desktop artwork at its design size on ultra-wide screens. */
+@media (min-width: 1800px) {
+	.sunrise-hero {
+		background-position: center center;
+		background-size: 1920px auto;
+	}
 }
 
 .sunrise-hero-copy {

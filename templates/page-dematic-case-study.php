@@ -78,7 +78,7 @@ $outcomes = array(
 				<p class="dematic-hero-brand" aria-label="Client: Dematic">Dematic</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-supply-chain-visibility-hero.jpg' ); ?>" width="1774" height="887" alt="Automated warehouse with robots and conveyors, overlaid with delivery cycle, global visibility, manufacturing and on-time delivery metrics">
+				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-warehouse-visibility-hero.jpg' ); ?>" width="1774" height="887" alt="Automated warehouse with robots, forklifts and conveyors, overlaid with project delivery, global visibility, manufacturing and on-time delivery metrics">
 			</figure>
 		</div>
 	</section>

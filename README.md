@@ -15,7 +15,7 @@ must remain separate from the live `LiveHomepage` repository.
 - `templates/products/snowflake-native-apps/` — staging Snowflake Native Apps redesign.
 - `templates/case-studies/asana-fdp-snowflake-modernization/` — staging Asana FDP Snowflake case-study redesign.
 - `templates/case-studies/insurance-snowflake-modernization/` — staging insurance Snowflake modernization case study.
-- `templates/case-studies/sunrun-enterprise-data-analytics/` — staging Sunrun case study (template label "Sunrise Case Study").
+- `templates/case-studies/sunrun-enterprise-data-analytics/` — staging Sunrun case study (internal identifiers still use the legacy "sunrise" name).
 - `assets/css/{pages,products,case-studies}/` — page-scoped stylesheets, named after their template.
 - `assets/js/` — page-scoped scripts, named after their template.
 - `assets/images/` — images. Not reorganized: their plugin URLs are public and may be referenced from page content.

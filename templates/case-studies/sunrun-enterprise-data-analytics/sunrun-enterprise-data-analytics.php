@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Sunrise Case Study
+ * Template Name: Sunrun Case Study
  * Template Post Type: page
  *
  * @package Infometry_Custom_Templates

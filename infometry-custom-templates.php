@@ -121,7 +121,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_ASANA_FDP_TEMPLATE ] = __( 'Asana FDP Snowflake Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE ] = __( 'Insurance Snowflake Modernization Case Study', 'infometry-custom-templates' );
-	$templates[ INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE ] = __( 'Sunrise Case Study', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE ] = __( 'Sunrun Case Study', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -236,7 +236,7 @@ function infometry_ct_should_use_insurance_snowflake_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE );
 }
 
-/** Use the redesigned Sunrise case study when selected or on its staging URL. */
+/** Use the redesigned Sunrun case study when selected or on its staging URL. */
 function infometry_ct_should_use_sunrise_case_study_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE )
 		|| infometry_ct_is_staging_sunrise_case_study_route();
@@ -326,7 +326,7 @@ function infometry_ct_render_staging_asana_fdp_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 0 );
 
-/** Serve the Sunrise redesign at the exact requested Cloudways URL. */
+/** Serve the Sunrun redesign at the exact requested Cloudways URL. */
 function infometry_ct_render_staging_sunrise_case_study_route() {
 	if ( ! infometry_ct_is_staging_sunrise_case_study_route() ) {
 		return;

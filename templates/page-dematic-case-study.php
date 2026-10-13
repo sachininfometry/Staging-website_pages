@@ -147,7 +147,7 @@ $outcomes = array(
 			</div>
 			<div class="dematic-warehouse-row">
 				<div class="dematic-edw"><svg aria-hidden="true"><use href="#dematic-database"/></svg><b>Enterprise<br>Data Warehouse</b></div>
-				<svg class="dematic-arrow" aria-hidden="true"><use href="#dematic-arrow"/></svg>
+				<span class="dematic-link-arrow" aria-hidden="true"></span>
 				<div class="dematic-bi"><img src="<?php echo esc_url( $img_url . 'case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau" width="2172" height="724" loading="lazy"><b>Analytics &amp; Reporting</b></div>
 			</div>
 		</div>

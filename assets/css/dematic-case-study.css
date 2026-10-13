@@ -206,9 +206,10 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 .dematic-hero-mobile-visual { display: none; }
 
 /*
- * Desktop hero artwork (1774x1087, ratio 1.632) is the banner with a softened,
- * navy-veiled ceiling added on top, so the theme menu sits on the image while the
- * dashboard panels start below it (~23% down) on every screen. It is
+ * Desktop hero artwork (1774x1027, ratio 1.727) is the banner with its clean
+ * top racks stretched upward (vertical-only, so uprights stay sharp) under a light
+ * navy shade, so the theme menu sits on the image while the
+ * dashboard panels start below it (~19% down) on every screen. It is
  * height-fitted and pinned to the viewport's right edge, so wide screens never
  * show an empty strip. --dematic-img-w is its rendered width; the fade layer is
  * sized to it plus a 240px ramp on its left and is fully opaque over the
@@ -222,7 +223,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 @media (min-width: 1025px) {
 	.dematic-hero {
 		--dematic-hero-h: clamp(480px, 40vw, 680px);
-		--dematic-img-w: calc(var(--dematic-hero-h) * 1.632);
+		--dematic-img-w: calc(var(--dematic-hero-h) * 1.727);
 		--dematic-panel-x: calc(100vw - var(--dematic-img-w) * .555);
 		--dematic-hero-gap: 160px;
 		--dematic-copy-max: 640px;

@@ -60,22 +60,31 @@ if ($RegenerateAsanaFdpPreview) {
 
 $requiredFiles = @(
     'infometry-custom-templates.php',
-    'templates/page-home-design-test.php',
-    'templates/page-infofiscus-conversa.php',
-    'templates/page-informatica-connectors.php',
-    'templates/page-google-cloud-connectors.php',
-    'templates/page-google-drive-connector.php',
-    'templates/page-snowflake-native-apps.php',
-    'templates/page-asana-fdp-case-study.php',
-    'templates/page-insurance-snowflake-case-study.php',
-    'assets/css/insurance-snowflake-case-study.css',
+    'templates/pages/home/home.php',
+    'templates/products/infofiscus-conversa/infofiscus-conversa.php',
+    'templates/products/informatica-connectors/informatica-connectors.php',
+    'templates/products/google-cloud-connectors/google-cloud-connectors.php',
+    'templates/products/google-drive-connector/google-drive-connector.php',
+    'templates/products/snowflake-native-apps/snowflake-native-apps.php',
+    'templates/case-studies/asana-fdp-snowflake-modernization/asana-fdp-snowflake-modernization.php',
+    'templates/case-studies/insurance-snowflake-modernization/insurance-snowflake-modernization.php',
+    'templates/case-studies/sunrun-enterprise-data-analytics/sunrun-enterprise-data-analytics.php',
+    'assets/css/pages/home.css',
+    'assets/js/home.js',
+    'assets/css/products/infofiscus-conversa.css',
+    'assets/js/infofiscus-conversa.js',
+    'assets/css/products/informatica-connectors.css',
+    'assets/js/informatica-connectors.js',
+    'assets/css/case-studies/insurance-snowflake-modernization.css',
     'assets/images/case-studies/insurance-snowflake/hero-user-supplied.png',
-    'assets/css/google-cloud-connectors.css',
-    'assets/css/google-drive-connector.css',
+    'assets/css/products/google-cloud-connectors.css',
+    'assets/css/products/google-drive-connector.css',
     'assets/js/google-cloud-connectors.js',
-    'assets/css/snowflake-native-apps.css',
+    'assets/css/products/snowflake-native-apps.css',
     'assets/js/snowflake-native-apps.js',
-    'assets/css/asana-fdp-case-study.css',
+    'assets/css/case-studies/asana-fdp-snowflake-modernization.css',
+    'assets/css/case-studies/sunrun-enterprise-data-analytics.css',
+    'assets/js/sunrun-enterprise-data-analytics.js',
     'assets/images/case-studies/asana-fdp-modernization.png',
     'assets/images/case-studies/asana-fdp-technologies.png',
     'preview-full.html',
@@ -83,7 +92,8 @@ $requiredFiles = @(
     'preview-informatica.html',
     'preview-snowflake-native-apps.html',
     'preview-asana-fdp-case-study.html',
-    'preview-insurance-snowflake-case-study.php'
+    'preview-insurance-snowflake-case-study.php',
+    'preview-sunrise-case-study.php'
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -132,4 +142,4 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "`nProject verification passed: 8 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green
+Write-Host "`nProject verification passed: 9 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green

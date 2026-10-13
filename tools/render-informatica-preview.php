@@ -63,7 +63,7 @@ function get_header(): void
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Informatica Connectors | Infometry Preview</title>
-	<link rel="stylesheet" href="assets/css/informatica-connectors.css?v=2.6.0">
+	<link rel="stylesheet" href="assets/css/products/informatica-connectors.css?v=2.6.0">
 	<style>
 		.preview-site-header{display:flex;min-height:74px;padding:12px 32px;align-items:center;justify-content:space-between;gap:28px;background:#020b2d;color:#fff;font-family:"Open Sans","Segoe UI",Arial,sans-serif}
 		.preview-site-header>a{display:flex;align-items:center}.preview-site-header img{display:block;width:190px;height:48px;object-fit:contain;object-position:left center}
@@ -97,7 +97,7 @@ HTML;
 }
 
 ob_start();
-require $project_root . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'page-informatica-connectors.php';
+require $project_root . DIRECTORY_SEPARATOR . 'templates/products/informatica-connectors/informatica-connectors.php';
 $html = ob_get_clean();
 
 if (!is_string($html) || $html === '') {

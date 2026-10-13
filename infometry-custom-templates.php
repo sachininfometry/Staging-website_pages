@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Infometry Custom Templates
  * Description: Provides isolated Infometry product and landing page templates.
- * Version: 2.10.0
+ * Version: 2.11.0
  * Author: Infometry
  * Text Domain: infometry-custom-templates
  */
@@ -11,9 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'INFOMETRY_CT_VERSION', '2.10.0' );
+define( 'INFOMETRY_CT_VERSION', '2.11.0' );
 define( 'INFOMETRY_CT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'INFOMETRY_CT_URL', plugin_dir_url( __FILE__ ) );
+/*
+ * Template keys are stored in each page's `_wp_page_template` meta, so they must
+ * never change. They are legacy identifiers, not file paths; see
+ * infometry_ct_template_path() for where each template file actually lives.
+ */
 define( 'INFOMETRY_CT_HOME_TEMPLATE', 'templates/page-home-design-test.php' );
 define( 'INFOMETRY_CT_CONVERSA_TEMPLATE', 'templates/page-infofiscus-conversa.php' );
 define( 'INFOMETRY_CT_INFORMATICA_TEMPLATE', 'templates/page-informatica-connectors.php' );
@@ -28,6 +33,28 @@ define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
 define( 'INFOMETRY_CT_HOME_META_DESCRIPTION', 'Explore Infometry’s data analytics, AI, cloud data, integration, Snowflake, Databricks, and pre-built solutions designed to accelerate enterprise transformation.' );
+
+/**
+ * Resolve a stored template key to its file inside this plugin.
+ *
+ * @param string $template_slug Template key saved in `_wp_page_template`.
+ * @return string Absolute file path, or an empty string for unknown keys.
+ */
+function infometry_ct_template_path( $template_slug ) {
+	$files = array(
+		INFOMETRY_CT_HOME_TEMPLATE                 => 'templates/pages/home/home.php',
+		INFOMETRY_CT_CONVERSA_TEMPLATE             => 'templates/products/infofiscus-conversa/infofiscus-conversa.php',
+		INFOMETRY_CT_INFORMATICA_TEMPLATE          => 'templates/products/informatica-connectors/informatica-connectors.php',
+		INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE    => 'templates/products/google-cloud-connectors/google-cloud-connectors.php',
+		INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE         => 'templates/products/google-drive-connector/google-drive-connector.php',
+		INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE => 'templates/products/snowflake-native-apps/snowflake-native-apps.php',
+		INFOMETRY_CT_ASANA_FDP_TEMPLATE            => 'templates/case-studies/asana-fdp-snowflake-modernization/asana-fdp-snowflake-modernization.php',
+		INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE  => 'templates/case-studies/insurance-snowflake-modernization/insurance-snowflake-modernization.php',
+		INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE   => 'templates/case-studies/sunrun-enterprise-data-analytics/sunrun-enterprise-data-analytics.php',
+	);
+
+	return isset( $files[ $template_slug ] ) ? INFOMETRY_CT_PATH . $files[ $template_slug ] : '';
+}
 
 /** Keep homepage SEO metadata aligned across WordPress and common SEO plugins. */
 function infometry_ct_home_meta_title( $title ) {
@@ -94,7 +121,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_ASANA_FDP_TEMPLATE ] = __( 'Asana FDP Snowflake Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE ] = __( 'Insurance Snowflake Modernization Case Study', 'infometry-custom-templates' );
-	$templates[ INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE ] = __( 'Sunrise Case Study', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE ] = __( 'Sunrun Case Study', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -209,7 +236,7 @@ function infometry_ct_should_use_insurance_snowflake_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE );
 }
 
-/** Use the redesigned Sunrise case study when selected or on its staging URL. */
+/** Use the redesigned Sunrun case study when selected or on its staging URL. */
 function infometry_ct_should_use_sunrise_case_study_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE )
 		|| infometry_ct_is_staging_sunrise_case_study_route();
@@ -253,7 +280,7 @@ function infometry_ct_render_staging_google_drive_route() {
 		return;
 	}
 
-	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE;
+	$plugin_template = infometry_ct_template_path( INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE );
 	if ( ! is_readable( $plugin_template ) ) {
 		return;
 	}
@@ -287,7 +314,7 @@ function infometry_ct_render_staging_asana_fdp_route() {
 		return;
 	}
 
-	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_ASANA_FDP_TEMPLATE;
+	$plugin_template = infometry_ct_template_path( INFOMETRY_CT_ASANA_FDP_TEMPLATE );
 	if ( ! is_readable( $plugin_template ) ) {
 		return;
 	}
@@ -299,13 +326,13 @@ function infometry_ct_render_staging_asana_fdp_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 0 );
 
-/** Serve the Sunrise redesign at the exact requested Cloudways URL. */
+/** Serve the Sunrun redesign at the exact requested Cloudways URL. */
 function infometry_ct_render_staging_sunrise_case_study_route() {
 	if ( ! infometry_ct_is_staging_sunrise_case_study_route() ) {
 		return;
 	}
 
-	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE;
+	$plugin_template = infometry_ct_template_path( INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE );
 	if ( ! is_readable( $plugin_template ) ) {
 		return;
 	}
@@ -325,63 +352,63 @@ add_action( 'template_redirect', 'infometry_ct_render_staging_sunrise_case_study
  */
 function infometry_ct_load_page_template( $template ) {
 	if ( infometry_ct_should_use_home_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_HOME_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_HOME_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_conversa_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_CONVERSA_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_CONVERSA_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_informatica_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_INFORMATICA_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_INFORMATICA_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_google_connectors_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_google_drive_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_asana_fdp_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_ASANA_FDP_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_ASANA_FDP_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_insurance_snowflake_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
 	}
 
 	if ( infometry_ct_should_use_sunrise_case_study_template() ) {
-		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE;
+		$plugin_template = infometry_ct_template_path( INFOMETRY_CT_SUNRISE_CASE_STUDY_TEMPLATE );
 		if ( is_readable( $plugin_template ) ) {
 			return $plugin_template;
 		}
@@ -801,21 +828,21 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	if ( $use_home ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/home-design-test.css';
-		$js_path     = INFOMETRY_CT_PATH . 'assets/js/home-design-test.js';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/pages/home.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/home.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
 		wp_enqueue_style(
 			'infometry-home-design-test',
-			INFOMETRY_CT_URL . 'assets/css/home-design-test.css',
+			INFOMETRY_CT_URL . 'assets/css/pages/home.css',
 			array(),
 			$css_version
 		);
 
 		wp_enqueue_script(
 			'infometry-home-design-test',
-			INFOMETRY_CT_URL . 'assets/js/home-design-test.js',
+			INFOMETRY_CT_URL . 'assets/js/home.js',
 			array(),
 			$js_version,
 			true
@@ -823,14 +850,14 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	if ( $use_conversa ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/infofiscus-conversa.css';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/products/infofiscus-conversa.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/infofiscus-conversa.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
 		wp_enqueue_style(
 			'infometry-infofiscus-conversa',
-			INFOMETRY_CT_URL . 'assets/css/infofiscus-conversa.css',
+			INFOMETRY_CT_URL . 'assets/css/products/infofiscus-conversa.css',
 			array(),
 			$css_version
 		);
@@ -845,14 +872,14 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	if ( $use_informatica ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/informatica-connectors.css';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/products/informatica-connectors.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/informatica-connectors.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
 		wp_enqueue_style(
 			'infometry-informatica-connectors',
-			INFOMETRY_CT_URL . 'assets/css/informatica-connectors.css',
+			INFOMETRY_CT_URL . 'assets/css/products/informatica-connectors.css',
 			array(),
 			$css_version
 		);
@@ -867,28 +894,28 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	if ( $use_google_connectors ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-cloud-connectors.css';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/products/google-cloud-connectors.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-cloud-connectors.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
-		wp_enqueue_style( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/css/google-cloud-connectors.css', array(), $css_version );
+		wp_enqueue_style( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/css/products/google-cloud-connectors.css', array(), $css_version );
 		wp_enqueue_script( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/js/google-cloud-connectors.js', array(), $js_version, true );
 	}
 
 	if ( $use_google_drive ) {
-		$css_path = INFOMETRY_CT_PATH . 'assets/css/google-drive-connector.css';
+		$css_path = INFOMETRY_CT_PATH . 'assets/css/products/google-drive-connector.css';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
-		wp_enqueue_style( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/css/google-drive-connector.css', array(), $css_version );
+		wp_enqueue_style( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/css/products/google-drive-connector.css', array(), $css_version );
 	}
 
 	if ( $use_snowflake_native_apps ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/snowflake-native-apps.css';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/products/snowflake-native-apps.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/snowflake-native-apps.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 
-		wp_enqueue_style( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/css/snowflake-native-apps.css', array(), $css_version );
+		wp_enqueue_style( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/css/products/snowflake-native-apps.css', array(), $css_version );
 		wp_enqueue_script( 'infometry-snowflake-native-apps', INFOMETRY_CT_URL . 'assets/js/snowflake-native-apps.js', array(), $js_version, true );
 	}
 
@@ -899,11 +926,11 @@ function infometry_ct_enqueue_assets() {
 			array(),
 			null
 		);
-		wp_enqueue_style( 'infometry-asana-fdp-case-study', INFOMETRY_CT_URL . 'assets/css/asana-fdp-case-study.css', array( 'infometry-asana-fdp-fonts' ), INFOMETRY_CT_ASANA_FDP_ASSET_VERSION );
+		wp_enqueue_style( 'infometry-asana-fdp-case-study', INFOMETRY_CT_URL . 'assets/css/case-studies/asana-fdp-snowflake-modernization.css', array( 'infometry-asana-fdp-fonts' ), INFOMETRY_CT_ASANA_FDP_ASSET_VERSION );
 	}
 
 	if ( $use_insurance_snowflake ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/insurance-snowflake-case-study.css';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/case-studies/insurance-snowflake-modernization.css';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style(
 			'infometry-insurance-snowflake-fonts',
@@ -911,12 +938,12 @@ function infometry_ct_enqueue_assets() {
 			array(),
 			null
 		);
-		wp_enqueue_style( 'infometry-insurance-snowflake-case-study', INFOMETRY_CT_URL . 'assets/css/insurance-snowflake-case-study.css', array( 'infometry-insurance-snowflake-fonts' ), $css_version );
+		wp_enqueue_style( 'infometry-insurance-snowflake-case-study', INFOMETRY_CT_URL . 'assets/css/case-studies/insurance-snowflake-modernization.css', array( 'infometry-insurance-snowflake-fonts' ), $css_version );
 	}
 
 	if ( $use_sunrise_case_study ) {
-		$css_path    = INFOMETRY_CT_PATH . 'assets/css/sunrise-case-study.css';
-		$js_path     = INFOMETRY_CT_PATH . 'assets/js/sunrise-case-study.js';
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/case-studies/sunrun-enterprise-data-analytics.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/sunrun-enterprise-data-analytics.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style(
@@ -925,8 +952,8 @@ function infometry_ct_enqueue_assets() {
 			array(),
 			null
 		);
-		wp_enqueue_style( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/css/sunrise-case-study.css', array( 'infometry-sunrise-fonts' ), $css_version );
-		wp_enqueue_script( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/js/sunrise-case-study.js', array(), $js_version, true );
+		wp_enqueue_style( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/css/case-studies/sunrun-enterprise-data-analytics.css', array( 'infometry-sunrise-fonts' ), $css_version );
+		wp_enqueue_script( 'infometry-sunrise-case-study', INFOMETRY_CT_URL . 'assets/js/sunrun-enterprise-data-analytics.js', array(), $js_version, true );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );

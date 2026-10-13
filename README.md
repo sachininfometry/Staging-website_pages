@@ -7,15 +7,26 @@ must remain separate from the live `LiveHomepage` repository.
 ## Repository contents
 
 - `infometry-custom-templates.php` — staging plugin bootstrap and route handling.
-- `templates/page-home-design-test.php` — homepage template synchronized with live.
-- `templates/page-infofiscus-conversa.php` — INFOFISCUS Conversa template synchronized with live.
-- `templates/page-informatica-connectors.php` — Informatica Connectors template synchronized with live.
-- `templates/page-google-cloud-connectors.php` — staging Google Cloud Connectors template.
-- `templates/page-google-drive-connector.php` — staging Google Drive Connector template.
-- `templates/page-snowflake-native-apps.php` — staging Snowflake Native Apps redesign.
-- `templates/page-asana-fdp-case-study.php` — staging Asana FDP Snowflake case-study redesign.
-- `templates/page-insurance-snowflake-case-study.php` — staging insurance Snowflake modernization case study.
-- `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
+- `templates/pages/home/` — homepage template synchronized with live.
+- `templates/products/infofiscus-conversa/` — INFOFISCUS Conversa template synchronized with live.
+- `templates/products/informatica-connectors/` — Informatica Connectors template synchronized with live.
+- `templates/products/google-cloud-connectors/` — staging Google Cloud Connectors template.
+- `templates/products/google-drive-connector/` — staging Google Drive Connector template.
+- `templates/products/snowflake-native-apps/` — staging Snowflake Native Apps redesign.
+- `templates/case-studies/asana-fdp-snowflake-modernization/` — staging Asana FDP Snowflake case-study redesign.
+- `templates/case-studies/insurance-snowflake-modernization/` — staging insurance Snowflake modernization case study.
+- `templates/case-studies/sunrun-enterprise-data-analytics/` — staging Sunrun case study (internal identifiers still use the legacy "sunrise" name).
+- `assets/css/{pages,products,case-studies}/` — page-scoped stylesheets, named after their template.
+- `assets/js/` — page-scoped scripts, named after their template.
+- `assets/images/` — images. Not reorganized: their plugin URLs are public and may be referenced from page content.
+
+### Template keys are not file paths
+
+WordPress stores each page's selected template as a key in `_wp_page_template`
+(for example `templates/page-home-design-test.php`). Those keys are kept unchanged
+for backward compatibility; `infometry_ct_template_path()` in the bootstrap maps each
+key to its current file. When adding a template, add a new key **and** a map entry;
+never edit an existing key.
 - `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, `preview-asana-fdp-case-study.html`, and `preview-insurance-snowflake-case-study.php` — local previews.
 - `tools/` — preview generation and pre-deployment verification scripts.
 

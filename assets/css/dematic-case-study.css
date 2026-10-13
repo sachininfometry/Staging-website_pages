@@ -40,6 +40,15 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	overflow: hidden !important;
 }
 
+/*
+ * The WordPress page has no slider, so Betheme would add its 250px header spacer,
+ * a header background image and the black page-title bar. Neutralise all three so
+ * the transparent header overlays the hero exactly like the Sunrun page.
+ */
+body.infometry-dematic-case-study-page #Subheader { display: none !important; }
+body.infometry-dematic-case-study-page #Header_wrapper { background-image: none !important; }
+body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
+
 /* Keep the theme header balanced when desktop display scaling reduces the CSS viewport. */
 @media (min-width: 1025px) and (max-width: 1320px) {
 	body.infometry-dematic-case-study-page #Top_bar .logo,
@@ -142,7 +151,7 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	width: 100%;
 	max-width: 1440px;
 	margin: 0 auto;
-	padding: 84px 50px 34px;
+	padding: 112px 50px 34px;
 	align-items: center;
 }
 
@@ -200,16 +209,20 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
  * Desktop hero: the 2:1 banner is height-fitted and pinned to the viewport's
  * right edge, so wide screens never show an empty strip. --dematic-img-w is the
  * rendered banner width; the fade layer is sized to it plus a 240px ramp on its
- * left and is fully opaque over the banner's bright left edge, so no seam shows. The fade clears just before the
- * first dashboard panel (~44% into the artwork).
+ * left and is fully opaque over the banner's bright left edge, so no seam shows.
+ * The fade clears just before the first dashboard panel (~44% into the artwork).
+ * The banner starts --dematic-img-top below the hero top so its dashboard panels
+ * sit under the theme menu rather than behind it; a short fade hides that edge.
  */
 @media (min-width: 1025px) {
 	.dematic-hero {
-		--dematic-hero-h: clamp(440px, 34vw, 500px);
-		--dematic-img-w: calc(var(--dematic-hero-h) * 2);
+		--dematic-hero-h: clamp(460px, 37.5vw, 540px);
+		--dematic-img-top: 64px;
+		--dematic-img-w: calc((var(--dematic-hero-h) - var(--dematic-img-top)) * 2);
 		height: var(--dematic-hero-h);
 		overflow: hidden;
 		background:
+			linear-gradient(180deg, #001f47 0, #001f47 var(--dematic-img-top), rgba(0, 31, 71, 0) calc(var(--dematic-img-top) + 40px)) right top / var(--dematic-img-w) 100% no-repeat,
 			linear-gradient(90deg,
 				rgba(0, 31, 71, 0) 0,
 				#001f47 240px,
@@ -217,7 +230,7 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 				rgba(0, 31, 71, .95) calc(240px + var(--dematic-img-w) * .3),
 				rgba(0, 31, 71, .72) calc(240px + var(--dematic-img-w) * .38),
 				rgba(0, 31, 71, 0) calc(240px + var(--dematic-img-w) * .44)) right center / calc(var(--dematic-img-w) + 240px) 100% no-repeat,
-			url(../images/case-studies/dematic/dematic-supply-chain-visibility-hero.jpg) right center / auto 100% no-repeat,
+			url(../images/case-studies/dematic/dematic-supply-chain-visibility-hero.jpg) right bottom / auto calc(100% - var(--dematic-img-top)) no-repeat,
 			linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
 	}
 	.dematic-hero-inner { height: 100%; }
@@ -237,7 +250,7 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 
 @media (max-width: 1024px) {
 	.dematic-hero { display: block; }
-	.dematic-hero-inner { display: block; padding: 58px 32px 0; }
+	.dematic-hero-inner { display: block; padding: 120px 32px 0; }
 	.dematic-hero h1 { font-size: clamp(34px, 5.6vw, 46px); }
 	.dematic-hero h1 > span { white-space: normal; }
 	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { max-width: 680px; font-size: 16px; }
@@ -253,7 +266,7 @@ body.infometry-dematic-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 }
 
 @media (max-width: 600px) {
-	.dematic-hero-inner { padding: 50px 20px 0; }
+	.dematic-hero-inner { padding: 112px 20px 0; }
 	.dematic-hero h1 { font-size: clamp(27px, 7.6vw, 40px); }
 	.dematic-hero-copy .dematic-hero-brand { margin-top: 22px; font-size: 24px; }
 	.dematic-hero-brand::before { height: 34px; }

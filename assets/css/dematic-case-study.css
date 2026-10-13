@@ -207,22 +207,20 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 
 /*
  * Desktop hero: the 2:1 banner is height-fitted and pinned to the viewport's
- * right edge, so wide screens never show an empty strip. --dematic-img-w is the
- * rendered banner width; the fade layer is sized to it plus a 240px ramp on its
- * left and is fully opaque over the banner's bright left edge, so no seam shows.
- * The fade clears just before the first dashboard panel (~44% into the artwork).
- * The banner starts --dematic-img-top below the hero top so its dashboard panels
- * sit under the theme menu rather than behind it; a short fade hides that edge.
+ * right edge (the theme menu sits on top of it, over a light top shade that keeps
+ * the menu readable), so wide screens never show an empty strip. --dematic-img-w is the rendered banner width; the fade layer is
+ * sized to it plus a 240px ramp on its left and is fully opaque over the
+ * banner's bright left edge, so no seam shows. The fade clears just before the
+ * first dashboard panel, which starts ~44.5% into the artwork.
  */
 @media (min-width: 1025px) {
 	.dematic-hero {
-		--dematic-hero-h: clamp(460px, 37.5vw, 540px);
-		--dematic-img-top: 64px;
-		--dematic-img-w: calc((var(--dematic-hero-h) - var(--dematic-img-top)) * 2);
+		--dematic-hero-h: clamp(460px, 37.5vw, 640px);
+		--dematic-img-w: calc(var(--dematic-hero-h) * 2);
 		height: var(--dematic-hero-h);
 		overflow: hidden;
 		background:
-			linear-gradient(180deg, #001f47 0, #001f47 var(--dematic-img-top), rgba(0, 31, 71, 0) calc(var(--dematic-img-top) + 40px)) right top / var(--dematic-img-w) 100% no-repeat,
+			linear-gradient(180deg, rgba(0, 22, 52, .62) 0, rgba(0, 22, 52, 0) 120px),
 			linear-gradient(90deg,
 				rgba(0, 31, 71, 0) 0,
 				#001f47 240px,
@@ -230,7 +228,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 				rgba(0, 31, 71, .95) calc(240px + var(--dematic-img-w) * .3),
 				rgba(0, 31, 71, .72) calc(240px + var(--dematic-img-w) * .38),
 				rgba(0, 31, 71, 0) calc(240px + var(--dematic-img-w) * .44)) right center / calc(var(--dematic-img-w) + 240px) 100% no-repeat,
-			url(../images/case-studies/dematic/dematic-supply-chain-visibility-hero.jpg) right bottom / auto calc(100% - var(--dematic-img-top)) no-repeat,
+			url(../images/case-studies/dematic/dematic-supply-chain-visibility-hero.jpg) right center / auto 100% no-repeat,
 			linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
 	}
 	.dematic-hero-inner { height: 100%; }
@@ -244,8 +242,36 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	.dematic-hero-brand::before { height: 34px; }
 }
 
+/*
+ * Past 1440px the copy aligns with the content shell below, but never sits more
+ * than --dematic-hero-gap left of the first dashboard panel, so the space between
+ * text and image stays tight however wide the screen gets.
+ */
 @media (min-width: 1441px) {
-	.dematic-hero-copy { width: 640px; }
+	.dematic-hero {
+		--dematic-copy-w: 640px;
+		--dematic-hero-gap: 160px;
+	}
+	.dematic-hero-inner {
+		max-width: none;
+		padding-right: 0;
+		padding-left: max(calc((100vw - 1320px) / 2), calc(100vw - var(--dematic-img-w) * .555 - var(--dematic-hero-gap) - var(--dematic-copy-w)));
+	}
+	.dematic-hero-copy { width: var(--dematic-copy-w); }
+}
+
+@media (min-width: 1600px) {
+	.dematic-hero h1 { font-size: 48px; }
+	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { max-width: none; font-size: 18px; }
+}
+
+@media (min-width: 1920px) {
+	.dematic-hero { --dematic-copy-w: 760px; }
+	.dematic-eyebrow { font-size: 15px; }
+	.dematic-hero h1 { font-size: 54px; }
+	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { font-size: 19px; }
+	.dematic-hero-copy .dematic-hero-brand { font-size: 34px; }
+	.dematic-hero-brand::before { height: 48px; }
 }
 
 @media (max-width: 1024px) {

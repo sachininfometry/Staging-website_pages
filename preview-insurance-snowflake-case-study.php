@@ -17,10 +17,10 @@ function wp_date( $format ) { return date( $format ); }
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&amp;family=Roboto:wght@500;600;700;800;900&amp;display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/insurance-snowflake-case-study.css?v=<?php echo rawurlencode( (string) filemtime( __DIR__ . '/assets/css/insurance-snowflake-case-study.css' ) ); ?>">
+	<link rel="stylesheet" href="assets/css/case-studies/insurance-snowflake-modernization.css?v=<?php echo rawurlencode( (string) filemtime( __DIR__ . '/assets/css/case-studies/insurance-snowflake-modernization.css' ) ); ?>">
 	<style>html,body{margin:0;min-height:100%}</style>
 </head>
 <body class="infometry-insurance-snowflake-page">
-<?php require __DIR__ . '/templates/page-insurance-snowflake-case-study.php'; ?>
+<?php require __DIR__ . '/templates/case-studies/insurance-snowflake-modernization/insurance-snowflake-modernization.php'; ?>
 </body>
 </html>

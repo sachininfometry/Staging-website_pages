@@ -5099,7 +5099,7 @@ body .infometry-conversa-product>section>.icp-shell,body .infometry-conversa-pro
 
 /* Reference-matched hero banner dimensions and in-banner navigation. */
 body .infometry-conversa-product .icp-hero .icp-hero-nav{display:flex!important;min-height:76px;padding:14px 0;align-items:center;justify-content:space-between;gap:28px;border-bottom:1px solid rgba(255,255,255,.08)}
-body .infometry-conversa-product .icp-hero .icp-nav-logo{display:block;width:250px;height:52px;flex:0 0 250px;overflow:hidden;background:url("../images/infometry-logo-white.png") left center/contain no-repeat;font-size:0!important;color:transparent!important}
+body .infometry-conversa-product .icp-hero .icp-nav-logo{display:block;width:250px;height:52px;flex:0 0 250px;overflow:hidden;background:url("../../images/infometry-logo-white.png") left center/contain no-repeat;font-size:0!important;color:transparent!important}
 body .infometry-conversa-product .icp-hero .icp-nav-logo span{display:none!important}
 body .infometry-conversa-product .icp-hero .icp-nav-links{display:flex;gap:30px;align-items:center;margin-left:auto}
 body .infometry-conversa-product .icp-hero .icp-nav-links a{position:relative;color:rgba(255,255,255,.88);font-size:12px;font-weight:750;text-transform:uppercase}
@@ -13697,7 +13697,7 @@ body .infometry-conversa-product .icp-finance-chart::before {
   padding: 0 !important;
   border: 0 !important;
   border-radius: 0 !important;
-  background: url("../images/infofiscus-conversa-table-logo.png") center / contain no-repeat !important;
+  background: url("../../images/infofiscus-conversa-table-logo.png") center / contain no-repeat !important;
   box-shadow: none !important;
   filter: grayscale(1) brightness(0) invert(1) drop-shadow(0 5px 10px rgba(1, 15, 50, .2)) !important;
   opacity: .96 !important;

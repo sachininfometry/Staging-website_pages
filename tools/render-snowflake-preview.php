@@ -23,7 +23,7 @@ function get_header(): void {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Snowflake Native Apps | Infometry Preview</title>
-	<link rel="stylesheet" href="assets/css/snowflake-native-apps.css?v=2.7.1">
+	<link rel="stylesheet" href="assets/css/products/snowflake-native-apps.css?v=2.7.1">
 	<style>
 		.preview-site-header{display:flex;min-height:76px;padding:12px 5%;align-items:center;justify-content:space-between;background:#fff;font-family:Inter,Arial,sans-serif}
 		.preview-site-header .brand{color:#08225f;font:800 22px Manrope,Arial,sans-serif;letter-spacing:-.04em}.preview-site-header nav{display:flex;align-items:center;gap:24px}.preview-site-header a{color:#0b2871;font-size:12px;font-weight:700;text-decoration:none}.preview-site-header .demo{padding:10px 18px;border-radius:6px;color:#fff;background:#087cf2}
@@ -44,7 +44,7 @@ HTML;
 }
 
 ob_start();
-require $project_root . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'page-snowflake-native-apps.php';
+require $project_root . DIRECTORY_SEPARATOR . 'templates/products/snowflake-native-apps/snowflake-native-apps.php';
 $html = ob_get_clean();
 
 if (!is_string($html) || $html === '') { fwrite(STDERR, "The Snowflake preview rendered no output.\n"); exit(1); }

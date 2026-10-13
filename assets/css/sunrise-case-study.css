@@ -1173,6 +1173,64 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	.sunrise-hero-mobile-visual { width: calc(100% + 40px); margin-inline: -20px; }
 }
 
+/*
+ * Desktop hero: the artwork lives inside the 1440px content frame instead of the
+ * viewport, so it never scales up on wide screens and keeps a fixed relationship
+ * with the copy. The hero height tracks the frame width (540 / 1440): the artwork
+ * is height-fitted and right-aligned, so its first card always starts at ~51.8% of
+ * the frame and the copy column is sized to end ~100px before it.
+ */
+@media (min-width: 1025px) {
+	.sunrise-hero {
+		height: clamp(400px, 37.5vw, 540px);
+		min-height: 0;
+		background: linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
+	}
+	.sunrise-hero::before {
+		background: radial-gradient(circle at 16% 48%, rgba(8, 124, 240, .16), transparent 36%);
+	}
+	.sunrise-hero-inner {
+		position: relative;
+		height: 100%;
+		min-height: 0;
+		max-width: 1440px;
+	}
+	.sunrise-hero-inner::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background:
+			linear-gradient(90deg, rgba(0, 31, 71, .97) 0%, rgba(0, 31, 71, .95) 38%, rgba(0, 31, 71, .7) 45%, rgba(0, 31, 71, 0) 53%),
+			url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / auto 100% no-repeat;
+	}
+	.sunrise-hero-copy {
+		position: relative;
+		z-index: 1;
+		width: calc(51.8% - 98px);
+		max-width: 600px;
+	}
+	.sunrise-hero h1 span:first-child { white-space: nowrap; }
+}
+
+@media (min-width: 1321px) {
+	.sunrise-hero h1 { font-size: 46px; }
+}
+
+@media (min-width: 1025px) and (max-width: 1320px) {
+	.sunrise-hero h1 { font-size: clamp(32px, 3.05vw, 40px); }
+	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: clamp(13px, 1.1vw, 14px); }
+}
+
+/* Past 1440px the frame stops growing; fade both edges into the hero colour. */
+@media (min-width: 1441px) {
+	.sunrise-hero-inner::before {
+		-webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 90%, transparent 100%);
+		mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 90%, transparent 100%);
+	}
+}
+
 /* Premium full-page system from challenge through footer. */
 .sunrise-challenge,
 .sunrise-analytics,

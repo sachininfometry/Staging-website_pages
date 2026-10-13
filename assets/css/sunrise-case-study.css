@@ -2250,6 +2250,100 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	transform: none;
 }
 
+/* Roadmap layout v2: plain card titles, fan-in connector, logo-led platform cards. */
+.sunrun-roadmap { background: linear-gradient(180deg, #fff 0, #f4f9fe 100%); }
+.sunrun-architecture {
+	grid-template-columns: minmax(0, 1.4fr) 64px minmax(0, .95fr) 28px minmax(0, .95fr) 28px minmax(0, 1.05fr) minmax(0, .8fr);
+	gap: 10px;
+}
+.sunrun-roadmap .sunrun-architecture article,
+.sunrun-roadmap .sunrun-architecture article.featured {
+	min-height: 340px;
+	border-color: #dbeaf6;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, .92);
+	box-shadow: 0 10px 30px rgba(14, 73, 115, .05);
+}
+.sunrun-roadmap .sunrun-architecture .sunrun-card-title {
+	margin: 0;
+	color: #0c2d59;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.35;
+}
+.sunrun-platform-card { justify-content: flex-start; }
+.sunrun-platform-card .sunrun-card-title { min-height: 42px; }
+
+.sunrun-source-card { display: flex; flex-direction: column; }
+.sunrun-source-list { flex: 1; margin-top: 10px; gap: 0; grid-auto-rows: 1fr; }
+.sunrun-source-list > span { grid-template-columns: 52px minmax(0, 1fr); gap: 14px; }
+.sunrun-source-list i { width: 52px; }
+.sunrun-source-list i svg { width: 30px; height: 30px; stroke-width: 1.8; }
+.sunrun-source-list i.brand img { max-width: 48px; max-height: 32px; }
+.sunrun-source-list i.brand.oracle img { max-width: 48px; max-height: 16px; }
+.sunrun-source-list b { font-size: 13px; }
+.sunrun-source-list em { font-size: 11px; }
+
+.sunrun-roadmap .sunrun-source-flow { place-items: stretch; }
+.sunrun-roadmap .sunrun-source-flow .sunrun-fan { width: 100%; height: 100%; color: #2ea3f2; stroke-width: 1.6; }
+.sunrun-roadmap .sunrun-fan { animation: none; }
+.sunrun-fan path { vector-effect: non-scaling-stroke; }
+.sunrun-fan .head { stroke-width: 2; }
+.sunrun-roadmap .sunrun-source-flow .sunrun-flow-arrow { display: none; }
+
+.sunrun-platform-card .sunrise-platform-mark,
+.sunrun-platform-card .sunrun-database-mark + .sunrise-platform-mark { width: 100%; height: auto; margin: auto auto 0; background: transparent; }
+.sunrun-platform-card .sunrise-platform-mark img { max-width: 150px; max-height: 44px; }
+.sunrun-platform-card .sunrise-platform-mark.oracle img { max-width: 132px; max-height: 20px; }
+.sunrun-platform-card .sunrise-platform-mark.tableau img { max-width: 150px; max-height: 48px; }
+.sunrun-platform-sub { margin: 6px 0 auto; color: #3c5570; font-size: 17px; font-weight: 500; }
+.sunrun-database-mark { width: 72px; height: 72px; margin: auto auto 14px; }
+.sunrun-database-mark svg { width: 60px; height: 60px; fill: #e3f3fe; stroke-width: 1.5; }
+
+.sunrun-analytics-card .sunrise-platform-mark { margin: auto auto 0; }
+.sunrun-dashboard-mark {
+	position: relative;
+	width: min(100%, 150px);
+	height: 92px;
+	margin: 18px auto auto;
+	padding: 10px;
+	grid-template-columns: 1fr 1.3fr;
+	gap: 8px;
+	border: 5px solid #2f9cec;
+	border-radius: 6px;
+	background: #eaf6ff;
+	box-shadow: none;
+}
+.sunrun-dashboard-mark::after { position: absolute; bottom: -14px; left: 50%; width: 44px; height: 9px; border-radius: 0 0 6px 6px; background: #2f9cec; content: ""; transform: translateX(-50%); }
+.sunrun-dashboard-mark i { width: 100%; height: 100%; border-radius: 3px; background: repeating-linear-gradient(180deg, #8ccff8 0 4px, transparent 4px 9px); }
+.sunrun-dashboard-mark svg { width: 100%; height: 100%; }
+
+.sunrun-output-card { justify-content: center; }
+.sunrun-output-card ul { margin: 0; gap: 22px; }
+.sunrun-output-card li { grid-template-columns: 32px minmax(0, 1fr); gap: 12px; font-size: 12px; }
+.sunrun-output-card li i { display: grid; width: 32px; height: 32px; place-items: center; border: 1.5px solid #9fd3f7; border-radius: 8px; background: #f2faff; }
+.sunrun-output-card li svg { width: 18px; height: 18px; }
+.sunrun-output-card li::before { display: none; }
+
+@media (max-width: 1100px) {
+	.sunrun-architecture { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+	.sunrun-roadmap .sunrise-flow { min-height: 28px; place-items: center; transform: rotate(90deg); }
+	.sunrun-roadmap .sunrun-source-flow .sunrun-fan { display: none; }
+	.sunrun-roadmap .sunrun-source-flow .sunrun-flow-arrow { display: block; }
+	.sunrun-roadmap .sunrun-architecture article,
+	.sunrun-roadmap .sunrun-architecture article.featured { min-height: 0; padding: 22px; }
+	.sunrun-source-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; grid-auto-rows: auto; }
+	.sunrun-platform-card .sunrise-platform-mark { margin-top: 22px; }
+	.sunrun-platform-sub { margin-bottom: 0; }
+	.sunrun-database-mark { margin-top: 18px; }
+	.sunrun-dashboard-mark { margin: 18px auto 18px; }
+	.sunrun-output-card ul { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+}
+
+@media (max-width: 720px) {
+	.sunrun-source-list { grid-template-columns: 1fr; }
+}
+
 .sunrun-delivery { padding: 20px 0 66px; background: #fff; }
 .sunrun-solution-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .sunrun-solution-grid article {

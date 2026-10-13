@@ -76,6 +76,7 @@ $solutions = array(
 		<symbol id="sunrise-target" viewBox="0 0 24 24"><circle cx="10" cy="14" r="8"/><circle cx="10" cy="14" r="4"/><path d="m10 14 11-11m-5 0h5v5"/></symbol>
 		<symbol id="sunrise-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.7.9-1.9-2.1-2.1-1.9.9-1.7-.7L10.8 2h-3l-.7 2.3-1.7.7-1.9-.9-2.1 2.1.9 1.9-.7 1.7-2 .7v3l2 .7.7 1.7-.9 1.9 2.1 2.1 1.9-.9 1.7.7.7 2.3h3l.7-2.3 1.7-.7 1.9.9 2.1-2.1-.9-1.9.7-1.7 2-.7Z" transform="translate(1)"/></symbol>
 		<symbol id="sunrise-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+		<symbol id="sunrise-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
 		<symbol id="sunrise-cloud" viewBox="0 0 24 24"><path d="M6 19h12a4 4 0 0 0 .5-8A7 7 0 0 0 5 9a5 5 0 0 0 1 10Z"/></symbol>
 	</svg>
 
@@ -138,21 +139,23 @@ $solutions = array(
 		<div class="sunrise-shell">
 			<div class="sunrun-section-heading"><h2>Enterprise Data Architecture &amp; Analytics Roadmap</h2><p>A scalable architecture designed around Sunrun's business processes to enable unified analytics across the customer and solar asset lifecycle.</p></div>
 			<div class="sunrise-architecture sunrun-architecture">
-				<article class="sunrun-source-card"><small>Enterprise Sources</small><div class="sunrun-source-list">
-					<span><i class="brand"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-salesforce-current.png' ); ?>" alt="" width="1254" height="1254"></i><b>Salesforce<em>CRM &amp; Sales Data</em></b></span>
-					<span><i class="brand oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="" width="1529" height="199"></i><b>Oracle Applications<em>Financial &amp; Enterprise Data</em></b></span>
-					<span><i><svg><use href="#sunrise-database"/></svg></i><b>Meter &amp; Production Systems<em>Operational Data</em></b></span>
-					<span><i><svg><use href="#sunrise-document"/></svg></i><b>Contract Systems<em>Contracts Data</em></b></span>
-					<span><i><svg><use href="#sunrise-structure"/></svg></i><b>Homegrown Applications<em>Operational Data</em></b></span>
+				<article class="sunrun-source-card"><h3 class="sunrun-card-title">Enterprise Sources</h3><div class="sunrun-source-list">
+					<span><i class="brand"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-salesforce-current.png' ); ?>" alt="" width="1254" height="1254"></i><b>Salesforce<em>(CRM &amp; Sales Data)</em></b></span>
+					<span><i class="brand oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="" width="1529" height="199"></i><b>Oracle Applications<em>(Financial &amp; Enterprise Data)</em></b></span>
+					<span><i><svg><use href="#sunrise-database"/></svg></i><b>Meter &amp; Production Systems<em>(Operational Data)</em></b></span>
+					<span><i><svg><use href="#sunrise-document"/></svg></i><b>Contract Systems<em>(Contracts Data)</em></b></span>
+					<span><i><svg><use href="#sunrise-code"/></svg></i><b>Homegrown Applications<em>(Operational Data)</em></b></span>
 				</div></article>
+				<span class="sunrise-flow sunrun-source-flow" aria-hidden="true">
+					<svg class="sunrun-fan" viewBox="0 0 64 340" preserveAspectRatio="none"><path d="M0 77C34 77 36 166 60 170M0 130C32 130 38 168 60 170M0 184C32 184 38 172 60 170M0 237C32 237 38 172 60 170M0 291C34 291 36 174 60 170"/><path class="head" d="m54 164 6 6-6 6"/></svg>
+					<svg class="sunrun-flow-arrow"><use href="#sunrise-arrow"/></svg>
+				</span>
+				<article class="featured sunrun-platform-card"><h3 class="sunrun-card-title">Data Integration &amp;<br>Orchestration</h3><span class="sunrise-platform-mark informatica"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica Cloud" width="293" height="78"></span><span class="sunrun-platform-sub">Cloud</span></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="featured sunrun-platform-card"><small>Data Integration &amp;<br>Orchestration</small><span class="sunrise-platform-mark informatica"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/tech-informatica.png' ); ?>" alt="Informatica Cloud" width="293" height="78"></span><h3>Informatica Cloud</h3><p>Integration, transformation, quality, and orchestration.</p></article>
+				<article class="sunrun-platform-card"><h3 class="sunrun-card-title">Enterprise<br>Data Warehouse</h3><span class="sunrun-database-mark"><svg><use href="#sunrise-database"/></svg></span><span class="sunrise-platform-mark oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="Oracle Cloud" width="1529" height="199"></span><span class="sunrun-platform-sub">Cloud</span></article>
 				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="sunrun-platform-card"><small>Enterprise<br>Data Warehouse</small><span class="sunrun-database-mark"><svg><use href="#sunrise-database"/></svg></span><span class="sunrise-platform-mark oracle"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-oracle-current.png' ); ?>" alt="Oracle Cloud" width="1529" height="199"></span><h3>Oracle Cloud</h3><p>Standardized enterprise data across the complete solar lifecycle.</p></article>
-				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="sunrun-platform-card sunrun-analytics-card"><small>Analytics &amp; Reporting</small><span class="sunrise-platform-mark tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau from Salesforce" width="2172" height="724"></span><span class="sunrun-dashboard-mark"><svg><use href="#sunrise-chart"/></svg></span><h3>Analytics &amp; Reporting</h3></article>
-				<span class="sunrise-flow"><svg><use href="#sunrise-arrow"/></svg></span>
-				<article class="sunrun-output-card"><small>Business Insights</small><ul><li><svg><use href="#sunrise-document"/></svg>Reports</li><li><svg><use href="#sunrise-chart"/></svg>Dashboards</li><li><svg><use href="#sunrise-target"/></svg>Scorecards</li><li><svg><use href="#sunrise-filter"/></svg>Ad-hoc Analysis</li><li><svg><use href="#sunrise-pie"/></svg>Business Insights</li></ul></article>
+				<article class="sunrun-platform-card sunrun-analytics-card"><h3 class="sunrun-card-title">Analytics &amp; Reporting</h3><span class="sunrise-platform-mark tableau"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau from Salesforce" width="2172" height="724"></span><span class="sunrun-dashboard-mark" aria-hidden="true"><i></i><svg><use href="#sunrise-chart"/></svg></span></article>
+				<article class="sunrun-output-card" aria-label="Business Insights"><ul><li><i><svg><use href="#sunrise-document"/></svg></i>Reports</li><li><i><svg><use href="#sunrise-chart"/></svg></i>Dashboards</li><li><i><svg><use href="#sunrise-target"/></svg></i>Scorecards</li><li><i><svg><use href="#sunrise-filter"/></svg></i>Ad-hoc Analysis</li><li><i><svg><use href="#sunrise-pie"/></svg></i>Business Insights</li></ul></article>
 			</div>
 		</div>
 	</section>

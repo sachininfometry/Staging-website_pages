@@ -2015,7 +2015,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrun-facts .sunrise-icon svg { width: 28px; height: 28px; }
 .sunrun-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 14px; line-height: 1.4; }
 .sunrun-facts small { color: #59809d; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.sunrun-facts strong { margin-top: 7px; font-weight: 800; }
+.sunrun-facts strong { margin-top: 7px; font-weight: 400; }
 
 .sunrun-overview {
 	padding: 68px 0 0;

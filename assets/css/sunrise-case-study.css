@@ -1223,11 +1223,17 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 	.sunrise-hero-copy > p:not(.sunrise-eyebrow) { font-size: clamp(13px, 1.1vw, 14px); }
 }
 
-/* Past 1440px the frame stops growing; fade both edges into the hero colour. */
+/* Past 1440px the copy frame stops growing; bleed the image to the viewport's
+   right edge so wide screens never show an empty blue strip. The fade layer is
+   sized to the image (540px tall x 2056/765 ratio = 1451px) so it matches 1440,
+   plus a 240px ramp on its left that hides the image's starting edge. */
 @media (min-width: 1441px) {
+	.sunrise-hero { overflow: hidden; }
 	.sunrise-hero-inner::before {
-		-webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 90%, transparent 100%);
-		mask-image: linear-gradient(90deg, transparent 0%, #000 6%, #000 90%, transparent 100%);
+		right: calc(720px - 50vw);
+		background:
+			linear-gradient(90deg, rgba(0, 31, 71, 0) 0, rgba(0, 31, 71, .97) 240px, rgba(0, 31, 71, .95) 791px, rgba(0, 31, 71, .7) 893px, rgba(0, 31, 71, 0) 1009px) right center / 1691px 100% no-repeat,
+			url(../images/case-studies/sunrun/sunrun-energy-network-v2.png) right center / auto 100% no-repeat;
 	}
 }
 

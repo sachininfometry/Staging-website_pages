@@ -1,7 +1,8 @@
 param(
     [switch]$RegenerateInformaticaPreview,
     [switch]$RegenerateSnowflakePreview,
-    [switch]$RegenerateAsanaFdpPreview
+    [switch]$RegenerateAsanaFdpPreview,
+    [switch]$RegenerateSunrisePreview
 )
 
 $ErrorActionPreference = 'Stop'
@@ -58,6 +59,13 @@ if ($RegenerateAsanaFdpPreview) {
     }
 }
 
+if ($RegenerateSunrisePreview) {
+    & $php (Join-Path $PSScriptRoot 'render-sunrise-preview.php')
+    if ($LASTEXITCODE -ne 0) {
+        throw 'Sunrise preview generation failed.'
+    }
+}
+
 $requiredFiles = @(
     'infometry-custom-templates.php',
     'templates/page-home-design-test.php',
@@ -68,8 +76,13 @@ $requiredFiles = @(
     'templates/page-snowflake-native-apps.php',
     'templates/page-asana-fdp-case-study.php',
     'templates/page-insurance-snowflake-case-study.php',
+    'templates/page-sunrise-case-study.php',
+    'assets/css/sunrise-case-study.css',
+    'assets/images/case-studies/sunrise/sunrise-hero.png',
     'assets/css/insurance-snowflake-case-study.css',
     'assets/images/case-studies/insurance-snowflake/hero-user-supplied.png',
+    'assets/images/case-studies/insurance-snowflake/client-office-v1.png',
+    'assets/images/case-studies/insurance-snowflake/business-objective-analytics-v1.png',
     'assets/css/google-cloud-connectors.css',
     'assets/css/google-drive-connector.css',
     'assets/js/google-cloud-connectors.js',
@@ -84,6 +97,7 @@ $requiredFiles = @(
     'preview-snowflake-native-apps.html',
     'preview-asana-fdp-case-study.html',
     'preview-insurance-snowflake-case-study.php'
+    'preview-sunrise-case-study.html'
 )
 
 foreach ($relativePath in $requiredFiles) {
@@ -132,4 +146,4 @@ if ($failures.Count -gt 0) {
     exit 1
 }
 
-Write-Host "`nProject verification passed: 8 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green
+Write-Host "`nProject verification passed: 9 templates, PHP syntax, JavaScript syntax, and preview assets." -ForegroundColor Green

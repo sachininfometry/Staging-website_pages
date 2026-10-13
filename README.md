@@ -15,8 +15,9 @@ must remain separate from the live `LiveHomepage` repository.
 - `templates/page-snowflake-native-apps.php` — staging Snowflake Native Apps redesign.
 - `templates/page-asana-fdp-case-study.php` — staging Asana FDP Snowflake case-study redesign.
 - `templates/page-insurance-snowflake-case-study.php` — staging insurance Snowflake modernization case study.
+- `templates/page-sunrise-case-study.php` — modern Sunrise/Sunrun enterprise analytics case study.
 - `assets/css/`, `assets/js/`, and `assets/images/` — page-scoped frontend assets.
-- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, `preview-asana-fdp-case-study.html`, and `preview-insurance-snowflake-case-study.php` — local previews.
+- `preview-full.html`, `preview-conversa.html`, `preview-informatica.html`, `preview-snowflake-native-apps.html`, `preview-asana-fdp-case-study.html`, `preview-insurance-snowflake-case-study.php`, and `preview-sunrise-case-study.html` — local previews.
 - `tools/` — preview generation and pre-deployment verification scripts.
 
 ## Local development
@@ -35,6 +36,7 @@ Open:
 - `http://127.0.0.1:4190/preview-snowflake-native-apps.html`
 - `http://127.0.0.1:4190/preview-asana-fdp-case-study.html`
 - `http://127.0.0.1:4190/preview-insurance-snowflake-case-study.php`
+- `http://127.0.0.1:4190/preview-sunrise-case-study.html`
 
 After changing the Informatica or Snowflake PHP template, regenerate its standalone preview:
 
@@ -42,6 +44,7 @@ After changing the Informatica or Snowflake PHP template, regenerate its standal
 php tools/render-informatica-preview.php
 php tools/render-snowflake-preview.php
 php tools/render-asana-fdp-preview.php
+php tools/render-sunrise-preview.php
 ```
 
 Before every commit or deployment, run:
@@ -71,6 +74,7 @@ Important staging routes include:
 - the WordPress page slug `google-cloud-connectors`
 - the WordPress page slug `snowflake-native-apps`
 - `/resources/infometry-case-studies/financial-data-platform-fdp-modernization-on-snowflake/`
+- `/resources/infometry-case-studies/business-intelligence-data-discovery/`
 
 Deployment copies plugin files only. It does not modify WordPress core, BeTheme,
 Theme Options, or database content.

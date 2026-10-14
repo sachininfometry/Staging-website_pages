@@ -347,7 +347,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 .dematic-facts .dematic-icon svg { width: 24px; height: 24px; }
 .dematic-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 16px; line-height: 1.4; }
 .dematic-facts small { display: flex; min-height: 46px; align-items: center; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -.005em; line-height: 1.2; text-transform: none; }
-.dematic-facts strong { margin-top: 2px; color: #3a4f66; font-weight: 400; }
+.dematic-facts strong { margin-top: 2px; color: #1f3147; font-size: 14px; font-weight: 500; }
 
 /* ------------------------------------------------------------------ About + objective */
 .dematic-overview { padding: 68px 0 0; background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); }
@@ -873,6 +873,7 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 	.dematic-case-study > section:not(.dematic-hero) { font-size: 18px; }
 	.dematic-facts p { font-size: 17px; }
 	.dematic-facts small { font-size: 19px; }
+	.dematic-facts strong { font-size: 15px; }
 	.dematic-copy-block p,
 	.dematic-objective-grid p,
 	.dematic-section-heading p,
@@ -893,6 +894,7 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 @media (min-width: 1920px) {
 	.dematic-facts p { font-size: 18px; }
 	.dematic-facts small { font-size: 20px; }
+	.dematic-facts strong { font-size: 16px; }
 	.dematic-copy-block p,
 	.dematic-objective-grid p,
 	.dematic-section-heading p,

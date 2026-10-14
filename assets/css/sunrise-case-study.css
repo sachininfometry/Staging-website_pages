@@ -2029,7 +2029,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrun-facts .sunrise-icon svg { width: 24px; height: 24px; }
 .sunrun-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 14px; line-height: 1.4; }
 .sunrun-facts small { color: #59809d; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.sunrun-facts strong { margin-top: 2px; color: #3a4f66; font-weight: 400; }
+.sunrun-facts strong { margin-top: 2px; color: #1f3147; font-size: 14px; font-weight: 500; }
 
 .sunrun-overview {
 	padding: 68px 0 0;
@@ -2514,6 +2514,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 @media (min-width: 1600px) {
 	.sunrun-facts p { font-size: 17px; }
 	.sunrun-facts small { font-size: 19px; }
+	.sunrun-facts strong { font-size: 15px; }
 	.sunrise-client .sunrun-copy-block p,
 	.sunrun-objective-grid p,
 	.sunrun-section-heading p,
@@ -2537,6 +2538,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 @media (min-width: 1920px) {
 	.sunrun-facts p { font-size: 18px; }
 	.sunrun-facts small { font-size: 20px; }
+	.sunrun-facts strong { font-size: 16px; }
 	.sunrise-client .sunrun-copy-block p,
 	.sunrun-objective-grid p,
 	.sunrun-section-heading p,

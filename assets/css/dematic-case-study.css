@@ -148,13 +148,14 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
  * Identical to the Sunrun hero (sunrise-case-study.css): same height, frame,
  * padding, copy width and type, so every case-study banner matches.
  *  1025px+  hero height clamp(400px, 37.5vw, 540px); the artwork lives in a
- *           1440px frame, height-fitted and right-aligned. The artwork's left
- *           30% is feathered into the navy base, so the opaque cover only has to
- *           sit behind the copy and clears just after it.
- *  1441px+  the frame stops growing; the artwork bleeds to the viewport's right
- *           edge and the cover still only sits behind the copy (which always
- *           ends at 50% - 74px). Panels start 444px from the artwork's right edge
- *           (540px tall x 2 = 1080px wide), so the cover always clears before them.
+ *           1440px frame, height-fitted and right-aligned; it already starts
+ *           left of the copy, so the cover only sits behind the copy.
+ *  1441px+  the frame stops growing and the artwork bleeds to the viewport's
+ *           right edge. The 2:1 artwork is narrower than Sunrun's, so it is
+ *           widened to at least 50% + 134px (it then starts 60px before the copy
+ *           ends at 50% - 74px) and cropped evenly top and bottom; the panels sit
+ *           mid-height so they stay in view. The cover still only sits behind
+ *           the copy and clears before the first panel.
  *  A light top shade keeps the theme menu readable over the bright artwork.
  *  <=1024   artwork shown as an image under the copy.
  */
@@ -240,7 +241,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg, #001f47 0%, #001f47 calc(51.8% - 60px), rgba(0, 31, 71, .55) 51.8%, rgba(0, 31, 71, 0) calc(51.8% + 50px)),
-			url(../images/case-studies/dematic/dematic-hero-v2.jpg) right center / auto 100% no-repeat;
+			url(../images/case-studies/dematic/dematic-hero-v3.jpg) right center / auto 100% no-repeat;
 	}
 	.dematic-hero-copy { width: calc(51.8% - 98px); max-width: 600px; }
 	.dematic-hero h1 span:first-child { white-space: nowrap; }
@@ -267,7 +268,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 				#001f47 min(50% - 50px, 100% - 624px),
 				rgba(0, 31, 71, .55) min(50% + 10px, 100% - 544px),
 				rgba(0, 31, 71, 0) min(50% + 70px, 100% - 464px)),
-			url(../images/case-studies/dematic/dematic-hero-v2.jpg) right center / auto 100% no-repeat;
+			url(../images/case-studies/dematic/dematic-hero-v3.jpg) right center / max(1080px, 50% + 134px) auto no-repeat;
 	}
 }
 

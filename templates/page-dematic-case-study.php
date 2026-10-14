@@ -76,7 +76,7 @@ $outcomes = array(
 				<p>How Infometry connected sales, engineering, project planning, materials, manufacturing, and delivery data for a global warehouse automation leader.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-hero-v2.jpg' ); ?>" width="1774" height="887" alt="Automated warehouse with robots, forklifts and conveyors, overlaid with project delivery, global visibility, manufacturing and on-time delivery metrics">
+				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-hero-v3.jpg' ); ?>" width="1774" height="887" alt="Automated warehouse with robots, forklifts and conveyors, overlaid with project delivery, global visibility, manufacturing and on-time delivery metrics">
 			</figure>
 		</div>
 	</section>

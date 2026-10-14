@@ -96,7 +96,14 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 }
 
 .dematic-case-study svg.dematic-ms,
-.dematic-case-study svg.dematic-sap { stroke: none; }
+.dematic-case-study svg.dematic-sap,
+.dematic-case-study svg.dmx-ms,
+.dematic-case-study svg.dmx-sap,
+.dematic-case-study svg.dmx-panel,
+.dematic-case-study svg.dmx-illus,
+.dematic-case-study svg.dmx-db,
+.dematic-case-study svg.dmx-edw-art,
+.dematic-case-study svg.dmx-bi-art { stroke: none; }
 
 .dematic-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 

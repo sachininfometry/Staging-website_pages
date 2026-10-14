@@ -205,13 +205,13 @@ $outcomes = array(
 
 				<div class="dmx-bottom">
 					<article class="dmx-edw">
-						<svg class="dmx-edw-art" viewBox="0 0 170 110" aria-hidden="true"><g fill="#dbe9fb" stroke="#b7d1f1"><rect x="6" y="30" width="38" height="18" rx="3"/><rect x="6" y="50" width="38" height="18" rx="3"/><rect x="6" y="70" width="38" height="18" rx="3"/><rect x="128" y="50" width="34" height="18" rx="3"/><rect x="128" y="70" width="34" height="18" rx="3"/></g><g fill="#5aa6f8"><rect x="12" y="37" width="14" height="4" rx="2"/><rect x="12" y="57" width="14" height="4" rx="2"/><rect x="12" y="77" width="14" height="4" rx="2"/></g><g fill="#2f7fe8" stroke="#1b55c9"><rect x="30" y="10" width="38" height="18" rx="3"/><rect x="30" y="30" width="38" height="18" rx="3"/><rect x="30" y="50" width="38" height="18" rx="3"/></g><use href="#dmx-db" x="60" y="10" width="72" height="92"/><path d="M106 92h40a14 14 0 0 0 1-28 20 20 0 0 0-38-4 14 14 0 0 0-3 32Z" fill="#fff" stroke="#2f7fe8" stroke-width="3"/></svg>
+						<img class="dmx-edw-art" src="<?php echo esc_url( $dematic_img_url . 'dematic-edw-illustration.png' ); ?>" alt="" width="716" height="336" loading="lazy" decoding="async">
 						<b>Enterprise<br>Data Warehouse</b>
 					</article>
 					<span class="dmx-link" aria-hidden="true"></span>
 					<article class="dmx-bi">
 						<div class="dmx-bi-copy"><img src="<?php echo esc_url( $img_url . 'case-studies/sunrun/logo-tableau-current.png' ); ?>" alt="Tableau from Salesforce" width="2172" height="724" loading="lazy"><b>Analytics &amp; Reporting</b></div>
-						<svg class="dmx-bi-art" viewBox="0 0 150 100" aria-hidden="true"><rect x="14" y="8" width="104" height="68" rx="6" fill="#1b2a44"/><rect x="19" y="13" width="94" height="58" rx="3" fill="#f3f8ff"/><rect x="25" y="20" width="40" height="4" rx="2" fill="#bcd5f5"/><rect x="26" y="46" width="7" height="18" rx="1.5" fill="#5aa6f8"/><rect x="36" y="38" width="7" height="26" rx="1.5" fill="#2f7fe8"/><rect x="46" y="30" width="7" height="34" rx="1.5" fill="#1b55c9"/><path d="M70 40l10-8 9 6 12-12" fill="none" stroke="#2f7fe8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="56" r="9" fill="none" stroke="#2f7fe8" stroke-width="5"/><path d="M86 47a9 9 0 0 1 9 9" fill="none" stroke="#f2994a" stroke-width="5"/><path d="M4 78h128l-8 8H12Z" fill="#c9d6ea"/><rect x="106" y="40" width="40" height="54" rx="5" fill="#1b2a44"/><rect x="110" y="44" width="32" height="46" rx="2" fill="#f3f8ff"/><rect x="114" y="70" width="5" height="14" rx="1" fill="#5aa6f8"/><rect x="122" y="62" width="5" height="22" rx="1" fill="#2f7fe8"/><rect x="130" y="54" width="5" height="30" rx="1" fill="#1b55c9"/></svg>
+						<img class="dmx-bi-art" src="<?php echo esc_url( $dematic_img_url . 'dematic-analytics-illustration.png' ); ?>" alt="" width="688" height="336" loading="lazy" decoding="async">
 					</article>
 				</div>
 			</div>

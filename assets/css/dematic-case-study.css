@@ -148,13 +148,13 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
  * Identical to the Sunrun hero (sunrise-case-study.css): same height, frame,
  * padding, copy width and type, so every case-study banner matches.
  *  1025px+  hero height clamp(400px, 37.5vw, 540px); the artwork lives in a
- *           1440px frame, height-fitted and right-aligned, under an opaque
- *           navy cover that clears before the first panel.
+ *           1440px frame, height-fitted and right-aligned. The artwork's left
+ *           30% is feathered into the navy base, so the opaque cover only has to
+ *           sit behind the copy and clears just after it.
  *  1441px+  the frame stops growing; the artwork bleeds to the viewport's right
- *           edge and the cover only sits behind the copy (the copy always ends
- *           at 50% - 74px). Panels start 444px from the artwork's right edge
- *           (540px tall x 2 = 1080px wide), so the cover clears before them and
- *           always hides the artwork's left edge (100% - 1080px).
+ *           edge and the cover still only sits behind the copy (which always
+ *           ends at 50% - 74px). Panels start 444px from the artwork's right edge
+ *           (540px tall x 2 = 1080px wide), so the cover always clears before them.
  *  A light top shade keeps the theme menu readable over the bright artwork.
  *  <=1024   artwork shown as an image under the copy.
  */
@@ -239,7 +239,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 		pointer-events: none;
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
-			linear-gradient(90deg, #001f47 0%, #001f47 38%, rgba(0, 31, 71, .7) 45%, rgba(0, 31, 71, 0) 53%),
+			linear-gradient(90deg, #001f47 0%, #001f47 calc(51.8% - 60px), rgba(0, 31, 71, .55) 51.8%, rgba(0, 31, 71, 0) calc(51.8% + 50px)),
 			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat;
 	}
 	.dematic-hero-copy { width: calc(51.8% - 98px); max-width: 600px; }
@@ -264,9 +264,9 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg,
 				#001f47 0,
-				#001f47 max(min(50% - 40px, 100% - 624px), 100% - 1020px),
-				rgba(0, 31, 71, .55) max(min(50% + 40px, 100% - 544px), 100% - 960px),
-				rgba(0, 31, 71, 0) max(min(50% + 120px, 100% - 464px), 100% - 900px)),
+				#001f47 min(50% - 50px, 100% - 624px),
+				rgba(0, 31, 71, .55) min(50% + 10px, 100% - 544px),
+				rgba(0, 31, 71, 0) min(50% + 70px, 100% - 464px)),
 			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat;
 	}
 }

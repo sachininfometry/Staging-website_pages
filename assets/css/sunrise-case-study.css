@@ -1973,7 +1973,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrun-facts {
 	position: relative;
 	z-index: 3;
-	padding: 36px 0 32px;
+	padding: 36px 0 24px;
 	border-bottom: 1px solid #e0edf6;
 	background: linear-gradient(180deg, #eef8ff 0%, #fff 100%);
 }
@@ -2032,7 +2032,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 .sunrun-facts strong { margin-top: 2px; color: #1f3147; font-size: 14px; font-weight: 500; }
 
 .sunrun-overview {
-	padding: 68px 0 0;
+	padding: 40px 0 0;
 	background: linear-gradient(180deg, #fff 0%, #f7fbff 100%);
 }
 
@@ -2043,7 +2043,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	display: grid;
 	grid-template-columns: .96fr 1.04fr;
 	gap: 58px;
-	align-items: center;
+	align-items: start;
 }
 
 .sunrise-client .sunrun-copy-block {
@@ -2465,7 +2465,7 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrun-facts { padding: 24px 0 20px; }
 	.sunrun-facts-grid { margin-top: 0; grid-template-columns: 1fr; gap: 10px; }
 	.sunrun-facts article { padding: 16px 18px; border: 1px solid #d2e6f3; }
-	.sunrun-overview { padding-top: 50px; }
+	.sunrun-overview { padding-top: 32px; }
 	.sunrun-about-grid { gap: 34px; }
 	.sunrun-client-visual figcaption { width: 50%; padding: 24px 18px 28px; font-size: 21px; }
 	.sunrun-objective-grid { margin-top: 38px; padding: 38px 0 50px; gap: 28px; }

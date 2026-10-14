@@ -199,7 +199,7 @@ $outcomes = array(
 				</div>
 
 				<div class="dmx-hub">
-					<img src="<?php echo esc_url( $img_url . 'informatica-mark.png' ); ?>" alt="" width="92" height="102" loading="lazy">
+					<img src="<?php echo esc_url( $img_url . 'informatica-mark-transparent.png' ); ?>" alt="" width="77" height="77" loading="lazy">
 					<b>Informatica Cloud</b><i aria-hidden="true"></i><span>Data Integration &amp; Orchestration (IDMC)</span>
 				</div>
 

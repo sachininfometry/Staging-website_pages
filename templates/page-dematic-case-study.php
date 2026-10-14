@@ -158,7 +158,7 @@ $outcomes = array(
 			<div class="dematic-section-heading"><h2>The Infometry Solution</h2><p>A three-stage transformation from discovery to operational intelligence.</p></div>
 			<div class="dematic-steps">
 				<?php foreach ( $steps as $index => $item ) : ?>
-					<article><header><span class="dematic-step-number"><?php echo esc_html( (string) ( $index + 1 ) ); ?></span><span class="dematic-icon"><svg><use href="#dematic-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><h3><?php echo esc_html( $item[1] ); ?></h3></header><p><?php echo esc_html( $item[2] ); ?></p></article>
+					<article><header><span class="dematic-step-number"><?php echo esc_html( (string) ( $index + 1 ) ); ?></span><h3><?php echo esc_html( $item[1] ); ?></h3></header><p><?php echo esc_html( $item[2] ); ?></p></article>
 				<?php endforeach; ?>
 			</div>
 		</div>

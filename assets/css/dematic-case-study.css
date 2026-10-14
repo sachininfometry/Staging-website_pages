@@ -312,8 +312,8 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	display: flex;
 	min-width: 0;
 	min-height: 126px;
-	padding: 24px 22px;
-	align-items: center;
+	padding: 26px 22px 24px;
+	align-items: flex-start;
 	gap: 17px;
 	overflow: hidden;
 	border: 1px solid #d2e6f3;
@@ -347,8 +347,8 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 }
 .dematic-facts .dematic-icon svg { width: 28px; height: 28px; }
 .dematic-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 16px; line-height: 1.4; }
-.dematic-facts small { color: #33506a; font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.dematic-facts strong { margin-top: 7px; font-weight: 400; }
+.dematic-facts small { display: flex; min-height: 54px; align-items: center; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .04em; line-height: 1.2; text-transform: uppercase; }
+.dematic-facts strong { margin-top: 6px; font-weight: 400; }
 
 /* ------------------------------------------------------------------ About + objective */
 .dematic-overview { padding: 68px 0 0; background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); }
@@ -456,7 +456,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	padding: 8px 22px;
 	place-items: center;
 	color: #fff;
-	background: linear-gradient(180deg, #1691f2, #0a6fd6);
+	background: var(--dematic-sky);
 	clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%, 16px 50%);
 	font-family: "Roboto", "Open Sans", Arial, sans-serif;
 	font-size: 15px;
@@ -465,7 +465,6 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	text-align: center;
 }
 .dematic-stages li:first-child { clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%); border-radius: 6px 0 0 6px; }
-.dematic-stages li:last-child { background: linear-gradient(180deg, #ff932f, #f46f0c); }
 
 .dematic-systems { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
 .dematic-systems article {
@@ -593,7 +592,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	background: #fff;
 	box-shadow: 0 10px 25px rgba(23, 78, 118, .055);
 }
-.dematic-steps header { display: flex; margin-bottom: 16px; align-items: center; gap: 12px; }
+.dematic-steps header { display: grid; margin-bottom: 14px; justify-items: start; gap: 14px; }
 .dematic-step-number {
 	display: grid;
 	width: 44px;
@@ -602,13 +601,10 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 	place-items: center;
 	border-radius: 50%;
 	color: #fff;
-	background: var(--dematic-blue);
+	background: var(--dematic-sky);
 	font: 700 20px/1 "Roboto", "Open Sans", sans-serif;
 }
-.dematic-steps article:nth-child(2) .dematic-step-number { background: var(--dematic-orange); }
-.dematic-steps .dematic-icon { width: 34px; height: 34px; flex: 0 0 34px; color: var(--dematic-sky); }
-.dematic-steps .dematic-icon svg { width: 30px; height: 30px; }
-.dematic-steps h3 { margin: 0; font-size: 17px; line-height: 1.3; }
+.dematic-steps h3 { min-height: 2.6em; margin: 0; font-size: 17px; line-height: 1.3; }
 .dematic-steps p { margin: 0; color: var(--dematic-muted); font-size: 16px; line-height: 1.6; }
 
 /* ------------------------------------------------------------------ Outcomes */
@@ -850,6 +846,7 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 	.dematic-card-grid article { min-height: 0; }
 	.dematic-card-grid p,
 	.dematic-steps p { font-size: 15px; }
+	.dematic-steps h3 { min-height: 0; }
 	.dematic-stages { grid-template-columns: 1fr; }
 	.dematic-integration { margin-bottom: 40px; }
 	.dematic-warehouse-row { grid-template-columns: 1fr; gap: 0; }
@@ -876,7 +873,7 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 @media (min-width: 1600px) {
 	.dematic-case-study > section:not(.dematic-hero) { font-size: 18px; }
 	.dematic-facts p { font-size: 17px; }
-	.dematic-facts small { font-size: 12px; }
+	.dematic-facts small { font-size: 19px; }
 	.dematic-copy-block p,
 	.dematic-objective-grid p,
 	.dematic-section-heading p,
@@ -896,6 +893,7 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 
 @media (min-width: 1920px) {
 	.dematic-facts p { font-size: 18px; }
+	.dematic-facts small { font-size: 20px; }
 	.dematic-copy-block p,
 	.dematic-objective-grid p,
 	.dematic-section-heading p,

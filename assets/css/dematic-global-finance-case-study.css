@@ -1248,3 +1248,75 @@ body.infometry-dematic-finance-case-study-page .mfn-footer { display: none !impo
 	.dgf-case-study .dematic-facts small { font-size: 28px; }
 	.dgf-case-study .dematic-facts strong { font-size: 17px; }
 }
+
+/* About the client: landscape building photo, no overlay. */
+.dgf-client-visual img { aspect-ratio: 1752 / 897; object-position: center; }
+
+/* Architecture, matched to the reference: compact cards, content centred,
+   filled coloured icons without tiles, slim arrows. */
+.dgf-flow { grid-template-columns: minmax(0, 1.45fr) 34px minmax(0, 1.05fr) 34px minmax(0, 1.1fr) 34px minmax(0, .9fr) 34px minmax(0, .95fr); }
+.dgf-col { padding: 18px 16px; justify-content: center; border-color: #e1ebf5; background: linear-gradient(180deg, #fbfdff, #f3f8fd); }
+.dgf-col h3 { margin-bottom: 14px; font-size: 16px; text-align: center; }
+.dgf-sources h3 { text-align: left; }
+.dgf-sources { justify-content: flex-start; }
+.dgf-source-grid { gap: 20px 10px; align-items: end; }
+.dgf-source-grid .dematic-sap { width: 82px; height: 41px; }
+.dgf-source-grid .dematic-ms { width: 38px; height: 38px; }
+.dgf-source-grid .dgf-excel-svg { width: 40px; height: 40px; }
+.dgf-source-grid span > svg,
+.dgf-source-grid i { height: 42px; }
+.dgf-source-grid i svg { width: 38px; height: 38px; }
+.dgf-source-grid span:nth-child(3) i { color: #1b2a44; }
+.dgf-source-grid b { font-size: 13px; font-weight: 500; }
+.dgf-data { align-items: center; }
+.dgf-data ul { gap: 18px; }
+.dgf-data li { gap: 12px; font-size: 14px; font-weight: 500; }
+.dgf-data li i { width: 26px; height: 26px; flex-basis: 26px; border-radius: 0; color: #1f6fe3; background: none; }
+.dgf-data li svg { width: 24px; height: 24px; stroke-width: 2.2; }
+.dgf-validation { border-color: #ddd2f7; background: linear-gradient(180deg, #f6f1ff, #fbf9ff); }
+.dgf-validation .dgf-col-icon,
+.dgf-staging .dgf-col-icon,
+.dgf-epm .dgf-col-icon { width: auto; height: auto; margin: 0 auto 10px; border-radius: 0; background: none; }
+.dgf-validation .dgf-col-icon { color: #6a3fd0; }
+.dgf-validation .dgf-col-icon svg { width: 64px; height: 64px; }
+.dgf-validation h3 { margin-bottom: 10px; font-size: 17px; }
+.dgf-validation ul { gap: 4px; }
+.dgf-validation li { font-size: 13px; }
+.dgf-staging { align-self: center; min-height: 72%; }
+.dgf-staging .dgf-col-icon { color: #1f6fe3; }
+.dgf-staging .dgf-col-icon svg { width: 56px; height: 56px; }
+.dgf-staging h3 { margin: 0; font-size: 15px; }
+.dgf-epm { justify-content: flex-start; }
+.dgf-epm h3 { margin-bottom: 18px; font-size: 15px; }
+.dgf-epm .dgf-col-icon svg { width: 70px; height: 70px; }
+.dgf-epm b { font-size: 17px; }
+.dgf-arrow { height: 14px; margin: 0 4px; background-size: calc(100% - 6px) 2px; }
+.dgf-arrow::after { border-top-width: 6px; border-bottom-width: 6px; border-left-width: 9px; }
+
+/* Partner CTA: the laptop artwork is height-fitted and pinned right so the whole
+   laptop shows; its dark navy left side blends into a base gradient sampled from that edge. */
+.dgf-cta.dematic-final-cta {
+	--dgf-cta-h: clamp(300px, 24vw, 420px);
+	display: flex;
+	height: var(--dgf-cta-h);
+	min-height: 0;
+	padding: 0;
+	align-items: center;
+	background:
+		url(../images/case-studies/dematic-finance/dematic-finance-cta.jpg) right center / auto 100% no-repeat,
+		linear-gradient(180deg, #021e44 0%, #011e43 10%, #00193a 20%, #001533 30%, #00132d 40%, #00132d 50%, #00193f 60%, #001738 70%, #001636 80%, #00142f 90%, #00122d 100%);
+}
+
+@media (max-width: 1200px) {
+	.dgf-staging { align-self: stretch; min-height: 0; }
+	.dgf-col h3,
+	.dgf-sources h3 { text-align: center; }
+}
+@media (max-width: 720px) {
+	.dgf-cta.dematic-final-cta { height: auto; padding: 50px 0 60px; background: linear-gradient(180deg, rgba(2, 22, 52, .85), rgba(2, 22, 52, .6)), url(../images/case-studies/dematic-finance/dematic-finance-cta.jpg) 72% center / cover no-repeat, #06193f; }
+}
+@media (min-width: 1600px) {
+	.dgf-col h3 { font-size: 17px; }
+	.dgf-data li { font-size: 15px; }
+	.dgf-validation li { font-size: 14px; }
+}

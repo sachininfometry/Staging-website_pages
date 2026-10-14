@@ -75,6 +75,7 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 		<symbol id="dgf-doc-check" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"/><path d="M14 2v6h6M14 2l6 6v5"/><path d="M8 12h7M8 16h4"/><circle cx="18" cy="18" r="4.2" fill="currentColor" stroke="none"/><path d="m16.2 18 1.3 1.3 2.4-2.6" stroke="#fff" stroke-width="1.6"/></symbol>
 		<symbol id="dgf-gear-check" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.6 1.5h-3.2l-.6 2.7a8 8 0 0 0-2 1.2L5.2 4.5 3.6 7.3l2 1.9a8 8 0 0 0 0 2.3l-2 1.9 1.6 2.8 2.6-.9a8 8 0 0 0 2 1.2l.6 2.7h3.2l.6-2.7a8 8 0 0 0 2-1.2l2.6.9 1.6-2.8-2-1.9a8 8 0 0 0 0-2.3l2-1.9-1.6-2.8-2.6.9a8 8 0 0 0-2-1.2Z" transform="translate(0 2)"/><circle cx="12" cy="12.3" r="4.6" fill="#fff" stroke="none"/><path d="m9.9 12.4 1.5 1.5 2.8-3" stroke="currentColor" stroke-width="1.8"/></symbol>
 		<symbol id="dgf-bolt" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M14 1 4 14h7l-2 9 11-14h-7Z"/></symbol>
+		<symbol id="dgf-db-fill" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 7.6v3.4c0 1.7 3.6 3 8 3s8-1.3 8-3V7.6c-1.7 1.2-4.7 1.9-8 1.9s-6.3-.7-8-1.9Z"/><path d="M4 13.6V17c0 1.7 3.6 3 8 3s8-1.3 8-3v-3.4c-1.7 1.2-4.7 1.9-8 1.9s-6.3-.7-8-1.9Z"/></g></symbol>
 		<symbol id="dgf-triangle" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9 7 18h10Z"/></symbol>
 		<symbol id="dgf-bars" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1"/><rect x="9.5" y="8" width="5" height="14" rx="1"/><rect x="17" y="3" width="5" height="19" rx="1"/></symbol>
 	</svg>
@@ -109,8 +110,8 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 				<p>Dematic delivers warehouse automation, software, and intelligent material-handling solutions to large enterprises around the world.</p>
 				<p>Its global operating model creates a complex finance environment: multiple legal entities, regional organizations, intercompany relationships, local ERP platforms, and different financial data structures must ultimately roll into a consistent enterprise view.</p>
 			</div>
-			<figure class="dematic-client-visual">
-				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-warehouse-automation.jpg' ); ?>" width="770" height="887" alt="Automated Dematic warehouse operations" loading="lazy" decoding="async">
+			<figure class="dematic-client-visual dgf-client-visual">
+				<img src="<?php echo esc_url( $dgf_img_url . 'dematic-building.jpg' ); ?>" width="1752" height="897" alt="Dematic office building with the Dematic logo on its glass facade" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -159,10 +160,10 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 			<div class="dematic-section-heading"><h2>Global Finance Data Integration Architecture</h2><p>From multiple source systems to a unified, governed EPM platform.</p></div>
 			<div class="dgf-flow">
 				<article class="dgf-col dgf-sources">
-					<h3>Source Systems <small>(32+ Companies)</small></h3>
+					<h3>Source Systems<br>(32+ Companies)</h3>
 					<div class="dgf-source-grid">
 						<span><?php echo $sap_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><b>SAP</b></span>
-						<span><i><svg aria-hidden="true"><use href="#dematic-database"/></svg></i><b>Syteline</b></span>
+						<span><i><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>Syteline</b></span>
 						<span><i><svg aria-hidden="true"><use href="#dgf-triangle"/></svg></i><b>Proteus</b></span>
 						<span><?php echo $ms_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><b>Microsoft Dynamics NAV</b></span>
 						<span><?php echo $excel_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?><b>Excel</b></span>
@@ -181,13 +182,13 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 				</article>
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col dgf-validation">
-					<span class="dgf-col-icon"><svg aria-hidden="true"><use href="#dematic-gear"/></svg></span>
+					<span class="dgf-col-icon"><svg aria-hidden="true"><use href="#dgf-gear-check"/></svg></span>
 					<h3>Validation &amp; Standardization</h3>
 					<ul><li>Data Quality Checks</li><li>Master Data Mapping</li><li>Translation Rules</li><li>Control Framework</li><li>Source Traceability</li></ul>
 				</article>
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col dgf-staging">
-					<span class="dgf-col-icon"><svg aria-hidden="true"><use href="#dematic-database"/></svg></span>
+					<span class="dgf-col-icon"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></span>
 					<h3>Global Finance Staging Layer</h3>
 				</article>
 				<span class="dgf-arrow" aria-hidden="true"></span>
@@ -225,7 +226,7 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 		</div>
 	</section>
 
-	<section class="dematic-final-cta">
+	<section class="dematic-final-cta dgf-cta">
 		<div class="dematic-shell"><div class="dematic-final-inner"><h2>Partner with Infometry</h2><p>Turn complex finance data into trusted, actionable insights.</p><a class="dematic-button" href="<?php echo esc_url( $contact_url ); ?>">Talk to Our Data &amp; Analytics Experts <svg><use href="#dematic-arrow"/></svg></a></div></div>
 	</section>
 </main>

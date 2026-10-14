@@ -38,11 +38,11 @@ $steps = array(
 );
 
 $outcomes = array(
-	array( 'clock', '30%', 'Reduction in Proposal-to-Contract Time' ),
+	array( 'clock', '30%', 'Reduction in Proposal‑to‑Contract Time' ),
 	array( 'target', '80%', 'Increase in Proposal Accuracy' ),
-	array( 'chart', '20%', 'Improvement in Order-to-Manufacture Cycle Time' ),
+	array( 'chart', '20%', 'Improvement in Order‑to‑Manufacture Cycle Time' ),
 	array( 'gear', 'Optimized', 'Manufacturing Costs through better supply chain planning' ),
-	array( 'truck', 'On-Time Delivery', 'of large customer projects' ),
+	array( 'truck', 'On‑Time Delivery', 'of large customer projects' ),
 	array( 'users', '1,000+', 'Annual Reporting Hours targeted for elimination' ),
 );
 ?>

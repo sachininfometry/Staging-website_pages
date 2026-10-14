@@ -624,10 +624,10 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 }
 .dematic-outcome-grid .dematic-icon { width: 46px; height: 46px; margin-bottom: 12px; color: var(--dematic-sky); }
 .dematic-outcome-grid .dematic-icon svg { width: 40px; height: 40px; }
-.dematic-outcome-grid strong { color: #f4700b; font: 800 30px/1.15 "Roboto", "Open Sans", sans-serif; }
+.dematic-outcome-grid strong { display: flex; min-height: 40px; align-items: center; justify-content: center; color: #f4700b; font: 800 30px/1.15 "Roboto", "Open Sans", sans-serif; }
 .dematic-outcome-grid article:nth-child(4) strong,
-.dematic-outcome-grid article:nth-child(5) strong { font-size: 20px; line-height: 1.5; }
-.dematic-outcome-grid p { margin: 8px 0 0; color: var(--dematic-muted); font-size: 15px; line-height: 1.45; }
+.dematic-outcome-grid article:nth-child(5) strong { font-size: 20px; line-height: 1.2; }
+.dematic-outcome-grid p { margin: 8px 0 0; hyphens: manual; overflow-wrap: normal; color: var(--dematic-muted); font-size: 15px; line-height: 1.45; }
 
 /* ------------------------------------------------------------------ Testimonial */
 .dematic-testimonial { padding: 0 0 64px; background: #fff; }

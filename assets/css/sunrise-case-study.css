@@ -2558,3 +2558,115 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 	.sunrun-output-card li { font-size: 16px; }
 	.sunrun-source-list em { font-size: 14px; }
 }
+
+/* ================================================================== Consistency layer
+ * One rhythm for the whole page: every section has the same 56px top/bottom
+ * (44px on mobile); a section on the same background as the one above starts
+ * flush so the gap never doubles. One type scale:
+ *   lead copy  17 / 18 / 19px  (default / 1600+ / 1920+), regular
+ *   box title  17 / 18 / 19px, bold 700
+ *   box text   15 / 16 / 17px, regular 400
+ *   caption    14 / 14 / 15px, medium 500
+ */
+body .sunrise-case-study .sunrun-dark-section,
+body .sunrise-case-study .sunrun-roadmap,
+body .sunrise-case-study .sunrun-analytics,
+body .sunrise-case-study .sunrun-outcomes,
+body .sunrise-case-study .sunrun-tech { padding-top: 56px !important; padding-bottom: 56px !important; }
+body .sunrise-case-study .sunrun-delivery { padding-top: 0 !important; padding-bottom: 56px !important; }
+body .sunrise-case-study .sunrun-section-heading { margin-bottom: 28px; }
+
+body .sunrise-case-study .sunrun-section-heading p,
+body .sunrise-case-study .sunrise-client .sunrun-copy-block p,
+body .sunrise-case-study .sunrun-objective-grid p,
+body .sunrise-case-study .sunrun-final-cta p { font-size: 17px; font-weight: 400; line-height: 1.65; }
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid h3,
+body .sunrise-case-study .sunrun-solution-grid h3,
+body .sunrise-case-study .sunrun-analytics h3,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid h3,
+body .sunrise-case-study .sunrun-roadmap .sunrun-architecture .sunrun-card-title,
+body .sunrise-case-study .sunrun-facts small { font-size: 17px; font-weight: 700; line-height: 1.3; }
+body .sunrise-case-study .sunrun-facts strong,
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid p,
+body .sunrise-case-study .sunrun-solution-grid p,
+body .sunrise-case-study .sunrun-analytics .sunrise-analytics-grid p,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid p,
+body .sunrise-case-study .sunrun-objective-flow span,
+body .sunrise-case-study .sunrun-source-list b,
+body .sunrise-case-study .sunrun-output-card li { font-size: 15px; font-weight: 400; line-height: 1.55; }
+body .sunrise-case-study .sunrun-tech .sunrise-tech-list small,
+body .sunrise-case-study .sunrun-source-list em { font-size: 14px; font-weight: 500; line-height: 1.4; }
+body .sunrise-case-study .sunrun-overview { padding-top: 40px !important; }
+body .sunrise-case-study .sunrun-objective-grid { margin-top: 40px; padding: 40px 0 56px; }
+body .sunrise-case-study .sunrun-roadmap { background: #fff; }
+
+@media (min-width: 1600px) {
+body .sunrise-case-study .sunrun-section-heading p,
+body .sunrise-case-study .sunrise-client .sunrun-copy-block p,
+body .sunrise-case-study .sunrun-objective-grid p,
+body .sunrise-case-study .sunrun-final-cta p { font-size: 18px; }
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid h3,
+body .sunrise-case-study .sunrun-solution-grid h3,
+body .sunrise-case-study .sunrun-analytics h3,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid h3,
+body .sunrise-case-study .sunrun-roadmap .sunrun-architecture .sunrun-card-title,
+body .sunrise-case-study .sunrun-facts small { font-size: 18px; }
+body .sunrise-case-study .sunrun-facts strong,
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid p,
+body .sunrise-case-study .sunrun-solution-grid p,
+body .sunrise-case-study .sunrun-analytics .sunrise-analytics-grid p,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid p,
+body .sunrise-case-study .sunrun-objective-flow span,
+body .sunrise-case-study .sunrun-source-list b,
+body .sunrise-case-study .sunrun-output-card li { font-size: 16px; }
+}
+
+@media (min-width: 1920px) {
+body .sunrise-case-study .sunrun-section-heading p,
+body .sunrise-case-study .sunrise-client .sunrun-copy-block p,
+body .sunrise-case-study .sunrun-objective-grid p,
+body .sunrise-case-study .sunrun-final-cta p { font-size: 19px; }
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid h3,
+body .sunrise-case-study .sunrun-solution-grid h3,
+body .sunrise-case-study .sunrun-analytics h3,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid h3,
+body .sunrise-case-study .sunrun-roadmap .sunrun-architecture .sunrun-card-title,
+body .sunrise-case-study .sunrun-facts small { font-size: 19px; }
+body .sunrise-case-study .sunrun-facts strong,
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid p,
+body .sunrise-case-study .sunrun-solution-grid p,
+body .sunrise-case-study .sunrun-analytics .sunrise-analytics-grid p,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid p,
+body .sunrise-case-study .sunrun-objective-flow span,
+body .sunrise-case-study .sunrun-source-list b,
+body .sunrise-case-study .sunrun-output-card li { font-size: 17px; }
+body .sunrise-case-study .sunrun-tech .sunrise-tech-list small,
+body .sunrise-case-study .sunrun-source-list em { font-size: 15px; }
+}
+
+@media (max-width: 720px) {
+body .sunrise-case-study .sunrun-dark-section,
+body .sunrise-case-study .sunrun-roadmap,
+body .sunrise-case-study .sunrun-analytics,
+body .sunrise-case-study .sunrun-outcomes,
+body .sunrise-case-study .sunrun-tech { padding-top: 44px !important; padding-bottom: 44px !important; }
+body .sunrise-case-study .sunrun-delivery { padding-bottom: 44px !important; }
+body .sunrise-case-study .sunrun-section-heading p,
+body .sunrise-case-study .sunrise-client .sunrun-copy-block p,
+body .sunrise-case-study .sunrun-objective-grid p,
+body .sunrise-case-study .sunrun-final-cta p { font-size: 16px; }
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid h3,
+body .sunrise-case-study .sunrun-solution-grid h3,
+body .sunrise-case-study .sunrun-analytics h3,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid h3,
+body .sunrise-case-study .sunrun-roadmap .sunrun-architecture .sunrun-card-title,
+body .sunrise-case-study .sunrun-facts small { font-size: 17px; }
+body .sunrise-case-study .sunrun-facts strong,
+body .sunrise-case-study .sunrun-dark-section .sunrise-card-grid p,
+body .sunrise-case-study .sunrun-solution-grid p,
+body .sunrise-case-study .sunrun-analytics .sunrise-analytics-grid p,
+body .sunrise-case-study .sunrun-outcomes .sunrise-impact-grid p,
+body .sunrise-case-study .sunrun-objective-flow span,
+body .sunrise-case-study .sunrun-source-list b,
+body .sunrise-case-study .sunrun-output-card li { font-size: 15px; }
+}

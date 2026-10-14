@@ -294,14 +294,14 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 .dematic-facts {
 	position: relative;
 	z-index: 3;
-	padding: 0 0 28px;
+	padding: 36px 0 32px;
 	border-bottom: 1px solid #e0edf6;
 	background: linear-gradient(180deg, #eef8ff 0%, #fff 100%);
 }
 
 .dematic-facts-grid {
 	display: grid;
-	margin-top: -24px;
+	margin-top: 0;
 	grid-template-columns: repeat(4, minmax(0, 1fr));
 	gap: 14px;
 }
@@ -346,8 +346,8 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 }
 .dematic-facts .dematic-icon svg { width: 24px; height: 24px; }
 .dematic-facts p { display: grid; min-width: 0; margin: 0; color: #0b2852; font-size: 16px; line-height: 1.4; }
-.dematic-facts small { display: flex; min-height: 46px; align-items: center; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: .04em; line-height: 1.2; text-transform: uppercase; }
-.dematic-facts strong { margin-top: 2px; font-weight: 400; }
+.dematic-facts small { display: flex; min-height: 46px; align-items: center; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 18px; font-weight: 600; letter-spacing: -.005em; line-height: 1.2; text-transform: none; }
+.dematic-facts strong { margin-top: 2px; color: #3a4f66; font-weight: 400; }
 
 /* ------------------------------------------------------------------ About + objective */
 .dematic-overview { padding: 68px 0 0; background: linear-gradient(180deg, #fff 0%, #f7fbff 100%); }
@@ -828,8 +828,8 @@ body.infometry-dematic-case-study-page .mfn-footer { display: none !important; }
 	.dematic-section-heading p,
 	.dematic-copy-block p,
 	.dematic-objective-grid p { font-size: 16px; }
-	.dematic-facts { padding-bottom: 20px; }
-	.dematic-facts-grid { margin-top: -18px; grid-template-columns: 1fr; gap: 10px; }
+	.dematic-facts { padding: 24px 0 20px; }
+	.dematic-facts-grid { margin-top: 0; grid-template-columns: 1fr; gap: 10px; }
 	.dematic-facts article { padding: 16px 18px; }
 	.dematic-overview { padding-top: 50px; }
 	.dematic-about-grid { gap: 34px; }

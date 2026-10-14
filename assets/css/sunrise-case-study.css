@@ -2560,8 +2560,8 @@ body.infometry-sunrise-case-study-page .mfn-footer { display: none !important; }
 }
 
 /* ================================================================== Consistency layer
- * One rhythm for the whole page: every section has the same 56px top/bottom
- * (44px on mobile); a section on the same background as the one above starts
+ * One rhythm for the whole page: every section has the same 44px top/bottom
+ * (36px on mobile); a section on the same background as the one above starts
  * flush so the gap never doubles. One type scale:
  *   lead copy  17 / 18 / 19px  (default / 1600+ / 1920+), regular
  *   box title  17 / 18 / 19px, bold 700
@@ -2572,8 +2572,8 @@ body .sunrise-case-study .sunrun-dark-section,
 body .sunrise-case-study .sunrun-roadmap,
 body .sunrise-case-study .sunrun-analytics,
 body .sunrise-case-study .sunrun-outcomes,
-body .sunrise-case-study .sunrun-tech { padding-top: 56px !important; padding-bottom: 56px !important; }
-body .sunrise-case-study .sunrun-delivery { padding-top: 0 !important; padding-bottom: 56px !important; }
+body .sunrise-case-study .sunrun-tech { padding-top: 44px !important; padding-bottom: 44px !important; }
+body .sunrise-case-study .sunrun-delivery { padding-top: 0 !important; padding-bottom: 44px !important; }
 body .sunrise-case-study .sunrun-section-heading { margin-bottom: 28px; }
 
 body .sunrise-case-study .sunrun-section-heading p,
@@ -2596,8 +2596,8 @@ body .sunrise-case-study .sunrun-source-list b,
 body .sunrise-case-study .sunrun-output-card li { font-size: 15px; font-weight: 400; line-height: 1.55; }
 body .sunrise-case-study .sunrun-tech .sunrise-tech-list small,
 body .sunrise-case-study .sunrun-source-list em { font-size: 14px; font-weight: 500; line-height: 1.4; }
-body .sunrise-case-study .sunrun-overview { padding-top: 40px !important; }
-body .sunrise-case-study .sunrun-objective-grid { margin-top: 40px; padding: 40px 0 56px; }
+body .sunrise-case-study .sunrun-overview { padding-top: 28px !important; }
+body .sunrise-case-study .sunrun-objective-grid { margin-top: 32px; padding: 32px 0 44px; }
 body .sunrise-case-study .sunrun-roadmap { background: #fff; }
 
 @media (min-width: 1600px) {
@@ -2649,8 +2649,8 @@ body .sunrise-case-study .sunrun-dark-section,
 body .sunrise-case-study .sunrun-roadmap,
 body .sunrise-case-study .sunrun-analytics,
 body .sunrise-case-study .sunrun-outcomes,
-body .sunrise-case-study .sunrun-tech { padding-top: 44px !important; padding-bottom: 44px !important; }
-body .sunrise-case-study .sunrun-delivery { padding-bottom: 44px !important; }
+body .sunrise-case-study .sunrun-tech { padding-top: 36px !important; padding-bottom: 36px !important; }
+body .sunrise-case-study .sunrun-delivery { padding-bottom: 36px !important; }
 body .sunrise-case-study .sunrun-section-heading p,
 body .sunrise-case-study .sunrise-client .sunrun-copy-block p,
 body .sunrise-case-study .sunrun-objective-grid p,
@@ -2670,3 +2670,6 @@ body .sunrise-case-study .sunrun-objective-flow span,
 body .sunrise-case-study .sunrun-source-list b,
 body .sunrise-case-study .sunrun-output-card li { font-size: 15px; }
 }
+
+/* Cards sit close under the banner and the About section follows tightly. */
+body .sunrise-case-study .sunrun-facts { padding-bottom: 12px; border-bottom: 0; }

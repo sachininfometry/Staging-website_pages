@@ -37,10 +37,10 @@ $approach = array(
 );
 
 $outcomes = array(
-	array( 'factory', '32+', 'Companies integrated into the global finance scope' ),
-	array( 'document', 'Global', 'P&L and Balance Sheet reporting foundation' ),
-	array( 'shield', 'Governed', 'And validated financial data pipeline' ),
-	array( 'clock', 'Daily +', 'Intra-day processing during month-end close' ),
+	array( 'dgf-building', '32+', 'Companies integrated into the global finance scope' ),
+	array( 'dgf-doc-check', 'Global', 'P&L and Balance Sheet reporting foundation' ),
+	array( 'dgf-gear-check', 'Governed', 'And validated financial data pipeline' ),
+	array( 'dgf-bolt', 'Daily +', 'Intra-day processing during month-end close' ),
 );
 
 $sap_logo   = '<svg class="dematic-sap" viewBox="0 0 412.38 204" role="img" aria-label="SAP"><polygon fill="url(#dematic-sap-fill)" points="0 204 208.413 204 412.38 0 0 0 0 204"/><path fill="#fff" fill-rule="evenodd" d="m244.727,38.359l-40.593-.025v96.518l-35.46-96.518h-35.16l-30.277,80.716c-3.224-20.352-24.277-27.38-40.84-32.649-10.937-3.512-22.541-8.678-22.434-14.387.091-4.687,6.225-9.04,18.377-8.385,8.17.433,15.373,1.092,29.71,8.006l14.102-24.557c-13.088-6.658-31.169-10.867-45.985-10.883h-.086c-17.277,0-31.677,5.598-40.602,14.824-6.221,6.443-9.572,14.626-9.712,23.679-.227,12.454,4.341,21.292,13.938,28.338,8.104,5.944,18.468,9.794,27.603,12.626,11.27,3.492,20.467,6.526,20.36,13.002-.083,2.355-.977,4.552-2.671,6.337-2.807,2.897-7.124,3.986-13.084,4.098-11.497.243-20.026-1.559-33.61-9.585l-12.536,24.903c13.546,7.705,29.586,12.223,45.952,12.223l2.106-.024c14.247-.256,25.745-4.316,34.929-11.712.527-.416,1.001-.845,1.488-1.277l-4.073,10.874h36.875l6.189-18.822c6.477,2.214,13.847,3.437,21.676,3.437,7.618,0,14.795-1.17,21.156-3.252l5.965,18.637h60.137v-38.969h13.113c31.706,0,50.456-16.147,50.456-43.202,0-30.139-18.219-43.969-57.011-43.969Zm-93.816,82.587c-4.737,0-9.177-.828-13.006-2.275l12.866-40.593h.244l12.643,40.708c-3.801,1.349-8.138,2.16-12.746,2.16Zm96.199-23.324h-8.941v-32.711h8.941c11.927,0,21.437,3.961,21.437,16.139,0,12.602-9.51,16.572-21.437,16.572"/></svg>';
@@ -71,6 +71,10 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 			<defs><linearGradient id="dematic-sap-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00b1eb"/><stop offset=".212" stop-color="#009ad9"/><stop offset=".519" stop-color="#007fc4"/><stop offset=".792" stop-color="#006eb8"/><stop offset="1" stop-color="#0069b4"/></linearGradient></defs>
 		<symbol id="dematic-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3 9 8 11 5-2 8-6 8-11V5l-8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
 		<symbol id="dematic-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5M3 17l9 5 9-5"/></symbol>
+		<symbol id="dgf-building" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M2 22V12h5V9h4V3h6v8h3v3h2v8Zm2-2h2v-2H4Zm0-4h2v-2H4Zm5 4h2v-2H9Zm0-4h2v-2H9Zm0-4h2v-2H9Zm4 8h2v-2h-2Zm0-4h2v-2h-2Zm0-4h2v-2h-2Zm0-4h2V5h-2Zm5 12h2v-2h-2Zm0-4h2v-2h-2Z"/></symbol>
+		<symbol id="dgf-doc-check" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h6"/><path d="M14 2v6h6M14 2l6 6v5"/><path d="M8 12h7M8 16h4"/><circle cx="18" cy="18" r="4.2" fill="currentColor" stroke="none"/><path d="m16.2 18 1.3 1.3 2.4-2.6" stroke="#fff" stroke-width="1.6"/></symbol>
+		<symbol id="dgf-gear-check" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M13.6 1.5h-3.2l-.6 2.7a8 8 0 0 0-2 1.2L5.2 4.5 3.6 7.3l2 1.9a8 8 0 0 0 0 2.3l-2 1.9 1.6 2.8 2.6-.9a8 8 0 0 0 2 1.2l.6 2.7h3.2l.6-2.7a8 8 0 0 0 2-1.2l2.6.9 1.6-2.8-2-1.9a8 8 0 0 0 0-2.3l2-1.9-1.6-2.8-2.6.9a8 8 0 0 0-2-1.2Z" transform="translate(0 2)"/><circle cx="12" cy="12.3" r="4.6" fill="#fff" stroke="none"/><path d="m9.9 12.4 1.5 1.5 2.8-3" stroke="currentColor" stroke-width="1.8"/></symbol>
+		<symbol id="dgf-bolt" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M14 1 4 14h7l-2 9 11-14h-7Z"/></symbol>
 		<symbol id="dgf-triangle" viewBox="0 0 24 24"><path d="M12 3 2 21h20L12 3Z"/><path d="M12 9 7 18h10Z"/></symbol>
 		<symbol id="dgf-bars" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1"/><rect x="9.5" y="8" width="5" height="14" rx="1"/><rect x="17" y="3" width="5" height="19" rx="1"/></symbol>
 	</svg>
@@ -90,10 +94,10 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
-			<article><span class="dematic-icon"><svg><use href="#dematic-factory"/></svg></span><p><small>32+</small><strong>Companies included in the global finance scope</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dematic-document"/></svg></span><p><small>Global</small><strong>P&amp;L and Balance Sheet reporting foundation</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dematic-gear"/></svg></span><p><small>Multi-ERP</small><strong>SAP, Syteline, Proteus, Dynamics NAV and non-ERP sources</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dematic-clock"/></svg></span><p><small>Daily +</small><strong>Intra-day processing during month-end close</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dgf-building"/></svg></span><p><small>32+</small><strong>Companies included in the global finance scope</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dgf-doc-check"/></svg></span><p><small>Global</small><strong>P&amp;L and Balance Sheet reporting foundation</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dgf-gear-check"/></svg></span><p><small>Multi-ERP</small><strong>SAP, Syteline, Proteus, Dynamics NAV and non-ERP sources</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dematic-clock"/></svg></span><p><small>Daily <em>+</em></small><strong>Intra-day processing during month-end close</strong></p></article>
 		</div>
 	</section>
 
@@ -107,7 +111,6 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 			</div>
 			<figure class="dematic-client-visual">
 				<img src="<?php echo esc_url( $dematic_img_url . 'dematic-warehouse-automation.jpg' ); ?>" width="770" height="887" alt="Automated Dematic warehouse operations" loading="lazy" decoding="async">
-				<figcaption>One Global Finance View Across Every Region</figcaption>
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -119,7 +122,7 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 			<div class="dematic-objective-flow dgf-objective-flow" aria-label="Business objective flow">
 				<span><i><svg><use href="#dematic-database"/></svg></i><b>Enterprise<br>Financial Data</b><em>Multiple ERPs and sources</em></span><svg class="dematic-arrow"><use href="#dematic-arrow"/></svg>
 				<span><i><svg><use href="#dematic-gear"/></svg></i><b>Standardization<br>&amp; Validation</b><em>COA, Cost Center, Trading Partner</em></span><svg class="dematic-arrow"><use href="#dematic-arrow"/></svg>
-				<span><i><svg><use href="#dematic-chart"/></svg></i><b>Global P&amp;L &amp;<br>Balance Sheet</b><em>Trusted EPM Reporting</em></span>
+				<span><i><svg><use href="#dgf-bars"/></svg></i><b>Global P&amp;L &amp;<br>Balance Sheet</b><em>Trusted EPM Reporting</em></span>
 			</div>
 		</div>
 	</section>
@@ -202,7 +205,7 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 			<div class="dematic-section-heading"><h2>Key Business Outcomes</h2><p>A reliable and governed financial data foundation enabling trusted global reporting.</p></div>
 			<div class="dgf-outcome-grid">
 				<?php foreach ( $outcomes as $item ) : ?>
-					<article><span class="dematic-icon"><svg><use href="#dematic-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><strong><?php echo esc_html( $item[1] ); ?></strong><p><?php echo esc_html( $item[2] ); ?></p></div></article>
+					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( 0 === strpos( $item[0], 'dgf-' ) ? $item[0] : 'dematic-' . $item[0] ); ?>"/></svg></span><div><strong><?php echo esc_html( $item[1] ); ?></strong><p><?php echo esc_html( $item[2] ); ?></p></div></article>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -212,8 +215,8 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>A connected ecosystem of enterprise and finance systems.</p></div>
 			<div class="dematic-tech-list">
-				<span><span class="dematic-tech-logo sap"><?php echo $sap_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span><small>SAP</small></span>
-				<span><span class="dematic-tech-logo dgf-wordmark">Syteline</span><small>Infor Syteline ERP</small></span>
+				<span><span class="dematic-tech-logo sap"><?php echo $sap_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span></span>
+				<span><span class="dematic-tech-logo dgf-wordmark">Syteline</span></span>
 				<span><span class="dematic-tech-logo dgf-icon-logo"><svg aria-hidden="true"><use href="#dgf-triangle"/></svg></span><small>Proteus</small></span>
 				<span><span class="dematic-tech-logo microsoft"><?php echo $ms_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span><small>Microsoft Dynamics NAV</small></span>
 				<span><span class="dematic-tech-logo dgf-excel"><?php echo $excel_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span><small>Microsoft Excel</small></span>

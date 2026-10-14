@@ -229,12 +229,12 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg,
-				rgba(0, 31, 71, .97) 0,
-				rgba(0, 31, 71, .97) var(--dematic-cover-end),
+				#001f47 0,
+				#001f47 var(--dematic-cover-end),
 				rgba(0, 31, 71, .55) min(var(--dematic-cover-end) + 80px, var(--dematic-panel-x) - 50px),
 				rgba(0, 31, 71, 0) min(var(--dematic-cover-end) + 160px, var(--dematic-panel-x) - 10px)),
 			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat,
-			linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
+			#001f47;
 	}
 	.dematic-hero-inner {
 		height: 100%;

@@ -1237,8 +1237,8 @@ body.infometry-sunrise-case-study-page [id^="rev_slider_"][id$="_forcefullwidth"
 		left: calc(720px - 50vw);
 		background:
 			linear-gradient(90deg,
-				rgba(0, 31, 71, .97) 0,
-				rgba(0, 31, 71, .97) max(min(50% - 40px, 100% - 900px), 100% - 1600px),
+				#001f47 0,
+				#001f47 max(min(50% - 40px, 100% - 900px), 100% - 1600px),
 				rgba(0, 31, 71, .55) max(min(50% + 40px, 100% - 820px), 100% - 1540px),
 				rgba(0, 31, 71, 0) max(min(50% + 120px, 100% - 737px), 100% - 1480px)),
 			url(../images/case-studies/sunrun/sunrun-hero-night-network.jpg) right center / auto 100% no-repeat;

@@ -206,37 +206,33 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 .dematic-hero-mobile-visual { display: none; }
 
 /*
- * Desktop hero: the 2:1 warehouse artwork is height-fitted and pinned to the
- * viewport's right edge, so wide screens never show an empty strip. Its dashboard
- * panels sit low and right (~41% down, from ~58.9% across), so the theme menu
- * sits on real warehouse imagery above them; a light top shade keeps the menu
- * readable. --dematic-img-w is the rendered artwork width; the fade layer is
- * sized to it plus a 240px ramp on its left, is fully opaque over the artwork's
- * bright left edge (no seam), and clears just before the first panel.
- *
- * The copy keeps at most --dematic-hero-gap from that first panel: it aligns
- * with the content shell when there is room and moves right on very wide
- * screens, so text and image never drift apart.
+ * Desktop hero (same approach as Sunrun): the 2:1 warehouse artwork is
+ * height-fitted and pinned to the viewport's right edge, so wide screens never
+ * show an empty strip, and the theme menu sits on it. The copy aligns with the
+ * content shell. The dark cover only sits behind the copy: solid to just past
+ * the text (--dematic-cover-end), then clear within 160px, so on wide screens the
+ * artwork fills the space between text and panels. The cover never reaches the
+ * first panel (~58.9% across the artwork) and always hides the artwork's left edge.
  */
 @media (min-width: 1025px) {
 	.dematic-hero {
 		--dematic-hero-h: clamp(480px, 40vw, 680px);
 		--dematic-img-w: calc(var(--dematic-hero-h) * 2);
+		--dematic-img-left: calc(100% - var(--dematic-img-w));
 		--dematic-panel-x: calc(100vw - var(--dematic-img-w) * .411);
-		--dematic-hero-gap: 240px;
+		--dematic-pad-left: max(50px, calc((100vw - 1320px) / 2));
 		--dematic-copy-max: 640px;
-		--dematic-copy-w: min(var(--dematic-copy-max), calc(var(--dematic-panel-x) - var(--dematic-hero-gap) - 50px));
+		--dematic-copy-w: min(var(--dematic-copy-max), calc(var(--dematic-panel-x) - 120px - var(--dematic-pad-left)));
+		--dematic-cover-end: max(min(var(--dematic-pad-left) + var(--dematic-copy-w) + 20px, var(--dematic-panel-x) - 100px), var(--dematic-img-left) + 60px);
 		height: var(--dematic-hero-h);
 		overflow: hidden;
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg,
-				rgba(0, 31, 71, 0) 0,
-				#001f47 240px,
-				#001f47 calc(240px + var(--dematic-img-w) * .1),
-				rgba(0, 31, 71, .93) calc(240px + var(--dematic-img-w) * .36),
-				rgba(0, 31, 71, .6) calc(240px + var(--dematic-img-w) * .48),
-				rgba(0, 31, 71, 0) calc(240px + var(--dematic-img-w) * .575)) right center / calc(var(--dematic-img-w) + 240px) 100% no-repeat,
+				rgba(0, 31, 71, .97) 0,
+				rgba(0, 31, 71, .97) var(--dematic-cover-end),
+				rgba(0, 31, 71, .55) min(var(--dematic-cover-end) + 80px, var(--dematic-panel-x) - 50px),
+				rgba(0, 31, 71, 0) min(var(--dematic-cover-end) + 160px, var(--dematic-panel-x) - 10px)),
 			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat,
 			linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
 	}
@@ -244,7 +240,7 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 		height: 100%;
 		max-width: none;
 		padding-right: 0;
-		padding-left: max(50px, calc((100vw - 1320px) / 2), calc(var(--dematic-panel-x) - var(--dematic-hero-gap) - var(--dematic-copy-w)));
+		padding-left: var(--dematic-pad-left);
 	}
 	.dematic-hero-copy { width: var(--dematic-copy-w); }
 }

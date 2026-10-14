@@ -139,143 +139,144 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 .dematic-section-heading p { max-width: 1040px; margin: 0; color: #24364d; font-size: 18px; line-height: 1.6; }
 
 /* ------------------------------------------------------------------ Hero */
+/*
+ * Identical to the Sunrun hero (sunrise-case-study.css): same height, frame,
+ * padding, copy width and type, so every case-study banner matches.
+ *  1025px+  hero height clamp(400px, 37.5vw, 540px); the artwork lives in a
+ *           1440px frame, height-fitted and right-aligned, under an opaque
+ *           navy cover that clears before the first panel.
+ *  1441px+  the frame stops growing; the artwork bleeds to the viewport's right
+ *           edge and the cover only sits behind the copy (the copy always ends
+ *           at 50% - 74px). Panels start 444px from the artwork's right edge
+ *           (540px tall x 2 = 1080px wide), so the cover clears before them and
+ *           always hides the artwork's left edge (100% - 1080px).
+ *  A light top shade keeps the theme menu readable over the bright artwork.
+ *  <=1024   artwork shown as an image under the copy.
+ */
 .dematic-hero {
 	position: relative;
 	display: flex;
 	background: linear-gradient(180deg, #002456 0%, #001f47 55%, #001d41 100%);
 	isolation: isolate;
 }
+.dematic-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	background: radial-gradient(circle at 16% 48%, rgba(8, 124, 240, .16), transparent 36%);
+}
 
 .dematic-hero-inner {
+	position: relative;
 	display: flex;
 	width: 100%;
 	max-width: 1440px;
 	margin: 0 auto;
-	padding: 112px 50px 34px;
+	padding: 84px 50px 34px;
 	align-items: center;
 }
 
-.dematic-hero-copy { position: relative; z-index: 1; color: #fff; }
+.dematic-hero-copy { position: relative; z-index: 1; color: rgba(255, 255, 255, .86); }
 
 .dematic-eyebrow {
-	margin: 0 0 14px;
-	color: var(--dematic-orange);
-	font-size: 14px;
-	font-style: italic;
+	display: inline-flex;
+	margin: 0 0 22px;
+	padding: 8px 19px;
+	border: 1px solid #22c8f6;
+	border-radius: 999px;
+	color: #57d9ff;
+	font-size: 11px;
 	font-weight: 800;
-	letter-spacing: .08em;
+	letter-spacing: .15em;
 	line-height: 1.3;
 	text-transform: uppercase;
 }
 
 .dematic-hero h1 {
-	margin: 0 0 20px;
+	max-width: 100%;
+	margin: 0 0 22px;
 	color: #fff;
-	font-family: "Open Sans", Arial, sans-serif;
-	font-size: 44px;
+	font-family: "Manrope", "Open Sans", Arial, sans-serif;
+	font-size: 50px;
 	font-weight: 800;
-	line-height: 1.12;
-	letter-spacing: -.03em;
+	line-height: 1.04;
+	letter-spacing: -.045em;
 }
-.dematic-hero h1 > span { display: block; white-space: nowrap; }
-.dematic-hero h1 .dematic-nowrap { white-space: nowrap; }
+.dematic-hero h1 span,
+.dematic-hero h1 strong { display: block; }
+.dematic-hero h1 strong { margin-top: 7px; color: #22c8f6; font-weight: inherit; }
+.dematic-hero h1 .dematic-title-tail { margin-top: 7px; font-size: .88em; letter-spacing: -.04em; }
 
-.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) {
-	max-width: 600px;
+.dematic-hero-copy > p:not(.dematic-eyebrow) {
+	max-width: 680px;
 	margin: 0;
-	color: rgba(255, 255, 255, .88);
+	color: rgba(255, 255, 255, .82);
 	font-size: 17px;
 	line-height: 1.58;
 }
 
-.dematic-hero-copy .dematic-hero-brand {
-	display: flex;
-	margin: 28px 0 0;
-	align-items: center;
-	gap: 18px;
-	color: #fff;
-	font-family: "Open Sans", Arial, sans-serif;
-	font-size: 30px;
-	font-weight: 400;
-	letter-spacing: .05em;
-	line-height: 1;
-	text-transform: uppercase;
-}
-.dematic-hero-brand::before { content: ""; width: 6px; height: 44px; background: var(--dematic-orange); }
-
 .dematic-hero-mobile-visual { display: none; }
 
-/*
- * Desktop hero (same approach as Sunrun): the 2:1 warehouse artwork is
- * height-fitted and pinned to the viewport's right edge, so wide screens never
- * show an empty strip, and the theme menu sits on it. The copy aligns with the
- * content shell. The dark cover only sits behind the copy: solid to just past
- * the text (--dematic-cover-end), then clear within 160px, so on wide screens the
- * artwork fills the space between text and panels. The cover never reaches the
- * first panel (~58.9% across the artwork) and always hides the artwork's left edge.
- */
+@media (max-width: 1320px) {
+	.dematic-hero h1 { font-size: 40px; line-height: 1.02; }
+	.dematic-hero-copy > p:not(.dematic-eyebrow) { max-width: 590px; font-size: 14px; line-height: 1.5; }
+}
+
 @media (min-width: 1025px) {
-	.dematic-hero {
-		--dematic-hero-h: clamp(480px, 40vw, 680px);
-		--dematic-img-w: calc(var(--dematic-hero-h) * 2);
-		--dematic-img-left: calc(100% - var(--dematic-img-w));
-		--dematic-panel-x: calc(100vw - var(--dematic-img-w) * .411);
-		--dematic-pad-left: max(50px, calc((100vw - 1320px) / 2));
-		--dematic-copy-max: 640px;
-		--dematic-copy-w: min(var(--dematic-copy-max), calc(var(--dematic-panel-x) - 120px - var(--dematic-pad-left)));
-		--dematic-cover-end: max(min(var(--dematic-pad-left) + var(--dematic-copy-w) + 20px, var(--dematic-panel-x) - 100px), var(--dematic-img-left) + 60px);
-		height: var(--dematic-hero-h);
-		overflow: hidden;
+	.dematic-hero { height: clamp(400px, 37.5vw, 540px); }
+	.dematic-hero-inner { height: 100%; }
+	.dematic-hero-inner::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		background:
+			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
+			linear-gradient(90deg, #001f47 0%, #001f47 38%, rgba(0, 31, 71, .7) 45%, rgba(0, 31, 71, 0) 53%),
+			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat;
+	}
+	.dematic-hero-copy { width: calc(51.8% - 98px); max-width: 600px; }
+	.dematic-hero h1 span:first-child { white-space: nowrap; }
+}
+
+@media (min-width: 1321px) {
+	.dematic-hero h1 { font-size: 46px; }
+}
+
+@media (min-width: 1025px) and (max-width: 1320px) {
+	.dematic-hero h1 { font-size: clamp(32px, 3.05vw, 40px); }
+	.dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: clamp(13px, 1.1vw, 14px); }
+}
+
+@media (min-width: 1441px) {
+	.dematic-hero { overflow: hidden; }
+	.dematic-hero-inner::before {
+		right: calc(720px - 50vw);
+		left: calc(720px - 50vw);
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg,
 				#001f47 0,
-				#001f47 var(--dematic-cover-end),
-				rgba(0, 31, 71, .55) min(var(--dematic-cover-end) + 80px, var(--dematic-panel-x) - 50px),
-				rgba(0, 31, 71, 0) min(var(--dematic-cover-end) + 160px, var(--dematic-panel-x) - 10px)),
-			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat,
-			#001f47;
+				#001f47 max(min(50% - 40px, 100% - 624px), 100% - 1020px),
+				rgba(0, 31, 71, .55) max(min(50% + 40px, 100% - 544px), 100% - 960px),
+				rgba(0, 31, 71, 0) max(min(50% + 120px, 100% - 464px), 100% - 900px)),
+			url(../images/case-studies/dematic/dematic-warehouse-visibility-hero.jpg) right center / auto 100% no-repeat;
 	}
-	.dematic-hero-inner {
-		height: 100%;
-		max-width: none;
-		padding-right: 0;
-		padding-left: var(--dematic-pad-left);
-	}
-	.dematic-hero-copy { width: var(--dematic-copy-w); }
-}
-
-@media (min-width: 1025px) and (max-width: 1320px) {
-	.dematic-hero h1 { font-size: clamp(30px, 2.9vw, 38px); }
-	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { font-size: clamp(14px, 1.2vw, 16px); }
-	.dematic-hero-copy .dematic-hero-brand { margin-top: 20px; font-size: 24px; }
-	.dematic-hero-brand::before { height: 34px; }
-}
-
-@media (min-width: 1600px) {
-	.dematic-hero h1 { font-size: 48px; }
-	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { max-width: none; font-size: 18px; }
-}
-
-@media (min-width: 1920px) {
-	.dematic-hero { --dematic-copy-max: 760px; }
-	.dematic-eyebrow { font-size: 15px; }
-	.dematic-hero h1 { font-size: 54px; }
-	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { font-size: 19px; }
-	.dematic-hero-copy .dematic-hero-brand { font-size: 34px; }
-	.dematic-hero-brand::before { height: 48px; }
 }
 
 @media (max-width: 1024px) {
-	.dematic-hero { display: block; }
-	.dematic-hero-inner { display: block; padding: 120px 32px 0; }
-	.dematic-hero h1 { font-size: clamp(34px, 5.6vw, 46px); }
-	.dematic-hero h1 > span { white-space: normal; }
-	.dematic-hero-copy > p:not(.dematic-eyebrow):not(.dematic-hero-brand) { max-width: 680px; font-size: 16px; }
+	.dematic-hero { height: auto; min-height: 0; background: #031b3a; }
+	.dematic-hero::before { background: radial-gradient(circle at 18% 35%, rgba(8, 124, 240, .16), transparent 42%); }
+	.dematic-hero-inner { display: block; width: 100%; height: auto; min-height: 0; padding: 120px 32px 0; }
+	.dematic-hero-copy { width: 100%; }
+	.dematic-hero h1 { max-width: 760px; font-size: clamp(38px, 6vw, 50px); }
+	.dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: 15px; }
 	.dematic-hero-mobile-visual {
 		display: block;
 		width: calc(100% + 64px);
-		margin: 34px -32px 0;
+		margin: 36px -32px 0;
 		overflow: hidden;
 		border-top: 1px solid rgba(80, 200, 255, .26);
 		background: #08244a;
@@ -285,10 +286,8 @@ body.infometry-dematic-case-study-page #Header { min-height: 0 !important; }
 
 @media (max-width: 600px) {
 	.dematic-hero-inner { padding: 112px 20px 0; }
-	.dematic-hero h1 { font-size: clamp(27px, 7.6vw, 40px); }
-	.dematic-hero-copy .dematic-hero-brand { margin-top: 22px; font-size: 24px; }
-	.dematic-hero-brand::before { height: 34px; }
-	.dematic-hero-mobile-visual { width: calc(100% + 40px); margin: 30px -20px 0; }
+	.dematic-hero h1 { font-size: clamp(34px, 10vw, 44px); }
+	.dematic-hero-mobile-visual { width: calc(100% + 40px); margin-inline: -20px; }
 }
 
 /* ------------------------------------------------------------------ Facts */

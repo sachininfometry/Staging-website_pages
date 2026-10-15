@@ -28,6 +28,9 @@ define( 'INFOMETRY_CT_DEMATIC_CASE_STUDY_TEMPLATE', 'templates/page-dematic-case
 define( 'INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE', 'templates/page-dematic-global-finance-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
+
+/** Centralized premium template for standard blog posts. */
+require_once INFOMETRY_CT_PATH . 'includes/premium-blog.php';
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
 define( 'INFOMETRY_CT_HOME_META_DESCRIPTION', 'Explore Infometry’s data analytics, AI, cloud data, integration, Snowflake, Databricks, and pre-built solutions designed to accelerate enterprise transformation.' );
 

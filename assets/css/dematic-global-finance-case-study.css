@@ -1516,3 +1516,9 @@ body .dematic-case-study .dgf-col h3 { font-size: 16px; }
 body .dematic-case-study .dematic-objective-grid { margin-top: 18px; padding: 18px 0 36px; }
 body .dematic-case-study .dematic-about-grid { gap: 28px; }
 }
+
+/* One section-heading style on every case study: same size, weight and gap below. */
+body .dematic-case-study .dematic-section-heading h2,
+body .dematic-case-study .dematic-copy-block h2,
+body .dematic-case-study .dematic-objective-grid h2,
+body .dematic-case-study .dematic-final-cta h2 { font-size: clamp(28px, 2.35vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }

@@ -1678,3 +1678,6 @@ body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) smal
 	body .dematic-case-study.dgf-case-study .dematic-facts article small,
 	body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) small { font-size: 28px; }
 }
+
+/* Business objective flow: step subtitles at 17px on every screen. */
+body .dematic-case-study.dgf-case-study .dgf-objective-flow span em { font-size: 17px; line-height: 1.4; }

@@ -66,10 +66,10 @@ while ( have_posts() ) :
 		<?php if ( $has_toc ) : ?>
 			<aside class="ifb-toc" aria-label="Table of contents">
 				<details class="ifb-toc-box" open>
-					<summary>On this page</summary>
+					<summary><span class="ifb-toc-eyebrow">Contents</span><span class="ifb-toc-title">On this page</span><span class="ifb-toc-progress" aria-hidden="true"><i></i></span></summary>
 					<ol>
 						<?php foreach ( $toc as $item ) : ?>
-							<li class="is-h<?php echo esc_attr( (string) $item['level'] ); ?>"><a href="#<?php echo esc_attr( $item['id'] ); ?>"><?php echo esc_html( $item['text'] ); ?></a></li>
+							<li class="is-h<?php echo esc_attr( (string) $item['level'] ); ?>"><a href="#<?php echo esc_attr( $item['id'] ); ?>"><span><?php echo esc_html( $item['text'] ); ?></span></a></li>
 						<?php endforeach; ?>
 					</ol>
 				</details>
@@ -149,4 +149,6 @@ while ( have_posts() ) :
 	<?php
 endwhile;
 
+// Home page footer (theme footer is hidden on these posts); get_footer() still runs wp_footer().
+require INFOMETRY_CT_PATH . 'templates/partials/site-footer.php';
 get_footer();

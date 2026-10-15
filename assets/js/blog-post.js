@@ -59,8 +59,17 @@
 			return;
 		}
 
+		var progress = toc.querySelector('.ifb-toc-progress i');
+		var article = document.querySelector('.ifb-content');
+
 		// The active section is the last heading that has scrolled past the top band.
 		function update() {
+			if (progress && article) {
+				var rect = article.getBoundingClientRect();
+				var span = rect.height - window.innerHeight * 0.6;
+				var done = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 1;
+				progress.style.width = (done * 100).toFixed(1) + '%';
+			}
 			var current = headings[0];
 			var line = 140;
 			headings.forEach(function (heading) {

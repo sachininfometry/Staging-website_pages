@@ -1522,3 +1522,141 @@ body .dematic-case-study .dematic-section-heading h2,
 body .dematic-case-study .dematic-copy-block h2,
 body .dematic-case-study .dematic-objective-grid h2,
 body .dematic-case-study .dematic-final-cta h2 { font-size: clamp(28px, 2.35vw, 40px); font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 16px; }
+
+/* ================================================================== Typography system
+ * One style per role, on every case study:
+ *   section heading  Roboto 800, clamp(28px, 2.35vw, 40px)   navy #071f49 / white on dark
+ *   sub-heading      Roboto 800, 20px                         #0b1f3a
+ *   paragraph        Open Sans 500, 17 / 18 / 19px            #1f3147 / #d3e2ef on dark
+ *   box heading      Roboto 800, 16 / 17 / 18px               #0b1f3a / white on dark
+ *   box text         Open Sans 500, 15 / 16 / 17px            #1f3147 / #c2d1e1 on dark
+ *   caption          Open Sans 500, 14 / 14 / 15px            #33465c
+ *   button           Open Sans 700, 16px                      white
+ */
+body .dematic-case-study.dgf-case-study p.dgf-lead { font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 20px; font-weight: 800; line-height: 1.35; color: #0b1f3a; }
+body .dematic-case-study .dematic-section-heading p,
+body .dematic-case-study .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta p,
+body .dematic-case-study .dematic-quote blockquote p { font-family: "Open Sans", Arial, sans-serif; font-size: 17px; font-weight: 500; line-height: 1.65; color: #1f3147; }
+body .dematic-case-study .dematic-card-grid h3,
+body .dematic-case-study .dematic-steps h3,
+body .dematic-case-study .dematic-objective-flow b,
+body .dematic-case-study .dgf-challenge-grid h3,
+body .dematic-case-study .dgf-col h3,
+body .dematic-case-study .dgf-epm b { font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 16px; font-weight: 800; line-height: 1.3; letter-spacing: 0; color: #0b1f3a; }
+body .dematic-case-study .dematic-facts strong,
+body .dematic-case-study .dematic-card-grid p,
+body .dematic-case-study .dematic-steps p,
+body .dematic-case-study .dematic-outcome-grid p,
+body .dematic-case-study .dgf-challenge-grid p,
+body .dematic-case-study .dgf-approach-grid p,
+body .dematic-case-study .dgf-outcome-grid p,
+body .dematic-case-study .dgf-data li,
+body .dematic-case-study .dgf-validation li,
+body .dematic-case-study .dgf-source-grid b { font-family: "Open Sans", Arial, sans-serif; font-size: 15px; font-weight: 500; line-height: 1.55; font-style: normal; color: #1f3147; }
+body .dematic-case-study .dematic-tech-list small,
+body .dematic-case-study .dgf-objective-flow span em { font-family: "Open Sans", Arial, sans-serif; font-size: 14px; font-weight: 500; line-height: 1.4; font-style: normal; color: #33465c; }
+body .dematic-case-study .dematic-button { font-family: "Open Sans", Arial, sans-serif; font-size: 16px; font-weight: 700; }
+
+body .dematic-case-study .dematic-challenge .dematic-section-heading p,
+body .dematic-case-study .dematic-challenge .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-challenge .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-challenge .dematic-quote blockquote p,
+body .dematic-case-study .dematic-final-cta .dematic-section-heading p,
+body .dematic-case-study .dematic-final-cta .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta p,
+body .dematic-case-study .dematic-final-cta .dematic-quote blockquote p { color: #d3e2ef; }
+body .dematic-case-study .dematic-challenge .dematic-card-grid h3,
+body .dematic-case-study .dematic-challenge .dematic-steps h3,
+body .dematic-case-study .dematic-challenge .dematic-objective-flow b,
+body .dematic-case-study .dematic-challenge .dgf-challenge-grid h3,
+body .dematic-case-study .dematic-challenge .dgf-col h3,
+body .dematic-case-study .dematic-challenge .dgf-epm b,
+body .dematic-case-study .dematic-final-cta .dematic-card-grid h3,
+body .dematic-case-study .dematic-final-cta .dematic-steps h3,
+body .dematic-case-study .dematic-final-cta .dematic-objective-flow b,
+body .dematic-case-study .dematic-final-cta .dgf-challenge-grid h3,
+body .dematic-case-study .dematic-final-cta .dgf-col h3,
+body .dematic-case-study .dematic-final-cta .dgf-epm b { color: #fff; }
+body .dematic-case-study .dematic-challenge .dematic-facts strong,
+body .dematic-case-study .dematic-challenge .dematic-card-grid p,
+body .dematic-case-study .dematic-challenge .dematic-steps p,
+body .dematic-case-study .dematic-challenge .dematic-outcome-grid p,
+body .dematic-case-study .dematic-challenge .dgf-challenge-grid p,
+body .dematic-case-study .dematic-challenge .dgf-approach-grid p,
+body .dematic-case-study .dematic-challenge .dgf-outcome-grid p,
+body .dematic-case-study .dematic-challenge .dgf-data li,
+body .dematic-case-study .dematic-challenge .dgf-validation li,
+body .dematic-case-study .dematic-challenge .dgf-source-grid b,
+body .dematic-case-study .dematic-final-cta .dematic-facts strong,
+body .dematic-case-study .dematic-final-cta .dematic-card-grid p,
+body .dematic-case-study .dematic-final-cta .dematic-steps p,
+body .dematic-case-study .dematic-final-cta .dematic-outcome-grid p,
+body .dematic-case-study .dematic-final-cta .dgf-challenge-grid p,
+body .dematic-case-study .dematic-final-cta .dgf-approach-grid p,
+body .dematic-case-study .dematic-final-cta .dgf-outcome-grid p,
+body .dematic-case-study .dematic-final-cta .dgf-data li,
+body .dematic-case-study .dematic-final-cta .dgf-validation li,
+body .dematic-case-study .dematic-final-cta .dgf-source-grid b { color: #c2d1e1; }
+
+@media (min-width: 1600px) {
+body .dematic-case-study .dematic-section-heading p,
+body .dematic-case-study .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta p,
+body .dematic-case-study .dematic-quote blockquote p { font-size: 18px; }
+body .dematic-case-study .dematic-card-grid h3,
+body .dematic-case-study .dematic-steps h3,
+body .dematic-case-study .dematic-objective-flow b,
+body .dematic-case-study .dgf-challenge-grid h3,
+body .dematic-case-study .dgf-col h3,
+body .dematic-case-study .dgf-epm b { font-size: 17px; }
+body .dematic-case-study .dematic-facts strong,
+body .dematic-case-study .dematic-card-grid p,
+body .dematic-case-study .dematic-steps p,
+body .dematic-case-study .dematic-outcome-grid p,
+body .dematic-case-study .dgf-challenge-grid p,
+body .dematic-case-study .dgf-approach-grid p,
+body .dematic-case-study .dgf-outcome-grid p,
+body .dematic-case-study .dgf-data li,
+body .dematic-case-study .dgf-validation li,
+body .dematic-case-study .dgf-source-grid b { font-size: 16px; }
+}
+
+@media (min-width: 1920px) {
+body .dematic-case-study.dgf-case-study p.dgf-lead { font-size: 22px; }
+body .dematic-case-study .dematic-section-heading p,
+body .dematic-case-study .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta p,
+body .dematic-case-study .dematic-quote blockquote p { font-size: 19px; }
+body .dematic-case-study .dematic-card-grid h3,
+body .dematic-case-study .dematic-steps h3,
+body .dematic-case-study .dematic-objective-flow b,
+body .dematic-case-study .dgf-challenge-grid h3,
+body .dematic-case-study .dgf-col h3,
+body .dematic-case-study .dgf-epm b { font-size: 18px; }
+body .dematic-case-study .dematic-facts strong,
+body .dematic-case-study .dematic-card-grid p,
+body .dematic-case-study .dematic-steps p,
+body .dematic-case-study .dematic-outcome-grid p,
+body .dematic-case-study .dgf-challenge-grid p,
+body .dematic-case-study .dgf-approach-grid p,
+body .dematic-case-study .dgf-outcome-grid p,
+body .dematic-case-study .dgf-data li,
+body .dematic-case-study .dgf-validation li,
+body .dematic-case-study .dgf-source-grid b { font-size: 17px; }
+body .dematic-case-study .dematic-tech-list small,
+body .dematic-case-study .dgf-objective-flow span em { font-size: 15px; }
+}
+
+@media (max-width: 720px) {
+body .dematic-case-study.dgf-case-study p.dgf-lead { font-size: 18px; }
+body .dematic-case-study .dematic-section-heading p,
+body .dematic-case-study .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study .dematic-final-cta p,
+body .dematic-case-study .dematic-quote blockquote p { font-size: 16px; }
+}

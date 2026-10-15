@@ -1678,3 +1678,6 @@ body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) smal
 	body .dematic-case-study.dgf-case-study .dematic-facts article small,
 	body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) small { font-size: 28px; }
 }
+
+/* Key Business Outcomes: card headings (32+, Global, Governed, Daily +) at 28px. */
+body .dematic-case-study.dgf-case-study .dgf-outcome-grid strong { font-size: 28px; }

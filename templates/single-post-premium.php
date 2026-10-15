@@ -31,8 +31,8 @@ while ( have_posts() ) :
 	$blog_url  = home_url( '/resources/blog/' );
 	?>
 
-<main class="ifb" id="ifb-main">
-	<header class="ifb-hero<?php echo $show_hero_image ? ' has-image' : ''; ?>">
+<main class="ifb<?php echo $show_hero_image ? ' has-feature' : ''; ?>" id="ifb-main">
+	<header class="ifb-hero">
 		<div class="ifb-shell ifb-hero-inner">
 			<div class="ifb-hero-copy">
 				<nav class="ifb-crumbs" aria-label="Breadcrumb">
@@ -54,13 +54,16 @@ while ( have_posts() ) :
 					<span><?php echo esc_html( sprintf( '%d min read', $minutes ) ); ?></span>
 				</div>
 			</div>
-			<?php if ( $show_hero_image ) : ?>
-				<figure class="ifb-hero-media">
-					<?php the_post_thumbnail( 'large', array( 'class' => 'ifb-hero-img', 'fetchpriority' => 'high', 'loading' => 'eager' ) ); ?>
-				</figure>
-			<?php endif; ?>
 		</div>
 	</header>
+
+	<?php if ( $show_hero_image ) : ?>
+		<div class="ifb-shell ifb-feature">
+			<figure class="ifb-feature-media">
+				<?php the_post_thumbnail( 'full', array( 'class' => 'ifb-feature-img', 'fetchpriority' => 'high', 'loading' => 'eager', 'sizes' => '(max-width: 1100px) 100vw, 1100px' ) ); ?>
+			</figure>
+		</div>
+	<?php endif; ?>
 
 	<div class="ifb-shell ifb-body<?php echo $has_toc ? ' has-toc' : ''; ?>">
 		<?php if ( $has_toc ) : ?>

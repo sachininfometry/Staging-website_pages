@@ -1666,3 +1666,15 @@ body .dematic-case-study .dematic-quote blockquote p { font-size: 16px; }
 body .dematic-case-study.dgf-case-study .dematic-facts article { align-items: flex-start; }
 body .dematic-case-study.dgf-case-study .dematic-facts .dematic-icon { margin-top: 2px; }
 body .dematic-case-study.dgf-case-study .dematic-facts p { align-content: start; }
+
+/* Summary strip headings: all four the same navy colour and size. */
+body .dematic-case-study.dgf-case-study .dematic-facts article small,
+body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) small { color: #0b1f3a; font-size: 24px; }
+@media (min-width: 1600px) {
+	body .dematic-case-study.dgf-case-study .dematic-facts article small,
+	body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) small { font-size: 26px; }
+}
+@media (min-width: 1920px) {
+	body .dematic-case-study.dgf-case-study .dematic-facts article small,
+	body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) small { font-size: 28px; }
+}

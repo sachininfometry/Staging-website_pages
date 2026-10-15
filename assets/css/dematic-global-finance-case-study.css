@@ -1660,3 +1660,9 @@ body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead),
 body .dematic-case-study .dematic-final-cta p,
 body .dematic-case-study .dematic-quote blockquote p { font-size: 16px; }
 }
+
+/* Summary strip: top-align every item so the four headings sit on one line,
+   with each icon aligned to its heading. */
+body .dematic-case-study.dgf-case-study .dematic-facts article { align-items: flex-start; }
+body .dematic-case-study.dgf-case-study .dematic-facts .dematic-icon { margin-top: 2px; }
+body .dematic-case-study.dgf-case-study .dematic-facts p { align-content: start; }

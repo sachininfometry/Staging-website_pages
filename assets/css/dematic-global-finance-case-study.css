@@ -231,7 +231,7 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 
 /* Banner: same code as the Dematic supply chain case study; only the artwork
    (1983x793) and its numbers differ: 1350px wide at the 540px hero height,
-   first panel 603px from its right edge. */
+   first panel 513px from its right edge. */
 @media (min-width: 1025px) {
 	.dematic-hero { height: clamp(400px, 37.5vw, 540px); }
 	.dematic-hero-inner { height: 100%; }
@@ -244,7 +244,7 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg, #001f47 0%, #001f47 calc(51.8% - 60px), rgba(0, 31, 71, .55) 51.8%, rgba(0, 31, 71, 0) calc(51.8% + 50px)),
-			url(../images/case-studies/dematic-finance/dematic-finance-hero-v3.jpg) right center / auto 100% no-repeat;
+			url(../images/case-studies/dematic-finance/dematic-finance-hero-v4.jpg) right center / auto 100% no-repeat;
 	}
 	.dematic-hero-copy { width: calc(51.8% - 98px); max-width: 600px; }
 	.dematic-hero h1 span:first-child { white-space: nowrap; }
@@ -268,10 +268,10 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg,
 				#001f47 0,
-				#001f47 min(50% - 50px, 100% - 783px),
-				rgba(0, 31, 71, .55) min(50% + 10px, 100% - 703px),
-				rgba(0, 31, 71, 0) min(50% + 70px, 100% - 623px)),
-			url(../images/case-studies/dematic-finance/dematic-finance-hero-v3.jpg) right center / max(1350px, 50% + 134px) auto no-repeat;
+				#001f47 min(50% - 50px, 100% - 693px),
+				rgba(0, 31, 71, .55) min(50% + 10px, 100% - 613px),
+				rgba(0, 31, 71, 0) min(50% + 70px, 100% - 533px)),
+			url(../images/case-studies/dematic-finance/dematic-finance-hero-v4.jpg) right center / max(1350px, 50% + 134px) auto no-repeat;
 	}
 }
 

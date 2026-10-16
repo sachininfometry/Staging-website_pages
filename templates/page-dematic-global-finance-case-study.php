@@ -88,7 +88,7 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 				<p>How Infometry standardized, validated, and integrated financial data across regions and ERP platforms to power trusted global P&amp;L and Balance Sheet reporting.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $dgf_img_url . 'dematic-finance-hero-v4.jpg' ); ?>" width="1983" height="793" alt="Regional finance data from North America, South America, Europe and Asia-Pacific flowing into a central data store that feeds Global P&amp;L and Balance Sheet reporting">
+				<img src="<?php echo esc_url( $dgf_img_url . 'dematic-finance-hero-v5.jpg' ); ?>" width="1984" height="793" alt="Regional finance data from North America, South America, Europe and Asia-Pacific flowing into a central data store that feeds Global P&amp;L and Balance Sheet reporting">
 			</figure>
 		</div>
 	</section>

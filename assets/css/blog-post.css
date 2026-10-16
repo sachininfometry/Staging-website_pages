@@ -34,57 +34,89 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 .ifb-shell { width: min(100% - 48px, 1320px); margin-inline: auto; }
 
 /* ------------------------------------------------------------------ Hero */
-/* Editorial hero: breadcrumb, title and byline on navy; the featured artwork
-   (which already carries the title) sits below, overlapping the hero edge,
-   shown at its natural ratio so nothing in it is cropped. */
+/* Navy hero with glow and a faint grid; copy left, article-details card right.
+   The featured image is not repeated here (its artwork already carries the title). */
 .ifb-hero {
 	position: relative;
 	overflow: hidden;
-	padding: 150px 0 72px;
+	padding: 150px 0 80px;
 	color: #fff;
 	background:
-		radial-gradient(circle at 85% 15%, rgba(34, 200, 246, .16), transparent 40%),
-		radial-gradient(circle at 8% 95%, rgba(99, 51, 255, .2), transparent 42%),
-		linear-gradient(180deg, #002456 0%, #001f47 60%, #001a3d 100%);
+		radial-gradient(ellipse 60% 80% at 88% 10%, rgba(34, 200, 246, .22), transparent 60%),
+		radial-gradient(ellipse 50% 70% at 0% 100%, rgba(106, 63, 255, .28), transparent 60%),
+		linear-gradient(160deg, #002a63 0%, #001f47 45%, #00163a 100%);
+}
+.ifb-hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	opacity: .5;
+	background-image:
+		linear-gradient(rgba(120, 190, 255, .08) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(120, 190, 255, .08) 1px, transparent 1px);
+	background-size: 56px 56px;
+	mask-image: radial-gradient(ellipse 70% 90% at 75% 40%, #000 20%, transparent 75%);
+	pointer-events: none;
 }
 .ifb-hero::after {
 	content: "";
 	position: absolute;
-	inset: 0;
-	opacity: .1;
-	background-image: radial-gradient(circle, #58a4ff 1px, transparent 1.2px);
-	background-size: 12px 12px;
-	mask-image: linear-gradient(110deg, transparent 35%, #000 85%);
-	pointer-events: none;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	background: linear-gradient(90deg, transparent, #22c8f6 30%, #6a5bff 70%, transparent);
+	opacity: .7;
 }
-.ifb.has-feature .ifb-hero { padding-bottom: 200px; }
-.ifb-hero-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.ifb-hero-copy { max-width: 980px; }
+.ifb-hero-glow { position: absolute; top: -120px; right: 8%; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(34, 200, 246, .25), transparent 65%); filter: blur(10px); pointer-events: none; }
+.ifb-hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 64px; align-items: center; }
+.ifb-hero-copy { min-width: 0; max-width: 860px; }
 
-.ifb-crumbs { display: inline-flex; margin-bottom: 22px; padding: 7px 16px; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(34, 200, 246, .45); border-radius: 999px; background: rgba(0, 48, 88, .35); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.ifb-crumbs { display: inline-flex; margin-bottom: 22px; padding: 7px 16px; flex-wrap: wrap; align-items: center; gap: 8px; border: 1px solid rgba(34, 200, 246, .45); border-radius: 999px; background: rgba(0, 48, 88, .35); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
 .ifb-crumbs a { color: #8bdef7 !important; text-decoration: none !important; }
 .ifb-crumbs a:hover { color: #fff !important; }
 .ifb-crumbs span { color: rgba(255, 255, 255, .45); }
 
 .ifb .ifb-title {
-	margin: 0 0 24px;
+	margin: 0 0 20px;
 	color: #fff !important;
 	font-family: var(--ifb-head);
-	font-size: clamp(32px, 3.3vw, 54px);
+	font-size: clamp(32px, 3.2vw, 52px);
 	font-weight: 800;
 	line-height: 1.12;
 	letter-spacing: -.025em;
 	text-wrap: balance;
 }
+.ifb .ifb-dek { max-width: 720px; margin: 0 0 26px; color: #c9d8ea; font-size: 18px; line-height: 1.6; }
 
-.ifb-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; color: #d3e2ef; font-size: 16px; font-weight: 500; }
-.ifb-author { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 600; }
-.ifb .ifb-avatar { width: 40px; height: 40px; border: 2px solid rgba(255, 255, 255, .5); border-radius: 50% !important; }
-.ifb-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255, 255, 255, .45); }
+.ifb-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+.ifb-author { display: inline-flex; align-items: center; gap: 12px; }
+.ifb .ifb-avatar { width: 44px; height: 44px; border: 2px solid rgba(34, 200, 246, .6); border-radius: 50% !important; }
+.ifb-author-text { display: grid; line-height: 1.25; }
+.ifb-author-text small { color: #8bdef7; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.ifb-author-text b { color: #fff; font-size: 16px; font-weight: 700; }
 
-.ifb-feature { position: relative; z-index: 2; margin-top: -150px; }
-.ifb-feature-media { max-width: 1100px; margin: 0 auto; overflow: hidden; border: 1px solid rgba(255, 255, 255, .25); border-radius: 18px; background: #021d40; box-shadow: 0 30px 70px rgba(2, 20, 50, .35); }
-.ifb .ifb-feature-img { display: block; width: 100%; height: auto; border-radius: 0; }
+.ifb-hero-card {
+	position: relative;
+	padding: 26px 26px 22px;
+	border: 1px solid rgba(139, 222, 247, .22);
+	border-radius: 18px;
+	background: linear-gradient(160deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .03));
+	box-shadow: 0 24px 60px rgba(0, 10, 30, .35), inset 0 1px 0 rgba(255, 255, 255, .12);
+	backdrop-filter: blur(10px);
+}
+.ifb-hero-card-eyebrow { display: block; margin-bottom: 16px; color: #22c8f6; font-family: var(--ifb-head); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.ifb-hero-card ul { display: grid; margin: 0 0 20px; padding: 0; gap: 14px; list-style: none; }
+.ifb-hero-card li { display: flex; margin: 0; padding: 0 0 14px; align-items: center; gap: 14px; border-bottom: 1px solid rgba(255, 255, 255, .1); }
+.ifb-hero-card li:last-child { padding-bottom: 0; border-bottom: 0; }
+.ifb-hero-card li::before { display: none; }
+.ifb-hero-card i { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border-radius: 12px; color: #22c8f6; background: rgba(34, 200, 246, .14); }
+.ifb-hero-card svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ifb-hero-card li > span { display: grid; min-width: 0; line-height: 1.3; }
+.ifb-hero-card small { color: #9fb6cf; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.ifb-hero-card b { color: #fff; font-size: 16px; font-weight: 700; }
+.ifb-hero-card-link { display: inline-flex; align-items: center; gap: 8px; color: #fff !important; font-size: 15px; font-weight: 700; text-decoration: none !important; }
+.ifb-hero-card-link span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #22c8f6, #6a5bff); }
 
 /* ------------------------------------------------------------------ Layout */
 .ifb-body { display: grid; padding: 64px 0 64px; grid-template-columns: minmax(0, 1fr); gap: 56px; }
@@ -314,8 +346,8 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 }
 
 @media (max-width: 1100px) {
-	.ifb.has-feature .ifb-hero { padding-bottom: 150px; }
-	.ifb-feature { margin-top: -110px; }
+	.ifb-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+	.ifb-hero-card { max-width: 560px; }
 	.ifb-body.has-toc { grid-template-columns: minmax(0, 1fr); gap: 28px; }
 	.ifb-toc-box { position: static; max-height: none; }
 	.ifb-toc-box { padding: 18px 14px; }
@@ -330,9 +362,7 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 @media (max-width: 720px) {
 	.ifb-shell { width: min(100% - 32px, 1240px); }
 	.ifb-hero { padding: 120px 0 44px; }
-	.ifb.has-feature .ifb-hero { padding-bottom: 96px; }
-	.ifb-feature { margin-top: -64px; }
-	.ifb-feature-media { border-radius: 12px; }
+	.ifb-hero-card { padding: 20px; }
 	.ifb-meta { font-size: 14px; }
 	.ifb-body { padding: 32px 0 44px; }
 	.ifb-content,
@@ -358,8 +388,6 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 /* Below 768px Betheme's header is a solid bar above the page, not overlaid. */
 @media (max-width: 767px) {
 	.ifb-hero { padding-top: 40px; }
-	.ifb-hero-inner { align-items: flex-start; text-align: left; }
-	.ifb-meta { justify-content: flex-start; }
 }
 
 /* ------------------------------------------------------------------ Site footer (home page footer) */

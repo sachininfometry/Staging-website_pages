@@ -31,8 +31,9 @@ while ( have_posts() ) :
 	$blog_url  = home_url( '/resources/blog/' );
 	?>
 
-<main class="ifb<?php echo $show_hero_image ? ' has-feature' : ''; ?>" id="ifb-main">
+<main class="ifb" id="ifb-main">
 	<header class="ifb-hero">
+		<div class="ifb-hero-glow" aria-hidden="true"></div>
 		<div class="ifb-shell ifb-hero-inner">
 			<div class="ifb-hero-copy">
 				<nav class="ifb-crumbs" aria-label="Breadcrumb">
@@ -43,27 +44,27 @@ while ( have_posts() ) :
 					<?php endif; ?>
 				</nav>
 				<h1 class="ifb-title"><?php echo esc_html( $title ); ?></h1>
+				<?php if ( has_excerpt() ) : ?>
+					<p class="ifb-dek"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 32 ) ); ?></p>
+				<?php endif; ?>
 				<div class="ifb-meta">
 					<span class="ifb-author">
-						<?php echo get_avatar( $author_id, 40, '', '', array( 'class' => 'ifb-avatar' ) ); ?>
-						<span>By <?php echo esc_html( get_the_author_meta( 'display_name', $author_id ) ); ?></span>
+						<?php echo get_avatar( $author_id, 44, '', '', array( 'class' => 'ifb-avatar' ) ); ?>
+						<span class="ifb-author-text"><small>Written by</small><b><?php echo esc_html( get_the_author_meta( 'display_name', $author_id ) ); ?></b></span>
 					</span>
-					<span class="ifb-dot" aria-hidden="true"></span>
-					<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time>
-					<span class="ifb-dot" aria-hidden="true"></span>
-					<span><?php echo esc_html( sprintf( '%d min read', $minutes ) ); ?></span>
 				</div>
 			</div>
+			<aside class="ifb-hero-card" aria-label="Article details">
+				<span class="ifb-hero-card-eyebrow">Infometry Insights</span>
+				<ul>
+					<li><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg></i><span><small>Category</small><b><?php echo esc_html( $category ? $category->name : 'Blog' ); ?></b></span></li>
+					<li><i aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><span><small>Reading time</small><b><?php echo esc_html( sprintf( '%d min read', $minutes ) ); ?></b></span></li>
+					<li><i aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></i><span><small>Published</small><b><time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ); ?></time></b></span></li>
+				</ul>
+				<a class="ifb-hero-card-link" href="#ifb-article-start">Start reading <span aria-hidden="true">&darr;</span></a>
+			</aside>
 		</div>
 	</header>
-
-	<?php if ( $show_hero_image ) : ?>
-		<div class="ifb-shell ifb-feature">
-			<figure class="ifb-feature-media">
-				<?php the_post_thumbnail( 'full', array( 'class' => 'ifb-feature-img', 'fetchpriority' => 'high', 'loading' => 'eager', 'sizes' => '(max-width: 1100px) 100vw, 1100px' ) ); ?>
-			</figure>
-		</div>
-	<?php endif; ?>
 
 	<div class="ifb-shell ifb-body<?php echo $has_toc ? ' has-toc' : ''; ?>">
 		<?php if ( $has_toc ) : ?>
@@ -80,7 +81,7 @@ while ( have_posts() ) :
 		<?php endif; ?>
 
 		<article id="post-<?php echo esc_attr( (string) $post_id ); ?>" <?php post_class( 'ifb-article' ); ?>>
-			<div class="ifb-content">
+			<div class="ifb-content" id="ifb-article-start">
 				<?php echo $prepared['html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- filtered post content. ?>
 			</div>
 

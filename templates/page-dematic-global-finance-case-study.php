@@ -215,13 +215,16 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 	<section class="dematic-section dematic-tech" id="technologies">
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>A connected ecosystem of enterprise and finance systems.</p></div>
-			<div class="dematic-tech-list">
-				<span><span class="dematic-tech-logo sap"><?php echo $sap_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span></span>
-				<span><span class="dematic-tech-logo dgf-wordmark">Syteline</span></span>
-				<span><span class="dematic-tech-logo dgf-icon-logo"><svg aria-hidden="true"><use href="#dgf-triangle"/></svg></span><small>Proteus</small></span>
-				<span><span class="dematic-tech-logo microsoft"><?php echo $ms_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span><small>Microsoft Dynamics NAV</small></span>
-				<span><span class="dematic-tech-logo dgf-excel"><?php echo $excel_logo; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG. ?></span><small>Microsoft Excel</small></span>
-				<span><span class="dematic-tech-logo dgf-icon-logo dgf-bars"><svg aria-hidden="true"><use href="#dgf-bars"/></svg></span><small>Host Analytics</small></span>
+			<div class="dematic-tech-list dgf-tech-list">
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/sap.png' ); ?>" alt="SAP" width="400" height="198" loading="lazy"></span><small>SAP</small></span>
+				<span><span class="dematic-tech-logo"><b class="dgf-wordmark">Syteline</b></span><small>Syteline</small></span>
+				<span><span class="dematic-tech-logo"><svg class="dgf-tech-icon" aria-hidden="true"><use href="#dgf-triangle"/></svg></span><small>Proteus</small></span>
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/microsoft.png' ); ?>" alt="Microsoft" width="240" height="240" loading="lazy"></span><small>Microsoft Dynamics NAV</small></span>
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-sql-server-mark.png' ); ?>" alt="SQL Server" width="195" height="210" loading="lazy"></span><small>SQL Server</small></span>
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" alt="Informatica" width="192" height="194" loading="lazy"></span><small>Informatica</small></span>
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/matillion.png' ); ?>" alt="Matillion" width="800" height="208" loading="lazy"></span><small>Matillion</small></span>
+				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182" loading="lazy"></span><small>Snowflake</small></span>
+				<span><span class="dematic-tech-logo"><svg class="dgf-tech-icon dgf-tech-bars" aria-hidden="true"><use href="#dgf-bars"/></svg></span><small>Host Analytics</small></span>
 			</div>
 		</div>
 	</section>

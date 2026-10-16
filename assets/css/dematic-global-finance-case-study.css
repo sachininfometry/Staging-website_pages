@@ -1692,3 +1692,27 @@ body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) smal
 
 /* Key Business Outcomes: card headings (32+, Global, Governed, Daily +) at 28px. */
 body .dematic-case-study.dgf-case-study .dgf-outcome-grid strong { font-size: 28px; }
+
+/* Technologies & Platforms: nine logo tiles, logo above its name. */
+body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 12px; }
+body .dematic-case-study .dgf-tech-list > span { min-height: 150px; padding: 18px 10px 16px; justify-content: space-between; }
+body .dematic-case-study .dgf-tech-list .dematic-tech-logo { display: grid; height: 70px; place-items: center; }
+body .dematic-case-study .dgf-tech-list .dematic-tech-logo img { width: auto; max-width: 100%; height: auto; max-height: 64px; object-fit: contain; }
+body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="SAP"] { max-height: 52px; }
+body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="Matillion"] { max-height: 34px; }
+body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="Microsoft"] { max-height: 50px; }
+body .dematic-case-study .dgf-tech-list .dgf-wordmark { color: #0b1f3a; font: 800 26px/1 "Roboto", "Open Sans", Arial, sans-serif; letter-spacing: -.02em; }
+body .dematic-case-study .dgf-tech-list .dgf-tech-icon { width: 58px; height: 58px; color: #0b1f3a; stroke-width: 2.2; }
+body .dematic-case-study .dgf-tech-list .dgf-tech-bars { color: #f37021; fill: currentColor; stroke: none; }
+body .dematic-case-study .dgf-tech-list small { margin-top: 10px; color: #1f3147; font-size: 15px; font-weight: 500; text-align: center; }
+@media (max-width: 1320px) {
+	body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+	body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+	body .dematic-case-study .dgf-tech-list > span { min-height: 120px; }
+	body .dematic-case-study .dgf-tech-list .dematic-tech-logo { height: 52px; }
+	body .dematic-case-study .dgf-tech-list .dematic-tech-logo img { max-height: 46px; }
+	body .dematic-case-study .dgf-tech-list .dgf-wordmark { font-size: 20px; }
+	body .dematic-case-study .dgf-tech-list small { font-size: 13px; }
+}

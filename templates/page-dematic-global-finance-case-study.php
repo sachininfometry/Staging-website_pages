@@ -215,16 +215,16 @@ $excel_logo = '<svg class="dgf-excel-svg" viewBox="0 0 32 32" role="img" aria-la
 	<section class="dematic-section dematic-tech" id="technologies">
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>A connected ecosystem of enterprise and finance systems.</p></div>
-			<div class="dematic-tech-list dgf-tech-list">
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/sap.png' ); ?>" alt="SAP" width="400" height="198" loading="lazy"></span><small>SAP</small></span>
-				<span><span class="dematic-tech-logo"><b class="dgf-wordmark">Syteline</b></span><small>Syteline</small></span>
-				<span><span class="dematic-tech-logo"><svg class="dgf-tech-icon" aria-hidden="true"><use href="#dgf-triangle"/></svg></span><small>Proteus</small></span>
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/microsoft.png' ); ?>" alt="Microsoft" width="240" height="240" loading="lazy"></span><small>Microsoft Dynamics NAV</small></span>
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-sql-server-mark.png' ); ?>" alt="SQL Server" width="195" height="210" loading="lazy"></span><small>SQL Server</small></span>
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" alt="Informatica" width="192" height="194" loading="lazy"></span><small>Informatica</small></span>
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/matillion.png' ); ?>" alt="Matillion" width="800" height="208" loading="lazy"></span><small>Matillion</small></span>
-				<span><span class="dematic-tech-logo"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182" loading="lazy"></span><small>Snowflake</small></span>
-				<span><span class="dematic-tech-logo"><svg class="dgf-tech-icon dgf-tech-bars" aria-hidden="true"><use href="#dgf-bars"/></svg></span><small>Host Analytics</small></span>
+			<div class="dgf-tech-grid">
+				<div class="dgf-tech" style="--tint:#e8f3fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sap.png' ); ?>" alt="SAP" width="400" height="198" loading="lazy"></span><span class="dgf-tech-name">SAP</span></div>
+				<div class="dgf-tech" style="--tint:#eef1f6"><span class="dgf-tech-icon-box"><span class="dgf-monogram" aria-hidden="true">S</span></span><span class="dgf-tech-name">Syteline</span></div>
+				<div class="dgf-tech" style="--tint:#eef1f6"><span class="dgf-tech-icon-box"><svg class="dgf-svg-icon" aria-hidden="true"><use href="#dgf-triangle"/></svg></span><span class="dgf-tech-name">Proteus</span></div>
+				<div class="dgf-tech" style="--tint:#f1f6ee"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/microsoft.png' ); ?>" alt="Microsoft" width="240" height="240" loading="lazy"></span><span class="dgf-tech-name">Microsoft Dynamics NAV</span></div>
+				<div class="dgf-tech" style="--tint:#fdeeee"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" alt="SQL Server" width="195" height="210" loading="lazy"></span><span class="dgf-tech-name">SQL Server</span></div>
+				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" alt="Informatica" width="192" height="194" loading="lazy"></span><span class="dgf-tech-name">Informatica</span></div>
+				<div class="dgf-tech" style="--tint:#e8faf0"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/matillion-mark.png' ); ?>" alt="Matillion" width="189" height="208" loading="lazy"></span><span class="dgf-tech-name">Matillion</span></div>
+				<div class="dgf-tech" style="--tint:#e7f6fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182" loading="lazy"></span><span class="dgf-tech-name">Snowflake</span></div>
+				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box"><svg class="dgf-svg-icon dgf-bars-icon" aria-hidden="true"><use href="#dgf-bars"/></svg></span><span class="dgf-tech-name">Host Analytics</span></div>
 			</div>
 		</div>
 	</section>

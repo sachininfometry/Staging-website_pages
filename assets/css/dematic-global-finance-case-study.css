@@ -1685,26 +1685,49 @@ body .dematic-case-study.dgf-case-study .dematic-facts article:nth-child(1) smal
 /* Key Business Outcomes: card headings (32+, Global, Governed, Daily +) at 28px. */
 body .dematic-case-study.dgf-case-study .dgf-outcome-grid strong { font-size: 28px; }
 
-/* Technologies & Platforms: nine logo tiles, logo above its name. */
-body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 12px; }
-body .dematic-case-study .dgf-tech-list > span { min-height: 150px; padding: 18px 10px 16px; justify-content: space-between; }
-body .dematic-case-study .dgf-tech-list .dematic-tech-logo { display: grid; height: 70px; place-items: center; }
-body .dematic-case-study .dgf-tech-list .dematic-tech-logo img { width: auto; max-width: 100%; height: auto; max-height: 64px; object-fit: contain; }
-body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="SAP"] { max-height: 52px; }
-body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="Matillion"] { max-height: 34px; }
-body .dematic-case-study .dgf-tech-list .dematic-tech-logo img[alt="Microsoft"] { max-height: 50px; }
-body .dematic-case-study .dgf-tech-list .dgf-wordmark { color: #0b1f3a; font: 800 26px/1 "Roboto", "Open Sans", Arial, sans-serif; letter-spacing: -.02em; }
-body .dematic-case-study .dgf-tech-list .dgf-tech-icon { width: 58px; height: 58px; color: #0b1f3a; stroke-width: 2.2; }
-body .dematic-case-study .dgf-tech-list .dgf-tech-bars { color: #f37021; fill: currentColor; stroke: none; }
-body .dematic-case-study .dgf-tech-list small { margin-top: 10px; color: #1f3147; font-size: 15px; font-weight: 500; text-align: center; }
+/* Technologies & Platforms: one consistent tile per technology. Every tile shows
+   the product's icon (no wordmarks) in a tinted 76px box, the name right below. */
+body .dematic-case-study .dgf-tech-grid { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 14px; }
+body .dematic-case-study .dgf-tech {
+	position: relative;
+	display: flex;
+	min-width: 0;
+	padding: 22px 12px 20px;
+	flex-direction: column;
+	align-items: center;
+	gap: 14px;
+	overflow: hidden;
+	border: 1px solid #dfe9f3;
+	border-radius: 16px;
+	background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+	box-shadow: 0 10px 26px rgba(14, 73, 115, .06);
+	text-align: center;
+	transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+body .dematic-case-study .dgf-tech::before { content: ""; position: absolute; top: 0; right: 0; left: 0; height: 3px; background: linear-gradient(90deg, #22c8f6, #6a5bff); opacity: 0; transition: opacity .25s ease; }
+body .dematic-case-study .dgf-tech:hover { transform: translateY(-4px); border-color: #bcdcf4; box-shadow: 0 18px 38px rgba(14, 73, 115, .12); }
+body .dematic-case-study .dgf-tech:hover::before { opacity: 1; }
+body .dematic-case-study .dgf-tech-icon-box { display: grid; width: 76px; height: 76px; place-items: center; border-radius: 20px; background: var(--tint, #eef4fb); }
+body .dematic-case-study .dgf-tech-icon-box img { display: block; width: auto; height: auto; max-width: 46px; max-height: 46px; object-fit: contain; }
+body .dematic-case-study .dgf-tech-icon-box img[alt="SAP"] { max-width: 56px; }
+body .dematic-case-study .dgf-tech-icon-box img[alt="Microsoft"] { max-width: 40px; max-height: 40px; }
+body .dematic-case-study .dgf-svg-icon { width: 44px; height: 44px; color: #0b1f3a; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linejoin: round; }
+body .dematic-case-study .dgf-bars-icon { color: #f37021; fill: currentColor; stroke: none; }
+body .dematic-case-study .dgf-monogram { display: grid; width: 46px; height: 46px; place-items: center; border-radius: 12px; color: #fff; background: linear-gradient(135deg, #0b1f3a, #1f4f8f); font: 800 26px/1 "Roboto", "Open Sans", Arial, sans-serif; }
+body .dematic-case-study .dgf-tech-name { color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.3; }
 @media (max-width: 1320px) {
-	body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+	body .dematic-case-study .dgf-tech-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
 @media (max-width: 720px) {
-	body .dematic-case-study .dgf-tech-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-	body .dematic-case-study .dgf-tech-list > span { min-height: 120px; }
-	body .dematic-case-study .dgf-tech-list .dematic-tech-logo { height: 52px; }
-	body .dematic-case-study .dgf-tech-list .dematic-tech-logo img { max-height: 46px; }
-	body .dematic-case-study .dgf-tech-list .dgf-wordmark { font-size: 20px; }
-	body .dematic-case-study .dgf-tech-list small { font-size: 13px; }
+	body .dematic-case-study .dgf-tech-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+	body .dematic-case-study .dgf-tech { padding: 16px 8px; gap: 10px; }
+	body .dematic-case-study .dgf-tech-icon-box { width: 60px; height: 60px; border-radius: 16px; }
+	body .dematic-case-study .dgf-tech-icon-box img { max-width: 36px; max-height: 36px; }
+	body .dematic-case-study .dgf-svg-icon,
+	body .dematic-case-study .dgf-monogram { width: 36px; height: 36px; }
+	body .dematic-case-study .dgf-monogram { font-size: 20px; }
+	body .dematic-case-study .dgf-tech-name { font-size: 13px; }
+}
+@media (min-width: 1920px) {
+	body .dematic-case-study .dgf-tech-name { font-size: 16px; }
 }

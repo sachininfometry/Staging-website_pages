@@ -231,7 +231,8 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 
 /*
  * Banner artwork (2560x700, ratio 3.657): its region panels span 55.25%-95% of
- * the image width. The image is height-fitted and pinned right, but positioned
+ * the image width. The image starts 84px below the hero top (its panels reach
+ * the top edge, so this keeps them clear of the menu) and is pinned right, but positioned
  * so the first panel always starts at --dgf-t (40px after the copy ends); where
  * the full-height image would push its panels under the copy (screens up to
  * ~1700px), it is scaled down just enough to keep every panel whole, and the
@@ -243,7 +244,7 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 	.dematic-hero {
 		--dgf-h: clamp(400px, 37.5vw, 540px);
 		--dgf-t: calc(51.8vw - 60px);
-		--dgf-w: min(calc(var(--dgf-h) * 3.657), calc((100vw - 20px - var(--dgf-t)) / .3975));
+		--dgf-w: min(calc((var(--dgf-h) - 84px) * 3.657), calc((100vw - 20px - var(--dgf-t)) / .3975));
 		--dgf-l: max(calc(100vw - var(--dgf-w)), calc(var(--dgf-t) - var(--dgf-w) * .5525));
 		--dgf-ih: calc(var(--dgf-w) / 3.657);
 		height: clamp(400px, 37.5vw, 540px);
@@ -257,7 +258,7 @@ body.infometry-dematic-finance-case-study-page #Header { min-height: 0 !importan
 		pointer-events: none;
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
-			linear-gradient(180deg, #001f47 0, #001f47 calc(100% - var(--dgf-ih)), rgba(0, 31, 71, 0) calc(100% - var(--dgf-ih) + 50px)),
+			linear-gradient(180deg, #001f47 0, #001f47 calc(100% - var(--dgf-ih)), rgba(0, 31, 71, 0) calc(100% - var(--dgf-ih) + 14px)),
 			linear-gradient(90deg, #001f47 0, #001f47 calc(var(--dgf-t) - 30px), rgba(0, 31, 71, 0) calc(var(--dgf-t) + 4px)),
 			url(../images/case-studies/dematic-finance/dematic-finance-hero-v2.jpg) var(--dgf-l) bottom / var(--dgf-w) auto no-repeat;
 	}

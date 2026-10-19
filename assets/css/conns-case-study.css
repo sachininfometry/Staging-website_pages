@@ -1818,3 +1818,6 @@ body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { color: #ff
 @media (max-width: 1024px) {
 	body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-title-tail { white-space: normal; }
 }
+
+/* "Conn's HomePlus" on its own line below "Data Mart for". */
+body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { display: block; margin-top: 7px; }

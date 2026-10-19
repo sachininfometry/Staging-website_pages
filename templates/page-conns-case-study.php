@@ -96,7 +96,7 @@ $outcomes = array(
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
 			<article><span class="dematic-icon"><svg><use href="#cns-server"/></svg></span><p><small>Live Data Replication</small><strong>IBM Db2 to Snowflake</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Enterprise EDW</small><strong>Landing, ODS and EDW environments</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Enterprise EDW</small><strong>Landing, ODS and<br>EDW environments</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#cns-card"/></svg></span><p><small>Credit Data Mart</small><strong>FICO, applications and customer analytics</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#dematic-layers"/></svg></span><p><small>Multiple Sources</small><strong>AS400, Spectrum, Latitude and Tempo</strong></p></article>
 		</div>

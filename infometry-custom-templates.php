@@ -366,7 +366,7 @@ function infometry_ct_should_use_conns_template() {
 		|| infometry_ct_is_conns_route();
 }
 
-/** Match the Dematic Conn's HomePlus case-study path only on staging. */
+/** Match the Conn's HomePlus case-study path only on staging. */
 function infometry_ct_is_conns_route() {
 	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
 		return false;

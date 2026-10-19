@@ -1825,3 +1825,12 @@ body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { display: b
 /* Summary strip icons: Conn's red for replication, orange for the credit data mart. */
 .dgf-case-study.cns-case-study .dematic-facts article:nth-child(1) .dematic-icon { color: #e4202e; }
 .dgf-case-study.cns-case-study .dematic-facts article:nth-child(3) .dematic-icon { color: #f37021; }
+
+/* Summary headings stay on one line at every desktop width (scale with the viewport). */
+@media (min-width: 1101px) {
+	body .dematic-case-study.dgf-case-study.cns-case-study .dematic-facts article small { font-size: clamp(18px, 1.55vw, 26px); white-space: nowrap; }
+	body .dematic-case-study.dgf-case-study.cns-case-study .dematic-facts article { padding-inline: clamp(14px, 1.6vw, 26px); gap: clamp(10px, 1vw, 18px); }
+	body .dematic-case-study.dgf-case-study.cns-case-study .dematic-facts .dematic-icon { width: clamp(44px, 3.6vw, 60px); height: clamp(44px, 3.6vw, 60px); flex-basis: clamp(44px, 3.6vw, 60px); }
+	body .dematic-case-study.dgf-case-study.cns-case-study .dematic-facts .dematic-icon svg { width: 100%; height: 100%; }
+	body .dematic-case-study.dgf-case-study.cns-case-study .dematic-facts article:first-child { padding-left: 0; }
+}

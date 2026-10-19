@@ -1804,3 +1804,17 @@ body .dematic-case-study .cns-tech .dgf-tech { flex-basis: calc((100% - 5 * 14px
 	.cns-goals { padding: 20px; gap: 14px; }
 	.cns-goals li { font-size: 16px; }
 }
+
+/* Title: line 3 matches line 2's size; "Data Mart" continues the cyan service
+   name and "Conn's HomePlus" uses the Conn's brand red. Size is set so the
+   longest line stays on one line at every desktop width. */
+body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-title-tail { margin-top: 7px; font-size: 1em; letter-spacing: -.045em; white-space: nowrap; }
+body .dematic-case-study.cns-case-study .dematic-hero h1 em { font-style: normal; }
+body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-accent { color: #22c8f6; }
+body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { color: #ff2d3a; }
+@media (min-width: 1025px) {
+	body .dematic-case-study.cns-case-study .dematic-hero h1 { font-size: clamp(27px, 2.7vw, 42px); }
+}
+@media (max-width: 1024px) {
+	body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-title-tail { white-space: normal; }
+}

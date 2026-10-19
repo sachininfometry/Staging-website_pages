@@ -76,6 +76,9 @@ $outcomes = array(
 		<symbol id="dgf-bars" viewBox="0 0 24 24"><rect x="2" y="13" width="5" height="9" rx="1"/><rect x="9.5" y="8" width="5" height="14" rx="1"/><rect x="17" y="3" width="5" height="19" rx="1"/></symbol>
 			<symbol id="dematic-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-9"/><path d="M15 6h6v6"/></symbol>
 		<symbol id="exp-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></symbol>
+		<symbol id="exp-hybrid" viewBox="0 0 24 24"><path d="M6 7.5 11 13.5M17.5 6.5 12.5 13M12 15l5.5 4" stroke-width="2.4"/><g fill="currentColor" stroke="none"><circle cx="5" cy="6" r="3.2"/><circle cx="18.5" cy="5" r="3.2"/><circle cx="12" cy="14.5" r="2.6"/><circle cx="18.5" cy="19.5" r="2.8"/></g></symbol>
+		<symbol id="exp-server-fill" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/></g><g stroke="#fff" stroke-width="1.8"><path d="M5.5 7h.01M8.5 7h.01M5.5 17h.01M8.5 17h.01M12 7h6M12 17h6"/></g></symbol>
+		<symbol id="exp-savings" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><ellipse cx="10" cy="5" rx="7.5" ry="2.8"/><path d="M2.5 7.4v3.2c0 1.6 3.4 2.8 7.5 2.8s7.5-1.2 7.5-2.8V7.4c-1.6 1.1-4.4 1.8-7.5 1.8S4.1 8.5 2.5 7.4Z"/><path d="M2.5 13v3.2c0 1.6 3.4 2.8 7.5 2.8.9 0 1.7-.1 2.5-.2a6.5 6.5 0 0 1 1-5.2c-1.1.3-2.2.4-3.5.4-3.1 0-5.9-.7-7.5-1.8Z"/></g><circle cx="18" cy="17" r="5" fill="#16a34a" stroke="none"/><path d="M19.6 15.1c-.3-.5-.9-.8-1.6-.8-.9 0-1.6.5-1.6 1.2 0 1.7 3.3.9 3.3 2.6 0 .7-.7 1.3-1.7 1.3-.7 0-1.4-.3-1.7-.9M18 13.4v7.2" stroke="#fff" stroke-width="1.3"/></symbol>
 		<symbol id="exp-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M7 14h2M11 14h2M15 14h2M7 17.5h2M11 17.5h2"/></symbol>
 		<symbol id="exp-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="M15 8.6c-.6-.9-1.7-1.4-3-1.4-1.8 0-3 .9-3 2.3 0 3.2 6.2 1.7 6.2 4.9 0 1.4-1.3 2.4-3.2 2.4-1.4 0-2.6-.6-3.2-1.6M12 5.5v13"/></symbol>
 		<symbol id="exp-signal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></symbol>
@@ -99,10 +102,10 @@ $outcomes = array(
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
-			<article><span class="dematic-icon"><svg><use href="#exp-calendar"/></svg></span><p><small>12-Week</small><strong>Initial engagement</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>200 TB</small><strong>Clickstream data</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#exp-server"/></svg></span><p><small>40-Node</small><strong>Hadoop cluster</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#exp-dollar"/></svg></span><p><small>$8.5M</small><strong>Projected 2.5-year savings</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#exp-hybrid"/></svg></span><p><small>Hybrid Architecture</small><strong>Hadoop complemented the existing EDW and data marts</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>200 TB</small><strong>Clickstream Data</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#exp-server-fill"/></svg></span><p><small>40-Node</small><strong>Hadoop Cluster</strong></p></article>
+			<article><span class="dematic-icon"><svg><use href="#exp-savings"/></svg></span><p><small>$8.5M</small><strong>Projected Savings over 2.5 years</strong></p></article>
 		</div>
 	</section>
 

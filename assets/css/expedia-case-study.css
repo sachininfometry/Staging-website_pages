@@ -1823,8 +1823,15 @@ body .dematic-case-study.exp-case-study .dematic-hero-copy > p.exp-hero-lead { m
 	body .dematic-case-study.exp-case-study .dematic-hero h1 .exp-title-tail { white-space: normal; }
 }
 
-/* Summary strip icons: calendar blue, data and cluster in the system colours, savings orange. */
-.dgf-case-study.exp-case-study .dematic-facts article:nth-child(4) .dematic-icon { color: #f37021; }
+/* Summary strip: green hybrid nodes, blue filled data and cluster icons, orange
+   savings; headings navy except the orange savings figure. */
+.dgf-case-study.exp-case-study .dematic-facts article:nth-child(1) .dematic-icon { color: #16a34a; }
+.dgf-case-study.exp-case-study .dematic-facts article:nth-child(2) .dematic-icon,
+.dgf-case-study.exp-case-study .dematic-facts article:nth-child(3) .dematic-icon { color: #1f6fe3; }
+.dgf-case-study.exp-case-study .dematic-facts article:nth-child(4) .dematic-icon { color: #f7941d; }
+.dgf-case-study.exp-case-study .dematic-facts article small { color: #0b1f3a; }
+.dgf-case-study.exp-case-study .dematic-facts article:nth-child(4) small { color: #f37021; }
+.dgf-case-study.exp-case-study .dematic-facts strong { color: #1f3147; }
 
 /* Summary headings stay on one line at every desktop width (scale with the viewport). */
 @media (min-width: 1101px) {

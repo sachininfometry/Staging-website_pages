@@ -1841,3 +1841,6 @@ body .dematic-case-study.exp-case-study .dematic-hero-copy > p.exp-hero-lead { m
 	body .dematic-case-study.dgf-case-study.exp-case-study .dematic-facts .dematic-icon svg { width: 100%; height: 100%; }
 	body .dematic-case-study.dgf-case-study.exp-case-study .dematic-facts article:first-child { padding-left: 0; }
 }
+
+/* About image: shown at its own ratio so the hat and suitcase are not cropped. */
+.dgf-case-study.exp-case-study .dgf-client-visual img { aspect-ratio: 1813 / 868; }

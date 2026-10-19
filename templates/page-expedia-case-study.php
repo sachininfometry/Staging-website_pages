@@ -118,7 +118,7 @@ $outcomes = array(
 				<p>Customer interactions, search activity, transactions, marketing signals, and clickstream behavior generate very large volumes of enterprise and analytical data.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $exp_img_url . 'expedia-about.jpg' ); ?>" width="1074" height="622" alt="Passenger jet over the clouds at sunset" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $exp_img_url . 'expedia-about-travel.jpg' ); ?>" width="1813" height="868" alt="Laptop and phone showing the Expedia travel site, with a hat, passport and suitcase" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">

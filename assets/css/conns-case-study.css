@@ -1821,3 +1821,7 @@ body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { color: #ff
 
 /* "Conn's HomePlus" on its own line below "Data Mart for". */
 body .dematic-case-study.cns-case-study .dematic-hero h1 .cns-brand { display: block; margin-top: 7px; }
+
+/* Summary strip icons: Conn's red for replication, orange for the credit data mart. */
+.dgf-case-study.cns-case-study .dematic-facts article:nth-child(1) .dematic-icon { color: #e4202e; }
+.dgf-case-study.cns-case-study .dematic-facts article:nth-child(3) .dematic-icon { color: #f37021; }

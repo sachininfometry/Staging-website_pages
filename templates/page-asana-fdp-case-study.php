@@ -101,25 +101,53 @@ $outcomes = array(
 		<symbol id="fdp-events" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></symbol>
 	</svg>
 
-	<section class="dematic-hero" aria-labelledby="dematic-title">
-		<div class="dematic-shell dematic-hero-inner">
-			<div class="dematic-hero-copy">
-				<p class="dematic-eyebrow">Case Study</p>
-				<h1 id="dematic-title"><span>Modernizing Asana&rsquo;s</span><strong>Financial Data Platform</strong><span class="dematic-title-tail fdp-title-tail">on <em class="fdp-brand">Snowflake</em></span></h1>
-				<p>A modular, governed architecture for faster financial insights and scalable enterprise analytics.</p>
+	<div class="ics fdp-banner">
+		<svg class="ics-sprite" aria-hidden="true" focusable="false">
+		<symbol id="ics-chart" viewBox="0 0 24 24"><path d="M4 20V11h4v9m4 0V4h4v16m4 0V8h4v12M2 20h22"/></symbol>
+		<symbol id="ics-bolt" viewBox="0 0 24 24"><path d="m14 2-9 12h7l-2 8 9-12h-7l2-8Z"/></symbol>
+		<symbol id="ics-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 6h14M5 6l-3 6h6L5 6Zm14 0-3 6h6l-3-6ZM7 21h10"/></symbol>
+		<symbol id="ics-users" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-4 2-6 6-6s6 2 6 6m1-5c4 0 7 1.8 7 5"/></symbol>
+		<symbol id="ics-building" viewBox="0 0 24 24"><path d="M4 21V6h9v15m0-10h7v10M7 10h2m-2 4h2m-2 4h2m8-3h-2m2 3h-2M2 21h20"/></symbol>
+		<symbol id="ics-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+		<symbol id="ics-target" viewBox="0 0 24 24"><circle cx="10" cy="14" r="8"/><circle cx="10" cy="14" r="4"/><path d="m10 14 11-11m-5 0h5v5"/></symbol>
+		<symbol id="ics-link" viewBox="0 0 24 24"><path d="m9 15 6-6M7.5 18H6a4 4 0 0 1 0-8h3m7.5-4H18a4 4 0 0 1 0 8h-3"/></symbol>
+		<symbol id="ics-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
+		<symbol id="ics-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3 9 8 11 5-2 8-6 8-11V5l-8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+		<symbol id="ics-cube" viewBox="0 0 24 24"><path d="m12 2 9 5v10l-9 5-9-5V7l9-5Z"/><path d="m3 7 9 5 9-5m-9 5v10"/></symbol>
+		<symbol id="ics-nodes" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="18" r="3"/><circle cx="19" cy="18" r="3"/><path d="m10.5 7.5-4 8m7-8 4 8M8 18h8"/></symbol>
+		<symbol id="ics-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 13.5v-3l-2-.7-.7-1.7.9-1.9-2.1-2.1-1.9.9-1.7-.7L10.8 2h-3l-.7 2.3-1.7.7-1.9-.9-2.1 2.1.9 1.9-.7 1.7-2 .7v3l2 .7.7 1.7-.9 1.9 2.1 2.1 1.9-.9 1.7.7.7 2.3h3l.7-2.3 1.7-.7 1.9.9 2.1-2.1-.9-1.9.7-1.7 2-.7Z" transform="translate(1)"/></symbol>
+		<symbol id="ics-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.5 7l17 10m0-10-17 10M8 4l4 2 4-2M8 20l4-2 4 2M3 11l3 1-3 2m18-3-3 1 3 2"/></symbol>
+		<symbol id="ics-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+	</svg>
+		<section class="ics-hero" aria-labelledby="ics-title">
+		<img class="ics-hero-final" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/case-studies/asana-fdp-hero-final.png' ); ?>" width="1960" height="802" alt="" aria-hidden="true">
+		<div class="ics-shell ics-hero-inner">
+			<div class="ics-hero-copy">
+				<p class="ics-kicker">Case Study</p>
+				<h1 id="ics-title"><span class="ics-title-main">Financial Data Platform</span><em>(FDP 2.0)</em><span class="ics-title-sub">Modernization on<br>the Snowflake AI Data Cloud</span></h1>
+				<p>How Infometry helped Asana modernize its financial data platform to drive faster insights, greater scalability and smarter decision-making with Snowflake's AI Data Cloud.</p>
 			</div>
-			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-hero.jpg' ); ?>" width="1957" height="804" alt="Asana office building at dusk with streams of data">
-			</figure>
+			<div class="ics-hero-visual" aria-label="Benefits of the Snowflake AI Data Cloud platform">
+				<span class="ics-asana-sign"><i aria-hidden="true"><b></b><b></b><b></b></i><strong>asana</strong></span>
+				<div class="ics-cloud"><svg><use href="#ics-snow"/></svg></div>
+				<span class="ics-float f1"><svg><use href="#ics-chart"/></svg>Real-time<br>Financial Analytics</span>
+				<span class="ics-float f2"><svg><use href="#ics-gear"/></svg>AI-Powered<br>Insights</span>
+				<span class="ics-float f3"><svg><use href="#ics-shield"/></svg>Secure &amp;<br>Governed Data</span>
+				<span class="ics-float f4"><svg><use href="#ics-chart"/></svg>Future-Ready<br>Growth</span>
+			</div>
+			<div class="ics-hero-benefits">
+				<span><svg><use href="#ics-chart"/></svg>Unified<br>Financial Data</span><span><svg><use href="#ics-bolt"/></svg>Faster<br>Insights</span><span><svg><use href="#ics-scale"/></svg>Scalable<br>Architecture</span><span><svg><use href="#ics-users"/></svg>Empowered<br>Teams</span>
+			</div>
 		</div>
 	</section>
+	</div>
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
 			<article><span class="dematic-icon"><svg><use href="#fdp-gauge"/></svg></span><p><small>60%</small><strong>Pipeline Performance Improvement</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Incremental</small><strong>Data Processing</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#fdp-shield-fill"/></svg></span><p><small>Governed</small><strong>Financial Data</strong></p></article>
-			<article><span class="dematic-icon"><svg><use href="#dematic-snow"/></svg></span><p><small>Snowflake</small><strong>AI Data Cloud</strong></p></article>
+			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="" width="182" height="182"></span><p><small>Snowflake</small><strong>AI Data Cloud</strong></p></article>
 		</div>
 	</section>
 
@@ -128,7 +156,14 @@ $outcomes = array(
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
 				<a class="fdp-client-logo" href="https://asana.com/" aria-label="Visit the Asana website"><img src="<?php echo esc_url( $img_url . 'customer-asana-logo.png' ); ?>" alt="Asana" width="300" height="92" loading="lazy" decoding="async"></a>
-				<p>Asana is a global SaaS company that relies on financial and operational data to track MRR, ARR, customer lifetime value, churn, and new-logo acquisition.</p>
+				<p>Asana is a global SaaS company that relies on financial and operational data to track MRR, ARR, customer lifetime value, churn, and new-logo acquisition. These insights are essential for executive decision-making, financial planning, and business performance management.</p>
+				<p>Asana&rsquo;s Financial Data Platform (FDP 2.0) integrates data from Zuora, Salesforce, NetSuite, and Product Events to provide a unified foundation for enterprise reporting and analytics.</p>
+				<dl class="fdp-client-facts">
+					<div><dt>Industry</dt><dd>SaaS</dd></div>
+					<div><dt>Headquarters</dt><dd>San Francisco, CA</dd></div>
+					<div><dt>Platform</dt><dd>Snowflake AI Data Cloud</dd></div>
+					<div><dt>Focus Area</dt><dd>Financial Data Platform Modernization</dd></div>
+				</dl>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
 				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-about.jpg' ); ?>" width="1536" height="1024" alt="Asana, Infometry and Snowflake connected on one data platform" loading="lazy" decoding="async">
@@ -137,7 +172,9 @@ $outcomes = array(
 		<div class="dematic-shell dematic-objective-grid">
 			<div>
 				<h2>Business Objective</h2>
+				<p class="dgf-lead">Modernize FDP 2.0 on the Snowflake AI Data Cloud</p>
 				<p>Modernize FDP 2.0 to improve scalability, maintainability, governance, and financial reporting using Snowflake-native capabilities.</p>
+				<p>Infometry was engaged to assess, redesign, and modernize the existing platform with a modular architecture that simplifies data integration, accelerates financial reporting, strengthens governance, and establishes a scalable foundation for enterprise analytics and future growth.</p>
 			</div>
 			<ul class="fdp-goals" aria-label="Objectives">
 				<li><i><svg aria-hidden="true"><use href="#fdp-check"/></svg></i>Scalable platform for growing data volumes</li>
@@ -200,7 +237,7 @@ $outcomes = array(
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col fdp-col">
 					<h3 class="fdp-col-head is-sky">Snowflake FDP 2.0 Layers</h3>
-					<img class="fdp-mark" src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182" loading="lazy">
+					<img class="fdp-sf-wordmark" src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy">
 					<ol class="fdp-layers" aria-label="FDP 2.0 data layers">
 						<li><i class="is-blue"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>EDL</b><small>Extract, Detailed Load</small></li>
 						<li><i class="is-orange"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>ESL</b><small>Enterprise Staging Layer</small></li>
@@ -238,7 +275,7 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Asana&rsquo;s financial data platform modernization.</p></div>
 			<div class="dgf-tech-grid fdp-tech">
-				<div class="dgf-tech" style="--tint:#e7f6fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182" loading="lazy"></span><span class="dgf-tech-name">Snowflake AI Data Cloud</span></div>
+				<div class="dgf-tech fdp-tech-snowflake"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy"></span><span class="dgf-tech-name">AI Data Cloud</span></div>
 				<div class="dgf-tech" style="--tint:#eef6ff"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" alt="Apache Airflow" width="192" height="192" loading="lazy"></span><span class="dgf-tech-name">Apache Airflow</span></div>
 				<div class="dgf-tech" style="--tint:#e6f6f7"><span class="dgf-tech-icon-box fdp-zuora-mark"><svg aria-hidden="true"><use href="#fdp-zuora"/></svg></span><span class="dgf-tech-name">Zuora</span></div>
 				<div class="dgf-tech" style="--tint:#e8f4fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" alt="Salesforce" width="267" height="188" loading="lazy"></span><span class="dgf-tech-name">Salesforce</span></div>

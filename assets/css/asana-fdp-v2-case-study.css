@@ -2001,3 +2001,98 @@ body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) st
 	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon { width: clamp(52px, 4.3vw, 68px); flex-basis: clamp(52px, 4.3vw, 68px); }
 	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon svg { width: 100%; height: auto; }
 }
+
+/* ================================================================== Asana FDP banner */
+/* Original FDP 2.0 artwork (cards, Snowflake cloud, Asana building) on the shared
+   case-study hero: copy on the body's left edge at every width, fixed height on
+   big screens. Artwork 1360x802, left edge already feathered into #01213e; the
+   first card starts 27.18% of the artwork height from its left edge.
+   --fdp-l is where the artwork starts: pinned right, but never so far left that
+   it reaches the copy column. */
+@media (min-width: 1025px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero {
+		--fdp-h: clamp(500px, 40vw, 640px);
+		--fdp-w: calc(var(--fdp-h) * 1.6958);
+		--fdp-cw: clamp(380px, 40vw, 560px);
+		--fdp-cl: 50px;
+		--fdp-l: max(calc(100vw - var(--fdp-w)), calc(var(--fdp-cl) + var(--fdp-cw) + 30px - var(--fdp-h) * .2718));
+		height: var(--fdp-h);
+		background: #01213e;
+	}
+	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-inner::before {
+		background:
+			linear-gradient(180deg, rgba(0, 18, 40, .72) 0, rgba(0, 18, 40, 0) 130px),
+			linear-gradient(90deg, #01213e 0, #01213e var(--fdp-l), rgba(1, 33, 62, 0) calc(var(--fdp-l) + 2px)),
+			url(../images/case-studies/asana-fdp-banner-art.jpg) var(--fdp-l) center / auto 100% no-repeat,
+			#01213e;
+	}
+	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-copy { width: var(--fdp-cw); max-width: none; }
+}
+@media (min-width: 1441px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-cl: calc(50vw - 670px); }
+}
+
+/* Title as in the original banner: bold line, cyan (FDP 2.0), two lighter lines. */
+body .dematic-case-study.fdp-case-study .fdp-hero h1 span:first-child { white-space: nowrap; }
+body .dematic-case-study.fdp-case-study .fdp-hero h1 strong { color: #2bbcff; white-space: nowrap; }
+body .dematic-case-study.fdp-case-study .fdp-hero h1 .fdp-title-light { display: block; margin-top: 4px; font-size: .78em; font-weight: 500; letter-spacing: -.025em; line-height: 1.12; }
+body .dematic-case-study.fdp-case-study .fdp-hero h1 .fdp-title-light + .fdp-title-light { margin-top: 0; }
+@media (min-width: 1025px) {
+	body .dematic-case-study.fdp-case-study .fdp-hero h1 { font-size: clamp(34px, 3vw, 50px); }
+	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: clamp(14px, 1.1vw, 18px); }
+}
+
+/* Highlights row under the copy (from the original banner). */
+.fdp-hero-points { display: flex; margin: 26px 0 0; padding: 0; gap: 0; list-style: none; }
+.fdp-hero-points li { display: flex; margin: 0; padding: 0 18px; align-items: center; gap: 10px; border-left: 1px solid rgba(255, 255, 255, .22); color: #fff; font-size: 12px; font-weight: 700; line-height: 1.25; }
+.fdp-hero-points li:first-child { padding-left: 0; border-left: 0; }
+.fdp-hero-points li::before { display: none; }
+.fdp-hero-points i { display: grid; width: 40px; height: 40px; flex: 0 0 40px; place-items: center; border: 1px solid rgba(255, 255, 255, .6); border-radius: 50%; }
+.fdp-hero-points svg { width: 20px; height: 20px; }
+@media (min-width: 1600px) {
+	.fdp-hero-points li { font-size: 13px; }
+	.fdp-hero-points i { width: 44px; height: 44px; flex-basis: 44px; }
+}
+@media (max-width: 1024px) {
+	.fdp-hero-points { flex-wrap: wrap; row-gap: 14px; }
+	.fdp-hero-points li { flex: 0 0 50%; padding: 0; border-left: 0; }
+}
+
+/* Highlights: one row of four from 1440px, 2 x 2 below so they never reach the artwork. */
+.fdp-hero-points li { white-space: nowrap; padding-inline: 14px; }
+.fdp-hero-points i { width: 36px; height: 36px; flex-basis: 36px; }
+.fdp-hero-points svg { width: 18px; height: 18px; }
+@media (min-width: 1025px) and (max-width: 1439px) {
+	.fdp-hero-points { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px 28px; margin-top: 20px; }
+	.fdp-hero-points li, .fdp-hero-points li:first-child { padding: 0; border-left: 0; }
+}
+
+/* Very wide screens: the banner grows with the viewport so the artwork keeps its
+   size next to the copy instead of leaving a wide empty band. */
+@media (min-width: 1921px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-h: max(640px, 26vw); --fdp-cw: 600px; }
+	body .dematic-case-study.fdp-case-study .fdp-hero h1 { font-size: clamp(50px, 2.2vw, 64px); }
+	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: clamp(18px, .8vw, 22px); }
+	.fdp-hero-points li { font-size: 14px; }
+}
+
+/* Enough banner height for the four-line title on laptop screens; title lines never wrap on desktop. */
+@media (min-width: 1025px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-h: clamp(570px, 42vw, 640px); }
+	body .dematic-case-study.fdp-case-study .fdp-hero h1 .fdp-title-light { white-space: nowrap; }
+}
+@media (min-width: 1921px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-h: max(640px, 26vw); --fdp-cw: 700px; }
+}
+@media (min-width: 1025px) and (max-width: 1279px) {
+	/* Narrow desktops: slimmer copy column so the Asana sign on the building stays in view. */
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-cw: 400px; }
+}
+@media (max-width: 1024px) {
+	/* Tablet and phone: title lines wrap naturally. */
+	body .dematic-case-study.fdp-case-study .fdp-hero h1 span:first-child,
+	body .dematic-case-study.fdp-case-study .fdp-hero h1 strong { white-space: normal; }
+}
+@media (max-width: 1024px) {
+	.fdp-hero-points li, .fdp-hero-points li:first-child { padding-inline: 0; }
+}

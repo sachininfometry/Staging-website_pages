@@ -1979,10 +1979,25 @@ body .dematic-case-study .dgf-col img.fdp-sf-wordmark { display: block; width: a
 .dgf-case-study.fdp-case-study .dgf-client-visual img { aspect-ratio: 1710 / 920; object-position: center; }
 .dgf-case-study.fdp-case-study .dematic-about-grid { align-items: center; }
 
-/* Summary strip: 60% card uses the same two-line bold label style as the other three. */
-.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small { margin-bottom: 0; color: #0b1f3a; font-size: 18px; font-weight: 700; line-height: 1.25; }
-.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { color: #0b1f3a; font-size: 18px; font-weight: 700; line-height: 1.25; }
+/* Summary strip, as in the mockup: big blue 60% over a regular two-line caption;
+   the other three are two equal semibold navy lines; large icons; Snowflake mark
+   with its registered sign. */
+body .dematic-case-study.fdp-case-study .dematic-facts article { align-items: center; gap: 18px; }
+body .dematic-case-study.fdp-case-study .dematic-facts .dematic-icon { width: 56px; height: 56px; flex: 0 0 56px; }
+body .dematic-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon { width: 62px; flex-basis: 62px; }
+body .dematic-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon svg { width: 62px; height: 44px; stroke: none; }
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(1) small { margin: 0 0 4px; color: #1f6fe3; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 38px; font-weight: 800; letter-spacing: -.01em; line-height: 1; }
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { color: #24364d; font-size: 15px; font-weight: 500; line-height: 1.35; }
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) small,
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) strong { margin: 0; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0; line-height: 1.35; white-space: nowrap; }
+.fdp-sf-mark { position: relative; }
+.fdp-reg { position: absolute; top: -4px; right: -10px; color: #29b5e8; font: 700 11px/1 Arial, sans-serif; }
 @media (min-width: 1101px) {
-	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small,
-	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { font-size: clamp(16px, 1.25vw, 20px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small { font-size: clamp(32px, 2.6vw, 42px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { font-size: clamp(14px, 1.05vw, 17px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) small,
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) strong { font-size: clamp(15px, 1.15vw, 18px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .dematic-icon { width: clamp(46px, 3.8vw, 60px); height: clamp(46px, 3.8vw, 60px); flex-basis: clamp(46px, 3.8vw, 60px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon { width: clamp(52px, 4.3vw, 68px); flex-basis: clamp(52px, 4.3vw, 68px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .fdp-gauge-icon svg { width: 100%; height: auto; }
 }

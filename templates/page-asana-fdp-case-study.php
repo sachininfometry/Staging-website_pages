@@ -86,7 +86,8 @@ $outcomes = array(
 		<symbol id="fdp-signal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></symbol>
 		<symbol id="fdp-mapreduce" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2.2"/><circle cx="5" cy="12" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="12" r="2.6"/><path d="M7.2 5.6 16.6 11M7.2 12h9.2M7.2 18.4l9.4-5.4"/></symbol>
 		<symbol id="fdp-cluster" viewBox="0 0 24 24"><rect x="2.5" y="3" width="8" height="8" rx="1.5"/><rect x="13.5" y="3" width="8" height="8" rx="1.5"/><rect x="2.5" y="13" width="8" height="8" rx="1.5"/><rect x="13.5" y="13" width="8" height="8" rx="1.5"/></symbol>
-			<symbol id="fdp-gauge" viewBox="0 0 24 24"><path d="M3 17a9 9 0 1 1 18 0" stroke-width="2.4"/><path d="M12 17l4.5-6" stroke-width="2.4"/><circle cx="12" cy="17" r="1.8" fill="currentColor" stroke="none"/><path d="M5.6 11.3l1.2.9M12 7.2v1.5M18.4 11.3l-1.2.9"/></symbol>
+			<symbol id="fdp-gauge2" viewBox="0 0 48 34"><defs><linearGradient id="fdp-gauge-grad" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6a5cf0"/><stop offset="1" stop-color="#1f8cf0"/></linearGradient></defs><path d="M5 29a19 19 0 0 1 38 0" fill="none" stroke="url(#fdp-gauge-grad)" stroke-width="5" stroke-linecap="round"/><path d="M10.6 15.6l2.6 1.9M24 9.4v3.2M37.4 15.6l-2.6 1.9" fill="none" stroke="#9aa9f4" stroke-width="2" stroke-linecap="round"/><path d="M24 29l9-12" fill="none" stroke="#1e40af" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="29" r="3.8" fill="#1e40af"/></symbol>
+		<symbol id="fdp-gauge" viewBox="0 0 24 24"><path d="M3 17a9 9 0 1 1 18 0" stroke-width="2.4"/><path d="M12 17l4.5-6" stroke-width="2.4"/><circle cx="12" cy="17" r="1.8" fill="currentColor" stroke="none"/><path d="M5.6 11.3l1.2.9M12 7.2v1.5M18.4 11.3l-1.2.9"/></symbol>
 		<symbol id="fdp-shield-fill" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3 9 8 11 5-2 8-6 8-11V5l-8-3Z" stroke-width="2.2"/><path d="m8 12 3 3 5-6" stroke-width="2.4"/></symbol>
 		<symbol id="fdp-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="currentColor" stroke="none"/><path d="m7.5 12.3 3 3 6-6.3" stroke="#fff" stroke-width="2.2"/></symbol>
 		<symbol id="fdp-checklist" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m7.5 8 1.3 1.3L11 7M13 8.3h4M7.5 13l1.3 1.3L11 12M13 13.3h4M8 17.5h9"/></symbol>
@@ -144,10 +145,10 @@ $outcomes = array(
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
-			<article><span class="dematic-icon"><svg><use href="#fdp-gauge"/></svg></span><p><small>60%</small><strong>Pipeline Performance Improvement</strong></p></article>
+			<article><span class="dematic-icon fdp-gauge-icon"><svg viewBox="0 0 48 34"><use href="#fdp-gauge2"/></svg></span><p><small>60%</small><strong>Pipeline Performance Improvement</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Incremental</small><strong>Data Processing</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#fdp-shield-fill"/></svg></span><p><small>Governed</small><strong>Financial Data</strong></p></article>
-			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="" width="182" height="182"></span><p><small>Snowflake</small><strong>AI Data Cloud</strong></p></article>
+			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span><p><small>Snowflake</small><strong>AI Data Cloud</strong></p></article>
 		</div>
 	</section>
 

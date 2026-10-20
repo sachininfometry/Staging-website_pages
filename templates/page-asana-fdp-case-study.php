@@ -123,7 +123,7 @@ $outcomes = array(
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
-			<article><span class="dematic-icon fdp-gauge-icon"><svg viewBox="0 0 48 34"><use href="#fdp-gauge2"/></svg></span><p><small>60%</small><strong>Pipeline Performance Improvement</strong></p></article>
+			<article><span class="dematic-icon fdp-gauge-icon"><svg viewBox="0 0 48 34"><use href="#fdp-gauge2"/></svg></span><p><small>60% Pipeline</small><strong>Performance Improvement</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Incremental</small><strong>Data Processing</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#fdp-shield-fill"/></svg></span><p><small>Governed</small><strong>Financial Data</strong></p></article>
 			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span><p><small>Snowflake</small><strong>AI Data Cloud</strong></p></article>

@@ -2096,3 +2096,24 @@ body .dematic-case-study.fdp-case-study .fdp-hero h1 .fdp-title-light + .fdp-tit
 @media (max-width: 1024px) {
 	.fdp-hero-points li, .fdp-hero-points li:first-child { padding-inline: 0; }
 }
+
+/* Banner: the artwork always starts right after the copy (no empty navy band on big
+   screens); it widens to the right edge and keeps its top (cards) in view. */
+@media (min-width: 1025px) {
+	body .dematic-case-study.fdp-case-study .dematic-hero.fdp-hero { --fdp-l: calc(var(--fdp-cl) + var(--fdp-cw) + 30px - var(--fdp-h) * .2718); }
+	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-inner::before {
+		background:
+			linear-gradient(180deg, rgba(0, 18, 40, .72) 0, rgba(0, 18, 40, 0) 130px),
+			linear-gradient(90deg, #01213e 0, #01213e var(--fdp-l), rgba(1, 33, 62, 0) calc(var(--fdp-l) + 2px)),
+			url(../images/case-studies/asana-fdp-banner-art.jpg) var(--fdp-l) top / max(var(--fdp-w), calc(100vw - var(--fdp-l))) auto no-repeat,
+			#01213e;
+	}
+}
+
+/* Summary strip: the 60% card uses the same two-line semibold text as the other cards. */
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(1) small,
+body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { margin: 0; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0; line-height: 1.35; white-space: nowrap; }
+@media (min-width: 1101px) {
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small,
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { font-size: clamp(15px, 1.15vw, 18px); }
+}

@@ -1862,3 +1862,86 @@ body .dematic-case-study.fdp-case-study .dematic-hero h1 strong { white-space: n
 	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts .dematic-icon svg { width: 100%; height: 100%; }
 	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:first-child { padding-left: 0; }
 }
+
+/* ================================================================== Asana FDP: mockup layout */
+/* Summary strip: one light-blue rounded card; 60% big and blue, the others two-line bold labels. */
+.dgf-case-study.fdp-case-study .dematic-facts { padding: 26px 0 14px; }
+.dgf-case-study.fdp-case-study .dematic-facts-grid { padding: 22px 28px; border: 1px solid #d6e6f6; border-radius: 16px; background: linear-gradient(180deg, #eef6ff, #f7fbff); box-shadow: 0 12px 30px rgba(16, 75, 117, .07); }
+.dgf-case-study.fdp-case-study .dematic-facts article { align-items: center; }
+.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) small { margin-bottom: 0; font-size: 18px; font-weight: 700; line-height: 1.25; }
+.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) strong { color: #0b1f3a; font-size: 18px; font-weight: 700; line-height: 1.25; }
+@media (min-width: 1101px) {
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small { font-size: clamp(28px, 2.3vw, 38px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) small { font-size: clamp(16px, 1.25vw, 20px); }
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) strong { font-size: clamp(16px, 1.25vw, 20px); }
+}
+@media (max-width: 720px) {
+	.dgf-case-study.fdp-case-study .dematic-facts-grid { padding: 18px; }
+}
+
+/* About: larger Asana wordmark. */
+.fdp-client-logo img { height: 64px; }
+
+/* Challenges: coloured circle icon on the left, title and text on the right. */
+.fdp-challenges article { display: flex; align-items: flex-start; gap: 18px; }
+.fdp-ch-icon { display: grid; width: 58px; height: 58px; flex: 0 0 58px; place-items: center; border-radius: 50%; color: #fff; box-shadow: 0 10px 22px rgba(0, 0, 0, .25); }
+.fdp-ch-icon svg { width: 28px; height: 28px; stroke-width: 2; }
+.fdp-challenges article:nth-child(1) .fdp-ch-icon { background: linear-gradient(135deg, #2f8cff, #1f5fd6); }
+.fdp-challenges article:nth-child(2) .fdp-ch-icon { background: linear-gradient(135deg, #f7a531, #e07b10); }
+.fdp-challenges article:nth-child(3) .fdp-ch-icon { background: linear-gradient(135deg, #8b5cf6, #6a3fd0); }
+.fdp-challenges article:nth-child(4) .fdp-ch-icon { background: linear-gradient(135deg, #2fbf71, #179452); }
+.fdp-challenges article:nth-child(5) .fdp-ch-icon { background: linear-gradient(135deg, #f25f8b, #d93b6a); }
+.fdp-challenges article:nth-child(6) .fdp-ch-icon { background: linear-gradient(135deg, #2f8cff, #1f5fd6); }
+.fdp-challenges h3 { margin-top: 2px; }
+
+/* Approach: number-only chevrons (blue, orange, green, purple, blue); title inside each card. */
+.fdp-stages li { justify-content: flex-start; }
+.fdp-stages li:nth-child(1), .fdp-stages li:nth-child(5) { background: linear-gradient(90deg, #1f6fe3, #2f8cff); }
+.fdp-stages li:nth-child(2) { background: linear-gradient(90deg, #f37021, #f7941d); }
+.fdp-stages li:nth-child(3) { background: linear-gradient(90deg, #1f9d55, #2fb36a); }
+.fdp-stages li:nth-child(4) { background: linear-gradient(90deg, #6a3fd0, #8754e0); }
+.fdp-approach { margin: 0; padding: 0; list-style: none; counter-reset: fdp-step; }
+.fdp-approach li { display: flex; min-width: 0; margin: 0; padding: 24px 18px; flex-direction: column; align-items: center; gap: 12px; border: 1px solid var(--dematic-line); border-radius: 12px; background: #fff; box-shadow: 0 10px 25px rgba(23, 78, 118, .055); text-align: center; counter-increment: fdp-step; }
+.fdp-approach li::before { display: none; }
+.dgf-approach-grid.fdp-approach li:nth-child(1) .dematic-icon, .dgf-approach-grid.fdp-approach li:nth-child(5) .dematic-icon { color: #1f6fe3; }
+.dgf-approach-grid.fdp-approach li:nth-child(2) .dematic-icon { color: #f37021; }
+.dgf-approach-grid.fdp-approach li:nth-child(3) .dematic-icon { color: #1f9d55; }
+.dgf-approach-grid.fdp-approach li:nth-child(4) .dematic-icon { color: #6a3fd0; }
+body .dematic-case-study .fdp-approach h3 { margin: 0; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 17px; font-weight: 700; line-height: 1.3; }
+@media (max-width: 960px) {
+	.fdp-stages { display: none; }
+	.fdp-approach li:last-child { grid-column: 1 / -1; }
+	.fdp-approach li::before { content: counter(fdp-step); display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: #fff; background: #1f6fe3; font: 700 15px/1 "Roboto", "Open Sans", sans-serif; }
+	.fdp-approach li:nth-child(2)::before { background: #f37021; }
+	.fdp-approach li:nth-child(3)::before { background: #1f9d55; }
+	.fdp-approach li:nth-child(4)::before { background: #6a3fd0; }
+}
+
+/* Architecture: uppercase header bars; arrows between the EDL, ESL and EDW layers. */
+body .dematic-case-study .dgf-col h3.fdp-col-head { font-size: 13px; letter-spacing: .05em; text-transform: uppercase; }
+.fdp-layers li { position: relative; }
+.fdp-layers li:not(:last-child)::after { content: "\2192"; position: absolute; top: 10px; right: -10px; color: #1f6fe3; font-size: 18px; font-weight: 700; line-height: 1; }
+
+/* Outcomes: blue, orange, green, purple tints; 60% as a big figure, the rest as a bold lead-in. */
+.dgf-outcome-grid.fdp-outcomes article { align-items: center; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(1) { background: #eef5ff; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(2) { background: #fff5ec; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(3) { background: #eefaf2; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(4) { background: #f4efff; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(1) .dematic-icon, .dgf-outcome-grid.fdp-outcomes article:nth-child(1) strong { color: #1f6fe3; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(2) .dematic-icon { color: #f37021; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(3) .dematic-icon { color: #16a34a; }
+.dgf-outcome-grid.fdp-outcomes article:nth-child(4) .dematic-icon { color: #6a3fd0; }
+body .dematic-case-study.fdp-case-study .fdp-outcomes strong { font-size: 40px; line-height: 1; letter-spacing: -.02em; }
+body .dematic-case-study.fdp-case-study .fdp-outcomes .fdp-outcome-text { margin: 0; color: #1f3147; font-size: 17px; line-height: 1.45; }
+.fdp-outcome-text b { color: #0b1f3a; font-weight: 700; }
+
+/* Technologies: logo and name side by side, like a wordmark tile. */
+body .dematic-case-study .fdp-tech .dgf-tech { flex-direction: row; justify-content: center; align-items: center; gap: 10px; padding: 18px 12px; }
+body .dematic-case-study .fdp-tech .dgf-tech-icon-box { width: auto; height: auto; border-radius: 0; background: none; }
+body .dematic-case-study .fdp-tech .dgf-tech-icon-box img { max-width: 40px; max-height: 40px; }
+body .dematic-case-study .fdp-tech .dgf-tech-icon-box svg { width: 34px; height: 34px; }
+body .dematic-case-study .fdp-tech .dgf-tech-name { min-height: 0; align-items: center; font-size: 16px; font-weight: 800; text-align: left; }
+
+/* CTA: short orange rule above the heading. */
+.dgf-cta.dematic-final-cta .dematic-final-inner h2::before { content: ""; display: block; width: 54px; height: 4px; margin-bottom: 18px; border-radius: 2px; background: #f7941d; }

@@ -39,10 +39,10 @@ $approach = array(
 );
 
 $outcomes = array(
-	array( 'dgf-bars', '60% Improvement', 'In data pipeline performance' ),
-	array( 'dgf-db-fill', 'Reduced Compute Consumption', 'Through optimized incremental loading' ),
-	array( 'dematic-shield', 'Improved Governance', 'Lineage and data quality' ),
-	array( 'dgf-gear-check', 'More Maintainable', 'Modular architecture with Airflow orchestration' ),
+	array( 'fdp-unified', '60%', 'Improvement in data pipeline performance' ),
+	array( 'dgf-db-fill', 'Reduced compute consumption', ' through optimized incremental loading.' ),
+	array( 'fdp-shield-fill', 'Improved governance,', ' lineage and data quality.' ),
+	array( 'dgf-gear-check', '', 'More maintainable modular architecture with Airflow orchestration.' ),
 );
 ?>
 
@@ -153,7 +153,7 @@ $outcomes = array(
 			<div class="dematic-section-heading"><h2>Business Challenges</h2><p>A growing need for scalability, governance, and flexibility in financial data processing.</p></div>
 			<div class="dgf-challenge-grid fdp-challenges">
 				<?php foreach ( $challenges as $index => $item ) : ?>
-					<article><header><span class="dgf-badge"><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span><span class="dematic-icon"><svg><use href="#dematic-<?php echo esc_attr( $item[0] ); ?>"/></svg></span></header><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></article>
+					<article><span class="fdp-ch-icon"><svg aria-hidden="true"><use href="#dematic-<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></div></article>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -162,16 +162,16 @@ $outcomes = array(
 	<section class="dematic-section dematic-solution dgf-approach" id="infometry-approach">
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Infometry Approach</h2><p>A phased approach to modernize Asana&rsquo;s financial data platform on Snowflake.</p></div>
-			<ol class="dgf-stages" aria-label="Infometry approach steps">
+			<ol class="dgf-stages fdp-stages" aria-hidden="true">
 				<?php foreach ( $approach as $index => $item ) : ?>
-					<li><span class="dgf-stage-num"><?php echo esc_html( (string) ( $index + 1 ) ); ?></span><span><?php echo esc_html( $item[1] ); ?></span></li>
+					<li><span class="dgf-stage-num"><?php echo esc_html( (string) ( $index + 1 ) ); ?></span></li>
 				<?php endforeach; ?>
 			</ol>
-			<div class="dgf-approach-grid">
+			<ol class="dgf-approach-grid fdp-approach" aria-label="Infometry approach steps">
 				<?php foreach ( $approach as $item ) : ?>
-					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><p><?php echo esc_html( $item[2] ); ?></p></article>
+					<li><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><h3><?php echo esc_html( $item[1] ); ?></h3><p><?php echo esc_html( $item[2] ); ?></p></li>
 				<?php endforeach; ?>
-			</div>
+			</ol>
 		</div>
 	</section>
 
@@ -228,7 +228,7 @@ $outcomes = array(
 			<div class="dematic-section-heading"><h2>Key Business Outcomes</h2><p>A modernized financial data platform delivering measurable impact.</p></div>
 			<div class="dgf-outcome-grid fdp-outcomes">
 				<?php foreach ( $outcomes as $item ) : ?>
-					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><strong><?php echo esc_html( $item[1] ); ?></strong><p><?php echo esc_html( $item[2] ); ?></p></div></article>
+					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><div><?php if ( '60%' === $item[1] ) : ?><strong><?php echo esc_html( $item[1] ); ?></strong><p><?php echo esc_html( $item[2] ); ?></p><?php else : ?><p class="fdp-outcome-text"><?php if ( '' !== $item[1] ) : ?><b><?php echo esc_html( $item[1] ); ?></b><?php endif; ?><?php echo esc_html( $item[2] ); ?></p><?php endif; ?></div></article>
 				<?php endforeach; ?>
 			</div>
 		</div>

@@ -216,7 +216,7 @@ $outcomes = array(
 						<li><i class="is-orange"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>ESL</b><small>Enterprise Staging Layer</small></li>
 						<li><i class="is-green"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>EDW</b><small>Enterprise Data Warehouse</small></li>
 					</ol>
-					<p class="fdp-governance">Governance <span>|</span> Data Quality <span>|</span> Lineage <span>|</span> Auditability</p>
+					<ul class="fdp-governance" aria-label="Built-in controls"><li>Governance</li><li>Data Quality</li><li>Lineage</li><li>Auditability</li></ul>
 				</article>
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col fdp-col">

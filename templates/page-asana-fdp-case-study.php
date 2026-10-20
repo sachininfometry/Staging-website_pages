@@ -248,7 +248,7 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Asana&rsquo;s financial data platform modernization.</p></div>
 			<div class="dgf-tech-grid fdp-tech">
-				<div class="dgf-tech fdp-tech-snowflake"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy"></span><span class="dgf-tech-name">AI Data Cloud</span></div>
+				<div class="dgf-tech fdp-tech-snowflake"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span></div>
 				<div class="dgf-tech" style="--tint:#eef6ff"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" alt="Apache Airflow" width="192" height="192" loading="lazy"></span><span class="dgf-tech-name">Apache Airflow</span></div>
 				<div class="dgf-tech" style="--tint:#e6f6f7"><span class="dgf-tech-icon-box fdp-zuora-mark"><svg aria-hidden="true"><use href="#fdp-zuora"/></svg></span><span class="dgf-tech-name">Zuora</span></div>
 				<div class="dgf-tech" style="--tint:#e8f4fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" alt="Salesforce" width="267" height="188" loading="lazy"></span><span class="dgf-tech-name">Salesforce</span></div>

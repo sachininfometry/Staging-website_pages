@@ -1974,3 +1974,15 @@ body .dematic-case-study .fdp-tech .fdp-tech-snowflake .dgf-tech-name { color: #
 
 /* Architecture wordmark: fixed height over the shared .dgf-col image sizing. */
 body .dematic-case-study .dgf-col img.fdp-sf-wordmark { display: block; width: auto; height: 34px; max-width: calc(100% - 36px); max-height: none; margin: 4px auto 18px; object-fit: contain; }
+
+/* About: laptop dashboard image at its own ratio, centred against the copy. */
+.dgf-case-study.fdp-case-study .dgf-client-visual img { aspect-ratio: 1710 / 920; object-position: center; }
+.dgf-case-study.fdp-case-study .dematic-about-grid { align-items: center; }
+
+/* Summary strip: 60% card uses the same two-line bold label style as the other three. */
+.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small { margin-bottom: 0; color: #0b1f3a; font-size: 18px; font-weight: 700; line-height: 1.25; }
+.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { color: #0b1f3a; font-size: 18px; font-weight: 700; line-height: 1.25; }
+@media (min-width: 1101px) {
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) small,
+	body .dematic-case-study.dgf-case-study.fdp-case-study .dematic-facts article:nth-child(1) strong { font-size: clamp(16px, 1.25vw, 20px); }
+}

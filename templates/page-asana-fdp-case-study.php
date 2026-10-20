@@ -158,15 +158,9 @@ $outcomes = array(
 				<a class="fdp-client-logo" href="https://asana.com/" aria-label="Visit the Asana website"><img src="<?php echo esc_url( $img_url . 'customer-asana-logo.png' ); ?>" alt="Asana" width="300" height="92" loading="lazy" decoding="async"></a>
 				<p>Asana is a global SaaS company that relies on financial and operational data to track MRR, ARR, customer lifetime value, churn, and new-logo acquisition. These insights are essential for executive decision-making, financial planning, and business performance management.</p>
 				<p>Asana&rsquo;s Financial Data Platform (FDP 2.0) integrates data from Zuora, Salesforce, NetSuite, and Product Events to provide a unified foundation for enterprise reporting and analytics.</p>
-				<dl class="fdp-client-facts">
-					<div><dt>Industry</dt><dd>SaaS</dd></div>
-					<div><dt>Headquarters</dt><dd>San Francisco, CA</dd></div>
-					<div><dt>Platform</dt><dd>Snowflake AI Data Cloud</dd></div>
-					<div><dt>Focus Area</dt><dd>Financial Data Platform Modernization</dd></div>
-				</dl>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-about.jpg' ); ?>" width="1536" height="1024" alt="Asana, Infometry and Snowflake connected on one data platform" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-about-laptop.jpg' ); ?>" width="1710" height="920" alt="Laptop showing an Asana project dashboard on an office desk" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">

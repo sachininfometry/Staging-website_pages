@@ -116,7 +116,7 @@ $outcomes = array(
 				</ul>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-banner-art.jpg' ); ?>" width="1360" height="802" alt="Asana office building with the Snowflake AI Data Cloud and analytics cards">
+				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-banner-art-v2.jpg' ); ?>" width="1360" height="802" alt="Asana office building with the Snowflake AI Data Cloud and analytics cards">
 			</figure>
 		</div>
 	</section>

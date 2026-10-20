@@ -2023,7 +2023,7 @@ body .dematic-case-study.fdp-case-study .dematic-facts article:nth-child(n+2) st
 		background:
 			linear-gradient(180deg, rgba(0, 18, 40, .72) 0, rgba(0, 18, 40, 0) 130px),
 			linear-gradient(90deg, #01213e 0, #01213e var(--fdp-l), rgba(1, 33, 62, 0) calc(var(--fdp-l) + 2px)),
-			url(../images/case-studies/asana-fdp-banner-art.jpg) var(--fdp-l) center / auto 100% no-repeat,
+			url(../images/case-studies/asana-fdp-banner-art-v2.jpg) var(--fdp-l) center / auto 100% no-repeat,
 			#01213e;
 	}
 	body .dematic-case-study.fdp-case-study .fdp-hero .dematic-hero-copy { width: var(--fdp-cw); max-width: none; }
@@ -2105,7 +2105,7 @@ body .dematic-case-study.fdp-case-study .fdp-hero h1 .fdp-title-light + .fdp-tit
 		background:
 			linear-gradient(180deg, rgba(0, 18, 40, .72) 0, rgba(0, 18, 40, 0) 130px),
 			linear-gradient(90deg, #01213e 0, #01213e var(--fdp-l), rgba(1, 33, 62, 0) calc(var(--fdp-l) + 2px)),
-			url(../images/case-studies/asana-fdp-banner-art.jpg) var(--fdp-l) top / max(var(--fdp-w), calc(100vw - var(--fdp-l))) auto no-repeat,
+			url(../images/case-studies/asana-fdp-banner-art-v2.jpg) var(--fdp-l) top / max(var(--fdp-w), calc(100vw - var(--fdp-l))) auto no-repeat,
 			#01213e;
 	}
 }

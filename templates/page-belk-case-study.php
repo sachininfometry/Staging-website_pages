@@ -38,11 +38,11 @@ $approach = array(
 );
 
 $outcomes = array(
-	array( 'dematic-gear', 'Reusable integrations', 'reduce repeated transfer effort and time' ),
-	array( 'dematic-shield', 'Safer handling', 'of confidential files' ),
-	array( 'blk-share', 'Shared services', 'can be reused by other applications' ),
-	array( 'blk-wrench', 'Easier post-production', 'support and bug fixes' ),
-	array( 'dgf-bars', 'Improved integration efficiency', 'across the retail ecosystem' ),
+	array( 'blk-gear-fill', 'Reusable integrations reduce repeated transfer effort and time' ),
+	array( 'blk-shield-fill', 'Safer handling of confidential files' ),
+	array( 'blk-share', 'Shared services can be reused by other applications' ),
+	array( 'blk-wrench', 'Easier post-production support and bug fixes' ),
+	array( 'blk-bars-fill', 'Improved integration efficiency across the retail ecosystem' ),
 );
 ?>
 
@@ -86,7 +86,10 @@ $outcomes = array(
 		<symbol id="blk-x-signal" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8.5 15.5a5 5 0 0 1 0-7M15.5 8.5a5 5 0 0 1 0 7M5.6 18.4a9 9 0 0 1 0-12.8M18.4 5.6a9 9 0 0 1 0 12.8"/></symbol>
 		<symbol id="blk-x-mapreduce" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2.2"/><circle cx="5" cy="12" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="12" r="2.6"/><path d="M7.2 5.6 16.6 11M7.2 12h9.2M7.2 18.4l9.4-5.4"/></symbol>
 		<symbol id="blk-x-cluster" viewBox="0 0 24 24"><rect x="2.5" y="3" width="8" height="8" rx="1.5"/><rect x="13.5" y="3" width="8" height="8" rx="1.5"/><rect x="2.5" y="13" width="8" height="8" rx="1.5"/><rect x="13.5" y="13" width="8" height="8" rx="1.5"/></symbol>
-			<symbol id="blk-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2.2" fill="currentColor" stroke="none"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-width="2.4"/><circle cx="12" cy="15.4" r="1.7" fill="#fff" stroke="none"/><path d="M12 16.5v2.3" stroke="#fff" stroke-width="1.8"/></symbol>
+			<symbol id="blk-shield-fill" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 1.8 3.5 5v6.2c0 5.3 3.6 9.6 8.5 11 4.9-1.4 8.5-5.7 8.5-11V5L12 1.8Z"/><path d="m8 12 3 3 5-6" stroke="#fff" stroke-width="2.4"/></symbol>
+		<symbol id="blk-bars-fill" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><rect x="2" y="12" width="5.2" height="10" rx="1"/><rect x="9.4" y="7" width="5.2" height="15" rx="1"/><rect x="16.8" y="2" width="5.2" height="20" rx="1"/></g></symbol>
+		<symbol id="blk-users-fill" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="12" cy="6.5" r="3.5"/><circle cx="4.8" cy="8.8" r="2.6"/><circle cx="19.2" cy="8.8" r="2.6"/><path d="M5.5 21c0-4.3 2.6-7.2 6.5-7.2s6.5 2.9 6.5 7.2Z"/><path d="M.5 19.5c0-3.3 1.6-5.5 4.3-5.5 1 0 1.8.3 2.5.8-1.4 1.4-2.3 3.4-2.5 4.7Z"/><path d="M23.5 19.5c0-3.3-1.6-5.5-4.3-5.5-1 0-1.8.3-2.5.8 1.4 1.4 2.3 3.4 2.5 4.7Z"/></g></symbol>
+		<symbol id="blk-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="12" rx="2.2" fill="currentColor" stroke="none"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke-width="2.4"/><circle cx="12" cy="15.4" r="1.7" fill="#fff" stroke="none"/><path d="M12 16.5v2.3" stroke="#fff" stroke-width="1.8"/></symbol>
 		<symbol id="blk-share" viewBox="0 0 24 24"><g fill="currentColor" stroke="none"><circle cx="18" cy="5" r="3.2"/><circle cx="6" cy="12" r="3.2"/><circle cx="18" cy="19" r="3.2"/></g><path d="m8.6 10.6 6.8-4M8.6 13.4l6.8 4" stroke-width="2.2"/></symbol>
 		<symbol id="blk-swap" viewBox="0 0 24 24"><path d="M3 8h16M15 4l4 4-4 4M21 16H5M9 12l-4 4 4 4" stroke-width="2.2"/></symbol>
 		<symbol id="blk-monitor" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="1.8"/><path d="M8 21h8M12 16.5V21"/></symbol>
@@ -184,42 +187,39 @@ $outcomes = array(
 	<section class="dematic-section dgf-architecture" id="architecture">
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Integration Architecture</h2><p>MuleSoft shared integration layer connecting Belk&rsquo;s enterprise systems, partners and external platforms.</p></div>
-			<div class="dgf-flow blk-flow">
-				<article class="dgf-col blk-col">
-					<h3 class="blk-col-head is-blue">Belk Systems <small>On-Prem / Cloud</small></h3>
-					<ul class="blk-list">
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-mark.png' ); ?>" alt="" width="224" height="142" loading="lazy"><span><b>Oracle Retek</b>Merchandising / ERP</span></li>
-						<li><i class="is-blue"><svg aria-hidden="true"><use href="#blk-warehouse"/></svg></i><span><b>WMS</b>Warehouse Management</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-mark.png' ); ?>" alt="" width="186" height="152" loading="lazy"><span><b>Manhattan</b>Omni-channel / Order Management</span></li>
-						<li><i class="is-blue"><svg aria-hidden="true"><use href="#blk-db"/></svg></i><span><b>Other Applications</b>Stores, POS, Finance, etc.</span></li>
+			<div class="blk-arch">
+				<div class="blk-side is-left">
+					<h3 class="blk-side-head">Belk Systems <small>(On-Prem / Cloud)</small></h3>
+					<ul class="blk-rows">
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-mark.png' ); ?>" alt="" width="224" height="142" loading="lazy"><span><b>Oracle Retek</b>(Merchandising / ERP)</span></li>
+						<li><i><svg aria-hidden="true"><use href="#blk-warehouse"/></svg></i><span><b>WMS</b>(Warehouse Management)</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-mark.png' ); ?>" alt="" width="186" height="152" loading="lazy"><span><b>Manhattan</b>(Omni-channel / Order Management)</span></li>
+						<li><i><svg aria-hidden="true"><use href="#blk-db"/></svg></i><span><b>Other Applications</b>(Stores, POS, Finance, etc.)</span></li>
 					</ul>
-				</article>
-				<span class="dgf-arrow" aria-hidden="true"></span>
-				<article class="dgf-col blk-col blk-core">
-					<h3 class="blk-col-head is-sky">MuleSoft Integration Layer</h3>
-					<img class="blk-mule" src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" alt="MuleSoft" width="554" height="165" loading="lazy">
+				</div>
+				<div class="blk-core">
+					<div class="blk-core-head"><img src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" alt="MuleSoft" width="554" height="165" loading="lazy"><span>Integration Layer</span></div>
 					<div class="blk-services">
 						<span><svg aria-hidden="true"><use href="#blk-download"/></svg><b>Inbound<br>Microservices</b></span>
 						<span><svg aria-hidden="true"><use href="#blk-upload"/></svg><b>Outbound<br>Microservices</b></span>
 					</div>
 					<ul class="blk-chips">
 						<li><svg aria-hidden="true"><use href="#blk-folder"/></svg> FTP / FTPS</li>
-						<li><svg aria-hidden="true"><use href="#blk-folder"/></svg> SFTP</li>
+						<li><svg aria-hidden="true"><use href="#dematic-document"/></svg> SFTP</li>
 						<li><svg aria-hidden="true"><use href="#blk-lock"/></svg> PGP Encryption</li>
 						<li><svg aria-hidden="true"><use href="#blk-lock"/></svg> PGP Decryption</li>
 						<li><svg aria-hidden="true"><use href="#blk-zip"/></svg> File Compression</li>
 					</ul>
-				</article>
-				<span class="dgf-arrow" aria-hidden="true"></span>
-				<article class="dgf-col blk-col">
-					<h3 class="blk-col-head is-purple">External Partners &amp; Platforms</h3>
-					<ul class="blk-list">
-						<li><i class="is-blue"><svg aria-hidden="true"><use href="#blk-cart"/></svg></i><span><b>E-commerce Platform</b>Website / Mobile App</span></li>
-						<li><i class="is-blue"><svg aria-hidden="true"><use href="#dematic-users"/></svg></i><span><b>Vendors / Suppliers</b></span></li>
-						<li><i class="is-blue"><svg aria-hidden="true"><use href="#blk-truck"/></svg></i><span><b>Logistics Partners</b>Carriers, 3PL</span></li>
+				</div>
+				<div class="blk-side is-right">
+					<h3 class="blk-side-head">External Partners &amp; Platforms</h3>
+					<ul class="blk-rows">
+						<li><i><svg aria-hidden="true"><use href="#blk-cart"/></svg></i><span><b>E-commerce Platform</b>(Website / Mobile App)</span></li>
+						<li><i><svg aria-hidden="true"><use href="#blk-users-fill"/></svg></i><span><b>Vendors / Suppliers</b></span></li>
+						<li><i><svg aria-hidden="true"><use href="#blk-truck"/></svg></i><span><b>Logistics Partners</b>(Carriers, 3PL)</span></li>
 						<li><img src="<?php echo esc_url( $img_url . 'google-cloud-mark.png' ); ?>" alt="" width="224" height="224" loading="lazy"><span><b>Google Cloud Pub/Sub</b></span></li>
 					</ul>
-				</article>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -229,7 +229,7 @@ $outcomes = array(
 			<div class="dematic-section-heading"><h2>Key Business Outcomes</h2><p>A reusable, secure integration layer for Belk&rsquo;s retail ecosystem.</p></div>
 			<div class="dgf-outcome-grid blk-outcomes">
 				<?php foreach ( $outcomes as $item ) : ?>
-					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><p class="blk-outcome-text"><b><?php echo esc_html( $item[1] ); ?></b> <?php echo esc_html( $item[2] ); ?></p></article>
+					<article><span class="dematic-icon"><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span><p><?php echo esc_html( $item[1] ); ?></p></article>
 				<?php endforeach; ?>
 			</div>
 		</div>

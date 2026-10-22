@@ -1754,3 +1754,28 @@ body .dematic-case-study .dgf-tech-name { display: flex; min-height: 2.6em; alig
 	body .dematic-case-study .dgf-source-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 8px; }
 	body .dematic-case-study .dgf-source-grid b { font-size: 12px; }
 }
+
+/* ================================================================== Shared 2400px+ type step
+   Same block in every case-study stylesheet so all case studies read alike on
+   2500-3125px screens (the shell caps at 1320px, so text needs one more step). */
+@media (min-width: 2400px) {
+	body .dematic-case-study.dematic-case-study .dematic-hero h1 { font-size: 56px; }
+	body .dematic-case-study .dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: 20px; }
+	body .dematic-case-study .dematic-hero .dematic-eyebrow { font-size: 13px; }
+	body .dematic-case-study .dematic-section-heading h2,
+	body .dematic-case-study .dematic-final-inner h2 { font-size: 46px; }
+	body .dematic-case-study .dematic-section-heading p,
+	body .dematic-case-study .dematic-final-inner p { font-size: 21px; }
+	body .dematic-case-study .dgf-lead { font-size: 24px; }
+	body .dematic-case-study .dematic-copy-block p,
+	body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead) { font-size: 22px; }
+	body .dematic-case-study .dematic-facts strong { font-size: 18px; }
+	body .dematic-case-study .dgf-challenge-grid h3 { font-size: 20px; }
+	body .dematic-case-study .dgf-challenge-grid p,
+	body .dematic-case-study .dgf-approach-grid p { font-size: 18px; }
+	body .dematic-case-study .dgf-stages li { font-size: 18px; }
+	body .dematic-case-study .dgf-col h3 { font-size: 19px; }
+	body .dematic-case-study .dgf-outcome-grid p { font-size: 18px; }
+	body .dematic-case-study .dgf-tech-name { font-size: 18px; }
+	body .dematic-case-study .dematic-button { font-size: 18px; }
+}

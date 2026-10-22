@@ -1940,3 +1940,119 @@ body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead)
 .dgf-case-study.blk-case-study svg use[href="#blk-db"], .dgf-case-study.blk-case-study svg use[href="#blk-gear-fill"] { stroke: none; }
 .blk-list img[src*="oracle-mark"] { height: 24px; }
 body .dematic-case-study .blk-tech .blk-tech-wordmark .dgf-tech-icon-box img[alt="MuleSoft"] { height: 36px; }
+
+/* Outcomes: same structure in every card (icon, one-line heading, short text), top aligned. */
+.dgf-outcome-grid.blk-outcomes article { flex-direction: column; align-items: flex-start; gap: 14px; padding: 24px 22px; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon { width: 46px; height: 46px; flex: 0 0 auto; }
+body .dematic-case-study.blk-case-study .blk-outcomes strong { display: block; margin: 0 0 6px; color: #0b1f3a; font-size: 18px; line-height: 1.3; }
+body .dematic-case-study.blk-case-study .blk-outcomes p { margin: 0; color: #24364d; font-size: 16px; line-height: 1.5; }
+@media (min-width: 1600px) { body .dematic-case-study.blk-case-study .blk-outcomes strong { font-size: 19px; } body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 17px; } }
+@media (min-width: 1920px) { body .dematic-case-study.blk-case-study .blk-outcomes strong { font-size: 20px; } }
+@media (min-width: 2400px) { body .dematic-case-study.blk-case-study .blk-outcomes strong { font-size: 22px; } body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 18px; } }
+
+/* ================================================================== Belk architecture (mockup layout)
+   Side columns: light heading pill, one bordered row per system, arrows from every
+   row to the MuleSoft layer (both ways on the left, outwards on the right). */
+.blk-arch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr) minmax(0, 1fr); gap: 0 64px; align-items: stretch; }
+.blk-side, .blk-core { padding: 16px; border: 1px solid #d8e7f1; border-radius: 14px; background: linear-gradient(180deg, #fbfdff, #f3f8fd); box-shadow: 0 10px 25px rgba(23, 78, 118, .05); }
+body .dematic-case-study h3.blk-side-head { margin: 0 0 12px; padding: 9px 12px; border-radius: 10px; color: #0b1f3a; background: #e8f2fc; font-size: 16px; font-weight: 700; line-height: 1.3; text-align: center; }
+body .dematic-case-study h3.blk-side-head small { display: block; color: #0b1f3a; font-size: 14px; font-weight: 600; }
+.blk-rows { display: grid; margin: 0; padding: 0; gap: 10px; list-style: none; }
+.blk-rows li { position: relative; display: flex; margin: 0; padding: 10px 12px; align-items: center; gap: 14px; border: 1px solid #e1ebf5; border-radius: 10px; background: #fff; color: #33465c; font-size: 13px; line-height: 1.35; }
+.blk-rows li::before { display: none; }
+.blk-rows b { display: block; color: #0b1f3a; font-size: 15px; font-weight: 700; }
+.blk-rows i, .blk-rows img { width: 36px; height: 30px; flex: 0 0 36px; }
+.blk-rows i { display: grid; place-items: center; color: #1f6fe3; }
+.blk-rows i svg { width: 30px; height: 30px; }
+.blk-rows img { object-fit: contain; }
+.blk-rows img[src*="oracle-mark"] { height: 22px; }
+/* Row arrows: a line across the 64px gap with an arrowhead at each end (left) or the far end (right). */
+.blk-side.is-left .blk-rows li::after,
+.blk-side.is-right .blk-rows li::after { content: ""; position: absolute; top: 50%; width: 62px; height: 2px; background: #1f8cf0; }
+.blk-side.is-left .blk-rows li::after { right: -80px; }
+.blk-side.is-right .blk-rows li::after { left: -80px; }
+.blk-side .blk-rows li > span::after,
+.blk-side .blk-rows li > span::before { content: ""; position: absolute; top: calc(50% - 5px); border: 6px solid transparent; }
+.blk-side.is-left .blk-rows li > span::after { right: -82px; border-left: 9px solid #1f8cf0; border-right: 0; }
+.blk-side.is-left .blk-rows li > span::before { right: -18px; border-right: 9px solid #1f8cf0; border-left: 0; }
+.blk-side.is-right .blk-rows li > span::before { left: -18px; border-left: 9px solid #1f8cf0; border-right: 0; }
+/* MuleSoft layer. */
+.blk-core { display: flex; padding: 20px 22px; flex-direction: column; justify-content: center; gap: 18px; }
+.blk-core-head { display: grid; justify-items: center; gap: 2px; }
+.blk-core-head img { width: auto; height: 50px; }
+.blk-core-head span { color: #33465c; font-size: 17px; font-weight: 600; }
+.blk-core .blk-services { margin: 0; }
+.blk-core .blk-services span { padding: 18px 10px; border-color: #cfe1f2; background: #eef5fc; color: #1f6fe3; }
+.blk-core .blk-chips { margin: 0; gap: 10px 18px; }
+.blk-core .blk-chips li { padding: 0; border: 0; background: none; font-size: 14px; font-weight: 700; color: #1f3147; }
+.blk-core .blk-chips svg { width: 22px; height: 22px; color: #1f6fe3; }
+.blk-core .blk-chips svg use[href="#blk-lock"] { color: #1f6fe3; }
+@media (min-width: 1600px) {
+	.blk-rows b { font-size: 16px; } .blk-rows li { font-size: 14px; }
+	body .dematic-case-study h3.blk-side-head { font-size: 17px; }
+	.blk-core .blk-chips li { font-size: 15px; } .blk-core-head span { font-size: 18px; }
+}
+@media (min-width: 1920px) {
+	.blk-rows b { font-size: 17px; } .blk-rows li { font-size: 15px; }
+	body .dematic-case-study h3.blk-side-head { font-size: 18px; }
+	.blk-core .blk-chips li { font-size: 16px; } .blk-core-head span { font-size: 19px; }
+}
+@media (min-width: 2400px) {
+	.blk-rows b { font-size: 18px; } .blk-rows li { font-size: 16px; }
+	body .dematic-case-study h3.blk-side-head { font-size: 19px; }
+	.blk-core .blk-chips li { font-size: 17px; } .blk-core-head span { font-size: 20px; }
+}
+@media (max-width: 1100px) {
+	.blk-arch { grid-template-columns: minmax(0, 1fr); gap: 34px; max-width: 640px; margin-inline: auto; }
+	.blk-side .blk-rows li::after, .blk-side .blk-rows li > span::after, .blk-side .blk-rows li > span::before { display: none; }
+	.blk-core { position: relative; }
+	.blk-core::before, .blk-core::after { content: "\2193"; position: absolute; left: 50%; color: #1f8cf0; font-size: 22px; font-weight: 700; line-height: 1; transform: translateX(-50%); }
+	.blk-core::before { top: -29px; } .blk-core::after { bottom: -29px; }
+}
+
+/* ================================================================== Belk outcomes (mockup layout)
+   Big filled icon on the left, one plain sentence on the right; equal heights. */
+.dgf-outcome-grid.blk-outcomes article { flex-direction: row; align-items: center; gap: 16px; padding: 20px 20px; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon { width: 46px; height: 46px; flex: 0 0 46px; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon svg { width: 44px; height: 44px; stroke: none; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon svg use[href="#blk-share"] { stroke: currentColor; }
+body .dematic-case-study.blk-case-study .blk-outcomes p { margin: 0; color: #1f3147; font-size: 16px; font-weight: 500; line-height: 1.45; }
+@media (min-width: 1600px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 17px; } }
+@media (min-width: 1920px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 18px; } }
+@media (min-width: 2400px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 19px; } }
+
+/* Outcomes: compact icon so every sentence fits in 2-3 lines at desktop widths. */
+.dgf-outcome-grid.blk-outcomes { gap: 14px; }
+.dgf-outcome-grid.blk-outcomes article { gap: 12px; padding: 18px 16px; min-height: 104px; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon { width: 38px; height: 38px; flex-basis: 38px; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon svg { width: 36px; height: 36px; }
+body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 15px; line-height: 1.42; }
+@media (min-width: 1600px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16px; } }
+@media (min-width: 1920px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16px; } }
+@media (min-width: 2400px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16.5px; } .dgf-outcome-grid.blk-outcomes article { padding-inline: 14px; } }
+
+/* ================================================================== Shared 2400px+ type step
+   Same block in every case-study stylesheet so all case studies read alike on
+   2500-3125px screens (the shell caps at 1320px, so text needs one more step). */
+@media (min-width: 2400px) {
+	body .dematic-case-study.dematic-case-study .dematic-hero h1 { font-size: 56px; }
+	body .dematic-case-study .dematic-hero-copy > p:not(.dematic-eyebrow) { font-size: 20px; }
+	body .dematic-case-study .dematic-hero .dematic-eyebrow { font-size: 13px; }
+	body .dematic-case-study .dematic-section-heading h2,
+	body .dematic-case-study .dematic-final-inner h2 { font-size: 46px; }
+	body .dematic-case-study .dematic-section-heading p,
+	body .dematic-case-study .dematic-final-inner p { font-size: 21px; }
+	body .dematic-case-study .dgf-lead { font-size: 24px; }
+	body .dematic-case-study .dematic-copy-block p,
+	body .dematic-case-study .dematic-objective-grid p:not(.dgf-lead) { font-size: 22px; }
+	body .dematic-case-study .dematic-facts strong { font-size: 18px; }
+	body .dematic-case-study .dgf-challenge-grid h3 { font-size: 20px; }
+	body .dematic-case-study .dgf-challenge-grid p,
+	body .dematic-case-study .dgf-approach-grid p { font-size: 18px; }
+	body .dematic-case-study .dgf-stages li { font-size: 18px; }
+	body .dematic-case-study .dgf-col h3 { font-size: 19px; }
+	body .dematic-case-study .dgf-outcome-grid p { font-size: 18px; }
+	body .dematic-case-study .dgf-tech-name { font-size: 18px; }
+	body .dematic-case-study .dematic-button { font-size: 18px; }
+}
+@media (min-width: 2400px) { body .dematic-case-study .dgf-col h3.blk-col-head { font-size: 16px; } body .dematic-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 15px; } }

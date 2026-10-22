@@ -139,7 +139,7 @@ $outcomes = array(
 		<div class="dematic-shell dematic-about-grid">
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
-				<p class="tls-wordmark">TELLUS</p>
+				<p class="tls-wordmark"><img src="<?php echo esc_url( $tls_img_url . 'telus-logo.png' ); ?>" alt="TELUS" width="640" height="122" loading="lazy" decoding="async"></p>
 				<p>Tellus is a leading mobile service provider serving millions of customers. With the rapid adoption of smart devices and data services, the company generates massive volumes of network, device, location, and user behavior data every day.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">

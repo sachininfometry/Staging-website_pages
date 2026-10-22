@@ -2250,3 +2250,9 @@ body .dematic-case-study .tls-tech .tls-tech-wordmark .dgf-tech-name { text-alig
 body .dematic-case-study.tls-case-study .tls-outcomes article:nth-child(1) strong { color: #16a34a; }
 body .dematic-case-study.tls-case-study .tls-outcomes article:nth-child(2) strong { color: #1f6fe3; }
 body .dematic-case-study.tls-case-study .tls-outcomes article:nth-child(3) strong { color: #f37021; }
+
+/* About: the client logo in place of the text wordmark. */
+body .dematic-case-study.tls-case-study .dematic-copy-block p.tls-wordmark { margin: 8px 0 16px; line-height: 0; }
+.tls-wordmark img { display: block; width: auto; height: 64px; }
+@media (min-width: 1920px) { .tls-wordmark img { height: 72px; } }
+@media (max-width: 720px) { .tls-wordmark img { height: 48px; } }

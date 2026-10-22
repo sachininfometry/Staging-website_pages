@@ -1798,7 +1798,7 @@ body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article st
 .blk-goals i { display: grid; width: 30px; height: 30px; flex: 0 0 30px; place-items: center; }
 .blk-goals i svg { width: 28px; height: 28px; }
 .blk-goals .is-blue svg[aria-hidden] use[href="#blk-cart"] { fill: none; }
-.dgf-case-study.blk-case-study .dgf-client-visual img { aspect-ratio: 1182 / 687; object-position: center; }
+.dgf-case-study.blk-case-study .dgf-client-visual img { aspect-ratio: 1796 / 876; object-position: center; }
 .dgf-case-study.blk-case-study .dematic-about-grid { align-items: center; }
 body .dematic-case-study.blk-case-study .dematic-copy-block p + p,
 body .dematic-case-study.blk-case-study .dematic-objective-grid p + p { margin-top: 14px; }
@@ -2030,6 +2030,19 @@ body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 15px; line-
 @media (min-width: 1600px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16px; } }
 @media (min-width: 1920px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16px; } }
 @media (min-width: 2400px) { body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16.5px; } .dgf-outcome-grid.blk-outcomes article { padding-inline: 14px; } }
+
+/* Symmetry: summary items and outcome cards align to the top; every summary title
+   and caption is exactly two lines on desktop. */
+.dgf-case-study.blk-case-study .dematic-facts article { align-items: flex-start; }
+.dgf-outcome-grid.blk-outcomes article { align-items: flex-start; }
+.dgf-outcome-grid.blk-outcomes .dematic-icon { margin-top: 1px; }
+@media (min-width: 1101px) {
+	body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article small,
+	body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article strong { white-space: nowrap; }
+}
+@media (max-width: 1100px) {
+	.dgf-case-study.blk-case-study .dematic-facts br { display: none; }
+}
 
 /* ================================================================== Shared 2400px+ type step
    Same block in every case-study stylesheet so all case studies read alike on

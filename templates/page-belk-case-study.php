@@ -122,10 +122,10 @@ $outcomes = array(
 
 	<section class="dematic-facts" aria-label="Case study summary">
 		<div class="dematic-shell dematic-facts-grid">
-			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-db"/></svg></span><p><small>Connected Retail Ecosystem</small><strong>Seamless data exchange across systems and partners</strong></p></article>
-			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-gear-fill"/></svg></span><p><small>Reusable Integration Services</small><strong>Built with MuleSoft microservices</strong></p></article>
-			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-lock"/></svg></span><p><small>Secure File Transfers</small><strong>Encryption, decryption and compression</strong></p></article>
-			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-share"/></svg></span><p><small>Scalable Partner Connectivity</small><strong>Supports e-commerce, vendors and logistics</strong></p></article>
+			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-db"/></svg></span><p><small>Connected<br>Retail Ecosystem</small><strong>Seamless data exchange<br>across systems and partners</strong></p></article>
+			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-gear-fill"/></svg></span><p><small>Reusable<br>Integration Services</small><strong>Built with MuleSoft<br>microservices</strong></p></article>
+			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-lock"/></svg></span><p><small>Secure<br>File Transfers</small><strong>Encryption, decryption<br>and compression</strong></p></article>
+			<article><span class="dematic-icon"><svg aria-hidden="true"><use href="#blk-share"/></svg></span><p><small>Scalable<br>Partner Connectivity</small><strong>Supports e-commerce,<br>vendors and logistics</strong></p></article>
 		</div>
 	</section>
 
@@ -138,7 +138,7 @@ $outcomes = array(
 				<p>The company offers a wide range of products including apparel, shoes, beauty, home, and accessories, and works with multiple vendors and logistics partners to serve its customers.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $blk_img_url . 'belk-store.jpg' ); ?>" width="1182" height="687" alt="Belk store front with its illuminated sign" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $blk_img_url . 'belk-store-interior.jpg' ); ?>" width="1796" height="876" alt="Belk store entrance with its illuminated sign and apparel displays" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">

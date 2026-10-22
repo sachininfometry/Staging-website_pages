@@ -2069,3 +2069,56 @@ body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 15px; line-
 	body .dematic-case-study .dematic-button { font-size: 18px; }
 }
 @media (min-width: 2400px) { body .dematic-case-study .dgf-col h3.blk-col-head { font-size: 16px; } body .dematic-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 15px; } }
+
+/* ================================================================== Belk type system (one size per role)
+   Box heading: every bold title inside a card, chevron, row or tile.
+   Box text:    every sentence inside a card, row or chip.
+   Body text:   About, Objective, section intros, objective list, CTA line.
+   Placed last so it wins over the earlier per-section and shared steps. */
+body .dematic-case-study.blk-case-study .dematic-facts article small,
+body .dematic-case-study.blk-case-study .dgf-challenge-grid h3,
+body .dematic-case-study.blk-case-study .dgf-stages li,
+body .dematic-case-study.blk-case-study h3.blk-side-head,
+body .dematic-case-study.blk-case-study .blk-rows b,
+body .dematic-case-study.blk-case-study .blk-services b,
+body .dematic-case-study.blk-case-study .dgf-tech-name,
+body .dematic-case-study.blk-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 17px; font-weight: 700; letter-spacing: 0; line-height: 1.3; text-transform: none; }
+body .dematic-case-study.blk-case-study .dematic-facts article strong,
+body .dematic-case-study.blk-case-study .dgf-challenge-grid p,
+body .dematic-case-study.blk-case-study .dgf-approach-grid p,
+body .dematic-case-study.blk-case-study .blk-rows li,
+body .dematic-case-study.blk-case-study h3.blk-side-head small,
+body .dematic-case-study.blk-case-study .blk-core-head span,
+body .dematic-case-study.blk-case-study .blk-core .blk-chips li,
+body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 15px; font-weight: 500; line-height: 1.5; }
+body .dematic-case-study.blk-case-study .dematic-copy-block p:not(.dgf-lead),
+body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead),
+body .dematic-case-study.blk-case-study .dematic-section-heading p,
+body .dematic-case-study.blk-case-study .blk-goals li,
+body .dematic-case-study.blk-case-study .dematic-final-inner p { font-size: 18px; font-weight: 500; line-height: 1.6; }
+body .dematic-case-study.blk-case-study .blk-core .blk-chips li { font-weight: 600; }
+body .dematic-case-study.blk-case-study .dgf-stages li { line-height: 1.25; }
+@media (min-width: 1600px) {
+	body .dematic-case-study.blk-case-study .dematic-facts article small, body .dematic-case-study.blk-case-study .dgf-challenge-grid h3, body .dematic-case-study.blk-case-study .dgf-stages li, body .dematic-case-study.blk-case-study h3.blk-side-head, body .dematic-case-study.blk-case-study .blk-rows b, body .dematic-case-study.blk-case-study .blk-services b, body .dematic-case-study.blk-case-study .dgf-tech-name, body .dematic-case-study.blk-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 18px; }
+	body .dematic-case-study.blk-case-study .dematic-facts article strong, body .dematic-case-study.blk-case-study .dgf-challenge-grid p, body .dematic-case-study.blk-case-study .dgf-approach-grid p, body .dematic-case-study.blk-case-study .blk-rows li, body .dematic-case-study.blk-case-study h3.blk-side-head small, body .dematic-case-study.blk-case-study .blk-core-head span, body .dematic-case-study.blk-case-study .blk-core .blk-chips li, body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 16px; }
+	body .dematic-case-study.blk-case-study .dematic-copy-block p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-section-heading p, body .dematic-case-study.blk-case-study .blk-goals li, body .dematic-case-study.blk-case-study .dematic-final-inner p { font-size: 19px; }
+}
+@media (min-width: 1920px) {
+	body .dematic-case-study.blk-case-study .dematic-facts article small, body .dematic-case-study.blk-case-study .dgf-challenge-grid h3, body .dematic-case-study.blk-case-study .dgf-stages li, body .dematic-case-study.blk-case-study h3.blk-side-head, body .dematic-case-study.blk-case-study .blk-rows b, body .dematic-case-study.blk-case-study .blk-services b, body .dematic-case-study.blk-case-study .dgf-tech-name, body .dematic-case-study.blk-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 19px; }
+	body .dematic-case-study.blk-case-study .dematic-facts article strong, body .dematic-case-study.blk-case-study .dgf-challenge-grid p, body .dematic-case-study.blk-case-study .dgf-approach-grid p, body .dematic-case-study.blk-case-study .blk-rows li, body .dematic-case-study.blk-case-study h3.blk-side-head small, body .dematic-case-study.blk-case-study .blk-core-head span, body .dematic-case-study.blk-case-study .blk-core .blk-chips li, body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 17px; }
+	body .dematic-case-study.blk-case-study .dematic-copy-block p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-section-heading p, body .dematic-case-study.blk-case-study .blk-goals li, body .dematic-case-study.blk-case-study .dematic-final-inner p { font-size: 20px; }
+}
+@media (min-width: 2400px) {
+	body .dematic-case-study.blk-case-study .dematic-facts article small, body .dematic-case-study.blk-case-study .dgf-challenge-grid h3, body .dematic-case-study.blk-case-study .dgf-stages li, body .dematic-case-study.blk-case-study h3.blk-side-head, body .dematic-case-study.blk-case-study .blk-rows b, body .dematic-case-study.blk-case-study .blk-services b, body .dematic-case-study.blk-case-study .dgf-tech-name, body .dematic-case-study.blk-case-study .blk-tech .blk-tech-wordmark .dgf-tech-name { font-size: 20px; }
+	body .dematic-case-study.blk-case-study .dematic-facts article strong, body .dematic-case-study.blk-case-study .dgf-challenge-grid p, body .dematic-case-study.blk-case-study .dgf-approach-grid p, body .dematic-case-study.blk-case-study .blk-rows li, body .dematic-case-study.blk-case-study h3.blk-side-head small, body .dematic-case-study.blk-case-study .blk-core-head span, body .dematic-case-study.blk-case-study .blk-core .blk-chips li, body .dematic-case-study.blk-case-study .blk-outcomes p { font-size: 18px; }
+	body .dematic-case-study.blk-case-study .dematic-copy-block p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-section-heading p, body .dematic-case-study.blk-case-study .blk-goals li, body .dematic-case-study.blk-case-study .dematic-final-inner p { font-size: 22px; }
+}
+@media (max-width: 720px) {
+	body .dematic-case-study.blk-case-study .dematic-copy-block p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-objective-grid p:not(.dgf-lead), body .dematic-case-study.blk-case-study .dematic-section-heading p, body .dematic-case-study.blk-case-study .blk-goals li, body .dematic-case-study.blk-case-study .dematic-final-inner p { font-size: 17px; }
+}
+/* Summary strip follows the same box heading / box text sizes. */
+body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article small { font-size: 17px; }
+body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article strong { font-size: 15px; }
+@media (min-width: 1600px) { body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article small { font-size: 18px; } body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article strong { font-size: 16px; } }
+@media (min-width: 1920px) { body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article small { font-size: 19px; } body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article strong { font-size: 17px; } }
+@media (min-width: 2400px) { body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article small { font-size: 20px; } body .dematic-case-study.dgf-case-study.blk-case-study .dematic-facts article strong { font-size: 18px; } }

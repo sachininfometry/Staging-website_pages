@@ -83,7 +83,7 @@ while ( have_posts() ) :
 				<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infofiscus-conversa-mark.png' ); ?>" width="141" height="120" alt="" loading="lazy" decoding="async">
 				<b>Ask your data anything</b>
 				<p>INFOFISCUS Conversa turns plain-English questions into trusted enterprise insights.</p>
-				<a href="<?php echo esc_url( home_url( '/product/infofiscus-conversa/' ) ); ?>">Explore Conversa <span aria-hidden="true">&rarr;</span></a>
+				<a href="<?php echo esc_url( home_url( '/product/infofiscus-conversa-decision-intelligence/' ) ); ?>">Explore Conversa <span aria-hidden="true">&rarr;</span></a>
 			</div>
 		</aside>
 

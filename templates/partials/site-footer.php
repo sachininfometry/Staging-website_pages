@@ -22,7 +22,7 @@ $footer_social = array(
 );
 $footer_columns = array(
 	'Products'  => array(
-		'INFOFISCUS Conversa'                   => '/product/conversational-analytics/',
+		'INFOFISCUS Conversa'                   => '/product/infofiscus-conversa-decision-intelligence/',
 		'Informatica Connectors'                => '/product/informatica-connectors/',
 		'INFOFISCUS Snowflake Native Apps'      => '/product/#infofiscus-snowflake-native-apps',
 		'Pre-Built Apps For IDMC and Matillion' => '/product/#pre-built-apps',

@@ -14,7 +14,7 @@ get_header();
 
 $home_url         = home_url( '/' );
 $contact_url      = home_url( '/contact-us/' );
-$conversa_url     = home_url( '/product/infofiscus-conversa/' );
+$conversa_url     = home_url( '/product/infofiscus-conversa-decision-intelligence/' );
 $accelerators_url = home_url( '/accelerators/' );
 $customers_url    = home_url( '/company/customers-partners/' );
 
@@ -117,7 +117,7 @@ $solutions = array(
 		<div class="sunrise-shell sunrun-objective-grid">
 			<div><h2>Business Objective</h2><p>To build an enterprise data warehouse and analytics platform that could integrate data across customer, sales, partner, operational, production, and financial systems, enabling trusted business metrics and scalable analytics to support data-driven decision-making.</p></div>
 			<div class="sunrun-objective-flow" aria-label="Business objective flow">
-				<span><i><svg><use href="#sunrise-database"/></svg></i><b>Fragmented<br>Data Sources</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
+				<span><i><svg><use href="#sunrise-database"/do you have pushed ></svg></i><b>Fragmented<br>Data Sources</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
 				<span><i><svg><use href="#sunrise-gear"/></svg></i><b>Enterprise<br>Data Platform</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
 				<span><i><svg><use href="#sunrise-chart"/></svg></i><b>Actionable<br>Business Insights</b></span>
 			</div>

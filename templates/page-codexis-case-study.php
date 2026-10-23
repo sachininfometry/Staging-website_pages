@@ -125,7 +125,7 @@ $outcomes = array(
 		<div class="dematic-shell dematic-hero-inner">
 			<div class="dematic-hero-copy">
 				<p class="dematic-eyebrow">Case Study</p>
-				<h1 id="dematic-title"><span>Building a Global</span><strong>Enterprise Data Warehouse</strong><span class="dematic-title-tail cdx-title-tail">for <em class="cdx-brand">Finance, Operations<br>&amp; R&amp;D</em></span></h1>
+				<h1 id="dematic-title"><span>Building a Global</span> <strong>Enterprise Data Warehouse</strong> <span class="dematic-title-tail cdx-title-tail">for <em class="cdx-brand">Finance, Operations <br>&amp; R&amp;D</em></span></h1>
 				<p>A centralized analytical platform to drive greater visibility, faster reporting and better decision-making across the business.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">

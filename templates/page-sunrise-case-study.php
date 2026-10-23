@@ -84,7 +84,7 @@ $solutions = array(
 		<div class="sunrise-shell sunrise-hero-inner">
 			<div class="sunrise-hero-copy">
 				<p class="sunrise-eyebrow">Case Study</p>
-				<h1 id="sunrise-title"><span>Powering Enterprise-Wide</span><strong>Data &amp; Analytics</strong><span class="sunrise-title-tail">for Sunrun</span></h1>
+				<h1 id="sunrise-title"><span>Powering Enterprise-Wide</span> <strong>Data &amp; Analytics</strong> <span class="sunrise-title-tail">for Sunrun</span></h1>
 				<p>How Infometry built an integrated data warehouse, orchestration, and analytics foundation across customer, operational, production, and financial systems.</p>
 			</div>
 			<figure class="sunrise-hero-mobile-visual">
@@ -117,7 +117,7 @@ $solutions = array(
 		<div class="sunrise-shell sunrun-objective-grid">
 			<div><h2>Business Objective</h2><p>To build an enterprise data warehouse and analytics platform that could integrate data across customer, sales, partner, operational, production, and financial systems, enabling trusted business metrics and scalable analytics to support data-driven decision-making.</p></div>
 			<div class="sunrun-objective-flow" aria-label="Business objective flow">
-				<span><i><svg><use href="#sunrise-database"/do you have pushed ></svg></i><b>Fragmented<br>Data Sources</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
+				<span><i><svg><use href="#sunrise-database"/></svg></i><b>Fragmented<br>Data Sources</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
 				<span><i><svg><use href="#sunrise-gear"/></svg></i><b>Enterprise<br>Data Platform</b></span><svg class="sunrun-arrow"><use href="#sunrise-arrow"/></svg>
 				<span><i><svg><use href="#sunrise-chart"/></svg></i><b>Actionable<br>Business Insights</b></span>
 			</div>

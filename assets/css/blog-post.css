@@ -36,8 +36,9 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 /* ------------------------------------------------------------------ Theme header */
 /* The theme menu sits on a solid navy bar so the light article hero reads like a
    product blog (Stripe / Snowflake style) instead of a dark landing banner. */
-body.infometry-premium-blog #Header_wrapper { background: #001a3d !important; }
-body.infometry-premium-blog #Header_wrapper::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(34, 200, 246, .45), rgba(106, 91, 255, .45), transparent); }
+@media (min-width: 768px) {
+	body.infometry-premium-blog #Top_bar { background: #001a3d !important; box-shadow: 0 1px 0 rgba(34, 200, 246, .25), 0 10px 30px rgba(0, 15, 40, .18); }
+}
 
 /* ------------------------------------------------------------------ Reading progress */
 .ifb-progress { position: fixed; z-index: 10000; top: 0; right: 0; left: 0; height: 3px; pointer-events: none; }

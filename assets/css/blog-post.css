@@ -33,70 +33,68 @@ html:has(body.infometry-premium-blog) { scroll-behavior: smooth; }
 
 .ifb-shell { width: min(100% - 48px, 1320px); margin-inline: auto; }
 
-/* ------------------------------------------------------------------ Theme header */
-/* The theme menu sits on a solid navy bar so the light article hero reads like a
-   product blog (Stripe / Snowflake style) instead of a dark landing banner. */
-@media (min-width: 768px) {
-	body.infometry-premium-blog #Top_bar { background: #001a3d !important; box-shadow: 0 1px 0 rgba(34, 200, 246, .25), 0 10px 30px rgba(0, 15, 40, .18); }
-}
-
 /* ------------------------------------------------------------------ Reading progress */
 .ifb-progress { position: fixed; z-index: 10000; top: 0; right: 0; left: 0; height: 3px; pointer-events: none; }
 .ifb-progress i { display: block; width: 0; height: 100%; background: linear-gradient(90deg, #22c8f6, #6a5bff); transition: width .1s linear; }
 body.admin-bar .ifb-progress { top: 32px; }
 
 /* ------------------------------------------------------------------ Hero */
-/* Light, centred article header: back link, category chip, title, summary,
-   then one byline row (author, date, read time) with share buttons. */
+/* Colourful navy hero (cyan and violet glows, faint grid) with the product-blog
+   layout: back link, category chip, title, summary, byline with share buttons. */
 .ifb-hero {
 	position: relative;
 	overflow: hidden;
-	padding: 168px 0 56px;
-	border-bottom: 1px solid var(--ifb-line);
+	padding: 168px 0 60px;
+	color: #fff;
 	background:
-		radial-gradient(ellipse 55% 70% at 85% 0%, rgba(34, 200, 246, .12), transparent 65%),
-		radial-gradient(ellipse 45% 60% at 5% 100%, rgba(106, 91, 255, .1), transparent 65%),
-		linear-gradient(180deg, #f5f9ff 0%, #fff 100%);
+		radial-gradient(ellipse 55% 75% at 88% 0%, rgba(34, 200, 246, .28), transparent 62%),
+		radial-gradient(ellipse 50% 70% at 2% 100%, rgba(106, 63, 255, .34), transparent 62%),
+		radial-gradient(ellipse 40% 50% at 50% 120%, rgba(255, 125, 25, .14), transparent 70%),
+		linear-gradient(160deg, #002a63 0%, #001f47 48%, #00163a 100%);
 }
 .ifb-hero::before {
 	content: "";
 	position: absolute;
 	inset: 0;
 	opacity: .55;
-	background-image: radial-gradient(circle, rgba(31, 111, 227, .16) 1px, transparent 1.3px);
-	background-size: 22px 22px;
-	mask-image: radial-gradient(ellipse 60% 80% at 50% 0%, #000 10%, transparent 70%);
+	background-image:
+		linear-gradient(rgba(120, 190, 255, .08) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(120, 190, 255, .08) 1px, transparent 1px);
+	background-size: 56px 56px;
+	mask-image: radial-gradient(ellipse 70% 90% at 50% 30%, #000 20%, transparent 75%);
 	pointer-events: none;
 }
+.ifb-hero::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 3px; background: linear-gradient(90deg, transparent, #22c8f6 30%, #6a5bff 70%, transparent); opacity: .75; }
 .ifb-hero-inner { position: relative; z-index: 1; max-width: 920px; text-align: center; }
-.ifb-back { display: table; margin: 0 auto 26px; color: var(--ifb-muted) !important; font-size: 14px; font-weight: 600; text-decoration: none !important; transition: color .2s ease; }
-.ifb-back:hover { color: #0a6fd6 !important; }
-.ifb-chip { display: inline-flex; margin-bottom: 18px; padding: 6px 14px; align-items: center; gap: 8px; border-radius: 999px; color: #0a5fc4 !important; background: #e3efff; font-size: 13px; font-weight: 700; letter-spacing: .02em; text-decoration: none !important; }
-.ifb-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, #22c8f6, #6a5bff); }
+.ifb-back { display: table; margin: 0 auto 26px; color: #a9c4de !important; font-size: 14px; font-weight: 600; text-decoration: none !important; transition: color .2s ease; }
+.ifb-back:hover { color: #fff !important; }
+.ifb-chip { display: inline-flex; margin-bottom: 18px; padding: 6px 14px; align-items: center; gap: 8px; border: 1px solid rgba(34, 200, 246, .35); border-radius: 999px; color: #8bdef7 !important; background: rgba(34, 200, 246, .12); font-size: 13px; font-weight: 700; letter-spacing: .02em; text-decoration: none !important; }
+.ifb-chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: linear-gradient(135deg, #22c8f6, #6a5bff); box-shadow: 0 0 10px rgba(34, 200, 246, .8); }
 .ifb .ifb-title {
 	margin: 0 auto 18px;
-	color: var(--ifb-navy) !important;
+	color: #fff !important;
 	font-family: var(--ifb-head);
 	font-size: clamp(32px, 3.4vw, 54px);
 	font-weight: 800;
 	line-height: 1.12;
 	letter-spacing: -.03em;
 	text-wrap: balance;
+	text-shadow: 0 3px 22px rgba(0, 11, 35, .3);
 }
-.ifb .ifb-dek { max-width: 720px; margin: 0 auto 30px; color: var(--ifb-muted); font-size: 19px; line-height: 1.6; text-wrap: pretty; }
-.ifb-byline { display: flex; margin-top: 30px; padding-top: 24px; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid var(--ifb-line); text-align: left; }
+.ifb .ifb-dek { max-width: 720px; margin: 0 auto 30px; color: #c9d8ea; font-size: 19px; line-height: 1.6; text-wrap: pretty; }
+.ifb-byline { display: flex; margin-top: 30px; padding-top: 24px; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; border-top: 1px solid rgba(255, 255, 255, .14); text-align: left; }
 .ifb-author { display: inline-flex; align-items: center; gap: 12px; }
-.ifb .ifb-avatar { width: 44px; height: 44px; border: 2px solid #fff; border-radius: 50% !important; box-shadow: 0 0 0 1px var(--ifb-line), 0 6px 14px rgba(14, 73, 115, .12); }
+.ifb .ifb-avatar { width: 44px; height: 44px; border: 2px solid rgba(34, 200, 246, .6); border-radius: 50% !important; }
 .ifb-author-text { display: grid; gap: 2px; line-height: 1.3; }
-.ifb-author-text b { color: var(--ifb-ink); font-size: 16px; font-weight: 700; }
-.ifb-author-text small { display: flex; align-items: center; gap: 8px; color: var(--ifb-muted); font-size: 14px; }
+.ifb-author-text b { color: #fff; font-size: 16px; font-weight: 700; }
+.ifb-author-text small { display: flex; align-items: center; gap: 8px; color: #a9c4de; font-size: 14px; }
 .ifb-share { display: flex; align-items: center; gap: 8px; }
 .ifb-share a,
-.ifb-share button { position: relative; display: grid; width: 38px; height: 38px; padding: 0; place-items: center; border: 1px solid var(--ifb-line); border-radius: 10px; color: var(--ifb-ink) !important; background: #fff; cursor: pointer; text-decoration: none !important; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+.ifb-share button { position: relative; display: grid; width: 38px; height: 38px; padding: 0; place-items: center; border: 1px solid rgba(255, 255, 255, .2); border-radius: 10px; color: #fff !important; background: rgba(255, 255, 255, .06); cursor: pointer; text-decoration: none !important; transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .ifb-share a:hover,
-.ifb-share button:hover { transform: translateY(-1px); border-color: #0a6fd6; color: #0a6fd6 !important; }
+.ifb-share button:hover { transform: translateY(-1px); border-color: #22c8f6; background: rgba(34, 200, 246, .16); }
 .ifb-share svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.ifb-copy-done { position: absolute; bottom: calc(100% + 8px); left: 50%; padding: 4px 8px; border-radius: 6px; color: #fff; background: var(--ifb-ink); font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; transform: translate(-50%, 4px); transition: opacity .2s ease, transform .2s ease; pointer-events: none; }
+.ifb-copy-done { position: absolute; bottom: calc(100% + 8px); left: 50%; padding: 4px 8px; border-radius: 6px; color: var(--ifb-ink); background: #fff; font-size: 12px; font-weight: 600; white-space: nowrap; opacity: 0; transform: translate(-50%, 4px); transition: opacity .2s ease, transform .2s ease; pointer-events: none; }
 .ifb-copy.is-copied .ifb-copy-done { opacity: 1; transform: translate(-50%, 0); }
 
 /* ------------------------------------------------------------------ Layout */

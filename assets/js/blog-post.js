@@ -93,9 +93,56 @@
 		update();
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initToc);
-	} else {
+	// Thin bar at the top of the viewport showing how far through the article the reader is.
+	function initProgress() {
+		var bar = document.querySelector('.ifb-progress i');
+		var article = document.querySelector('.ifb-content');
+		if (!bar || !article) {
+			return;
+		}
+		var ticking = false;
+		function update() {
+			var rect = article.getBoundingClientRect();
+			var span = rect.height - window.innerHeight * 0.6;
+			var done = span > 0 ? Math.min(1, Math.max(0, -rect.top / span)) : 1;
+			bar.style.width = (done * 100).toFixed(1) + '%';
+			ticking = false;
+		}
+		window.addEventListener('scroll', function () {
+			if (!ticking) {
+				ticking = true;
+				window.requestAnimationFrame(update);
+			}
+		}, { passive: true });
+		update();
+	}
+
+	function initCopyLink() {
+		document.querySelectorAll('[data-ifb-copy]').forEach(function (button) {
+			button.addEventListener('click', function () {
+				var url = window.location.href.split('#')[0];
+				var done = function () {
+					button.classList.add('is-copied');
+					window.setTimeout(function () { button.classList.remove('is-copied'); }, 1600);
+				};
+				if (navigator.clipboard && navigator.clipboard.writeText) {
+					navigator.clipboard.writeText(url).then(done, function () {});
+				} else {
+					window.prompt('Copy this link', url);
+				}
+			});
+		});
+	}
+
+	function init() {
 		initToc();
+		initProgress();
+		initCopyLink();
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', init);
+	} else {
+		init();
 	}
 }());

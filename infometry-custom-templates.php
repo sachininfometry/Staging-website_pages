@@ -298,7 +298,7 @@ function infometry_ct_render_staging_google_drive_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_staging_google_drive_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_staging_google_drive_route', 99 );
 
 /** Use the redesigned Asana FDP case study when selected or on its staging URL. */
 function infometry_ct_should_use_asana_fdp_template() {
@@ -331,7 +331,7 @@ function infometry_ct_render_staging_asana_fdp_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_staging_asana_fdp_route', 99 );
 
 /** Serve the Sunrise redesign at the exact requested Cloudways URL. */
 function infometry_ct_render_staging_sunrise_case_study_route() {
@@ -348,7 +348,7 @@ function infometry_ct_render_staging_sunrise_case_study_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_staging_sunrise_case_study_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_staging_sunrise_case_study_route', 99 );
 
 /** Serve the Dematic case study at its exact staging URL. */
 function infometry_ct_render_staging_dematic_case_study_route() {
@@ -365,7 +365,7 @@ function infometry_ct_render_staging_dematic_case_study_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_staging_dematic_case_study_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_staging_dematic_case_study_route', 99 );
 
 /** Use the Conn's HomePlus case study when selected or on its URL. */
 function infometry_ct_should_use_conns_template() {
@@ -398,7 +398,7 @@ function infometry_ct_render_conns_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_conns_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_conns_route', 99 );
 
 /** Use the Expedia Hadoop case study when selected or on its URL. */
 function infometry_ct_should_use_expedia_template() {
@@ -431,7 +431,7 @@ function infometry_ct_render_expedia_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_expedia_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_expedia_route', 99 );
 
 /** Use the Belk MuleSoft case study when selected or on its URL. */
 function infometry_ct_should_use_belk_template() {
@@ -464,7 +464,7 @@ function infometry_ct_render_belk_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_belk_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_belk_route', 99 );
 
 /** Use the Tellus mobile analytics case study when selected or on its URL. */
 function infometry_ct_should_use_tellus_template() {
@@ -497,7 +497,7 @@ function infometry_ct_render_tellus_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_tellus_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_tellus_route', 99 );
 
 /** Use the Codexis enterprise data warehouse case study when selected or on its URL. */
 function infometry_ct_should_use_codexis_template() {
@@ -530,7 +530,7 @@ function infometry_ct_render_codexis_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_codexis_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_codexis_route', 99 );
 
 /** Use the Dematic global finance case study when selected or on its URL. */
 function infometry_ct_should_use_dematic_finance_template() {
@@ -563,7 +563,7 @@ function infometry_ct_render_dematic_finance_route() {
 	include $plugin_template;
 	exit;
 }
-add_action( 'template_redirect', 'infometry_ct_render_dematic_finance_route', 0 );
+add_action( 'template_redirect', 'infometry_ct_render_dematic_finance_route', 99 );
 
 /**
  * Load the selected template from this plugin without modifying BeTheme.

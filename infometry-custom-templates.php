@@ -39,6 +39,9 @@ require_once INFOMETRY_CT_PATH . 'includes/premium-blog.php';
 
 /** Lean output (no hidden theme slider/footer, no unused builder assets) on custom-design pages. */
 require_once INFOMETRY_CT_PATH . 'includes/lean-pages.php';
+
+/** Small SEO fixes with no visible effect (home schema, retired duplicate URLs). */
+require_once INFOMETRY_CT_PATH . 'includes/seo-fixes.php';
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
 define( 'INFOMETRY_CT_HOME_META_DESCRIPTION', 'Explore Infometry’s data analytics, AI, cloud data, integration, Snowflake, Databricks, and pre-built solutions designed to accelerate enterprise transformation.' );
 

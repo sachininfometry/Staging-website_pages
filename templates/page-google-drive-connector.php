@@ -32,9 +32,9 @@ $idmc_icon       = INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.pn
 			<div class="igd-connector-card" aria-label="Google Drive connected to Informatica IDMC">
 				<header><span>Native connector</span><b><i></i> Ready</b></header>
 				<div class="igd-connection">
-					<div class="igd-endpoint"><span><img src="<?php echo esc_url( $drive_icon ); ?>" alt="Google Drive"></span><small>Cloud files</small><strong>Google Drive</strong></div>
+					<div class="igd-endpoint"><span><img <?php $infometry_ct_dims = @getimagesize( $drive_icon ); if ( $infometry_ct_dims ) { printf( 'width="%d" height="%d"', $infometry_ct_dims[0], $infometry_ct_dims[1] ); } ?> src="<?php echo esc_url( $drive_icon ); ?>" alt="Google Drive"></span><small>Cloud files</small><strong>Google Drive</strong></div>
 					<div class="igd-link" aria-hidden="true"><span></span><i>→</i></div>
-					<div class="igd-endpoint"><span><img src="<?php echo esc_url( $idmc_icon ); ?>" alt="Informatica IDMC"></span><small>Data integration</small><strong>Informatica IDMC</strong></div>
+					<div class="igd-endpoint"><span><img <?php $infometry_ct_dims = @getimagesize( $idmc_icon ); if ( $infometry_ct_dims ) { printf( 'width="%d" height="%d"', $infometry_ct_dims[0], $infometry_ct_dims[1] ); } ?> src="<?php echo esc_url( $idmc_icon ); ?>" alt="Informatica IDMC"></span><small>Data integration</small><strong>Informatica IDMC</strong></div>
 				</div>
 				<footer><span><i>✓</i> OAuth 2.0</span><span><i>✓</i> Secure Agent</span><span><i>✓</i> No data stored</span></footer>
 			</div>
@@ -85,9 +85,9 @@ $idmc_icon       = INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.pn
 			<li><b>05</b><span>Users can also contact Informatica directly to activate their trial license on the IDMC platform</span></li>
 		</ol>
 		<div class="igd-flow-diagram" aria-label="Google Drive connector flow to Informatica IDMC and enterprise systems">
-			<div class="igd-flow-source"><span><img src="<?php echo esc_url( $drive_icon ); ?>" alt="Google Drive"></span><b>Google Drive</b><small>Cloud files</small></div>
+			<div class="igd-flow-source"><span><img <?php $infometry_ct_dims = @getimagesize( $drive_icon ); if ( $infometry_ct_dims ) { printf( 'width="%d" height="%d"', $infometry_ct_dims[0], $infometry_ct_dims[1] ); } ?> src="<?php echo esc_url( $drive_icon ); ?>" alt="Google Drive"></span><b>Google Drive</b><small>Cloud files</small></div>
 			<div class="igd-flow-line igd-flow-line-main"><i></i></div>
-			<div class="igd-flow-core"><span><img src="<?php echo esc_url( $idmc_icon ); ?>" alt="Informatica IDMC"></span><b>Informatica<br>IDMC</b><small>Native connector</small></div>
+			<div class="igd-flow-core"><span><img <?php $infometry_ct_dims = @getimagesize( $idmc_icon ); if ( $infometry_ct_dims ) { printf( 'width="%d" height="%d"', $infometry_ct_dims[0], $infometry_ct_dims[1] ); } ?> src="<?php echo esc_url( $idmc_icon ); ?>" alt="Informatica IDMC"></span><b>Informatica<br>IDMC</b><small>Native connector</small></div>
 			<div class="igd-flow-branch igd-branch-top"><i></i><span>☁</span><b>SaaS applications</b></div>
 			<div class="igd-flow-branch igd-branch-right"><i></i><span>▤</span><b>Databases</b></div>
 			<div class="igd-flow-branch igd-branch-bottom"><i></i><span>▣</span><b>CRM / ERP</b></div>
@@ -122,16 +122,16 @@ $idmc_icon       = INFOMETRY_CT_URL . 'assets/images/informatica-product-mark.pn
 			<div class="infometry-footer-grid">
 				<div class="infometry-footer-connect">
 					<h2>Connect with us</h2>
-					<a class="infometry-footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+					<a class="infometry-footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img width="500" height="142" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infometry-logo-white.png' ); ?>" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
 					<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 					<div class="infometry-footer-social" aria-label="Infometry social profiles">
-						<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-facebook.png' ); ?>" alt=""></a>
-						<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-x.png' ); ?>" alt=""></a>
-						<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-linkedin.png' ); ?>" alt=""></a>
-						<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-youtube.png' ); ?>" alt=""></a>
-						<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-pinterest.png' ); ?>" alt=""></a>
-						<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-instagram.png' ); ?>" alt=""></a>
-						<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-g2.png' ); ?>" alt=""></a>
+						<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-facebook.png' ); ?>" alt=""></a>
+						<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img width="500" height="500" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-x.png' ); ?>" alt=""></a>
+						<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-linkedin.png' ); ?>" alt=""></a>
+						<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-youtube.png' ); ?>" alt=""></a>
+						<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-pinterest.png' ); ?>" alt=""></a>
+						<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-instagram.png' ); ?>" alt=""></a>
+						<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img width="512" height="512" src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/social-g2.png' ); ?>" alt=""></a>
 					</div>
 					<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 				</div>

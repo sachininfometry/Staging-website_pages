@@ -47,6 +47,17 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study fdp-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/asana-fdp-banner-art-v2.jpg', 'Asana Financial Data Platform on Snowflake case study', 'Banner image for the Infometry case study on Asana\'s Financial Data Platform built on the Snowflake AI Data Cloud.' ),
+			array( 'customer-asana-logo.png', 'Asana', 'Asana company logo.' ),
+			array( 'case-studies/asana-fdp-about-laptop.jpg', 'Asana project dashboard', 'Asana work management dashboard on a laptop, illustrating the client in the Infometry Snowflake case study.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -116,7 +127,7 @@ $outcomes = array(
 				</ul>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-banner-art-v2.jpg' ); ?>" width="1360" height="802" alt="Asana office building with the Snowflake AI Data Cloud and analytics cards">
+				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-banner-art-v2.jpg' ); ?>" title="Asana Financial Data Platform on Snowflake case study" width="1360" height="802" alt="Asana office building with the Snowflake AI Data Cloud and analytics cards">
 			</figure>
 		</div>
 	</section>
@@ -126,7 +137,7 @@ $outcomes = array(
 			<article><span class="dematic-icon fdp-gauge-icon"><svg viewBox="0 0 48 34"><use href="#fdp-gauge2"/></svg></span><p><small>60% Pipeline</small><strong>Performance Improvement</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#dgf-db-fill"/></svg></span><p><small>Incremental</small><strong>Data Processing</strong></p></article>
 			<article><span class="dematic-icon"><svg><use href="#fdp-shield-fill"/></svg></span><p><small>Governed</small><strong>Financial Data</strong></p></article>
-			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" alt="Snowflake" width="182" height="182"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span><p><small>Snowflake&rsquo;s</small><strong>AI Data Cloud</strong></p></article>
+			<article><span class="dematic-icon fdp-sf-mark"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-mark.png' ); ?>" title="Snowflake" alt="Snowflake logo" width="182" height="182"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span><p><small>Snowflake&rsquo;s</small><strong>AI Data Cloud</strong></p></article>
 		</div>
 	</section>
 
@@ -134,12 +145,12 @@ $outcomes = array(
 		<div class="dematic-shell dematic-about-grid">
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
-				<a class="fdp-client-logo" href="https://asana.com/" aria-label="Visit the Asana website"><img src="<?php echo esc_url( $img_url . 'customer-asana-logo.png' ); ?>" alt="Asana" width="300" height="92" loading="lazy" decoding="async"></a>
+				<a class="fdp-client-logo" href="https://asana.com/" aria-label="Visit the Asana website"><img src="<?php echo esc_url( $img_url . 'customer-asana-logo.png' ); ?>" title="Asana" alt="Asana logo" width="300" height="92" loading="lazy" decoding="async"></a>
 				<p>Asana is a global SaaS company that relies on financial and operational data to track MRR, ARR, customer lifetime value, churn, and new-logo acquisition. These insights are essential for executive decision-making, financial planning, and business performance management.</p>
 				<p>Asana&rsquo;s Financial Data Platform (FDP 2.0) integrates data from Zuora, Salesforce, NetSuite, and Product Events to provide a unified foundation for enterprise reporting and analytics.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-about-laptop.jpg' ); ?>" width="1710" height="920" alt="Laptop showing an Asana project dashboard on an office desk" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $fdp_img_url . 'asana-fdp-about-laptop.jpg' ); ?>" title="Asana project dashboard" width="1710" height="920" alt="Laptop showing an Asana project dashboard on an office desk" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -192,9 +203,9 @@ $outcomes = array(
 				<article class="dgf-col fdp-col">
 					<h3 class="fdp-col-head is-blue">Source Applications</h3>
 					<ul class="fdp-logos">
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/zuora-mark.png' ); ?>" alt="" width="123" height="122" loading="lazy"><span>Zuora</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" alt="" width="267" height="188" loading="lazy"><span>Salesforce</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'netsuite-mark.png' ); ?>" alt="" width="248" height="244" loading="lazy"><span>NetSuite</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/zuora-mark.png' ); ?>" title="Zuora" alt="Zuora logo" width="123" height="122" loading="lazy"><span>Zuora</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" title="Salesforce" alt="Salesforce logo" width="267" height="188" loading="lazy"><span>Salesforce</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'netsuite-mark.png' ); ?>" title="Oracle NetSuite" alt="Oracle NetSuite logo" width="248" height="244" loading="lazy"><span>NetSuite</span></li>
 						<li><i class="fdp-events-mark"><svg aria-hidden="true"><use href="#dematic-document"/></svg></i><span>Product Events</span></li>
 					</ul>
 				</article>
@@ -203,14 +214,14 @@ $outcomes = array(
 					<h3 class="fdp-col-head is-orange">Data Pipeline &amp; Orchestration</h3>
 					<ul class="fdp-list">
 						<li><i><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><span>Incremental Loads &amp; Transformations</span></li>
-						<li><i><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" alt="" width="192" height="192" loading="lazy"></i><span><b>Apache Airflow</b> Orchestration</span></li>
+						<li><i><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" title="Apache Airflow" alt="Apache Airflow logo" width="192" height="192" loading="lazy"></i><span><b>Apache Airflow</b> Orchestration</span></li>
 						<li><i><svg aria-hidden="true"><use href="#fdp-checklist"/></svg></i><span>Control &amp; Audit Frameworks</span></li>
 					</ul>
 				</article>
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col fdp-col">
 					<h3 class="fdp-col-head is-sky">Snowflake FDP 2.0 Layers</h3>
-					<span class="fdp-sf-wordmark-wrap"><img class="fdp-sf-wordmark" src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span>
+					<span class="fdp-sf-wordmark-wrap"><img class="fdp-sf-wordmark" src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" title="Snowflake" alt="Snowflake logo" width="640" height="152" loading="lazy"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span>
 					<ol class="fdp-layers" aria-label="FDP 2.0 data layers">
 						<li><i class="is-blue"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>EDL</b><small>Extract, Detailed Load</small></li>
 						<li><i class="is-orange"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><b>ESL</b><small>Enterprise Staging Layer</small></li>
@@ -248,11 +259,11 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Asana&rsquo;s financial data platform modernization.</p></div>
 			<div class="dgf-tech-grid fdp-tech">
-				<div class="dgf-tech fdp-tech-snowflake"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" alt="Snowflake" width="640" height="152" loading="lazy"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span></div>
-				<div class="dgf-tech" style="--tint:#eef6ff"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" alt="Apache Airflow" width="192" height="192" loading="lazy"></span><span class="dgf-tech-name">Apache Airflow</span></div>
-				<div class="dgf-tech fdp-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/zuora-logo.png' ); ?>" alt="Zuora" width="575" height="118" loading="lazy"></span></div>
-				<div class="dgf-tech" style="--tint:#e8f4fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" alt="Salesforce" width="267" height="188" loading="lazy"></span><span class="dgf-tech-name">Salesforce</span></div>
-				<div class="dgf-tech" style="--tint:#eef1f6"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'netsuite-mark.png' ); ?>" alt="NetSuite" width="248" height="244" loading="lazy"></span><span class="dgf-tech-name">NetSuite</span></div>
+				<div class="dgf-tech fdp-tech-snowflake"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" title="Snowflake" alt="Snowflake logo" width="640" height="152" loading="lazy"><sup class="fdp-reg" aria-hidden="true">&reg;</sup></span></div>
+				<div class="dgf-tech" style="--tint:#eef6ff"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/airflow-mark.png' ); ?>" title="Apache Airflow" alt="Apache Airflow logo" width="192" height="192" loading="lazy"></span><span class="dgf-tech-name">Apache Airflow</span></div>
+				<div class="dgf-tech fdp-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/zuora-logo.png' ); ?>" title="Zuora" alt="Zuora logo" width="575" height="118" loading="lazy"></span></div>
+				<div class="dgf-tech" style="--tint:#e8f4fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'brand-salesforce.png' ); ?>" title="Salesforce" alt="Salesforce logo" width="267" height="188" loading="lazy"></span><span class="dgf-tech-name">Salesforce</span></div>
+				<div class="dgf-tech" style="--tint:#eef1f6"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'netsuite-mark.png' ); ?>" title="Oracle NetSuite" alt="Oracle NetSuite logo" width="248" height="244" loading="lazy"></span><span class="dgf-tech-name">NetSuite</span></div>
 				<div class="dgf-tech" style="--tint:#eef4fb"><span class="dgf-tech-icon-box fdp-events-mark"><svg aria-hidden="true"><use href="#dematic-document"/></svg></span><span class="dgf-tech-name">Product Events</span></div>
 			</div>
 		</div>
@@ -268,16 +279,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

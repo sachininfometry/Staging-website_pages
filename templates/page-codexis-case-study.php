@@ -46,6 +46,17 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study cdx-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/codexis/codexis-hero-v2.jpg', 'Codexis enterprise data warehouse case study', 'Banner image for the Infometry case study on building a global enterprise data warehouse for Codexis finance, operations and R&D.' ),
+			array( 'case-studies/codexis/codexis-logo.png', 'Codexis', 'Codexis company logo.' ),
+			array( 'case-studies/codexis/codexis-lab.jpg', 'Codexis enzyme research lab', 'Laboratory research at Codexis, the biotechnology client in the Infometry data warehouse case study.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -129,7 +140,7 @@ $outcomes = array(
 				<p>A centralized analytical platform to drive greater visibility, faster reporting and better decision-making across the business.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-hero-v2.jpg' ); ?>" width="2104" height="747" alt="Engineered enzyme in a Codexis research lab">
+				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-hero-v2.jpg' ); ?>" title="Codexis enterprise data warehouse case study" width="2104" height="747" alt="Engineered enzyme model with lab glassware and a DNA helix in a Codexis research lab">
 			</figure>
 		</div>
 	</section>
@@ -147,11 +158,11 @@ $outcomes = array(
 		<div class="dematic-shell dematic-about-grid">
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
-				<p class="cdx-wordmark"><img src="<?php echo esc_url( $cdx_img_url . 'codexis-logo.png' ); ?>" alt="Codexis" width="640" height="96" loading="lazy" decoding="async"></p>
+				<p class="cdx-wordmark"><img src="<?php echo esc_url( $cdx_img_url . 'codexis-logo.png' ); ?>" title="Codexis" alt="Codexis logo" width="640" height="96" loading="lazy" decoding="async"></p>
 				<p>Codexis is a biotechnology company focused on developing and commercializing enzymes to improve the chemistry of everyday life. The finance, operations, and R&amp;D teams needed a global view of business performance to support better planning and decision-making across the organization.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-lab.jpg' ); ?>" width="1796" height="876" alt="Scientist pipetting blue samples in a lab with molecular data on a screen" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-lab.jpg' ); ?>" title="Codexis enzyme research lab" width="1796" height="876" alt="Scientist pipetting blue samples in a lab with molecular data on a screen" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -223,7 +234,7 @@ $outcomes = array(
 				</div>
 				<span class="cdx-arr" aria-hidden="true"><i></i></span>
 				<div class="cdx-box cdx-center">
-					<img class="cdx-sql" src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" alt="Microsoft SQL Server" width="64" height="64" loading="lazy">
+					<img class="cdx-sql" src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" title="Microsoft SQL Server" alt="Microsoft SQL Server logo" width="64" height="64" loading="lazy">
 					<h3>SQL Server<small>Data Warehouse</small></h3>
 					<i class="cdx-big-icon"><svg aria-hidden="true"><use href="#cdx-db"/></svg></i>
 				</div>
@@ -260,12 +271,12 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Codexis&rsquo;s enterprise data warehouse.</p></div>
 			<div class="dgf-tech-grid cdx-tech">
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" alt="" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">Microsoft<small>SQL Server 2008</small></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" title="Microsoft SQL Server" alt="Microsoft SQL Server logo" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">Microsoft<small>SQL Server 2008</small></span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#cdx-cogs"/></svg></span><span class="dgf-tech-name">SSIS<small>SQL Server Integration Services</small></span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#cdx-cube"/></svg></span><span class="dgf-tech-name">SSAS<small>SQL Server Analysis Services</small></span></div>
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sap.png' ); ?>" alt="" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">BusinessObjects<small>XI 3.1 Edge</small></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sap.png' ); ?>" title="SAP BusinessObjects" alt="SAP BusinessObjects logo" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">BusinessObjects<small>XI 3.1 Edge</small></span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#cdx-dash"/></svg></span><span class="dgf-tech-name">Xcelsius<small>2008</small></span></div>
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/microsoft.png' ); ?>" alt="" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">Windows<small>Active Directory</small></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/microsoft.png' ); ?>" title="Microsoft" alt="Microsoft logo" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">Windows<small>Active Directory</small></span></div>
 			</div>
 		</div>
 	</section>
@@ -280,16 +291,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

@@ -55,6 +55,18 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study nvs-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/navis/navis-hero.jpg', 'Navis post-contract project delivery case study', 'Banner image for the Infometry case study on improving post-contract project delivery performance for Navis with PCIP and Tableau.' ),
+			array( 'case-studies/navis/navis-logo.png', 'Navis', 'Navis company logo.' ),
+			array( 'case-studies/navis/navis-site.jpg', 'Navis industrial project site', 'Engineers reviewing equipment at an industrial project site, illustrating Navis project delivery from manufacturing to installation.' ),
+			array( 'case-studies/navis/navis-cta.jpg', 'Navis project delivery visibility', 'Background image for the Navis case study call to action on executive project delivery visibility.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -143,7 +155,7 @@ $outcomes = array(
 				<p>Executive visibility from design milestones through manufacturing, installation and beneficial use.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $nvs_img_url . 'navis-hero.jpg' ); ?>" width="2169" height="725" alt="Large pressure vessel on a heavy transporter at an industrial plant at sunset, with two engineers in safety gear">
+				<img src="<?php echo esc_url( $nvs_img_url . 'navis-hero.jpg' ); ?>" title="Navis post-contract project delivery case study" width="2169" height="725" alt="Large pressure vessel on a heavy transporter at an industrial plant at sunset, with two engineers in safety gear">
 			</figure>
 		</div>
 	</section>
@@ -161,11 +173,11 @@ $outcomes = array(
 		<div class="dematic-shell dematic-about-grid">
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
-				<p class="nvs-wordmark"><img src="<?php echo esc_url( $nvs_img_url . 'navis-logo.png' ); ?>" alt="Navis" width="548" height="171" loading="lazy" decoding="async"></p>
+				<p class="nvs-wordmark"><img src="<?php echo esc_url( $nvs_img_url . 'navis-logo.png' ); ?>" title="Navis" alt="Navis logo" width="548" height="171" loading="lazy" decoding="async"></p>
 				<p>Navis manages complex projects that move from design to manufacturing, shipment, installation and beneficial use. The organization requires executive visibility into project delivery performance after contract signature to ensure timely execution across multiple milestones.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $nvs_img_url . 'navis-site.jpg' ); ?>" width="1600" height="687" alt="Two engineers in hard hats reviewing a large pressure vessel at an industrial plant" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $nvs_img_url . 'navis-site.jpg' ); ?>" title="Navis industrial project site" width="1600" height="687" alt="Two engineers in hard hats reviewing a large pressure vessel at an industrial plant" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -264,7 +276,7 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Navis&rsquo;s project delivery analytics.</p></div>
 			<div class="dgf-tech-grid nvs-tech">
-				<div class="dgf-tech nvs-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/tableau-logo.png' ); ?>" alt="Tableau" width="900" height="186" loading="lazy"></span></div>
+				<div class="dgf-tech nvs-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/tableau-logo.png' ); ?>" title="Tableau" alt="Tableau logo" width="900" height="186" loading="lazy"></span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#nvs-db"/></svg></span><span class="dgf-tech-name">PCIP Integration<small>Data Integration Layer</small></span></div>
 			</div>
 		</div>
@@ -280,16 +292,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

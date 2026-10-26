@@ -45,6 +45,17 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study tls-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/tellus/tellus-hero.jpg', 'TELUS mobile analytics case study', 'Banner image for the Infometry case study on mobile analytics for TELUS, a telecommunications service provider.' ),
+			array( 'case-studies/tellus/telus-logo.png', 'TELUS', 'TELUS company logo.' ),
+			array( 'case-studies/tellus/tellus-mobile.jpg', 'Mobile network analytics', 'Smartphone with location and network analytics, illustrating mobile analytics for a service provider.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -121,7 +132,7 @@ $outcomes = array(
 				<p>A scalable hybrid analytics platform for clickstream insights, location-based recommendations, and high-volume mobile data.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $tls_img_url . 'tellus-hero.jpg' ); ?>" width="2141" height="734" alt="City skyline at sunset with mobile network towers and connected data links">
+				<img src="<?php echo esc_url( $tls_img_url . 'tellus-hero.jpg' ); ?>" title="TELUS mobile analytics case study" width="2141" height="734" alt="City skyline at sunset with mobile network towers and connected data links">
 			</figure>
 		</div>
 	</section>
@@ -139,11 +150,11 @@ $outcomes = array(
 		<div class="dematic-shell dematic-about-grid">
 			<div class="dematic-copy-block">
 				<h2>About the Client</h2>
-				<p class="tls-wordmark"><img src="<?php echo esc_url( $tls_img_url . 'telus-logo.png' ); ?>" alt="TELUS" width="640" height="122" loading="lazy" decoding="async"></p>
+				<p class="tls-wordmark"><img src="<?php echo esc_url( $tls_img_url . 'telus-logo.png' ); ?>" title="TELUS" alt="TELUS logo" width="640" height="122" loading="lazy" decoding="async"></p>
 				<p>TELUS is a leading mobile service provider serving millions of customers. With the rapid adoption of smart devices and data services, the company generates massive volumes of network, device, location, and user behavior data every day.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $tls_img_url . 'tellus-mobile.jpg' ); ?>" width="1796" height="876" alt="Hands using a smartphone map with location, network and analytics icons over a city skyline" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $tls_img_url . 'tellus-mobile.jpg' ); ?>" title="Mobile network analytics" width="1796" height="876" alt="Hands using a smartphone map with location, network and analytics icons over a city skyline" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -208,17 +219,17 @@ $outcomes = array(
 				<span class="tls-arr" aria-hidden="true"><i></i></span>
 				<div class="tls-box tls-center">
 					<h3>Hadoop Platform<small>(100 Linux Nodes)</small></h3>
-					<img class="tls-hadoop" src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" alt="Apache Hadoop" width="192" height="144" loading="lazy">
+					<img class="tls-hadoop" src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" title="Apache Hadoop" alt="Apache Hadoop logo" width="192" height="144" loading="lazy">
 					<p><b>MapReduce</b>Staging Data</p>
 				</div>
 				<span class="tls-arr is-split" aria-hidden="true"><i></i><i></i></span>
 				<div class="tls-stack">
-					<div class="tls-box tls-row"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" alt="" width="192" height="173" loading="lazy"><span><b>Hive</b>(Batch Reports)</span></div>
-					<div class="tls-box tls-row"><img src="<?php echo esc_url( $img_url . 'tech-logos/java-mark.png' ); ?>" alt="" width="141" height="192" loading="lazy"><span><b>Java Recommendation Engine</b>(Real-Time)</span></div>
+					<div class="tls-box tls-row"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" title="Apache Hive" alt="Apache Hive logo" width="192" height="173" loading="lazy"><span><b>Hive</b>(Batch Reports)</span></div>
+					<div class="tls-box tls-row"><img src="<?php echo esc_url( $img_url . 'tech-logos/java-mark.png' ); ?>" title="Java" alt="Java logo" width="141" height="192" loading="lazy"><span><b>Java Recommendation Engine</b>(Real-Time)</span></div>
 				</div>
 				<span class="tls-arr is-pair" aria-hidden="true"><i></i><i></i></span>
 				<div class="tls-stack">
-					<div class="tls-box tls-row is-stacked"><b>Reduced load on Oracle Data Warehouse</b><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" alt="Oracle" width="684" height="142" loading="lazy"><span>(Existing Platform)</span></div>
+					<div class="tls-box tls-row is-stacked"><b>Reduced load on Oracle Data Warehouse</b><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" title="Oracle" alt="Oracle logo" width="684" height="142" loading="lazy"><span>(Existing Platform)</span></div>
 					<div class="tls-box tls-row"><i><svg aria-hidden="true"><use href="#tls-phone"/></svg></i><span><b>Real-Time Mobile Recommendations</b>and Targeted Advertising</span></div>
 				</div>
 			</div>
@@ -240,11 +251,11 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in TELUS&rsquo;s mobile analytics platform.</p></div>
 			<div class="dgf-tech-grid tls-tech">
-				<div class="dgf-tech tls-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-logo.png' ); ?>" alt="Apache Hadoop" width="640" height="152" loading="lazy"></span></div>
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" alt="" width="192" height="173" loading="lazy"></span><span class="dgf-tech-name">Apache Hive</span></div>
+				<div class="dgf-tech tls-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-logo.png' ); ?>" title="Apache Hadoop" alt="Apache Hadoop logo" width="640" height="152" loading="lazy"></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" title="Apache Hive" alt="Apache Hive logo" width="192" height="173" loading="lazy"></span><span class="dgf-tech-name">Apache Hive</span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-orange"><svg aria-hidden="true"><use href="#tls-cogs"/></svg></span><span class="dgf-tech-name tls-mapreduce">MapReduce</span></div>
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/java-mark.png' ); ?>" alt="" width="141" height="192" loading="lazy"></span><span class="dgf-tech-name">Java<small>Recommendation Engine</small></span></div>
-				<div class="dgf-tech tls-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" alt="Oracle" width="684" height="142" loading="lazy"></span><span class="dgf-tech-name">Data Warehouse<small>(Existing Platform)</small></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/java-mark.png' ); ?>" title="Java" alt="Java logo" width="141" height="192" loading="lazy"></span><span class="dgf-tech-name">Java<small>Recommendation Engine</small></span></div>
+				<div class="dgf-tech tls-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" title="Oracle" alt="Oracle logo" width="684" height="142" loading="lazy"></span><span class="dgf-tech-name">Data Warehouse<small>(Existing Platform)</small></span></div>
 			</div>
 		</div>
 	</section>
@@ -259,16 +270,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

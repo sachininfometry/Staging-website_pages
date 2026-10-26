@@ -45,6 +45,16 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study exp-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/expedia/expedia-hero.jpg', 'Expedia Hadoop big data case study', 'Banner image for the Infometry case study on building a Hadoop big data analytics platform for Expedia.' ),
+			array( 'case-studies/expedia/expedia-about-travel.jpg', 'Expedia online travel booking', 'Expedia travel booking on laptop and mobile, illustrating the client in the Infometry Hadoop case study.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -95,7 +105,7 @@ $outcomes = array(
 				<p>How Infometry extended Expedia&rsquo;s DB2-based EDW with a scalable Hadoop platform for high-volume clickstream and enterprise analytics.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $exp_img_url . 'expedia-hero.jpg' ); ?>" width="1974" height="797" alt="Passenger jet flying above the clouds at sunset">
+				<img src="<?php echo esc_url( $exp_img_url . 'expedia-hero.jpg' ); ?>" title="Expedia Hadoop big data case study" width="1974" height="797" alt="Passenger jet flying above the clouds at sunset, representing Expedia's global travel business">
 			</figure>
 		</div>
 	</section>
@@ -118,7 +128,7 @@ $outcomes = array(
 				<p>Customer interactions, search activity, transactions, marketing signals, and clickstream behavior generate very large volumes of enterprise and analytical data.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $exp_img_url . 'expedia-about-travel.jpg' ); ?>" width="1813" height="868" alt="Laptop and phone showing the Expedia travel site, with a hat, passport and suitcase" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $exp_img_url . 'expedia-about-travel.jpg' ); ?>" title="Expedia online travel booking" width="1813" height="868" alt="Laptop and phone showing the Expedia travel site, with a hat, passport and suitcase" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -179,10 +189,10 @@ $outcomes = array(
 				<span class="dgf-arrow" aria-hidden="true"></span>
 				<article class="dgf-col exp-col">
 					<h3 class="exp-col-head is-orange">Hadoop Platform</h3>
-					<img class="exp-mark" src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" alt="Apache Hadoop" width="192" height="144" loading="lazy">
+					<img class="exp-mark" src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" title="Apache Hadoop" alt="Apache Hadoop logo" width="192" height="144" loading="lazy">
 					<ul class="exp-list is-orange-list">
 						<li><i><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><span>HDFS</span></li>
-						<li><i><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" alt="" width="192" height="173" loading="lazy"></i><span>Hive</span></li>
+						<li><i><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" title="Apache Hive" alt="Apache Hive logo" width="192" height="173" loading="lazy"></i><span>Hive</span></li>
 						<li><i><svg aria-hidden="true"><use href="#exp-mapreduce"/></svg></i><span>MapReduce</span></li>
 						<li><i><svg aria-hidden="true"><use href="#exp-cluster"/></svg></i><span>Distributed Processing</span></li>
 					</ul>
@@ -191,9 +201,9 @@ $outcomes = array(
 				<article class="dgf-col exp-col">
 					<h3 class="exp-col-head is-green">Existing EDW / Data Marts</h3>
 					<ul class="exp-logos">
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/ibm.svg' ); ?>" alt="" width="64" height="64" loading="lazy"><span>IBM DB2</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" alt="" width="64" height="64" loading="lazy"><span>SQL Server</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" alt="" width="192" height="194" loading="lazy"><span>Informatica</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/ibm.svg' ); ?>" title="IBM" alt="IBM logo" width="64" height="64" loading="lazy"><span>IBM DB2</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" title="Microsoft SQL Server" alt="Microsoft SQL Server logo" width="64" height="64" loading="lazy"><span>SQL Server</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" title="Informatica" alt="Informatica logo" width="192" height="194" loading="lazy"><span>Informatica</span></li>
 						<li><i><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></i><span>Enterprise Data Marts</span></li>
 					</ul>
 				</article>
@@ -227,13 +237,13 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Expedia&rsquo;s data platform modernization.</p></div>
 			<div class="dgf-tech-grid exp-tech">
-				<div class="dgf-tech" style="--tint:#fffbe0"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" alt="Apache Hadoop" width="192" height="144" loading="lazy"></span><span class="dgf-tech-name">Apache Hadoop</span></div>
+				<div class="dgf-tech" style="--tint:#fffbe0"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hadoop-mark.png' ); ?>" title="Apache Hadoop" alt="Apache Hadoop logo" width="192" height="144" loading="lazy"></span><span class="dgf-tech-name">Apache Hadoop</span></div>
 				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box is-orange"><svg aria-hidden="true"><use href="#dgf-db-fill"/></svg></span><span class="dgf-tech-name">HDFS</span></div>
-				<div class="dgf-tech" style="--tint:#fffbe0"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" alt="Apache Hive" width="192" height="173" loading="lazy"></span><span class="dgf-tech-name">Hive</span></div>
+				<div class="dgf-tech" style="--tint:#fffbe0"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/hive-mark.png' ); ?>" title="Apache Hive" alt="Apache Hive logo" width="192" height="173" loading="lazy"></span><span class="dgf-tech-name">Hive</span></div>
 				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box is-orange"><svg aria-hidden="true"><use href="#exp-mapreduce"/></svg></span><span class="dgf-tech-name">MapReduce</span></div>
-				<div class="dgf-tech" style="--tint:#e8f0fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/ibm.svg' ); ?>" alt="IBM" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">IBM DB2</span></div>
-				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" alt="Informatica" width="192" height="194" loading="lazy"></span><span class="dgf-tech-name">Informatica</span></div>
-				<div class="dgf-tech" style="--tint:#fdecee"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" alt="SQL Server" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">SQL Server</span></div>
+				<div class="dgf-tech" style="--tint:#e8f0fd"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/ibm.svg' ); ?>" title="IBM" alt="IBM logo" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">IBM DB2</span></div>
+				<div class="dgf-tech" style="--tint:#fff1e8"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/informatica-mark.png' ); ?>" title="Informatica" alt="Informatica logo" width="192" height="194" loading="lazy"></span><span class="dgf-tech-name">Informatica</span></div>
+				<div class="dgf-tech" style="--tint:#fdecee"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/sql-server-mark.png' ); ?>" title="Microsoft SQL Server" alt="Microsoft SQL Server logo" width="64" height="64" loading="lazy"></span><span class="dgf-tech-name">SQL Server</span></div>
 				<div class="dgf-tech" style="--tint:#eef1f6"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#dematic-trend"/></svg></span><span class="dgf-tech-name">Omniture Clickstream</span></div>
 			</div>
 		</div>
@@ -249,16 +259,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

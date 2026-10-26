@@ -8,6 +8,8 @@
  *   - /advanced-analytics-2/ (an older duplicate of /advanced-analytics/ that
  *     canonicalised to itself) redirects permanently to /advanced-analytics/.
  *     This can later move to the Redirection plugin; remove it here if so.
+ *   - Case-study templates can print ImageObject data (name and description) for
+ *     their images with infometry_ct_print_image_schema().
  *
  * @package Infometry_Custom_Templates
  */
@@ -31,6 +33,48 @@ function infometry_ct_home_webpage_schema( $data ) {
 	return $data;
 }
 add_filter( 'wpseo_schema_webpage', 'infometry_ct_home_webpage_schema', 20 );
+
+/**
+ * Print ImageObject structured data for a custom template's images, so each
+ * image carries a name and description for search engines (the images are
+ * plugin assets, not Media Library items, so they have no title or
+ * description fields of their own).
+ *
+ * @param array $images List of array( path under assets/images/, name, description ).
+ */
+function infometry_ct_print_image_schema( $images ) {
+	$graph = array();
+	foreach ( $images as $index => $image ) {
+		list( $path, $name, $description ) = $image;
+		$file = INFOMETRY_CT_PATH . 'assets/images/' . $path;
+		if ( ! is_readable( $file ) ) {
+			continue;
+		}
+
+		$url  = INFOMETRY_CT_URL . 'assets/images/' . $path;
+		$item = array(
+			'@type'       => 'ImageObject',
+			'contentUrl'  => $url,
+			'url'         => $url,
+			'name'        => $name,
+			'caption'     => $name,
+			'description' => $description,
+		);
+		$size = @getimagesize( $file );
+		if ( $size ) {
+			$item['width']  = $size[0];
+			$item['height'] = $size[1];
+		}
+		if ( 0 === $index ) {
+			$item['representativeOfPage'] = true;
+		}
+		$graph[] = $item;
+	}
+
+	if ( $graph ) {
+		echo '<script type="application/ld+json">' . wp_json_encode( array( '@context' => 'https://schema.org', '@graph' => $graph ), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+	}
+}
 
 /** Permanent redirects for retired duplicate URLs. */
 function infometry_ct_retired_url_redirects() {

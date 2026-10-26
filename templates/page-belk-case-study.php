@@ -47,6 +47,16 @@ $outcomes = array(
 ?>
 
 <main class="dematic-case-study dgf-case-study blk-case-study" id="dematic-main">
+<?php
+if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
+	infometry_ct_print_image_schema(
+		array(
+			array( 'case-studies/belk/belk-hero.jpg', 'Belk MuleSoft integration case study', 'Banner image for the Infometry case study on MuleSoft integration for Belk department stores.' ),
+			array( 'case-studies/belk/belk-store-interior.jpg', 'Belk department store', 'Inside a Belk department store, illustrating the retail client in the Infometry MuleSoft case study.' ),
+		)
+	);
+}
+?>
 	<svg class="dematic-sprite" aria-hidden="true" focusable="false">
 		<symbol id="dematic-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></symbol>
 		<symbol id="dematic-link" viewBox="0 0 24 24"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4l1.6-1.6"/></symbol>
@@ -115,7 +125,7 @@ $outcomes = array(
 				<p>Reusable integration microservices for secure e-commerce, order, logistics, returns, payments, and vendor data exchange.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $blk_img_url . 'belk-hero.jpg' ); ?>" width="2162" height="727" alt="Belk department store at sunset">
+				<img src="<?php echo esc_url( $blk_img_url . 'belk-hero.jpg' ); ?>" title="Belk MuleSoft integration case study" width="2162" height="727" alt="Belk department store exterior at sunset">
 			</figure>
 		</div>
 	</section>
@@ -138,7 +148,7 @@ $outcomes = array(
 				<p>The company offers a wide range of products including apparel, shoes, beauty, home, and accessories, and works with multiple vendors and logistics partners to serve its customers.</p>
 			</div>
 			<figure class="dematic-client-visual dgf-client-visual">
-				<img src="<?php echo esc_url( $blk_img_url . 'belk-store-interior.jpg' ); ?>" width="1796" height="876" alt="Belk store entrance with its illuminated sign and apparel displays" loading="lazy" decoding="async">
+				<img src="<?php echo esc_url( $blk_img_url . 'belk-store-interior.jpg' ); ?>" title="Belk department store" width="1796" height="876" alt="Belk store entrance with its illuminated sign and apparel displays" loading="lazy" decoding="async">
 			</figure>
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
@@ -191,14 +201,14 @@ $outcomes = array(
 				<div class="blk-side is-left">
 					<h3 class="blk-side-head">Belk Systems <small>(On-Prem / Cloud)</small></h3>
 					<ul class="blk-rows">
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-mark.png' ); ?>" alt="" width="224" height="142" loading="lazy"><span><b>Oracle Retek</b>(Merchandising / ERP)</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-mark.png' ); ?>" title="Oracle" alt="Oracle logo" width="224" height="142" loading="lazy"><span><b>Oracle Retek</b>(Merchandising / ERP)</span></li>
 						<li><i><svg aria-hidden="true"><use href="#blk-warehouse"/></svg></i><span><b>WMS</b>(Warehouse Management)</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-mark.png' ); ?>" alt="" width="186" height="152" loading="lazy"><span><b>Manhattan</b>(Omni-channel / Order Management)</span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-mark.png' ); ?>" title="Manhattan Associates" alt="Manhattan Associates logo" width="186" height="152" loading="lazy"><span><b>Manhattan</b>(Omni-channel / Order Management)</span></li>
 						<li><i><svg aria-hidden="true"><use href="#blk-db"/></svg></i><span><b>Other Applications</b>(Stores, POS, Finance, etc.)</span></li>
 					</ul>
 				</div>
 				<div class="blk-core">
-					<div class="blk-core-head"><img src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" alt="MuleSoft" width="554" height="165" loading="lazy"><span>Integration Layer</span></div>
+					<div class="blk-core-head"><img src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" title="MuleSoft" alt="MuleSoft logo" width="554" height="165" loading="lazy"><span>Integration Layer</span></div>
 					<div class="blk-services">
 						<span><svg aria-hidden="true"><use href="#blk-download"/></svg><b>Inbound<br>Microservices</b></span>
 						<span><svg aria-hidden="true"><use href="#blk-upload"/></svg><b>Outbound<br>Microservices</b></span>
@@ -217,7 +227,7 @@ $outcomes = array(
 						<li><i><svg aria-hidden="true"><use href="#blk-cart"/></svg></i><span><b>E-commerce Platform</b>(Website / Mobile App)</span></li>
 						<li><i><svg aria-hidden="true"><use href="#blk-users-fill"/></svg></i><span><b>Vendors / Suppliers</b></span></li>
 						<li><i><svg aria-hidden="true"><use href="#blk-truck"/></svg></i><span><b>Logistics Partners</b>(Carriers, 3PL)</span></li>
-						<li><img src="<?php echo esc_url( $img_url . 'google-cloud-mark.png' ); ?>" alt="" width="224" height="224" loading="lazy"><span><b>Google Cloud Pub/Sub</b></span></li>
+						<li><img src="<?php echo esc_url( $img_url . 'google-cloud-mark.png' ); ?>" title="Google Cloud" alt="Google Cloud logo" width="224" height="224" loading="lazy"><span><b>Google Cloud Pub/Sub</b></span></li>
 					</ul>
 				</div>
 			</div>
@@ -239,11 +249,11 @@ $outcomes = array(
 		<div class="dematic-shell">
 			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Belk&rsquo;s retail integration platform.</p></div>
 			<div class="dgf-tech-grid blk-tech">
-				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" alt="MuleSoft" width="554" height="165" loading="lazy"></span></div>
-				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" alt="Oracle" width="684" height="142" loading="lazy"></span><span class="dgf-tech-name">Retek</span></div>
+				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/mulesoft-logo.png' ); ?>" title="MuleSoft" alt="MuleSoft logo" width="554" height="165" loading="lazy"></span></div>
+				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/oracle-logo.png' ); ?>" title="Oracle" alt="Oracle logo" width="684" height="142" loading="lazy"></span><span class="dgf-tech-name">Retek</span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#blk-warehouse"/></svg></span><span class="dgf-tech-name">WMS</span></div>
-				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-logo.png' ); ?>" alt="Manhattan Associates" width="1200" height="241" loading="lazy"></span></div>
-				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'google-cloud-mark.png' ); ?>" alt="" width="224" height="224" loading="lazy"></span><span class="dgf-tech-name">Google Cloud Pub/Sub</span></div>
+				<div class="dgf-tech blk-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/manhattan-logo.png' ); ?>" title="Manhattan Associates" alt="Manhattan Associates logo" width="1200" height="241" loading="lazy"></span></div>
+				<div class="dgf-tech"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'google-cloud-mark.png' ); ?>" title="Google Cloud" alt="Google Cloud logo" width="224" height="224" loading="lazy"></span><span class="dgf-tech-name">Google Cloud Pub/Sub</span></div>
 				<div class="dgf-tech"><span class="dgf-tech-icon-box is-blue"><svg aria-hidden="true"><use href="#blk-folder"/></svg></span><span class="dgf-tech-name">SFTP / FTP / FTPS</span></div>
 			</div>
 		</div>
@@ -259,16 +269,16 @@ $outcomes = array(
 		<div class="infometry-footer-grid">
 			<div class="infometry-footer-connect">
 				<h2>Connect with us</h2>
-				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+				<a class="infometry-footer-logo" href="<?php echo esc_url( $home_url ); ?>"><img src="<?php echo esc_url( $img_url . 'infometry-logo-white.png' ); ?>" title="Infometry Inc." width="500" height="142" loading="lazy" decoding="async" alt="Infometry Inc. logo – Enabling AI for Every Enterprise"></a>
 				<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
 				<div class="infometry-footer-social" aria-label="Infometry social profiles">
-					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" width="500" height="500" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
-					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" width="512" height="512" loading="lazy" decoding="async" alt=""></a>
+					<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img src="<?php echo esc_url( $img_url . 'social-facebook.png' ); ?>" title="Infometry on Facebook" width="512" height="512" loading="lazy" decoding="async" alt="Facebook"></a>
+					<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img src="<?php echo esc_url( $img_url . 'social-x.png' ); ?>" title="Infometry on X" width="500" height="500" loading="lazy" decoding="async" alt="X"></a>
+					<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img src="<?php echo esc_url( $img_url . 'social-linkedin.png' ); ?>" title="Infometry on LinkedIn" width="512" height="512" loading="lazy" decoding="async" alt="LinkedIn"></a>
+					<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img src="<?php echo esc_url( $img_url . 'social-youtube.png' ); ?>" title="Infometry on YouTube" width="512" height="512" loading="lazy" decoding="async" alt="YouTube"></a>
+					<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img src="<?php echo esc_url( $img_url . 'social-pinterest.png' ); ?>" title="Infometry on Pinterest" width="512" height="512" loading="lazy" decoding="async" alt="Pinterest"></a>
+					<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img src="<?php echo esc_url( $img_url . 'social-instagram.png' ); ?>" title="Infometry on Instagram" width="512" height="512" loading="lazy" decoding="async" alt="Instagram"></a>
+					<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img src="<?php echo esc_url( $img_url . 'social-g2.png' ); ?>" title="Infometry on G2" width="512" height="512" loading="lazy" decoding="async" alt="G2"></a>
 				</div>
 				<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
 			</div>

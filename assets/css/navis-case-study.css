@@ -2386,6 +2386,13 @@ body .dematic-case-study.dgf-case-study.nvs-case-study .dematic-facts article.is
 .nvs-center p { max-width: 220px; }
 .nvs-big-icon svg[aria-hidden] { stroke: currentColor; }
 .nvs-src h3 small { margin-top: 2px; }
+/* Desktop: every box heading starts on the same line and takes the same height,
+   so the lists, icons and text below them also line up. */
+@media (min-width: 1201px) {
+	.nvs-arch .nvs-center { justify-content: flex-start; }
+	body .dematic-case-study .nvs-arch .nvs-box > h3 { display: flex; min-height: 3.9em; margin: 0 0 12px; flex-direction: column; justify-content: flex-start; }
+	body .dematic-case-study .nvs-arch .nvs-center > h3 { margin: 0; }
+}
 
 /* Lifecycle: six milestone chevrons under the architecture. */
 body .dematic-case-study h3.nvs-lifecycle-head { margin: 30px 0 14px; color: #0b1f3a; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 18px; font-weight: 700; line-height: 1.3; }

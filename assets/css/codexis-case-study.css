@@ -2271,6 +2271,7 @@ body .dematic-case-study.cdx-case-study .dematic-hero h1 .cdx-brand { color: #ff
 body .dematic-case-study.cdx-case-study .dematic-hero h1 strong { white-space: nowrap; }
 @media (min-width: 1025px) {
 	body .dematic-case-study.cdx-case-study .dematic-hero h1 { font-size: clamp(28px, 2.75vw, 44px); }
+	body .dematic-case-study.cdx-case-study .dematic-hero h1 .cdx-title-tail { white-space: nowrap; }
 }
 @media (min-width: 2400px) { body .dematic-case-study.dematic-case-study.cdx-case-study .dematic-hero h1 { font-size: 52px; } }
 @media (max-width: 1024px) { body .dematic-case-study.cdx-case-study .dematic-hero h1 strong { white-space: normal; } }

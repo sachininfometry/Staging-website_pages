@@ -244,7 +244,7 @@ body.infometry-codexis-case-study-page #Header { min-height: 0 !important; }
 		background:
 			linear-gradient(180deg, rgba(0, 22, 52, .72) 0, rgba(0, 22, 52, 0) 130px),
 			linear-gradient(90deg, #001f47 0%, #001f47 calc(44% - 60px), rgba(0, 31, 71, .55) 44%, rgba(0, 31, 71, 0) calc(44% + 50px)),
-			url(../images/case-studies/codexis/codexis-hero.jpg) right center / auto 100% no-repeat;
+			url(../images/case-studies/codexis/codexis-hero-v2.jpg) right center / auto 100% no-repeat;
 	}
 	.dematic-hero-copy { width: calc(44% - 70px); max-width: 600px; }
 	.dematic-hero h1 span:first-child { white-space: nowrap; }
@@ -271,7 +271,7 @@ body.infometry-codexis-case-study-page #Header { min-height: 0 !important; }
 				#001f47 min(50% - 50px, 100% - 920px),
 				rgba(0, 31, 71, .55) min(50% + 10px, 100% - 840px),
 				rgba(0, 31, 71, 0) min(50% + 70px, 100% - 760px)),
-			url(../images/case-studies/codexis/codexis-hero.jpg) right center / max(1620px, 50% + 134px) auto no-repeat;
+			url(../images/case-studies/codexis/codexis-hero-v2.jpg) right center / max(1620px, 50% + 134px) auto no-repeat;
 	}
 }
 

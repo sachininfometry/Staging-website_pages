@@ -129,7 +129,7 @@ $outcomes = array(
 				<p>A centralized analytical platform to drive greater visibility, faster reporting and better decision-making across the business.</p>
 			</div>
 			<figure class="dematic-hero-mobile-visual">
-				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-hero.jpg' ); ?>" width="2172" height="724" alt="Codexis headquarters building at sunset">
+				<img src="<?php echo esc_url( $cdx_img_url . 'codexis-hero-v2.jpg' ); ?>" width="2104" height="747" alt="Engineered enzyme in a Codexis research lab">
 			</figure>
 		</div>
 	</section>

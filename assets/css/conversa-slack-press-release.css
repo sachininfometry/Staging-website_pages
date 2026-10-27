@@ -703,3 +703,21 @@ body.infometry-spr-press-release-page .mfn-footer { display: none !important; }
 /* Step progress sits beside the channel name, clear of the "Answered in Slack" chip on the right. */
 .spr-dash-stage .spr-dash-where { margin-right: 0; }
 .spr-dash-stage .spr-dash-step { margin-right: auto; padding-left: 14px; border-left: 1px solid rgba(255, 255, 255, .12); }
+
+/* ------------------------------------------------------------------ Admin mock on phones: the sidebar becomes a menu
+   row above the Connections view, so nothing is squeezed or cut off. */
+@media (max-width: 600px) {
+	.spr-panel-connections { grid-template-columns: minmax(0, 1fr); }
+	.spr-side { flex-direction: row; flex-wrap: wrap; padding: 12px; gap: 6px; border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .08); }
+	.spr-side img { flex: 0 0 100%; max-width: 104px; margin: 0 0 6px 2px; }
+	.spr-side span { padding: 5px 9px; gap: 6px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 999px; font-size: 11.5px; white-space: nowrap; }
+	.spr-side .is-active { border-color: #1f6fe3; }
+	.spr-side span svg { width: 12px; height: 12px; flex-basis: 12px; }
+	.spr-plugin-links span, .spr-plugin-row span { white-space: nowrap; }
+}
+/* Tablets: a slightly wider, tighter sidebar so "Connections" fits its pill. */
+@media (min-width: 601px) and (max-width: 1024px) {
+	.spr-panel-connections { grid-template-columns: 40% minmax(0, 1fr); }
+	.spr-side { padding-inline: 8px; }
+	.spr-side span { padding: 6px 7px; gap: 6px; font-size: 11.5px; }
+}

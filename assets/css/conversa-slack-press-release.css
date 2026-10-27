@@ -71,12 +71,17 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 .spr-kicker { display: flex; margin: 0 0 12px; align-items: center; gap: 12px; color: #f26b11; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .08em; line-height: 1.3; text-transform: uppercase; }
 .spr-kicker::before { content: ""; width: 26px; height: 2px; flex: 0 0 26px; background: currentColor; }
 .spr-kicker.is-cyan { color: #2fd0ff; }
+/* Same gap between a kicker and its heading in every section (theme heading margins vary). */
+.spr-page .spr-kicker + h2 { margin-top: 0 !important; padding-top: 0 !important; }
+.spr-page .spr-section .spr-kicker { margin-bottom: 14px; }
+.spr-inline-link { color: var(--spr-blue) !important; font-weight: 600; text-decoration: none !important; border-bottom: 1px solid rgba(31, 111, 227, .35); }
+.spr-inline-link:hover { border-bottom-color: currentColor; }
 
 .spr-heading { margin-bottom: 30px; }
 .spr-page .spr-heading h2,
 .spr-page .spr-copy h2 { margin: 0 0 14px; font-size: clamp(30px, 2.5vw, 40px); font-weight: 700; line-height: 1.12; }
-.spr-heading p { max-width: 1040px; margin: 0; font-size: 18px; line-height: 1.6; }
-.spr-copy p { margin: 0 0 16px; font-size: 18px; line-height: 1.65; }
+.spr-heading p:not(.spr-kicker) { max-width: 1040px; margin: 0; font-size: 18px; line-height: 1.6; }
+.spr-copy p:not(.spr-kicker) { margin: 0 0 16px; font-size: 18px; line-height: 1.65; }
 .spr-copy p:last-child { margin-bottom: 0; }
 
 /* Buttons. */
@@ -440,7 +445,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 	.spr-chip { display: none; }
 	.spr-dash-kpis b { font-size: 15px; }
 	.spr-dash-types { margin-left: 0; }
-	.spr-lead, .spr-copy p, .spr-heading p { font-size: 16px; }
+	.spr-lead, .spr-copy p:not(.spr-kicker), .spr-heading p:not(.spr-kicker) { font-size: 16px; }
 	.spr-btn { width: 100%; }
 	.spr-partners { gap: 14px; }
 	.spr-partners img { height: 24px; }
@@ -460,7 +465,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 @media (min-width: 1600px) {
 	.spr-page .spr-hero h1 { font-size: 42px; }
 	.spr-subhead { font-size: 22px; }
-	.spr-lead, .spr-copy p, .spr-heading p { font-size: 19px; }
+	.spr-lead, .spr-copy p:not(.spr-kicker), .spr-heading p:not(.spr-kicker) { font-size: 19px; }
 	.spr-page .spr-highlight-grid h2, .spr-feature-list b, .spr-page .spr-exp-card h3, .spr-steps b { font-size: 18px; }
 	.spr-highlight-grid p, .spr-feature-list li, .spr-exp-desc, .spr-steps li, .spr-about p, .spr-contact li { font-size: 16px; }
 	.spr-security p { font-size: 18px; }
@@ -471,7 +476,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 	.spr-page .spr-hero h1 { font-size: 46px; }
 	.spr-subhead { font-size: 24px; }
 	.spr-dash { font-size: 14px; }
-	.spr-lead, .spr-copy p, .spr-heading p { font-size: 20px; }
+	.spr-lead, .spr-copy p:not(.spr-kicker), .spr-heading p:not(.spr-kicker) { font-size: 20px; }
 	.spr-page .spr-highlight-grid h2, .spr-feature-list b, .spr-page .spr-exp-card h3, .spr-steps b { font-size: 19px; }
 	.spr-highlight-grid p, .spr-feature-list li, .spr-exp-desc, .spr-steps li, .spr-about p, .spr-contact li { font-size: 17px; }
 	.spr-security p { font-size: 19px; }
@@ -486,7 +491,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 @media (min-width: 2400px) {
 	.spr-page .spr-hero h1 { font-size: 50px; }
 	.spr-subhead { font-size: 27px; }
-	.spr-lead, .spr-copy p, .spr-heading p { font-size: 22px; }
+	.spr-lead, .spr-copy p:not(.spr-kicker), .spr-heading p:not(.spr-kicker) { font-size: 22px; }
 	.spr-page .spr-highlight-grid h2, .spr-feature-list b, .spr-page .spr-exp-card h3, .spr-steps b { font-size: 20px; }
 	.spr-highlight-grid p, .spr-feature-list li, .spr-exp-desc, .spr-steps li, .spr-about p, .spr-contact li { font-size: 18px; }
 	.spr-security p { font-size: 20px; }

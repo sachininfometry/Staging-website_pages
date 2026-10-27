@@ -234,7 +234,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 			<div class="spr-copy">
 				<p class="spr-kicker">The Announcement</p>
 				<h2>From Business Questions to Richer Answers in Slack</h2>
-				<p>Infometry Inc. today announced a Slack integration for INFOFISCUS Conversa, expanding the platform with an extensible Plugins framework that enables business teams to access and explore enterprise data directly within their Slack workspace.</p>
+				<p><a class="spr-inline-link" href="<?php echo esc_url( $home_url ); ?>">Infometry Inc.</a> today announced a Slack integration for INFOFISCUS Conversa, expanding the platform with an extensible Plugins framework that enables business teams to access and explore enterprise data directly within their Slack workspace.</p>
 				<p>The integration brings analytical exploration closer to everyday collaboration. Instead of switching between conversations and separate analytics interfaces, users can ask business questions in natural language, review structured analytical responses, and explore follow-up questions within Slack threads.</p>
 			</div>
 			<ul class="spr-feature-list" aria-label="What the integration delivers">
@@ -249,7 +249,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 		<div class="spr-shell">
 			<div class="spr-heading">
 				<p class="spr-kicker">The Slack Experience</p>
-				<h2 id="spr-experience-title">Conversational Analytics Directly in Slack</h2>
+				<h2 id="spr-experience-title">Conversational Decision Intelligence Directly in Slack</h2>
 				<p>Ask questions, get instant executive summaries, interactive charts, data tables, and SQL &mdash; all within your Slack workspace.</p>
 			</div>
 			<div class="spr-exp-grid">

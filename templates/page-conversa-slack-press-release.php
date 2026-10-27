@@ -167,16 +167,16 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 										</div>
 										<div class="spr-dash-panel" role="tabpanel" data-panel="chart">
 											<p class="spr-dash-chart-title">Revenue by Product in Q3 2026</p>
-											<svg class="spr-dash-svg" viewBox="0 0 460 132" role="img" aria-label="Bar chart: Cloud Platform $57.7M, Data Products $33.7M, Professional Services $30.0M" data-chart>
+											<svg class="spr-dash-svg" viewBox="0 0 560 132" role="img" aria-label="Bar chart: Cloud Platform $57.7M, Data Products $33.7M, Professional Services $30.0M" data-chart>
 												<?php
 												echo '<defs><linearGradient id="spr-bar-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb15c"/><stop offset="1" stop-color="#f2600f"/></linearGradient></defs>';
 												$spr_chart = array( array( 'Cloud Platform', 57.7 ), array( 'Data Products', 33.7 ), array( 'Professional Services', 30.0 ) );
 												foreach ( array( 0, 20, 40, 60 ) as $tick ) {
 													$tick_y = 16 + 92 * ( 1 - $tick / 60 );
-													printf( '<line class="spr-grid" x1="44" x2="450" y1="%1$.1f" y2="%1$.1f"/><text class="spr-tick" x="36" y="%2$.1f">%3$s</text>', $tick_y, $tick_y + 4, $tick ? '$' . $tick . 'M' : '0' );
+													printf( '<line class="spr-grid" x1="44" x2="550" y1="%1$.1f" y2="%1$.1f"/><text class="spr-tick" x="36" y="%2$.1f">%3$s</text>', $tick_y, $tick_y + 4, $tick ? '$' . $tick . 'M' : '0' );
 												}
 												foreach ( $spr_chart as $index => $point ) {
-													$band  = 406 / 3;
+													$band  = 506 / 3;
 													$bar_x = 44 + $band * $index + $band * .32;
 													$bar_y = 16 + 92 * ( 1 - $point[1] / 60 );
 													printf(

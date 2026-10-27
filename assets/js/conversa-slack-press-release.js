@@ -13,7 +13,7 @@
 		{ label: 'Professional Services', value: 30.0 }
 	];
 	var PIE_COLORS = ['#ff8a26', '#2fb4ff', '#8b5cf6'];
-	var W = 460, LEFT = 44, RIGHT = 10, TOP = 16, PLOT = 92, MAX = 60;
+	var W = 560, LEFT = 44, RIGHT = 10, TOP = 16, PLOT = 92, MAX = 60;
 	var BASE = TOP + PLOT;
 	var BAND = (W - LEFT - RIGHT) / DATA.length;
 	var TOTAL = DATA.reduce(function (sum, d) { return sum + d.value; }, 0);
@@ -63,7 +63,7 @@
 			return axes() + '<path class="spr-area spr-fade" d="' + area + '"/><polyline class="spr-line spr-fade" points="' + pts.join(' ') + '"/>' + dots() + values();
 		},
 		pie: function () {
-			var r = 48, ox = 120, oy = 62, angle = -Math.PI / 2, out = '';
+			var r = 48, ox = 170, oy = 62, angle = -Math.PI / 2, out = '';
 			DATA.forEach(function (d, i) {
 				var sweep = d.value / TOTAL * Math.PI * 2;
 				var x1 = ox + r * Math.cos(angle), y1 = oy + r * Math.sin(angle);
@@ -73,9 +73,9 @@
 					' A' + r + ',' + r + ' 0 ' + (sweep > Math.PI ? 1 : 0) + ' 1 ' + x2.toFixed(2) + ',' + y2.toFixed(2) + ' Z"><title>' +
 					esc(d.label) + ': ' + money(d.value) + ' (' + (d.value / TOTAL * 100).toFixed(1) + '%)</title></path>';
 				var ly = 30 + i * 30;
-				out += '<rect x="236" y="' + (ly - 9) + '" width="10" height="10" rx="2" fill="' + PIE_COLORS[i] + '"/>' +
-					'<text class="spr-legend" x="252" y="' + ly + '">' + esc(d.label) + '</text>' +
-					'<text class="spr-legend-val" x="252" y="' + (ly + 14) + '">' + money(d.value) + ' &#183; ' + (d.value / TOTAL * 100).toFixed(1) + '%</text>';
+				out += '<rect x="290" y="' + (ly - 9) + '" width="10" height="10" rx="2" fill="' + PIE_COLORS[i] + '"/>' +
+					'<text class="spr-legend" x="306" y="' + ly + '">' + esc(d.label) + '</text>' +
+					'<text class="spr-legend-val" x="306" y="' + (ly + 14) + '">' + money(d.value) + ' &#183; ' + (d.value / TOTAL * 100).toFixed(1) + '%</text>';
 			});
 			return out;
 		}

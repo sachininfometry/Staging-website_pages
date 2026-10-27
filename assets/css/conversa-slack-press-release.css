@@ -92,7 +92,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 /* ------------------------------------------------------------------ Hero */
 .spr-hero {
 	position: relative;
-	padding: 132px 0 72px;
+	padding: 104px 0 56px;
 	overflow: hidden;
 	color: #fff;
 	background:
@@ -116,7 +116,9 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 	-webkit-mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, #000 10%, transparent 75%);
 	mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, #000 10%, transparent 75%);
 }
-.spr-hero-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 56px; }
+.spr-hero-grid { display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); align-items: center; gap: 36px; }
+/* The hero runs a little wider than the sections below so the dashboard has room. */
+@media (min-width: 1441px) { .spr-hero .spr-shell { width: min(100% - 64px, 1480px); } }
 .spr-page .spr-hero h1 { text-wrap: balance; margin: 0 0 14px; color: #fff; font-family: "Manrope", "Open Sans", Arial, sans-serif; font-size: 40px; font-weight: 800; line-height: 1.14; letter-spacing: -.03em; }
 .spr-brand-cyan { color: #2fb4ff; }
 .spr-brand-orange { color: #ff8a26; }
@@ -130,13 +132,13 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 
 .spr-hero-visual { position: relative; z-index: 1; }
 .spr-hero-visual::before { content: ""; position: absolute; inset: 10% 0 -6% 8%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgba(124, 77, 255, .5), transparent); filter: blur(18px); }
-.spr-partners { display: flex; margin: 0 0 30px; align-items: center; justify-content: center; gap: 16px; }
+.spr-partners { display: flex; margin: 0 0 24px; align-items: center; justify-content: center; gap: 16px; }
 .spr-partners img { width: auto; height: 28px; }
 .spr-partners img + .spr-x + img { height: 27px; }
 .spr-x { color: #2fd0ff; font-size: 26px; font-weight: 300; line-height: 1; }
 
 /* ------------------------------------------------------------------ Hero dashboard (Slack thread with a live Conversa answer) */
-.spr-dash-stage { position: relative; max-width: 600px; margin-left: auto; }
+.spr-dash-stage { position: relative; }
 .spr-dash { position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, .12); border-radius: 18px; background: linear-gradient(180deg, rgba(24, 30, 56, .92), rgba(12, 16, 36, .96)); box-shadow: 0 50px 100px -20px rgba(2, 6, 25, .7), 0 0 0 1px rgba(124, 77, 255, .14), inset 0 1px 0 rgba(255, 255, 255, .08); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); color: #c9d1e8; font-family: "Open Sans", Arial, sans-serif; font-size: 13px; line-height: 1.45; text-align: left; }
 .spr-dash p { margin: 0; }
 .spr-dash-top { display: flex; height: 38px; padding: 0 16px; align-items: center; gap: 14px; border-bottom: 1px solid rgba(255, 255, 255, .07); background: rgba(255, 255, 255, .025); }
@@ -404,7 +406,7 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 @media (max-width: 1320px) {
 	.spr-page .spr-hero h1 { font-size: clamp(30px, 2.9vw, 38px); }
 	.spr-subhead { font-size: clamp(18px, 1.6vw, 20px); }
-	.spr-hero-grid { gap: 40px; }
+	.spr-hero-grid { gap: 28px; }
 	.spr-exp-card { padding: 14px; }
 }
 @media (max-width: 1200px) {
@@ -429,7 +431,10 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 @media (max-width: 720px) {
 	.spr-shell { width: min(100% - 40px, 1320px); }
 	.spr-section { padding: 48px 0; }
-	.spr-hero { padding: 108px 0 40px; }
+	.spr-hero { padding: 56px 0 40px; }
+	/* The chart is drawn 560 units wide; keep its text readable once it is scaled down. */
+	.spr-dash-svg .spr-tick, .spr-dash-svg .spr-lab { font-size: 14px; }
+	.spr-dash-svg .spr-val, .spr-dash-svg .spr-legend, .spr-dash-svg .spr-legend-val { font-size: 14px; }
 	.spr-page .spr-hero h1 { font-size: clamp(27px, 7.4vw, 32px); }
 	.spr-subhead { font-size: 17px; }
 	.spr-dash-thread { padding: 14px 12px; }

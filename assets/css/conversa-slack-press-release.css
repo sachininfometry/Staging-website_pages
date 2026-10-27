@@ -121,7 +121,6 @@ body.infometry-spr-press-release-page #Header { min-height: 0 !important; }
 @media (min-width: 1441px) { .spr-hero .spr-shell { width: min(100% - 64px, 1480px); } }
 .spr-page .spr-hero h1 { text-wrap: balance; margin: 0 0 14px; color: #fff; font-family: "Manrope", "Open Sans", Arial, sans-serif; font-size: 40px; font-weight: 800; line-height: 1.14; letter-spacing: -.03em; }
 .spr-brand-cyan { color: #2fb4ff; }
-.spr-brand-orange { color: #ff8a26; }
 .spr-subhead { text-wrap: balance; margin: 0 0 18px; padding-left: 14px; border-left: 3px solid #ff8a26; color: #dbe7ff; font-family: "Roboto", "Open Sans", Arial, sans-serif; font-size: 21px; font-weight: 500; line-height: 1.4; }
 .spr-lead { max-width: 620px; margin: 0 0 24px; color: rgba(255, 255, 255, .8); font-size: 17px; line-height: 1.65; }
 .spr-meta { display: flex; margin: 0 0 30px; padding: 0; flex-wrap: wrap; gap: 12px; list-style: none; }

@@ -1487,6 +1487,9 @@ function infometry_ct_enqueue_assets() {
 			null
 		);
 		wp_enqueue_style( 'infometry-conversa-slack-pr', INFOMETRY_CT_URL . 'assets/css/conversa-slack-press-release.css', array( 'infometry-conversa-slack-pr-fonts' ), $css_version );
+		$js_path    = INFOMETRY_CT_PATH . 'assets/js/conversa-slack-press-release.js';
+		$js_version = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
+		wp_enqueue_script( 'infometry-conversa-slack-pr', INFOMETRY_CT_URL . 'assets/js/conversa-slack-press-release.js', array(), $js_version, true );
 	}
 
 	if ( $use_dematic_finance ) {

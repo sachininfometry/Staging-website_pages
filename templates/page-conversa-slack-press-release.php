@@ -23,10 +23,8 @@ $spr_img_url      = $img_url . 'press-releases/conversa-slack/';
 /*
  * Release details still to be supplied. Until they are filled in, the quote and
  * the empty media-contact lines show their placeholders on the Cloudways staging
- * site only and are left out everywhere else; the button reads "Read Press
- * Release" and opens the announcement until a PDF URL is set.
+ * site only and are left out everywhere else.
  */
-$spr_pdf_url       = '';
 $spr_quote         = '';
 $spr_quote_by      = '';
 $spr_contact_name  = '';
@@ -71,7 +69,6 @@ $summary = 'For Q3 2026, combining actuals through August with the latest foreca
 if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 	infometry_ct_print_image_schema(
 		array(
-			array( 'press-releases/conversa-slack/conversa-slack-thread.jpg', 'INFOFISCUS Conversa answering a revenue question in a Slack thread', 'Slack thread where INFOFISCUS Conversa answers "Which products generated the most revenue in Q3 2026?" with an executive summary and KPI cards.' ),
 			array( 'press-releases/conversa-slack/slack-logo-white.svg', 'Slack logo', 'Slack logo.' ),
 			array( 'press-releases/conversa-slack/infofiscus-conversa-logo-white.png', 'INFOFISCUS Conversa logo', 'INFOFISCUS Conversa enterprise decision intelligence logo.' ),
 		)
@@ -117,18 +114,15 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 		<div class="spr-shell spr-hero-grid">
 			<div class="spr-hero-copy">
 				<p class="spr-kicker is-cyan">For Immediate Release</p>
-				<h1 id="spr-title">Infometry Introduces Slack Integration for <span class="spr-brand-cyan">INFOFISCUS</span> <span class="spr-brand-orange">Conversa</span>, Bringing Enterprise Decision Intelligence Into the Flow of Work</h1>
+				<h1 id="spr-title">Infometry Introduces Slack Integration for <span class="spr-brand-cyan">INFOFISCUS</span> <span class="spr-brand-orange">Conversa</span></h1>
+				<p class="spr-subhead">Bringing Enterprise Decision Intelligence Into the Flow of Work</p>
 				<p class="spr-lead">New plugin framework enables teams to explore enterprise data directly in Slack with executive summaries, interactive visualizations, key metrics, and auditable SQL.</p>
 				<ul class="spr-meta">
 					<li><svg aria-hidden="true"><use href="#spr-calendar"/></svg><time datetime="2026-10-27">October 27, 2026</time></li>
 					<li><svg aria-hidden="true"><use href="#spr-pin"/></svg><span>FREMONT, Calif., USA</span></li>
 				</ul>
 				<div class="spr-actions">
-					<?php if ( $spr_pdf_url ) : ?>
-						<a class="spr-btn spr-btn-primary" href="<?php echo esc_url( $spr_pdf_url ); ?>" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#spr-file"/></svg>Read Press Release (PDF)</a>
-					<?php else : ?>
-						<a class="spr-btn spr-btn-primary" href="#announcement"><svg aria-hidden="true"><use href="#spr-file"/></svg>Read Press Release</a>
-					<?php endif; ?>
+					<a class="spr-btn spr-btn-primary" href="<?php echo esc_url( $contact_url ); ?>"><svg aria-hidden="true"><use href="#spr-mail"/></svg>Contact Us</a>
 					<a class="spr-btn spr-btn-ghost" href="<?php echo esc_url( $conversa_url ); ?>">Explore Conversa <svg aria-hidden="true"><use href="#spr-arrow"/></svg></a>
 				</div>
 			</div>
@@ -138,9 +132,93 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 					<span class="spr-x" aria-hidden="true">&times;</span>
 					<img src="<?php echo esc_url( $spr_img_url . 'infofiscus-conversa-logo-white.png' ); ?>" title="INFOFISCUS Conversa" width="667" height="147" alt="INFOFISCUS Conversa logo">
 				</p>
-				<figure class="spr-window">
-					<img src="<?php echo esc_url( $spr_img_url . 'conversa-slack-thread.jpg' ); ?>" title="INFOFISCUS Conversa in Slack" width="1504" height="885" fetchpriority="high" alt="Slack thread where INFOFISCUS Conversa answers which products generated the most revenue in Q3 2026 with a summary and KPI cards">
-				</figure>
+				<div class="spr-dash" data-spr-dash>
+					<div class="spr-dash-top" aria-hidden="true"><span class="spr-dots"><i></i><i></i><i></i></span><span class="spr-dash-search">Search Infometry</span></div>
+					<div class="spr-dash-body">
+						<aside class="spr-dash-side" aria-hidden="true">
+							<b>Infometry</b>
+							<span># general</span><span class="is-active"># data-analytics</span><span># product</span><span># leadership</span>
+							<small>Apps</small>
+							<span class="is-app"><img src="<?php echo esc_url( $img_url . 'infofiscus-conversa-mark.png' ); ?>" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa mark" width="141" height="120" loading="lazy">Conversa</span>
+						</aside>
+						<div class="spr-dash-thread">
+							<p class="spr-dash-channel"><b># data-analytics</b><span>Thread</span></p>
+							<div class="spr-dash-msg">
+								<span class="spr-dash-avatar is-user" aria-hidden="true">HK</span>
+								<div><p class="spr-dash-who"><b>hareesh.kumar</b><time>9:17 AM</time></p><p><span class="spr-mention">@Conversa</span> Which products generated the most revenue in Q3 2026?</p></div>
+							</div>
+							<div class="spr-dash-msg">
+								<span class="spr-dash-avatar is-bot" aria-hidden="true"><img src="<?php echo esc_url( $img_url . 'infofiscus-conversa-mark.png' ); ?>" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa mark" width="141" height="120" loading="lazy"></span>
+								<div class="spr-dash-reply">
+									<p class="spr-dash-who"><b>Conversa</b><em>APP</em><time>9:17 AM</time><span class="spr-dash-done">Analysis completed &middot; 157.7s</span></p>
+									<p class="spr-dash-summary">Cloud Platform leads Q3 2026 with <b>$57.7M</b> &mdash; 47.5% of the <b>$121.4M</b> generated by the top three products.</p>
+									<div class="spr-dash-kpis">
+										<p><small>Q3 Revenue (Top 3)</small><b>$121.4M</b><span>Actuals + Forecast</span></p>
+										<p><small>Top Product Revenue</small><b>$57.7M</b><span>Cloud Platform</span></p>
+										<p><small>Share of Top 3</small><b>47.5%</b><span class="is-up">Dominant source</span></p>
+									</div>
+									<div class="spr-dash-card">
+										<div class="spr-dash-tabs" role="tablist" aria-label="Answer views">
+											<button type="button" role="tab" aria-selected="true" data-tab="chart">Chart</button>
+											<button type="button" role="tab" aria-selected="false" data-tab="table">Table</button>
+											<button type="button" role="tab" aria-selected="false" data-tab="sql">SQL</button>
+											<span class="spr-dash-types" data-types>
+												<button type="button" class="is-active" data-type="bar" aria-pressed="true">Bar</button>
+												<button type="button" data-type="line" aria-pressed="false">Line</button>
+												<button type="button" data-type="area" aria-pressed="false">Area</button>
+												<button type="button" data-type="pie" aria-pressed="false">Pie</button>
+											</span>
+										</div>
+										<div class="spr-dash-panel" role="tabpanel" data-panel="chart">
+											<p class="spr-dash-chart-title">Revenue by Product in Q3 2026</p>
+											<svg class="spr-dash-svg" viewBox="0 0 460 176" role="img" aria-label="Bar chart: Cloud Platform $57.7M, Data Products $33.7M, Professional Services $30.0M" data-chart>
+												<?php
+												$spr_chart = array( array( 'Cloud Platform', 57.7 ), array( 'Data Products', 33.7 ), array( 'Professional Services', 30.0 ) );
+												foreach ( array( 0, 20, 40, 60 ) as $tick ) {
+													$tick_y = 18 + 128 * ( 1 - $tick / 60 );
+													printf( '<line class="spr-grid" x1="44" x2="450" y1="%1$.1f" y2="%1$.1f"/><text class="spr-tick" x="36" y="%2$.1f">%3$s</text>', $tick_y, $tick_y + 4, $tick ? '$' . $tick . 'M' : '0' );
+												}
+												foreach ( $spr_chart as $index => $point ) {
+													$band  = 406 / 3;
+													$bar_x = 44 + $band * $index + $band * .25;
+													$bar_y = 18 + 128 * ( 1 - $point[1] / 60 );
+													printf(
+														'<rect class="spr-bar spr-anim" x="%1$.1f" y="%2$.1f" width="%3$.1f" height="%4$.1f" rx="4"><title>%5$s: $%6$.1fM</title></rect><text class="spr-val" x="%7$.1f" y="%8$.1f">$%6$.1fM</text><text class="spr-lab" x="%7$.1f" y="166">%5$s</text>',
+														$bar_x,
+														$bar_y,
+														$band * .5,
+														146 - $bar_y,
+														esc_html( $point[0] ),
+														$point[1],
+														$bar_x + $band * .25,
+														$bar_y - 8
+													);
+												}
+												?>
+											</svg>
+										</div>
+										<div class="spr-dash-panel" role="tabpanel" data-panel="table" hidden>
+											<table>
+												<thead><tr><th>Product Name</th><th>Revenue</th><th>Share</th></tr></thead>
+												<tbody><tr><td>Cloud Platform</td><td>$57.7M</td><td>47.5%</td></tr><tr><td>Data Products</td><td>$33.7M</td><td>27.8%</td></tr><tr><td>Professional Services</td><td>$30.0M</td><td>24.7%</td></tr></tbody>
+											</table>
+										</div>
+										<div class="spr-dash-panel" role="tabpanel" data-panel="sql" hidden>
+<pre><code><span class="k">SELECT</span> p.product_name,
+       <span class="k">SUM</span>(f.amount) <span class="k">AS</span> revenue
+<span class="k">FROM</span>   finance.fact_financial f
+<span class="k">JOIN</span>   finance.dim_product p <span class="k">USING</span> (product_id)
+<span class="k">WHERE</span>  f.fiscal_quarter = <span class="s">'2026-Q3'</span>
+<span class="k">GROUP BY</span> p.product_name
+<span class="k">ORDER BY</span> revenue <span class="k">DESC</span>
+<span class="k">LIMIT</span>  3;</code></pre>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -206,7 +284,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 						<div class="spr-chart-box">
 							<b class="spr-ui-title">Revenue by Product in Q3 2026</b>
 							<div class="spr-chart">
-								<div class="spr-axis"><span>6Cr</span><span>4Cr</span><span>2Cr</span><span>0</span></div>
+								<div class="spr-axis"><span>$60M</span><span>$40M</span><span>$20M</span><span>0</span></div>
 								<div class="spr-bars"><span style="--h: 96%"><i>Cloud Plat...</i></span><span style="--h: 56%"><i>Data Produ...</i></span><span style="--h: 50%"><i>Professional...</i></span></div>
 							</div>
 						</div>

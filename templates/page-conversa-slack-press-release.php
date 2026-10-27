@@ -132,8 +132,8 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 					<div class="spr-dash-body">
 						<div class="spr-dash-thread">
 							<div class="spr-dash-msg" data-seq="ask">
-								<span class="spr-dash-avatar is-user" aria-hidden="true">HK</span>
-								<div><p class="spr-dash-who"><b>hareesh.kumar</b><time>9:17 AM</time></p><p><span class="spr-mention">@Conversa</span> <span data-type-text>Which products generated the most revenue in Q3 2026?</span></p></div>
+								<span class="spr-dash-avatar is-user" aria-hidden="true">LS</span>
+								<div><p class="spr-dash-who"><b>Liam Smith</b><time>9:17 AM</time></p><p><span class="spr-mention">@Conversa</span> <span data-type-text>Which products generated the most revenue in Q3 2026?</span></p></div>
 							</div>
 							<div class="spr-dash-msg" data-seq="reply">
 								<span class="spr-dash-avatar is-bot" aria-hidden="true"><img src="<?php echo esc_url( $img_url . 'infofiscus-conversa-mark.png' ); ?>" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa mark" width="141" height="120" loading="lazy"></span>
@@ -250,7 +250,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 					<header><span class="spr-num">1</span><h3>Natural Language Query</h3></header>
 					<p class="spr-exp-desc">Mention @Conversa in any channel, DM, or group.</p>
 					<div class="spr-ui spr-ui-query" aria-hidden="true">
-						<div class="spr-msg"><span class="spr-avatar is-user"><svg><use href="#spr-user"/></svg></span><div><b>hareesh.kumar</b> <time>9:17 AM</time><p><span class="spr-mention">@Conversa</span> Which products generated the most revenue in Q3 2026?</p></div></div>
+						<div class="spr-msg"><span class="spr-avatar is-user"><svg><use href="#spr-user"/></svg></span><div><b>Liam Smith</b> <time>9:17 AM</time><p><span class="spr-mention">@Conversa</span> Which products generated the most revenue in Q3 2026?</p></div></div>
 						<div class="spr-compose"><span>Message #social</span><div><i>+</i><i><u>Aa</u></i><i>&#9786;</i><i>&middot;&middot;&middot;</i><svg class="spr-send"><use href="#spr-send"/></svg></div></div>
 					</div>
 				</article>

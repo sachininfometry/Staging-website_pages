@@ -1,6 +1,7 @@
 /*
  * Press release hero: the Conversa answer in the Slack window switches between
- * Chart / Table / SQL views and redraws its chart as bar, line, area or pie.
+ * Chart / Table / SQL views and redraws its chart as bar, line, area or pie, and
+ * plays the four steps of an answer on a loop until a visitor takes over.
  * The bar chart is rendered by the template, so the page looks complete before
  * (or without) this script.
  */
@@ -88,6 +89,11 @@
 	}
 
 	var LABELS = { bar: 'Bar', line: 'Line', area: 'Area', pie: 'Pie' };
+	var STEPS = ['Ask in Slack', 'Summary & KPIs', 'Interactive charts', 'Table & SQL'];
+
+	function wait(ms) {
+		return new Promise(function (resolve) { setTimeout(resolve, ms); });
+	}
 
 	function init(dash) {
 		var svg = dash.querySelector('[data-chart]');
@@ -98,29 +104,276 @@
 			return;
 		}
 
-		types.addEventListener('click', function (event) {
-			var button = event.target.closest('[data-type]');
-			if (!button || !DRAW[button.getAttribute('data-type')]) {
-				return;
-			}
-			var type = button.getAttribute('data-type');
+		function setType(type) {
 			types.querySelectorAll('[data-type]').forEach(function (other) {
-				var on = other === button;
+				var on = other.getAttribute('data-type') === type;
 				other.classList.toggle('is-active', on);
 				other.setAttribute('aria-pressed', on ? 'true' : 'false');
 			});
 			svg.innerHTML = DRAW[type]();
 			svg.setAttribute('aria-label', LABELS[type] + ' chart: ' + DATA.map(function (d) { return d.label + ' ' + money(d.value); }).join(', '));
+		}
+
+		function setTab(name) {
+			tabs.forEach(function (tab) { tab.setAttribute('aria-selected', tab.getAttribute('data-tab') === name ? 'true' : 'false'); });
+			panels.forEach(function (panel) { panel.hidden = panel.getAttribute('data-panel') !== name; });
+			types.classList.toggle('is-off', name !== 'chart');
+		}
+
+		// Every panel gets the tallest panel's height, so switching tabs never moves the page.
+		function lockPanelHeight() {
+			var tallest = 0;
+			panels.forEach(function (panel) { panel.style.minHeight = ''; });
+			panels.forEach(function (panel) {
+				var wasHidden = panel.hidden;
+				panel.hidden = false;
+				tallest = Math.max(tallest, panel.offsetHeight);
+				panel.hidden = wasHidden;
+			});
+			panels.forEach(function (panel) { panel.style.minHeight = tallest + 'px'; });
+		}
+		lockPanelHeight();
+		window.addEventListener('resize', lockPanelHeight);
+
+		var player = autoplay(dash, setType, setTab);
+
+		types.addEventListener('click', function (event) {
+			var button = event.target.closest('[data-type]');
+			if (!button || !DRAW[button.getAttribute('data-type')]) {
+				return;
+			}
+			player.stop();
+			setType(button.getAttribute('data-type'));
 		});
 
 		tabs.forEach(function (tab) {
 			tab.addEventListener('click', function () {
-				var name = tab.getAttribute('data-tab');
-				tabs.forEach(function (other) { other.setAttribute('aria-selected', other === tab ? 'true' : 'false'); });
-				panels.forEach(function (panel) { panel.hidden = panel.getAttribute('data-panel') !== name; });
-				types.classList.toggle('is-off', name !== 'chart');
+				player.stop();
+				setTab(tab.getAttribute('data-tab'));
 			});
 		});
+	}
+
+	/*
+	 * Plays the answer like a short video, one step at a time, and loops:
+	 * 1 the question is typed, 2 Conversa thinks, then the summary and KPIs arrive,
+	 * 3 the chart grows and switches through its types, 4 the table and SQL open.
+	 * It starts when the window scrolls into view and stops for good as soon as a
+	 * visitor clicks a tab or chart type, leaving the full answer on screen.
+	 */
+	function autoplay(dash, setType, setTab) {
+		var stage = dash.closest('.spr-dash-stage') || dash;
+		var none = { stop: function () {} };
+		var question = dash.querySelector('[data-type-text]');
+		var label = dash.querySelector('[data-step-label]');
+		var labelText = dash.querySelector('[data-step-text]');
+		if (!window.Promise || !question || !label || !labelText ||
+			(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+			return none;
+		}
+
+		var seq = {};
+		stage.querySelectorAll('[data-seq]').forEach(function (el) { seq[el.getAttribute('data-seq')] = el; });
+		var kpis = seq.kpis ? seq.kpis.querySelectorAll('p') : [];
+		var bars = label.querySelectorAll('.spr-dash-step-bars i');
+		var fullQuestion = question.textContent;
+		var kpiValues = Array.prototype.map.call(kpis, function (p) { var b = p.querySelector('b'); return b ? b.textContent : ''; });
+		var run = 0;
+		var stopped = false;
+
+		function show(name, on) {
+			if (seq[name]) {
+				seq[name].classList.toggle('is-in', on !== false);
+			}
+		}
+
+		function step(index, ms) {
+			label.style.setProperty('--spr-step-ms', ms + 'ms');
+			Array.prototype.forEach.call(bars, function (bar, i) {
+				bar.classList.remove('is-now');
+				bar.classList.toggle('is-done', i < index);
+			});
+			if (bars[index]) {
+				void bars[index].offsetWidth;
+				bars[index].classList.add('is-now');
+			}
+			labelText.textContent = (index + 1) + '/4 · ' + STEPS[index];
+		}
+
+		// The untyped rest of the question stays in place (transparent), so the line never re-wraps.
+		function typed(count) {
+			question.innerHTML = '<span class="spr-type-done">' + esc(fullQuestion.slice(0, count)) + '</span><span class="spr-type-rest">' + esc(fullQuestion.slice(count)) + '</span>';
+		}
+
+		function countUp(b, text, ms) {
+			var match = /^([^0-9]*)([0-9.]+)(.*)$/.exec(text);
+			if (!match) {
+				return;
+			}
+			var target = parseFloat(match[2]);
+			var decimals = (match[2].split('.')[1] || '').length;
+			var began = performance.now();
+			(function frame(now) {
+				var k = Math.min(1, Math.max(0, (now - began) / ms));
+				k = 1 - Math.pow(1 - k, 3);
+				b.textContent = match[1] + (target * k).toFixed(decimals) + match[3];
+				if (k < 1 && !stopped) {
+					requestAnimationFrame(frame);
+				} else {
+					b.textContent = text;
+				}
+			}(began));
+		}
+
+		function tap(selector) {
+			var button = dash.querySelector(selector);
+			if (!button) {
+				return;
+			}
+			button.classList.add('is-tap');
+			setTimeout(function () { button.classList.remove('is-tap'); }, 450);
+		}
+
+		function reset() {
+			Object.keys(seq).forEach(function (name) { show(name, false); });
+			Array.prototype.forEach.call(kpis, function (p) { p.classList.remove('is-in'); });
+			setTab('chart');
+			setType('bar');
+			typed(0);
+		}
+
+		function play(id) {
+			// Every pause rejects once this run is stopped or replaced, which ends the chain.
+			function pause(ms) {
+				return wait(ms).then(function () {
+					if (stopped || id !== run) {
+						throw id;
+					}
+				});
+			}
+			function each(list, fn) {
+				return Array.prototype.reduce.call(list, function (chain, item, i) {
+					return chain.then(function () { return fn(item, i); });
+				}, Promise.resolve());
+			}
+
+			var chars = 0;
+			function typeNext() {
+				if (chars >= fullQuestion.length) {
+					return pause(500);
+				}
+				chars += 1;
+				typed(chars);
+				return pause(28).then(typeNext);
+			}
+
+			reset();
+			stage.classList.remove('is-fading');
+			step(0, 2650);
+			show('ask');
+			stage.classList.add('is-typing');
+
+			return pause(400).then(typeNext).then(function () {
+				stage.classList.remove('is-typing');
+				step(1, 3600);
+				show('reply');
+				stage.classList.add('is-thinking');
+				return pause(1300);
+			}).then(function () {
+				stage.classList.remove('is-thinking');
+				show('summary');
+				show('chip-answer');
+				return pause(700);
+			}).then(function () {
+				show('kpis');
+				return each(kpis, function (p, i) {
+					p.classList.add('is-in');
+					var b = p.querySelector('b');
+					if (b) {
+						countUp(b, kpiValues[i], 900);
+					}
+					return pause(260);
+				});
+			}).then(function () {
+				return pause(700);
+			}).then(function () {
+				step(2, 6400);
+				show('card');
+				setType('bar');
+				return pause(1900);
+			}).then(function () {
+				return each(['line', 'area', 'pie'], function (type) {
+					tap('[data-type="' + type + '"]');
+					setType(type);
+					return pause(1500);
+				});
+			}).then(function () {
+				step(3, 5800);
+				tap('[data-tab="table"]');
+				setTab('table');
+				return pause(2200);
+			}).then(function () {
+				tap('[data-tab="sql"]');
+				setTab('sql');
+				show('chip-sql');
+				return pause(3000);
+			}).then(function () {
+				stage.classList.add('is-fading');
+				return pause(600);
+			}).then(function () {
+				run += 1;
+				play(run);
+			}).catch(function () {});
+		}
+
+		function stop() {
+			if (stopped) {
+				return;
+			}
+			stopped = true;
+			run += 1;
+			stage.classList.remove('is-auto', 'is-typing', 'is-thinking', 'is-fading');
+			question.textContent = fullQuestion;
+			Array.prototype.forEach.call(kpis, function (p, i) {
+				var b = p.querySelector('b');
+				if (b) {
+					b.textContent = kpiValues[i];
+				}
+			});
+			label.hidden = true;
+		}
+
+		function begin() {
+			if (stopped) {
+				return;
+			}
+			// The full answer is on screen until now: fade it out first so the first run starts cleanly.
+			stage.classList.add('is-fading');
+			run += 1;
+			var id = run;
+			wait(450).then(function () {
+				if (stopped || id !== run) {
+					return;
+				}
+				stage.classList.add('is-auto');
+				label.hidden = false;
+				play(id);
+			});
+		}
+
+		if ('IntersectionObserver' in window) {
+			var seen = new IntersectionObserver(function (entries) {
+				if (entries.some(function (entry) { return entry.isIntersecting; })) {
+					seen.disconnect();
+					begin();
+				}
+			}, { threshold: 0.25 });
+			seen.observe(dash);
+		} else {
+			begin();
+		}
+
+		return { stop: stop };
 	}
 
 	function start() {

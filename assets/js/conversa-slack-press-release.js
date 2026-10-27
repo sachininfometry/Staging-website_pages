@@ -13,7 +13,7 @@
 		{ label: 'Professional Services', value: 30.0 }
 	];
 	var PIE_COLORS = ['#ff8a26', '#2fb4ff', '#8b5cf6'];
-	var W = 460, LEFT = 44, RIGHT = 10, TOP = 18, PLOT = 128, MAX = 60;
+	var W = 460, LEFT = 44, RIGHT = 10, TOP = 16, PLOT = 92, MAX = 60;
 	var BASE = TOP + PLOT;
 	var BAND = (W - LEFT - RIGHT) / DATA.length;
 	var TOTAL = DATA.reduce(function (sum, d) { return sum + d.value; }, 0);
@@ -24,14 +24,14 @@
 	function esc(text) { return String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 
 	function axes() {
-		var out = '';
+		var out = '<defs><linearGradient id="spr-bar-grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb15c"/><stop offset="1" stop-color="#f2600f"/></linearGradient></defs>';
 		[0, 20, 40, 60].forEach(function (tick) {
 			var ty = y(tick).toFixed(1);
 			out += '<line class="spr-grid" x1="' + LEFT + '" x2="' + (W - RIGHT) + '" y1="' + ty + '" y2="' + ty + '"/>' +
 				'<text class="spr-tick" x="36" y="' + (y(tick) + 4).toFixed(1) + '">' + (tick ? '$' + tick + 'M' : '0') + '</text>';
 		});
 		DATA.forEach(function (d, i) {
-			out += '<text class="spr-lab" x="' + cx(i).toFixed(1) + '" y="166">' + esc(d.label) + '</text>';
+			out += '<text class="spr-lab" x="' + cx(i).toFixed(1) + '" y="126">' + esc(d.label) + '</text>';
 		});
 		return out;
 	}
@@ -49,9 +49,9 @@
 	var DRAW = {
 		bar: function () {
 			return axes() + DATA.map(function (d, i) {
-				var w = BAND / 2;
+				var w = BAND * 0.36;
 				return '<rect class="spr-bar spr-anim" x="' + (cx(i) - w / 2).toFixed(1) + '" y="' + y(d.value).toFixed(1) + '" width="' + w.toFixed(1) +
-					'" height="' + (BASE - y(d.value)).toFixed(1) + '" rx="4"><title>' + esc(d.label) + ': ' + money(d.value) + '</title></rect>';
+					'" height="' + (BASE - y(d.value)).toFixed(1) + '" rx="6"><title>' + esc(d.label) + ': ' + money(d.value) + '</title></rect>';
 			}).join('') + values();
 		},
 		line: function () {
@@ -63,7 +63,7 @@
 			return axes() + '<path class="spr-area spr-fade" d="' + area + '"/><polyline class="spr-line spr-fade" points="' + pts.join(' ') + '"/>' + dots() + values();
 		},
 		pie: function () {
-			var r = 62, ox = 120, oy = 86, angle = -Math.PI / 2, out = '';
+			var r = 48, ox = 120, oy = 62, angle = -Math.PI / 2, out = '';
 			DATA.forEach(function (d, i) {
 				var sweep = d.value / TOTAL * Math.PI * 2;
 				var x1 = ox + r * Math.cos(angle), y1 = oy + r * Math.sin(angle);
@@ -72,7 +72,7 @@
 				out += '<path class="spr-slice spr-fade" fill="' + PIE_COLORS[i] + '" d="M' + ox + ',' + oy + ' L' + x1.toFixed(2) + ',' + y1.toFixed(2) +
 					' A' + r + ',' + r + ' 0 ' + (sweep > Math.PI ? 1 : 0) + ' 1 ' + x2.toFixed(2) + ',' + y2.toFixed(2) + ' Z"><title>' +
 					esc(d.label) + ': ' + money(d.value) + ' (' + (d.value / TOTAL * 100).toFixed(1) + '%)</title></path>';
-				var ly = 52 + i * 30;
+				var ly = 30 + i * 30;
 				out += '<rect x="236" y="' + (ly - 9) + '" width="10" height="10" rx="2" fill="' + PIE_COLORS[i] + '"/>' +
 					'<text class="spr-legend" x="252" y="' + ly + '">' + esc(d.label) + '</text>' +
 					'<text class="spr-legend-val" x="252" y="' + (ly + 14) + '">' + money(d.value) + ' &#183; ' + (d.value / TOTAL * 100).toFixed(1) + '%</text>';

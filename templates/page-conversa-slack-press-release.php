@@ -20,17 +20,8 @@ $customers_url    = home_url( '/company/customers-partners/' );
 $img_url          = INFOMETRY_CT_URL . 'assets/images/';
 $spr_img_url      = $img_url . 'press-releases/conversa-slack/';
 
-/*
- * Release details still to be supplied. Until they are filled in, the quote and
- * the empty media-contact lines show their placeholders on the Cloudways staging
- * site only and are left out everywhere else.
- */
-$spr_quote         = '';
-$spr_quote_by      = '';
-$spr_contact_name  = '';
-$spr_contact_title = '';
-$spr_contact_email = '';
-$spr_preview       = function_exists( 'infometry_ct_is_cloudways_staging_host' ) && infometry_ct_is_cloudways_staging_host();
+$spr_quote    = 'With the INFOFISCUS Conversa Slack integration, we’re bringing enterprise decision intelligence directly into the flow of work. Teams can move beyond raw numbers to understand business performance through executive summaries, interactive visualizations, and auditable SQL—all within the collaboration environment they already use. Our goal is to make enterprise data more accessible while maintaining the transparency and governance organizations need to make confident, data-driven decisions.';
+$spr_quote_by = 'Nag Dinamani, CEO & Founder at Infometry Inc.';
 
 $highlights = array(
 	array( 'spr-chat', 'is-violet', 'Natural Language Analytics in Slack', 'Ask business questions directly in Slack' ),
@@ -98,6 +89,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 		<symbol id="spr-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
 		<symbol id="spr-badge" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="9" cy="11.5" r="2.2"/><path d="M5.8 17c.5-1.9 1.7-2.8 3.2-2.8s2.7.9 3.2 2.8M14.5 10h4M14.5 13.5h4"/></symbol>
 		<symbol id="spr-mail" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="m3 6.5 9 6.5 9-6.5"/></symbol>
+		<symbol id="spr-phone" viewBox="0 0 24 24"><path d="M6.6 3.5h3l1.5 4.2-2 1.3a12 12 0 0 0 5.9 5.9l1.3-2 4.2 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></symbol>
 		<symbol id="spr-globe" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M7 8h10M7 12h10M7 16h6"/></symbol>
 		<symbol id="spr-home" viewBox="0 0 24 24"><path d="M3 11 12 3.5 21 11v9.5h-6v-6H9v6H3Z"/></symbol>
 		<symbol id="spr-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></symbol>
@@ -249,7 +241,7 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 		<div class="spr-shell">
 			<div class="spr-heading">
 				<p class="spr-kicker">The Slack Experience</p>
-				<h2 id="spr-experience-title">Conversational Decision Intelligence Directly in Slack</h2>
+				<h2 id="spr-experience-title">Decision Intelligence Directly in Slack</h2>
 				<p>Ask questions, get instant executive summaries, interactive charts, data tables, and SQL &mdash; all within your Slack workspace.</p>
 			</div>
 			<div class="spr-exp-grid">
@@ -357,10 +349,10 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 	<section class="spr-section spr-security" aria-labelledby="spr-security-title">
 		<div class="spr-shell spr-security-grid">
 			<div class="spr-security-copy">
-				<p class="spr-kicker">Built for Enterprise Environments</p>
 				<div class="spr-security-body">
 					<span class="spr-shield"><svg aria-hidden="true"><use href="#spr-shield"/></svg></span>
 					<div>
+						<p class="spr-kicker">Built for Enterprise Environments</p>
 						<h2 id="spr-security-title">Secure and Scalable Integration Framework</h2>
 						<p>The integration uses Slack Socket Mode over secure WebSockets, which does not require organizations to open inbound firewall ports, configure reverse proxies, or expose public IP addresses. The modular Plugins framework also enables future integrations as your needs evolve.</p>
 					</div>
@@ -385,23 +377,21 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 		</div>
 	</section>
 
-	<?php if ( $spr_quote || $spr_preview ) : ?>
-		<section class="spr-quote" aria-label="Executive quote">
-			<div class="spr-shell spr-quote-inner">
-				<svg class="spr-quote-mark" aria-hidden="true"><use href="#spr-quote"/></svg>
-				<blockquote>
-					<p><?php echo esc_html( $spr_quote ? $spr_quote : '[Insert an approved executive quote about bringing trusted decision intelligence into everyday team workflows].' ); ?></p>
-					<footer>&mdash; <?php echo esc_html( $spr_quote_by ? $spr_quote_by : '[Executive Name], [Title] at Infometry' ); ?></footer>
-				</blockquote>
-			</div>
-		</section>
-	<?php endif; ?>
+	<section class="spr-quote" aria-label="Executive quote">
+		<div class="spr-shell spr-quote-inner">
+			<svg class="spr-quote-mark" aria-hidden="true"><use href="#spr-quote"/></svg>
+			<blockquote>
+				<p>&ldquo;<?php echo esc_html( $spr_quote ); ?>&rdquo;</p>
+				<footer>&mdash; <?php echo esc_html( $spr_quote_by ); ?></footer>
+			</blockquote>
+		</div>
+	</section>
 
 	<section class="spr-section spr-about" aria-label="About and media contact">
 		<div class="spr-shell spr-about-grid">
 			<div>
 				<h2>About INFOFISCUS Conversa</h2>
-				<p>INFOFISCUS Conversa is Infometry&rsquo;s enterprise decision intelligence platform. Its Slack integration enables users to explore enterprise data through natural-language questions and review analytical responses&mdash;including summaries, metrics, visualizations, tabular results, and SQL&mdash;within their collaboration workflow.</p>
+				<p>INFOFISCUS Conversa is Infometry&rsquo;s enterprise decision intelligence platform that transforms governed enterprise data into trusted, decision-ready insights. It enables business teams to ask complex questions in natural language, investigate business performance, uncover key drivers and root causes, and make faster, more confident decisions with contextual analysis and actionable recommendations.</p>
 				<a class="spr-btn spr-btn-outline" href="<?php echo esc_url( $conversa_url ); ?>">Learn More About Conversa <svg aria-hidden="true"><use href="#spr-arrow"/></svg></a>
 			</div>
 			<div>
@@ -412,17 +402,10 @@ if ( function_exists( 'infometry_ct_print_press_release_schema' ) ) {
 			<div>
 				<h2>Media Contact</h2>
 				<ul class="spr-contact">
-					<?php if ( $spr_contact_name || $spr_preview ) : ?>
-						<li><svg aria-hidden="true"><use href="#spr-user"/></svg><?php echo esc_html( $spr_contact_name ? $spr_contact_name : '[Contact Name]' ); ?></li>
-					<?php endif; ?>
-					<?php if ( $spr_contact_title || $spr_preview ) : ?>
-						<li><svg aria-hidden="true"><use href="#spr-badge"/></svg><?php echo esc_html( $spr_contact_title ? $spr_contact_title : '[Title]' ); ?></li>
-					<?php endif; ?>
-					<?php if ( $spr_contact_email ) : ?>
-						<li><svg aria-hidden="true"><use href="#spr-mail"/></svg><a href="<?php echo esc_url( 'mailto:' . $spr_contact_email ); ?>"><?php echo esc_html( $spr_contact_email ); ?></a></li>
-					<?php elseif ( $spr_preview ) : ?>
-						<li><svg aria-hidden="true"><use href="#spr-mail"/></svg>[email@infometry.net]</li>
-					<?php endif; ?>
+					<li><svg aria-hidden="true"><use href="#spr-home"/></svg><b>Infometry Inc.</b></li>
+					<li><svg aria-hidden="true"><use href="#spr-phone"/></svg><a href="tel:+15107935859">+1 (510) 793 5859</a></li>
+					<li><svg aria-hidden="true"><use href="#spr-mail"/></svg><a href="mailto:info@infometry.net">info@infometry.net</a></li>
+					<li><svg aria-hidden="true"><use href="#spr-pin"/></svg><span>39111 Paseo Padre Pkwy, Suite 203E, Fremont, CA 94538 USA</span></li>
 					<li><svg aria-hidden="true"><use href="#spr-globe"/></svg><a href="<?php echo esc_url( $home_url ); ?>">www.infometry.net</a></li>
 				</ul>
 			</div>

@@ -559,3 +559,47 @@ body.infometry-spr-press-release-page .mfn-footer { display: none !important; }
 .spr-page .spr-shell .spr-kicker + * { margin-top: 0 !important; }
 @media (min-width: 1600px) { .spr-page .spr-shell p.spr-kicker { font-size: 15px; } }
 @media (min-width: 2400px) { .spr-page .spr-shell p.spr-kicker { font-size: 16px; } }
+
+/* ------------------------------------------------------------------ Section headings: one size and line height in
+   every section, so the kicker-to-heading gap reads the same everywhere. */
+.spr-page .spr-section .spr-heading h2,
+.spr-page .spr-section .spr-copy h2,
+.spr-page .spr-admin .spr-copy h2,
+.spr-page .spr-security h2 { margin: 0 0 14px; font-size: clamp(28px, 2.2vw, 36px); font-weight: 700; line-height: 1.15; }
+.spr-security-body { gap: 28px; }
+
+/* How it works: 2px larger than the first pass. */
+.spr-steps li { font-size: 17px; }
+.spr-steps b { font-size: 19px; }
+
+/* Executive quote: a full paragraph, so a calmer size. */
+.spr-quote { padding: 48px 0; }
+.spr-quote-inner { align-items: flex-start; }
+.spr-page .spr-quote blockquote p { margin-bottom: 12px; font-size: 19px; line-height: 1.6; }
+.spr-quote footer { color: #fff; font-weight: 600; }
+
+/* Media contact: the address wraps under its icon. */
+.spr-contact li { align-items: flex-start; }
+.spr-contact svg { margin-top: 1px; }
+.spr-contact b { color: var(--spr-navy); font-weight: 700; }
+
+@media (max-width: 720px) {
+	.spr-page .spr-quote blockquote p { font-size: 17px; }
+}
+@media (min-width: 1600px) {
+	.spr-steps li { font-size: 18px; }
+	.spr-steps b { font-size: 20px; }
+	.spr-page .spr-quote blockquote p { font-size: 20px; }
+}
+@media (min-width: 1920px) {
+	.spr-page .spr-section .spr-heading h2, .spr-page .spr-section .spr-copy h2, .spr-page .spr-admin .spr-copy h2, .spr-page .spr-security h2 { font-size: 40px; }
+	.spr-steps li { font-size: 19px; }
+	.spr-steps b { font-size: 21px; }
+	.spr-page .spr-quote blockquote p { font-size: 21px; }
+}
+@media (min-width: 2400px) {
+	.spr-page .spr-section .spr-heading h2, .spr-page .spr-section .spr-copy h2, .spr-page .spr-admin .spr-copy h2, .spr-page .spr-security h2 { font-size: 44px; }
+	.spr-steps li { font-size: 20px; }
+	.spr-steps b { font-size: 22px; }
+	.spr-page .spr-quote blockquote p { font-size: 23px; }
+}

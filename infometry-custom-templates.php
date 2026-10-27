@@ -31,6 +31,7 @@ define( 'INFOMETRY_CT_BELK_TEMPLATE', 'templates/page-belk-case-study.php' );
 define( 'INFOMETRY_CT_TELLUS_TEMPLATE', 'templates/page-tellus-case-study.php' );
 define( 'INFOMETRY_CT_CODEXIS_TEMPLATE', 'templates/page-codexis-case-study.php' );
 define( 'INFOMETRY_CT_NAVIS_TEMPLATE', 'templates/page-navis-case-study.php' );
+define( 'INFOMETRY_CT_DEMATIC_PM_TEMPLATE', 'templates/page-dematic-pm-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE', 'templates/page-conversa-slack-press-release.php' );
 define( 'INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE', 'templates/page-dematic-global-finance-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
@@ -120,6 +121,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_TELLUS_TEMPLATE ] = __( 'Tellus Mobile Analytics Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_CODEXIS_TEMPLATE ] = __( 'Codexis Enterprise Data Warehouse Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_NAVIS_TEMPLATE ] = __( 'Navis Post-Contract Project Delivery Case Study', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_DEMATIC_PM_TEMPLATE ] = __( 'Dematic Project Schedule Milestone Reporting Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE ] = __( 'Conversa Slack Integration Press Release', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE ] = __( 'Dematic Global Finance Case Study', 'infometry-custom-templates' );
 
@@ -572,6 +574,46 @@ function infometry_ct_render_navis_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_navis_route', 99 );
 
+/** Use the Dematic project schedule milestone reporting case study when selected or on its URL. */
+function infometry_ct_should_use_dematic_pm_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_DEMATIC_PM_TEMPLATE )
+		|| infometry_ct_is_dematic_pm_route();
+}
+
+/** Match the Dematic project schedule milestone reporting case-study path only on staging. */
+function infometry_ct_is_dematic_pm_route() {
+	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
+		return false;
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+	return in_array(
+		untrailingslashit( $path ),
+		array(
+			'/infometry-case-studies/project-web-accesspwa-project-schedule',
+			'/resources/infometry-case-studies/project-web-accesspwa-project-schedule',
+		),
+		true
+	);
+}
+
+/** Serve the Dematic project schedule milestone reporting case study at its exact URL. */
+function infometry_ct_render_dematic_pm_route() {
+	if ( ! infometry_ct_is_dematic_pm_route() ) {
+		return;
+	}
+
+	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_DEMATIC_PM_TEMPLATE;
+	if ( ! is_readable( $plugin_template ) ) {
+		return;
+	}
+
+	status_header( 200 );
+	include $plugin_template;
+	exit;
+}
+add_action( 'template_redirect', 'infometry_ct_render_dematic_pm_route', 99 );
+
 /** Use the Conversa Slack integration press release when selected or on its URL. */
 function infometry_ct_should_use_conversa_slack_pr_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE )
@@ -757,6 +799,13 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	if ( infometry_ct_should_use_dematic_pm_template() ) {
+		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_DEMATIC_PM_TEMPLATE;
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	if ( infometry_ct_should_use_conversa_slack_pr_template() ) {
 		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE;
 		if ( is_readable( $plugin_template ) ) {
@@ -854,6 +903,11 @@ function infometry_ct_body_classes( $classes ) {
 	if ( infometry_ct_should_use_navis_template() ) {
 		$classes = array_values( array_diff( $classes, array( 'header-transparent', 'template-slider' ) ) );
 		$classes[] = 'infometry-navis-case-study-page';
+	}
+
+	if ( infometry_ct_should_use_dematic_pm_template() ) {
+		$classes = array_values( array_diff( $classes, array( 'header-transparent', 'template-slider' ) ) );
+		$classes[] = 'infometry-dematic-pm-case-study-page';
 	}
 
 	if ( infometry_ct_should_use_conversa_slack_pr_template() ) {
@@ -1231,10 +1285,11 @@ function infometry_ct_enqueue_assets() {
 	$use_tellus   = infometry_ct_should_use_tellus_template();
 	$use_codexis  = infometry_ct_should_use_codexis_template();
 	$use_navis    = infometry_ct_should_use_navis_template();
+	$use_dematic_pm = infometry_ct_should_use_dematic_pm_template();
 	$use_conversa_slack_pr = infometry_ct_should_use_conversa_slack_pr_template();
 	$use_dematic_finance    = infometry_ct_should_use_dematic_finance_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_conversa_slack_pr ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_dematic_pm && ! $use_conversa_slack_pr ) {
 		return;
 	}
 
@@ -1477,6 +1532,21 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_script( 'infometry-navis-case-study', INFOMETRY_CT_URL . 'assets/js/dematic-case-study.js', array(), $js_version, true );
 	}
 
+	if ( $use_dematic_pm ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/dematic-pm-case-study.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/dematic-case-study.js';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
+		wp_enqueue_style(
+			'infometry-dematic-pm-fonts',
+			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style( 'infometry-dematic-pm-case-study', INFOMETRY_CT_URL . 'assets/css/dematic-pm-case-study.css', array( 'infometry-dematic-pm-fonts' ), $css_version );
+		wp_enqueue_script( 'infometry-dematic-pm-case-study', INFOMETRY_CT_URL . 'assets/js/dematic-case-study.js', array(), $js_version, true );
+	}
+
 	if ( $use_conversa_slack_pr ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/conversa-slack-press-release.css';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
@@ -1532,6 +1602,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_tellus_template()
 		&& ! infometry_ct_should_use_codexis_template()
 		&& ! infometry_ct_should_use_navis_template()
+		&& ! infometry_ct_should_use_dematic_pm_template()
 		&& ! infometry_ct_should_use_conversa_slack_pr_template()
 		&& ! infometry_ct_should_use_dematic_finance_template()
 	) {

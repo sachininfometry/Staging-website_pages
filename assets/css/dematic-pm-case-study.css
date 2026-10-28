@@ -145,7 +145,7 @@ body.infometry-dematic-pm-case-study-page #Header { min-height: 0 !important; }
 
 /* ------------------------------------------------------------------ Hero */
 /*
- * Identical to the Sunrun hero (sunrise-case-study.css): ,
+ * Identical to the Sunrun hero (sunrise-case-study.css): same height, frame,
  * padding, copy width and type, so every case-study banner matches.
  *  1025px+  hero height clamp(400px, 37.5vw, 540px); the artwork lives in a
  *           1440px frame, height-fitted and right-aligned, under an opaque

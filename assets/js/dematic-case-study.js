@@ -36,4 +36,3 @@
 		initSectionReveals();
 	}
 }());
-/* DEMATIC CASE STUDY JS */

@@ -174,7 +174,7 @@ if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 		</div>
 		<div class="dematic-shell dematic-objective-grid">
 			<div>
-				<h2>Business Objectiv</h2>
+				<h2>Business Objective</h2>
 				<p>To automate an existing semi-automated process that provides PMO and leadership with current status on active Project Plan milestones.</p>
 			</div>
 			<ul class="nvs-goals" aria-label="Objectives">

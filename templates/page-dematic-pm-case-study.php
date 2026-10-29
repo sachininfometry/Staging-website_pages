@@ -21,7 +21,7 @@ $challenges = array(
 	array( 'dematic-document', 'Semi-Automated Reporting', 'Existing process for project milestone reporting was semi-automated and required manual effort.' ),
 	array( 'dpm-excel', 'Excel Reporting Limits', 'Reporting through Excel had limitations and was not scalable for broader visibility and analysis.' ),
 	array( 'dpm-eye', 'Limited Current-Status Visibility', 'Need for more timely and consistent visibility into active project plan milestones.' ),
-	array( 'dpm-users-fill', 'Stakeholder Readiness', 'Required a solution to support CEO, PMO and Executive Committee with accurate, up-to-date information before stakeholder meetings.' ),
+	array( 'dpm-users-fill', 'Stakeholder Readiness', 'Required a solution to support COO, PMO and Executive Committee with accurate, up-to-date information before stakeholder meetings.' ),
 );
 
 $approach = array(
@@ -29,7 +29,7 @@ $approach = array(
 	array( 'dpm-gear-fill', 'Automate Data Collection', 'Automate the collection of project plan milestone data to eliminate manual effort.' ),
 	array( 'dpm-db', 'Integrate and Retain Project Data', 'Build a data integration layer to consolidate and retain project data for reporting.' ),
 	array( 'dpm-bars-fill', 'Build Tableau Reporting Views', 'Develop Tableau BI reporting views to provide current project status and deeper insights beyond Excel.' ),
-	array( 'dpm-users-fill', 'Enable Executive Review', 'Deliver easy-to-use reports for CEO, PMO and Executive Committee before stakeholder meetings.' ),
+	array( 'dpm-users-fill', 'Enable Executive Review', 'Deliver easy-to-use reports for COO, PMO and Executive Committee before stakeholder meetings.' ),
 );
 
 $sources = array(
@@ -41,7 +41,7 @@ $sources = array(
 $outcomes = array(
 	array( 'dpm-eye', 'More Current Milestone Status', 'Provides up-to-date visibility into active project plan milestones.' ),
 	array( 'dpm-doc-fill', 'Reduced Dependence on Excel', 'Automates reporting and goes beyond the limitations of Excel output.' ),
-	array( 'dpm-users-fill', 'Better Stakeholder Preparation', 'Enables CEO, PMO and Executive Committee to review information before stakeholder meetings.' ),
+	array( 'dpm-users-fill', 'Better Stakeholder Preparation', 'Enables COO, PMO and Executive Committee to review information before stakeholder meetings.' ),
 	array( 'dpm-bars-fill', 'Clearer Discussion and Decision Support', 'Helps examine customer and financial commitments, mitigation plans and actions, potential project upsides and lessons learned.' ),
 );
 ?>
@@ -157,7 +157,7 @@ if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 			<article class="is-pair"><span class="dematic-icon"><svg aria-hidden="true"><use href="#dpm-gear-fill"/></svg></span><p><small>Automated</small><strong>Status Reporting</strong></p></article>
 			<article class="is-pair"><span class="dematic-icon"><svg aria-hidden="true"><use href="#dpm-doc-fill"/></svg></span><p><small>Active Project</small><strong>Milestones</strong></p></article>
 			<article class="is-pair"><span class="dematic-icon"><svg aria-hidden="true"><use href="#dpm-bars-fill"/></svg></span><p><small>Tableau BI</small><strong>Reporting</strong></p></article>
-			<article class="is-pair"><span class="dematic-icon"><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></span><p><small>CEO &bull; PMO</small><strong>Executive Committee</strong></p></article>
+			<article class="is-pair"><span class="dematic-icon"><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></span><p><small>COO &bull; PMO</small><strong>Executive Committee</strong></p></article>
 		</div>
 	</section>
 
@@ -180,7 +180,7 @@ if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 			<ul class="nvs-goals" aria-label="Objectives">
 				<li><i class="is-blue"><svg aria-hidden="true"><use href="#dpm-eye"/></svg></i>Visibility into active project milestones</li>
 				<li><i class="is-blue"><svg aria-hidden="true"><use href="#dpm-bars-fill"/></svg></i>Improved reporting beyond Excel limitations</li>
-				<li><i class="is-blue"><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></i>Used by CEO, PMO and Executive Committee before stakeholder meetings</li>
+				<li><i class="is-blue"><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></i>Used by COO, PMO and Executive Committee before stakeholder meetings</li>
 			</ul>
 		</div>
 	</section>
@@ -238,7 +238,7 @@ if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 				</div>
 				<span class="nvs-arr is-split" aria-hidden="true"><i></i><i></i><i></i></span>
 				<div class="nvs-stack nvs-audience">
-					<div class="nvs-box nvs-row"><i><svg aria-hidden="true"><use href="#dpm-user"/></svg></i><span><b>CEO</b></span></div>
+					<div class="nvs-box nvs-row"><i><svg aria-hidden="true"><use href="#dpm-user"/></svg></i><span><b>COO</b></span></div>
 					<div class="nvs-box nvs-row"><i><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></i><span><b>PMO</b></span></div>
 					<div class="nvs-box nvs-row"><i><svg aria-hidden="true"><use href="#dpm-users-fill"/></svg></i><span><b>Executive Committee</b></span></div>
 				</div>

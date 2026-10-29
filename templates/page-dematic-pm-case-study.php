@@ -259,10 +259,12 @@ if ( function_exists( 'infometry_ct_print_image_schema' ) ) {
 
 	<section class="dematic-section dematic-tech" id="technologies">
 		<div class="dematic-shell">
-			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technology used in Dematic&rsquo;s project milestone reporting.</p></div>
+			<div class="dematic-section-heading"><h2>Technologies &amp; Platforms</h2><p>Key technologies used in Dematic&rsquo;s project milestone reporting.</p></div>
 			<div class="dgf-tech-grid nvs-tech">
 				<div class="dgf-tech nvs-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/tableau-logo.png' ); ?>" title="Tableau" alt="Tableau logo" width="900" height="186" loading="lazy"></span></div>
 				<div class="dgf-tech"><span class="dgf-tech-name dpm-tech-name">Tableau BI Reporting Tool<small>Interactive milestone dashboards</small></span></div>
+				<div class="dgf-tech nvs-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-logos/snowflake-wordmark.png' ); ?>" title="Snowflake" alt="Snowflake logo" width="640" height="152" loading="lazy"></span></div>
+				<div class="dgf-tech nvs-tech-wordmark"><span class="dgf-tech-icon-box"><img src="<?php echo esc_url( $img_url . 'tech-informatica.png' ); ?>" title="Informatica" alt="Informatica logo" width="293" height="78" loading="lazy"></span></div>
 			</div>
 		</div>
 	</section>

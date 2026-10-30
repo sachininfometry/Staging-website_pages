@@ -15773,7 +15773,7 @@ body .infometry-conversa-product .icp-live .lv-sql-head[aria-expanded="true"] .l
 body .infometry-conversa-product .icp-live .lv-sql-head:hover b { color: #7cc0ff; }
 body .infometry-conversa-product .icp-live .lv-sql pre { margin: 0; padding: .7em .9em; overflow-x: auto; border-top: 1px solid var(--lv-line); background: #050b22; color: #9fe3ff; font: .7em/1.55 Consolas, "SFMono-Regular", Menlo, monospace; white-space: pre; animation: lv-open .3s ease; }
 body .infometry-conversa-product .icp-live .lv-sql pre[hidden] { display: none; }
-body .infometry-conversa-product .icp-live .lv-sql code { color: inherit; background: none; font: inherit; }
+body .infometry-conversa-product .icp-live .lv-sql code { display: block; margin: 0; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; color: inherit; font: inherit; white-space: pre; }
 
 @keyframes lv-open {
   from { opacity: 0; transform: translateY(-.3em); }
@@ -15789,7 +15789,7 @@ body .infometry-conversa-product .icp-live .lv-search svg { width: 1em; height: 
 body .infometry-conversa-product .icp-live .lv-table-scroll { overflow-x: auto; scrollbar-width: thin; scrollbar-color: rgba(124, 192, 255, .35) transparent; }
 body .infometry-conversa-product .icp-live .lv-table table { width: 100%; margin: 0; border: 0; border-collapse: collapse; font-size: .72em; }
 body .infometry-conversa-product .icp-live .lv-table th { padding: .5em .8em; border: 0; background: #1a2a5c; color: #fff; font-size: .9em; font-weight: 700; letter-spacing: .01em; text-align: left; white-space: nowrap; }
-body .infometry-conversa-product .icp-live .lv-table td { padding: .45em .8em; border: 0; border-top: 1px solid var(--lv-line); background: none; color: #d9e3fa; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-table td { padding: .45em .8em; border: 0; border-top: 1px solid var(--lv-line); background: none; color: #d9e3fa; text-align: left; vertical-align: middle; white-space: nowrap; }
 body .infometry-conversa-product .icp-live .lv-table td.is-num { font-variant-numeric: tabular-nums; text-align: right; }
 body .infometry-conversa-product .icp-live .lv-table tbody tr { transition: background .2s ease; }
 body .infometry-conversa-product .icp-live .lv-table tbody tr:hover { background: rgba(47, 140, 255, .12); }

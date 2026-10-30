@@ -272,9 +272,13 @@ $lv_scenes = array(
 		<symbol id="lv-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
 		<symbol id="lv-play" viewBox="0 0 24 24"><path class="lv-solid" d="M8 5v14l11-7z"/></symbol>
 		<symbol id="lv-pause" viewBox="0 0 24 24"><path class="lv-solid" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+		<linearGradient id="lv-g-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b8cff"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
+		<linearGradient id="lv-g-low" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffc061"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+		<linearGradient id="lv-g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8cff" stop-opacity=".38"/><stop offset="1" stop-color="#2f8cff" stop-opacity="0"/></linearGradient>
 	</svg>
 
 	<div class="lv-app" data-lv-app>
+		<div class="lv-chrome" aria-hidden="true"><span class="lv-lights"><i></i><i></i><i></i></span><span class="lv-chrome-title"><svg><use href="#lv-shield"/></svg>INFOFISCUS Conversa</span><span class="lv-live"><i></i>Live</span></div>
 		<aside class="lv-side">
 			<img class="lv-logo" src="<?php echo esc_url( $lv_img . 'press-releases/conversa-slack/infofiscus-conversa-logo-white.png' ); ?>" width="667" height="147" loading="lazy" decoding="async" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa logo">
 			<nav class="lv-nav" aria-label="Conversa app sections">

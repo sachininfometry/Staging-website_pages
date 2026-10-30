@@ -776,7 +776,6 @@
   var input = tour.querySelector('.lv-input');
   var inputText = tour.querySelector('[data-lv-input]');
   var ask = tour.querySelector('[data-lv-ask]');
-  var combo = tour.querySelector('.lv-combo');
   var playButton = tour.querySelector('[data-lv-play]');
   var stepButtons = Array.prototype.slice.call(tour.querySelectorAll('[data-lv-scene]'));
   var views = {};
@@ -874,7 +873,7 @@
   }
 
   function setType(type) {
-    all('.lv-combo').forEach(function (chart) { chart.setAttribute('data-type', type); });
+    all('.lv-viz, .lv-combo').forEach(function (el) { el.setAttribute('data-type', type); });
     all('[data-lv-type]').forEach(function (button) {
       var on = button.getAttribute('data-lv-type') === type;
       button.classList.toggle('is-active', on);
@@ -939,7 +938,13 @@
     }, 500);
   }
 
+  function setSql(box, open) {
+    $('[data-lv-sql]', box).setAttribute('aria-expanded', open ? 'true' : 'false');
+    $('pre', box).hidden = !open;
+  }
+
   function resetChat() {
+    all('.lv-sql').forEach(function (box) { setSql(box, false); });
     tour.classList.remove('is-thinking');
     input.classList.remove('is-typing');
     inputText.textContent = placeholder;
@@ -969,9 +974,6 @@
       var on = convo.getAttribute('data-lv-thread') === String(index);
       convo.hidden = !on;
       $('.lv-thread', convo).scrollTop = 0;
-      if (on) {
-        placeholder = 'Ask ' + convo.getAttribute('data-agent') + '...';
-      }
     });
     all('[data-lv-chat]').forEach(function (item) {
       var on = item.getAttribute('data-lv-chat') === String(index);
@@ -983,6 +985,16 @@
       }
     });
     inputText.textContent = placeholder;
+  }
+
+  // Permissions: granting a user updates the selected count and the summary.
+  function toggleUser(button, on) {
+    var panel = button.closest('[data-lv-panel]');
+    button.setAttribute('aria-pressed', on ? 'true' : 'false');
+    var count = all('[data-lv-user][aria-pressed="true"]', panel).length;
+    $('[data-lv-selected]', panel).textContent = count;
+    $('[data-lv-active]', panel).textContent = count;
+    $('[data-lv-grants]', panel).textContent = count * 3;
   }
 
   /*
@@ -1044,13 +1056,15 @@
           return click($('[data-lv-target="start"]', home));
         });
       } },
-      { ms: 21000, play: function () {
+      { ms: 27000, play: function () {
         var chat = views.chat;
+        var convo = $('[data-lv-thread="0"]', chat);
+        var viz = $('.lv-viz', convo);
         setThread(0);
         resetChat();
         stage(chat);
         show('chat');
-        setType('bar');
+        setType('combo');
         var typed = 0;
         function typeNext() {
           if (typed >= question.length) {
@@ -1058,7 +1072,12 @@
           }
           typed += 1;
           inputText.textContent = question.slice(0, typed);
-          return pause(32).then(typeNext);
+          return pause(30).then(typeNext);
+        }
+        function reveal(el, ms) {
+          el.classList.add('is-in');
+          scrollThread(el);
+          return pause(ms);
         }
         return pause(500).then(function () {
           moveTo(input);
@@ -1079,29 +1098,43 @@
           return pause(1500);
         }).then(function () {
           tour.classList.remove('is-thinking');
-          $('.lv-summary', chat).classList.add('is-in');
-          return pause(1300);
+          return reveal($('.lv-thought', convo), 500);
         }).then(function () {
-          // Key insights, analysis details, then recommendations, scrolling down as each arrives.
-          return each(all('[data-lv-thread="0"] .lv-section'), 1700, function (section) {
+          return reveal($('.lv-sql', convo), 300);
+        }).then(function () {
+          // Open the generated SQL for a moment, then fold it away again.
+          return click($('[data-lv-sql]', convo), 1);
+        }).then(function () {
+          setSql($('.lv-sql', convo), true);
+          scrollThread($('.lv-sql', convo));
+          return pause(2200);
+        }).then(function () {
+          setSql($('.lv-sql', convo), false);
+          return reveal($('.lv-table', convo), 2200);
+        }).then(function () {
+          return reveal($('.lv-summary', convo), 1500);
+        }).then(function () {
+          // Key insights, analysis details, then the action plan, scrolling down as each arrives.
+          return each(all('.lv-section', convo), 1700, function (section) {
             scrollThread(section);
             counters(section);
           });
         }).then(function () {
-          var viz = $('.lv-viz', chat);
-          scrollThread(viz);
           viz.classList.add('is-in');
-          draw(combo);
+          scrollThread(viz);
+          all('.lv-chart', viz).forEach(draw);
           return pause(1900);
         }).then(function () {
-          return click($('[data-lv-type="line"]', chat), 1);
+          return click($('[data-lv-type="pie"]', viz), 1);
         }).then(function () {
-          setType('line');
-          return pause(1500);
+          setType('pie');
+          draw($('.lv-pie', viz));
+          return pause(2000);
         }).then(function () {
-          return click($('[data-lv-type="combo"]', chat), 1);
+          return click($('[data-lv-type="combo"]', viz), 1);
         }).then(function () {
           setType('combo');
+          draw($('.lv-combo', viz));
           return pause(1800);
         });
       } },
@@ -1145,7 +1178,7 @@
           return pause(2000);
         });
       } },
-      { ms: 7900, play: function () {
+      { ms: 11500, play: function () {
         var conn = views.connections;
         var panel = setTab(conn, 'db');
         return open('connections').then(function () {
@@ -1158,7 +1191,19 @@
           return click($('[data-lv-tab="agents"]', conn), 1);
         }).then(function () {
           openTab(conn, 'agents');
-          return pause(2300);
+          return pause(2000);
+        }).then(function () {
+          return click($('[data-lv-tab="permissions"]', conn), 1);
+        }).then(function () {
+          toggleUser($('[data-lv-target="grant"]', conn), false);
+          openTab(conn, 'permissions');
+          return pause(1200);
+        }).then(function () {
+          var grant = $('[data-lv-target="grant"]', conn);
+          return click(grant, 1).then(function () {
+            toggleUser(grant, true);
+            return pause(1800);
+          });
         });
       } }
     ];
@@ -1232,6 +1277,28 @@
     button.addEventListener('click', function () {
       halt();
       setType(button.getAttribute('data-lv-type'));
+    });
+  });
+
+  all('[data-lv-sql]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var open = button.getAttribute('aria-expanded') !== 'true';
+      halt();
+      setSql(button.parentNode, open);
+    });
+  });
+
+  all('[data-lv-user]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      halt();
+      toggleUser(button, button.getAttribute('aria-pressed') !== 'true');
+    });
+  });
+
+  all('[data-lv-switch]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      halt();
+      button.setAttribute('aria-pressed', button.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
     });
   });
 

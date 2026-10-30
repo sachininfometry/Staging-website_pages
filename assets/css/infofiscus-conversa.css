@@ -15905,3 +15905,12 @@ body .infometry-conversa-product .icp-live .lv-hint { margin-bottom: 12px; }
 @media (min-width: 1101px) and (max-width: 1500px) {
   body .infometry-conversa-product .icp-live { max-width: 720px; }
 }
+
+/* The hero copy keeps the width the narrower tour frees up, so the headline never clips. */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero .icp-hero-grid { grid-template-columns: minmax(420px, 1fr) minmax(0, 780px) !important; }
+}
+
+@media (min-width: 1101px) and (max-width: 1500px) {
+  body .infometry-conversa-product .icp-hero .icp-hero-grid { grid-template-columns: minmax(420px, 1fr) minmax(0, 720px) !important; }
+}

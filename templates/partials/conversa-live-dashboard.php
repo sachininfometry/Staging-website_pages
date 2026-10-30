@@ -132,10 +132,10 @@ $lv_databases = array(
 );
 
 $lv_agents = array(
-	array( 'name' => 'OpenAI', 'wordmark' => 'llm-openai.png', 'size' => array( 294, 90 ), 'count' => 6 ),
-	array( 'name' => 'Gemini', 'wordmark' => 'llm-gemini.png', 'size' => array( 235, 63 ), 'count' => 36 ),
-	array( 'name' => 'Claude', 'wordmark' => 'llm-claude.png', 'size' => array( 403, 98 ), 'count' => 5 ),
-	array( 'name' => 'Mistral AI', 'wordmark' => 'llm-mistral-ai.png', 'size' => array( 300, 65 ), 'count' => 3 ),
+	array( 'name' => 'OpenAI', 'logo' => 'llm-marks/openai-mark.png', 'size' => array( 96, 96 ), 'count' => 6 ),
+	array( 'name' => 'Gemini', 'logo' => 'llm-marks/gemini-mark.png', 'size' => array( 96, 96 ), 'count' => 36 ),
+	array( 'name' => 'Claude', 'logo' => 'llm-marks/claude-mark.png', 'size' => array( 96, 96 ), 'count' => 5 ),
+	array( 'name' => 'Mistral AI', 'logo' => 'llm-marks/mistral-ai-mark.png', 'size' => array( 96, 96 ), 'count' => 3 ),
 	array( 'name' => 'Cortex Analyst', 'logo' => 'tech-logos/snowflake-mark.png', 'size' => array( 182, 182 ), 'count' => 2 ),
 	array( 'name' => 'INFOFISCUS SLM', 'logo' => 'infofiscus-conversa-mark.png', 'size' => array( 141, 120 ), 'count' => 1 ),
 );
@@ -328,21 +328,17 @@ $lv_scenes = array(
 								<p class="lv-conn-name"><span class="lv-logo-badge"><?php if ( isset( $db['logo'] ) ) : ?><img src="<?php echo esc_url( $lv_img . $db['logo'] ); ?>" width="<?php echo esc_attr( $db['size'][0] ); ?>" height="<?php echo esc_attr( $db['size'][1] ); ?>" loading="lazy" decoding="async" title="<?php echo esc_attr( $db['name'] ); ?>" alt="<?php echo esc_attr( $db['name'] . ' logo' ); ?>"><?php else : ?><i><?php echo esc_html( $db['badge'] ); ?></i><?php endif; ?></span><b><?php echo esc_html( $db['name'] ); ?></b></p>
 								<p class="lv-conn-row"><small>Status</small><span class="lv-ok"><svg aria-hidden="true"><use href="#lv-check"/></svg>Connected</span></p>
 								<p class="lv-conn-row"><small>Total Connections</small><em data-lv-count><?php echo esc_html( $db['count'] ); ?></em></p>
-								<p class="lv-conn-links"><span>Manage Connection</span><span>Create Connection</span></p>
+								<p class="lv-conn-links"><span>Manage</span><span>+ Create</span></p>
 							</article>
 						<?php endforeach; ?>
 					</div>
 					<div class="lv-panel lv-conn-grid" role="tabpanel" aria-label="AI agents" data-lv-panel="agents" hidden>
 						<?php foreach ( $lv_agents as $agent ) : ?>
 							<article data-in>
-								<?php if ( isset( $agent['wordmark'] ) ) : ?>
-									<p class="lv-conn-name"><span class="lv-wordmark"><img src="<?php echo esc_url( $lv_img . $agent['wordmark'] ); ?>" width="<?php echo esc_attr( $agent['size'][0] ); ?>" height="<?php echo esc_attr( $agent['size'][1] ); ?>" loading="lazy" decoding="async" title="<?php echo esc_attr( $agent['name'] ); ?>" alt="<?php echo esc_attr( $agent['name'] . ' logo' ); ?>"></span></p>
-								<?php else : ?>
-									<p class="lv-conn-name"><span class="lv-logo-badge"><img src="<?php echo esc_url( $lv_img . $agent['logo'] ); ?>" width="<?php echo esc_attr( $agent['size'][0] ); ?>" height="<?php echo esc_attr( $agent['size'][1] ); ?>" loading="lazy" decoding="async" title="<?php echo esc_attr( $agent['name'] ); ?>" alt="<?php echo esc_attr( $agent['name'] . ' logo' ); ?>"></span><b><?php echo esc_html( $agent['name'] ); ?></b></p>
-								<?php endif; ?>
+								<p class="lv-conn-name"><span class="lv-logo-badge"><img src="<?php echo esc_url( $lv_img . $agent['logo'] ); ?>" width="<?php echo esc_attr( $agent['size'][0] ); ?>" height="<?php echo esc_attr( $agent['size'][1] ); ?>" loading="lazy" decoding="async" title="<?php echo esc_attr( $agent['name'] ); ?>" alt="<?php echo esc_attr( $agent['name'] . ' logo' ); ?>"></span><b><?php echo esc_html( $agent['name'] ); ?></b></p>
 								<p class="lv-conn-row"><small>Status</small><span class="lv-ok"><svg aria-hidden="true"><use href="#lv-check"/></svg>Connected</span></p>
 								<p class="lv-conn-row"><small>Agents</small><em data-lv-count><?php echo esc_html( $agent['count'] ); ?></em></p>
-								<p class="lv-conn-links"><span>Manage Agent</span><span>Create Agent</span></p>
+								<p class="lv-conn-links"><span>Manage</span><span>+ Create</span></p>
 							</article>
 						<?php endforeach; ?>
 					</div>

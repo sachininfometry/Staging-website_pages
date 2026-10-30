@@ -15429,8 +15429,6 @@ body .infometry-conversa-product .icp-live .lv-conn-name b { overflow: hidden; c
 body .infometry-conversa-product .icp-live .lv-logo-badge { display: grid; flex: none; width: 2.2em; height: 2.2em; padding: .38em; place-items: center; border-radius: 50%; background: #fff; }
 body .infometry-conversa-product .icp-live .lv-logo-badge img { width: 100%; height: 100%; object-fit: contain; }
 body .infometry-conversa-product .icp-live .lv-logo-badge i { color: #336791; font-size: .8em; font-style: normal; font-weight: 800; }
-body .infometry-conversa-product .icp-live .lv-wordmark { display: grid; width: 7.4em; height: 2.2em; padding: .4em .7em; place-items: center; border-radius: .5em; background: #fff; }
-body .infometry-conversa-product .icp-live .lv-wordmark img { width: 100%; height: 100%; object-fit: contain; }
 body .infometry-conversa-product .icp-live .lv-conn-row { display: flex; align-items: center; justify-content: space-between; gap: .5em; }
 body .infometry-conversa-product .icp-live .lv-conn-row small { color: var(--lv-muted); font-size: .76em; }
 body .infometry-conversa-product .icp-live .lv-ok { display: inline-flex; align-items: center; gap: .3em; padding: .15em .55em; border: 1px solid rgba(34, 197, 94, .4); border-radius: .4em; background: rgba(34, 197, 94, .1); color: #4ade80; font-size: .7em; font-weight: 700; }
@@ -15536,7 +15534,6 @@ body .infometry-conversa-product .icp-live .lv-steps .is-running.is-start b { tr
   body .infometry-conversa-product .icp-live .lv-conn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5em; }
   body .infometry-conversa-product .icp-live .lv-conn-grid article { gap: .35em; padding: .65em .7em; }
   body .infometry-conversa-product .icp-live .lv-conn-name b { font-size: .82em; }
-  body .infometry-conversa-product .icp-live .lv-wordmark { width: 6.4em; }
   body .infometry-conversa-product .icp-live .lv-view-head .lv-btn { display: none; }
   body .infometry-conversa-product .icp-live .lv-player { gap: 10px; }
   body .infometry-conversa-product .icp-live .lv-steps { gap: 5px; }
@@ -15659,3 +15656,4 @@ body .infometry-conversa-product .icp-live .lv-view { transition: opacity .18s e
 body .infometry-conversa-product .icp-live .lv-view.is-active { transition: opacity .4s ease .18s, transform .4s ease .18s, visibility 0s; }
 body .infometry-conversa-product .icp-live :is(.lv-kpis p, .lv-viz, .lv-stats p, .lv-book-grid article, .lv-recent, .lv-dash-kpis p, .lv-dash-charts article, .lv-conn-grid article, .lv-home-cards article) { backdrop-filter: none; }
 body .infometry-conversa-product .icp-live .lv-hbars li { grid-template-columns: 8em minmax(0, 1fr) 3em; }
+body .infometry-conversa-product .icp-live .lv-logo-badge { width: 2.4em; height: 2.4em; padding: .42em; box-shadow: 0 0 0 3px rgba(124, 192, 255, .12), 0 .3em .8em rgba(0, 0, 0, .25); }

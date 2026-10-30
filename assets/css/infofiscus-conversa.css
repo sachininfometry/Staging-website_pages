@@ -15577,3 +15577,14 @@ body .infometry-conversa-product .icp-live .lv-footnote { margin-top: auto; padd
   body .infometry-conversa-product .icp-live .lv-steps { gap: 4px; }
   body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10px; letter-spacing: -.01em; }
 }
+
+/* The theme centres button content; the tour's buttons lay out their own. */
+body .infometry-conversa-product .icp-live button { justify-content: flex-start; }
+body .infometry-conversa-product .icp-live .lv-steps button { justify-content: stretch; }
+body .infometry-conversa-product .icp-live .lv-play,
+body .infometry-conversa-product .icp-live .lv-types button { justify-content: center; }
+
+/* Laptop two-column hero (frame about 560-760px wide): slightly taller frame, larger type. */
+@container lv (min-width: 561px) and (max-width: 760px) {
+  body .infometry-conversa-product .icp-live .lv-app { aspect-ratio: 16 / 11; font-size: calc(100cqw / 58); }
+}

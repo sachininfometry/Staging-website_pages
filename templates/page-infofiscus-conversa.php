@@ -141,11 +141,7 @@ $other_products = array(
 					<div class="icp-hero-business-signals"><span><svg><use href="#icp-i-chat"></use></svg><b>Trusted<br>Answers</b></span><span><svg><use href="#icp-i-chart"></use></svg><b>Deeper<br>Analysis</b></span><span><svg><use href="#icp-i-path"></use></svg><b>Actionable<br>Insights</b></span><span><svg><use href="#icp-i-shield"></use></svg><b>Enterprise-<br>Grade Security</b></span></div>
 				</div>
 
-				<div class="icp-hero-slider" data-icp-hero-slider aria-label="INFOFISCUS Conversa product preview carousel">
-					<figure class="icp-hero-slide is-active"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-welcome-home-v2.jpg' ); ?>" width="1672" height="941" fetchpriority="high" loading="eager" decoding="async" alt="INFOFISCUS Conversa home screen: Bring data intelligence into every decision"></figure>
-					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-executive-insights-v2.jpg' ); ?>" width="1672" height="941" loading="lazy" decoding="async" alt="INFOFISCUS Conversa executive revenue insights dashboard"></figure>
-					<figure class="icp-hero-slide"><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/conversa-apac-revenue-v3.jpg' ); ?>" width="1672" height="941" loading="lazy" decoding="async" alt="INFOFISCUS Conversa APAC revenue decline dashboard"></figure>
-				</div>
+				<?php include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php'; ?>
 
 				<div class="icp-dashboard icp-dashboard-legacy" aria-hidden="true">
 					<aside class="icp-dashboard-rail" aria-hidden="true">

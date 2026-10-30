@@ -754,3 +754,481 @@
     });
   }
 }());
+
+/*
+ * Hero product tour (templates/partials/conversa-live-dashboard.php): plays the
+ * Conversa app like a short video, scene by scene (Home, Ask, Storybooks,
+ * Dashboard, Connections), with a pointer doing the clicks, and loops. The step
+ * bar jumps to a scene and the round button pauses or resumes; clicking inside
+ * the app pauses the tour and leaves the visitor in control.
+ */
+(function () {
+  'use strict';
+
+  var tour = document.querySelector('[data-icp-live]');
+  if (!tour || !window.Promise || !tour.querySelector('[data-lv-app]')) {
+    return;
+  }
+
+  var app = tour.querySelector('[data-lv-app]');
+  var cursor = app.querySelector('.lv-cursor');
+  var crumb = tour.querySelector('[data-lv-crumb]');
+  var input = tour.querySelector('.lv-input');
+  var inputText = tour.querySelector('[data-lv-input]');
+  var ask = tour.querySelector('[data-lv-ask]');
+  var combo = tour.querySelector('.lv-combo');
+  var playButton = tour.querySelector('[data-lv-play]');
+  var stepButtons = Array.prototype.slice.call(tour.querySelectorAll('[data-lv-scene]'));
+  var views = {};
+  Array.prototype.forEach.call(tour.querySelectorAll('[data-lv-view]'), function (view) {
+    views[view.getAttribute('data-lv-view')] = view;
+  });
+
+  var CRUMBS = { home: 'Home', chat: 'New chat', storybooks: 'Storybooks', dashboard: 'Dashboard', connections: 'Connections' };
+  var SCENE_VIEWS = ['home', 'chat', 'storybooks', 'dashboard', 'connections'];
+  var placeholder = inputText.textContent;
+  var question = ask.textContent;
+  var current = 'chat';
+  var scene = 1;
+  var run = 0;
+  var playing = false;
+  var resumeOnShow = false;
+
+  Array.prototype.forEach.call(tour.querySelectorAll('[data-lv-count]'), function (el) {
+    el.setAttribute('data-final', el.textContent);
+  });
+
+  function $(selector, scope) {
+    return (scope || tour).querySelector(selector);
+  }
+
+  function all(selector, scope) {
+    return Array.prototype.slice.call((scope || tour).querySelectorAll(selector));
+  }
+
+  function wait(ms) {
+    return new Promise(function (resolve) { window.setTimeout(resolve, ms); });
+  }
+
+  function show(name) {
+    current = name;
+    Object.keys(views).forEach(function (key) {
+      views[key].classList.toggle('is-active', key === name);
+      views[key].hidden = key !== name;
+    });
+    all('[data-lv-go]').forEach(function (item) {
+      var on = item.getAttribute('data-lv-go') === name;
+      item.classList.toggle('is-active', on);
+      if (on) {
+        item.setAttribute('aria-current', 'page');
+      } else {
+        item.removeAttribute('aria-current');
+      }
+    });
+    crumb.textContent = CRUMBS[name];
+  }
+
+  function draw(chart) {
+    chart.classList.remove('is-drawn');
+    void chart.getBoundingClientRect();
+    chart.classList.add('is-drawn');
+  }
+
+  function countUp(el, id) {
+    var text = el.getAttribute('data-final');
+    var match = /^([^0-9]*)([0-9][0-9,]*\.?[0-9]*)(.*)$/.exec(text);
+    if (!match) {
+      return;
+    }
+    var raw = match[2].replace(/,/g, '');
+    var target = parseFloat(raw);
+    var decimals = (raw.split('.')[1] || '').length;
+    var commas = match[2].indexOf(',') !== -1;
+    var began = window.performance.now();
+    (function frame(now) {
+      var k = Math.min(1, Math.max(0, (now - began) / 900));
+      k = 1 - Math.pow(1 - k, 3);
+      var value = target * k;
+      el.textContent = match[1] + (commas ? value.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) : value.toFixed(decimals)) + match[3];
+      if (k < 1 && id === run) {
+        window.requestAnimationFrame(frame);
+      } else {
+        el.textContent = text;
+      }
+    }(began));
+  }
+
+  // Everything in a view shown in its finished state.
+  function finish(view) {
+    view.classList.remove('is-staging');
+    all('[data-in], .lv-ask', view).forEach(function (el) { el.classList.add('is-in'); });
+    all('.lv-chart', view).forEach(function (chart) { chart.classList.add('is-drawn'); });
+    all('[data-lv-count]', view).forEach(function (el) { el.textContent = el.getAttribute('data-final'); });
+  }
+
+  // Hide the parts of a view the scene is about to reveal.
+  function stage(view) {
+    view.classList.add('is-staging');
+    all('[data-in], .lv-ask', view).forEach(function (el) { el.classList.remove('is-in'); });
+    all('.lv-chart', view).forEach(function (chart) { chart.classList.remove('is-drawn'); });
+  }
+
+  function setType(type) {
+    combo.setAttribute('data-type', type);
+    all('[data-lv-type]').forEach(function (button) {
+      var on = button.getAttribute('data-lv-type') === type;
+      button.classList.toggle('is-active', on);
+      button.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+
+  function setTab(view, key) {
+    all('[data-lv-tab]', view).forEach(function (tab) {
+      tab.setAttribute('aria-selected', tab.getAttribute('data-lv-tab') === key ? 'true' : 'false');
+    });
+    all('[data-lv-panel]', view).forEach(function (panel) {
+      panel.hidden = panel.getAttribute('data-lv-panel') !== key;
+    });
+    return $('[data-lv-panel="' + key + '"]', view);
+  }
+
+  function setStep(index, ms) {
+    scene = index;
+    stepButtons.forEach(function (button, i) {
+      button.classList.toggle('is-done', i < index);
+      button.classList.toggle('is-active', i === index);
+      button.classList.remove('is-running', 'is-start');
+      if (i === index) {
+        button.setAttribute('aria-current', 'step');
+      } else {
+        button.removeAttribute('aria-current');
+      }
+    });
+    if (ms) {
+      var active = stepButtons[index];
+      active.style.setProperty('--lv-ms', ms + 'ms');
+      active.classList.add('is-running', 'is-start');
+      void active.offsetWidth;
+      active.classList.remove('is-start');
+    }
+  }
+
+  function moveTo(el) {
+    if (!el) {
+      return;
+    }
+    var a = app.getBoundingClientRect();
+    var r = el.getBoundingClientRect();
+    var x = r.left - a.left + Math.min(r.width * 0.5, 40);
+    var y = r.top - a.top + r.height * 0.55;
+    cursor.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+  }
+
+  function tap(el) {
+    if (!el) {
+      return;
+    }
+    cursor.classList.remove('is-click');
+    el.classList.remove('lv-tap');
+    void el.offsetWidth;
+    cursor.classList.add('is-click');
+    el.classList.add('lv-tap');
+    window.setTimeout(function () {
+      cursor.classList.remove('is-click');
+      el.classList.remove('lv-tap');
+    }, 500);
+  }
+
+  function resetChat() {
+    tour.classList.remove('is-thinking');
+    input.classList.remove('is-typing');
+    inputText.textContent = placeholder;
+    ask.textContent = question;
+  }
+
+  /*
+   * One scene per step. Each gets helpers bound to the run that started it;
+   * every pause rejects once that run is replaced, which ends the chain.
+   */
+  function scenes(id) {
+    function pause(ms) {
+      return wait(ms).then(function () {
+        if (id !== run) {
+          throw id;
+        }
+      });
+    }
+    function click(el, after) {
+      moveTo(el);
+      return pause(850).then(function () {
+        tap(el);
+        return pause(after || 450);
+      });
+    }
+    function each(list, ms, fn) {
+      return list.reduce(function (chain, item, i) {
+        return chain.then(function () {
+          item.classList.add('is-in');
+          if (fn) {
+            fn(item, i);
+          }
+          return pause(ms);
+        });
+      }, Promise.resolve());
+    }
+    function counters(scope) {
+      all('[data-lv-count]', scope).forEach(function (el) { countUp(el, id); });
+    }
+    function open(name) {
+      var go = $('[data-lv-go="' + name + '"]');
+      return (current === name ? Promise.resolve() : click(go)).then(function () {
+        stage(views[name]);
+        show(name);
+        return pause(350);
+      });
+    }
+    function openTab(view, key) {
+      var panel = setTab(view, key);
+      all('[data-in]', panel).forEach(function (el) { el.classList.add('is-in'); });
+      all('.lv-chart', panel).forEach(draw);
+      counters(panel);
+    }
+
+    return [
+      { ms: 5200, play: function () {
+        var home = views.home;
+        return open('home').then(function () {
+          return each(all('[data-in]', home), 170);
+        }).then(function () {
+          return pause(700);
+        }).then(function () {
+          return click($('[data-lv-target="start"]', home));
+        });
+      } },
+      { ms: 15500, play: function () {
+        var chat = views.chat;
+        resetChat();
+        stage(chat);
+        show('chat');
+        setType('bar');
+        var typed = 0;
+        function typeNext() {
+          if (typed >= question.length) {
+            return pause(350);
+          }
+          typed += 1;
+          inputText.textContent = question.slice(0, typed);
+          return pause(32).then(typeNext);
+        }
+        return pause(500).then(function () {
+          moveTo(input);
+          return pause(850);
+        }).then(function () {
+          input.classList.add('is-typing');
+          inputText.textContent = '';
+          return typeNext();
+        }).then(function () {
+          return click($('[data-lv-target="send"]', chat));
+        }).then(function () {
+          input.classList.remove('is-typing');
+          inputText.textContent = placeholder;
+          ask.classList.add('is-in');
+          return pause(450);
+        }).then(function () {
+          tour.classList.add('is-thinking');
+          return pause(1500);
+        }).then(function () {
+          tour.classList.remove('is-thinking');
+          $('.lv-summary', chat).classList.add('is-in');
+          return pause(650);
+        }).then(function () {
+          $('.lv-kpis', chat).classList.add('is-in');
+          counters($('.lv-kpis', chat));
+          return pause(650);
+        }).then(function () {
+          $('.lv-viz', chat).classList.add('is-in');
+          draw(combo);
+          return pause(1600);
+        }).then(function () {
+          return click($('[data-lv-type="line"]', chat), 1);
+        }).then(function () {
+          setType('line');
+          return pause(1500);
+        }).then(function () {
+          return click($('[data-lv-type="combo"]', chat), 1);
+        }).then(function () {
+          setType('combo');
+          return pause(1800);
+        });
+      } },
+      { ms: 5900, play: function () {
+        var books = views.storybooks;
+        return open('storybooks').then(function () {
+          return each(all('.lv-view-head, .lv-stats [data-in]', books), 180, function (item) { counters(item); });
+        }).then(function () {
+          return each(all('.lv-book-grid [data-in], .lv-recent', books), 200);
+        }).then(function () {
+          var first = $('[data-lv-target="book"]', books);
+          moveTo(first);
+          return pause(900).then(function () {
+            first.classList.add('is-hover');
+            return pause(1300);
+          }).then(function () {
+            first.classList.remove('is-hover');
+          });
+        });
+      } },
+      { ms: 11800, play: function () {
+        var dash = views.dashboard;
+        var panel = setTab(dash, 'overview');
+        return open('dashboard').then(function () {
+          return each(all('.lv-view-head, .lv-tabs', dash), 180);
+        }).then(function () {
+          return each(all('.lv-dash-kpis [data-in]', panel), 180, function (item) { counters(item); });
+        }).then(function () {
+          return each(all('.lv-dash-charts [data-in]', panel), 200, function (item) { all('.lv-chart', item).forEach(draw); });
+        }).then(function () {
+          return pause(1800);
+        }).then(function () {
+          return click($('[data-lv-tab="performance"]', dash), 1);
+        }).then(function () {
+          openTab(dash, 'performance');
+          return pause(2000);
+        }).then(function () {
+          return click($('[data-lv-tab="tokens"]', dash), 1);
+        }).then(function () {
+          openTab(dash, 'tokens');
+          return pause(2000);
+        });
+      } },
+      { ms: 7900, play: function () {
+        var conn = views.connections;
+        var panel = setTab(conn, 'db');
+        return open('connections').then(function () {
+          return each(all('.lv-tabs', conn), 200);
+        }).then(function () {
+          return each(all('[data-in]', panel), 140, function (item) { counters(item); });
+        }).then(function () {
+          return pause(1500);
+        }).then(function () {
+          return click($('[data-lv-tab="agents"]', conn), 1);
+        }).then(function () {
+          openTab(conn, 'agents');
+          return pause(2300);
+        });
+      } }
+    ];
+  }
+
+  function play(id, index) {
+    var list = scenes(id);
+    setStep(index, list[index].ms);
+    list[index].play().then(function () {
+      if (id === run) {
+        play(id, (index + 1) % list.length);
+      }
+    }).catch(function () {});
+  }
+
+  function start(index) {
+    run += 1;
+    playing = true;
+    tour.classList.add('is-auto');
+    tour.classList.remove('is-paused', 'is-thinking');
+    playButton.setAttribute('aria-label', 'Pause the product tour');
+    play(run, index);
+  }
+
+  // Stop the tour and leave the current screen complete and usable.
+  function halt() {
+    run += 1;
+    playing = false;
+    resumeOnShow = false;
+    tour.classList.add('is-paused');
+    resetChat();
+    finish(views[current]);
+    setStep(SCENE_VIEWS.indexOf(current) === -1 ? scene : SCENE_VIEWS.indexOf(current));
+    playButton.setAttribute('aria-label', 'Play the product tour');
+  }
+
+  playButton.addEventListener('click', function () {
+    if (playing) {
+      halt();
+    } else {
+      start(scene);
+    }
+  });
+
+  stepButtons.forEach(function (button, i) {
+    button.addEventListener('click', function () {
+      start(i);
+    });
+  });
+
+  all('[data-lv-go]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      halt();
+      show(item.getAttribute('data-lv-go'));
+      finish(views[current]);
+      setStep(SCENE_VIEWS.indexOf(current));
+    });
+  });
+
+  all('[data-lv-type]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      halt();
+      setType(button.getAttribute('data-lv-type'));
+    });
+  });
+
+  all('[data-lv-tab]').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      var view = tab.closest('[data-lv-view]');
+      halt();
+      setTab(view, tab.getAttribute('data-lv-tab'));
+      finish(view);
+    });
+  });
+
+  setStep(1);
+
+  // Reduced motion: no tour; the app stays clickable.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    tour.classList.add('is-paused');
+    playButton.setAttribute('aria-label', 'Play the product tour');
+    return;
+  }
+
+  // Play while the hero is on screen; pick the scene up again on return.
+  function visible(on) {
+    if (!on && playing) {
+      run += 1;
+      playing = false;
+      resumeOnShow = true;
+    } else if (on && resumeOnShow) {
+      resumeOnShow = false;
+      start(scene);
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var first = true;
+    new IntersectionObserver(function (entries) {
+      var on = entries.some(function (entry) { return entry.isIntersecting; });
+      if (on && first) {
+        first = false;
+        start(0);
+      } else {
+        visible(on && !document.hidden);
+      }
+    }, { threshold: 0.2 }).observe(tour);
+  } else {
+    start(0);
+  }
+
+  document.addEventListener('visibilitychange', function () {
+    if (!tour.classList.contains('is-paused') || resumeOnShow) {
+      visible(!document.hidden);
+    }
+  });
+}());

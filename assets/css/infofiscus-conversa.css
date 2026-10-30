@@ -15017,3 +15017,563 @@ body .infometry-conversa-product .icp-capabilities .icp-feature-tags span {
 .infometry-conversa-product .icp-offscreen *::after {
   animation-play-state: paused !important;
 }
+
+/* ===================================================================== Hero: live Conversa app tour
+ * templates/partials/conversa-live-dashboard.php. A miniature of the Conversa app
+ * sized from its own width (1em = 1/64 of the frame, 1/34 when narrower than
+ * 560px), so it reads like a product video at every breakpoint. Everything is
+ * visible by default; the tour in infofiscus-conversa.js hides parts of a scene
+ * (.is-staging) and reveals them one by one.
+ */
+body .infometry-conversa-product .icp-live {
+  --lv-bg: #081130;
+  --lv-side: #060d27;
+  --lv-card: #0e1940;
+  --lv-line: rgba(140, 170, 255, .15);
+  --lv-text: #eef3ff;
+  --lv-muted: #9fb0d4;
+  --lv-blue: #2f8cff;
+  --lv-cyan: #22c8f6;
+  --lv-violet: #8b5cf6;
+  --lv-green: #22c55e;
+  --lv-amber: #ff9f1c;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 1200px;
+  container-type: inline-size;
+  container-name: lv;
+  justify-self: stretch;
+  color: var(--lv-text);
+  font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+}
+
+body .infometry-conversa-product .icp-live *,
+body .infometry-conversa-product .icp-live *::before,
+body .infometry-conversa-product .icp-live *::after { box-sizing: border-box; }
+
+body .infometry-conversa-product .icp-live :is(p, ul, ol, li) { margin: 0; padding: 0; list-style: none; }
+
+body .infometry-conversa-product .icp-live button {
+  -webkit-appearance: none;
+  appearance: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: none;
+  cursor: pointer;
+}
+
+body .infometry-conversa-product .icp-live button:focus-visible { outline: 2px solid var(--lv-cyan); outline-offset: 2px; }
+body .infometry-conversa-product .icp-live svg { display: block; flex: none; }
+body .infometry-conversa-product .icp-live svg use { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body .infometry-conversa-product .icp-live .lv-solid { fill: currentColor; stroke: none; }
+body .infometry-conversa-product .icp-live .lv-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* App frame */
+body .infometry-conversa-product .icp-live .lv-app {
+  position: relative;
+  display: grid;
+  grid-template-columns: 12.6em minmax(0, 1fr);
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(166, 190, 235, .38);
+  border-radius: .75em;
+  background: var(--lv-bg);
+  box-shadow: 0 24px 48px rgba(0, 5, 35, .45);
+  font-size: 13px;
+  font-size: min(calc(100cqw / 64), 15.5px);
+  line-height: 1.4;
+}
+
+/* Sidebar */
+body .infometry-conversa-product .icp-live .lv-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.1em .8em;
+  border-right: 1px solid var(--lv-line);
+  background: linear-gradient(180deg, var(--lv-side), #071537 70%, #0a1d4a);
+}
+
+body .infometry-conversa-product .icp-live .lv-logo { width: 8.6em; height: auto; margin: 0 0 1.2em .35em; }
+body .infometry-conversa-product .icp-live .lv-nav { display: grid; gap: .15em; }
+
+body .infometry-conversa-product .icp-live .lv-nav-item {
+  display: flex;
+  align-items: center;
+  gap: .6em;
+  width: 100%;
+  padding: .5em .6em;
+  border-radius: .5em;
+  color: #d6e0f7;
+  font-size: .86em;
+  text-align: left;
+  transition: background .25s ease, color .25s ease, transform .2s ease;
+}
+
+body .infometry-conversa-product .icp-live .lv-nav-item svg { width: 1.2em; height: 1.2em; }
+body .infometry-conversa-product .icp-live .lv-nav-item:hover { background: rgba(255, 255, 255, .06); }
+body .infometry-conversa-product .icp-live .lv-nav-item.is-active { background: rgba(47, 140, 255, .18); color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-side-head { margin: 1.1em 0 .4em .6em; color: #fff; font-size: .82em; font-weight: 700; }
+body .infometry-conversa-product .icp-live .lv-chats { display: grid; gap: .1em; }
+
+body .infometry-conversa-product .icp-live .lv-chats li {
+  display: flex;
+  align-items: center;
+  gap: .55em;
+  padding: .42em .6em;
+  overflow: hidden;
+  border-radius: .45em;
+  color: #b9c6e4;
+  font-size: .78em;
+  white-space: nowrap;
+}
+
+body .infometry-conversa-product .icp-live .lv-chats li svg { width: 1.1em; height: 1.1em; }
+body .infometry-conversa-product .icp-live .lv-chats li.is-active { background: rgba(47, 140, 255, .12); color: #7cc0ff; }
+
+/* Main area */
+body .infometry-conversa-product .icp-live .lv-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+
+body .infometry-conversa-product .icp-live .lv-top {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1.2em;
+  height: 3.3em;
+  padding: 0 1.2em;
+  border-bottom: 1px solid var(--lv-line);
+}
+
+body .infometry-conversa-product .icp-live .lv-crumb { flex: 1; min-width: 0; color: var(--lv-muted); font-size: .86em; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-crumb span { margin: 0 .35em; opacity: .6; }
+body .infometry-conversa-product .icp-live .lv-crumb b { color: #fff; font-weight: 600; }
+body .infometry-conversa-product .icp-live .lv-top-icons { display: flex; gap: .9em; color: #c8d4f0; }
+body .infometry-conversa-product .icp-live .lv-top-icons svg { width: 1.15em; height: 1.15em; }
+body .infometry-conversa-product .icp-live .lv-user { display: flex; align-items: center; gap: .5em; }
+
+body .infometry-conversa-product .icp-live .lv-avatar {
+  display: grid;
+  width: 2.3em;
+  height: 2.3em;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(47, 140, 255, .2);
+  color: #7cc0ff;
+  font-size: .72em;
+  font-weight: 700;
+}
+
+body .infometry-conversa-product .icp-live .lv-user-name { display: grid; color: var(--lv-muted); font-size: .64em; line-height: 1.25; text-transform: uppercase; }
+body .infometry-conversa-product .icp-live .lv-user-name b { color: #fff; font-size: 1.2em; text-transform: none; }
+
+/* Views stack in one place and cross-fade. */
+body .infometry-conversa-product .icp-live .lv-views { position: relative; flex: 1; min-height: 0; }
+
+body .infometry-conversa-product .icp-live .lv-view {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 1.1em 1.4em;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(.6em);
+  transition: opacity .45s ease, transform .45s ease, visibility .45s;
+}
+
+body .infometry-conversa-product .icp-live .lv-view[hidden] { display: flex; }
+body .infometry-conversa-product .icp-live .lv-view.is-active { opacity: 1; visibility: visible; transform: none; }
+
+/* Shared pieces */
+body .infometry-conversa-product .icp-live .lv-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: .55em 1.1em;
+  border: 1px solid rgba(255, 255, 255, .7);
+  border-radius: .45em;
+  color: #fff;
+  font-size: .8em;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+body .infometry-conversa-product .icp-live .lv-btn.is-primary { border-color: transparent; background: linear-gradient(180deg, #2f9bff, #1f74e0); box-shadow: 0 .4em 1em rgba(31, 116, 224, .35); }
+
+body .infometry-conversa-product .icp-live .lv-icon {
+  display: grid;
+  width: 2.1em;
+  height: 2.1em;
+  place-items: center;
+  border-radius: .55em;
+  background: rgba(47, 140, 255, .14);
+  color: #6fb6ff;
+}
+
+body .infometry-conversa-product .icp-live .lv-icon svg { width: 1.15em; height: 1.15em; }
+body .infometry-conversa-product .icp-live .lv-view-head { display: flex; align-items: center; justify-content: space-between; gap: 1em; margin-bottom: .9em; }
+body .infometry-conversa-product .icp-live .lv-h { display: flex; align-items: center; flex-wrap: wrap; gap: .1em .45em; color: #fff; font-family: Roboto, "Segoe UI", Arial, sans-serif; font-size: 1.45em; font-weight: 700; line-height: 1.15; }
+body .infometry-conversa-product .icp-live .lv-h svg { width: 1em; height: 1em; color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-h small { flex-basis: 100%; color: var(--lv-muted); font-family: "Open Sans", Arial, sans-serif; font-size: .5em; font-weight: 400; }
+body .infometry-conversa-product .icp-live .lv-chip { padding: .3em .7em; border-radius: .4em; background: rgba(47, 140, 255, .14); color: #7cc0ff; font-size: .72em; font-weight: 700; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-tap { animation: lv-tap .45s ease; }
+
+@keyframes lv-tap {
+  0% { transform: scale(1); }
+  40% { transform: scale(.93); }
+  100% { transform: scale(1); }
+}
+
+/* Home */
+body .infometry-conversa-product .icp-live .lv-home { align-items: center; justify-content: center; gap: .9em; text-align: center; }
+body .infometry-conversa-product .icp-live .lv-pill { display: inline-flex; align-items: center; gap: .5em; padding: .3em .9em; border: 1px solid var(--lv-line); border-radius: 99px; background: rgba(255, 255, 255, .04); color: #c9d5f2; font-size: .72em; }
+body .infometry-conversa-product .icp-live .lv-pill i { width: .55em; height: .55em; border-radius: 50%; background: var(--lv-blue); box-shadow: 0 0 0 .25em rgba(47, 140, 255, .2); }
+
+body .infometry-conversa-product .icp-live .lv-home-title {
+  max-width: 19em;
+  background: linear-gradient(90deg, #5b7cff, #a855f7 45%, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: Roboto, "Segoe UI", Arial, sans-serif;
+  font-size: 2.05em;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+body .infometry-conversa-product .icp-live .lv-home-title span { display: block; }
+body .infometry-conversa-product .icp-live .lv-home-copy { max-width: 33em; color: var(--lv-muted); font-size: .86em; }
+body .infometry-conversa-product .icp-live .lv-home-actions { display: flex; gap: .8em; }
+body .infometry-conversa-product .icp-live .lv-home-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8em; width: 100%; max-width: 46em; margin-top: .5em; text-align: left; }
+body .infometry-conversa-product .icp-live .lv-home-cards article { display: grid; gap: .35em; padding: .9em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-home-cards b { color: #fff; font-size: .86em; }
+body .infometry-conversa-product .icp-live .lv-home-cards small { color: var(--lv-muted); font-size: .72em; line-height: 1.4; }
+
+/* Chat */
+body .infometry-conversa-product .icp-live .lv-chat { gap: .8em; padding-bottom: .9em; }
+body .infometry-conversa-product .icp-live .lv-agent-bar { display: flex; flex: none; gap: 1.4em; color: #c9d5f2; font-size: .78em; }
+body .infometry-conversa-product .icp-live .lv-agent { display: inline-flex; align-items: center; gap: .45em; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-agent i { width: .55em; height: .55em; border-radius: 50%; background: var(--lv-blue); }
+body .infometry-conversa-product .icp-live .lv-agent em { padding: .1em .45em; border-radius: .35em; background: rgba(255, 159, 28, .16); color: #ffb44d; font-size: .85em; font-style: normal; font-weight: 700; }
+body .infometry-conversa-product .icp-live .lv-agent em.is-grey { background: rgba(255, 255, 255, .1); color: #d6e0f7; }
+body .infometry-conversa-product .icp-live .lv-thread { display: flex; flex: 1; flex-direction: column; gap: .7em; min-height: 0; }
+
+body .infometry-conversa-product .icp-live .lv-ask {
+  align-self: flex-end;
+  max-width: 78%;
+  padding: .55em .95em;
+  border-radius: 1em 1em .25em 1em;
+  background: linear-gradient(135deg, #2f8cff, #6c5cff);
+  color: #fff;
+  font-size: .84em;
+  transition: opacity .35s ease, transform .35s ease;
+}
+
+body .infometry-conversa-product .icp-live .lv-reply { display: flex; flex: 1; gap: .7em; min-height: 0; }
+body .infometry-conversa-product .icp-live .lv-bot { flex: none; width: 2em; height: 2em; padding: .35em; border-radius: 50%; background: #fff; object-fit: contain; }
+body .infometry-conversa-product .icp-live .lv-answer { display: flex; flex: 1; flex-direction: column; gap: .6em; min-width: 0; min-height: 0; }
+body .infometry-conversa-product .icp-live .lv-thinking { display: none; align-items: center; gap: .3em; color: var(--lv-muted); font-size: .78em; }
+body .infometry-conversa-product .icp-live .lv-thinking i { width: .45em; height: .45em; border-radius: 50%; background: var(--lv-cyan); animation: lv-dot 1s infinite ease-in-out; }
+body .infometry-conversa-product .icp-live .lv-thinking i:nth-child(2) { animation-delay: .15s; }
+body .infometry-conversa-product .icp-live .lv-thinking i:nth-child(3) { margin-right: .4em; animation-delay: .3s; }
+body .infometry-conversa-product .icp-live.is-thinking .lv-thinking { display: flex; }
+
+@keyframes lv-dot {
+  0%, 80%, 100% { opacity: .3; transform: translateY(0); }
+  40% { opacity: 1; transform: translateY(-.25em); }
+}
+
+body .infometry-conversa-product .icp-live .lv-summary { color: #d9e3fa; font-size: .8em; line-height: 1.5; }
+body .infometry-conversa-product .icp-live .lv-summary b { color: #fff; }
+body .infometry-conversa-product .icp-live .lv-kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6em; }
+body .infometry-conversa-product .icp-live .lv-kpis p { display: grid; padding: .45em .75em; border: 1px solid var(--lv-line); border-radius: .55em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-kpis small { color: var(--lv-muted); font-size: .68em; }
+body .infometry-conversa-product .icp-live .lv-kpis b { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: 1.05em; }
+body .infometry-conversa-product .icp-live .lv-viz { display: flex; flex: 1; flex-direction: column; min-height: 0; padding: .7em .9em .5em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-viz-head { display: flex; align-items: center; justify-content: space-between; gap: 1em; }
+body .infometry-conversa-product .icp-live .lv-viz-head > b { color: #fff; font-size: .84em; }
+body .infometry-conversa-product .icp-live .lv-types { display: flex; gap: .25em; padding: .2em; border-radius: .5em; background: rgba(255, 255, 255, .05); }
+body .infometry-conversa-product .icp-live .lv-types button { padding: .25em .7em; border-radius: .35em; color: var(--lv-muted); font-size: .72em; font-weight: 600; transition: background .2s ease, color .2s ease; }
+body .infometry-conversa-product .icp-live .lv-types button:hover { color: #fff; }
+body .infometry-conversa-product .icp-live .lv-types button.is-active { background: rgba(47, 140, 255, .2); color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-legend { display: flex; gap: 1.1em; margin: .35em 0 .1em; color: var(--lv-muted); font-size: .68em; }
+body .infometry-conversa-product .icp-live .lv-legend span { display: inline-flex; align-items: center; gap: .35em; }
+body .infometry-conversa-product .icp-live .lv-legend span::before { content: ""; width: .8em; height: .8em; border-radius: .2em; background: #5b6cff; }
+body .infometry-conversa-product .icp-live .lv-legend .is-low::before { background: var(--lv-amber); }
+body .infometry-conversa-product .icp-live .lv-legend .is-vol::before { height: .22em; border-radius: 1em; background: var(--lv-green); }
+body .infometry-conversa-product .icp-live .lv-combo { flex: 1; width: 100%; min-height: 0; overflow: visible; }
+
+body .infometry-conversa-product .icp-live .lv-input {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  padding: .45em .5em .45em 1.1em;
+  border: 1px solid rgba(166, 190, 235, .3);
+  border-radius: 99px;
+  background: rgba(255, 255, 255, .04);
+  color: var(--lv-muted);
+  font-size: .8em;
+}
+
+body .infometry-conversa-product .icp-live .lv-input [data-lv-input] { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-input.is-typing { color: #fff; }
+body .infometry-conversa-product .icp-live .lv-input.is-typing [data-lv-input]::after { content: ""; display: inline-block; width: 1px; height: 1em; margin-left: 1px; vertical-align: -.15em; background: #fff; animation: lv-caret .8s steps(1) infinite; }
+
+@keyframes lv-caret { 50% { opacity: 0; } }
+
+body .infometry-conversa-product .icp-live .lv-send { display: grid; flex: none; width: 2.2em; height: 2.2em; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #2f8cff, #6c5cff); color: #fff; }
+body .infometry-conversa-product .icp-live .lv-send svg { width: 1.05em; height: 1.05em; }
+
+/* Charts */
+body .infometry-conversa-product .icp-live .lv-grid { stroke: rgba(160, 185, 240, .14); stroke-width: 1; }
+body .infometry-conversa-product .icp-live .lv-tick { fill: #8a9bc2; font-size: 9px; text-anchor: end; }
+body .infometry-conversa-product .icp-live .lv-tick.is-right { text-anchor: start; }
+body .infometry-conversa-product .icp-live .lv-lab { fill: #aebde0; font-size: 9.5px; text-anchor: middle; }
+body .infometry-conversa-product .icp-live .lv-bar { fill: #5b6cff; transform-box: fill-box; transform-origin: 50% 100%; transition: transform .7s cubic-bezier(.2, .8, .2, 1), opacity .35s ease; }
+body .infometry-conversa-product .icp-live .lv-bar.is-low { fill: var(--lv-amber); }
+body .infometry-conversa-product .icp-live .lv-line { fill: none; stroke: var(--lv-green); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.2s ease .2s; }
+body .infometry-conversa-product .icp-live .lv-dot { fill: var(--lv-bg); stroke: var(--lv-green); stroke-width: 2; transition: opacity .3s ease 1s; }
+body .infometry-conversa-product .icp-live .lv-area { fill: rgba(47, 140, 255, .16); transition: opacity .6s ease .6s; }
+body .infometry-conversa-product .icp-live .lv-trend .lv-line { stroke: var(--lv-blue); }
+body .infometry-conversa-product .icp-live .lv-trend .lv-dot { stroke: var(--lv-blue); }
+body .infometry-conversa-product .icp-live .lv-vol { transition: opacity .35s ease; }
+body .infometry-conversa-product .icp-live .lv-combo[data-type="bar"] .lv-vol,
+body .infometry-conversa-product .icp-live .lv-combo[data-type="line"] .lv-bar { opacity: 0; }
+body .infometry-conversa-product .icp-live .lv-chart:not(.is-drawn) .lv-bar { transform: scaleY(0); }
+body .infometry-conversa-product .icp-live .lv-chart:not(.is-drawn) .lv-line { stroke-dashoffset: 1; transition: none; }
+body .infometry-conversa-product .icp-live .lv-chart:not(.is-drawn) .lv-dot,
+body .infometry-conversa-product .icp-live .lv-chart:not(.is-drawn) .lv-area { opacity: 0; transition: none; }
+
+/* Storybooks */
+body .infometry-conversa-product .icp-live .lv-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8em; margin-bottom: .9em; }
+body .infometry-conversa-product .icp-live .lv-stats p { display: grid; grid-template-columns: auto 1fr; column-gap: .7em; align-items: center; padding: .8em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-stats .lv-icon { grid-row: span 2; }
+body .infometry-conversa-product .icp-live .lv-stats small { color: var(--lv-muted); font-size: .72em; }
+body .infometry-conversa-product .icp-live .lv-stats b { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: 1.2em; line-height: 1.1; }
+body .infometry-conversa-product .icp-live .lv-book-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8em; }
+
+body .infometry-conversa-product .icp-live .lv-book-grid article {
+  --tone: var(--lv-violet);
+  display: flex;
+  flex-direction: column;
+  gap: .3em;
+  padding: .9em;
+  border: 1px solid var(--lv-line);
+  border-top: .25em solid var(--tone);
+  border-radius: .7em;
+  background: var(--lv-card);
+  transition: opacity .45s ease, transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+body .infometry-conversa-product .icp-live .lv-book-grid .is-blue { --tone: var(--lv-blue); }
+body .infometry-conversa-product .icp-live .lv-book-grid .is-teal { --tone: #14b8a6; }
+body .infometry-conversa-product .icp-live .lv-book-grid article.is-hover,
+body .infometry-conversa-product .icp-live .lv-book-grid article:hover { transform: translateY(-.25em); border-color: rgba(166, 190, 235, .4); border-top-color: var(--tone); box-shadow: 0 .8em 1.6em rgba(0, 0, 0, .3); }
+body .infometry-conversa-product .icp-live .lv-book-icon { display: grid; width: 2.3em; height: 2.3em; margin-bottom: .3em; place-items: center; border-radius: .55em; background: var(--tone); color: #fff; }
+body .infometry-conversa-product .icp-live .lv-book-icon svg { width: 1.2em; height: 1.2em; }
+body .infometry-conversa-product .icp-live .lv-book-grid b { color: #fff; font-size: .95em; }
+body .infometry-conversa-product .icp-live .lv-book-grid small { color: var(--lv-muted); font-size: .75em; }
+body .infometry-conversa-product .icp-live .lv-book-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .3em .8em; margin-top: .6em; padding-top: .6em; border-top: 1px solid var(--lv-line); color: #c9d5f2; font-size: .7em; }
+body .infometry-conversa-product .icp-live .lv-book-meta span { display: inline-flex; align-items: center; gap: .3em; }
+body .infometry-conversa-product .icp-live .lv-book-meta svg { width: 1.1em; height: 1.1em; }
+body .infometry-conversa-product .icp-live .lv-book-meta em { color: var(--lv-muted); font-style: normal; }
+
+/* Dashboard */
+body .infometry-conversa-product .icp-live .lv-tabs { display: flex; flex: none; gap: .2em; align-self: flex-start; margin-bottom: .8em; padding: .25em; border-radius: .55em; background: rgba(255, 255, 255, .05); }
+body .infometry-conversa-product .icp-live .lv-tabs button { display: inline-flex; align-items: center; gap: .4em; padding: .35em .85em; border-radius: .4em; color: var(--lv-muted); font-size: .76em; font-weight: 600; white-space: nowrap; transition: background .2s ease, color .2s ease; }
+body .infometry-conversa-product .icp-live .lv-tabs button svg { width: 1.1em; height: 1.1em; }
+body .infometry-conversa-product .icp-live .lv-tabs button:hover { color: #fff; }
+body .infometry-conversa-product .icp-live .lv-tabs button[aria-selected="true"] { background: #0b1638; color: #fff; box-shadow: 0 0 0 1px var(--lv-line); }
+body .infometry-conversa-product .icp-live .lv-tabs.is-line { gap: 1.4em; align-self: stretch; padding: 0; border-bottom: 1px solid var(--lv-line); border-radius: 0; background: none; }
+body .infometry-conversa-product .icp-live .lv-tabs.is-line button { padding: .2em 0 .6em; border-bottom: 2px solid transparent; border-radius: 0; font-size: .82em; }
+body .infometry-conversa-product .icp-live .lv-tabs.is-line button[aria-selected="true"] { border-color: var(--lv-blue); background: none; color: #7cc0ff; box-shadow: none; }
+body .infometry-conversa-product .icp-live .lv-panel { display: flex; flex-direction: column; gap: .8em; min-height: 0; }
+body .infometry-conversa-product .icp-live .lv-panel[hidden] { display: none; }
+body .infometry-conversa-product .icp-live .lv-dash-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .7em; }
+body .infometry-conversa-product .icp-live .lv-dash-kpis p { display: grid; gap: .15em; padding: .75em .8em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-dash-kpis .lv-icon { width: 1.9em; height: 1.9em; margin-bottom: .3em; border-radius: 50%; }
+body .infometry-conversa-product .icp-live .lv-dash-kpis small { color: var(--lv-muted); font-size: .7em; }
+body .infometry-conversa-product .icp-live .lv-dash-kpis b { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: 1.35em; line-height: 1.15; }
+body .infometry-conversa-product .icp-live .lv-dash-kpis em { color: #7cc0ff; font-size: .64em; font-style: normal; }
+body .infometry-conversa-product .icp-live .lv-dash-charts { display: grid; grid-template-columns: 1.25fr 1fr; gap: .8em; }
+body .infometry-conversa-product .icp-live .lv-dash-charts article { display: flex; flex-direction: column; gap: .5em; min-width: 0; padding: .8em .9em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-card-title { display: grid; }
+body .infometry-conversa-product .icp-live .lv-card-title b { color: #fff; font-size: .82em; }
+body .infometry-conversa-product .icp-live .lv-card-title small { color: var(--lv-muted); font-size: .68em; }
+body .infometry-conversa-product .icp-live .lv-trend { width: 100%; height: auto; }
+body .infometry-conversa-product .icp-live .lv-hbars { display: grid; gap: .55em; margin-top: .2em; }
+body .infometry-conversa-product .icp-live .lv-hbars li { display: grid; grid-template-columns: 6.6em minmax(0, 1fr) 3.2em; align-items: center; gap: .6em; color: #c9d5f2; font-size: .72em; }
+body .infometry-conversa-product .icp-live .lv-hbars span { overflow: hidden; text-align: right; white-space: nowrap; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-hbars i { display: block; width: var(--w); height: .95em; border-radius: .3em; background: linear-gradient(90deg, #14b8a6, var(--lv-cyan)); transform-origin: left center; transition: transform .8s cubic-bezier(.2, .8, .2, 1); }
+body .infometry-conversa-product .icp-live .lv-hbars b { color: #fff; font-weight: 600; }
+body .infometry-conversa-product .icp-live .lv-hbars:not(.is-drawn) i { transform: scaleX(0); transition: none; }
+
+/* Connections */
+body .infometry-conversa-product .icp-live .lv-conn-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8em; }
+body .infometry-conversa-product .icp-live .lv-conn-grid[hidden] { display: none; }
+body .infometry-conversa-product .icp-live .lv-conn-grid article { display: grid; gap: .5em; padding: .9em 1em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-conn-name { display: flex; align-items: center; gap: .6em; min-height: 2.2em; margin-bottom: .2em; }
+body .infometry-conversa-product .icp-live .lv-conn-name b { overflow: hidden; color: #fff; font-size: .92em; white-space: nowrap; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-logo-badge { display: grid; flex: none; width: 2.2em; height: 2.2em; padding: .38em; place-items: center; border-radius: 50%; background: #fff; }
+body .infometry-conversa-product .icp-live .lv-logo-badge img { width: 100%; height: 100%; object-fit: contain; }
+body .infometry-conversa-product .icp-live .lv-logo-badge i { color: #336791; font-size: .8em; font-style: normal; font-weight: 800; }
+body .infometry-conversa-product .icp-live .lv-wordmark { display: grid; width: 7.4em; height: 2.2em; padding: .4em .7em; place-items: center; border-radius: .5em; background: #fff; }
+body .infometry-conversa-product .icp-live .lv-wordmark img { width: 100%; height: 100%; object-fit: contain; }
+body .infometry-conversa-product .icp-live .lv-conn-row { display: flex; align-items: center; justify-content: space-between; gap: .5em; }
+body .infometry-conversa-product .icp-live .lv-conn-row small { color: var(--lv-muted); font-size: .76em; }
+body .infometry-conversa-product .icp-live .lv-ok { display: inline-flex; align-items: center; gap: .3em; padding: .15em .55em; border: 1px solid rgba(34, 197, 94, .4); border-radius: .4em; background: rgba(34, 197, 94, .1); color: #4ade80; font-size: .7em; font-weight: 700; }
+body .infometry-conversa-product .icp-live .lv-ok svg { width: 1em; height: 1em; }
+body .infometry-conversa-product .icp-live .lv-conn-row em { min-width: 2.4em; padding: .1em .5em; border-radius: .35em; background: rgba(47, 140, 255, .14); color: #7cc0ff; font-size: .74em; font-style: normal; font-weight: 700; text-align: center; }
+
+/* Pointer that performs the tour's clicks */
+body .infometry-conversa-product .icp-live .lv-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 1.5em;
+  height: 1.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: transform .8s cubic-bezier(.45, .05, .25, 1), opacity .3s ease;
+  will-change: transform;
+}
+
+body .infometry-conversa-product .icp-live .lv-cursor svg { width: 100%; height: 100%; filter: drop-shadow(0 .15em .3em rgba(0, 0, 0, .45)); }
+body .infometry-conversa-product .icp-live .lv-cursor path { fill: #fff; stroke: #0b1638; stroke-width: 1.4; stroke-linejoin: round; }
+body .infometry-conversa-product .icp-live.is-auto:not(.is-paused) .lv-cursor { opacity: 1; }
+body .infometry-conversa-product .icp-live .lv-cursor::after { content: ""; position: absolute; top: -.5em; left: -.5em; width: 1.2em; height: 1.2em; border-radius: 50%; background: rgba(124, 192, 255, .6); opacity: 0; }
+body .infometry-conversa-product .icp-live .lv-cursor.is-click::after { animation: lv-click .5s ease-out; }
+
+@keyframes lv-click {
+  0% { opacity: .9; transform: scale(.3); }
+  100% { opacity: 0; transform: scale(2.2); }
+}
+
+/* Tour reveals: parts of the scene being played wait for .is-in. */
+body .infometry-conversa-product .icp-live [data-in] { transition: opacity .45s ease, transform .45s ease; }
+body .infometry-conversa-product .icp-live .is-staging [data-in]:not(.is-in),
+body .infometry-conversa-product .icp-live .is-staging .lv-ask:not(.is-in) { opacity: 0; transform: translateY(.5em); }
+
+/* Player bar: play / pause and one step per scene */
+body .infometry-conversa-product .icp-live .lv-bar { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+
+body .infometry-conversa-product .icp-live .lv-play {
+  display: grid;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid rgba(166, 190, 235, .35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+  transition: background .2s ease;
+}
+
+body .infometry-conversa-product .icp-live .lv-play:hover { background: rgba(255, 255, 255, .14); }
+body .infometry-conversa-product .icp-live .lv-play svg { width: 14px; height: 14px; }
+body .infometry-conversa-product .icp-live .lv-i-play,
+body .infometry-conversa-product .icp-live.is-paused .lv-i-pause { display: none; }
+body .infometry-conversa-product .icp-live.is-paused .lv-i-play { display: block; }
+body .infometry-conversa-product .icp-live .lv-steps { display: grid; flex: 1; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+body .infometry-conversa-product .icp-live .lv-steps button { display: grid; gap: 6px; width: 100%; color: #8fa0c8; font-size: 12.5px; font-weight: 600; text-align: left; transition: color .2s ease; }
+body .infometry-conversa-product .icp-live .lv-steps button:hover,
+body .infometry-conversa-product .icp-live .lv-steps button.is-active { color: #fff; }
+body .infometry-conversa-product .icp-live .lv-steps span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-steps i { display: block; height: 3px; overflow: hidden; border-radius: 3px; background: rgba(255, 255, 255, .16); }
+body .infometry-conversa-product .icp-live .lv-steps b { display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--lv-cyan), var(--lv-violet)); transform: scaleX(0); transform-origin: left center; }
+body .infometry-conversa-product .icp-live .lv-steps .is-done b,
+body .infometry-conversa-product .icp-live .lv-steps .is-active b { transform: scaleX(1); }
+body .infometry-conversa-product .icp-live .lv-steps .is-running b { transition: transform var(--lv-ms, 0s) linear; }
+body .infometry-conversa-product .icp-live .lv-steps .is-running.is-start b { transform: scaleX(0); transition: none; }
+
+/* Narrow frames: the sidebar becomes a row of section tabs. */
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-app { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); aspect-ratio: 4 / 5.2; font-size: min(calc(100cqw / 34), 15px); }
+  body .infometry-conversa-product .icp-live .lv-side { flex-direction: row; align-items: center; padding: .5em .6em; border-right: 0; border-bottom: 1px solid var(--lv-line); }
+  body .infometry-conversa-product .icp-live .lv-logo,
+  body .infometry-conversa-product .icp-live .lv-side-head,
+  body .infometry-conversa-product .icp-live .lv-chats,
+  body .infometry-conversa-product .icp-live .lv-top-icons,
+  body .infometry-conversa-product .icp-live .lv-user-name { display: none; }
+  body .infometry-conversa-product .icp-live .lv-nav { display: flex; flex: 1; justify-content: space-between; gap: .2em; }
+  body .infometry-conversa-product .icp-live .lv-nav-item { flex-direction: column; gap: .2em; width: auto; padding: .35em .4em; font-size: .66em; }
+  body .infometry-conversa-product .icp-live .lv-nav-item svg { width: 1.6em; height: 1.6em; }
+  body .infometry-conversa-product .icp-live .lv-top { height: 2.8em; padding: 0 .9em; }
+  body .infometry-conversa-product .icp-live .lv-view { padding: .9em; }
+  body .infometry-conversa-product .icp-live .lv-home-title { font-size: 1.6em; }
+  body .infometry-conversa-product .icp-live .lv-home-cards { grid-template-columns: minmax(0, 1fr); gap: .5em; }
+  body .infometry-conversa-product .icp-live .lv-home-cards article { grid-template-columns: auto 1fr; align-items: center; column-gap: .7em; padding: .6em .8em; }
+  body .infometry-conversa-product .icp-live .lv-home-cards .lv-icon { grid-row: span 2; }
+  body .infometry-conversa-product .icp-live .lv-agent-bar { gap: .8em; }
+  body .infometry-conversa-product .icp-live .lv-agent:last-child { display: none; }
+  body .infometry-conversa-product .icp-live .lv-ask { max-width: 92%; }
+  body .infometry-conversa-product .icp-live .lv-bot { display: none; }
+  body .infometry-conversa-product .icp-live .lv-legend { flex-wrap: wrap; gap: .2em .9em; }
+  body .infometry-conversa-product .icp-live .lv-book-grid { grid-template-columns: minmax(0, 1fr); gap: .5em; }
+  body .infometry-conversa-product .icp-live .lv-stats { gap: .5em; }
+  body .infometry-conversa-product .icp-live .lv-stats p { grid-template-columns: 1fr; padding: .55em .6em; }
+  body .infometry-conversa-product .icp-live .lv-stats .lv-icon { display: none; }
+  body .infometry-conversa-product .icp-live .lv-book-grid article:nth-child(3) { display: none; }
+  body .infometry-conversa-product .icp-live .lv-dash-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5em; }
+  body .infometry-conversa-product .icp-live .lv-dash-kpis p { padding: .55em .7em; }
+  body .infometry-conversa-product .icp-live .lv-dash-kpis .lv-icon { display: none; }
+  body .infometry-conversa-product .icp-live .lv-dash-charts { grid-template-columns: minmax(0, 1fr); }
+  body .infometry-conversa-product .icp-live .lv-dash-charts article + article { display: none; }
+  body .infometry-conversa-product .icp-live .lv-conn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5em; }
+  body .infometry-conversa-product .icp-live .lv-conn-grid article { gap: .35em; padding: .65em .7em; }
+  body .infometry-conversa-product .icp-live .lv-conn-name b { font-size: .82em; }
+  body .infometry-conversa-product .icp-live .lv-wordmark { width: 6.4em; }
+  body .infometry-conversa-product .icp-live .lv-view-head .lv-btn { display: none; }
+  body .infometry-conversa-product .icp-live .lv-bar { gap: 10px; }
+  body .infometry-conversa-product .icp-live .lv-steps { gap: 5px; }
+  body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .infometry-conversa-product .icp-live *,
+  body .infometry-conversa-product .icp-live *::after { transition: none !important; animation: none !important; }
+}
+
+body .infometry-conversa-product .icp-live .lv-recent { display: grid; gap: .5em; margin-top: .9em; padding: .8em .9em; border: 1px solid var(--lv-line); border-radius: .7em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-recent ul { display: grid; }
+body .infometry-conversa-product .icp-live .lv-recent li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: .8em; padding: .55em 0; border-top: 1px solid var(--lv-line); }
+body .infometry-conversa-product .icp-live .lv-recent li:first-child { border-top: 0; }
+body .infometry-conversa-product .icp-live .lv-recent li > p { display: grid; gap: .3em; min-width: 0; }
+body .infometry-conversa-product .icp-live .lv-recent li b { overflow: hidden; color: #fff; font-size: .8em; font-weight: 600; white-space: nowrap; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-recent li > small { color: var(--lv-muted); font-size: .66em; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-tags { display: flex; gap: .4em; overflow: hidden; }
+body .infometry-conversa-product .icp-live .lv-tags em { padding: .15em .5em; border: 1px solid var(--lv-line); border-radius: .35em; background: rgba(255, 255, 255, .03); color: #b9c6e4; font-size: .64em; font-style: normal; white-space: nowrap; }
+body .infometry-conversa-product .icp-live .lv-conn-links { display: flex; justify-content: space-between; gap: .5em; margin-top: .2em; padding-top: .55em; border-top: 1px solid var(--lv-line); color: #4aa3ff; font-size: .7em; }
+body .infometry-conversa-product .icp-live .lv-footnote { margin-top: auto; padding-top: .8em; color: #7d8db3; font-size: .66em; text-align: center; }
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-recent { margin-top: .5em; padding: .6em .7em; }
+  body .infometry-conversa-product .icp-live .lv-recent li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  body .infometry-conversa-product .icp-live .lv-recent .lv-icon,
+  body .infometry-conversa-product .icp-live .lv-recent li > small,
+  body .infometry-conversa-product .icp-live .lv-tags em + em { display: none; }
+  body .infometry-conversa-product .icp-live .lv-conn-links,
+  body .infometry-conversa-product .icp-live .lv-footnote { display: none; }
+}
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-book-grid article:nth-child(n+2) { display: none; }
+  body .infometry-conversa-product .icp-live .lv-bar { gap: 8px; }
+  body .infometry-conversa-product .icp-live .lv-play { width: 30px; height: 30px; }
+  body .infometry-conversa-product .icp-live .lv-steps { gap: 4px; }
+  body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10px; letter-spacing: -.01em; }
+}

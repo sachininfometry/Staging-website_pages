@@ -15588,3 +15588,67 @@ body .infometry-conversa-product .icp-live .lv-types button { justify-content: c
 @container lv (min-width: 561px) and (max-width: 760px) {
   body .infometry-conversa-product .icp-live .lv-app { aspect-ratio: 16 / 11; font-size: calc(100cqw / 58); }
 }
+
+/* Tour refinement: a smaller frame with a gradient edge and a soft glow, glass cards. */
+body .infometry-conversa-product .icp-live {
+  --lv-card: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
+  --lv-line: rgba(150, 180, 255, .13);
+  max-width: 760px;
+  align-self: center;
+  justify-self: center;
+}
+
+body .infometry-conversa-product .icp-live::before {
+  content: "";
+  position: absolute;
+  inset: 8% 6% 14%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(108, 92, 255, .45), rgba(34, 200, 246, .18) 55%, transparent);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+body .infometry-conversa-product .icp-live > * { position: relative; z-index: 1; }
+
+body .infometry-conversa-product .icp-live .lv-app {
+  border: 1px solid transparent;
+  border-radius: 1em;
+  background:
+    radial-gradient(60% 50% at 85% 0%, rgba(108, 92, 255, .16), transparent 70%) padding-box,
+    linear-gradient(var(--lv-bg), var(--lv-bg)) padding-box,
+    linear-gradient(135deg, rgba(124, 192, 255, .7), rgba(139, 92, 246, .35) 45%, rgba(236, 72, 153, .45)) border-box;
+  box-shadow: 0 30px 70px rgba(2, 6, 30, .6), 0 0 0 1px rgba(255, 255, 255, .03) inset;
+  font-size: 12px;
+  font-size: min(calc(100cqw / 60), 14px);
+}
+
+body .infometry-conversa-product .icp-live .lv-side { background: linear-gradient(180deg, rgba(5, 11, 36, .92), rgba(9, 22, 60, .92)); }
+body .infometry-conversa-product .icp-live .lv-chats li:nth-child(n+4) { display: none; }
+body .infometry-conversa-product .icp-live .lv-nav-item { position: relative; }
+body .infometry-conversa-product .icp-live .lv-nav-item.is-active { background: linear-gradient(90deg, rgba(47, 140, 255, .24), rgba(139, 92, 246, .1)); color: #fff; }
+body .infometry-conversa-product .icp-live .lv-nav-item.is-active::before { content: ""; position: absolute; top: 22%; bottom: 22%; left: 0; width: 3px; border-radius: 3px; background: linear-gradient(var(--lv-cyan), var(--lv-violet)); }
+body .infometry-conversa-product .icp-live .lv-nav-item.is-active svg { color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-top { background: rgba(255, 255, 255, .015); }
+body .infometry-conversa-product .icp-live .lv-avatar { background: linear-gradient(135deg, #2f8cff, #8b5cf6); color: #fff; }
+body .infometry-conversa-product .icp-live :is(.lv-kpis p, .lv-viz, .lv-stats p, .lv-book-grid article, .lv-recent, .lv-dash-kpis p, .lv-dash-charts article, .lv-conn-grid article, .lv-home-cards article) { box-shadow: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 .6em 1.4em rgba(0, 0, 0, .18); backdrop-filter: blur(6px); }
+body .infometry-conversa-product .icp-live .lv-icon { background: linear-gradient(135deg, rgba(47, 140, 255, .22), rgba(139, 92, 246, .16)); }
+body .infometry-conversa-product .icp-live .lv-dash-kpis b,
+body .infometry-conversa-product .icp-live .lv-stats b { background: linear-gradient(90deg, #fff, #c9dcff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+body .infometry-conversa-product .icp-live .lv-bar { width: 100%; margin-top: 16px; padding: 6px 14px 6px 6px; border: 1px solid rgba(150, 180, 255, .16); border-radius: 99px; background: rgba(8, 17, 48, .6); backdrop-filter: blur(8px); }
+body .infometry-conversa-product .icp-live .lv-play { width: 30px; height: 30px; border: 0; background: linear-gradient(135deg, #2f8cff, #8b5cf6); }
+body .infometry-conversa-product .icp-live .lv-steps button { gap: 5px; font-size: 11.5px; }
+
+@media (max-width: 1100px) {
+  body .infometry-conversa-product .icp-live { max-width: 680px; margin-inline: auto; }
+}
+
+@container lv (min-width: 561px) and (max-width: 760px) {
+  body .infometry-conversa-product .icp-live .lv-app { font-size: min(calc(100cqw / 56), 14px); }
+}
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-app { font-size: min(calc(100cqw / 34), 15px); }
+  body .infometry-conversa-product .icp-live .lv-bar { padding: 5px 10px 5px 5px; }
+  body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10px; }
+}

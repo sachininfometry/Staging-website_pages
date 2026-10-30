@@ -15931,3 +15931,13 @@ body .infometry-conversa-product .icp-live:not(.is-paused) .lv-hint .lv-play::af
   body .infometry-conversa-product .icp-live { max-width: 820px; }
   body .infometry-conversa-product .icp-hero .icp-hero-grid { grid-template-columns: minmax(420px, 1fr) minmax(0, min(820px, calc(100vw - 646px))) !important; }
 }
+
+/* Desktop hero: the tour lines up with the top of the copy and fills the room on wide screens. */
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero .icp-live { align-self: start; margin-top: -18px; }
+}
+
+@media (min-width: 1700px) {
+  body .infometry-conversa-product .icp-live { max-width: 900px; }
+  body .infometry-conversa-product .icp-hero .icp-hero-grid { grid-template-columns: minmax(420px, 1fr) minmax(0, 900px) !important; }
+}

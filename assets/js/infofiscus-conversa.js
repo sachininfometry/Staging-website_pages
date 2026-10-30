@@ -874,7 +874,7 @@
   }
 
   function setType(type) {
-    combo.setAttribute('data-type', type);
+    all('.lv-combo').forEach(function (chart) { chart.setAttribute('data-type', type); });
     all('[data-lv-type]').forEach(function (button) {
       var on = button.getAttribute('data-lv-type') === type;
       button.classList.toggle('is-active', on);
@@ -946,6 +946,27 @@
     ask.textContent = question;
   }
 
+  // Open one of the sidebar chats in the chat view.
+  function setThread(index) {
+    all('[data-lv-thread]').forEach(function (convo) {
+      var on = convo.getAttribute('data-lv-thread') === String(index);
+      convo.hidden = !on;
+      if (on) {
+        placeholder = 'Ask ' + convo.getAttribute('data-agent') + '...';
+      }
+    });
+    all('[data-lv-chat]').forEach(function (item) {
+      var on = item.getAttribute('data-lv-chat') === String(index);
+      item.classList.toggle('is-active', on);
+      if (on) {
+        item.setAttribute('aria-current', 'true');
+      } else {
+        item.removeAttribute('aria-current');
+      }
+    });
+    inputText.textContent = placeholder;
+  }
+
   /*
    * One scene per step. Each gets helpers bound to the run that started it;
    * every pause rejects once that run is replaced, which ends the chain.
@@ -1007,6 +1028,7 @@
       } },
       { ms: 15500, play: function () {
         var chat = views.chat;
+        setThread(0);
         resetChat();
         stage(chat);
         show('chat');
@@ -1171,6 +1193,16 @@
       show(item.getAttribute('data-lv-go'));
       finish(views[current]);
       setStep(SCENE_VIEWS.indexOf(current));
+    });
+  });
+
+  all('[data-lv-chat]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      halt();
+      setThread(item.getAttribute('data-lv-chat'));
+      show('chat');
+      finish(views.chat);
+      setStep(1);
     });
   });
 

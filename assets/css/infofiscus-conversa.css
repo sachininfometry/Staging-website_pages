@@ -15657,3 +15657,14 @@ body .infometry-conversa-product .icp-live .lv-view.is-active { transition: opac
 body .infometry-conversa-product .icp-live :is(.lv-kpis p, .lv-viz, .lv-stats p, .lv-book-grid article, .lv-recent, .lv-dash-kpis p, .lv-dash-charts article, .lv-conn-grid article, .lv-home-cards article) { backdrop-filter: none; }
 body .infometry-conversa-product .icp-live .lv-hbars li { grid-template-columns: 8em minmax(0, 1fr) 3em; }
 body .infometry-conversa-product .icp-live .lv-logo-badge { width: 2.4em; height: 2.4em; padding: .42em; box-shadow: 0 0 0 3px rgba(124, 192, 255, .12), 0 .3em .8em rgba(0, 0, 0, .25); }
+
+/* Sidebar chats are buttons that open their own conversation. */
+body .infometry-conversa-product .icp-live .lv-chats li,
+body .infometry-conversa-product .icp-live .lv-chats li:nth-child(n+4) { display: block; padding: 0; overflow: visible; border-radius: 0; background: none; font-size: 1em; }
+body .infometry-conversa-product .icp-live .lv-chat-item { display: flex; align-items: center; gap: .55em; width: 100%; padding: .45em .6em; overflow: hidden; border-radius: .45em; color: #b9c6e4; font-size: .78em; text-align: left; white-space: nowrap; transition: background .2s ease, color .2s ease; }
+body .infometry-conversa-product .icp-live .lv-chat-item span { overflow: hidden; text-overflow: ellipsis; }
+body .infometry-conversa-product .icp-live .lv-chat-item svg { width: 1.1em; height: 1.1em; }
+body .infometry-conversa-product .icp-live .lv-chat-item:hover { background: rgba(255, 255, 255, .06); color: #fff; }
+body .infometry-conversa-product .icp-live .lv-chat-item.is-active { background: linear-gradient(90deg, rgba(47, 140, 255, .18), rgba(139, 92, 246, .06)); color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-convo { display: flex; flex: 1; flex-direction: column; gap: .8em; min-height: 0; }
+body .infometry-conversa-product .icp-live .lv-convo[hidden] { display: none; }

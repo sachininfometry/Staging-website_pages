@@ -60,18 +60,125 @@ $lv_nav = array(
 	array( 'view' => 'connections', 'icon' => 'db', 'label' => 'Connections' ),
 );
 
-$lv_chats = array( 'High sales volume', 'Q3 financial summary', 'Customer churn analysis', 'Supply chain risks', 'APAC revenue decline' );
+if ( ! function_exists( 'infometry_ct_lv_combo_chart' ) ) {
+	/**
+	 * Bars on the left axis and a line on the right axis, in a 560x160 view box.
+	 * Rows are array( label, bar value, line value, flagged ); flagged bars are amber.
+	 *
+	 * @param array $chat One entry of $lv_chats.
+	 * @return string SVG markup.
+	 */
+	function infometry_ct_lv_combo_chart( $chat ) {
+		$rows = $chat['rows'];
+		$band = ( 560 - 44 - 34 ) / count( $rows );
+		$out  = '';
+		foreach ( array( 0, 0.5, 1 ) as $k ) {
+			$y    = round( 10 + 112 * ( 1 - $k ), 1 );
+			$bar  = $chat['bar_max'] * $k;
+			$out .= '<line class="lv-grid" x1="44" x2="526" y1="' . $y . '" y2="' . $y . '"/>';
+			$out .= '<text class="lv-tick" x="38" y="' . ( $y + 3 ) . '">' . esc_html( $k ? sprintf( $chat['bar_fmt'], $bar ) : '0' ) . '</text>';
+			$out .= '<text class="lv-tick is-right" x="532" y="' . ( $y + 3 ) . '">' . esc_html( $chat['line_max'] * $k ) . '</text>';
+		}
+		$out   .= '<g class="lv-bars">';
+		$points = array();
+		foreach ( $rows as $i => $row ) {
+			$cx       = 44 + $band * $i + $band / 2;
+			$y        = 10 + 112 * ( 1 - $row[1] / $chat['bar_max'] );
+			$out     .= '<rect class="lv-bar' . ( ! empty( $row[3] ) ? ' is-low' : '' ) . '" x="' . round( $cx - $band * 0.26, 1 ) . '" y="' . round( $y, 1 ) . '" width="' . round( $band * 0.52, 1 ) . '" height="' . round( max( 1.5, 122 - $y ), 1 ) . '" rx="3"><title>' . esc_html( $row[0] . ': ' . sprintf( $chat['bar_fmt'], $row[1] ) . ' ' . $chat['legend'][0] ) . '</title></rect>';
+			$out     .= '<text class="lv-lab" x="' . round( $cx, 1 ) . '" y="140">' . esc_html( $row[0] ) . '</text>';
+			$points[] = round( $cx, 1 ) . ',' . round( 10 + 112 * ( 1 - $row[2] / $chat['line_max'] ), 1 );
+		}
+		$out .= '</g><g class="lv-vol"><polyline class="lv-line" pathLength="1" points="' . implode( ' ', $points ) . '"/>';
+		foreach ( $points as $i => $point ) {
+			list( $x, $y ) = explode( ',', $point );
+			$out          .= '<circle class="lv-dot" cx="' . $x . '" cy="' . $y . '" r="3.5"><title>' . esc_html( $rows[ $i ][0] . ': ' . $rows[ $i ][2] . ' ' . $chat['legend'][2] ) . '</title></circle>';
+		}
+		return $out . '</g>';
+	}
+}
 
-// Chat answer: products sold in volume against the revenue they bring in.
-$lv_products = array(
-	array( 'Grocery 161', 144.9, 40 ),
-	array( 'Grocery 86', 164.3, 38 ),
-	array( 'Sports 5', 21.5, 35 ),
-	array( 'Home 112', 115.2, 31 ),
-	array( 'Electr. 35', 10.9, 27 ),
-	array( 'Electr. 37', 4.4, 27 ),
-	array( 'Home 97', 0.6, 23 ),
-	array( 'Electr. 142', 4.1, 20 ),
+// Sidebar chats: each opens its own answer in the chat view.
+$lv_chats = array(
+	array(
+		'title'    => 'High sales volume',
+		'agent'    => 'gemini_GBQ_agent',
+		'version'  => 'v2',
+		'source'   => 'GBQ',
+		'model'    => 'Gemini 2.5 Pro',
+		'thinking' => 'Analyzing 2.4M rows in BigQuery',
+		'question' => 'Which products have high sales volume but low revenue?',
+		'summary'  => '4 of the top 8 products by volume earn under $25K each. <b>Home 97</b> sold 23 units for only $618, so pricing and promotions on these items need review.',
+		'kpis'     => array( array( 'Products analyzed', '120' ), array( 'Outliers found', '4' ), array( 'Answered in', '6.8 s' ) ),
+		'legend'   => array( 'Total revenue', 'Under $25K', 'Units sold' ),
+		'bar_max'  => 180,
+		'bar_fmt'  => '$%sK',
+		'line_max' => 50,
+		'rows'     => array( array( 'Grocery 161', 144.9, 40 ), array( 'Grocery 86', 164.3, 38 ), array( 'Sports 5', 21.5, 35, true ), array( 'Home 112', 115.2, 31 ), array( 'Electr. 35', 10.9, 27, true ), array( 'Electr. 37', 4.4, 27, true ), array( 'Home 97', 0.6, 23, true ), array( 'Electr. 142', 4.1, 20, true ) ),
+	),
+	array(
+		'title'    => 'Q3 financial summary',
+		'agent'    => 'finance_sf_agent',
+		'version'  => 'v3',
+		'source'   => 'SNOW',
+		'model'    => 'Claude Sonnet 4',
+		'thinking' => 'Querying 1.1M ledger rows in Snowflake',
+		'question' => 'Summarize Q3 revenue by region against plan.',
+		'summary'  => 'Q3 revenue closed at <b>$121.4M</b>, 4.2% above plan. North America led with $52.4M, while <b>APAC and ANZ</b> finished below plan on delayed renewals.',
+		'kpis'     => array( array( 'Q3 revenue', '$121.4M' ), array( 'Vs plan', '+4.2%' ), array( 'Gross margin', '68.3%' ) ),
+		'legend'   => array( 'Revenue', 'Below plan', 'YoY growth %' ),
+		'bar_max'  => 60,
+		'bar_fmt'  => '$%sM',
+		'line_max' => 30,
+		'rows'     => array( array( 'N. America', 52.4, 18 ), array( 'EMEA', 31.8, 12 ), array( 'APAC', 18.6, 6, true ), array( 'LATAM', 9.7, 24 ), array( 'ANZ', 5.4, 9, true ), array( 'Middle East', 3.5, 27 ) ),
+	),
+	array(
+		'title'    => 'Customer churn analysis',
+		'agent'    => 'cx_databricks_agent',
+		'version'  => 'v1',
+		'source'   => 'DBX',
+		'model'    => 'GPT-4.1',
+		'thinking' => 'Scoring 8,400 accounts in Databricks',
+		'question' => 'Which customer segments have the highest churn risk this quarter?',
+		'summary'  => '<b>SMB monthly</b> accounts show 14.2% churn risk, 3x the enterprise average. Low product usage in the first 60 days is the strongest predictor.',
+		'kpis'     => array( array( 'At-risk accounts', '312' ), array( 'Revenue at risk', '$2.8M' ), array( 'Model accuracy', '91%' ) ),
+		'legend'   => array( 'Churn risk', 'Above 10%', 'Accounts' ),
+		'bar_max'  => 16,
+		'bar_fmt'  => '%s%%',
+		'line_max' => 1200,
+		'rows'     => array( array( 'Enterprise', 4.1, 180 ), array( 'Mid-Market', 6.3, 420 ), array( 'SMB Annual', 8.8, 610 ), array( 'SMB Monthly', 14.2, 980, true ), array( 'Public Sector', 3.2, 95 ), array( 'Education', 11.6, 240, true ) ),
+	),
+	array(
+		'title'    => 'Supply chain risks',
+		'agent'    => 'supply_sf_agent',
+		'version'  => 'v2',
+		'source'   => 'SNOW',
+		'model'    => 'Gemini 2.5 Pro',
+		'thinking' => 'Joining 52K purchase orders in Snowflake',
+		'question' => 'Which suppliers are most likely to delay shipments next month?',
+		'summary'  => '6 of 40 suppliers deliver on time less than 85% of the time. <b>Pacific Components</b> runs 9.4 days late on average, putting $1.2M of Q4 inventory at risk.',
+		'kpis'     => array( array( 'Suppliers analyzed', '40' ), array( 'At-risk suppliers', '6' ), array( 'Inventory at risk', '$1.2M' ) ),
+		'legend'   => array( 'On-time delivery', 'Below 85%', 'Avg days late' ),
+		'bar_max'  => 100,
+		'bar_fmt'  => '%s%%',
+		'line_max' => 10,
+		'rows'     => array( array( 'Pacific', 79, 9.4, true ), array( 'Nordic', 96, 1.2 ), array( 'Delta', 83, 6.1, true ), array( 'Sunrise', 91, 2.8 ), array( 'Atlas', 81, 7.5, true ), array( 'Metro', 97, 0.9 ), array( 'Orion', 84, 5.2, true ), array( 'Vertex', 93, 2.1 ) ),
+	),
+	array(
+		'title'    => 'APAC revenue decline',
+		'agent'    => 'sales_gbq_agent',
+		'version'  => 'v2',
+		'source'   => 'GBQ',
+		'model'    => 'Claude Sonnet 4',
+		'thinking' => 'Comparing August and September in BigQuery',
+		'question' => 'Why did APAC revenue decline in September?',
+		'summary'  => 'APAC revenue fell 8.6% month over month to <b>$5.9M</b>. Japan and Australia drove 82% of the drop, mainly from 14 enterprise renewals that slipped to October.',
+		'kpis'     => array( array( 'APAC revenue', '$5.9M' ), array( 'Month over month', '-8.6%' ), array( 'Renewals delayed', '14' ) ),
+		'legend'   => array( 'September revenue', 'Declined vs August', 'Deals closed' ),
+		'bar_max'  => 2,
+		'bar_fmt'  => '$%sM',
+		'line_max' => 30,
+		'rows'     => array( array( 'Japan', 1.84, 14, true ), array( 'Australia', 1.21, 9, true ), array( 'India', 0.98, 22 ), array( 'Singapore', 0.76, 11 ), array( 'Korea', 0.64, 8 ), array( 'New Zealand', 0.47, 5 ) ),
+	),
 );
 
 $lv_recent = array(
@@ -178,7 +285,7 @@ $lv_scenes = array(
 			<p class="lv-side-head">Chats</p>
 			<ul class="lv-chats">
 				<?php foreach ( $lv_chats as $i => $chat ) : ?>
-					<li<?php echo 0 === $i ? ' class="is-active"' : ''; ?>><svg aria-hidden="true"><use href="#lv-chat"/></svg><?php echo esc_html( $chat ); ?></li>
+					<li><button type="button" class="lv-chat-item<?php echo 0 === $i ? ' is-active' : ''; ?>" data-lv-chat="<?php echo esc_attr( $i ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>><svg aria-hidden="true"><use href="#lv-chat"/></svg><span><?php echo esc_html( $chat['title'] ); ?></span></button></li>
 				<?php endforeach; ?>
 			</ul>
 		</aside>
@@ -204,59 +311,38 @@ $lv_scenes = array(
 				</section>
 
 				<section class="lv-view lv-chat is-active" data-lv-view="chat" aria-label="Chat">
-					<div class="lv-agent-bar"><span class="lv-agent"><i></i>gemini_GBQ_agent <em>v2</em> <em class="is-grey">GBQ</em></span><span class="lv-agent"><i></i>Gemini 2.5 Pro</span></div>
-					<div class="lv-thread">
-						<p class="lv-ask" data-lv-ask>Which products have high sales volume but low revenue?</p>
-						<div class="lv-reply">
-							<img class="lv-bot" src="<?php echo esc_url( $lv_img . 'infofiscus-conversa-mark.png' ); ?>" width="141" height="120" loading="lazy" decoding="async" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa mark">
-							<div class="lv-answer">
-								<p class="lv-thinking" aria-hidden="true"><i></i><i></i><i></i> Analyzing 2.4M rows in BigQuery</p>
-								<p class="lv-summary" data-in><b>Executive Summary:</b> 4 of the top 8 products by volume earn under $25K each. <b>Home 97</b> sold 23 units for only $618, so pricing and promotions on these items need review.</p>
-								<div class="lv-kpis" data-in>
-									<p><small>Products analyzed</small><b data-lv-count>120</b></p>
-									<p><small>Outliers found</small><b data-lv-count>4</b></p>
-									<p><small>Answered in</small><b data-lv-count>6.8 s</b></p>
-								</div>
-								<div class="lv-viz" data-in>
-									<div class="lv-viz-head"><b>Data Visualization</b>
-										<div class="lv-types" role="group" aria-label="Chart type">
-											<button type="button" data-lv-type="bar">Bar</button>
-											<button type="button" data-lv-type="line">Line</button>
-											<button type="button" class="is-active" data-lv-type="combo" aria-pressed="true">Combo</button>
+					<?php foreach ( $lv_chats as $i => $chat ) : ?>
+						<div class="lv-convo" data-lv-thread="<?php echo esc_attr( $i ); ?>" data-agent="<?php echo esc_attr( $chat['agent'] ); ?>"<?php echo 0 === $i ? '' : ' hidden'; ?>>
+							<div class="lv-agent-bar"><span class="lv-agent"><i></i><?php echo esc_html( $chat['agent'] ); ?> <em><?php echo esc_html( $chat['version'] ); ?></em> <em class="is-grey"><?php echo esc_html( $chat['source'] ); ?></em></span><span class="lv-agent"><i></i><?php echo esc_html( $chat['model'] ); ?></span></div>
+							<div class="lv-thread">
+								<p class="lv-ask" data-lv-ask><?php echo esc_html( $chat['question'] ); ?></p>
+								<div class="lv-reply">
+									<img class="lv-bot" src="<?php echo esc_url( $lv_img . 'infofiscus-conversa-mark.png' ); ?>" width="141" height="120" loading="lazy" decoding="async" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa mark">
+									<div class="lv-answer">
+										<p class="lv-thinking" aria-hidden="true"><i></i><i></i><i></i> <?php echo esc_html( $chat['thinking'] ); ?></p>
+										<p class="lv-summary" data-in><b>Executive Summary:</b> <?php echo wp_kses( $chat['summary'], array( 'b' => array() ) ); ?></p>
+										<div class="lv-kpis" data-in>
+											<?php foreach ( $chat['kpis'] as $kpi ) : ?>
+												<p><small><?php echo esc_html( $kpi[0] ); ?></small><b data-lv-count><?php echo esc_html( $kpi[1] ); ?></b></p>
+											<?php endforeach; ?>
+										</div>
+										<div class="lv-viz" data-in>
+											<div class="lv-viz-head"><b>Data Visualization</b>
+												<div class="lv-types" role="group" aria-label="Chart type">
+													<button type="button" data-lv-type="bar">Bar</button>
+													<button type="button" data-lv-type="line">Line</button>
+													<button type="button" class="is-active" data-lv-type="combo" aria-pressed="true">Combo</button>
+												</div>
+											</div>
+											<p class="lv-legend"><span class="is-rev"><?php echo esc_html( $chat['legend'][0] ); ?></span><span class="is-low"><?php echo esc_html( $chat['legend'][1] ); ?></span><span class="is-vol"><?php echo esc_html( $chat['legend'][2] ); ?></span></p>
+											<svg class="lv-combo lv-chart is-drawn" data-type="combo" viewBox="0 0 560 160" role="img" aria-label="<?php echo esc_attr( $chat['legend'][0] . ' and ' . $chat['legend'][2] . ': ' . implode( ', ', array_map( function ( $row ) use ( $chat ) { return $row[0] . ' ' . sprintf( $chat['bar_fmt'], $row[1] ) . ', ' . $row[2]; }, $chat['rows'] ) ) ); ?>"><?php echo infometry_ct_lv_combo_chart( $chat ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- numeric SVG, labels escaped in the helper. ?></svg>
 										</div>
 									</div>
-									<p class="lv-legend"><span class="is-rev">Total revenue</span><span class="is-low">Under $25K</span><span class="is-vol">Units sold</span></p>
-									<svg class="lv-combo lv-chart is-drawn" data-type="combo" viewBox="0 0 560 160" role="img" aria-label="Revenue and units sold by product: <?php echo esc_attr( implode( ', ', array_map( function ( $p ) { return $p[0] . ' $' . $p[1] . 'K, ' . $p[2] . ' units'; }, $lv_products ) ) ); ?>">
-										<?php
-										$lv_band = ( 560 - 40 - 34 ) / count( $lv_products );
-										foreach ( array( 0, 60, 120, 180 ) as $i => $tick ) {
-											$y = round( 10 + 112 * ( 1 - $tick / 180 ), 1 );
-											echo '<line class="lv-grid" x1="40" x2="526" y1="' . esc_attr( $y ) . '" y2="' . esc_attr( $y ) . '"/>';
-											echo '<text class="lv-tick" x="34" y="' . esc_attr( $y + 3 ) . '">' . esc_html( $tick ? '$' . $tick . 'K' : '0' ) . '</text>';
-											echo '<text class="lv-tick is-right" x="532" y="' . esc_attr( $y + 3 ) . '">' . esc_html( $i * 15 ) . '</text>';
-										}
-										echo '<g class="lv-bars">';
-										$lv_points = array();
-										foreach ( $lv_products as $i => $p ) {
-											$cx = 40 + $lv_band * $i + $lv_band / 2;
-											$y  = 10 + 112 * ( 1 - $p[1] / 180 );
-											echo '<rect class="lv-bar' . ( $p[1] < 25 ? ' is-low' : '' ) . '" x="' . esc_attr( round( $cx - $lv_band * 0.26, 1 ) ) . '" y="' . esc_attr( round( $y, 1 ) ) . '" width="' . esc_attr( round( $lv_band * 0.52, 1 ) ) . '" height="' . esc_attr( round( max( 1.5, 122 - $y ), 1 ) ) . '" rx="3"><title>' . esc_html( $p[0] . ': $' . $p[1] . 'K revenue' ) . '</title></rect>';
-											echo '<text class="lv-lab" x="' . esc_attr( round( $cx, 1 ) ) . '" y="140">' . esc_html( $p[0] ) . '</text>';
-											$lv_points[] = round( $cx, 1 ) . ',' . round( 10 + 112 * ( 1 - $p[2] / 45 ), 1 );
-										}
-										echo '</g><g class="lv-vol"><polyline class="lv-line" pathLength="1" points="' . esc_attr( implode( ' ', $lv_points ) ) . '"/>';
-										foreach ( $lv_points as $i => $point ) {
-											list( $x, $y ) = explode( ',', $point );
-											echo '<circle class="lv-dot" cx="' . esc_attr( $x ) . '" cy="' . esc_attr( $y ) . '" r="3.5"><title>' . esc_html( $lv_products[ $i ][0] . ': ' . $lv_products[ $i ][2] . ' units' ) . '</title></circle>';
-										}
-										echo '</g>';
-										?>
-									</svg>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="lv-input"><span data-lv-input>Ask gemini_GBQ_agent...</span><span class="lv-send" data-lv-target="send"><svg aria-hidden="true"><use href="#lv-send"/></svg></span></div>
+					<?php endforeach; ?>
+					<div class="lv-input"><span data-lv-input>Ask <?php echo esc_html( $lv_chats[0]['agent'] ); ?>...</span><span class="lv-send" data-lv-target="send"><svg aria-hidden="true"><use href="#lv-send"/></svg></span></div>
 				</section>
 
 				<section class="lv-view lv-books" data-lv-view="storybooks" aria-label="Storybooks" hidden>

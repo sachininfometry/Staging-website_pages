@@ -1056,7 +1056,7 @@
           return click($('[data-lv-target="start"]', home));
         });
       } },
-      { ms: 27000, play: function () {
+      { ms: 16500, play: function () {
         var chat = views.chat;
         var convo = $('[data-lv-thread="0"]', chat);
         var viz = $('.lv-viz', convo);
@@ -1068,9 +1068,9 @@
         var typed = 0;
         function typeNext() {
           if (typed >= question.length) {
-            return pause(350);
+            return pause(250);
           }
-          typed += 1;
+          typed += 2;
           inputText.textContent = question.slice(0, typed);
           return pause(30).then(typeNext);
         }
@@ -1079,43 +1079,33 @@
           scrollThread(el);
           return pause(ms);
         }
-        return pause(500).then(function () {
+        return pause(300).then(function () {
           moveTo(input);
-          return pause(850);
+          return pause(700);
         }).then(function () {
           input.classList.add('is-typing');
           inputText.textContent = '';
           return typeNext();
         }).then(function () {
-          return click($('[data-lv-target="send"]', chat));
+          return click($('[data-lv-target="send"]', chat), 300);
         }).then(function () {
           input.classList.remove('is-typing');
           inputText.textContent = placeholder;
           ask.classList.add('is-in');
-          return pause(450);
-        }).then(function () {
           tour.classList.add('is-thinking');
-          return pause(1500);
+          return pause(900);
         }).then(function () {
           tour.classList.remove('is-thinking');
-          return reveal($('.lv-thought', convo), 500);
+          return reveal($('.lv-thought', convo), 250);
         }).then(function () {
-          return reveal($('.lv-sql', convo), 300);
+          return reveal($('.lv-sql', convo), 250);
         }).then(function () {
-          // Open the generated SQL for a moment, then fold it away again.
-          return click($('[data-lv-sql]', convo), 1);
+          return reveal($('.lv-table', convo), 1300);
         }).then(function () {
-          setSql($('.lv-sql', convo), true);
-          scrollThread($('.lv-sql', convo));
-          return pause(2200);
+          return reveal($('.lv-summary', convo), 1100);
         }).then(function () {
-          setSql($('.lv-sql', convo), false);
-          return reveal($('.lv-table', convo), 2200);
-        }).then(function () {
-          return reveal($('.lv-summary', convo), 1500);
-        }).then(function () {
-          // Key insights, analysis details, then the action plan, scrolling down as each arrives.
-          return each(all('.lv-section', convo), 1700, function (section) {
+          // Key insights, then the action plan, scrolling down as each arrives.
+          return each(all('.lv-section', convo), 1200, function (section) {
             scrollThread(section);
             counters(section);
           });
@@ -1123,19 +1113,19 @@
           viz.classList.add('is-in');
           scrollThread(viz);
           all('.lv-chart', viz).forEach(draw);
-          return pause(1900);
+          return pause(1500);
         }).then(function () {
           return click($('[data-lv-type="pie"]', viz), 1);
         }).then(function () {
           setType('pie');
           draw($('.lv-pie', viz));
-          return pause(2000);
+          return pause(1600);
         }).then(function () {
           return click($('[data-lv-type="combo"]', viz), 1);
         }).then(function () {
           setType('combo');
           draw($('.lv-combo', viz));
-          return pause(1800);
+          return pause(1200);
         });
       } },
       { ms: 5900, play: function () {
@@ -1178,7 +1168,7 @@
           return pause(2000);
         });
       } },
-      { ms: 11500, play: function () {
+      { ms: 10500, play: function () {
         var conn = views.connections;
         var panel = setTab(conn, 'db');
         return open('connections').then(function () {
@@ -1191,7 +1181,7 @@
           return click($('[data-lv-tab="agents"]', conn), 1);
         }).then(function () {
           openTab(conn, 'agents');
-          return pause(2000);
+          return pause(1500);
         }).then(function () {
           return click($('[data-lv-tab="permissions"]', conn), 1);
         }).then(function () {

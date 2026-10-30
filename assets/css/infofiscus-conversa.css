@@ -15888,3 +15888,20 @@ body .infometry-conversa-product .icp-live .lv-switch[aria-pressed="true"] i { t
   body .infometry-conversa-product .icp-live .lv-perm-stat { display: grid; gap: .1em; padding: .45em .6em; }
   body .infometry-conversa-product .icp-live .lv-pie-val { display: none; }
 }
+
+/* Lighter and calmer: the frame never crowds the hero copy, no costly blur or shadow filters. */
+body .infometry-conversa-product .icp-live { max-width: 780px; }
+body .infometry-conversa-product .icp-live::before { filter: none; opacity: .55; }
+body .infometry-conversa-product .icp-live .lv-line,
+body .infometry-conversa-product .icp-live .lv-trend .lv-line,
+body .infometry-conversa-product .icp-live .lv-cursor svg { filter: none; }
+body .infometry-conversa-product .icp-live .lv-player { backdrop-filter: none; }
+body .infometry-conversa-product .icp-live .lv-hint { margin-bottom: 12px; }
+
+@container lv (min-width: 761px) {
+  body .infometry-conversa-product .icp-live .lv-app { aspect-ratio: 1.62 / 1; font-size: 12.5px; }
+}
+
+@media (min-width: 1101px) and (max-width: 1500px) {
+  body .infometry-conversa-product .icp-live { max-width: 720px; }
+}

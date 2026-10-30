@@ -154,7 +154,6 @@ $lv_chats = array(
 		),
 		'summary'  => 'Promotions generated <b>$459.9M</b> in gross sales but only <b>$43.8M</b> in net margin (9.5%). The three deepest discounts drive 61% of sales yet just 37% of margin, while <b>15% Off Electronics</b> alone returns $16.2M.',
 		'insights' => array( array( 'Gross sales', '$459.9M', '7 promotions analyzed' ), array( 'Net margin', '$43.8M', '9.5% blended margin' ), array( 'Best return on spend', '1.83x', 'New Customer Offer' ) ),
-		'details'  => array( array( 'Margin Leaders', array( '15% Off Electronics: $16.2M margin at 20.5%', 'New Customer Offer returns 1.83x its promo spend' ) ), array( 'Margin Drains', array( 'Buy 2 Get 1 Free: $93.5M in sales at only 1.6% margin', 'BOGO Beauty returns just 0.14x its promo spend' ) ) ),
 		'recs'     => array( 'Move budget from Buy 2 Get 1 Free to 15% Off Electronics', 'Scale the New Customer Offer, the best return on spend', 'Cap sitewide discounts at 20% to protect margin' ),
 		'chart'    => 'Promotion Performance: Sales vs. Return on Spend',
 		'legend'   => array( 'Gross sales', 'Margin under 5%', 'Net margin' ),
@@ -184,7 +183,6 @@ $lv_chats = array(
 		),
 		'summary'  => 'Stockouts cost <b>$176.7M</b> in lost sales against $72.8M of direct shrink, so unavailable inventory costs 2.4 times more than the loss itself. Together they leak <b>$249.5M</b> across the five root causes.',
 		'insights' => array( array( 'Lost sales', '$176.7M', 'From stockouts' ), array( 'Shrink loss', '$72.8M', 'Direct asset loss' ), array( 'Total leakage', '$249.5M', 'Across 5 root causes' ) ),
-		'details'  => array( array( 'Key Themes', array( 'Theft & Shrink and Scanning Errors drive $150.4M, 60% of losses', 'Scanning Errors cost $62.4M: $17.5M shrink plus $44.9M lost sales' ) ), array( 'Key Observations', array( 'Every $1 of theft shrink loses another $2.58 in sales', 'Delayed Returns Processing is a $30.4M reverse-logistics problem' ) ) ),
 		'recs'     => array( 'Target Theft & Shrink ($88.0M impact) with loss prevention', 'Overhaul scanning procedures to cut the $62.4M impact', 'Evaluate RFID and POS upgrades to automate tracking' ),
 		'chart'    => 'Shrink Loss vs. Lost Sales by Inventory Root Cause',
 		'legend'   => array( 'Shrink loss', 'Top 2 causes', 'Lost sales' ),
@@ -216,7 +214,6 @@ $lv_chats = array(
 		),
 		'summary'  => '<b>25% Off Sitewide</b> and <b>20% Off Apparel</b> have the highest return rates (28.0% and 27.3%) and the lowest full-price purchase probability, under 49%. That pattern points to impulse buying followed by returns.',
 		'insights' => array( array( 'Highest return rate', '28.0%', '25% Off Sitewide' ), array( 'Returns from top 3', '$75.0M', '69% of all promo returns' ), array( 'Best full-price probability', '65.6%', 'Loyalty Coupon' ) ),
-		'details'  => array( array( 'Impulse Signals', array( 'Sitewide and apparel discounts see 27-28% of items returned', 'Their buyers have under 49% full-price purchase probability' ) ), array( 'Healthy Promotions', array( 'Loyalty Coupon and BOGO Beauty return under 15%', 'New Customer Offer returns only $4.5M' ) ) ),
 		'recs'     => array( 'Tighten return windows on 25% Off Sitewide orders', 'Replace deep apparel discounts with loyalty offers', 'Flag repeat buy-and-return customers for review' ),
 		'chart'    => 'Promotion Return Rate vs. Full Price Purchase Probability',
 		'legend'   => array( 'Return rate', 'Above 23%', 'Full-price probability' ),
@@ -246,7 +243,6 @@ $lv_chats = array(
 		),
 		'summary'  => 'Fraud leakage reached <b>$22.6M</b> across 74,670 events. The top three fraud types drive 22.1% ($5.0M), so the risk is concentrated in a few <b>high-value patterns</b> that need targeted controls.',
 		'insights' => array( array( 'Fraud leakage', '$22.6M', '74,670 events' ), array( 'Top 3 fraud types', '$5.0M', '22.1% of leakage' ), array( 'Avg loss per event', '$303', 'Collusion averages $457' ) ),
-		'details'  => array( array( 'Strategic Themes', array( 'Receipt Fraud leads: the top 6 leakage streams total $3.4M', 'Online receipt reuse leaks 25% more than in-store, $739K vs $592K' ) ), array( 'Key Observations', array( 'Ecommerce holds 6 of the top 10 fraud types, $3.5M', 'Buy Online Pickup Return adds $324K of receipt reuse' ) ) ),
 		'recs'     => array( 'Validate Ecommerce returns against receipt IDs', 'Add velocity checks on repeat returns per customer', 'Audit Employee Collusion cases, $457 per event' ),
 		'chart'    => 'Total Revenue Leakage vs. Number of Fraud Events by Pattern',
 		'legend'   => array( 'Revenue leakage', 'Largest pattern', 'Fraud events' ),
@@ -380,7 +376,7 @@ $lv_scenes = array(
 		<linearGradient id="lv-g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8cff" stop-opacity=".38"/><stop offset="1" stop-color="#2f8cff" stop-opacity="0"/></linearGradient>
 	</svg>
 
-	<p class="lv-hint"><span class="lv-hint-icon" aria-hidden="true"><svg><use href="#lv-pointer"/></svg></span><b>Interactive demo</b><span>Click the chats, SQL, charts and tabs to explore</span></p>
+	<p class="lv-hint"><span class="lv-hint-icon" aria-hidden="true"><svg><use href="#lv-pointer"/></svg></span><b>Interactive demo</b><span>Click the chats, charts and tabs to explore</span></p>
 
 	<div class="lv-app" data-lv-app>
 		<div class="lv-chrome" aria-hidden="true"><span class="lv-lights"><i></i><i></i><i></i></span><span class="lv-chrome-title"><svg><use href="#lv-shield"/></svg>INFOFISCUS Conversa</span><span class="lv-live"><i></i>Live</span></div>
@@ -439,12 +435,12 @@ $lv_scenes = array(
 											<pre hidden><code><?php echo esc_html( $chat['sql'] ); ?></code></pre>
 										</div>
 										<div class="lv-table" data-in>
-											<p class="lv-table-head"><svg aria-hidden="true"><use href="#lv-table"/></svg><b>Query Results - <?php echo esc_html( $chat['table']['title'] ); ?></b><span class="lv-search"><svg aria-hidden="true"><use href="#lv-search"/></svg>Search results...</span></p>
+											<p class="lv-table-head"><svg aria-hidden="true"><use href="#lv-table"/></svg><b>Query Results - <?php echo esc_html( $chat['table']['title'] ); ?></b></p>
 											<div class="lv-table-scroll">
 												<table>
 													<thead><tr><?php foreach ( $chat['table']['cols'] as $col ) : ?><th scope="col"><?php echo esc_html( $col ); ?></th><?php endforeach; ?></tr></thead>
 													<tbody>
-														<?php foreach ( $chat['table']['rows'] as $row ) : ?>
+														<?php foreach ( array_slice( $chat['table']['rows'], 0, 5 ) as $row ) : ?>
 															<tr><?php foreach ( $row as $c => $cell ) : ?><td<?php echo is_numeric( $cell ) ? ' class="is-num"' : ''; ?>><?php echo esc_html( $cell ); ?></td><?php endforeach; ?></tr>
 														<?php endforeach; ?>
 													</tbody>
@@ -457,14 +453,6 @@ $lv_scenes = array(
 											<div class="lv-insights">
 												<?php foreach ( $chat['insights'] as $insight ) : ?>
 													<p><small><?php echo esc_html( $insight[0] ); ?></small><b data-lv-count><?php echo esc_html( $insight[1] ); ?></b><em><?php echo esc_html( $insight[2] ); ?></em></p>
-												<?php endforeach; ?>
-											</div>
-										</div>
-										<div class="lv-section" data-in>
-											<p class="lv-section-title"><svg aria-hidden="true"><use href="#lv-search"/></svg>Analysis Details</p>
-											<div class="lv-details">
-												<?php foreach ( $chat['details'] as $detail ) : ?>
-													<div><b><?php echo esc_html( $detail[0] ); ?></b><ul><?php foreach ( $detail[1] as $point ) : ?><li><?php echo esc_html( $point ); ?></li><?php endforeach; ?></ul></div>
 												<?php endforeach; ?>
 											</div>
 										</div>

@@ -946,11 +946,29 @@
     ask.textContent = question;
   }
 
+  // Scroll the answer like a chat: the newest part settles at the bottom of the thread.
+  function scrollThread(el) {
+    var thread = el.closest('.lv-thread');
+    if (!thread) {
+      return;
+    }
+    var top = thread.scrollTop + el.getBoundingClientRect().bottom - thread.getBoundingClientRect().bottom + 10;
+    if (top <= thread.scrollTop) {
+      return;
+    }
+    if (thread.scrollTo) {
+      thread.scrollTo({ top: top, behavior: 'smooth' });
+    } else {
+      thread.scrollTop = top;
+    }
+  }
+
   // Open one of the sidebar chats in the chat view.
   function setThread(index) {
     all('[data-lv-thread]').forEach(function (convo) {
       var on = convo.getAttribute('data-lv-thread') === String(index);
       convo.hidden = !on;
+      $('.lv-thread', convo).scrollTop = 0;
       if (on) {
         placeholder = 'Ask ' + convo.getAttribute('data-agent') + '...';
       }
@@ -1026,7 +1044,7 @@
           return click($('[data-lv-target="start"]', home));
         });
       } },
-      { ms: 15500, play: function () {
+      { ms: 21000, play: function () {
         var chat = views.chat;
         setThread(0);
         resetChat();
@@ -1062,15 +1080,19 @@
         }).then(function () {
           tour.classList.remove('is-thinking');
           $('.lv-summary', chat).classList.add('is-in');
-          return pause(650);
+          return pause(1300);
         }).then(function () {
-          $('.lv-kpis', chat).classList.add('is-in');
-          counters($('.lv-kpis', chat));
-          return pause(650);
+          // Key insights, analysis details, then recommendations, scrolling down as each arrives.
+          return each(all('[data-lv-thread="0"] .lv-section'), 1700, function (section) {
+            scrollThread(section);
+            counters(section);
+          });
         }).then(function () {
-          $('.lv-viz', chat).classList.add('is-in');
+          var viz = $('.lv-viz', chat);
+          scrollThread(viz);
+          viz.classList.add('is-in');
           draw(combo);
-          return pause(1600);
+          return pause(1900);
         }).then(function () {
           return click($('[data-lv-type="line"]', chat), 1);
         }).then(function () {

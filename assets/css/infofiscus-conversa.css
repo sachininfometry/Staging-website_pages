@@ -15706,3 +15706,38 @@ body .infometry-conversa-product .icp-live .lv-hbars i { box-shadow: 0 0 .6em rg
 @container lv (min-width: 761px) {
   body .infometry-conversa-product .icp-live .lv-trend { max-height: 11.2em; }
 }
+
+/* Chat answers scroll: summary, key insights, analysis details, recommendations, chart. */
+body .infometry-conversa-product .icp-live .lv-thread { overflow-x: hidden; overflow-y: auto; padding-right: .5em; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: rgba(124, 192, 255, .35) transparent; }
+body .infometry-conversa-product .icp-live .lv-thread::-webkit-scrollbar { width: 6px; }
+body .infometry-conversa-product .icp-live .lv-thread::-webkit-scrollbar-thumb { border-radius: 6px; background: rgba(124, 192, 255, .35); }
+body .infometry-conversa-product .icp-live .lv-reply { flex: none; }
+body .infometry-conversa-product .icp-live .lv-answer { gap: .85em; padding-bottom: .4em; }
+body .infometry-conversa-product .icp-live .lv-viz,
+body .infometry-conversa-product .icp-live .lv-combo { flex: none; }
+body .infometry-conversa-product .icp-live .lv-combo { height: auto; }
+body .infometry-conversa-product .icp-live .lv-section-title { display: flex; align-items: center; gap: .45em; margin-bottom: .5em; color: #fff; font-size: .82em; font-weight: 700; }
+body .infometry-conversa-product .icp-live .lv-section-title svg { width: 1.15em; height: 1.15em; color: #7cc0ff; }
+body .infometry-conversa-product .icp-live .lv-insights { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6em; }
+body .infometry-conversa-product .icp-live .lv-insights p { display: grid; gap: .1em; padding: .6em .8em; border: 1px solid var(--lv-line); border-left: 3px solid #5b7cff; border-radius: .6em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-insights p:nth-child(2) { border-left-color: #ff9f1c; }
+body .infometry-conversa-product .icp-live .lv-insights p:nth-child(3) { border-left-color: #22c55e; }
+body .infometry-conversa-product .icp-live .lv-insights small { color: var(--lv-muted); font-size: .68em; }
+body .infometry-conversa-product .icp-live .lv-insights b { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: 1.15em; line-height: 1.2; }
+body .infometry-conversa-product .icp-live .lv-insights em { color: #7cc0ff; font-size: .66em; font-style: normal; }
+body .infometry-conversa-product .icp-live .lv-details { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6em; }
+body .infometry-conversa-product .icp-live .lv-details > div { padding: .65em .8em; border: 1px solid var(--lv-line); border-radius: .6em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-details b { color: #fff; font-size: .76em; }
+body .infometry-conversa-product .icp-live .lv-details ul { display: grid; gap: .3em; margin-top: .4em; }
+body .infometry-conversa-product .icp-live .lv-details li { position: relative; padding-left: 1em; color: #c9d5f2; font-size: .72em; line-height: 1.45; }
+body .infometry-conversa-product .icp-live .lv-details li::before { content: ""; position: absolute; top: .55em; left: .1em; width: .4em; height: .4em; border-radius: 50%; background: linear-gradient(135deg, var(--lv-cyan), var(--lv-violet)); }
+body .infometry-conversa-product .icp-live .lv-recs { display: grid; gap: .45em; padding: .7em .8em; border: 1px solid var(--lv-line); border-radius: .6em; background: var(--lv-card); }
+body .infometry-conversa-product .icp-live .lv-recs li { display: flex; align-items: center; gap: .65em; color: #d9e3fa; font-size: .76em; }
+body .infometry-conversa-product .icp-live .lv-recs span { display: grid; flex: none; width: 1.7em; height: 1.7em; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #2f8cff, #8b5cf6); color: #fff; font-size: .85em; font-weight: 700; }
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-insights { gap: .4em; }
+  body .infometry-conversa-product .icp-live .lv-insights p { padding: .5em .55em; }
+  body .infometry-conversa-product .icp-live .lv-insights em { display: none; }
+  body .infometry-conversa-product .icp-live .lv-details { grid-template-columns: minmax(0, 1fr); }
+}

@@ -108,7 +108,9 @@ $lv_chats = array(
 		'thinking' => 'Analyzing 2.4M rows in BigQuery',
 		'question' => 'Which products have high sales volume but low revenue?',
 		'summary'  => '4 of the top 8 products by volume earn under $25K each. <b>Home 97</b> sold 23 units for only $618, so pricing and promotions on these items need review.',
-		'kpis'     => array( array( 'Products analyzed', '120' ), array( 'Outliers found', '4' ), array( 'Answered in', '6.8 s' ) ),
+		'insights' => array( array( 'Products analyzed', '120', 'Top 8 by units sold reviewed' ), array( 'Low-revenue outliers', '4', 'Under $25K despite high volume' ), array( 'Revenue gap', '$412K', 'Against category average price' ) ),
+		'details'  => array( array( 'Key Drivers', array( 'Electronics items sell 60-80% below category price', 'Home 97 earns $27 per unit, Grocery 86 over $4,300' ) ), array( 'Data Quality', array( 'Revenue has inconsistent decimal precision', 'No missing values across the 120 products' ) ) ),
+		'recs'     => array( 'Review pricing and discounts on Home 97 and Electr. 37', 'Check Electr. 142 for data entry or currency errors', 'Bundle high-volume, low-revenue items with premium products' ),
 		'legend'   => array( 'Total revenue', 'Under $25K', 'Units sold' ),
 		'bar_max'  => 180,
 		'bar_fmt'  => '$%sK',
@@ -124,7 +126,9 @@ $lv_chats = array(
 		'thinking' => 'Querying 1.1M ledger rows in Snowflake',
 		'question' => 'Summarize Q3 revenue by region against plan.',
 		'summary'  => 'Q3 revenue closed at <b>$121.4M</b>, 4.2% above plan. North America led with $52.4M, while <b>APAC and ANZ</b> finished below plan on delayed renewals.',
-		'kpis'     => array( array( 'Q3 revenue', '$121.4M' ), array( 'Vs plan', '+4.2%' ), array( 'Gross margin', '68.3%' ) ),
+		'insights' => array( array( 'Q3 revenue', '$121.4M', '+4.2% vs plan' ), array( 'Gross margin', '68.3%', '+1.8 pts vs Q2' ), array( 'Operating expenses', '$46.2M', '2% under budget' ) ),
+		'details'  => array( array( 'Regional Drivers', array( 'North America grew 18% YoY on cloud expansion', 'APAC and ANZ missed plan by $2.1M on delayed renewals' ) ), array( 'Trend', array( 'Revenue rose every month: $38.2M, $40.1M, $43.1M', 'Cloud Platform is 47.5% of total revenue' ) ) ),
+		'recs'     => array( 'Close the 14 delayed APAC renewals before Q4 ends', 'Shift Q4 marketing budget toward LATAM and Middle East', 'Hold the OpEx run-rate flat while margin expands' ),
 		'legend'   => array( 'Revenue', 'Below plan', 'YoY growth %' ),
 		'bar_max'  => 60,
 		'bar_fmt'  => '$%sM',
@@ -140,7 +144,9 @@ $lv_chats = array(
 		'thinking' => 'Scoring 8,400 accounts in Databricks',
 		'question' => 'Which customer segments have the highest churn risk this quarter?',
 		'summary'  => '<b>SMB monthly</b> accounts show 14.2% churn risk, 3x the enterprise average. Low product usage in the first 60 days is the strongest predictor.',
-		'kpis'     => array( array( 'At-risk accounts', '312' ), array( 'Revenue at risk', '$2.8M' ), array( 'Model accuracy', '91%' ) ),
+		'insights' => array( array( 'At-risk accounts', '312', '3.7% of the customer base' ), array( 'Revenue at risk', '$2.8M', 'Annual recurring revenue' ), array( 'Model accuracy', '91%', 'Validated on the last 4 quarters' ) ),
+		'details'  => array( array( 'Churn Drivers', array( 'Under 5 logins in the first 60 days raises risk 4x', 'More than 3 support tickets a month doubles risk' ) ), array( 'Segments', array( 'SMB Monthly: 14.2% risk across 980 accounts', 'Education renewals cluster in June, risk at 11.6%' ) ) ),
+		'recs'     => array( 'Launch a 60-day onboarding program for SMB monthly accounts', 'Offer annual-plan discounts to high-usage monthly customers', 'Assign success managers to the top 50 at-risk accounts' ),
 		'legend'   => array( 'Churn risk', 'Above 10%', 'Accounts' ),
 		'bar_max'  => 16,
 		'bar_fmt'  => '%s%%',
@@ -156,7 +162,9 @@ $lv_chats = array(
 		'thinking' => 'Joining 52K purchase orders in Snowflake',
 		'question' => 'Which suppliers are most likely to delay shipments next month?',
 		'summary'  => '6 of 40 suppliers deliver on time less than 85% of the time. <b>Pacific Components</b> runs 9.4 days late on average, putting $1.2M of Q4 inventory at risk.',
-		'kpis'     => array( array( 'Suppliers analyzed', '40' ), array( 'At-risk suppliers', '6' ), array( 'Inventory at risk', '$1.2M' ) ),
+		'insights' => array( array( 'Suppliers analyzed', '40', '52K purchase orders' ), array( 'At-risk suppliers', '6', 'On-time rate under 85%' ), array( 'Inventory at risk', '$1.2M', 'Q4 components' ) ),
+		'details'  => array( array( 'Delay Drivers', array( 'Pacific: 21% of orders late, 9.4 days on average', 'Atlas delays rose after the September port backlog' ) ), array( 'Exposure', array( '3 at-risk suppliers are single-source for Q4 parts', 'Lead times grew from 18 to 26 days since July' ) ) ),
+		'recs'     => array( 'Qualify a second source for Pacific parts', 'Raise safety stock on 12 Q4 SKUs by 15%', 'Add late-delivery penalties to the Atlas renewal' ),
 		'legend'   => array( 'On-time delivery', 'Below 85%', 'Avg days late' ),
 		'bar_max'  => 100,
 		'bar_fmt'  => '%s%%',
@@ -172,7 +180,9 @@ $lv_chats = array(
 		'thinking' => 'Comparing August and September in BigQuery',
 		'question' => 'Why did APAC revenue decline in September?',
 		'summary'  => 'APAC revenue fell 8.6% month over month to <b>$5.9M</b>. Japan and Australia drove 82% of the drop, mainly from 14 enterprise renewals that slipped to October.',
-		'kpis'     => array( array( 'APAC revenue', '$5.9M' ), array( 'Month over month', '-8.6%' ), array( 'Renewals delayed', '14' ) ),
+		'insights' => array( array( 'APAC revenue', '$5.9M', '-8.6% vs August' ), array( 'Renewals delayed', '14', '$510K moved to October' ), array( 'Pipeline coverage', '3.2x', 'Healthy for Q4' ) ),
+		'details'  => array( array( 'Root Cause', array( 'Japan down $410K: 8 enterprise renewals slipped', 'Australia down $220K: budget freeze at 2 accounts' ) ), array( 'Offsets', array( 'India grew 12% on 22 new deals', 'Singapore and Korea held flat month over month' ) ) ),
+		'recs'     => array( 'Escalate the 8 Japan renewals with executive sponsors', 'Offer the Australia accounts a phased payment plan', 'Repeat the India mid-market playbook in Korea' ),
 		'legend'   => array( 'September revenue', 'Declined vs August', 'Deals closed' ),
 		'bar_max'  => 2,
 		'bar_fmt'  => '$%sM',
@@ -325,10 +335,29 @@ $lv_scenes = array(
 									<div class="lv-answer">
 										<p class="lv-thinking" aria-hidden="true"><i></i><i></i><i></i> <?php echo esc_html( $chat['thinking'] ); ?></p>
 										<p class="lv-summary" data-in><b>Executive Summary:</b> <?php echo wp_kses( $chat['summary'], array( 'b' => array() ) ); ?></p>
-										<div class="lv-kpis" data-in>
-											<?php foreach ( $chat['kpis'] as $kpi ) : ?>
-												<p><small><?php echo esc_html( $kpi[0] ); ?></small><b data-lv-count><?php echo esc_html( $kpi[1] ); ?></b></p>
-											<?php endforeach; ?>
+										<div class="lv-section" data-in>
+											<p class="lv-section-title"><svg aria-hidden="true"><use href="#lv-spark"/></svg>Key Insights</p>
+											<div class="lv-insights">
+												<?php foreach ( $chat['insights'] as $insight ) : ?>
+													<p><small><?php echo esc_html( $insight[0] ); ?></small><b data-lv-count><?php echo esc_html( $insight[1] ); ?></b><em><?php echo esc_html( $insight[2] ); ?></em></p>
+												<?php endforeach; ?>
+											</div>
+										</div>
+										<div class="lv-section" data-in>
+											<p class="lv-section-title"><svg aria-hidden="true"><use href="#lv-search"/></svg>Analysis Details</p>
+											<div class="lv-details">
+												<?php foreach ( $chat['details'] as $detail ) : ?>
+													<div><b><?php echo esc_html( $detail[0] ); ?></b><ul><?php foreach ( $detail[1] as $point ) : ?><li><?php echo esc_html( $point ); ?></li><?php endforeach; ?></ul></div>
+												<?php endforeach; ?>
+											</div>
+										</div>
+										<div class="lv-section" data-in>
+											<p class="lv-section-title"><svg aria-hidden="true"><use href="#lv-check"/></svg>Recommendations</p>
+											<ol class="lv-recs">
+												<?php foreach ( $chat['recs'] as $n => $rec ) : ?>
+													<li><span><?php echo esc_html( $n + 1 ); ?></span><?php echo esc_html( $rec ); ?></li>
+												<?php endforeach; ?>
+											</ol>
 										</div>
 										<div class="lv-viz" data-in>
 											<div class="lv-viz-head"><b>Data Visualization</b>

@@ -338,14 +338,6 @@ $lv_agents = array(
 	array( 'name' => 'Cortex Analyst', 'logo' => 'tech-logos/snowflake-mark.png', 'size' => array( 182, 182 ), 'count' => 2 ),
 	array( 'name' => 'INFOFISCUS SLM', 'logo' => 'infofiscus-conversa-mark.png', 'size' => array( 141, 120 ), 'count' => 1 ),
 );
-
-$lv_scenes = array(
-	array( 'home', 'Home' ),
-	array( 'chat', 'Ask' ),
-	array( 'storybooks', 'Storybooks' ),
-	array( 'dashboard', 'Dashboard' ),
-	array( 'connections', 'Connections' ),
-);
 ?>
 <div class="icp-live" data-icp-live role="region" aria-roledescription="product tour" aria-label="INFOFISCUS Conversa product tour">
 	<svg class="lv-sprite" aria-hidden="true" focusable="false">
@@ -376,7 +368,7 @@ $lv_scenes = array(
 		<linearGradient id="lv-g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8cff" stop-opacity=".38"/><stop offset="1" stop-color="#2f8cff" stop-opacity="0"/></linearGradient>
 	</svg>
 
-	<p class="lv-hint"><span class="lv-hint-icon" aria-hidden="true"><svg><use href="#lv-pointer"/></svg></span><b>Interactive demo</b><span>Click the chats, charts and tabs to explore</span></p>
+	<p class="lv-hint"><button type="button" class="lv-play" data-lv-play aria-label="Pause the product tour"><svg class="lv-i-pause" aria-hidden="true"><use href="#lv-pause"/></svg><svg class="lv-i-play" aria-hidden="true"><use href="#lv-play"/></svg></button><b>Interactive demo</b><span>Click the chats, charts and tabs to explore</span></p>
 
 	<div class="lv-app" data-lv-app>
 		<div class="lv-chrome" aria-hidden="true"><span class="lv-lights"><i></i><i></i><i></i></span><span class="lv-chrome-title"><svg><use href="#lv-shield"/></svg>INFOFISCUS Conversa</span><span class="lv-live"><i></i>Live</span></div>
@@ -610,14 +602,5 @@ $lv_scenes = array(
 		</div>
 
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
-	</div>
-
-	<div class="lv-player">
-		<button type="button" class="lv-play" data-lv-play aria-label="Pause the product tour"><svg class="lv-i-pause" aria-hidden="true"><use href="#lv-pause"/></svg><svg class="lv-i-play" aria-hidden="true"><use href="#lv-play"/></svg></button>
-		<ol class="lv-steps">
-			<?php foreach ( $lv_scenes as $i => $scene ) : ?>
-				<li><button type="button" data-lv-scene="<?php echo esc_attr( $i ); ?>"><span><?php echo esc_html( $scene[1] ); ?></span><i><b></b></i></button></li>
-			<?php endforeach; ?>
-		</ol>
 	</div>
 </div>

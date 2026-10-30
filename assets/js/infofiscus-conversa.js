@@ -758,8 +758,8 @@
 /*
  * Hero product tour (templates/partials/conversa-live-dashboard.php): plays the
  * Conversa app like a short video, scene by scene (Home, Ask, Storybooks,
- * Dashboard, Connections), with a pointer doing the clicks, and loops. The step
- * bar jumps to a scene and the round button pauses or resumes; clicking inside
+ * Dashboard, Connections), with a pointer doing the clicks, and loops. The round
+ * button on the "Interactive demo" label pauses or resumes; clicking inside
  * the app pauses the tour and leaves the visitor in control.
  */
 (function () {
@@ -903,7 +903,7 @@
         button.removeAttribute('aria-current');
       }
     });
-    if (ms) {
+    if (ms && stepButtons[index]) {
       var active = stepButtons[index];
       active.style.setProperty('--lv-ms', ms + 'ms');
       active.classList.add('is-running', 'is-start');

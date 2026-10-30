@@ -354,7 +354,7 @@ $lv_scenes = array(
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
 	</div>
 
-	<div class="lv-bar">
+	<div class="lv-player">
 		<button type="button" class="lv-play" data-lv-play aria-label="Pause the product tour"><svg class="lv-i-pause" aria-hidden="true"><use href="#lv-pause"/></svg><svg class="lv-i-play" aria-hidden="true"><use href="#lv-play"/></svg></button>
 		<ol class="lv-steps">
 			<?php foreach ( $lv_scenes as $i => $scene ) : ?>

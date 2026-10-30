@@ -15468,7 +15468,7 @@ body .infometry-conversa-product .icp-live .is-staging [data-in]:not(.is-in),
 body .infometry-conversa-product .icp-live .is-staging .lv-ask:not(.is-in) { opacity: 0; transform: translateY(.5em); }
 
 /* Player bar: play / pause and one step per scene */
-body .infometry-conversa-product .icp-live .lv-bar { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
+body .infometry-conversa-product .icp-live .lv-player { display: flex; align-items: center; gap: 14px; margin-top: 14px; }
 
 body .infometry-conversa-product .icp-live .lv-play {
   display: grid;
@@ -15538,7 +15538,7 @@ body .infometry-conversa-product .icp-live .lv-steps .is-running.is-start b { tr
   body .infometry-conversa-product .icp-live .lv-conn-name b { font-size: .82em; }
   body .infometry-conversa-product .icp-live .lv-wordmark { width: 6.4em; }
   body .infometry-conversa-product .icp-live .lv-view-head .lv-btn { display: none; }
-  body .infometry-conversa-product .icp-live .lv-bar { gap: 10px; }
+  body .infometry-conversa-product .icp-live .lv-player { gap: 10px; }
   body .infometry-conversa-product .icp-live .lv-steps { gap: 5px; }
   body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10.5px; }
 }
@@ -15572,7 +15572,7 @@ body .infometry-conversa-product .icp-live .lv-footnote { margin-top: auto; padd
 
 @container lv (max-width: 560px) {
   body .infometry-conversa-product .icp-live .lv-book-grid article:nth-child(n+2) { display: none; }
-  body .infometry-conversa-product .icp-live .lv-bar { gap: 8px; }
+  body .infometry-conversa-product .icp-live .lv-player { gap: 8px; }
   body .infometry-conversa-product .icp-live .lv-play { width: 30px; height: 30px; }
   body .infometry-conversa-product .icp-live .lv-steps { gap: 4px; }
   body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10px; letter-spacing: -.01em; }
@@ -15635,7 +15635,7 @@ body .infometry-conversa-product .icp-live :is(.lv-kpis p, .lv-viz, .lv-stats p,
 body .infometry-conversa-product .icp-live .lv-icon { background: linear-gradient(135deg, rgba(47, 140, 255, .22), rgba(139, 92, 246, .16)); }
 body .infometry-conversa-product .icp-live .lv-dash-kpis b,
 body .infometry-conversa-product .icp-live .lv-stats b { background: linear-gradient(90deg, #fff, #c9dcff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-body .infometry-conversa-product .icp-live .lv-bar { width: 100%; margin-top: 16px; padding: 6px 14px 6px 6px; border: 1px solid rgba(150, 180, 255, .16); border-radius: 99px; background: rgba(8, 17, 48, .6); backdrop-filter: blur(8px); }
+body .infometry-conversa-product .icp-live .lv-player { width: 100%; margin-top: 16px; padding: 6px 14px 6px 6px; border: 1px solid rgba(150, 180, 255, .16); border-radius: 99px; background: rgba(8, 17, 48, .6); backdrop-filter: blur(8px); }
 body .infometry-conversa-product .icp-live .lv-play { width: 30px; height: 30px; border: 0; background: linear-gradient(135deg, #2f8cff, #8b5cf6); }
 body .infometry-conversa-product .icp-live .lv-steps button { gap: 5px; font-size: 11.5px; }
 
@@ -15649,6 +15649,13 @@ body .infometry-conversa-product .icp-live .lv-steps button { gap: 5px; font-siz
 
 @container lv (max-width: 560px) {
   body .infometry-conversa-product .icp-live .lv-app { font-size: min(calc(100cqw / 34), 15px); }
-  body .infometry-conversa-product .icp-live .lv-bar { padding: 5px 10px 5px 5px; }
+  body .infometry-conversa-product .icp-live .lv-player { padding: 5px 10px 5px 5px; }
   body .infometry-conversa-product .icp-live .lv-steps button { font-size: 10px; }
 }
+
+/* Screens never overlap: the old one leaves before the new one arrives. Cards are solid. */
+body .infometry-conversa-product .icp-live { --lv-card: linear-gradient(180deg, #14224f, #0e1a42); --lv-line: rgba(150, 180, 255, .16); }
+body .infometry-conversa-product .icp-live .lv-view { transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s; }
+body .infometry-conversa-product .icp-live .lv-view.is-active { transition: opacity .4s ease .18s, transform .4s ease .18s, visibility 0s; }
+body .infometry-conversa-product .icp-live :is(.lv-kpis p, .lv-viz, .lv-stats p, .lv-book-grid article, .lv-recent, .lv-dash-kpis p, .lv-dash-charts article, .lv-conn-grid article, .lv-home-cards article) { backdrop-filter: none; }
+body .infometry-conversa-product .icp-live .lv-hbars li { grid-template-columns: 8em minmax(0, 1fr) 3em; }

@@ -1403,6 +1403,16 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_script( 'infometry-google-sheets-connector', INFOMETRY_CT_URL . 'assets/js/google-sheets-connector.js', array(), $js_version, true );
 	}
 
+	// The Drive page adds its own layout and animations on top of the shared connector base.
+	if ( $use_google_drive ) {
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-drive-connector.css';
+		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-drive-connector.js';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		$js_version  = is_readable( $js_path ) ? (string) filemtime( $js_path ) : INFOMETRY_CT_VERSION;
+		wp_enqueue_style( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/css/google-drive-connector.css', array( 'infometry-google-sheets-connector' ), $css_version );
+		wp_enqueue_script( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/js/google-drive-connector.js', array( 'infometry-google-sheets-connector' ), $js_version, true );
+	}
+
 	if ( $use_snowflake_native_apps ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/snowflake-native-apps.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/snowflake-native-apps.js';

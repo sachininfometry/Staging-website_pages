@@ -3,10 +3,12 @@
  * Template Name: Google Drive Connector Product
  * Template Post Type: page, product
  *
- * Same design system as the Google Sheets Connector page (.igs-*, styles in
- * assets/css/google-sheets-connector.css, behaviour in
- * assets/js/google-sheets-connector.js), with Google Drive content. The hero
- * plays files moving through IDMC; .is-drive switches the accents to Drive blue.
+ * Built around a file's journey: a Drive window whose files move through an
+ * IDMC transfer queue, a file inspector (details, permissions, revisions,
+ * comments), a hub diagram, grouped features and Drive use cases. Shares the
+ * connector base (buttons, heads, form, footer) from google-sheets-connector.css;
+ * its own layout lives in google-drive-connector.css (.gdc-*) and the
+ * animations in google-drive-connector.js.
  *
  * @package Infometry_Custom_Templates
  */
@@ -23,231 +25,297 @@ $accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migratio
 $customers_url    = home_url( '/company/customers-partners/' );
 $img              = INFOMETRY_CT_URL . 'assets/images/';
 $drive_icon       = $img . 'google-connectors/google-drive.png';
-$sheets_icon      = $img . 'google-connectors/google-sheets.png';
 $idmc_icon        = $img . 'informatica-product-mark.png';
 $support_email    = 'info@www.infometry.net';
 $trial_form_id    = 351429;
 
-$igd_ops = array( 'Upload', 'Download', 'List', 'Create', 'Update', 'Search', 'Permissions' );
-
-$igd_files = array(
-	array( 'Q1_Board_Deck.pdf', 'PDF', 'Today' ),
-	array( 'Vendor_Contracts.docx', 'Doc', 'Today' ),
-	array( 'Orders_Export.csv', 'CSV', 'Yesterday' ),
-	array( 'Product_Catalog.xlsx', 'Sheet', 'Mon' ),
-	array( 'Field_Report.txt', 'Text', 'Mon' ),
+// Hero: files in the shared drive and the transfer jobs that move them (file index, operation, label, target).
+$gdc_files = array(
+	array( 'Orders_Export.csv', 'csv', 'CSV' ),
+	array( 'Q1_Board_Deck.pdf', 'pdf', 'PDF' ),
+	array( 'Vendor_Contracts', 'doc', 'Docs' ),
+	array( 'Field_Photos.jpeg', 'img', 'JPEG' ),
+	array( 'Release_Notes.txt', 'txt', 'TXT' ),
+	array( 'Pricing_2027', 'doc', 'Docs' ),
+);
+$gdc_jobs = array(
+	array( 0, 'up', 'Upload', 'Snowflake' ),
+	array( 1, 'down', 'Download', 'Data Lake' ),
+	array( 2, 'edit', 'Update', 'Salesforce' ),
+	array( 5, 'lock', 'Get permissions', 'IDMC' ),
 );
 
-$igd_targets = array(
-	array( 'Snowflake', 'google-sheets/eco-snowflake.png' ),
-	array( 'Salesforce', 'google-sheets/eco-salesforce.png' ),
-	array( 'NetSuite', 'google-sheets/eco-netsuite.png' ),
-	array( 'Databricks', 'google-sheets/eco-databricks.png' ),
-	array( 'AWS', 'google-sheets/eco-aws.png' ),
-	array( 'Azure', 'google-sheets/eco-azure.png' ),
-	array( 'SQL Server', 'google-sheets/eco-sqlserver.png' ),
-	array( 'Oracle', 'google-sheets/eco-oracle.png' ),
-	array( 'SAP', 'google-sheets/eco-sap.png' ),
-	array( 'Workday', 'google-sheets/eco-workday.png' ),
-	array( 'HubSpot', 'google-sheets/eco-hubspot.png' ),
-	array( 'Adaptive', 'google-sheets/eco-adaptive.png' ),
+$gdc_benefits = array(
+	array( 'code', 'Fast, no-code setup', 'Fast and easy to implement from Informatica Cloud with a no-code interface.' ),
+	array( 'key', 'Refresh token & multiple drives', 'Integrated support for refresh tokens and multiple Drive connections.' ),
+	array( 'sync', 'Sync & mapping tasks', 'Compatible with both Data Synchronization and Mapping Tasks.' ),
+	array( 'nodes', 'Multiple environments', 'Operates seamlessly across multiple environments and locations.' ),
+	array( 'bolt', 'Agentic AI intelligence', 'Improves operational efficiency and decision-making.' ),
 );
 
-$igd_benefits = array(
-	array( 'calendar', 'Automation & Scheduling', 'Automation and scheduling of file transfers is just a click away.' ),
-	array( 'code', 'Fast, No-Code Setup', 'Fast and easy to implement from Informatica Cloud with a no-code interface.' ),
-	array( 'infinity', 'Unlimited Usage', 'Unlimited usage on license, with no restrictions on the number of endpoints.' ),
-	array( 'file', 'Complete File Operations', 'Supports download, upload, delete, search, permissions management and metadata.' ),
-	array( 'key', 'Refresh Token & Multiple Drives', 'Integrated support for refresh tokens and multiple Drive connections.' ),
-	array( 'sync', 'Synchronization & Mapping Tasks', 'Compatible with both Data Synchronization and Mapping Tasks.' ),
-	array( 'nodes', 'Multiple Environments', 'Operates seamlessly across multiple environments and locations.' ),
-	array( 'bolt', 'Agentic AI Intelligence', 'Agentic AI intelligence improves operational efficiency and decision-making.' ),
+$gdc_steps = array(
+	array( 'Enable it from IDMC', 'Enable it directly from IDMC (formerly IICS) and contact us to activate your license.' ),
+	array( 'Request from the Marketplace', 'Visit the Informatica Marketplace, search Infometry’s Google Drive Connector, and click Start Free Trial to submit your request.' ),
+	array( 'Choose your license', 'Two licensing models: a 30-day trial license and a full subscription.' ),
+	array( 'Fast provisioning', 'For paid or subscription licenses, reach out to us for fast provisioning.' ),
+	array( 'Or activate through Informatica', 'Users can also contact Informatica directly to activate their trial license on the IDMC platform.' ),
 );
 
-$igd_features = array(
-	array( 'file', 'Files list, get, get all, download, create and search, file permissions and file metadata' ),
-	array( 'file', 'All file operations on Google Docs files such as .doc, .pdf, .jpeg and more' ),
-	array( 'file', 'All file operations on non-Google Docs files such as .csv, .txt and more' ),
-	array( 'folder', 'Both Team Drive and Shared Drive file operations' ),
-	array( 'plus', 'Create new files and update existing files' ),
-	array( 'history', 'Update or fetch the details of file revisions' ),
-	array( 'comment', 'Get comments and replies on comments' ),
-	array( 'folder', 'Easy access to files shared with you' ),
-	array( 'down', 'Download multiple files at a time' ),
-	array( 'key', 'Get user permissions on files' ),
+$gdc_feature_groups = array(
+	array( 'file', 'is-blue', 'File operations', array( 'Files list, get, get all, download, create and search', 'Create new files and update existing files', 'Download multiple files at a time' ), array( 'files.list', 'files.get', 'files.create', 'files.update' ) ),
+	array( 'layers', 'is-yellow', 'Every file type', array( 'All file operations on Google Docs files', 'All file operations on non-Google Docs files' ), array( '.doc', '.pdf', '.jpeg', '.csv', '.txt' ) ),
+	array( 'folder', 'is-green', 'Every drive', array( 'Both Team Drive and Shared Drive file operations', 'Easy access to files shared with you' ), array( 'My Drive', 'Shared drives', 'Team Drive', 'Shared with me' ) ),
+	array( 'comment', 'is-violet', 'Collaboration & governance', array( 'Get comments and replies on comments', 'Update or fetch the details of file revisions', 'Get user permissions and file metadata' ), array( 'comments', 'replies', 'revisions', 'permissions' ) ),
 );
 
-$igd_groups = array(
-	array(
-		'tone'  => 'blue',
-		'icon'  => 'cloud',
-		'title' => 'SaaS, CRM & ERP',
-		'note'  => 'Business applications, on-premises or cloud',
-		'items' => array( array( 'Salesforce', 'google-sheets/eco-salesforce.png' ), array( 'NetSuite', 'google-sheets/eco-netsuite.png' ), array( 'Workday', 'google-sheets/eco-workday.png' ), array( 'SAP', 'google-sheets/eco-sap.png' ), array( 'Adaptive', 'google-sheets/eco-adaptive.png' ), array( 'HubSpot', 'google-sheets/eco-hubspot.png' ) ),
+$gdc_uses = array(
+	array( 'Uploading Google Drive files into enterprise databases', array( array( 'drive', 'Drive files' ), array( 'idmc', 'IDMC' ), array( 'db', 'Enterprise database' ) ) ),
+	array( 'Commenting on specific files and replying directly through workflows', array( array( 'sync', 'Workflow' ), array( 'comment', 'Comment' ), array( 'chat', 'Reply' ) ) ),
+	array( 'Creating and updating documents directly from Informatica', array( array( 'idmc', 'Informatica' ), array( 'plus', 'Create' ), array( 'file', 'Update document' ) ) ),
+	array( 'Performing automated, no-code ETL operations across cloud and on-premise environments', array( array( 'cloud', 'Cloud' ), array( 'code', 'No-code ETL' ), array( 'db', 'On-premise' ) ) ),
+	array( 'Using Agentic AI insights to optimize file operations, access control and collaboration', array( array( 'bolt', 'Agentic AI' ), array( 'key', 'Access control' ), array( 'nodes', 'Collaboration' ) ) ),
+);
+
+$gdc_videos = array(
+	array( 'sQVcqMs8u60', 'How to upload a file in Google Drive using Infometry’s Google Drive Connector', 'up', 'Upload' ),
+	array( 'hfV30oVpQkM', 'How to get files from Google Drive using Infometry’s connector', 'down', 'Get files' ),
+);
+
+$gdc_faqs = array(
+	array( 'What are the types of licenses you offer?', 'We have two licensing models: Prod and Non-Prod. The Infometry connector annual subscription license is charged for a given OrgID, and customers get unlimited usage of the connectors within an OrgID.' ),
+	array( 'How are updates on new features released to customers?', 'The Infometry Connector team continues to add new features and support newer API releases for each product. Release cycles are synced with the Informatica Cloud platform, and customers get the updates automatically along with IICS release updates. All new releases are auto-updated at the customer end and are free of charge.' ),
+	array( 'Whom do I contact for implementation and license?', 'You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
+	array( 'Is Infometry’s Google Drive Connector certified by Informatica?', 'Yes. All our connectors are 100% certified by Informatica and listed on the <a href="' . $marketplace_url . '" target="_blank" rel="noopener">Informatica Marketplace</a>.' ),
+	array( 'How does your customer support work?', 'Our support is available 24/7, and we provide local time-zone support to all our customers globally.' ),
+	array( 'How does Infometry charge for the connector?', 'All our connectors are charged based on the number of Prod and Non-Prod licenses subscribed by the customer, completely independent of the number or size of the data and rows processed.' ),
+	array( 'How soon can business users onboard and start using the connector?', 'In most cases, it is immediate.' ),
+	array( 'What is the validity of the Infometry Connector license?', 'All our licenses are charged annually and are valid for 1 year.' ),
+	array( 'How does Infometry offer technical support?', 'It’s available 24/7 with a turnaround time of 24–48 hours. You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
+	array( 'How secure is my data?', 'All our connectors and their updates are verified by Informatica before reaching the customer. Our connectors are activated by Informatica and work in your IICS environment. Connectors do not hold any data, and the connector ensures highly secured data transfers.' ),
+);
+
+$gdc_faq_schema = array(
+	'@context'   => 'https://schema.org',
+	'@type'      => 'FAQPage',
+	'mainEntity' => array_map(
+		function ( $faq ) {
+			return array(
+				'@type'          => 'Question',
+				'name'           => $faq[0],
+				'acceptedAnswer' => array( '@type' => 'Answer', 'text' => wp_strip_all_tags( $faq[1] ) ),
+			);
+		},
+		$gdc_faqs
 	),
-	array(
-		'tone'  => 'violet',
-		'icon'  => 'db',
-		'title' => 'Databases & Data Platforms',
-		'note'  => 'Warehouses, lakes and relational databases',
-		'items' => array( array( 'Snowflake', 'google-sheets/eco-snowflake.png' ), array( 'Databricks', 'google-sheets/eco-databricks.png' ), array( 'AWS', 'google-sheets/eco-aws.png' ), array( 'Azure', 'google-sheets/eco-azure.png' ), array( 'SQL Server', 'google-sheets/eco-sqlserver.png' ), array( 'Oracle', 'google-sheets/eco-oracle.png' ) ),
-	),
-	array(
-		'tone'  => 'orange',
-		'icon'  => 'nodes',
-		'title' => 'Other Applications',
-		'note'  => 'Any source or target available in IDMC',
-		'items' => array( array( 'Sheets', 'google-connectors/google-sheets.png' ), array( 'BigTable', 'google-connectors/google-bigtable.png' ), array( 'Pub/Sub', 'google-connectors/google-pubsub.png' ) ),
-	),
 );
+$gdc_link_tags = array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) );
 
 require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
-?>
-<main class="igs-page is-drive" id="igs-main">
-	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
 
-	<section class="igs-hero" aria-labelledby="igs-title">
-		<div class="igs-shell igs-hero-grid">
-			<div class="igs-hero-copy">
-				<span class="igs-badge"><i></i>100% Informatica Certified · IDMC (formerly IICS)</span>
-				<h1 id="igs-title">Google Drive, connected to your <em>enterprise data</em></h1>
-				<p>Automate secure file movement between Google Drive and Informatica IDMC with one native, no-code connector: upload, download, list, create and update files, and manage comments, permissions and revisions.</p>
+/** Small icon for a use-case step: the Drive or IDMC logo, otherwise a sprite icon. */
+$gdc_step_icon = function ( $key ) use ( $drive_icon, $idmc_icon ) {
+	if ( 'drive' === $key ) {
+		infometry_ct_igs_img( $drive_icon, '' );
+	} elseif ( 'idmc' === $key ) {
+		infometry_ct_igs_img( $idmc_icon, '' );
+	} else {
+		printf( '<svg><use href="#igs-%s"/></svg>', esc_attr( $key ) );
+	}
+};
+?>
+<main class="igs-page gdc-page" id="igs-main">
+	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+	<svg class="igs-sprite" aria-hidden="true" focusable="false">
+		<symbol id="gdc-up" viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5M5 3h14"/></symbol>
+		<symbol id="gdc-down" viewBox="0 0 24 24"><path d="M12 5v13M6.5 12.5 12 18l5.5-5.5M5 21h14"/></symbol>
+		<symbol id="gdc-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></symbol>
+		<symbol id="gdc-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+		<symbol id="gdc-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
+		<symbol id="gdc-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+		<symbol id="gdc-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+		<symbol id="gdc-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
+	</svg>
+
+	<!-- Hero: a Drive window whose files run through an IDMC transfer queue -->
+	<section class="igs-hero gdc-hero" aria-labelledby="gdc-title">
+		<div class="igs-shell gdc-hero-grid">
+			<div class="gdc-hero-copy">
+				<span class="gdc-badge"><?php infometry_ct_igs_img( $drive_icon, '' ); ?>Google Drive Connector · 100% Informatica Certified</span>
+				<h1 id="gdc-title">Every Google Drive file, moving through <em>Informatica IDMC</em></h1>
+				<p>Upload, download, list, create and update files, and bring comments, permissions and revisions along, with one native, no-code connector for IDMC.</p>
 				<div class="igs-actions">
-					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start 30-Day Free Trial <svg><use href="#igs-arrow"/></svg></a>
+					<a class="igs-btn igs-btn-primary gdc-btn-drive" href="#freetrialform">Start 30-Day Free Trial <svg><use href="#igs-arrow"/></svg></a>
 					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
 				</div>
-				<div class="igs-ops-bar">
-					<span>Operations</span>
-					<ul class="igs-ops" aria-label="Supported operations">
-						<?php foreach ( $igd_ops as $op ) : ?>
-							<li><?php echo esc_html( $op ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-				<div class="igs-proof">
-					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><span><b>Informatica Marketplace</b><small>Certified listing</small></span><svg><use href="#igs-out"/></svg></a>
-					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon is-g2"><svg><use href="#igs-star"/></svg></span><span><b>G2 Product Review</b><small>See customer feedback</small></span><svg><use href="#igs-out"/></svg></a>
-				</div>
+				<ul class="gdc-hero-drives" aria-label="Works with">
+					<li><svg><use href="#igs-folder"/></svg>My Drive</li>
+					<li><svg><use href="#gdc-users"/></svg>Shared drives</li>
+					<li><svg><use href="#igs-folder"/></svg>Team Drive</li>
+					<li><svg><use href="#gdc-users"/></svg>Shared with me</li>
+				</ul>
+				<p class="gdc-hero-links">
+					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?>Informatica Marketplace<svg><use href="#igs-out"/></svg></a>
+					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg class="is-star"><use href="#gdc-star"/></svg>G2 Product Review<svg><use href="#igs-out"/></svg></a>
+				</p>
 			</div>
 
-			<div class="igs-flow" data-igs-live data-igs-fx-verb="Upload" aria-label="Animated example: files in Google Drive move through the Infometry connector in Informatica IDMC to enterprise sources and targets such as Snowflake, Salesforce and NetSuite">
-				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-sheet is-drive" data-igs-sheet>
-					<header>
-						<span class="igs-sheet-icon"><svg><use href="#igs-folder"/></svg></span>
-						<span class="igs-sheet-name"><b>Finance Shared Drive</b><small>Google Drive · Shared drive</small></span>
-						<span class="igs-sheet-live"><i></i>Live sync</span>
-					</header>
-					<div class="igs-sheet-fx"><b><svg><use href="#igs-sync"/></svg></b><span data-igs-fx>Watching folder · 5 files</span></div>
-					<div class="igs-sheet-grid">
-						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
-						<table>
-							<thead>
-								<tr><th></th><th>Name</th><th>Type</th><th>Modified</th></tr>
-							</thead>
-							<tbody>
-								<?php foreach ( $igd_files as $file ) : ?>
-									<tr data-igs-row><td><svg class="igs-file-ic"><use href="#igs-file"/></svg></td><td><?php echo esc_html( $file[0] ); ?></td><td><?php echo esc_html( $file[1] ); ?></td><td><?php echo esc_html( $file[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
+			<div class="gdc-stage" data-gdc-stage aria-label="Animated example: files in a Google shared drive are uploaded, downloaded, updated and read for permissions through the Infometry connector in Informatica IDMC">
+				<div class="gdc-window" aria-hidden="true">
+					<div class="gdc-win-top">
+						<span class="gdc-win-logo"><?php infometry_ct_igs_img( $drive_icon, '' ); ?><b>Drive</b></span>
+						<span class="gdc-win-search"><svg><use href="#gdc-search"/></svg>Search in Drive</span>
+						<span class="gdc-win-avatar">EC</span>
 					</div>
-					<footer aria-hidden="true"><span class="is-on">Shared drives</span><span>My Drive</span><span>Shared with me</span><i>+</i></footer>
+					<div class="gdc-win-body">
+						<ul class="gdc-win-side">
+							<li><svg><use href="#igs-folder"/></svg>My Drive</li>
+							<li class="is-on"><svg><use href="#gdc-users"/></svg>Shared drives</li>
+							<li><svg><use href="#gdc-users"/></svg>Shared with me</li>
+							<li><svg><use href="#gdc-clock"/></svg>Recent</li>
+							<li><svg><use href="#gdc-star"/></svg>Starred</li>
+						</ul>
+						<div class="gdc-win-main">
+							<p class="gdc-win-path">Shared drives <i>›</i> <b>Finance</b></p>
+							<ul class="gdc-files">
+								<?php foreach ( $gdc_files as $i => $file ) : ?>
+									<li class="is-<?php echo esc_attr( $file[1] ); ?>" data-gdc-file="<?php echo (int) $i; ?>">
+										<span class="gdc-file-thumb"><em><?php echo esc_html( $file[2] ); ?></em></span>
+										<span class="gdc-file-name"><i></i><?php echo esc_html( $file[0] ); ?></span>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+					</div>
 				</div>
-				<div class="igs-core" data-igs-core>
-					<span class="igs-core-icon"><svg><use href="#igs-bolt"/></svg></span>
-					<strong>Infometry Connector</strong>
-					<small>Informatica IDMC</small>
-					<span class="igs-core-modes"><b>OAuth 2.0</b><b>Secure Agent</b></span>
-				</div>
-				<div class="igs-eco" data-igs-eco>
-					<header><b>Sources &amp; targets</b><small>Any IDMC connection</small></header>
-					<ul>
-						<?php foreach ( $igd_targets as $target ) : ?>
-							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>">
-								<span><?php infometry_ct_igs_img( $img . $target[1], '' ); ?></span>
-								<small><?php echo esc_html( $target[0] ); ?></small>
+
+				<div class="gdc-queue">
+					<header>
+						<span><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+						<div><b>Transfer queue</b><small>Informatica IDMC · Secure Agent</small></div>
+						<em data-gdc-count><?php echo count( $gdc_jobs ); ?> of <?php echo count( $gdc_jobs ); ?> done</em>
+					</header>
+					<ol>
+						<?php foreach ( $gdc_jobs as $job ) : ?>
+							<li class="is-<?php echo esc_attr( $job[1] ); ?>" data-gdc-job="<?php echo (int) $job[0]; ?>">
+								<span class="gdc-job-ic"><svg><use href="#gdc-<?php echo esc_attr( $job[1] ); ?>"/></svg></span>
+								<div class="gdc-job-text">
+									<b><?php echo esc_html( $job[2] ); ?> <span><?php echo esc_html( $gdc_files[ $job[0] ][0] ); ?></span></b>
+									<small>→ <?php echo esc_html( $job[3] ); ?></small>
+									<i class="gdc-job-bar"><i></i></i>
+								</div>
+								<span class="gdc-job-state"><svg><use href="#igs-check"/></svg></span>
 							</li>
 						<?php endforeach; ?>
+					</ol>
+				</div>
+
+				<span class="gdc-chip is-auth" aria-hidden="true"><svg><use href="#gdc-lock"/></svg>OAuth 2.0 · Refresh token</span>
+				<span class="gdc-chip is-store" aria-hidden="true"><svg><use href="#igs-shield"/></svg>No data stored</span>
+			</div>
+		</div>
+	</section>
+
+	<!-- The whole file: what the connector reads besides content -->
+	<section class="igs-section gdc-inspect" aria-labelledby="gdc-inspect-title">
+		<div class="igs-shell gdc-inspect-grid">
+			<div class="gdc-inspect-copy" data-igs-reveal>
+				<span class="igs-kicker">More than file transfer</span>
+				<h2 id="gdc-inspect-title">The whole file, not just its contents</h2>
+				<p>Infometry’s Google Drive Connector for Informatica IDMC is <strong>100% Informatica Certified</strong>, offering seamless native, no-code connectivity between Google Drive and various external sources. It enables users to upload, download, list, create, update and manage file content effortlessly, without writing a single line of code.</p>
+				<p>It also retrieves <strong>comments, replies and user permissions</strong>, and tracks <strong>file revisions</strong>, for intelligent, Agentic AI-powered integration and data management.</p>
+				<ul class="gdc-inspect-keys">
+					<li><svg><use href="#igs-file"/></svg>Metadata</li>
+					<li><svg><use href="#gdc-users"/></svg>Permissions</li>
+					<li><svg><use href="#igs-history"/></svg>Revisions</li>
+					<li><svg><use href="#igs-comment"/></svg>Comments &amp; replies</li>
+				</ul>
+			</div>
+
+			<div class="gdc-inspector" data-gdc-inspector data-igs-reveal>
+				<header class="gdc-insp-head">
+					<span class="gdc-insp-file"><svg><use href="#igs-file"/></svg></span>
+					<div><b>Vendor_Contracts</b><small>Google Docs · Shared drives › Legal</small></div>
+					<em><svg><use href="#igs-check"/></svg>Fetched by connector</em>
+				</header>
+				<div class="gdc-insp-tabs" role="tablist" aria-label="File details the connector can fetch">
+					<button type="button" role="tab" id="gdc-tab-0" aria-controls="gdc-pane-0" aria-selected="true" data-gdc-tab="0"><svg><use href="#igs-file"/></svg>Details</button>
+					<button type="button" role="tab" id="gdc-tab-1" aria-controls="gdc-pane-1" aria-selected="false" tabindex="-1" data-gdc-tab="1"><svg><use href="#gdc-users"/></svg>Permissions</button>
+					<button type="button" role="tab" id="gdc-tab-2" aria-controls="gdc-pane-2" aria-selected="false" tabindex="-1" data-gdc-tab="2"><svg><use href="#igs-history"/></svg>Revisions</button>
+					<button type="button" role="tab" id="gdc-tab-3" aria-controls="gdc-pane-3" aria-selected="false" tabindex="-1" data-gdc-tab="3"><svg><use href="#igs-comment"/></svg>Comments</button>
+				</div>
+
+				<div class="gdc-insp-pane" role="tabpanel" id="gdc-pane-0" aria-labelledby="gdc-tab-0" data-gdc-pane="0">
+					<dl class="gdc-meta">
+						<div><dt>Owner</dt><dd>Legal team</dd></div>
+						<div><dt>Type</dt><dd>Google Docs</dd></div>
+						<div><dt>Size</dt><dd>248 KB</dd></div>
+						<div><dt>Modified</dt><dd>Today, 9:41 AM</dd></div>
+						<div><dt>Location</dt><dd>Shared drives › Legal</dd></div>
+						<div><dt>File ID</dt><dd><code>1aX7…k9Qz</code></dd></div>
+					</dl>
+					<p class="gdc-api"><span>API</span><code>files.get</code><code>files.list</code></p>
+				</div>
+				<div class="gdc-insp-pane" role="tabpanel" id="gdc-pane-1" aria-labelledby="gdc-tab-1" data-gdc-pane="1" hidden>
+					<ul class="gdc-people">
+						<li><i>EC</i><span><b>Emily Carter</b><small>Contract owner</small></span><em class="is-owner">Owner</em></li>
+						<li><i class="is-b">LS</i><span><b>Liam Smith</b><small>Procurement</small></span><em>Editor</em></li>
+						<li><i class="is-c">JM</i><span><b>Jessica Morgan</b><small>Risk review</small></span><em>Commenter</em></li>
+						<li><i class="is-d"><svg><use href="#gdc-users"/></svg></i><span><b>Finance team</b><small>Group</small></span><em>Viewer</em></li>
 					</ul>
-					<footer>+ SaaS, databases &amp; every IDMC connection</footer>
+					<p class="gdc-api"><span>API</span><code>permissions.list</code></p>
 				</div>
-				<div class="igs-toast" data-igs-toast>
-					<span><svg><use href="#igs-check"/></svg></span>
-					<div><b>File transfer completed</b><small>Synced · Scheduled daily 6:00 AM</small></div>
+				<div class="gdc-insp-pane" role="tabpanel" id="gdc-pane-2" aria-labelledby="gdc-tab-2" data-gdc-pane="2" hidden>
+					<ol class="gdc-revs">
+						<li class="is-current"><b>Version 4</b><span>Today, 9:41 AM · Emily Carter</span><em>Current</em></li>
+						<li><b>Version 3</b><span>Yesterday, 4:10 PM · Liam Smith</span></li>
+						<li><b>Version 2</b><span>Mon, 11:25 AM · Jessica Morgan</span></li>
+						<li><b>Version 1</b><span>Mon, 9:02 AM · Emily Carter</span></li>
+					</ol>
+					<p class="gdc-api"><span>API</span><code>revisions.list</code><code>revisions.update</code></p>
 				</div>
-			</div>
-		</div>
-	</section>
-
-	<section class="igs-section igs-overview" aria-labelledby="igs-overview-title">
-		<div class="igs-shell igs-ov">
-			<div class="igs-ov-copy" data-igs-reveal>
-				<span class="igs-kicker">Overview</span>
-				<h2 id="igs-overview-title">Infometry’s Google Drive Connector <em>for Informatica</em></h2>
-				<p>Infometry’s Google Drive Connector for Informatica IDMC is <strong>100% Informatica Certified</strong>, offering seamless native, no-code connectivity between Google Drive and various external sources, without writing a single line of code.</p>
-				<ul class="igs-ov-sets" aria-label="Built-in capabilities">
-					<?php foreach ( array( 'Upload & download', 'List, create & update', 'Comments & replies', 'User permissions', 'File revisions', 'Agentic AI integration' ) as $set ) : ?>
-						<li><?php echo esc_html( $set ); ?></li>
-					<?php endforeach; ?>
-				</ul>
-				<div class="igs-ov-points">
-					<div><span><svg><use href="#igs-code"/></svg></span><b>Native, no-code connectivity</b><p>Upload, download, list, create, update and manage file content effortlessly.</p></div>
-					<div><span><svg><use href="#igs-bolt"/></svg></span><b>Agentic AI-powered</b><p>Intelligent and efficient integration and data management.</p></div>
-				</div>
-			</div>
-
-			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
-				<svg class="igs-ov-wires" viewBox="0 0 500 400" preserveAspectRatio="none" focusable="false">
-					<path id="igs-ov-p0" class="is-in" d="M196 200 H222"/>
-					<path id="igs-ov-p1" d="M278 200 C305 200 300 84 330 84"/>
-					<path id="igs-ov-p2" d="M278 200 H330"/>
-					<path id="igs-ov-p3" d="M278 200 C305 200 300 316 330 316"/>
-					<circle class="igs-ov-dot is-in" r="3.5"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#igs-ov-p0"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#igs-ov-p1"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".6s"><mpath href="#igs-ov-p2"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#igs-ov-p3"/></animateMotion></circle>
-				</svg>
-
-				<span class="igs-ov-label is-left">Your Drive files</span>
-				<span class="igs-ov-label is-right">Your enterprise</span>
-
-				<div class="igs-ov-deck">
-					<div class="igs-ov-sheet is-back2"><header><?php infometry_ct_igs_img( $drive_icon, '' ); ?><b>Field_Report.txt</b></header></div>
-					<div class="igs-ov-sheet is-back1"><header><?php infometry_ct_igs_img( $drive_icon, '' ); ?><b>Orders_Export.csv</b></header></div>
-					<div class="igs-ov-sheet is-front">
-						<header><?php infometry_ct_igs_img( $drive_icon, '' ); ?><b>Q1_Board_Deck.pdf</b></header>
-						<div class="igs-ov-rows"><i></i><i></i><i></i><i></i></div>
-						<svg class="igs-ov-spark" viewBox="0 0 100 30" preserveAspectRatio="none" focusable="false"><path d="M0 24 18 20 34 22 50 12 66 15 82 6 100 8"/></svg>
+				<div class="gdc-insp-pane" role="tabpanel" id="gdc-pane-3" aria-labelledby="gdc-tab-3" data-gdc-pane="3" hidden>
+					<div class="gdc-thread">
+						<div class="gdc-msg"><i class="is-c">JM</i><p><b>Jessica Morgan</b>Clause 7.2 needs the updated renewal term before sign-off.</p></div>
+						<div class="gdc-msg is-reply"><i>EC</i><p><b>Emily Carter</b>Updated in version 4. Marking this resolved.</p></div>
 					</div>
+					<p class="gdc-api"><span>API</span><code>comments.list</code><code>replies.list</code></p>
 				</div>
-
-				<div class="igs-ov-core">
-					<span class="igs-ov-orbit"></span>
-					<span class="igs-ov-orb"><svg><use href="#igs-bolt"/></svg></span>
-					<small>Infometry<br>Connector</small>
-				</div>
-
-				<ul class="igs-ov-dest">
-					<li><span><svg><use href="#igs-cloud"/></svg></span><b>SaaS Applications</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-salesforce.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-hubspot.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-workday.png', '' ); ?></i></li>
-					<li><span><svg><use href="#igs-db"/></svg></span><b>Databases</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-sqlserver.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-oracle.png', '' ); ?></i></li>
-					<li><span><svg><use href="#igs-layers"/></svg></span><b>CRM / ERP</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-netsuite.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-sap.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-adaptive.png', '' ); ?></i></li>
-				</ul>
 			</div>
 		</div>
 	</section>
 
-	<section class="igs-section igs-capabilities" aria-labelledby="igs-cap-title">
+	<!-- Key benefits: bento -->
+	<section class="igs-section gdc-benefits" aria-labelledby="gdc-benefits-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
 				<span class="igs-kicker">Key benefits</span>
-				<h2 id="igs-cap-title">Key benefits of the Informatica Google Drive Connector</h2>
-				<p>Secure, automated file movement between Google Drive and your enterprise systems.</p>
+				<h2 id="gdc-benefits-title">Key benefits of the Informatica Google Drive Connector</h2>
 			</div>
-			<div class="igs-feature-grid">
-				<?php foreach ( $igd_benefits as $i => $benefit ) : ?>
-					<article class="igs-feature is-c<?php echo (int) $i % 4; ?>" data-igs-reveal>
-						<span><svg><use href="#igs-<?php echo esc_attr( $benefit[0] ); ?>"/></svg></span>
+			<div class="gdc-bento">
+				<article class="gdc-tile is-schedule" data-igs-reveal>
+					<span class="gdc-tile-ic"><svg><use href="#igs-calendar"/></svg></span>
+					<h3>Automation &amp; scheduling</h3>
+					<p>Automation and scheduling of file transfers is just a click away.</p>
+					<div class="gdc-sched" aria-hidden="true">
+						<div class="gdc-sched-days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span class="is-off">Sat</span><span class="is-off">Sun</span></div>
+						<div class="gdc-sched-runs"><i></i><i></i><i></i><i></i><i></i><i class="is-off"></i><i class="is-off"></i></div>
+						<p><svg><use href="#gdc-clock"/></svg>Runs daily at <b>6:00 AM</b> · weekdays</p>
+					</div>
+				</article>
+				<article class="gdc-tile is-unlimited" data-igs-reveal>
+					<b class="gdc-inf" aria-hidden="true">∞</b>
+					<h3>Unlimited usage</h3>
+					<p>Unlimited usage on license, with no restrictions on the number of endpoints.</p>
+				</article>
+				<article class="gdc-tile is-ops" data-igs-reveal>
+					<span class="gdc-tile-ic"><svg><use href="#igs-file"/></svg></span>
+					<h3>Complete file operations</h3>
+					<p>Supports operations like download, upload, delete, search, managing permissions, and metadata.</p>
+					<ul class="gdc-op-chips"><li><svg><use href="#gdc-down"/></svg>Download</li><li><svg><use href="#gdc-up"/></svg>Upload</li><li><svg><use href="#igs-plus"/></svg>Delete</li><li><svg><use href="#gdc-search"/></svg>Search</li><li><svg><use href="#gdc-lock"/></svg>Permissions</li><li><svg><use href="#igs-file"/></svg>Metadata</li></ul>
+				</article>
+				<?php foreach ( $gdc_benefits as $i => $benefit ) : ?>
+					<article class="gdc-tile is-small is-t<?php echo (int) $i; ?>" data-igs-reveal>
+						<span class="gdc-tile-ic"><svg><use href="#igs-<?php echo esc_attr( $benefit[0] ); ?>"/></svg></span>
 						<h3><?php echo esc_html( $benefit[1] ); ?></h3>
 						<p><?php echo esc_html( $benefit[2] ); ?></p>
 					</article>
@@ -256,201 +324,224 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 		</div>
 	</section>
 
-	<section class="igs-section igs-steps-section" aria-labelledby="igs-steps-title">
+	<!-- How to use: five steps beside the hub diagram -->
+	<section class="igs-section gdc-how" aria-labelledby="gdc-how-title">
 		<div class="igs-shell">
 			<div class="igs-head is-light" data-igs-reveal>
 				<span class="igs-kicker">Get started</span>
-				<h2 id="igs-steps-title">From marketplace to a production-ready IDMC workflow</h2>
-				<p>How to use our connector, in three simple steps.</p>
+				<h2 id="gdc-how-title">How to use our connector</h2>
+				<p>A direct path from Marketplace activation to a production-ready IDMC workflow.</p>
 			</div>
-			<ol class="igs-steps" data-igs-steps>
-				<li class="is-s1">
-					<div class="igs-step-head"><b>01</b><span>Enable</span></div>
-					<div class="igs-step-ui" aria-hidden="true">
-						<div class="igs-ui-bar"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><span>IDMC · Add-on connectors</span></div>
-						<div class="igs-ui-row is-muted"><i></i><span>Salesforce Connector</span><em class="igs-ui-switch is-on"></em></div>
-						<div class="igs-ui-row is-main"><?php infometry_ct_igs_img( $drive_icon, '' ); ?><span>Google Drive Connector<small>by Infometry</small></span><em class="igs-ui-switch is-flip"></em></div>
-						<div class="igs-ui-row is-muted"><i></i><span>Workday Connector</span><em class="igs-ui-switch"></em></div>
-					</div>
-					<h3>Enable it directly from IDMC</h3>
-					<p>Enable it from IDMC (formerly IICS) and contact us to activate your license. You can also contact Informatica directly to activate a trial license on the IDMC platform.</p>
-				</li>
-				<li class="is-s2">
-					<div class="igs-step-head"><b>02</b><span>Request</span></div>
-					<div class="igs-step-ui" aria-hidden="true">
-						<div class="igs-ui-search"><svg><use href="#igs-out"/></svg><span class="igs-ui-type">Google Drive</span></div>
-						<div class="igs-ui-result"><?php infometry_ct_igs_img( $drive_icon, '' ); ?><span>Google Drive Connector<small>Infometry · Certified</small></span></div>
-						<span class="igs-ui-cta">Start Free Trial</span>
-					</div>
-					<h3>Find &amp; request a trial</h3>
-					<p>Visit the <a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace</a>, search Infometry’s Google Drive Connector and click Start Free Trial to submit your request.</p>
-				</li>
-				<li class="is-s3">
-					<div class="igs-step-head"><b>03</b><span>Activate</span></div>
-					<div class="igs-step-ui" aria-hidden="true">
-						<div class="igs-ui-license"><span><svg><use href="#igs-key"/></svg></span><div><b>License · Trial</b><small>Trial or full subscription</small></div><em>Active</em></div>
-						<div class="igs-ui-meter"><span><i></i></span><small><b>30 days</b> trial license</small></div>
-					</div>
-					<h3>Activate your license</h3>
-					<p>Two licensing models: a 30-day trial license and a full subscription. For paid or subscription licenses, reach out to us for fast provisioning.</p>
-				</li>
-			</ol>
-		</div>
-	</section>
-
-	<section class="igs-section igs-connect" aria-labelledby="igs-connect-title">
-		<div class="igs-shell">
-			<div class="igs-head" data-igs-reveal>
-				<span class="igs-kicker">Connectivity</span>
-				<h2 id="igs-connect-title">Google Drive to and from a variety of external sources</h2>
-				<p>Move files between Google Drive and SaaS applications, databases, CRM and ERP systems, and other apps through Informatica IDMC.</p>
-			</div>
-			<div class="igs-pipe" data-igs-pipe data-igs-reveal>
-				<svg class="igs-pipe-svg" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-pipe-dots" aria-hidden="true"></div>
-
-				<div class="igs-pipe-source" data-igs-pipe-source>
-					<span class="igs-pipe-logo"><?php infometry_ct_igs_img( $drive_icon, '' ); ?></span>
-					<b>Google Drive</b>
-					<small>Source &amp; target</small>
-					<ul aria-label="Supported operations">
-						<?php foreach ( $igd_ops as $op ) : ?>
-							<li><?php echo esc_html( $op ); ?></li>
-						<?php endforeach; ?>
-					</ul>
-				</div>
-
-				<div class="igs-pipe-hub" data-igs-pipe-hub>
-					<span class="igs-pipe-ring" aria-hidden="true"></span>
-					<span class="igs-pipe-logo is-hub"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
-					<b>Informatica IDMC</b>
-					<small>Infometry Google Drive Connector</small>
-					<span class="igs-pipe-modes"><em>Sync tasks</em><em>Mapping tasks</em></span>
-				</div>
-
-				<div class="igs-pipe-targets">
-					<?php foreach ( $igd_groups as $group ) : ?>
-						<article class="igs-pipe-group is-<?php echo esc_attr( $group['tone'] ); ?>" data-igs-pipe-group>
-							<header>
-								<span><svg><use href="#igs-<?php echo esc_attr( $group['icon'] ); ?>"/></svg></span>
-								<div><h3><?php echo esc_html( $group['title'] ); ?></h3><small><?php echo esc_html( $group['note'] ); ?></small></div>
-							</header>
-							<ul>
-								<?php foreach ( $group['items'] as $item ) : ?>
-									<li><?php infometry_ct_igs_img( $img . $item[1], '' ); ?><small><?php echo esc_html( $item[0] ); ?></small></li>
-								<?php endforeach; ?>
-							</ul>
-						</article>
+			<div class="gdc-how-grid">
+				<ol class="gdc-timeline" data-igs-reveal>
+					<?php foreach ( $gdc_steps as $i => $step ) : ?>
+						<li>
+							<b><?php echo (int) $i + 1; ?></b>
+							<div>
+								<h3><?php echo esc_html( $step[0] ); ?></h3>
+								<p><?php echo esc_html( $step[1] ); ?></p>
+								<?php if ( 2 === $i ) : ?>
+									<span class="gdc-lic"><em>30-day trial</em><em>Full subscription</em></span>
+								<?php endif; ?>
+							</div>
+						</li>
 					<?php endforeach; ?>
-				</div>
+				</ol>
 
-				<div class="igs-pipe-foot">
-					<span class="igs-pipe-foot-label"><svg><use href="#igs-check"/></svg>Works across</span>
-					<ul>
-						<?php
-						$igd_pipe_tags = array( array( 'folder', 'Team Drive' ), array( 'folder', 'Shared Drive' ), array( 'file', 'Google Docs files' ), array( 'file', '.csv, .txt & more' ), array( 'shield', 'OAuth 2.0' ), array( 'nodes', 'Multiple environments' ) );
-						foreach ( $igd_pipe_tags as $tag ) :
-							?>
-							<li><svg><use href="#igs-<?php echo esc_attr( $tag[0] ); ?>"/></svg><?php echo esc_html( $tag[1] ); ?></li>
-						<?php endforeach; ?>
-					</ul>
+				<div class="gdc-hub" aria-hidden="true" data-igs-reveal>
+					<svg class="gdc-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+						<path class="is-in" d="M25 50 H40"/>
+						<path d="M60 50 C67 50 67 15 74 15"/>
+						<path d="M60 50 C67 50 67 38 74 38"/>
+						<path d="M60 50 C67 50 67 62 74 62"/>
+						<path d="M60 50 C67 50 67 85 74 85"/>
+					</svg>
+					<div class="gdc-hub-node is-drive"><?php infometry_ct_igs_img( $drive_icon, '' ); ?><b>Google Drive</b><small>Cloud files</small></div>
+					<div class="gdc-hub-core"><span class="gdc-hub-ring"></span><span class="gdc-hub-logo"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><b>Informatica IDMC</b><small>Native connector</small></div>
+					<div class="gdc-hub-out is-o1"><span><svg><use href="#igs-cloud"/></svg></span><b>SaaS applications</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-salesforce.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-hubspot.png', '' ); ?></i></div>
+					<div class="gdc-hub-out is-o2"><span><svg><use href="#igs-db"/></svg></span><b>Databases</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-oracle.png', '' ); ?></i></div>
+					<div class="gdc-hub-out is-o3"><span><svg><use href="#igs-layers"/></svg></span><b>CRM / ERP</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-netsuite.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-sap.png', '' ); ?></i></div>
+					<div class="gdc-hub-out is-o4"><span><svg><use href="#igs-nodes"/></svg></span><b>Other apps</b><i><?php infometry_ct_igs_img( $img . 'google-connectors/google-sheets.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-connectors/google-bigtable.png', '' ); ?></i></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="igs-section igs-uses" aria-labelledby="igs-uses-title">
+	<!-- Features grouped by what they act on -->
+	<section class="igs-section gdc-features" aria-labelledby="gdc-features-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
 				<span class="igs-kicker">Complete file lifecycle</span>
-				<h2 id="igs-uses-title">Features of Infometry’s Google Drive Connector</h2>
-				<p>Integrate Google Drive with Informatica’s IDMC platform through a no-code, Agentic AI-powered approach.</p>
+				<h2 id="gdc-features-title">Features of Infometry’s Google Drive Connector</h2>
+				<p>Use the connector to integrate Google Drive with Informatica’s IDMC platform through a no-code, Agentic AI-powered approach.</p>
 			</div>
-			<ol class="igs-fl-grid">
-				<?php foreach ( $igd_features as $i => $feature ) : ?>
-					<li data-igs-reveal><b><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></b><span><svg><use href="#igs-<?php echo esc_attr( $feature[0] ); ?>"/></svg></span><p><?php echo esc_html( $feature[1] ); ?></p></li>
+			<div class="gdc-feat-grid">
+				<?php foreach ( $gdc_feature_groups as $group ) : ?>
+					<article class="gdc-feat <?php echo esc_attr( $group[1] ); ?>" data-igs-reveal>
+						<header><span><svg><use href="#igs-<?php echo esc_attr( $group[0] ); ?>"/></svg></span><h3><?php echo esc_html( $group[2] ); ?></h3></header>
+						<ul class="gdc-feat-list">
+							<?php foreach ( $group[3] as $line ) : ?>
+								<li><svg><use href="#igs-check"/></svg><?php echo esc_html( $line ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+						<p class="gdc-feat-tags">
+							<?php foreach ( $group[4] as $tag ) : ?>
+								<code><?php echo esc_html( $tag ); ?></code>
+							<?php endforeach; ?>
+						</p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<!-- Under the hood and Agentic AI -->
+	<section class="igs-section gdc-hood" aria-labelledby="gdc-hood-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">Under the hood</span>
+				<h2 id="gdc-hood-title">A Google Drive object as a source and a target</h2>
+				<p>Use it in synchronization tasks, mapping tasks and mappings. When you run a task or mapping, the Secure Agent uses the Java client libraries of the Google APIs to integrate with Google Drive.</p>
+			</div>
+			<ol class="gdc-chain" data-igs-reveal>
+				<li><span><?php infometry_ct_igs_img( $drive_icon, '' ); ?></span><b>Google Drive</b><small>Files, folders, metadata</small></li>
+				<li><span><svg><use href="#igs-code"/></svg></span><b>Google APIs</b><small>Java client libraries</small></li>
+				<li><span><svg><use href="#igs-shield"/></svg></span><b>Secure Agent</b><small>Runs in your environment</small></li>
+				<li><span><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><b>Informatica IDMC</b><small>Sync tasks · Mapping tasks · Mappings</small></li>
+			</ol>
+			<div class="gdc-ai" data-igs-reveal>
+				<div class="gdc-ai-copy">
+					<h3>Agentic AI + no-code integration in action</h3>
+					<p>With built-in Agentic AI, the connector intelligently adapts to data workflows and simplifies decision-making. Its no-code design ensures business users and non-technical teams can fully use it without engineering dependencies.</p>
+				</div>
+				<ul>
+					<li><svg><use href="#igs-file"/></svg>Smart metadata extraction</li>
+					<li><svg><use href="#igs-chart"/></svg>Usage tracking</li>
+					<li><svg><use href="#igs-sync"/></svg>Automated configurations</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Use cases as workflow recipes -->
+	<section class="igs-section gdc-uses" aria-labelledby="gdc-uses-title">
+		<div class="igs-shell gdc-uses-grid">
+			<div class="gdc-uses-copy" data-igs-reveal>
+				<span class="igs-kicker">Use cases</span>
+				<h2 id="gdc-uses-title">Popular use cases</h2>
+				<p>Five ways teams put Google Drive to work inside their Informatica workflows.</p>
+			</div>
+			<ol class="gdc-recipes">
+				<?php foreach ( $gdc_uses as $i => $use ) : ?>
+					<li data-igs-reveal>
+						<b><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></b>
+						<h3><?php echo esc_html( $use[0] ); ?></h3>
+						<p class="gdc-recipe-flow" aria-hidden="true">
+							<?php foreach ( $use[1] as $s => $step ) : ?>
+								<?php if ( $s ) : ?><i></i><?php endif; ?>
+								<span><?php $gdc_step_icon( $step[0] ); ?><?php echo esc_html( $step[1] ); ?></span>
+							<?php endforeach; ?>
+						</p>
+					</li>
 				<?php endforeach; ?>
 			</ol>
-			<div class="igs-fl-tech" data-igs-reveal>
-				<div><span><svg><use href="#igs-code"/></svg></span><p>You can use a Google Drive object as a <b>source and a target</b> in synchronization tasks, mapping tasks and mappings. When you run a task or mapping, the Secure Agent uses the <b>Java client libraries of the Google APIs</b> to integrate with Google Drive.</p></div>
-				<div><span><svg><use href="#igs-file"/></svg></span><p>Upload, download and fetch the list of files, create new files, update existing files, get comments on files and replies on comments, check user permissions over files, and fetch and update revision details.</p></div>
+		</div>
+	</section>
+
+	<!-- Tutorials -->
+	<section class="igs-section gdc-videos" aria-labelledby="gdc-videos-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">See it in action</span>
+				<h2 id="gdc-videos-title">Learn about Infometry’s Google Drive Connector</h2>
 			</div>
-			<div class="igs-uses-note" data-igs-reveal>
-				<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
-				<p>With built-in <b>Agentic AI</b>, the connector intelligently adapts to data workflows with smart metadata extraction, usage tracking and automated configurations. Its <b>no-code design</b> lets business users and non-technical teams use it fully, without engineering dependencies.</p>
+			<div class="gdc-video-grid">
+				<?php foreach ( $gdc_videos as $video ) : ?>
+					<a class="gdc-video is-<?php echo esc_attr( $video[2] ); ?>" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $video[0] ); ?>" data-igs-reveal>
+						<span class="gdc-video-cover" aria-hidden="true">
+							<span class="gdc-vc-tile"><?php infometry_ct_igs_img( $drive_icon, '' ); ?></span>
+							<span class="gdc-vc-arrow"><svg><use href="#igs-arrow"/></svg></span>
+							<span class="gdc-vc-tile"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+							<span class="gdc-vc-play"><svg><use href="#igs-play"/></svg></span>
+						</span>
+						<span class="gdc-video-info"><em><?php echo esc_html( $video[3] ); ?></em><b><?php echo esc_html( $video[1] ); ?></b><small>Watch tutorial <svg><use href="#igs-arrow"/></svg></small></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="igs-modal" data-igs-modal hidden>
+			<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Tutorial video">
+				<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
+				<div class="igs-modal-frame" data-igs-frame></div>
 			</div>
 		</div>
 	</section>
 
-	<section class="igs-section igs-license" aria-labelledby="igs-license-title">
+	<!-- FAQ -->
+	<section class="igs-section gdc-faq" aria-labelledby="gdc-faq-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
-				<span class="igs-kicker">Licensing</span>
-				<h2 id="igs-license-title">Try it free, then subscribe</h2>
-				<p>Two licensing models: a 30-day trial license and a full subscription.</p>
+				<span class="igs-kicker">FAQ</span>
+				<h2 id="gdc-faq-title">Frequently Asked Questions</h2>
 			</div>
-			<div class="igs-license-grid">
-				<article class="igs-plan" data-igs-reveal>
-					<header><span><svg><use href="#igs-calendar"/></svg></span><h3>30-Day Trial</h3></header>
-					<ul>
-						<li><svg><use href="#igs-check"/></svg>Request it from the Informatica Marketplace with Start Free Trial</li>
-						<li><svg><use href="#igs-check"/></svg>Or enable it from IDMC and contact us to activate</li>
-						<li><svg><use href="#igs-check"/></svg>Informatica can also activate the trial on the IDMC platform</li>
-					</ul>
-					<a class="igs-btn igs-btn-outline" href="#freetrialform">Start Free Trial <svg><use href="#igs-arrow"/></svg></a>
-				</article>
-				<article class="igs-plan is-dark" data-igs-reveal>
-					<header><span><svg><use href="#igs-layers"/></svg></span><h3>Full Subscription</h3></header>
-					<ul>
-						<li><svg><use href="#igs-check"/></svg>Fast provisioning for paid and subscription licenses</li>
-						<li><svg><use href="#igs-check"/></svg>Unlimited usage on license, with no endpoint restrictions</li>
-						<li><svg><use href="#igs-check"/></svg>Works with Data Synchronization and Mapping Tasks</li>
-						<li><svg><use href="#igs-check"/></svg>Runs across multiple environments and locations</li>
-					</ul>
-					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Talk to Sales <svg><use href="#igs-arrow"/></svg></a>
-				</article>
+			<div class="gdc-faq-cols">
+				<?php foreach ( array_chunk( $gdc_faqs, 5 ) as $column ) : ?>
+					<div class="gdc-faq-col">
+						<?php foreach ( $column as $i => $faq ) : ?>
+							<details<?php echo 0 === $i ? ' open' : ''; ?>>
+								<summary><?php echo esc_html( $faq[0] ); ?><span aria-hidden="true"><svg><use href="#igs-plus"/></svg></span></summary>
+								<p><?php echo wp_kses( $faq[1], $gdc_link_tags ); ?></p>
+							</details>
+						<?php endforeach; ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="gdc-faq-bar" data-igs-reveal>
+				<span><svg><use href="#igs-chat"/></svg></span>
+				<p><b>Still have questions?</b>Support is available 24/7 with local time-zone coverage · <a href="mailto:<?php echo esc_attr( $support_email ); ?>"><?php echo esc_html( $support_email ); ?></a></p>
+				<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <svg><use href="#igs-arrow"/></svg></a>
 			</div>
 		</div>
+		<script type="application/ld+json"><?php echo wp_json_encode( $gdc_faq_schema ); ?></script>
 	</section>
 
-	<section class="igs-section igs-related" aria-labelledby="igs-related-title">
+	<!-- Other products -->
+	<section class="igs-section igs-related gdc-related" aria-labelledby="gdc-related-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
-				<span class="igs-kicker">Explore more</span>
-				<h2 id="igs-related-title">Explore related products</h2>
+				<span class="igs-kicker">Other products</span>
+				<h2 id="gdc-related-title">More Google connectors for Informatica</h2>
 			</div>
 			<div class="igs-related-grid">
 				<a class="igs-related-card" href="<?php echo esc_url( $sheets_url ); ?>" data-igs-reveal>
-					<span><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
-					<div><h3>Google Sheets Connector</h3><p>Read from and write to Google Sheets as a source or target in synchronization tasks, mapping tasks and data integrations.</p><em>Explore <svg><use href="#igs-arrow"/></svg></em></div>
+					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-sheets.png', '' ); ?></span>
+					<div><h3>Google Sheets Connector</h3><p>Built with Informatica’s native interface, it supports all API operations, including read, write, update, delete, range and search.</p><em>Read more <svg><use href="#igs-arrow"/></svg></em></div>
 				</a>
 				<a class="igs-related-card" href="<?php echo esc_url( $bigtable_url ); ?>" data-igs-reveal>
 					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-bigtable.png', '' ); ?></span>
-					<div><h3>Google BigTable Connector</h3><p>Connect Google Cloud Bigtable with Informatica IDMC for enterprise data integration.</p><em>Explore <svg><use href="#igs-arrow"/></svg></em></div>
+					<div><h3>Google BigTable Connector</h3><p>Read, insert and delete data in Google Bigtable, including reading columns and inserting data.</p><em>Read more <svg><use href="#igs-arrow"/></svg></em></div>
 				</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="igs-cta" id="freetrialform" aria-labelledby="igs-cta-title">
+	<!-- Free trial -->
+	<section class="igs-cta gdc-cta" id="freetrialform" aria-labelledby="gdc-cta-title">
 		<div class="igs-shell igs-cta-grid">
 			<div class="igs-cta-copy">
 				<span class="igs-kicker">Free trial</span>
-				<h2 id="igs-cta-title">Connect Google Drive to your enterprise data</h2>
-				<p>Start your 30-day evaluation and automate secure file movement between Google Drive and Informatica IDMC.</p>
+				<h2 id="gdc-cta-title">Start moving Google Drive files through IDMC</h2>
+				<p>Request your 30-day trial license and automate secure file movement between Google Drive and Informatica IDMC.</p>
 				<ul class="igs-cta-checks">
 					<li><svg><use href="#igs-check"/></svg>100% Informatica Certified</li>
 					<li><svg><use href="#igs-check"/></svg>No-code setup</li>
-					<li><svg><use href="#igs-check"/></svg>OAuth 2.0 &amp; Secure Agent</li>
-					<li><svg><use href="#igs-check"/></svg>No data stored</li>
+					<li><svg><use href="#igs-check"/></svg>Connectors hold no data</li>
+					<li><svg><use href="#igs-check"/></svg>24/7 local time-zone support</li>
 				</ul>
-				<div class="igs-cta-next">
-					<b>What happens next</b>
-					<ol>
-						<li><span>1</span><p><strong>Submit your request</strong>Takes under a minute.</p></li>
-						<li><span>2</span><p><strong>We activate your trial</strong>A 30-day trial license for IDMC.</p></li>
-						<li><span>3</span><p><strong>Start moving files</strong>Use Google Drive in your tasks and mappings.</p></li>
-					</ol>
+				<div class="gdc-cta-res">
+					<a href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><span><svg><use href="#igs-down"/></svg></span><b>User guide</b><small>Implementation reference</small></a>
+					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><b>Marketplace</b><small>Certified listing</small></a>
+					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="is-g2"><svg><use href="#gdc-star"/></svg></span><b>G2 reviews</b><small>Customer feedback</small></a>
 				</div>
 			</div>
 			<div class="igs-form">

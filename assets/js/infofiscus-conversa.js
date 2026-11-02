@@ -1014,6 +1014,11 @@
     placeholder = 'Ask ' + agent + '...';
     setThread(key + '-0');
     tour.setAttribute('data-vertical', key);
+    var tab = $('[data-lv-pick="' + key + '"]');
+    var strip = $('.lv-vtabs-wrap');
+    $('[data-lv-ws]').textContent = tab.textContent.trim();
+    // On narrow screens the tab strip scrolls; keep the chosen tab in view.
+    strip.scrollLeft = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
     // A short confirmation inside the app that the whole workspace switched.
     $('[data-lv-toast]').textContent = $('[data-lv-pick="' + key + '"]').textContent.trim() + ' workspace · ' + agent;
     toast.classList.remove('is-on');
@@ -1093,8 +1098,10 @@
         stage(chat);
         show('chat');
         setType('combo');
-        var lead = !auto ? Promise.resolve() : pause(250).then(function () {
-          return click($('[data-lv-pick="' + next + '"]'), 1);
+        // The tabs sit outside the app window, so the tour taps the next one with a pulse instead of the pointer.
+        var lead = !auto ? Promise.resolve() : pause(300).then(function () {
+          tap($('[data-lv-pick="' + next + '"]'));
+          return pause(450);
         }).then(function () {
           setVertical(next);
           return pause(1000);

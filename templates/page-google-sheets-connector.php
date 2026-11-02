@@ -16,15 +16,15 @@ $contact_url      = home_url( '/contact-us/' );
 $marketplace_url  = 'https://marketplace.informatica.com/listings/cloud/connectors/infometry_google_sheets_connector.html';
 $guide_url        = 'https://drive.google.com/file/d/1dSnTrAzoyMi2tKsEQGGblJ1hZxiEumiA/view?usp=sharing';
 $g2_url           = 'https://www.g2.com/products/google-sheets-connector-for-informatica-idmc/reviews/google-sheets-connector-for-informatica-idmc-review-10702219';
-$drive_url        = home_url( '/product/google-cloud-connectors/google-drive-connector/' );
-$ads_url          = home_url( '/product/google-cloud-connectors/google-ads-connector/' );
+$drive_url        = home_url( '/product/google-drive-connector/' );
+$ads_url          = home_url( '/product/google-ads-connector/' );
 $conversa_url     = home_url( '/product/infofiscus-conversa-decision-intelligence/' );
 $accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migration-automation/' );
 $customers_url    = home_url( '/company/customers-partners/' );
 $img              = INFOMETRY_CT_URL . 'assets/images/';
 $sheets_icon      = $img . 'google-connectors/google-sheets.png';
 $idmc_icon        = $img . 'informatica-product-mark.png';
-$support_email    = 'info@www.infometry.net';
+$support_email    = 'info@infometry.net';
 $trial_form_id    = 351429;
 
 $igs_ops = array( 'Read', 'Write', 'Update', 'Delete', 'Range', 'Search', 'Filter' );
@@ -77,14 +77,14 @@ $igs_groups = array(
 );
 
 $igs_features = array(
-	array( 'code', 'Native Interfaces', 'Built on Informatica’s native interface and supports Read, Write, Delete, Update and more, unlike JDBC drivers that have overly complex connectivity and no API interfaces.' ),
-	array( 'layers', 'Complex Format of Data Processing', 'Not just simple rows and columns: the connector handles the most complex data formats with ease.' ),
+	array( 'code', 'Native Interfaces', 'Built on Informatica’s native connector framework with Read, Write, Update, Delete, Range, Search and Filter operations, configured through the IDMC UI. No JDBC driver JARs on the Secure Agent and no hand-built REST calls.' ),
+	array( 'layers', 'Complex Format of Data Processing', 'Handles more than simple rows and columns: ranges, filters and multi-sheet data in a single mapping.' ),
 	array( 'cloud', 'Integrates with On-Premises & Cloud Apps', 'Easily integrates with any on-premises or cloud app like NetSuite, Salesforce, Adaptive and more.' ),
-	array( 'db', 'Connects with Almost Every Source or Target', 'Integrates with MDM, Data Lakes and Enterprise Data Warehouses, and supports all databases: Relational, NoSQL and Columnar.' ),
-	array( 'bolt', 'Enterprise-Level Data Processing', 'Batch mode (CDI – Cloud Data Integration) and real-time integration (CAI – Cloud Application Integration), built to process millions of rows with a click. Agentic AI-driven orchestration reduces manual intervention.' ),
-	array( 'calendar', 'Automation & Scheduling of Tasks', 'Automates your tasks and supports scheduling, so you never miss an update. With Agentic AI-enabled automation, workflows self-adjust to triggers and changing business rules.' ),
+	array( 'db', 'Connects with Almost Every Source or Target', 'Works with any source or target available in your IDMC org, including MDM, data lakes, enterprise data warehouses and relational, NoSQL and columnar databases.' ),
+	array( 'bolt', 'Enterprise-Level Data Processing', 'Batch integration with CDI (Cloud Data Integration) and real-time integration with CAI (Cloud Application Integration), built to process large volumes of rows on a schedule or on demand.' ),
+	array( 'calendar', 'Automation & Scheduling of Tasks', 'Schedule mapping and synchronization tasks in IDMC so sheet data stays in sync without manual uploads.' ),
 	array( 'nodes', 'Multiple Environments, Locations & Applications', 'Brings data from all applications, across multiple locations, used within multiple environments for analytics.' ),
-	array( 'shield', 'Error-Free Data Processing', 'Minimal to no manual intervention once the initial mapping is done: fewer errors, no duplication, and trusted pipelines that Agentic AI models can consume.' ),
+	array( 'shield', 'Reliable, Repeatable Pipelines', 'Once the mapping is set up, data moves without copy-paste or manual uploads, reducing errors and duplicate records.' ),
 );
 
 $igs_videos = array(
@@ -105,6 +105,8 @@ $igs_faqs = array(
 	array( 'What is the validity of the Infometry Connector license?', 'All our licenses are charged annually and are valid for 1 year.' ),
 	array( 'How does Infometry offer technical support?', 'It’s available 24/7 with a turnaround time of 24–48 hours. You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
 	array( 'How secure is my data?', 'All our connectors and their updates are verified by Informatica before reaching the customer. Our connectors are activated by Informatica and work in your IICS environment. Connectors do not hold any data, and the connector ensures highly secured data transfers.' ),
+	array( 'Why use this connector instead of a JDBC driver?', 'A JDBC driver needs JAR files installed on each Secure Agent and gives SQL-style access only. Infometry’s connector is enabled from IDMC, exposes Google Sheets operations like Range, Search and Filter in the mapping UI, and is updated automatically with IDMC releases.' ),
+	array( 'Does the connector store my Google Sheets data?', 'No. The connector does not hold any data. It runs in your IDMC environment and moves data directly between Google Sheets and your targets.' ),
 );
 
 $igs_faq_schema = array(
@@ -134,7 +136,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 			<div class="igs-hero-copy">
 				<span class="igs-badge"><i></i>100% Informatica Certified · IDMC (formerly IICS)</span>
 				<h1 id="igs-title">Turn Google Sheets into a <em>governed enterprise data source</em></h1>
-				<p>Infometry’s Google Sheets Connector for Informatica Cloud moves forecasts, budgets, SKUs and headcount plans from spreadsheets into your warehouse, data lake and cloud apps, and writes results back.</p>
+				<p>Infometry's Google Sheets Connector for Informatica IDMC moves forecasts, budgets, SKUs and headcount plans from spreadsheets into your warehouse, data lake and cloud apps — and writes results back. No JDBC drivers to install, no custom REST code.</p>
 				<div class="igs-actions">
 					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start 30-Day Free Trial <svg><use href="#igs-arrow"/></svg></a>
 					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
@@ -150,6 +152,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 				<div class="igs-proof">
 					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><span><b>Informatica Marketplace</b><small>Certified listing</small></span><svg><use href="#igs-out"/></svg></a>
 					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon is-g2"><svg><use href="#igs-star"/></svg></span><span><b>G2 Product Review</b><small>See customer feedback</small></span><svg><use href="#igs-out"/></svg></a>
+					<!-- TODO CONFIRM: G2 rating + review count -->
 				</div>
 			</div>
 
@@ -216,7 +219,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 			<div class="igs-ov-copy" data-igs-reveal>
 				<span class="igs-kicker">Overview</span>
 				<h2 id="igs-overview-title">Your critical business data already lives in <em>spreadsheets</em></h2>
-				<p>Informatica Cloud Connector customers rely on Google Sheets to store critical data sets, which need seamless integration into Enterprise Data Warehouses, Cloud Applications and Data Lakes.</p>
+				<p>Finance, sales and operations teams keep forecasts, targets and master data in Google Sheets. The Google Sheets Connector for Informatica IDMC brings that data into your enterprise data warehouses, cloud applications and data lakes, so spreadsheets become a governed source instead of a manual export.</p>
 				<ul class="igs-ov-sets" aria-label="Data sets kept in Google Sheets">
 					<?php foreach ( array( 'Sales Forecasts', 'Goals', 'Product Masters', 'SKUs', 'Lab Results', 'Headcount Estimates', 'OpEx Budgets' ) as $set ) : ?>
 						<li><?php echo esc_html( $set ); ?></li>
@@ -224,7 +227,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 				</ul>
 				<div class="igs-ov-points">
 					<div><span><svg><use href="#igs-sync"/></svg></span><b>Read &amp; write, source or target</b><p>In synchronization tasks, mapping tasks and data integrations.</p></div>
-					<div><span><svg><use href="#igs-bolt"/></svg></span><b>Future-ready</b><p>For automation-driven, intelligent Agentic AI data flows.</p></div>
+					<div><span><svg><use href="#igs-bolt"/></svg></span><b>Future-ready</b><p>Ready to feed the automated and Agentic AI data pipelines you build in IDMC.</p></div>
 				</div>
 			</div>
 
@@ -286,6 +289,51 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 						<p><?php echo esc_html( $feature[2] ); ?></p>
 					</article>
 				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-license" aria-labelledby="igs-compare-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Why Infometry</span>
+				<h2 id="igs-compare-title">Infometry connector vs JDBC drivers vs REST V2</h2>
+				<p>Three common ways to connect Google Sheets to Informatica IDMC, compared.</p>
+			</div>
+			<div class="igs-use-grid">
+				<article class="igs-plan is-dark" data-igs-reveal>
+					<header><span><svg><use href="#igs-shield"/></svg></span><h3>Infometry Google Sheets Connector</h3></header>
+					<ul>
+						<li><svg><use href="#igs-check"/></svg><span><b>Setup:</b> Enable from IDMC Add-on Connectors</span></li>
+						<li><svg><use href="#igs-check"/></svg><span><b>Operations:</b> Read, Write, Update, Delete, Range, Search, Filter</span></li>
+						<li><svg><use href="#igs-check"/></svg><span><b>Batch + real-time:</b> CDI and CAI</span></li>
+						<li><svg><use href="#igs-check"/></svg><span><b>Informatica certification:</b> 100% certified, listed on Informatica Marketplace</span></li>
+						<li><svg><use href="#igs-check"/></svg><span><b>Updates:</b> Automatic with IDMC releases, free</span></li>
+						<li><svg><use href="#igs-check"/></svg><span><b>Pricing:</b> Annual per OrgID, unlimited usage, independent of data volume</span></li>
+					</ul>
+				</article>
+				<article class="igs-plan" data-igs-reveal>
+					<header><span><svg><use href="#igs-db"/></svg></span><h3>JDBC driver</h3></header>
+					<ul>
+						<li><svg><use href="#igs-code"/></svg><span><b>Setup:</b> Install driver JAR on Secure Agent and restart</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Operations:</b> Depends on driver (SQL-style access)</span></li>
+						<!-- TODO CONFIRM: JDBC driver "Batch + real-time" value; row hidden until confirmed. -->
+						<li><svg><use href="#igs-code"/></svg><span><b>Informatica certification:</b> Third-party driver</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Updates:</b> Manual driver upgrades</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Pricing:</b> Per driver license</span></li>
+					</ul>
+				</article>
+				<article class="igs-plan" data-igs-reveal>
+					<header><span><svg><use href="#igs-sync"/></svg></span><h3>Generic REST V2</h3></header>
+					<ul>
+						<li><svg><use href="#igs-code"/></svg><span><b>Setup:</b> Build and maintain API calls yourself</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Operations:</b> Whatever you build</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Batch + real-time:</b> Manual</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Informatica certification:</b> n/a</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Updates:</b> You maintain it</span></li>
+						<li><svg><use href="#igs-code"/></svg><span><b>Pricing:</b> Engineering time</span></li>
+					</ul>
+				</article>
 			</div>
 		</div>
 	</section>
@@ -402,6 +450,25 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 		</div>
 	</section>
 
+	<!-- TODO CONFIRM: Technical details section. Render once at least 3 items are confirmed.
+	<section class="igs-section igs-capabilities" aria-labelledby="igs-tech-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Technical details</span>
+				<h2 id="igs-tech-title">What your data team needs to know</h2>
+			</div>
+			<div class="igs-feature-grid">
+				<article class="igs-feature is-c0" data-igs-reveal><span><svg><use href="#igs-key"/></svg></span><h3>Authentication</h3><p>OAuth 2.0 (Client ID, Client Secret, Refresh Token)</p></article>   TODO CONFIRM: service account support
+				<article class="igs-feature is-c1" data-igs-reveal><span><svg><use href="#igs-shield"/></svg></span><h3>Runtime</h3><p>IDMC Secure Agent</p></article>   TODO CONFIRM: hosted agent support
+				<article class="igs-feature is-c2" data-igs-reveal><span><svg><use href="#igs-sync"/></svg></span><h3>Task types</h3><p>Synchronization tasks, mapping tasks, CAI processes</p></article>   TODO CONFIRM
+				<article class="igs-feature is-c3" data-igs-reveal><span><svg><use href="#igs-layers"/></svg></span><h3>Objects</h3><p>Sheets, tabs, ranges</p></article>   TODO CONFIRM: named ranges / header row options
+				TODO CONFIRM: Google API limits (how quota / rate limits are handled)
+				TODO CONFIRM: PowerCenter support
+			</div>
+		</div>
+	</section>
+	-->
+
 	<section class="igs-section igs-uses" aria-labelledby="igs-uses-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
@@ -454,7 +521,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 			</div>
 			<div class="igs-uses-note" data-igs-reveal>
 				<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
-				<p>With <b>Agentic AI</b> transforming enterprise integration, Infometry’s Google Sheets Connector is not just a data bridge: it’s a foundation for building <b>intelligent, automated and adaptive data pipelines</b>.</p>
+				<p>Whether you're loading a weekly forecast into Snowflake or merging regional sheets for a Power BI dashboard, the connector turns spreadsheet data into a dependable part of your IDMC pipelines.</p>
 			</div>
 		</div>
 	</section>

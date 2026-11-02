@@ -1392,7 +1392,8 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_script( 'infometry-google-cloud-connectors', INFOMETRY_CT_URL . 'assets/js/google-cloud-connectors.js', array(), $js_version, true );
 	}
 
-	if ( $use_google_sheets ) {
+	// Sheets and Drive share one connector design system.
+	if ( $use_google_sheets || $use_google_drive ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-sheets-connector.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-sheets-connector.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
@@ -1400,12 +1401,6 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_style( 'infometry-google-sheets-fonts', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;700;800&display=swap', array(), null );
 		wp_enqueue_style( 'infometry-google-sheets-connector', INFOMETRY_CT_URL . 'assets/css/google-sheets-connector.css', array(), $css_version );
 		wp_enqueue_script( 'infometry-google-sheets-connector', INFOMETRY_CT_URL . 'assets/js/google-sheets-connector.js', array(), $js_version, true );
-	}
-
-	if ( $use_google_drive ) {
-		$css_path = INFOMETRY_CT_PATH . 'assets/css/google-drive-connector.css';
-		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
-		wp_enqueue_style( 'infometry-google-drive-connector', INFOMETRY_CT_URL . 'assets/css/google-drive-connector.css', array(), $css_version );
 	}
 
 	if ( $use_snowflake_native_apps ) {

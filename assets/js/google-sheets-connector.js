@@ -56,6 +56,7 @@
     packets.setAttribute('aria-hidden', 'true');
     wires.parentNode.insertBefore(packets, wires.nextSibling);
     var fxIdle = fx.textContent;
+    var fxVerb = live.getAttribute('data-igs-fx-verb');
     var timers = [];
     var tick = 0;
     var running = false;
@@ -134,7 +135,9 @@
       }
       rows.forEach(function (el) { el.classList.toggle('is-active', el === row); });
       placeSelect(row);
-      fx.textContent = '=SYNC(A' + (r + 2) + ':C' + (r + 2) + ') \u2192 ' + target.getAttribute('data-name');
+      // Sheets shows a formula; the Drive page names the file action instead (data-igs-fx-verb on the hero).
+      fx.textContent = fxVerb ? fxVerb + ' ' + row.cells[1].textContent.trim() + ' \u2192 ' + target.getAttribute('data-name') :
+        '=SYNC(A' + (r + 2) + ':C' + (r + 2) + ') \u2192 ' + target.getAttribute('data-name');
       flowing = true;
       active = -1;
       drawWires();

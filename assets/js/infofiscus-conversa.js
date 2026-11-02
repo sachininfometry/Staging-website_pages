@@ -785,7 +785,7 @@
   var CRUMBS = { home: 'Home', chat: 'New chat', storybooks: 'Storybooks', dashboard: 'Dashboard', connections: 'Connections' };
   var SCENE_VIEWS = ['home', 'chat', 'storybooks', 'dashboard', 'connections'];
   var placeholder = inputText.textContent;
-  var picked = tour.querySelector('[data-lv-pick][aria-selected="true"]');
+  var picked = tour.querySelector('[data-lv-pick][aria-pressed="true"]');
   var vertical = picked ? picked.getAttribute('data-lv-pick') : 'retail';
   var VERTICALS = Array.prototype.map.call(tour.querySelectorAll('[data-lv-pick]'), function (tab) { return tab.getAttribute('data-lv-pick'); });
   var toast = tour.querySelector('.lv-toast');
@@ -1001,14 +1001,40 @@
     $('[data-lv-grants]', panel).textContent = count * 3;
   }
 
-  // The highlight behind the chosen industry slides to it; on narrow screens the strip scrolls it into view.
-  function placeGlider() {
-    var tab = $('[data-lv-pick="' + vertical + '"]');
-    var strip = $('.lv-vtabs-wrap');
-    var glider = $('.lv-vtabs-glider');
-    glider.style.width = tab.offsetWidth + 'px';
-    glider.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
-    strip.scrollLeft = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
+  /*
+   * The pipeline under the app: every industry card has a line that joins a bus,
+   * runs through the filter node and up into the window. The chosen industry's
+   * line is lit and its data flows into the app.
+   */
+  function drawPipe() {
+    var pipe = $('.lv-pipe');
+    var svg = $('.lv-pipe-lines', pipe);
+    if (!pipe.offsetWidth || window.getComputedStyle(svg).display === 'none') {
+      return;
+    }
+    var box = pipe.getBoundingClientRect();
+    var mid = box.width / 2;
+    var bus = 46;
+    var lines = '';
+    var lit = '';
+    var dot = '';
+    all('[data-lv-pick]', pipe).forEach(function (card) {
+      var r = card.getBoundingClientRect();
+      var x = r.left - box.left + r.width / 2;
+      var top = r.top - box.top;
+      var dir = x < mid ? 1 : -1;
+      var bend = Math.min(10, Math.abs(mid - x) / 2);
+      var d = 'M' + x.toFixed(1) + ',' + top.toFixed(1) + ' V' + (bus + bend) + ' Q' + x.toFixed(1) + ',' + bus + ' ' + (x + dir * bend).toFixed(1) + ',' + bus +
+        ' H' + (mid - dir * bend).toFixed(1) + ' Q' + mid.toFixed(1) + ',' + bus + ' ' + mid.toFixed(1) + ',' + (bus - bend) + ' V0';
+      lines += '<path class="lv-pipe-base" d="' + d + '"/>';
+      if (card.getAttribute('data-lv-pick') === vertical) {
+        lit = d;
+        dot = '<circle class="lv-pipe-dot" cx="' + x.toFixed(1) + '" cy="' + top.toFixed(1) + '" r="3.5"/>';
+      }
+    });
+    svg.setAttribute('viewBox', '0 0 ' + box.width.toFixed(1) + ' ' + box.height.toFixed(1));
+    svg.innerHTML = lines + '<path class="lv-pipe-lit" d="' + lit + '"/><path class="lv-pipe-flow" d="' + lit + '"/>' + dot +
+      '<circle class="lv-pipe-port" cx="' + mid.toFixed(1) + '" cy="1" r="4.5"/>';
   }
 
   // Switch industry: its agent bar, sidebar chats and first conversation.
@@ -1017,14 +1043,15 @@
     all('[data-lv-vertical]').forEach(function (el) {
       el.hidden = el.getAttribute('data-lv-vertical') !== key;
     });
-    all('[data-lv-pick]').forEach(function (tab) {
-      tab.setAttribute('aria-selected', tab.getAttribute('data-lv-pick') === key ? 'true' : 'false');
+    all('[data-lv-pick]').forEach(function (card) {
+      card.setAttribute('aria-pressed', card.getAttribute('data-lv-pick') === key ? 'true' : 'false');
     });
     var agent = $('.lv-agent-bar[data-lv-vertical="' + key + '"]').getAttribute('data-agent');
     placeholder = 'Ask ' + agent + '...';
     setThread(key + '-0');
     tour.setAttribute('data-vertical', key);
-    placeGlider();
+    $('[data-lv-ws]').textContent = $('[data-lv-pick="' + key + '"]').textContent.trim();
+    drawPipe();
     // A short confirmation inside the app that the whole workspace switched.
     $('[data-lv-toast]').textContent = $('[data-lv-pick="' + key + '"]').textContent.trim() + ' workspace · ' + agent;
     toast.classList.remove('is-on');
@@ -1104,7 +1131,7 @@
         stage(chat);
         show('chat');
         setType('combo');
-        // The tabs sit outside the app window, so the tour taps the next one with a pulse instead of the pointer.
+        // The industry cards sit outside the app window, so the tour taps the next one with a pulse instead of the pointer.
         var lead = !auto ? Promise.resolve() : pause(300).then(function () {
           tap($('[data-lv-pick="' + next + '"]'));
           return pause(450);
@@ -1372,10 +1399,14 @@
   });
 
   setStep(1);
-  placeGlider();
-  window.addEventListener('resize', placeGlider);
+  drawPipe();
+  if (window.ResizeObserver) {
+    new window.ResizeObserver(drawPipe).observe($('.lv-pipe'));
+  } else {
+    window.addEventListener('resize', drawPipe);
+  }
   if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(placeGlider);
+    document.fonts.ready.then(drawPipe);
   }
 
   // Reduced motion: no tour; the app stays clickable.

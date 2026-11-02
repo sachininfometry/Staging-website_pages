@@ -15943,7 +15943,7 @@ body .infometry-conversa-product .icp-live:not(.is-paused) .lv-hint .lv-play::af
 }
 
 
-/* Industries are tabs in the app window: each switches the agent, chats and answers. */
+/* Industry verticals: each switches the agent, chats and answers; --lv-accent follows the chosen one. */
 body .infometry-conversa-product .icp-live [data-lv-vertical][hidden] { display: none !important; }
 body .infometry-conversa-product .icp-live { --lv-accent: #2dd48f; }
 body .infometry-conversa-product .icp-live[data-vertical="healthcare"] { --lv-accent: #4ea1ff; }
@@ -15951,12 +15951,6 @@ body .infometry-conversa-product .icp-live[data-vertical="finance"] { --lv-accen
 body .infometry-conversa-product .icp-live[data-vertical="hitech"] { --lv-accent: #ffa04d; }
 body .infometry-conversa-product .icp-live[data-vertical="energy"] { --lv-accent: #34d6c0; }
 body .infometry-conversa-product .icp-live[data-vertical="supply"] { --lv-accent: #f472b6; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-healthcare { --c: #4ea1ff; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-retail { --c: #2dd48f; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-finance { --c: #9db4e8; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-hitech { --c: #ffa04d; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-energy { --c: #34d6c0; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-supply { --c: #f472b6; }
 body .infometry-conversa-product .icp-live .lv-top { background: #0b1536; }
 body .infometry-conversa-product .icp-live .lv-agent-bar .lv-agent:first-child { color: #fff; }
 body .infometry-conversa-product .icp-live .lv-agent-bar .lv-agent:first-child svg { color: var(--lv-accent); }
@@ -15969,37 +15963,57 @@ body .infometry-conversa-product .icp-live .lv-toast.is-on { opacity: 1; transfo
   body .infometry-conversa-product .icp-live .lv-toast { left: 50%; font-size: .7em; }
 }
 
-/* Industry switcher: a segmented control docked on the window's top edge, outside the app.
-   The glider slides to the chosen industry and its colour lights the window frame. */
-body .infometry-conversa-product .icp-live .lv-vtabs-wrap { position: relative; z-index: 5; width: max-content; max-width: calc(100% - 24px); margin: 0 auto -19px; padding: 4px; overflow-x: auto; border: 1px solid rgba(160, 190, 255, .22); border-radius: 999px; background: linear-gradient(180deg, #121c44, #0a1333); box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 12px 30px rgba(2, 6, 30, .55), 0 0 0 4px rgba(8, 17, 48, .55); scrollbar-width: none; }
-body .infometry-conversa-product .icp-live .lv-vtabs-wrap::-webkit-scrollbar { display: none; }
-body .infometry-conversa-product .icp-live .lv-vtabs { position: relative; display: flex; gap: 2px; width: max-content; }
-body .infometry-conversa-product .icp-live .lv-vtabs-glider { position: absolute; top: 0; bottom: 0; left: 0; width: 0; border-radius: 999px; background: linear-gradient(135deg, color-mix(in srgb, var(--lv-accent) 34%, #101a42), color-mix(in srgb, var(--lv-accent) 16%, #101a42)); box-shadow: 0 0 0 1px color-mix(in srgb, var(--lv-accent) 55%, transparent) inset, 0 6px 18px -6px var(--lv-accent); pointer-events: none; transition: transform .45s cubic-bezier(.2, .8, .2, 1), width .45s cubic-bezier(.2, .8, .2, 1), background .45s ease, box-shadow .45s ease; }
-body .infometry-conversa-product .icp-live .lv-vtabs button { --c: #7cc0ff; position: relative; z-index: 1; display: inline-flex; flex: none; align-items: center; gap: 6px; padding: 7px 13px; border: 0; border-radius: 999px; background: none; color: #aebcdf; font-size: clamp(11px, 1.45cqw, 12.5px); font-weight: 600; line-height: 1.2; letter-spacing: .01em; white-space: nowrap; cursor: pointer; transition: color .25s ease; }
-body .infometry-conversa-product .icp-live .lv-vtabs button svg { width: 1.2em; height: 1.2em; color: var(--c); opacity: .85; transition: opacity .25s ease; }
-body .infometry-conversa-product .icp-live .lv-vtabs button:hover { color: #fff; }
-body .infometry-conversa-product .icp-live .lv-vtabs button:hover svg,
-body .infometry-conversa-product .icp-live .lv-vtabs button[aria-selected="true"] svg { opacity: 1; }
-body .infometry-conversa-product .icp-live .lv-vtabs button[aria-selected="true"] { color: #fff; }
-body .infometry-conversa-product .icp-live .lv-vtabs button:focus-visible { outline: 2px solid var(--c); outline-offset: 1px; }
-body .infometry-conversa-product .icp-live .lv-vtabs button.lv-tap { animation: lv-tab-tap .5s ease; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-healthcare { --c: #4ea1ff; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-retail { --c: #2dd48f; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-finance { --c: #9db4e8; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-hitech { --c: #ffa04d; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-energy { --c: #34d6c0; }
-body .infometry-conversa-product .icp-live .lv-vtabs .is-supply { --c: #f472b6; }
+/* Industry pipeline under the app: cards for each vertical, joined by lines through a filter node into the window.
+   The chosen industry's line is lit, data flows along it, and its colour lights the window frame. */
+body .infometry-conversa-product .icp-live .lv-app { box-shadow: 0 0 0 1px color-mix(in srgb, var(--lv-accent) 45%, transparent), 0 0 46px -14px var(--lv-accent), 0 30px 70px rgba(2, 6, 30, .6); transition: box-shadow .5s ease; }
+body .infometry-conversa-product .icp-live .lv-chrome-title i { color: #5f6f99; font-style: normal; }
+body .infometry-conversa-product .icp-live .lv-chrome-title b { color: var(--lv-accent); transition: color .3s ease; }
+body .infometry-conversa-product .icp-live .lv-pipe { position: relative; padding-top: 58px; }
+body .infometry-conversa-product .icp-live .lv-pipe-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+body .infometry-conversa-product .icp-live .lv-pipe-lines path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+body .infometry-conversa-product .icp-live .lv-pipe-base { stroke: rgba(150, 180, 255, .2); stroke-width: 1.5; }
+body .infometry-conversa-product .icp-live .lv-pipe-lit { stroke: var(--lv-accent); stroke-width: 2; opacity: .55; }
+body .infometry-conversa-product .icp-live .lv-pipe-flow { stroke: var(--lv-accent); stroke-width: 3; stroke-dasharray: 2 10; animation: lv-flow .8s linear infinite; }
+body .infometry-conversa-product .icp-live .lv-pipe-port,
+body .infometry-conversa-product .icp-live .lv-pipe-dot { fill: var(--lv-accent); stroke: #081130; stroke-width: 2; }
 
-@keyframes lv-tab-tap {
+@keyframes lv-flow {
+  to { stroke-dashoffset: -12; }
+}
+
+body .infometry-conversa-product .icp-live .lv-pipe-node { position: absolute; top: 9px; left: 50%; z-index: 1; display: flex; align-items: center; gap: 6px; padding: 4px 12px 4px 6px; border: 1px solid color-mix(in srgb, var(--lv-accent) 50%, transparent); border-radius: 99px; background: #0b1433; color: #dbe5ff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%); transition: border-color .4s ease; }
+body .infometry-conversa-product .icp-live .lv-pipe-node svg { width: 18px; height: 18px; padding: 3px; border-radius: 50%; background: var(--lv-accent); color: #081130; transition: background .4s ease; }
+body .infometry-conversa-product .icp-live .lv-verticals { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+body .infometry-conversa-product .icp-live .lv-verticals button { --c: #7cc0ff; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; min-width: 0; padding: 10px 6px 9px; border: 1px solid rgba(150, 180, 255, .18); border-radius: 12px; background: linear-gradient(180deg, #101a40, #0a1333); color: #c2cfec; text-align: center; cursor: pointer; transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
+body .infometry-conversa-product .icp-live .lv-verticals button > span { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--c); transition: background .25s ease, color .25s ease; }
+body .infometry-conversa-product .icp-live .lv-verticals button svg { width: 16px; height: 16px; }
+body .infometry-conversa-product .icp-live .lv-verticals button b { font-size: 12px; font-weight: 600; line-height: 1.25; }
+body .infometry-conversa-product .icp-live .lv-verticals button:hover { border-color: color-mix(in srgb, var(--c) 70%, transparent); color: #fff; transform: translateY(-2px); }
+body .infometry-conversa-product .icp-live .lv-verticals button:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+body .infometry-conversa-product .icp-live .lv-verticals button[aria-pressed="true"] { border-color: var(--c); background: linear-gradient(180deg, color-mix(in srgb, var(--c) 24%, #101a40), #0a1333); color: #fff; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent), 0 12px 26px -12px var(--c); }
+body .infometry-conversa-product .icp-live .lv-verticals button[aria-pressed="true"] > span { background: var(--c); color: #081130; }
+body .infometry-conversa-product .icp-live .lv-verticals button.lv-tap { animation: lv-card-tap .5s ease; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-healthcare { --c: #4ea1ff; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-retail { --c: #2dd48f; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-finance { --c: #9db4e8; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-hitech { --c: #ffa04d; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-energy { --c: #34d6c0; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-supply { --c: #f472b6; }
+
+@keyframes lv-card-tap {
   40% { transform: scale(.94); }
 }
 
-/* The window's top band is the dock the switcher sits in. */
-body .infometry-conversa-product .icp-live .lv-chrome { height: 2.4em; padding: 0; border-bottom: 1px solid var(--lv-line); background: linear-gradient(180deg, color-mix(in srgb, var(--lv-accent) 10%, rgba(255, 255, 255, .04)), rgba(255, 255, 255, .01)); transition: background .5s ease; }
-body .infometry-conversa-product .icp-live .lv-app { border-color: transparent; box-shadow: 0 0 0 1px color-mix(in srgb, var(--lv-accent) 50%, transparent), 0 0 46px -14px var(--lv-accent), 0 30px 70px rgba(2, 6, 30, .6); transition: box-shadow .5s ease; }
-body .infometry-conversa-product .icp-live .lv-hint { margin-bottom: 14px; }
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero .icp-live { margin-bottom: 40px; }
+}
 
+/* Narrow frames: no room for six branches, so the node becomes a heading over a 3 x 2 grid. */
 @container lv (max-width: 560px) {
-  body .infometry-conversa-product .icp-live .lv-vtabs-wrap { max-width: calc(100% - 16px); margin-bottom: 12px; }
-  body .infometry-conversa-product .icp-live .lv-vtabs button { padding: 7px 11px; font-size: 12px; }
+  body .infometry-conversa-product .icp-live .lv-pipe { padding-top: 16px; }
+  body .infometry-conversa-product .icp-live .lv-pipe-lines { display: none; }
+  body .infometry-conversa-product .icp-live .lv-pipe-node { position: static; width: max-content; margin: 0 auto 10px; transform: none; }
+  body .infometry-conversa-product .icp-live .lv-verticals { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  body .infometry-conversa-product .icp-live .lv-verticals button { padding: 8px 4px; }
+  body .infometry-conversa-product .icp-live .lv-verticals button b { font-size: 11px; }
 }

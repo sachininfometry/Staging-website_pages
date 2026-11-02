@@ -414,7 +414,7 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 
 /* From tablet up the site header floats over the hero, so the hero clears it. */
 @media (min-width: 768px) {
-  .igs-hero { padding-top: 150px; }
+  .igs-hero { padding-top: 112px; }
 }
 
 /* Large screens */

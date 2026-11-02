@@ -51,6 +51,10 @@
     var fx = live.querySelector('[data-igs-fx]');
     var toast = live.querySelector('[data-igs-toast]');
     var wires = live.querySelector('.igs-flow-wires');
+    var packets = document.createElement('div');
+    packets.className = 'igs-flow-packets';
+    packets.setAttribute('aria-hidden', 'true');
+    wires.parentNode.insertBefore(packets, wires.nextSibling);
     var fxIdle = fx.textContent;
     var timers = [];
     var tick = 0;
@@ -74,13 +78,13 @@
         return 'M' + f(x1) + ',' + f(y1) + ' C' + f(mx) + ',' + f(y1) + ' ' + f(mx) + ',' + f(y2) + ' ' + f(x2) + ',' + f(y2);
       };
       var o = toast.getBoundingClientRect();
-      // A wire, plus a data packet travelling along it while it carries data.
+      // A wire, plus a data packet travelling along it (a CSS motion path) while it carries data.
+      var dots = '';
       var wire = function (d, cls, packet) {
-        var out = '<path class="' + cls + '" d="' + d + '"/>';
         if (packet && !reduce) {
-          out += '<circle class="igs-packet ' + cls + '" r="4.5"><animateMotion dur="1.1s" repeatCount="indefinite" path="' + d + '"/></circle>';
+          dots += '<i class="igs-packet ' + cls + '" style="offset-path: path(&quot;' + d + '&quot;)"></i>';
         }
-        return out;
+        return '<path class="' + cls + '" d="' + d + '"/>';
       };
       var cx = c.left + c.width / 2 - box.left;
       var ox = c.right - box.left;
@@ -96,6 +100,7 @@
       paths += wire('M' + f(ex) + ',' + f(e.bottom - box.top) + ' V' + f(o.top - box.top), 'is-done' + (done ? ' is-on' : ''), done && running);
       wires.setAttribute('viewBox', '0 0 ' + f(box.width) + ' ' + f(box.height));
       wires.innerHTML = paths;
+      packets.innerHTML = dots;
     };
 
     // Google Sheets style selection box over the row being read.

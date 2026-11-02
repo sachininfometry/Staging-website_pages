@@ -16197,3 +16197,49 @@ body .infometry-conversa-product .icp-jr.is-anim .jr-chapters .is-done i b { wid
   body .infometry-conversa-product .icp-jr .jr-outputs .is-chart svg { max-width: 15em; }
   body .infometry-conversa-product .icp-jr .jr-chapters { padding-inline: .9em; }
 }
+
+/* Journey frame sizing: capped and centred, and stacked under the copy below 1101px (older rules left the copy in a phantom
+   second column there, squeezing the frame to nothing). Chapter buttons stretch so their progress bars keep their width. */
+body .infometry-conversa-product .icp-intro-video-frame.icp-architecture-frame.icp-jr-frame { max-width: min(100%, 900px) !important; margin-inline: auto !important; }
+body .infometry-conversa-product .icp-jr .jr-chapters button { align-items: stretch !important; text-align: left !important; }
+body .infometry-conversa-product .icp-jr .jr-chapters i { width: 100%; }
+
+@media (max-width: 1100px) {
+  body .infometry-conversa-product .icp-intro .icp-intro-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  body .infometry-conversa-product .icp-intro .icp-intro-grid > .icp-intro-showcase-head { grid-column: 1 !important; grid-row: 1 !important; }
+  body .infometry-conversa-product .icp-intro .icp-intro-grid > .icp-jr-frame { grid-column: 1 !important; grid-row: 2 !important; width: 100% !important; }
+  body .infometry-conversa-product .icp-intro .icp-intro-grid > .icp-intro-value-row { grid-column: 1 !important; grid-row: 3 !important; }
+  body .infometry-conversa-product .icp-intro .icp-intro-grid > .icp-intro-action { grid-column: 1 !important; grid-row: 4 !important; }
+}
+
+/* Phones, decluttered: context as wrapping pills, a slim engine row, tighter steps, and summary + action side by side over the chart. */
+@container conversa-architecture (max-width: 560px) {
+  body .infometry-conversa-product .icp-jr .jr-body { gap: .9em; }
+  body .infometry-conversa-product .icp-jr .jr-ask { font-size: .95em; }
+  body .infometry-conversa-product .icp-jr .jr-context > small { margin-bottom: .5em; text-align: center; }
+  body .infometry-conversa-product .icp-jr .jr-context ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .35em; }
+  body .infometry-conversa-product .icp-jr .jr-context li { padding: .3em .7em .3em 1.35em; border-radius: 99px; font-size: .8em; }
+  body .infometry-conversa-product .icp-jr .jr-context li::before { left: .55em; width: .38em; height: .38em; }
+  body .infometry-conversa-product .icp-jr .jr-engine { padding: .1em 0; }
+  body .infometry-conversa-product .icp-jr .jr-orb { width: 2.6em; height: 2.6em; margin: .45em; }
+  body .infometry-conversa-product .icp-jr .jr-orb svg { width: 1.2em; height: 1.2em; }
+  body .infometry-conversa-product .icp-jr .jr-orb i { inset: -.3em; }
+  body .infometry-conversa-product .icp-jr .jr-orb i + i { inset: -.55em; }
+  body .infometry-conversa-product .icp-jr .jr-engine strong { flex: 0 1 auto; font-size: .9em; }
+  body .infometry-conversa-product .icp-jr .jr-steps { gap: .4em; }
+  body .infometry-conversa-product .icp-jr .jr-steps li { padding: .45em .65em; column-gap: .6em; }
+  body .infometry-conversa-product .icp-jr .jr-steps b { width: 1.7em; height: 1.7em; }
+  body .infometry-conversa-product .icp-jr .jr-bars { gap: .45em; }
+  body .infometry-conversa-product .icp-jr .jr-bars i::before { width: 1.2em; height: calc(var(--h) * .04em + .2em); }
+  body .infometry-conversa-product .icp-jr .jr-outputs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5em; }
+  body .infometry-conversa-product .icp-jr .jr-outputs article { gap: .25em; padding: .6em .7em; }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-chart { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .1em .8em; }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-chart small { grid-column: 1; }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-chart > span { grid-column: 1; grid-row: 2; }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-chart svg { grid-column: 2; grid-row: 1 / 3; max-width: none; height: 2.6em; margin: 0; }
+  body .infometry-conversa-product .icp-jr .jr-outputs strong { font-size: 1.35em; }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-action strong { font-size: .98em; }
+  body .infometry-conversa-product .icp-jr .jr-outputs article > span { font-size: .76em; }
+  body .infometry-conversa-product .icp-jr .jr-chapters { gap: .4em; padding-bottom: .8em; }
+  body .infometry-conversa-product .icp-jr .jr-chapters button { font-size: .74em; }
+}

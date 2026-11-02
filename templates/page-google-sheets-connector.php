@@ -245,15 +245,6 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 			</div>
 		</div>
 
-		<div class="igs-shell">
-			<ul class="igs-stats">
-				<li><svg><use href="#igs-shield"/></svg><span><b>100%</b>Informatica Certified</span></li>
-				<li><svg><use href="#igs-infinity"/></svg><span><b>Unlimited Usage</b>No endpoint restrictions</span></li>
-				<li><svg><use href="#igs-sync"/></svg><span><b>Bi-Directional</b>Read, Write, Update, Delete, Filter, Range</span></li>
-				<li><svg><use href="#igs-layers"/></svg><span><b>Synchronization</b>&amp; Mapping Tasks</span></li>
-				<li><svg><use href="#igs-calendar"/></svg><span><b>30-Day</b>Free Trial</span></li>
-			</ul>
-		</div>
 	</section>
 
 	<section class="igs-section igs-overview" aria-labelledby="igs-overview-title">

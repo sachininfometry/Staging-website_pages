@@ -166,16 +166,6 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 @keyframes igs-dash-flow { to { stroke-dashoffset: -18; } }
 @keyframes igs-bump { 40% { transform: scale(1.12) rotate(-6deg); } }
 
-/* Hero stats: a white strip floating over the hero's bottom edge, as on the Conversa page */
-.igs-stats { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 48px 0 -58px !important; padding: 8px; border: 1px solid #dbe6f5; border-radius: 22px; background: #fff; box-shadow: 0 28px 60px -24px rgba(7, 28, 71, .45); }
-.igs-stats li { display: flex; align-items: center; gap: 12px; padding: 20px 16px; color: var(--muted); font-size: 14px; line-height: 1.35; }
-.igs-stats li + li { border-left: 1px solid #e6edf7; }
-.igs-stats svg { width: 44px; height: 44px; flex: none; padding: 11px; border-radius: 13px; background: linear-gradient(135deg, #6638ff, #087cff); color: #fff; box-shadow: 0 10px 20px -8px rgba(47, 91, 255, .6); }
-.igs-stats li:nth-child(2) svg { background: linear-gradient(135deg, #00a8e4, #0b6fd8); }
-.igs-stats li:nth-child(3) svg { background: linear-gradient(135deg, #12b981, #0a8f6a); }
-.igs-stats li:nth-child(4) svg { background: linear-gradient(135deg, #8b5cf6, #c026d3); }
-.igs-stats li:nth-child(5) svg { background: linear-gradient(135deg, #ff7a2f, #f43f5e); }
-.igs-stats b { display: block; color: #071c47; font-family: Roboto, Arial, sans-serif; font-size: 17px; font-weight: 800; }
 
 /* Section rhythm and heads */
 .igs-section { position: relative; padding: 96px 0; }
@@ -675,9 +665,6 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 }
 
 @media (max-width: 1180px) {
-  .igs-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .igs-stats li:nth-child(4) { border-left: 0; }
-  .igs-stats li:nth-child(n + 4) { border-top: 1px solid #e6edf7; }
   .igs-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .igs-cta-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .igs-cta-next ol { grid-template-columns: minmax(0, 1fr); }
@@ -729,15 +716,7 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
   .igs-eco ul { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .igs-toast { position: relative; justify-self: stretch; margin: 30px 0 0; }
   .igs-toast::before { content: ""; position: absolute; top: -31px; left: 50%; height: 30px; border-left: 2px dashed #2ed57d; }
-  .igs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 48px !important; border-radius: 18px; }
   .igs-overview { padding-top: 110px; }
-  .igs-stats li { padding: 18px 8px; font-size: 13px; }
-  .igs-stats li:nth-child(n) { border-left: 0; border-top: 1px solid #e6edf7; }
-  .igs-stats li:first-child, .igs-stats li:nth-child(2) { border-top: 0; }
-  .igs-stats li:nth-child(even) { border-left: 1px solid #e6edf7; padding-left: 14px; }
-  .igs-stats li:last-child { grid-column: 1 / -1; border-left: 0; padding-left: 8px; }
-  .igs-stats svg { width: 38px; height: 38px; padding: 9px; }
-  .igs-stats b { font-size: 15.5px; }
   .igs-feature { padding: 22px 20px; }
   .igs-plan, .igs-form { padding: 24px 20px; }
   .igs-related-card { flex-direction: column; gap: 14px; padding: 22px; }
@@ -779,15 +758,10 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
   .igs-cta { margin-bottom: 40px; }
 }
 
-/* Spacing and stats pass: tighter section rhythm; the stats sit inside the hero as a dark glass strip. */
+/* Spacing pass: tighter section rhythm. */
 .igs-section { padding: 72px 0; }
 .igs-overview { padding-top: 80px; }
 .igs-hero { padding-bottom: 48px; }
-.igs-stats { margin: 44px 0 0 !important; padding: 6px; border: 1px solid rgba(150, 180, 240, .2); border-radius: 20px; background: linear-gradient(90deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03)); box-shadow: none; backdrop-filter: blur(8px); }
-.igs-stats li { color: #a9b8db; }
-.igs-stats li + li { border-left-color: rgba(150, 180, 240, .16); }
-.igs-stats b { color: #fff; }
-.igs-stats svg { box-shadow: none; }
 
 /* FAQ quick answers under the support card */
 .igs-faq-facts { display: grid; gap: 10px; margin-top: 16px !important; }
@@ -800,15 +774,10 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .igs-faq-facts b { color: #071c47; font-size: 15.5px; line-height: 1.35; }
 .igs-faq-side { position: static; }
 
-@media (max-width: 1180px) {
-  .igs-stats li:nth-child(n + 4) { border-top-color: rgba(150, 180, 240, .16); }
-}
 
 @media (max-width: 640px) {
   .igs-section { padding: 52px 0; }
   .igs-overview { padding-top: 56px; }
   .igs-hero { padding-bottom: 36px; }
-  .igs-stats { margin-top: 32px !important; }
-  .igs-stats li:nth-child(n), .igs-stats li:nth-child(even) { border-color: rgba(150, 180, 240, .16); }
 }
 

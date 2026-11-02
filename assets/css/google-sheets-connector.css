@@ -261,6 +261,7 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 }
 
 @media (max-width: 640px) {
+  .igs-cta { margin-bottom: 40px; }
   .igs-cta-checks { grid-template-columns: minmax(0, 1fr); }
   .igs-ov-points { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .igs-ov-visual { aspect-ratio: 5 / 4.6; border-radius: 22px; }
@@ -589,6 +590,8 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .igs-cta { position: relative; overflow: hidden; padding: 96px 0; background: radial-gradient(circle at 14% 35%, rgba(0, 168, 228, .25), transparent 34%), radial-gradient(circle at 82% 48%, rgba(103, 55, 235, .38), transparent 38%), linear-gradient(112deg, #03143f 0%, #073270 47%, #281886 100%); color: #fff; scroll-margin-top: 90px; }
 .igs-cta::before { content: ""; position: absolute; inset: 0; opacity: .3; background-image: radial-gradient(rgba(75, 182, 255, .5) 1px, transparent 1px); background-size: 12px 12px; mask-image: linear-gradient(90deg, #000, transparent 50%); pointer-events: none; }
 .igs-cta > * { position: relative; }
+/* Breathing room between the trial band and the footer */
+.igs-cta { margin-bottom: 64px; }
 .igs-cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: stretch; }
 .igs-cta-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .igs-cta-copy > * { max-width: 100%; }

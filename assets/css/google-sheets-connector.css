@@ -261,7 +261,6 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 }
 
 @media (max-width: 640px) {
-  .igs-cta { margin-bottom: 40px; }
   .igs-cta-checks { grid-template-columns: minmax(0, 1fr); }
   .igs-ov-points { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .igs-ov-visual { aspect-ratio: 5 / 4.6; border-radius: 22px; }
@@ -774,4 +773,8 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
   .igs-pipe { max-width: 640px; margin-inline: auto; }
   .igs-pipe-foot { margin-top: 0; padding: 16px; }
   .igs-pipe-foot ul { flex: 1 1 100%; }
+}
+
+@media (max-width: 640px) {
+  .igs-cta { margin-bottom: 40px; }
 }

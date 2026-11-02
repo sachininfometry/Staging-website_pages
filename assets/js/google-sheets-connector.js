@@ -277,6 +277,34 @@
     drawPipes();
   }
 
+  // Tutorials: playlist items load into the featured player; its play button opens the video.
+  var tv = page.querySelector('[data-igs-tv]');
+  if (tv) {
+    var stage = tv.querySelector('[data-igs-stage]');
+    var picks = all('[data-igs-pick]', tv);
+    picks.forEach(function (pick) {
+      pick.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (pick.getAttribute('aria-current') === 'true') {
+          stage.click();
+          return;
+        }
+        picks.forEach(function (p) { p.removeAttribute('aria-current'); });
+        pick.setAttribute('aria-current', 'true');
+        stage.classList.add('is-swap');
+        window.setTimeout(function () {
+          var id = pick.getAttribute('data-igs-pick');
+          stage.setAttribute('data-igs-video', id);
+          stage.href = 'https://www.youtube.com/watch?v=' + id;
+          stage.querySelector('[data-igs-stage-title]').textContent = pick.querySelector('.igs-tv-item b').textContent;
+          stage.querySelector('[data-igs-stage-op]').textContent = pick.getAttribute('data-op');
+          stage.querySelector('[data-igs-stage-ep]').textContent = pick.getAttribute('data-ep');
+          stage.classList.remove('is-swap');
+        }, reduce ? 0 : 250);
+      });
+    });
+  }
+
   // Tutorials open in a player over the page; without the script the cards link to YouTube.
   var modal = page.querySelector('[data-igs-modal]');
   if (modal) {

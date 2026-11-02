@@ -88,10 +88,10 @@ $igs_features = array(
 );
 
 $igs_videos = array(
-	array( 'PzdcvankQGA', 'Google Sheets Connector for Informatica Cloud' ),
-	array( 'jHUGiqXl8ZE', 'How to update data from .csv to Google Sheets using Informatica' ),
-	array( 'rUK4ttec1uQ', 'How to insert data from .csv to Google Sheets using Informatica' ),
-	array( 'ZHowj7qOqyk', 'Deleting Data in Google Sheets' ),
+	array( 'PzdcvankQGA', 'Google Sheets Connector for Informatica Cloud', 'Overview' ),
+	array( 'jHUGiqXl8ZE', 'How to update data from .csv to Google Sheets using Informatica', 'Update' ),
+	array( 'rUK4ttec1uQ', 'How to insert data from .csv to Google Sheets using Informatica', 'Insert' ),
+	array( 'ZHowj7qOqyk', 'Deleting Data in Google Sheets', 'Delete' ),
 );
 
 $igs_faqs = array(
@@ -256,21 +256,41 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 	</section>
 
 	<section class="igs-section igs-overview" aria-labelledby="igs-overview-title">
-		<div class="igs-shell">
-			<div class="igs-head" data-igs-reveal>
+		<div class="igs-shell igs-ov">
+			<div class="igs-ov-copy" data-igs-reveal>
 				<span class="igs-kicker">Overview</span>
 				<h2 id="igs-overview-title">Your critical business data already lives in spreadsheets</h2>
-				<p>Informatica Cloud Connector customers rely on Google Sheets to store critical data sets like Sales Forecasts, Goals, Product Masters, SKUs, Lab Results, Headcount Estimates and OpEx Budgets, which need seamless integration into Enterprise Data Warehouses, Cloud Applications and Data Lakes.</p>
+				<p>Informatica Cloud Connector customers rely on Google Sheets to store critical data sets, which need seamless integration into Enterprise Data Warehouses, Cloud Applications and Data Lakes.</p>
+				<ul class="igs-ov-sets" aria-label="Data sets kept in Google Sheets">
+					<?php foreach ( array( 'Sales Forecasts', 'Goals', 'Product Masters', 'SKUs', 'Lab Results', 'Headcount Estimates', 'OpEx Budgets' ) as $set ) : ?>
+						<li><?php echo esc_html( $set ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<div class="igs-ov-points">
+					<div><span><svg><use href="#igs-sync"/></svg></span><p><b>Read &amp; write, source or target</b>in synchronization tasks, mapping tasks and data integrations.</p></div>
+					<div><span><svg><use href="#igs-bolt"/></svg></span><p><b>Future-ready</b>for automation-driven, intelligent Agentic AI data flows.</p></div>
+				</div>
 			</div>
-			<div class="igs-overview-grid">
-				<article class="igs-card is-green" data-igs-reveal>
-					<span class="igs-card-logo"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
-					<div><h3>Business Data in Google Sheets</h3><p>Forecasts, goals, product masters, SKUs, lab results, headcount estimates and OpEx budgets: the numbers your teams work in every day.</p></div>
-				</article>
-				<article class="igs-card is-blue" data-igs-reveal>
-					<span class="igs-card-logo is-icon"><svg><use href="#igs-db"/></svg></span>
-					<div><h3>Enterprise-Ready Integration</h3><p>Read from and write to Google Sheets as a source or target in synchronization tasks, mapping tasks and data integrations. Future-ready for automation-driven, intelligent Agentic AI data flows.</p></div>
-				</article>
+
+			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
+				<div class="igs-ov-files">
+					<?php
+					$ov_files = array( array( 'FY27_Sales_Forecast', 'Q1 Goal' ), array( 'Product_Master_SKUs', 'SKU' ), array( 'Headcount_Plan', 'Hires' ), array( 'OpEx_Budget', 'OpEx' ) );
+					foreach ( $ov_files as $i => $file ) :
+						?>
+						<div class="igs-ov-file is-f<?php echo (int) $i; ?>">
+							<span><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+							<b><?php echo esc_html( $file[0] ); ?></b>
+							<i class="igs-ov-bars"><i></i><i></i><i></i><i></i></i>
+						</div>
+					<?php endforeach; ?>
+				</div>
+				<div class="igs-ov-link"><span></span><em>Infometry Connector · IDMC</em><span></span></div>
+				<div class="igs-ov-dest">
+					<div><svg><use href="#igs-db"/></svg><b>Data Warehouses</b></div>
+					<div><svg><use href="#igs-cloud"/></svg><b>Cloud Applications</b></div>
+					<div><svg><use href="#igs-layers"/></svg><b>Data Lakes</b></div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -461,13 +481,34 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 				<h2 id="igs-videos-title">Learn from step-by-step tutorials</h2>
 				<p>Quick videos to help you get started and make the most of the connector.</p>
 			</div>
-			<div class="igs-video-grid">
-				<?php foreach ( $igs_videos as $i => $video ) : ?>
-					<a class="igs-video is-v<?php echo (int) $i; ?>" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $video[0] ); ?>" data-igs-reveal>
-						<span class="igs-video-thumb"><img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $video[0] . '/hqdefault.jpg' ); ?>" width="480" height="360" alt="" loading="lazy" decoding="async"><i><svg><use href="#igs-play"/></svg></i></span>
-						<b><?php echo esc_html( $video[1] ); ?></b>
-					</a>
-				<?php endforeach; ?>
+			<div class="igs-tv" data-igs-tv data-igs-reveal>
+				<a class="igs-tv-stage" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $igs_videos[0][0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $igs_videos[0][0] ); ?>" data-igs-stage>
+					<span class="igs-tv-scene" aria-hidden="true">
+						<span class="igs-tv-tile"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+						<span class="igs-tv-pipe"><i></i></span>
+						<span class="igs-tv-tile"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+					</span>
+					<span class="igs-tv-play" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
+					<span class="igs-tv-info">
+						<span class="igs-tv-meta"><em data-igs-stage-op><?php echo esc_html( $igs_videos[0][2] ); ?></em><span data-igs-stage-ep>Episode 01</span> · Knowledge series</span>
+						<b data-igs-stage-title><?php echo esc_html( $igs_videos[0][1] ); ?></b>
+						<span class="igs-tv-cta">Watch tutorial <svg><use href="#igs-arrow"/></svg></span>
+					</span>
+				</a>
+				<div class="igs-tv-list">
+					<header><b>Tutorial playlist</b><small><?php echo count( $igs_videos ); ?> videos</small></header>
+					<ol>
+						<?php foreach ( $igs_videos as $i => $video ) : ?>
+							<li>
+								<a href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-pick="<?php echo esc_attr( $video[0] ); ?>" data-op="<?php echo esc_attr( $video[2] ); ?>" data-ep="<?php echo esc_attr( sprintf( 'Episode %02d', $i + 1 ) ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>>
+									<span class="igs-tv-num"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span>
+									<span class="igs-tv-item"><em><?php echo esc_html( $video[2] ); ?></em><b><?php echo esc_html( $video[1] ); ?></b></span>
+									<span class="igs-tv-go" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ol>
+				</div>
 			</div>
 		</div>
 		<div class="igs-modal" data-igs-modal hidden>

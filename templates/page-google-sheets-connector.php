@@ -37,6 +37,21 @@ $igs_sheet = array(
 	array( 'India', '$1.2M', '$0.4M' ),
 );
 
+$igs_targets = array(
+	array( 'Snowflake', 'google-sheets/eco-snowflake.png' ),
+	array( 'Salesforce', 'google-sheets/eco-salesforce.png' ),
+	array( 'NetSuite', 'google-sheets/eco-netsuite.png' ),
+	array( 'Databricks', 'google-sheets/eco-databricks.png' ),
+	array( 'AWS', 'google-sheets/eco-aws.png' ),
+	array( 'Azure', 'google-sheets/eco-azure.png' ),
+	array( 'SQL Server', 'google-sheets/eco-sqlserver.png' ),
+	array( 'Oracle', 'google-sheets/eco-oracle.png' ),
+	array( 'SAP', 'google-sheets/eco-sap.png' ),
+	array( 'Workday', 'google-sheets/eco-workday.png' ),
+	array( 'Tableau', 'google-sheets/eco-tableau.svg' ),
+	array( 'Power BI', '' ),
+);
+
 $igs_features = array(
 	array( 'code', 'Native Interfaces', 'Built on Informatica’s native interface and supports Read, Write, Delete, Update and more, unlike JDBC drivers that have overly complex connectivity and no API interfaces.' ),
 	array( 'layers', 'Complex Format of Data Processing', 'Not just simple rows and columns: the connector handles the most complex data formats with ease.' ),
@@ -144,18 +159,30 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 				<p class="igs-hero-links"><a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace <svg><use href="#igs-out"/></svg></a><a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg class="is-star"><use href="#igs-star"/></svg> G2 Product Review <svg><use href="#igs-out"/></svg></a></p>
 			</div>
 
-			<div class="igs-flow" data-igs-live aria-label="Animated example: Google Sheets rows sync through the Infometry connector in Informatica IDMC into Snowflake, Salesforce, a data lake and Power BI">
+			<div class="igs-flow" data-igs-live aria-label="Animated example: Google Sheets rows sync through the Infometry connector in Informatica IDMC into enterprise sources and targets such as Snowflake, Salesforce, NetSuite and Power BI">
 				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
 				<div class="igs-sheet" data-igs-sheet>
-					<header><svg><use href="#igs-grid"/></svg>FY27_Sales_Forecast</header>
-					<table>
-						<thead><tr><th></th><th>Region</th><th>Q1 Goal</th><th>OpEx</th></tr></thead>
-						<tbody>
-							<?php foreach ( $igs_sheet as $i => $row ) : ?>
-								<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?></td></tr>
-							<?php endforeach; ?>
-						</tbody>
-					</table>
+					<header>
+						<span class="igs-sheet-icon"><svg><use href="#igs-grid"/></svg></span>
+						<span class="igs-sheet-name"><b>FY27_Sales_Forecast</b><small>Finance · Planning</small></span>
+						<span class="igs-sheet-live"><i></i>Live sync</span>
+					</header>
+					<div class="igs-sheet-fx"><b>fx</b><span data-igs-fx>Reading rows · Q1 Goal, OpEx</span></div>
+					<div class="igs-sheet-grid">
+						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
+						<table>
+							<thead>
+								<tr class="igs-sheet-cols"><th></th><th>A</th><th>B</th><th>C</th></tr>
+								<tr><th>1</th><th>Region</th><th>Q1 Goal</th><th>OpEx</th></tr>
+							</thead>
+							<tbody>
+								<?php foreach ( $igs_sheet as $i => $row ) : ?>
+									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+					<footer aria-hidden="true"><span class="is-on">Q1 Plan</span><span>Headcount</span><span>OpEx</span><i>+</i></footer>
 				</div>
 				<div class="igs-core" data-igs-core>
 					<span class="igs-core-icon"><svg><use href="#igs-bolt"/></svg></span>
@@ -163,12 +190,24 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 					<small>Informatica IDMC</small>
 					<span class="igs-core-modes"><b>CDI · Batch</b><b>CAI · Real-time</b></span>
 				</div>
-				<ul class="igs-targets">
-					<li data-igs-target><i class="is-snowflake"></i>Snowflake</li>
-					<li data-igs-target><i class="is-salesforce"></i>Salesforce</li>
-					<li data-igs-target><i class="is-lake"></i>Data Lake</li>
-					<li data-igs-target><i class="is-powerbi"></i>Power BI</li>
-				</ul>
+				<div class="igs-eco" data-igs-eco>
+					<header><b>Sources &amp; targets</b><small>Any IDMC connection</small></header>
+					<ul>
+						<?php foreach ( $igs_targets as $target ) : ?>
+							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>">
+								<span>
+									<?php if ( $target[1] ) : ?>
+										<?php infometry_ct_igs_img( $img . $target[1], '' ); ?>
+									<?php else : ?>
+										<i class="igs-eco-bars"><i></i><i></i><i></i></i>
+									<?php endif; ?>
+								</span>
+								<small><?php echo esc_html( $target[0] ); ?></small>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					<footer>+ data lakes, MDM &amp; every IDMC connection</footer>
+				</div>
 				<div class="igs-toast" data-igs-toast>
 					<span><svg><use href="#igs-check"/></svg></span>
 					<div><b>Mapping task completed</b><small>Synced · Scheduled daily 6:00 AM</small></div>

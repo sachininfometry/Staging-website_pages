@@ -38,24 +38,30 @@
     all('[data-igs-steps]').forEach(function (el) { el.classList.add('is-in'); });
   }
 
-  // Hero: a sheet row lights up, flows into the connector and out to the next target; after a full pass the toast confirms the run.
+  // Hero: the sheet's selection walks down the rows; each row flows through the connector to a different
+  // source or target in the ecosystem, which lights up; after a full pass the toast confirms the run.
   var live = page.querySelector('[data-igs-live]');
   if (live) {
     var rows = all('[data-igs-row]', live);
     var targets = all('[data-igs-target]', live);
     var sheet = live.querySelector('[data-igs-sheet]');
     var core = live.querySelector('[data-igs-core]');
+    var eco = live.querySelector('[data-igs-eco]');
+    var select = live.querySelector('[data-igs-select]');
+    var fx = live.querySelector('[data-igs-fx]');
     var toast = live.querySelector('[data-igs-toast]');
     var wires = live.querySelector('.igs-flow-wires');
     var playButton = live.querySelector('[data-igs-play]');
+    var fxIdle = fx.textContent;
     var timers = [];
     var tick = 0;
     var running = false;
     var userPaused = false;
     var onScreen = false;
     var active = -1;
+    var flowing = false;
 
-    // Dotted wires: sheet bottom into the connector top, connector right edge out to each target.
+    // Dotted wires: sheet into the connector, connector into the ecosystem, and a live wire to the active tile.
     var drawWires = function () {
       if (!live.offsetWidth || window.getComputedStyle(wires).display === 'none') {
         return;
@@ -63,22 +69,39 @@
       var box = live.getBoundingClientRect();
       var s = sheet.getBoundingClientRect();
       var c = core.getBoundingClientRect();
+      var e = eco.getBoundingClientRect();
       var f = function (n) { return n.toFixed(1); };
+      var curve = function (x1, y1, x2, y2) {
+        var mx = (x1 + x2) / 2;
+        return 'M' + f(x1) + ',' + f(y1) + ' C' + f(mx) + ',' + f(y1) + ' ' + f(mx) + ',' + f(y2) + ' ' + f(x2) + ',' + f(y2);
+      };
       var sx = c.left + c.width / 2 - box.left;
-      var sy = s.bottom - box.top;
-      var cy = c.top - box.top;
-      var paths = '<path class="is-in' + (active >= 0 ? ' is-on' : '') + '" d="M' + f(sx) + ',' + f(sy) + ' V' + f(cy) + '"/>';
       var ox = c.right - box.left;
       var oy = c.top + c.height / 2 - box.top;
-      targets.forEach(function (target, i) {
-        var t = target.getBoundingClientRect();
-        var tx = t.left - box.left;
-        var ty = t.top + t.height / 2 - box.top;
-        var mx = (ox + tx) / 2;
-        paths += '<path class="' + (i === active ? 'is-on' : '') + '" d="M' + f(ox) + ',' + f(oy) + ' C' + f(mx) + ',' + f(oy) + ' ' + f(mx) + ',' + f(ty) + ' ' + f(tx) + ',' + f(ty) + '"/>';
-      });
+      var paths = '<path class="is-in' + (flowing ? ' is-on' : '') + '" d="M' + f(sx) + ',' + f(s.bottom - box.top) + ' V' + f(c.top - box.top) + '"/>';
+      paths += '<path d="' + curve(ox, oy, e.left - box.left, e.top + e.height / 2 - box.top) + '"/>';
+      if (active >= 0) {
+        var t = targets[active].getBoundingClientRect();
+        paths += '<path class="is-on" d="' + curve(ox, oy, t.left + t.width / 2 - box.left, t.top + t.height / 2 - box.top) + '"/>';
+      }
       wires.setAttribute('viewBox', '0 0 ' + f(box.width) + ' ' + f(box.height));
       wires.innerHTML = paths;
+    };
+
+    // Google Sheets style selection box over the row being read.
+    var placeSelect = function (row) {
+      if (!row) {
+        select.classList.remove('is-on');
+        return;
+      }
+      var grid = select.parentNode.getBoundingClientRect();
+      var first = row.cells[1].getBoundingClientRect();
+      var r = row.getBoundingClientRect();
+      select.style.left = (first.left - grid.left) + 'px';
+      select.style.width = (r.right - first.left) + 'px';
+      select.style.top = (r.top - grid.top) + 'px';
+      select.style.height = r.height + 'px';
+      select.classList.add('is-on');
     };
 
     var later = function (ms, fn) {
@@ -92,27 +115,37 @@
       var target = targets[targetIndex];
       if (r === 0) {
         toast.classList.remove('is-on');
+        rows.forEach(function (el) { el.classList.remove('is-done'); });
       }
       rows.forEach(function (el) { el.classList.toggle('is-active', el === row); });
+      placeSelect(row);
+      fx.textContent = '=SYNC(A' + (r + 2) + ':C' + (r + 2) + ') \u2192 ' + target.getAttribute('data-name');
+      flowing = true;
       active = -1;
       drawWires();
-      later(450, function () {
+      later(500, function () {
         core.classList.add('is-busy');
         active = targetIndex;
         drawWires();
       });
-      later(1150, function () {
+      later(1200, function () {
         core.classList.remove('is-busy');
         target.classList.add('is-hit');
       });
-      later(1900, function () {
+      later(1950, function () {
         target.classList.remove('is-hit');
         row.classList.remove('is-active');
+        row.classList.add('is-done');
         if (r === rows.length - 1) {
+          placeSelect(null);
+          fx.textContent = fxIdle;
+          flowing = false;
+          active = -1;
+          drawWires();
           toast.classList.add('is-on');
         }
       });
-      later(r === rows.length - 1 ? 4200 : 2100, function () {
+      later(r === rows.length - 1 ? 4300 : 2150, function () {
         tick += 1;
         step();
       });
@@ -123,7 +156,10 @@
       timers = [];
       running = false;
       active = -1;
+      flowing = false;
       all('.is-active, .is-hit, .is-busy', live).forEach(function (el) { el.classList.remove('is-active', 'is-hit', 'is-busy'); });
+      placeSelect(null);
+      fx.textContent = fxIdle;
       toast.classList.add('is-on');
       drawWires();
     };

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return array(
 	'healthcare' => array(
-		'user'   => array( 'Dr. Maya Patel', 'VP Clinical Ops', 'MP' ),
+		'user'   => array( 'Dr. Emily Carter', 'VP Clinical Ops', 'EC' ),
 		'label'  => 'Healthcare',
 		'icon'   => 'heart',
 		'agent'  => 'HEALTHCARE_OPS_AGENT',
@@ -211,7 +211,7 @@ return array(
 		),
 	),
 	'finance' => array(
-		'user'   => array( 'Sofia Ramirez', 'Chief Risk Officer', 'SR' ),
+		'user'   => array( 'Jessica Morgan', 'Chief Risk Officer', 'JM' ),
 		'label'  => 'Financial Services',
 		'icon'   => 'bank',
 		'agent'  => 'FINANCE_RISK_AGENT',
@@ -343,7 +343,7 @@ return array(
 		),
 	),
 	'energy' => array(
-		'user'   => array( 'Aisha Khan', 'Grid Ops Head', 'AK' ),
+		'user'   => array( 'Sarah Mitchell', 'Grid Ops Head', 'SM' ),
 		'label'  => 'Energy & Utilities',
 		'icon'   => 'bolt',
 		'agent'  => 'GRID_OPS_AGENT',
@@ -409,7 +409,7 @@ return array(
 		),
 	),
 	'supply' => array(
-		'user'   => array( 'Daniel Kim', 'Supply Chain Director', 'DK' ),
+		'user'   => array( 'Daniel Reed', 'Supply Chain Director', 'DR' ),
 		'label'  => 'Supply Chain',
 		'icon'   => 'nodes',
 		'agent'  => 'SUPPLY_CHAIN_AGENT',

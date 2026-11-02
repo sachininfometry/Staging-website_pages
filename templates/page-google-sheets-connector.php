@@ -1,0 +1,459 @@
+<?php
+/**
+ * Template Name: Google Sheets Connector Product
+ * Template Post Type: page, product
+ *
+ * The hero plays a live sync (sheet rows flowing through IDMC into targets),
+ * the connectivity map streams data, and tutorials open in a video player.
+ * assets/js/google-sheets-connector.js drives them; everything renders
+ * finished without it.
+ *
+ * @package Infometry_Custom_Templates
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+get_header();
+$contact_url      = home_url( '/contact-us/' );
+$marketplace_url  = 'https://marketplace.informatica.com/listings/cloud/connectors/infometry_google_sheets_connector.html';
+$guide_url        = 'https://drive.google.com/file/d/1dSnTrAzoyMi2tKsEQGGblJ1hZxiEumiA/view?usp=sharing';
+$g2_url           = 'https://www.g2.com/products/google-sheets-connector-for-informatica-idmc/reviews/google-sheets-connector-for-informatica-idmc-review-10702219';
+$drive_url        = home_url( '/product/google-cloud-connectors/google-drive-connector/' );
+$ads_url          = home_url( '/product/google-cloud-connectors/google-ads-connector/' );
+$conversa_url     = home_url( '/product/infofiscus-conversa-decision-intelligence/' );
+$accelerators_url = home_url( '/product/accelerators-for-data-warehouse-migration-automation/' );
+$customers_url    = home_url( '/company/customers-partners/' );
+$img              = INFOMETRY_CT_URL . 'assets/images/';
+$sheets_icon      = $img . 'google-connectors/google-sheets.png';
+$idmc_icon        = $img . 'informatica-product-mark.png';
+$support_email    = 'info@www.infometry.net';
+$trial_form_id    = 351429;
+
+$igs_ops = array( 'Read', 'Write', 'Update', 'Delete', 'Range', 'Search' );
+
+$igs_sheet = array(
+	array( 'West', '$1.24M', '$1.20M' ),
+	array( 'East', '$982K', '$1.05M' ),
+	array( 'Central', '$756K', '$700K' ),
+	array( 'South', '$1.08M', '$1.10M' ),
+	array( 'EMEA', '$1.41M', '$1.32M' ),
+);
+
+$igs_features = array(
+	array( 'code', 'Native Interfaces', 'Built on Informatica’s native interface and supports Read, Write, Delete, Update and more, unlike JDBC drivers that have overly complex connectivity and no API interfaces.' ),
+	array( 'layers', 'Complex Format of Data Processing', 'Not just simple rows and columns: the connector handles the most complex data formats with ease.' ),
+	array( 'cloud', 'Integrates with On-Premises & Cloud Apps', 'Easily integrates with any on-premises or cloud app like NetSuite, Salesforce, Adaptive and more.' ),
+	array( 'db', 'Connects with Almost Every Source or Target', 'Integrates with MDM, Data Lakes and Enterprise Data Warehouses, and supports all databases: Relational, NoSQL and Columnar.' ),
+	array( 'bolt', 'Enterprise-Level Data Processing', 'Batch mode (CDI – Cloud Data Integration) and real-time integration (CAI – Cloud Application Integration), built to process millions of rows with a click. Agentic AI-driven orchestration reduces manual intervention.' ),
+	array( 'calendar', 'Automation & Scheduling of Tasks', 'Automates your tasks and supports scheduling, so you never miss an update. With Agentic AI-enabled automation, workflows self-adjust to triggers and changing business rules.' ),
+	array( 'nodes', 'Multiple Environments, Locations & Applications', 'Brings data from all applications, across multiple locations, used within multiple environments for analytics.' ),
+	array( 'shield', 'Error-Free Data Processing', 'Minimal to no manual intervention once the initial mapping is done: fewer errors, no duplication, and trusted pipelines that Agentic AI models can consume.' ),
+);
+
+$igs_videos = array(
+	array( 'PzdcvankQGA', 'Google Sheets Connector for Informatica Cloud' ),
+	array( 'jHUGiqXl8ZE', 'How to update data from .csv to Google Sheets using Informatica' ),
+	array( 'rUK4ttec1uQ', 'How to insert data from .csv to Google Sheets using Informatica' ),
+	array( 'ZHowj7qOqyk', 'Deleting Data in Google Sheets' ),
+);
+
+$igs_faqs = array(
+	array( 'What are the types of licenses you offer?', 'We have two licensing models: Prod and Non-Prod. The Infometry connector annual subscription license is charged for a given OrgID, and customers get unlimited usage of the connectors within an OrgID.' ),
+	array( 'How are updates on new features released to customers?', 'The Infometry Connector team continues to add new features and support newer API releases for each product. Infometry release cycles are synced with the Informatica Cloud platform, and customers get the updates automatically along with IICS release updates. All new releases are auto-updated at the customer end and are free of charge.' ),
+	array( 'Whom do I contact for implementation and license?', 'You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
+	array( 'Is Infometry’s Google Sheets Connector certified by Informatica?', 'Yes, it is 100% certified by Informatica and also listed on the <a href="' . $marketplace_url . '" target="_blank" rel="noopener">Informatica Marketplace</a>.' ),
+	array( 'How does your customer support work?', 'Our support is available 24/7, and we provide local time-zone support to all our customers globally. You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
+	array( 'How does Infometry charge for the Google Sheets Connector?', 'All our connectors are charged based on the number of Prod and Non-Prod licenses subscribed by the customer, completely independent of the number or size of the data and rows processed.' ),
+	array( 'How soon can business users onboard and start using the connector?', 'In most cases, it is immediate.' ),
+	array( 'What is the validity of the Infometry Connector license?', 'All our licenses are charged annually and are valid for 1 year.' ),
+	array( 'How does Infometry offer technical support?', 'It’s available 24/7 with a turnaround time of 24–48 hours. You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
+	array( 'How secure is my data?', 'All our connectors and their updates are verified by Informatica before reaching the customer. Our connectors are activated by Informatica and work in your IICS environment. Connectors do not hold any data, and the connector ensures highly secured data transfers.' ),
+);
+
+$igs_faq_schema = array(
+	'@context'   => 'https://schema.org',
+	'@type'      => 'FAQPage',
+	'mainEntity' => array_map(
+		function ( $faq ) {
+			return array(
+				'@type'          => 'Question',
+				'name'           => $faq[0],
+				'acceptedAnswer' => array( '@type' => 'Answer', 'text' => wp_strip_all_tags( $faq[1] ) ),
+			);
+		},
+		$igs_faqs
+	),
+);
+
+$igs_link_tags = array( 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) );
+
+if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
+	/** Image tag with intrinsic dimensions read from the plugin file. */
+	function infometry_ct_igs_img( $url, $alt, $class = '' ) {
+		$dims = @getimagesize( str_replace( INFOMETRY_CT_URL, INFOMETRY_CT_PATH, $url ) ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		printf(
+			'<img%s src="%s" alt="%s"%s loading="lazy" decoding="async">',
+			$class ? ' class="' . esc_attr( $class ) . '"' : '',
+			esc_url( $url ),
+			esc_attr( $alt ),
+			$dims ? sprintf( ' width="%d" height="%d"', $dims[0], $dims[1] ) : ''
+		);
+	}
+}
+?>
+<main class="igs-page" id="igs-main">
+	<svg class="igs-sprite" aria-hidden="true" focusable="false">
+		<symbol id="igs-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+		<symbol id="igs-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+		<symbol id="igs-cloud" viewBox="0 0 24 24"><path d="M7 18a4.5 4.5 0 0 1-.6-9 6 6 0 0 1 11.5 1.6A3.8 3.8 0 0 1 17.5 18H7Z"/></symbol>
+		<symbol id="igs-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V5.5M4.5 12v6.5c0 1.7 3.4 3 7.5 3s7.5-1.3 7.5-3V12"/></symbol>
+		<symbol id="igs-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7V2Z"/></symbol>
+		<symbol id="igs-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M12 13v4l3 1.5"/></symbol>
+		<symbol id="igs-nodes" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="M8 11 16 6.5M8 13l8 4.5"/></symbol>
+		<symbol id="igs-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8 7.5 9.5 4.4-1.5 7.5-4.9 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+		<symbol id="igs-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+		<symbol id="igs-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+		<symbol id="igs-out" viewBox="0 0 24 24"><path d="M8 16 17 7M9 7h8v8"/></symbol>
+		<symbol id="igs-down" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+		<symbol id="igs-sync" viewBox="0 0 24 24"><path d="M4 9h13l-3.5-3.5M20 15H7l3.5 3.5"/></symbol>
+		<symbol id="igs-infinity" viewBox="0 0 24 24"><path d="M7.5 7C5 7 3 9.2 3 12s2 5 4.5 5c4.5 0 4.5-10 9-10C19 7 21 9.2 21 12s-2 5-4.5 5c-4.5 0-4.5-10-9-10Z"/></symbol>
+		<symbol id="igs-cart" viewBox="0 0 24 24"><path d="M3 4h2.5l2.2 10.5h10.6L20.5 7H7"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/></symbol>
+		<symbol id="igs-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="m11.5 11.5 8-8M16.5 6.5l2.5 2.5M14 9l2 2"/></symbol>
+		<symbol id="igs-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
+		<symbol id="igs-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5Z"/></symbol>
+		<symbol id="igs-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+		<symbol id="igs-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+		<symbol id="igs-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
+	</svg>
+
+	<section class="igs-hero" aria-labelledby="igs-title">
+		<div class="igs-shell igs-hero-grid">
+			<div class="igs-hero-copy">
+				<span class="igs-badge"><svg><use href="#igs-shield"/></svg> Informatica Certified Connector</span>
+				<h1 id="igs-title">Effortlessly Sync Google Sheets with <em>Informatica IDMC</em></h1>
+				<p>Infometry’s Google Sheets Connector for Informatica IDMC is <strong>100% Informatica Certified</strong>, supporting all API operations. Read from and write to Google Sheets as a source or target in synchronization tasks, mapping tasks and data integrations.</p>
+				<ul class="igs-ops" aria-label="Supported operations">
+					<?php foreach ( $igs_ops as $op ) : ?>
+						<li><svg><use href="#igs-check"/></svg><?php echo esc_html( $op ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+				<div class="igs-actions">
+					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start Free Trial <svg><use href="#igs-arrow"/></svg></a>
+					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
+				</div>
+				<p class="igs-hero-links"><a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace <svg><use href="#igs-out"/></svg></a><a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg class="is-star"><use href="#igs-star"/></svg> G2 Product Review <svg><use href="#igs-out"/></svg></a></p>
+			</div>
+
+			<div class="igs-live" data-igs-live aria-label="Animated example: rows from a Google Sheet sync through Informatica IDMC into enterprise targets">
+				<div class="igs-live-bar">
+					<span class="igs-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+					<strong>Informatica IDMC <span>· Mapping task</span></strong>
+					<span class="igs-live-state" aria-hidden="true"><i></i> <b data-igs-op>Read</b></span>
+					<button type="button" class="igs-live-play" data-igs-play aria-label="Pause the animation"><svg class="is-pause"><use href="#igs-pause"/></svg><svg class="is-play"><use href="#igs-play"/></svg></button>
+				</div>
+				<div class="igs-live-body">
+					<div class="igs-sheet">
+						<header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><span>FY26 Sales Forecast</span></header>
+						<table>
+							<thead><tr><th></th><th>Region</th><th>Forecast</th><th>Goal</th></tr></thead>
+							<tbody>
+								<?php foreach ( $igs_sheet as $i => $row ) : ?>
+									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?></td></tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+					<div class="igs-wire" aria-hidden="true"><i data-igs-packet></i><span></span></div>
+					<div class="igs-hub" aria-hidden="true">
+						<span class="igs-hub-ring"></span>
+						<span class="igs-hub-logo"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+						<small>IDMC</small>
+					</div>
+					<div class="igs-wire is-out" aria-hidden="true"><i data-igs-packet></i><span></span></div>
+					<ul class="igs-targets" aria-hidden="true">
+						<li data-igs-target><svg><use href="#igs-db"/></svg>Data Warehouse</li>
+						<li data-igs-target><svg><use href="#igs-cloud"/></svg>Salesforce</li>
+						<li data-igs-target><svg><use href="#igs-layers"/></svg>Data Lake</li>
+					</ul>
+				</div>
+				<div class="igs-live-foot">
+					<span><b data-igs-count>1,248,320</b> rows synced</span>
+					<span class="is-ok"><svg><use href="#igs-check"/></svg> Last run: success · 0 errors</span>
+				</div>
+			</div>
+		</div>
+
+		<div class="igs-shell">
+			<ul class="igs-stats">
+				<li><svg><use href="#igs-shield"/></svg><span><b>100%</b>Informatica Certified</span></li>
+				<li><svg><use href="#igs-infinity"/></svg><span><b>Unlimited Usage</b>No endpoint restrictions</span></li>
+				<li><svg><use href="#igs-sync"/></svg><span><b>Bi-Directional</b>Read, Write, Update, Delete, Filter, Range</span></li>
+				<li><svg><use href="#igs-layers"/></svg><span><b>Synchronization</b>&amp; Mapping Tasks</span></li>
+				<li><svg><use href="#igs-calendar"/></svg><span><b>30-Day</b>Free Trial</span></li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="igs-section igs-overview" aria-labelledby="igs-overview-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Overview</span>
+				<h2 id="igs-overview-title">Your critical business data already lives in spreadsheets</h2>
+				<p>Informatica Cloud Connector customers rely on Google Sheets to store critical data sets like Sales Forecasts, Goals, Product Masters, SKUs, Lab Results, Headcount Estimates and OpEx Budgets, which need seamless integration into Enterprise Data Warehouses, Cloud Applications and Data Lakes.</p>
+			</div>
+			<div class="igs-overview-grid">
+				<article class="igs-card is-green" data-igs-reveal>
+					<span class="igs-card-logo"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+					<div><h3>Business Data in Google Sheets</h3><p>Forecasts, goals, product masters, SKUs, lab results, headcount estimates and OpEx budgets: the numbers your teams work in every day.</p></div>
+				</article>
+				<article class="igs-card is-blue" data-igs-reveal>
+					<span class="igs-card-logo is-icon"><svg><use href="#igs-db"/></svg></span>
+					<div><h3>Enterprise-Ready Integration</h3><p>Read from and write to Google Sheets as a source or target in synchronization tasks, mapping tasks and data integrations. Future-ready for automation-driven, intelligent Agentic AI data flows.</p></div>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-capabilities" aria-labelledby="igs-cap-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Capabilities</span>
+				<h2 id="igs-cap-title">Built for enterprise-level data processing</h2>
+				<p>Fast, reliable and error-free data processing, made effortless.</p>
+			</div>
+			<div class="igs-feature-grid">
+				<?php foreach ( $igs_features as $i => $feature ) : ?>
+					<article class="igs-feature is-c<?php echo (int) $i % 4; ?>" data-igs-reveal>
+						<span><svg><use href="#igs-<?php echo esc_attr( $feature[0] ); ?>"/></svg></span>
+						<h3><?php echo esc_html( $feature[1] ); ?></h3>
+						<p><?php echo esc_html( $feature[2] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-steps-section" aria-labelledby="igs-steps-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">How it works</span>
+				<h2 id="igs-steps-title">From marketplace to a live pipeline in 3 simple steps</h2>
+				<p>How you can use our connector with Informatica IDMC.</p>
+			</div>
+			<ol class="igs-steps" data-igs-steps>
+				<li>
+					<b>1</b>
+					<span class="igs-step-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+					<h3>Enable the connector from IDMC</h3>
+					<p>IDMC (formerly IICS) customers can enable it directly from their IDMC and contact us, or Informatica, to activate the license.</p>
+				</li>
+				<li>
+					<b>2</b>
+					<span class="igs-step-icon"><svg><use href="#igs-cart"/></svg></span>
+					<h3>Find &amp; request a trial</h3>
+					<p>Go to the <a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace</a>, search for Infometry’s connector, click Start Free Trial and send us a request.</p>
+				</li>
+				<li>
+					<b>3</b>
+					<span class="igs-step-icon"><svg><use href="#igs-key"/></svg></span>
+					<h3>Activate your license</h3>
+					<p>Two license types, paid and trial, activated based on your requirement.</p>
+					<em><span>Trial validity: 30 days</span></em>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<section class="igs-section igs-connect" aria-labelledby="igs-connect-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Connectivity</span>
+				<h2 id="igs-connect-title">Connects with almost every source or target</h2>
+				<p>Integrates seamlessly with MDM, Data Lakes and Enterprise Data Warehouses, supports all databases (Relational, NoSQL, Columnar), and works with on-premises and cloud apps.</p>
+			</div>
+			<div class="igs-map" data-igs-reveal>
+				<div class="igs-map-node"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>Google Sheets</b></div>
+				<div class="igs-map-line" aria-hidden="true"><i></i></div>
+				<div class="igs-map-node is-core"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><b>Informatica IDMC</b></div>
+				<div class="igs-map-fan" aria-hidden="true">
+					<svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="M0 50C50 50 50 16.5 100 16.5"/><path d="M0 50H100"/><path d="M0 50C50 50 50 83.5 100 83.5"/></svg>
+					<i></i>
+				</div>
+				<ul class="igs-map-targets">
+					<li><svg><use href="#igs-cloud"/></svg><span><b>Enterprise Applications</b>NetSuite, Salesforce, Adaptive</span></li>
+					<li><svg><use href="#igs-db"/></svg><span><b>Data Warehouse / Data Lake</b>MDM, Relational, NoSQL, Columnar</span></li>
+					<li><svg><use href="#igs-chart"/></svg><span><b>Analytics &amp; BI Platforms</b>Tableau, Looker, Power BI</span></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-uses" aria-labelledby="igs-uses-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Use cases</span>
+				<h2 id="igs-uses-title">Popular use cases the connector supports</h2>
+			</div>
+			<div class="igs-use-grid">
+				<article class="igs-use is-blue" data-igs-reveal>
+					<span class="igs-use-icon"><?php infometry_ct_igs_img( $img . 'brand-salesforce.png', '' ); ?></span>
+					<h3>Google Sheets to Salesforce</h3>
+					<p>Read data from Google Sheets and write it to Salesforce.</p>
+				</article>
+				<article class="igs-use is-violet" data-igs-reveal>
+					<span class="igs-use-icon is-svg"><svg><use href="#igs-db"/></svg></span>
+					<h3>Google Sheets to Enterprise Data Lake or Data Warehouse</h3>
+					<p>Read data from Google Sheets and write it to your Enterprise Data Lake or Data Warehouse.</p>
+				</article>
+				<article class="igs-use is-amber" data-igs-reveal>
+					<span class="igs-use-icon"><?php infometry_ct_igs_img( $img . 'tech-tableau.png', '' ); ?></span>
+					<h3>Merge multiple sheets for Tableau, Looker or Power BI</h3>
+					<p>Merge data from multiple Google Sheets into a single data source and provide the dataset to analytics and visualization platforms.</p>
+				</article>
+			</div>
+			<p class="igs-uses-note" data-igs-reveal>With Agentic AI transforming enterprise integration, Infometry’s Google Sheets Connector is not just a data bridge: it’s a foundation for building intelligent, automated and adaptive data pipelines.</p>
+		</div>
+	</section>
+
+	<section class="igs-section igs-videos" aria-labelledby="igs-videos-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">See it in action</span>
+				<h2 id="igs-videos-title">Learn from step-by-step tutorials</h2>
+				<p>Quick videos to help you get started and make the most of the connector.</p>
+			</div>
+			<div class="igs-video-grid">
+				<?php foreach ( $igs_videos as $i => $video ) : ?>
+					<a class="igs-video is-v<?php echo (int) $i; ?>" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $video[0] ); ?>" data-igs-reveal>
+						<span class="igs-video-thumb"><img src="<?php echo esc_url( 'https://i.ytimg.com/vi/' . $video[0] . '/hqdefault.jpg' ); ?>" width="480" height="360" alt="" loading="lazy" decoding="async"><i><svg><use href="#igs-play"/></svg></i></span>
+						<b><?php echo esc_html( $video[1] ); ?></b>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="igs-modal" data-igs-modal hidden>
+			<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Tutorial video">
+				<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
+				<div class="igs-modal-frame" data-igs-frame></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-license" aria-labelledby="igs-license-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Licensing</span>
+				<h2 id="igs-license-title">Try it free, then go to production</h2>
+				<p>Flexible, enterprise-ready licensing for your business needs.</p>
+			</div>
+			<div class="igs-license-grid">
+				<article class="igs-plan" data-igs-reveal>
+					<header><span><svg><use href="#igs-calendar"/></svg></span><h3>30-Day Trial</h3></header>
+					<ul>
+						<li><svg><use href="#igs-check"/></svg>Full connector functionality</li>
+						<li><svg><use href="#igs-check"/></svg>Onboard immediately in most cases</li>
+						<li><svg><use href="#igs-check"/></svg>Activated through IDMC or the Informatica Marketplace</li>
+					</ul>
+					<a class="igs-btn igs-btn-outline" href="#freetrialform">Start Free Trial <svg><use href="#igs-arrow"/></svg></a>
+				</article>
+				<article class="igs-plan is-dark" data-igs-reveal>
+					<header><span><svg><use href="#igs-layers"/></svg></span><h3>Production &amp; Non-Production</h3></header>
+					<ul>
+						<li><svg><use href="#igs-check"/></svg>Annual subscription per OrgID, valid for 1 year</li>
+						<li><svg><use href="#igs-check"/></svg>Unlimited connector usage within the OrgID</li>
+						<li><svg><use href="#igs-check"/></svg>Pricing independent of data size or number of rows</li>
+						<li><svg><use href="#igs-check"/></svg>Free, automatic updates with every IICS release</li>
+					</ul>
+					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Talk to Sales <svg><use href="#igs-arrow"/></svg></a>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-section igs-faq" aria-labelledby="igs-faq-title">
+		<div class="igs-shell igs-faq-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">FAQ</span>
+				<h2 id="igs-faq-title">Frequently Asked Questions</h2>
+			</div>
+			<div class="igs-faq-list">
+				<?php foreach ( $igs_faqs as $i => $faq ) : ?>
+					<details<?php echo 0 === $i ? ' open' : ''; ?>>
+						<summary><?php echo esc_html( $faq[0] ); ?><span aria-hidden="true"><svg><use href="#igs-plus"/></svg></span></summary>
+						<p><?php echo wp_kses( $faq[1], $igs_link_tags ); ?></p>
+					</details>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<script type="application/ld+json"><?php echo wp_json_encode( $igs_faq_schema ); ?></script>
+	</section>
+
+	<section class="igs-section igs-related" aria-labelledby="igs-related-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Explore more</span>
+				<h2 id="igs-related-title">Explore related products</h2>
+			</div>
+			<div class="igs-related-grid">
+				<a class="igs-related-card" href="<?php echo esc_url( $drive_url ); ?>" data-igs-reveal>
+					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-drive.png', '' ); ?></span>
+					<div><h3>Google Drive Connector</h3><p>Provides connectivity to Google Drive to and from a variety of external sources.</p><em>Explore <svg><use href="#igs-arrow"/></svg></em></div>
+				</a>
+				<a class="igs-related-card" href="<?php echo esc_url( $ads_url ); ?>" data-igs-reveal>
+					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-ads.png', '' ); ?></span>
+					<div><h3>Google Ads Connector</h3><p>Seamlessly integrates Google Ads with Enterprise Data Lakes and Data Warehouses via the Informatica Cloud platform.</p><em>Explore <svg><use href="#igs-arrow"/></svg></em></div>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="igs-cta" id="freetrialform" aria-labelledby="igs-cta-title">
+		<div class="igs-shell igs-cta-grid">
+			<div class="igs-cta-copy">
+				<span class="igs-kicker">Free trial</span>
+				<h2 id="igs-cta-title">Bring your Google Sheets data into the enterprise data stack</h2>
+				<p>Start your free 30-day trial and see how easily you can integrate, sync and operationalize Google Sheets data with Informatica IDMC.</p>
+				<ul>
+					<li><svg><use href="#igs-check"/></svg>100% Informatica Certified</li>
+					<li><svg><use href="#igs-check"/></svg>Quick and easy setup</li>
+					<li><svg><use href="#igs-check"/></svg>Secure: connectors do not hold any data</li>
+					<li><svg><use href="#igs-check"/></svg>24/7 support with local time-zone coverage</li>
+				</ul>
+			</div>
+			<div class="igs-form">
+				<h3>Request Free Trial</h3>
+				<?php if ( shortcode_exists( 'wpforms' ) ) : ?>
+					<?php echo do_shortcode( sprintf( '[wpforms id="%d" title="false" description="false"]', absint( $trial_form_id ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php else : ?>
+					<p>The request form is temporarily unavailable. Email us at <a href="mailto:<?php echo esc_attr( $support_email ); ?>"><?php echo esc_html( $support_email ); ?></a>.</p>
+					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <svg><use href="#igs-arrow"/></svg></a>
+				<?php endif; ?>
+			</div>
+		</div>
+	</section>
+
+	<footer class="infometry-custom-footer" id="infometry-footer" aria-label="Infometry website footer">
+		<div class="infometry-shell">
+			<div class="infometry-footer-grid">
+				<div class="infometry-footer-connect">
+					<h2>Connect with us</h2>
+					<a class="infometry-footer-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img width="500" height="142" src="<?php echo esc_url( $img . 'infometry-logo-white.png' ); ?>" alt="Infometry Inc. — Enabling AI for Every Enterprise"></a>
+					<p>Turning enterprise data into trusted insights, intelligent decisions and measurable business outcomes.</p>
+					<div class="infometry-footer-social" aria-label="Infometry social profiles">
+						<a href="https://www.facebook.com/infometryinc/" target="_blank" rel="noopener" aria-label="Infometry on Facebook"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-facebook.png' ); ?>" alt=""></a>
+						<a href="https://x.com/Infometryinc" target="_blank" rel="noopener" aria-label="Infometry on X"><img width="500" height="500" src="<?php echo esc_url( $img . 'social-x.png' ); ?>" alt=""></a>
+						<a href="https://www.linkedin.com/company/infometry-inc" target="_blank" rel="noopener" aria-label="Infometry on LinkedIn"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-linkedin.png' ); ?>" alt=""></a>
+						<a href="https://www.youtube.com/channel/UCYYc9Fa7iPiVLDEiSvG7DmQ" target="_blank" rel="noopener" aria-label="Infometry on YouTube"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-youtube.png' ); ?>" alt=""></a>
+						<a href="https://in.pinterest.com/infometryincus/_saved/" target="_blank" rel="noopener" aria-label="Infometry on Pinterest"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-pinterest.png' ); ?>" alt=""></a>
+						<a href="https://www.instagram.com/infometry_inc/" target="_blank" rel="noopener" aria-label="Infometry on Instagram"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-instagram.png' ); ?>" alt=""></a>
+						<a href="https://www.g2.com/sellers/infometry-inc#profiles" target="_blank" rel="noopener" aria-label="Infometry on G2"><img width="512" height="512" src="<?php echo esc_url( $img . 'social-g2.png' ); ?>" alt=""></a>
+					</div>
+					<a class="infometry-footer-contact" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <span aria-hidden="true">→</span></a>
+				</div>
+				<nav class="infometry-footer-column" aria-label="Footer products"><h3>Products</h3><a href="<?php echo esc_url( $conversa_url ); ?>">INFOFISCUS Conversa</a><a href="<?php echo esc_url( home_url( '/product/informatica-connectors/' ) ); ?>">Informatica Connectors</a><a href="<?php echo esc_url( home_url( '/product/#infofiscus-snowflake-native-apps' ) ); ?>">INFOFISCUS Snowflake Native Apps</a><a href="<?php echo esc_url( home_url( '/product/#pre-built-apps' ) ); ?>">Pre-Built Apps For IDMC and Matillion</a><a href="<?php echo esc_url( $accelerators_url ); ?>">Accelerators</a></nav>
+				<nav class="infometry-footer-column" aria-label="Footer resources"><h3>Resources</h3><a href="<?php echo esc_url( home_url( '/resources/blog/' ) ); ?>">Blog</a><a href="<?php echo esc_url( home_url( '/resources/infometry-case-studies/' ) ); ?>">Case Studies</a><a href="<?php echo esc_url( home_url( '/resources/whitepapers/' ) ); ?>">Whitepapers</a><a href="<?php echo esc_url( home_url( '/resources/gallery/' ) ); ?>">Gallery</a><a href="<?php echo esc_url( home_url( '/resources/webinar/' ) ); ?>">Webinar</a><a href="<?php echo esc_url( home_url( '/resources/press-releases/' ) ); ?>">Press Releases</a></nav>
+				<nav class="infometry-footer-column" aria-label="Footer company"><h3>Company</h3><a href="<?php echo esc_url( $customers_url ); ?>">Customers – Partners</a><a href="<?php echo esc_url( home_url( '/company/careers/' ) ); ?>">Careers</a><a href="<?php echo esc_url( home_url( '/company/life-at-infometry/' ) ); ?>">Life@Infometry</a><a href="<?php echo esc_url( home_url( '/company/testimonials/' ) ); ?>">Testimonials</a></nav>
+			</div>
+			<div class="infometry-footer-bottom"><span>© 2026 Infometry Inc. All Rights Reserved.</span><span>Enabling AI for Every Enterprise</span></div>
+		</div>
+	</footer>
+</main>
+<?php get_footer(); ?>

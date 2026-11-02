@@ -215,6 +215,68 @@
     }
   }
 
+  // Connectivity: pipelines from Google Sheets (two lanes, both directions) into IDMC and out to each group.
+  var pipe = page.querySelector('[data-igs-pipe]');
+  if (pipe) {
+    var pipeSvg = pipe.querySelector('.igs-pipe-svg');
+    var pipeDots = pipe.querySelector('.igs-pipe-dots');
+    var source = pipe.querySelector('[data-igs-pipe-source]');
+    var hub = pipe.querySelector('[data-igs-pipe-hub]');
+    var groups = all('[data-igs-pipe-group]', pipe);
+    var tones = { blue: '#1f6fff', green: '#16a34a', violet: '#7c3aed', orange: '#f97316' };
+
+    var drawPipes = function () {
+      if (!pipe.offsetWidth || window.getComputedStyle(pipeSvg).display === 'none') {
+        return;
+      }
+      var box = pipe.getBoundingClientRect();
+      var f = function (n) { return n.toFixed(1); };
+      var defs = '';
+      Object.keys(tones).forEach(function (tone) {
+        defs += '<marker id="igs-head-' + tone + '" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path class="igs-pipe-head" d="M0 0 10 5 0 10 2.5 5Z" fill="' + tones[tone] + '"/></marker>';
+      });
+      var body = '';
+      var dots = '';
+      var run = function (x1, y1, x2, y2, tone, back, delay) {
+        var mx = (x1 + x2) / 2;
+        var d = 'M' + f(x1) + ',' + f(y1) + ' C' + f(mx) + ',' + f(y1) + ' ' + f(mx) + ',' + f(y2) + ' ' + f(x2) + ',' + f(y2);
+        body += '<path class="igs-pipe-track is-' + tone + '" d="' + d + '"/>';
+        body += '<path class="igs-pipe-flow is-' + tone + (back ? ' is-back' : '') + '" d="' + d + '" ' + (back ? 'marker-start' : 'marker-end') + '="url(#igs-head-' + tone + ')"/>';
+        if (!reduce) {
+          [0, 1.1].forEach(function (offset) {
+            dots += '<i class="igs-pipe-dot is-' + tone + (back ? ' is-back' : '') + '" style="offset-path: path(&quot;' + d + '&quot;); animation-delay: -' + (delay + offset) + 's"></i>';
+          });
+        }
+      };
+      var s = source.getBoundingClientRect();
+      var h = hub.getBoundingClientRect();
+      var sy = s.top + s.height / 2 - box.top;
+      var hy = h.top + h.height / 2 - box.top;
+      // Read lane into IDMC, write lane back to the sheet; a gap at each end leaves room for the arrowheads.
+      run(s.right - box.left + 4, sy - 12, h.left - box.left - 12, hy - 12, 'green', false, 0);
+      run(s.right - box.left + 12, sy + 12, h.left - box.left - 4, hy + 12, 'blue', true, .5);
+      var groupTones = ['blue', 'violet', 'orange'];
+      groups.forEach(function (group, i) {
+        var g = group.getBoundingClientRect();
+        run(h.right - box.left + 4, hy, g.left - box.left - 12, g.top + g.height / 2 - box.top, groupTones[i % 3], false, i * .4);
+      });
+      pipeSvg.setAttribute('viewBox', '0 0 ' + f(box.width) + ' ' + f(box.height));
+      pipeSvg.innerHTML = '<defs>' + defs + '</defs>' + body;
+      pipeDots.innerHTML = dots;
+    };
+
+    if (window.ResizeObserver) {
+      new window.ResizeObserver(drawPipes).observe(pipe);
+    } else {
+      window.addEventListener('resize', drawPipes);
+    }
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(drawPipes);
+    }
+    window.addEventListener('load', drawPipes);
+    drawPipes();
+  }
+
   // Tutorials open in a player over the page; without the script the cards link to YouTube.
   var modal = page.querySelector('[data-igs-modal]');
   if (modal) {

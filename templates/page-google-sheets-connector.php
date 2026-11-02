@@ -52,6 +52,30 @@ $igs_targets = array(
 	array( 'Power BI', '' ),
 );
 
+$igs_groups = array(
+	array(
+		'tone'  => 'blue',
+		'icon'  => 'cloud',
+		'title' => 'Enterprise Applications',
+		'note'  => 'CRM, ERP, EPM & SaaS, on-premises or cloud',
+		'items' => array( array( 'Salesforce', 'google-sheets/eco-salesforce.png' ), array( 'NetSuite', 'google-sheets/eco-netsuite.png' ), array( 'Workday', 'google-sheets/eco-workday.png' ), array( 'SAP', 'google-sheets/eco-sap.png' ), array( 'Adaptive', 'google-sheets/eco-adaptive.png' ), array( 'HubSpot', 'google-sheets/eco-hubspot.png' ) ),
+	),
+	array(
+		'tone'  => 'violet',
+		'icon'  => 'db',
+		'title' => 'Data Warehouses & Lakes',
+		'note'  => 'MDM, Relational, NoSQL & Columnar',
+		'items' => array( array( 'Snowflake', 'google-sheets/eco-snowflake.png' ), array( 'Databricks', 'google-sheets/eco-databricks.png' ), array( 'AWS', 'google-sheets/eco-aws.png' ), array( 'Azure', 'google-sheets/eco-azure.png' ), array( 'SQL Server', 'google-sheets/eco-sqlserver.png' ), array( 'Oracle', 'google-sheets/eco-oracle.png' ) ),
+	),
+	array(
+		'tone'  => 'orange',
+		'icon'  => 'chart',
+		'title' => 'Analytics & BI Platforms',
+		'note'  => 'Merged, analysis-ready datasets',
+		'items' => array( array( 'Tableau', 'google-sheets/eco-tableau.svg' ), array( 'Power BI', '' ), array( 'Looker', '' ) ),
+	),
+);
+
 $igs_features = array(
 	array( 'code', 'Native Interfaces', 'Built on Informatica’s native interface and supports Read, Write, Delete, Update and more, unlike JDBC drivers that have overly complex connectivity and no API interfaces.' ),
 	array( 'layers', 'Complex Format of Data Processing', 'Not just simple rows and columns: the connector handles the most complex data formats with ease.' ),
@@ -278,24 +302,35 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 				<p>How you can use our connector with Informatica IDMC.</p>
 			</div>
 			<ol class="igs-steps" data-igs-steps>
-				<li>
-					<b>1</b>
-					<span class="igs-step-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+				<li class="is-s1">
+					<div class="igs-step-head"><b>01</b><span>Enable</span></div>
+					<div class="igs-step-ui" aria-hidden="true">
+						<div class="igs-ui-bar"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><span>IDMC · Add-on connectors</span></div>
+						<div class="igs-ui-row is-muted"><i></i><span>Salesforce Connector</span><em class="igs-ui-switch is-on"></em></div>
+						<div class="igs-ui-row is-main"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><span>Google Sheets Connector<small>by Infometry</small></span><em class="igs-ui-switch is-flip"></em></div>
+						<div class="igs-ui-row is-muted"><i></i><span>Workday Connector</span><em class="igs-ui-switch"></em></div>
+					</div>
 					<h3>Enable the connector from IDMC</h3>
 					<p>IDMC (formerly IICS) customers can enable it directly from their IDMC and contact us, or Informatica, to activate the license.</p>
 				</li>
-				<li>
-					<b>2</b>
-					<span class="igs-step-icon"><svg><use href="#igs-cart"/></svg></span>
+				<li class="is-s2">
+					<div class="igs-step-head"><b>02</b><span>Request</span></div>
+					<div class="igs-step-ui" aria-hidden="true">
+						<div class="igs-ui-search"><svg><use href="#igs-out"/></svg><span class="igs-ui-type">Google Sheets</span></div>
+						<div class="igs-ui-result"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><span>Google Sheets Connector<small>Infometry · Certified</small></span></div>
+						<span class="igs-ui-cta">Start Free Trial</span>
+					</div>
 					<h3>Find &amp; request a trial</h3>
 					<p>Go to the <a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace</a>, search for Infometry’s connector, click Start Free Trial and send us a request.</p>
 				</li>
-				<li>
-					<b>3</b>
-					<span class="igs-step-icon"><svg><use href="#igs-key"/></svg></span>
+				<li class="is-s3">
+					<div class="igs-step-head"><b>03</b><span>Activate</span></div>
+					<div class="igs-step-ui" aria-hidden="true">
+						<div class="igs-ui-license"><span><svg><use href="#igs-key"/></svg></span><div><b>License · Trial</b><small>Paid or trial, per requirement</small></div><em>Active</em></div>
+						<div class="igs-ui-meter"><span><i></i></span><small><b>30 days</b> trial validity</small></div>
+					</div>
 					<h3>Activate your license</h3>
-					<p>Two license types, paid and trial, activated based on your requirement.</p>
-					<em><span>Trial validity: 30 days</span></em>
+					<p>Two license types, paid and trial, activated based on your requirement. Trial validity: 30 days.</p>
 				</li>
 			</ol>
 		</div>
@@ -308,20 +343,57 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 				<h2 id="igs-connect-title">Connects with almost every source or target</h2>
 				<p>Integrates seamlessly with MDM, Data Lakes and Enterprise Data Warehouses, supports all databases (Relational, NoSQL, Columnar), and works with on-premises and cloud apps.</p>
 			</div>
-			<div class="igs-map" data-igs-reveal>
-				<div class="igs-map-node"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>Google Sheets</b></div>
-				<div class="igs-map-line" aria-hidden="true"><i></i></div>
-				<div class="igs-map-node is-core"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><b>Informatica IDMC</b></div>
-				<div class="igs-map-fan" aria-hidden="true">
-					<svg viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false"><path d="M0 50C50 50 50 16.5 100 16.5"/><path d="M0 50H100"/><path d="M0 50C50 50 50 83.5 100 83.5"/></svg>
-					<i></i>
+			<div class="igs-pipe" data-igs-pipe data-igs-reveal>
+				<svg class="igs-pipe-svg" aria-hidden="true" focusable="false"></svg>
+				<div class="igs-pipe-dots" aria-hidden="true"></div>
+
+				<div class="igs-pipe-source" data-igs-pipe-source>
+					<span class="igs-pipe-logo"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+					<b>Google Sheets</b>
+					<small>Source &amp; target</small>
+					<ul aria-label="Supported operations">
+						<?php foreach ( $igs_ops as $op ) : ?>
+							<li><?php echo esc_html( $op ); ?></li>
+						<?php endforeach; ?>
+					</ul>
 				</div>
-				<ul class="igs-map-targets">
-					<li><svg><use href="#igs-cloud"/></svg><span><b>Enterprise Applications</b>NetSuite, Salesforce, Adaptive</span></li>
-					<li><svg><use href="#igs-db"/></svg><span><b>Data Warehouse / Data Lake</b>MDM, Relational, NoSQL, Columnar</span></li>
-					<li><svg><use href="#igs-chart"/></svg><span><b>Analytics &amp; BI Platforms</b>Tableau, Looker, Power BI</span></li>
-				</ul>
+
+				<div class="igs-pipe-hub" data-igs-pipe-hub>
+					<span class="igs-pipe-ring" aria-hidden="true"></span>
+					<span class="igs-pipe-logo is-hub"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
+					<b>Informatica IDMC</b>
+					<small>Infometry Google Sheets Connector</small>
+					<span class="igs-pipe-modes"><em>CDI · Batch</em><em>CAI · Real-time</em></span>
+				</div>
+
+				<div class="igs-pipe-targets">
+					<?php foreach ( $igs_groups as $group ) : ?>
+						<article class="igs-pipe-group is-<?php echo esc_attr( $group['tone'] ); ?>" data-igs-pipe-group>
+							<header>
+								<span><svg><use href="#igs-<?php echo esc_attr( $group['icon'] ); ?>"/></svg></span>
+								<div><h3><?php echo esc_html( $group['title'] ); ?></h3><small><?php echo esc_html( $group['note'] ); ?></small></div>
+							</header>
+							<ul>
+								<?php foreach ( $group['items'] as $item ) : ?>
+									<li>
+										<?php if ( $item[1] ) : ?>
+											<?php infometry_ct_igs_img( $img . $item[1], '' ); ?>
+										<?php elseif ( 'Power BI' === $item[0] ) : ?>
+											<i class="igs-eco-bars"><i></i><i></i><i></i></i>
+										<?php else : ?>
+											<svg class="igs-pipe-generic"><use href="#igs-chart"/></svg>
+										<?php endif; ?>
+										<small><?php echo esc_html( $item[0] ); ?></small>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</article>
+					<?php endforeach; ?>
+				</div>
 			</div>
+			<ul class="igs-pipe-tags" data-igs-reveal>
+				<li>Relational</li><li>NoSQL</li><li>Columnar</li><li>MDM</li><li>Data Lakes</li><li>On-premises &amp; cloud</li><li>Multiple environments</li>
+			</ul>
 		</div>
 	</section>
 

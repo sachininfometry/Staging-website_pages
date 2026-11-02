@@ -1,7 +1,7 @@
 <?php
 /**
  * Industry verticals for the INFOFISCUS Conversa hero tour. Each vertical has its
- * own agent, data source and sidebar chats; Retail is shown first and holds real
+ * own client user, agent, data source and sidebar chats; Retail is shown first and holds real
  * RETAIL_SHRINKAGE_AGENT answers, the others are illustrative demo answers.
  *
  * A chat's 'rows' feed the combo and pie charts. When 'table' has no 'rows',
@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 return array(
 	'healthcare' => array(
+		'user'   => array( 'Dr. Maya Patel', 'VP Clinical Ops', 'MP' ),
 		'label'  => 'Healthcare',
 		'icon'   => 'heart',
 		'agent'  => 'HEALTHCARE_OPS_AGENT',
@@ -81,6 +82,7 @@ return array(
 		),
 	),
 	'retail' => array(
+		'user'   => array( 'Liam Smith', 'Retail Ops Director', 'LS' ),
 		'label'  => 'Retail',
 		'icon'   => 'bag',
 		'agent'  => 'RETAIL_SHRINKAGE_AGENT',
@@ -209,6 +211,7 @@ return array(
 		),
 	),
 	'finance' => array(
+		'user'   => array( 'Sofia Ramirez', 'Chief Risk Officer', 'SR' ),
 		'label'  => 'Financial Services',
 		'icon'   => 'bank',
 		'agent'  => 'FINANCE_RISK_AGENT',
@@ -274,6 +277,7 @@ return array(
 		),
 	),
 	'hitech' => array(
+		'user'   => array( 'Ethan Brooks', 'VP Revenue Ops', 'EB' ),
 		'label'  => 'Hi-Tech',
 		'icon'   => 'monitor',
 		'agent'  => 'SAAS_REVENUE_AGENT',
@@ -339,6 +343,7 @@ return array(
 		),
 	),
 	'energy' => array(
+		'user'   => array( 'Aisha Khan', 'Grid Ops Head', 'AK' ),
 		'label'  => 'Energy & Utilities',
 		'icon'   => 'bolt',
 		'agent'  => 'GRID_OPS_AGENT',
@@ -404,6 +409,7 @@ return array(
 		),
 	),
 	'supply' => array(
+		'user'   => array( 'Daniel Kim', 'Supply Chain Director', 'DK' ),
 		'label'  => 'Supply Chain',
 		'icon'   => 'nodes',
 		'agent'  => 'SUPPLY_CHAIN_AGENT',

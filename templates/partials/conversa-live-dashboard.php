@@ -278,7 +278,9 @@ $lv_agents = array(
 			<header class="lv-top">
 				<p class="lv-crumb">Conversa <span>/</span> <b data-lv-crumb>New chat</b></p>
 				<div class="lv-top-icons" aria-hidden="true"><svg><use href="#lv-db"/></svg><svg><use href="#lv-shield"/></svg><svg><use href="#lv-grid"/></svg></div>
-				<p class="lv-user"><span class="lv-avatar" aria-hidden="true">LS</span><span class="lv-user-name"><b>Liam Smith</b>Admin</span></p>
+				<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+					<p class="lv-user" data-lv-vertical="<?php echo esc_attr( $vkey ); ?>"<?php echo $lv_default === $vkey ? '' : ' hidden'; ?>><span class="lv-avatar" aria-hidden="true"><?php echo esc_html( $vertical['user'][2] ); ?></span><span class="lv-user-name"><b><?php echo esc_html( $vertical['user'][0] ); ?></b><?php echo esc_html( $vertical['user'][1] ); ?></span></p>
+				<?php endforeach; ?>
 			</header>
 
 			<div class="lv-views">

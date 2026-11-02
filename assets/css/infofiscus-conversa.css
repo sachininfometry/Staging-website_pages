@@ -16017,3 +16017,7 @@ body .infometry-conversa-product .icp-live .lv-verticals .is-supply { --c: #f472
   body .infometry-conversa-product .icp-live .lv-verticals button { padding: 8px 4px; }
   body .infometry-conversa-product .icp-live .lv-verticals button b { font-size: 11px; }
 }
+
+/* Each industry is a different client: its signed-in user's avatar takes the industry colour. */
+body .infometry-conversa-product .icp-live .lv-top .lv-avatar { background: linear-gradient(135deg, var(--lv-accent), #6c5cff); color: #fff; transition: background .4s ease; }
+body .infometry-conversa-product .icp-live .lv-user-name { white-space: nowrap; }

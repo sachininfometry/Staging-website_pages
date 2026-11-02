@@ -251,10 +251,19 @@ $lv_agents = array(
 		<linearGradient id="lv-g-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2f8cff" stop-opacity=".38"/><stop offset="1" stop-color="#2f8cff" stop-opacity="0"/></linearGradient>
 	</svg>
 
-	<p class="lv-hint"><button type="button" class="lv-play" data-lv-play aria-label="Pause the product tour"><svg class="lv-i-pause" aria-hidden="true"><use href="#lv-pause"/></svg><svg class="lv-i-play" aria-hidden="true"><use href="#lv-play"/></svg></button><b>Interactive demo</b><span>Click the chats, charts and tabs to explore</span></p>
+	<p class="lv-hint"><button type="button" class="lv-play" data-lv-play aria-label="Pause the product tour"><svg class="lv-i-pause" aria-hidden="true"><use href="#lv-pause"/></svg><svg class="lv-i-play" aria-hidden="true"><use href="#lv-play"/></svg></button><b>Interactive demo</b><span>Switch industry tabs, then click chats and charts</span></p>
 
 	<div class="lv-app" data-lv-app>
-		<div class="lv-chrome" aria-hidden="true"><span class="lv-lights"><i></i><i></i><i></i></span><span class="lv-chrome-title"><svg><use href="#lv-shield"/></svg>INFOFISCUS Conversa</span><span class="lv-live"><i></i>Live</span></div>
+		<div class="lv-chrome">
+			<span class="lv-lights" aria-hidden="true"><i></i><i></i><i></i></span>
+			<div class="lv-vtabs" role="tablist" aria-label="Industry">
+				<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+					<button type="button" role="tab" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-selected="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"><svg aria-hidden="true"><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg><?php echo esc_html( $vertical['label'] ); ?></button>
+				<?php endforeach; ?>
+			</div>
+			<span class="lv-live" aria-hidden="true"><i></i>Live</span>
+		</div>
+		<p class="lv-toast" aria-live="polite"><svg aria-hidden="true"><use href="#lv-check"/></svg><span data-lv-toast>Retail workspace</span></p>
 		<aside class="lv-side">
 			<img class="lv-logo" src="<?php echo esc_url( $lv_img . 'press-releases/conversa-slack/infofiscus-conversa-logo-white.png' ); ?>" width="667" height="147" loading="lazy" decoding="async" title="INFOFISCUS Conversa" alt="INFOFISCUS Conversa logo">
 			<nav class="lv-nav" aria-label="Conversa app sections">
@@ -499,20 +508,5 @@ $lv_agents = array(
 		</div>
 
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
-	</div>
-
-	<div class="lv-verticals" role="group" aria-label="See Conversa for your industry">
-		<p>See it for your industry</p>
-		<div class="lv-vert-viewport">
-			<div class="lv-vert-track">
-				<?php foreach ( array( false, true ) as $lv_copy ) : ?>
-					<div class="lv-vert-group"<?php echo $lv_copy ? ' aria-hidden="true"' : ''; ?>>
-						<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
-							<button type="button" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-pressed="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"<?php echo $lv_copy ? ' tabindex="-1"' : ''; ?>><span aria-hidden="true"><svg><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg></span><?php echo esc_html( $vertical['label'] ); ?></button>
-						<?php endforeach; ?>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
 	</div>
 </div>

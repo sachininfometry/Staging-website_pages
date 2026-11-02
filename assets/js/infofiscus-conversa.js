@@ -785,8 +785,13 @@
   var CRUMBS = { home: 'Home', chat: 'New chat', storybooks: 'Storybooks', dashboard: 'Dashboard', connections: 'Connections' };
   var SCENE_VIEWS = ['home', 'chat', 'storybooks', 'dashboard', 'connections'];
   var placeholder = inputText.textContent;
-  var picked = tour.querySelector('[data-lv-pick][aria-pressed="true"]');
+  var picked = tour.querySelector('[data-lv-pick][aria-selected="true"]');
   var vertical = picked ? picked.getAttribute('data-lv-pick') : 'retail';
+  var VERTICALS = Array.prototype.map.call(tour.querySelectorAll('[data-lv-pick]'), function (tab) { return tab.getAttribute('data-lv-pick'); });
+  var toast = tour.querySelector('.lv-toast');
+  var toastTimer = 0;
+  var chatRuns = 0;
+  var pickedByUser = false;
   var current = 'chat';
   var scene = 1;
   var run = 0;
@@ -1002,11 +1007,20 @@
     all('[data-lv-vertical]').forEach(function (el) {
       el.hidden = el.getAttribute('data-lv-vertical') !== key;
     });
-    all('[data-lv-pick]').forEach(function (button) {
-      button.setAttribute('aria-pressed', button.getAttribute('data-lv-pick') === key ? 'true' : 'false');
+    all('[data-lv-pick]').forEach(function (tab) {
+      tab.setAttribute('aria-selected', tab.getAttribute('data-lv-pick') === key ? 'true' : 'false');
     });
-    placeholder = 'Ask ' + $('.lv-agent-bar[data-lv-vertical="' + key + '"]').getAttribute('data-agent') + '...';
+    var agent = $('.lv-agent-bar[data-lv-vertical="' + key + '"]').getAttribute('data-agent');
+    placeholder = 'Ask ' + agent + '...';
     setThread(key + '-0');
+    tour.setAttribute('data-vertical', key);
+    // A short confirmation inside the app that the whole workspace switched.
+    $('[data-lv-toast]').textContent = $('[data-lv-pick="' + key + '"]').textContent.trim() + ' workspace · ' + agent;
+    toast.classList.remove('is-on');
+    void toast.offsetWidth;
+    toast.classList.add('is-on');
+    window.clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(function () { toast.classList.remove('is-on'); }, 2200);
   }
 
   /*
@@ -1068,78 +1082,91 @@
           return click($('[data-lv-target="start"]', home));
         });
       } },
-      { ms: 16500, play: function () {
+      { ms: 18500, play: function () {
         var chat = views.chat;
-        var convo = $('[data-lv-thread="' + vertical + '-0"]', chat);
-        var viz = $('.lv-viz', convo);
-        var ask = $('[data-lv-ask]', convo);
-        var question = ask.textContent;
-        setThread(vertical + '-0');
+        // On its own the tour moves to the next industry tab each loop; a visitor's pick plays as chosen.
+        var auto = !pickedByUser;
+        var next = auto && chatRuns > 0 ? VERTICALS[(VERTICALS.indexOf(vertical) + 1) % VERTICALS.length] : vertical;
+        pickedByUser = false;
+        chatRuns += 1;
         resetChat();
         stage(chat);
         show('chat');
         setType('combo');
-        var typed = 0;
-        function typeNext() {
-          if (typed >= question.length) {
-            return pause(250);
-          }
-          typed += 2;
-          inputText.textContent = question.slice(0, typed);
-          return pause(30).then(typeNext);
-        }
-        function reveal(el, ms) {
-          el.classList.add('is-in');
-          scrollThread(el);
-          return pause(ms);
-        }
-        return pause(300).then(function () {
-          moveTo(input);
-          return pause(700);
+        var lead = !auto ? Promise.resolve() : pause(250).then(function () {
+          return click($('[data-lv-pick="' + next + '"]'), 1);
         }).then(function () {
-          input.classList.add('is-typing');
-          inputText.textContent = '';
-          return typeNext();
-        }).then(function () {
-          return click($('[data-lv-target="send"]', chat), 300);
-        }).then(function () {
-          input.classList.remove('is-typing');
+          setVertical(next);
+          return pause(1000);
+        });
+        return lead.then(function () {
+          var convo = $('[data-lv-thread="' + vertical + '-0"]', chat);
+          var viz = $('.lv-viz', convo);
+          var ask = $('[data-lv-ask]', convo);
+          var question = ask.textContent;
           inputText.textContent = placeholder;
-          ask.classList.add('is-in');
-          tour.classList.add('is-thinking');
-          return pause(900);
-        }).then(function () {
-          tour.classList.remove('is-thinking');
-          return reveal($('.lv-thought', convo), 250);
-        }).then(function () {
-          return reveal($('.lv-sql', convo), 250);
-        }).then(function () {
-          return reveal($('.lv-table', convo), 1300);
-        }).then(function () {
-          return reveal($('.lv-summary', convo), 1100);
-        }).then(function () {
-          // Key insights, then the action plan, scrolling down as each arrives.
-          return each(all('.lv-section', convo), 1200, function (section) {
-            scrollThread(section);
-            counters(section);
+          var typed = 0;
+          function typeNext() {
+            if (typed >= question.length) {
+              return pause(250);
+            }
+            typed += 2;
+            inputText.textContent = question.slice(0, typed);
+            return pause(30).then(typeNext);
+          }
+          function reveal(el, ms) {
+            el.classList.add('is-in');
+            scrollThread(el);
+            return pause(ms);
+          }
+          return pause(300).then(function () {
+            moveTo(input);
+            return pause(700);
+          }).then(function () {
+            input.classList.add('is-typing');
+            inputText.textContent = '';
+            return typeNext();
+          }).then(function () {
+            return click($('[data-lv-target="send"]', chat), 300);
+          }).then(function () {
+            input.classList.remove('is-typing');
+            inputText.textContent = placeholder;
+            ask.classList.add('is-in');
+            tour.classList.add('is-thinking');
+            return pause(900);
+          }).then(function () {
+            tour.classList.remove('is-thinking');
+            return reveal($('.lv-thought', convo), 250);
+          }).then(function () {
+            return reveal($('.lv-sql', convo), 250);
+          }).then(function () {
+            return reveal($('.lv-table', convo), 1300);
+          }).then(function () {
+            return reveal($('.lv-summary', convo), 1100);
+          }).then(function () {
+            // Key insights, then the action plan, scrolling down as each arrives.
+            return each(all('.lv-section', convo), 1200, function (section) {
+              scrollThread(section);
+              counters(section);
+            });
+          }).then(function () {
+            viz.classList.add('is-in');
+            scrollThread(viz);
+            all('.lv-chart', viz).forEach(draw);
+            return pause(1500);
+          }).then(function () {
+            return click($('[data-lv-type="pie"]', viz), 1);
+          }).then(function () {
+            setType('pie');
+            draw($('.lv-pie', viz));
+            return pause(1600);
+          }).then(function () {
+            return click($('[data-lv-type="combo"]', viz), 1);
+          }).then(function () {
+            setType('combo');
+            draw($('.lv-combo', viz));
+            return pause(1200);
           });
-        }).then(function () {
-          viz.classList.add('is-in');
-          scrollThread(viz);
-          all('.lv-chart', viz).forEach(draw);
-          return pause(1500);
-        }).then(function () {
-          return click($('[data-lv-type="pie"]', viz), 1);
-        }).then(function () {
-          setType('pie');
-          draw($('.lv-pie', viz));
-          return pause(1600);
-        }).then(function () {
-          return click($('[data-lv-type="combo"]', viz), 1);
-        }).then(function () {
-          setType('combo');
-          draw($('.lv-combo', viz));
-          return pause(1200);
         });
       } },
       { ms: 5900, play: function () {
@@ -1309,6 +1336,7 @@
   // Picking an industry plays its chat scene, or just shows it when motion is reduced.
   all('[data-lv-pick]').forEach(function (button) {
     button.addEventListener('click', function () {
+      pickedByUser = true;
       setVertical(button.getAttribute('data-lv-pick'));
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         halt();

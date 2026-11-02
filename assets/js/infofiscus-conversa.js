@@ -775,7 +775,6 @@
   var crumb = tour.querySelector('[data-lv-crumb]');
   var input = tour.querySelector('.lv-input');
   var inputText = tour.querySelector('[data-lv-input]');
-  var ask = tour.querySelector('[data-lv-ask]');
   var playButton = tour.querySelector('[data-lv-play]');
   var stepButtons = Array.prototype.slice.call(tour.querySelectorAll('[data-lv-scene]'));
   var views = {};
@@ -786,7 +785,8 @@
   var CRUMBS = { home: 'Home', chat: 'New chat', storybooks: 'Storybooks', dashboard: 'Dashboard', connections: 'Connections' };
   var SCENE_VIEWS = ['home', 'chat', 'storybooks', 'dashboard', 'connections'];
   var placeholder = inputText.textContent;
-  var question = ask.textContent;
+  var picked = tour.querySelector('[data-lv-pick][aria-pressed="true"]');
+  var vertical = picked ? picked.getAttribute('data-lv-pick') : 'retail';
   var current = 'chat';
   var scene = 1;
   var run = 0;
@@ -948,7 +948,6 @@
     tour.classList.remove('is-thinking');
     input.classList.remove('is-typing');
     inputText.textContent = placeholder;
-    ask.textContent = question;
   }
 
   // Scroll the answer like a chat: the newest part settles at the bottom of the thread.
@@ -995,6 +994,19 @@
     $('[data-lv-selected]', panel).textContent = count;
     $('[data-lv-active]', panel).textContent = count;
     $('[data-lv-grants]', panel).textContent = count * 3;
+  }
+
+  // Switch industry: its agent bar, sidebar chats and first conversation.
+  function setVertical(key) {
+    vertical = key;
+    all('[data-lv-vertical]').forEach(function (el) {
+      el.hidden = el.getAttribute('data-lv-vertical') !== key;
+    });
+    all('[data-lv-pick]').forEach(function (button) {
+      button.setAttribute('aria-pressed', button.getAttribute('data-lv-pick') === key ? 'true' : 'false');
+    });
+    placeholder = 'Ask ' + $('.lv-agent-bar[data-lv-vertical="' + key + '"]').getAttribute('data-agent') + '...';
+    setThread(key + '-0');
   }
 
   /*
@@ -1058,9 +1070,11 @@
       } },
       { ms: 16500, play: function () {
         var chat = views.chat;
-        var convo = $('[data-lv-thread="0"]', chat);
+        var convo = $('[data-lv-thread="' + vertical + '-0"]', chat);
         var viz = $('.lv-viz', convo);
-        setThread(0);
+        var ask = $('[data-lv-ask]', convo);
+        var question = ask.textContent;
+        setThread(vertical + '-0');
         resetChat();
         stage(chat);
         show('chat');
@@ -1289,6 +1303,21 @@
     button.addEventListener('click', function () {
       halt();
       button.setAttribute('aria-pressed', button.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  // Picking an industry plays its chat scene, or just shows it when motion is reduced.
+  all('[data-lv-pick]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      setVertical(button.getAttribute('data-lv-pick'));
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        halt();
+        show('chat');
+        finish(views.chat);
+        setStep(1);
+      } else {
+        start(1);
+      }
     });
   });
 

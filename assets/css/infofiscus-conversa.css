@@ -15941,3 +15941,34 @@ body .infometry-conversa-product .icp-live:not(.is-paused) .lv-hint .lv-play::af
   body .infometry-conversa-product .icp-live { max-width: 900px; }
   body .infometry-conversa-product .icp-hero .icp-hero-grid { grid-template-columns: minmax(420px, 1fr) minmax(0, 900px) !important; }
 }
+
+/* Industry switcher under the tour: each vertical has its own agent and chats. */
+body .infometry-conversa-product .icp-live [data-lv-vertical][hidden] { display: none !important; }
+body .infometry-conversa-product .icp-live .lv-verticals { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; }
+body .infometry-conversa-product .icp-live .lv-verticals > p { flex-basis: 100%; margin-bottom: 2px; color: #9fb0d4; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+body .infometry-conversa-product .icp-live .lv-verticals button { --c: #7cc0ff; display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px 5px 5px; border: 1px solid rgba(150, 180, 255, .2); border-radius: 99px; background: rgba(8, 17, 48, .7); color: #d6e0f7; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; cursor: pointer; transition: border-color .2s ease, background .2s ease, color .2s ease, transform .2s ease; }
+body .infometry-conversa-product .icp-live .lv-verticals button > span { display: grid; width: 24px; height: 24px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--c); }
+body .infometry-conversa-product .icp-live .lv-verticals button svg { width: 14px; height: 14px; }
+body .infometry-conversa-product .icp-live .lv-verticals button:hover { border-color: var(--c); color: #fff; transform: translateY(-1px); }
+body .infometry-conversa-product .icp-live .lv-verticals button[aria-pressed="true"] { border-color: var(--c); background: color-mix(in srgb, var(--c) 16%, #081130); color: #fff; box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent); }
+body .infometry-conversa-product .icp-live .lv-verticals button[aria-pressed="true"] > span { background: var(--c); color: #081130; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-healthcare { --c: #4ea1ff; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-retail { --c: #2dd48f; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-finance { --c: #9db4e8; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-hitech { --c: #ffa04d; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-energy { --c: #34d6c0; }
+body .infometry-conversa-product .icp-live .lv-verticals .is-supply { --c: #f472b6; }
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-verticals { gap: 6px; }
+  body .infometry-conversa-product .icp-live .lv-verticals button { padding: 4px 10px 4px 4px; font-size: 12px; }
+  body .infometry-conversa-product .icp-live .lv-verticals button > span { width: 22px; height: 22px; }
+}
+
+body .infometry-conversa-product .icp-live .lv-verticals { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; max-width: 620px; margin-inline: auto; }
+body .infometry-conversa-product .icp-live .lv-verticals > p { grid-column: 1 / -1; }
+body .infometry-conversa-product .icp-live .lv-verticals button { width: 100%; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+@container lv (max-width: 560px) {
+  body .infometry-conversa-product .icp-live .lv-verticals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

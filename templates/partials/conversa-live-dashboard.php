@@ -65,7 +65,7 @@ if ( ! function_exists( 'infometry_ct_lv_combo_chart' ) ) {
 	 * Bars on the left axis and a line on the right axis, in a 560x160 view box.
 	 * Rows are array( label, bar value, line value, flagged ); flagged bars are amber.
 	 *
-	 * @param array $chat One entry of $lv_chats.
+	 * @param array $chat One chat of a vertical in conversa-live-verticals.php.
 	 * @return string SVG markup.
 	 */
 	function infometry_ct_lv_combo_chart( $chat ) {
@@ -103,7 +103,7 @@ if ( ! function_exists( 'infometry_ct_lv_pie_chart' ) ) {
 	 * Donut with a legend in the same 560x160 view box. Slices are the bar values
 	 * unless the chat's 'pie' entry lists its own values and format.
 	 *
-	 * @param array $chat One entry of $lv_chats.
+	 * @param array $chat One chat of a vertical in conversa-live-verticals.php.
 	 * @return string SVG markup.
 	 */
 	function infometry_ct_lv_pie_chart( $chat ) {
@@ -130,132 +130,10 @@ if ( ! function_exists( 'infometry_ct_lv_pie_chart' ) ) {
 	}
 }
 
-// Sidebar chats: each opens its own answer in the chat view. Figures come from
-// RETAIL_SHRINKAGE_AGENT answers in the Conversa app.
-$lv_chats = array(
-	array(
-		'title'    => 'Optimize promotional spend',
-		'question' => 'How should we optimize future promotional spending?',
-		'thinking' => 'Querying promotion performance in Snowflake',
-		'thought'  => array( '65.7s', 3, true ),
-		'sql'      => "SELECT promotion_name,\n       SUM(gross_sales_usd) AS total_gross_sales_usd,\n       SUM(net_margin_usd) AS total_net_margin_usd,\n       SUM(net_margin_usd) / SUM(gross_sales_usd) AS net_margin_pct,\n       SUM(net_margin_usd) / SUM(promo_spend_usd) AS return_on_promo_spend\nFROM retail.promotion_performance\nGROUP BY promotion_name\nORDER BY return_on_promo_spend DESC;",
-		'table'    => array(
-			'title' => 'Promotion Performance: Sales vs. Return on Spend',
-			'cols'  => array( 'PROMOTION_NAME', 'TOTAL_GROSS_SALES_USD', 'TOTAL_NET_MARGIN_USD', 'NET_MARGIN_PCT', 'RETURN_ON_PROMO_SPEND' ),
-			'rows'  => array(
-				array( 'New Customer Offer', '16709833.11', '3674757.82', '0.2199', '1.8326' ),
-				array( '15% Off Electronics', '78792165.51', '16187710.38', '0.2054', '1.3696' ),
-				array( 'Loyalty Coupon', '33338000.23', '5686358.45', '0.1706', '0.9476' ),
-				array( '20% Off Apparel', '90648417.98', '6771203.56', '0.0747', '0.3735' ),
-				array( '25% Off Sitewide', '97779188.64', '7792585.69', '0.0797', '0.3188' ),
-				array( 'BOGO Beauty', '49075504.14', '2144506.71', '0.0437', '0.1366' ),
-				array( 'Buy 2 Get 1 Free', '93504663.93', '1524099.75', '0.0163', '0.0582' ),
-			),
-		),
-		'summary'  => 'Promotions generated <b>$459.9M</b> in gross sales but only <b>$43.8M</b> in net margin (9.5%). The three deepest discounts drive 61% of sales yet just 37% of margin, while <b>15% Off Electronics</b> alone returns $16.2M.',
-		'insights' => array( array( 'Gross sales', '$459.9M', '7 promotions analyzed' ), array( 'Net margin', '$43.8M', '9.5% blended margin' ), array( 'Best return on spend', '1.83x', 'New Customer Offer' ) ),
-		'recs'     => array( 'Move budget from Buy 2 Get 1 Free to 15% Off Electronics', 'Scale the New Customer Offer, the best return on spend', 'Cap sitewide discounts at 20% to protect margin' ),
-		'chart'    => 'Promotion Performance: Sales vs. Return on Spend',
-		'legend'   => array( 'Gross sales', 'Margin under 5%', 'Net margin' ),
-		'bar_max'  => 100,
-		'bar_fmt'  => '$%sM',
-		'line_max' => 18,
-		'line_fmt' => '$%sM',
-		'rows'     => array( array( '25% Sitewide', 97.8, 7.79 ), array( 'Buy 2 Get 1', 93.5, 1.52, true ), array( '20% Apparel', 90.6, 6.77 ), array( '15% Electr.', 78.8, 16.19 ), array( 'BOGO Beauty', 49.1, 2.14, true ), array( 'Loyalty', 33.3, 5.69 ), array( 'New Customer', 16.7, 3.67 ) ),
-		'pie'      => array( 'Gross sales', '$459.9M' ),
-	),
-	array(
-		'title'    => 'Inventory root causes',
-		'question' => 'What are the primary root causes driving inventory inaccuracies and stockout exposure?',
-		'thinking' => 'Joining shrink and stockout events in Snowflake',
-		'thought'  => array( '153.6s', 11, false ),
-		'sql'      => "SELECT inventory_root_cause,\n       SUM(shrink_loss_amount) AS total_shrink_loss_amount,\n       SUM(lost_sales_amount) AS total_lost_sales_from_stockouts\nFROM retail.inventory_events\nGROUP BY inventory_root_cause\nORDER BY total_shrink_loss_amount DESC;",
-		'table'    => array(
-			'title' => 'Shrink Loss vs. Lost Sales by Inventory Root Cause',
-			'cols'  => array( 'INVENTORY_ROOT_CAUSE', 'TOTAL_SHRINK_LOSS_AMOUNT', 'TOTAL_LOST_SALES_FROM_STOCKOUTS' ),
-			'rows'  => array(
-				array( 'Theft & Shrink', '24577294.12', '63352963.7' ),
-				array( 'Scanning Errors', '17527248.32', '44944100.5' ),
-				array( 'Misplaced Inventory', '13188063.44', '33840502.8' ),
-				array( 'Delayed Returns Processing', '10197444.7', '20198495' ),
-				array( 'Damaged Goods Not Updated', '7268090.96', '14413495' ),
-			),
-		),
-		'summary'  => 'Stockouts cost <b>$176.7M</b> in lost sales against $72.8M of direct shrink, so unavailable inventory costs 2.4 times more than the loss itself. Together they leak <b>$249.5M</b> across the five root causes.',
-		'insights' => array( array( 'Lost sales', '$176.7M', 'From stockouts' ), array( 'Shrink loss', '$72.8M', 'Direct asset loss' ), array( 'Total leakage', '$249.5M', 'Across 5 root causes' ) ),
-		'recs'     => array( 'Target Theft & Shrink ($88.0M impact) with loss prevention', 'Overhaul scanning procedures to cut the $62.4M impact', 'Evaluate RFID and POS upgrades to automate tracking' ),
-		'chart'    => 'Shrink Loss vs. Lost Sales by Inventory Root Cause',
-		'legend'   => array( 'Shrink loss', 'Top 2 causes', 'Lost sales' ),
-		'bar_max'  => 30,
-		'bar_fmt'  => '$%sM',
-		'line_max' => 80,
-		'line_fmt' => '$%sM',
-		'rows'     => array( array( 'Theft & Shrink', 24.6, 63.35, true ), array( 'Scanning Errors', 17.5, 44.94, true ), array( 'Misplaced', 13.2, 33.84 ), array( 'Delayed Returns', 10.2, 20.2 ), array( 'Damaged Goods', 7.3, 14.41 ) ),
-		'pie'      => array( 'Shrink loss', '$72.8M' ),
-	),
-	array(
-		'title'    => 'Impulse buys and returns',
-		'question' => 'Which promotions are causing customers to buy impulsively and then return products later?',
-		'thinking' => 'Scoring promoted orders and returns in Snowflake',
-		'thought'  => array( '141.2s', 11, false ),
-		'sql'      => "SELECT promotion_name,\n       AVG(promoted_return_rate) AS avg_promoted_return_rate,\n       AVG(full_price_purchase_prob) AS avg_full_price_purchase_probability,\n       SUM(return_amount_usd) AS total_return_amount_usd\nFROM retail.promotion_returns\nGROUP BY promotion_name\nORDER BY avg_promoted_return_rate DESC;",
-		'table'    => array(
-			'title' => 'Promotion Return Rate vs. Full Price Purchase Probability',
-			'cols'  => array( 'PROMOTION_NAME', 'AVG_PROMOTED_RETURN_RATE', 'AVG_FULL_PRICE_PURCHASE_PROBABILITY', 'TOTAL_RETURN_AMOUNT_USD' ),
-			'rows'  => array(
-				array( '25% Off Sitewide', '0.28038244', '0.48729351', '30911231.47' ),
-				array( '20% Off Apparel', '0.27274388', '0.48995874', '23263486.1' ),
-				array( 'Buy 2 Get 1 Free', '0.23252175', '0.57548751', '20824098.26' ),
-				array( '15% Off Electronics', '0.18817559', '0.59060877', '14310500.94' ),
-				array( 'New Customer Offer', '0.18648172', '0.63463054', '4480315.34' ),
-				array( 'Loyalty Coupon', '0.14726859', '0.65604885', '6978947.73' ),
-				array( 'BOGO Beauty', '0.1444467', '0.63894233', '7311324.84' ),
-			),
-		),
-		'summary'  => '<b>25% Off Sitewide</b> and <b>20% Off Apparel</b> have the highest return rates (28.0% and 27.3%) and the lowest full-price purchase probability, under 49%. That pattern points to impulse buying followed by returns.',
-		'insights' => array( array( 'Highest return rate', '28.0%', '25% Off Sitewide' ), array( 'Returns from top 3', '$75.0M', '69% of all promo returns' ), array( 'Best full-price probability', '65.6%', 'Loyalty Coupon' ) ),
-		'recs'     => array( 'Tighten return windows on 25% Off Sitewide orders', 'Replace deep apparel discounts with loyalty offers', 'Flag repeat buy-and-return customers for review' ),
-		'chart'    => 'Promotion Return Rate vs. Full Price Purchase Probability',
-		'legend'   => array( 'Return rate', 'Above 23%', 'Full-price probability' ),
-		'bar_max'  => 30,
-		'bar_fmt'  => '%s%%',
-		'line_max' => 80,
-		'line_fmt' => '%s%%',
-		'rows'     => array( array( '25% Sitewide', 28.0, 48.7, true ), array( '20% Apparel', 27.3, 49.0, true ), array( 'Buy 2 Get 1', 23.3, 57.5, true ), array( '15% Electr.', 18.8, 59.1 ), array( 'New Customer', 18.6, 63.5 ), array( 'Loyalty', 14.7, 65.6 ), array( 'BOGO Beauty', 14.4, 63.9 ) ),
-		'pie'      => array( 'Returns', '$108.1M', array( 30.9, 23.3, 20.8, 14.3, 4.5, 7.0, 7.3 ), '$%sM' ),
-	),
-	array(
-		'title'    => 'Return fraud priorities',
-		'question' => 'What actions should our fraud operations and refund governance teams prioritize immediately?',
-		'thinking' => 'Tracing 74,670 return fraud events in Snowflake',
-		'thought'  => array( '253.2s', 11, false ),
-		'sql'      => "SELECT return_fraud_type, fraud_pattern, channel,\n       SUM(revenue_leakage) AS total_revenue_leakage,\n       COUNT(*) AS number_of_fraud_events\nFROM retail.return_fraud_events\nGROUP BY return_fraud_type, fraud_pattern, channel\nORDER BY total_revenue_leakage DESC;",
-		'table'    => array(
-			'title' => 'Total Revenue Leakage vs. Number of Fraud Events by Pattern',
-			'cols'  => array( 'RETURN_FRAUD_TYPE', 'FRAUD_PATTERN', 'CHANNEL', 'TOTAL_REVENUE_LEAKAGE', 'NUMBER_OF_FRAUD_EVENTS' ),
-			'rows'  => array(
-				array( 'Serial Return Abuse', 'Receipt Reuse Fraud', 'Ecommerce', '412844.67', '1853' ),
-				array( 'Empty Box Returns', 'Empty Box Returns', 'Ecommerce', '380649.36', '914' ),
-				array( 'Empty Box Returns', 'Receipt Reuse Fraud', 'In-Store', '355199.6', '875' ),
-				array( 'Receipt Fraud', 'Receipt Reuse Fraud', 'Buy Online Pick...', '324003.12', '1114' ),
-				array( 'Serial Return Abuse', 'Empty Box Returns', 'Ecommerce', '319707.96', '1472' ),
-			),
-		),
-		'summary'  => 'Fraud leakage reached <b>$22.6M</b> across 74,670 events. The top three fraud types drive 22.1% ($5.0M), so the risk is concentrated in a few <b>high-value patterns</b> that need targeted controls.',
-		'insights' => array( array( 'Fraud leakage', '$22.6M', '74,670 events' ), array( 'Top 3 fraud types', '$5.0M', '22.1% of leakage' ), array( 'Avg loss per event', '$303', 'Collusion averages $457' ) ),
-		'recs'     => array( 'Validate Ecommerce returns against receipt IDs', 'Add velocity checks on repeat returns per customer', 'Audit Employee Collusion cases, $457 per event' ),
-		'chart'    => 'Total Revenue Leakage vs. Number of Fraud Events by Pattern',
-		'legend'   => array( 'Revenue leakage', 'Largest pattern', 'Fraud events' ),
-		'bar_max'  => 3,
-		'bar_fmt'  => '$%sM',
-		'line_max' => 10,
-		'line_fmt' => '%sK',
-		'rows'     => array( array( 'Receipt Reuse', 2.9, 9.6, true ), array( 'Empty Box', 1.8, 6.1 ), array( 'Wardrobing', 1.0, 3.4 ), array( 'Product Switch', 0.92, 3.1 ), array( 'Counterfeit', 0.3, 1.0 ) ),
-		'pie'      => array( 'Leakage', '$6.9M' ),
-	),
-);
+// Industry verticals: Retail by default; each has its own agent and chats.
+$lv_verticals = include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-verticals.php';
+$lv_default   = 'retail';
 
-$lv_agent = array( 'name' => 'RETAIL_SHRINKAGE_AGENT', 'version' => 'v2', 'model' => 'Gemini 3.8 Flash' );
 
 $lv_recent = array(
 	array( 'title' => 'Sales performance for the Canada region', 'agent' => 'mistral_gbq_agent', 'db' => 'GBQ_CONN', 'yaml' => 'MIK_SALES_ANALYTICS.yaml', 'time' => 'Oct 27, 8:31 PM' ),
@@ -361,6 +239,11 @@ $lv_agents = array(
 		<symbol id="lv-bars" viewBox="0 0 24 24"><path d="M6 20v-7M12 20V5M18 20v-10"/></symbol>
 		<symbol id="lv-sliders" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></symbol>
 		<symbol id="lv-pointer" viewBox="0 0 24 24"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V12m0-1a1.5 1.5 0 0 1 3 0v4.5a5.5 5.5 0 0 1-5.5 5.5h-1A5.5 5.5 0 0 1 7 17l-2.3-4a1.5 1.5 0 0 1 2.6-1.5L9 14"/></symbol>
+		<symbol id="lv-heart" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.4a4.3 4.3 0 0 1 7.5 2.4C19.5 15.4 12 20 12 20z"/></symbol>
+		<symbol id="lv-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1 12H6z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></symbol>
+		<symbol id="lv-bank" viewBox="0 0 24 24"><path d="m3.5 9 8.5-5 8.5 5zM5 20.5h14M6.5 11v7M10 11v7M14 11v7M17.5 11v7"/></symbol>
+		<symbol id="lv-monitor" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="11.5" rx="1.8"/><path d="M9 20h6M12 16v4"/></symbol>
+		<symbol id="lv-nodes" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.1 8l3.8 8M16.9 8l-3.8 8"/></symbol>
 		<symbol id="lv-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
 		<symbol id="lv-pause" viewBox="0 0 24 24"><path class="lv-solid" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
 		<linearGradient id="lv-g-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b8cff"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
@@ -380,11 +263,13 @@ $lv_agents = array(
 				<?php endforeach; ?>
 			</nav>
 			<p class="lv-side-head">Chats</p>
-			<ul class="lv-chats">
-				<?php foreach ( $lv_chats as $i => $chat ) : ?>
-					<li><button type="button" class="lv-chat-item<?php echo 0 === $i ? ' is-active' : ''; ?>" data-lv-chat="<?php echo esc_attr( $i ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>><svg aria-hidden="true"><use href="#lv-chat"/></svg><span><?php echo esc_html( $chat['title'] ); ?></span></button></li>
-				<?php endforeach; ?>
-			</ul>
+			<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+				<ul class="lv-chats" data-lv-vertical="<?php echo esc_attr( $vkey ); ?>"<?php echo $lv_default === $vkey ? '' : ' hidden'; ?>>
+					<?php foreach ( $vertical['chats'] as $i => $chat ) : ?>
+						<li><button type="button" class="lv-chat-item<?php echo 0 === $i ? ' is-active' : ''; ?>" data-lv-chat="<?php echo esc_attr( $vkey . '-' . $i ); ?>"<?php echo 0 === $i ? ' aria-current="true"' : ''; ?>><svg aria-hidden="true"><use href="#lv-chat"/></svg><span><?php echo esc_html( $chat['title'] ); ?></span></button></li>
+					<?php endforeach; ?>
+				</ul>
+			<?php endforeach; ?>
 		</aside>
 
 		<div class="lv-main">
@@ -408,14 +293,25 @@ $lv_agents = array(
 				</section>
 
 				<section class="lv-view lv-chat is-active" data-lv-view="chat" aria-label="Chat">
-					<div class="lv-agent-bar">
-						<span class="lv-agent"><svg class="is-spark" aria-hidden="true"><use href="#lv-spark"/></svg><?php echo esc_html( $lv_agent['name'] ); ?> <em><?php echo esc_html( $lv_agent['version'] ); ?></em> <span class="lv-snow"><img src="<?php echo esc_url( $lv_img . 'tech-logos/snowflake-mark.png' ); ?>" width="182" height="182" loading="lazy" decoding="async" title="Snowflake" alt="Snowflake logo">snowflake</span></span>
-						<span class="lv-agent"><svg class="is-spark" aria-hidden="true"><use href="#lv-spark"/></svg><?php echo esc_html( $lv_agent['model'] ); ?></span>
-						<span class="lv-agent is-extra"><svg aria-hidden="true"><use href="#lv-grid"/></svg>Default Layout</span>
-						<span class="lv-agent is-extra"><svg aria-hidden="true"><use href="#lv-sliders"/></svg>Thresholds</span>
-					</div>
-					<?php foreach ( $lv_chats as $i => $chat ) : ?>
-						<div class="lv-convo" data-lv-thread="<?php echo esc_attr( $i ); ?>"<?php echo 0 === $i ? '' : ' hidden'; ?>>
+					<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+						<div class="lv-agent-bar" data-lv-vertical="<?php echo esc_attr( $vkey ); ?>" data-agent="<?php echo esc_attr( $vertical['agent'] ); ?>"<?php echo $lv_default === $vkey ? '' : ' hidden'; ?>>
+							<span class="lv-agent"><svg class="is-spark" aria-hidden="true"><use href="#lv-spark"/></svg><?php echo esc_html( $vertical['agent'] ); ?> <em>v2</em> <span class="lv-snow"><img src="<?php echo esc_url( $lv_img . $vertical['source'][1] ); ?>" width="<?php echo esc_attr( $vertical['source'][2] ); ?>" height="<?php echo esc_attr( $vertical['source'][3] ); ?>" loading="lazy" decoding="async" title="<?php echo esc_attr( ucfirst( $vertical['source'][0] ) ); ?>" alt="<?php echo esc_attr( ucfirst( $vertical['source'][0] ) . ' logo' ); ?>"><?php echo esc_html( $vertical['source'][0] ); ?></span></span>
+							<span class="lv-agent"><svg class="is-spark" aria-hidden="true"><use href="#lv-spark"/></svg>Gemini 3.8 Flash</span>
+							<span class="lv-agent is-extra"><svg aria-hidden="true"><use href="#lv-grid"/></svg>Default Layout</span>
+							<span class="lv-agent is-extra"><svg aria-hidden="true"><use href="#lv-sliders"/></svg>Thresholds</span>
+						</div>
+					<?php endforeach; ?>
+					<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+						<?php foreach ( $vertical['chats'] as $i => $chat ) : ?>
+						<?php
+						$lv_rows = isset( $chat['table']['rows'] ) ? $chat['table']['rows'] : array_map(
+							function ( $row ) use ( $chat ) {
+								return array( $row[0], sprintf( $chat['bar_fmt'], $row[1] ), sprintf( $chat['line_fmt'], $row[2] ) );
+							},
+							$chat['rows']
+						);
+						?>
+						<div class="lv-convo" data-lv-thread="<?php echo esc_attr( $vkey . '-' . $i ); ?>"<?php echo ( $lv_default === $vkey && 0 === $i ) ? '' : ' hidden'; ?>>
 							<div class="lv-thread">
 								<p class="lv-ask" data-lv-ask><?php echo esc_html( $chat['question'] ); ?></p>
 								<div class="lv-reply">
@@ -432,8 +328,8 @@ $lv_agents = array(
 												<table>
 													<thead><tr><?php foreach ( $chat['table']['cols'] as $col ) : ?><th scope="col"><?php echo esc_html( $col ); ?></th><?php endforeach; ?></tr></thead>
 													<tbody>
-														<?php foreach ( array_slice( $chat['table']['rows'], 0, 5 ) as $row ) : ?>
-															<tr><?php foreach ( $row as $c => $cell ) : ?><td<?php echo is_numeric( $cell ) ? ' class="is-num"' : ''; ?>><?php echo esc_html( $cell ); ?></td><?php endforeach; ?></tr>
+														<?php foreach ( array_slice( $lv_rows, 0, 5 ) as $row ) : ?>
+															<tr><?php foreach ( $row as $c => $cell ) : ?><td<?php echo $c ? ' class="is-num"' : ''; ?>><?php echo esc_html( $cell ); ?></td><?php endforeach; ?></tr>
 														<?php endforeach; ?>
 													</tbody>
 												</table>
@@ -474,8 +370,9 @@ $lv_agents = array(
 								</div>
 							</div>
 						</div>
+						<?php endforeach; ?>
 					<?php endforeach; ?>
-					<div class="lv-input"><span data-lv-input>Ask <?php echo esc_html( $lv_agent['name'] ); ?>...</span><span class="lv-send" data-lv-target="send"><svg aria-hidden="true"><use href="#lv-send"/></svg></span></div>
+					<div class="lv-input"><span data-lv-input>Ask <?php echo esc_html( $lv_verticals[ $lv_default ]['agent'] ); ?>...</span><span class="lv-send" data-lv-target="send"><svg aria-hidden="true"><use href="#lv-send"/></svg></span></div>
 				</section>
 
 				<section class="lv-view lv-books" data-lv-view="storybooks" aria-label="Storybooks" hidden>
@@ -602,5 +499,12 @@ $lv_agents = array(
 		</div>
 
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
+	</div>
+
+	<div class="lv-verticals" role="group" aria-label="See Conversa for your industry">
+		<p>See it for your industry</p>
+		<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+			<button type="button" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-pressed="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"><span aria-hidden="true"><svg><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg></span><?php echo esc_html( $vertical['label'] ); ?></button>
+		<?php endforeach; ?>
 	</div>
 </div>

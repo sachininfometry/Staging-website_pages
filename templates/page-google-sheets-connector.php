@@ -259,7 +259,7 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 		<div class="igs-shell igs-ov">
 			<div class="igs-ov-copy" data-igs-reveal>
 				<span class="igs-kicker">Overview</span>
-				<h2 id="igs-overview-title">Your critical business data already lives in spreadsheets</h2>
+				<h2 id="igs-overview-title">Your critical business data already lives in <em>spreadsheets</em></h2>
 				<p>Informatica Cloud Connector customers rely on Google Sheets to store critical data sets, which need seamless integration into Enterprise Data Warehouses, Cloud Applications and Data Lakes.</p>
 				<ul class="igs-ov-sets" aria-label="Data sets kept in Google Sheets">
 					<?php foreach ( array( 'Sales Forecasts', 'Goals', 'Product Masters', 'SKUs', 'Lab Results', 'Headcount Estimates', 'OpEx Budgets' ) as $set ) : ?>
@@ -267,30 +267,50 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 					<?php endforeach; ?>
 				</ul>
 				<div class="igs-ov-points">
-					<div><span><svg><use href="#igs-sync"/></svg></span><p><b>Read &amp; write, source or target</b>in synchronization tasks, mapping tasks and data integrations.</p></div>
-					<div><span><svg><use href="#igs-bolt"/></svg></span><p><b>Future-ready</b>for automation-driven, intelligent Agentic AI data flows.</p></div>
+					<div><span><svg><use href="#igs-sync"/></svg></span><b>Read &amp; write, source or target</b><p>In synchronization tasks, mapping tasks and data integrations.</p></div>
+					<div><span><svg><use href="#igs-bolt"/></svg></span><b>Future-ready</b><p>For automation-driven, intelligent Agentic AI data flows.</p></div>
 				</div>
 			</div>
 
 			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
-				<div class="igs-ov-files">
-					<?php
-					$ov_files = array( array( 'FY27_Sales_Forecast', 'Q1 Goal' ), array( 'Product_Master_SKUs', 'SKU' ), array( 'Headcount_Plan', 'Hires' ), array( 'OpEx_Budget', 'OpEx' ) );
-					foreach ( $ov_files as $i => $file ) :
-						?>
-						<div class="igs-ov-file is-f<?php echo (int) $i; ?>">
-							<span><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
-							<b><?php echo esc_html( $file[0] ); ?></b>
-							<i class="igs-ov-bars"><i></i><i></i><i></i><i></i></i>
-						</div>
-					<?php endforeach; ?>
+				<svg class="igs-ov-wires" viewBox="0 0 500 400" preserveAspectRatio="none" focusable="false">
+					<defs>
+						<linearGradient id="igs-ov-g" x1="0" x2="1"><stop offset="0" stop-color="#2ed57d"/><stop offset="1" stop-color="#7c5cff"/></linearGradient>
+					</defs>
+					<path id="igs-ov-p0" class="is-in" d="M196 200 H222"/>
+					<path id="igs-ov-p1" d="M278 200 C305 200 300 84 330 84"/>
+					<path id="igs-ov-p2" d="M278 200 H330"/>
+					<path id="igs-ov-p3" d="M278 200 C305 200 300 316 330 316"/>
+					<circle class="igs-ov-dot is-in" r="3.5"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#igs-ov-p0"/></animateMotion></circle>
+					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#igs-ov-p1"/></animateMotion></circle>
+					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".6s"><mpath href="#igs-ov-p2"/></animateMotion></circle>
+					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#igs-ov-p3"/></animateMotion></circle>
+				</svg>
+
+				<span class="igs-ov-label is-left">Your spreadsheets</span>
+				<span class="igs-ov-label is-right">Your enterprise</span>
+
+				<div class="igs-ov-deck">
+					<div class="igs-ov-sheet is-back2"><header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>OpEx_Budget</b></header></div>
+					<div class="igs-ov-sheet is-back1"><header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>Headcount_Plan</b></header></div>
+					<div class="igs-ov-sheet is-front">
+						<header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>FY27_Sales_Forecast</b></header>
+						<div class="igs-ov-rows"><i></i><i></i><i></i><i></i></div>
+						<svg class="igs-ov-spark" viewBox="0 0 100 30" preserveAspectRatio="none" focusable="false"><path d="M0 24 18 20 34 22 50 12 66 15 82 6 100 8"/></svg>
+					</div>
 				</div>
-				<div class="igs-ov-link"><span></span><em>Infometry Connector · IDMC</em><span></span></div>
-				<div class="igs-ov-dest">
-					<div><svg><use href="#igs-db"/></svg><b>Data Warehouses</b></div>
-					<div><svg><use href="#igs-cloud"/></svg><b>Cloud Applications</b></div>
-					<div><svg><use href="#igs-layers"/></svg><b>Data Lakes</b></div>
+
+				<div class="igs-ov-core">
+					<span class="igs-ov-orbit"></span>
+					<span class="igs-ov-orb"><svg><use href="#igs-bolt"/></svg></span>
+					<small>Infometry<br>Connector</small>
 				</div>
+
+				<ul class="igs-ov-dest">
+					<li><span><svg><use href="#igs-db"/></svg></span><b>Data Warehouses</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-sqlserver.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-oracle.png', '' ); ?></i></li>
+					<li><span><svg><use href="#igs-cloud"/></svg></span><b>Cloud Applications</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-salesforce.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-netsuite.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-workday.png', '' ); ?></i></li>
+					<li><span><svg><use href="#igs-layers"/></svg></span><b>Data Lakes</b><i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-databricks.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-aws.png', '' ); ?><?php infometry_ct_igs_img( $img . 'google-sheets/eco-azure.png', '' ); ?></i></li>
+				</ul>
 			</div>
 		</div>
 	</section>

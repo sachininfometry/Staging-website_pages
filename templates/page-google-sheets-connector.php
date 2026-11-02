@@ -150,12 +150,18 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start 30-Day Free Trial <svg><use href="#igs-arrow"/></svg></a>
 					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
 				</div>
-				<ul class="igs-ops" aria-label="Supported operations">
-					<?php foreach ( $igs_ops as $op ) : ?>
-						<li><?php echo esc_html( $op ); ?></li>
-					<?php endforeach; ?>
-				</ul>
-				<p class="igs-hero-links"><a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace <svg><use href="#igs-out"/></svg></a><a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg class="is-star"><use href="#igs-star"/></svg> G2 Product Review <svg><use href="#igs-out"/></svg></a></p>
+				<div class="igs-ops-bar">
+					<span>Operations</span>
+					<ul class="igs-ops" aria-label="Supported operations">
+						<?php foreach ( $igs_ops as $op ) : ?>
+							<li><?php echo esc_html( $op ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
+				<div class="igs-proof">
+					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><span><b>Informatica Marketplace</b><small>Certified listing</small></span><svg><use href="#igs-out"/></svg></a>
+					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon is-g2"><svg><use href="#igs-star"/></svg></span><span><b>G2 Product Review</b><small>See customer feedback</small></span><svg><use href="#igs-out"/></svg></a>
+				</div>
 			</div>
 
 			<div class="igs-flow" data-igs-live aria-label="Animated example: Google Sheets rows sync through the Infometry connector in Informatica IDMC into enterprise sources and targets such as Snowflake, Salesforce, NetSuite and Power BI">
@@ -211,7 +217,6 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 					<span><svg><use href="#igs-check"/></svg></span>
 					<div><b>Mapping task completed</b><small>Synced · Scheduled daily 6:00 AM</small></div>
 				</div>
-				<button type="button" class="igs-flow-play" data-igs-play aria-label="Pause the animation"><svg class="is-pause"><use href="#igs-pause"/></svg><svg class="is-play"><use href="#igs-play"/></svg></button>
 			</div>
 		</div>
 

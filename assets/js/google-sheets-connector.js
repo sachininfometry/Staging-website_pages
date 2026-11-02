@@ -51,12 +51,10 @@
     var fx = live.querySelector('[data-igs-fx]');
     var toast = live.querySelector('[data-igs-toast]');
     var wires = live.querySelector('.igs-flow-wires');
-    var playButton = live.querySelector('[data-igs-play]');
     var fxIdle = fx.textContent;
     var timers = [];
     var tick = 0;
     var running = false;
-    var userPaused = false;
     var onScreen = false;
     var active = -1;
     var flowing = false;
@@ -75,15 +73,27 @@
         var mx = (x1 + x2) / 2;
         return 'M' + f(x1) + ',' + f(y1) + ' C' + f(mx) + ',' + f(y1) + ' ' + f(mx) + ',' + f(y2) + ' ' + f(x2) + ',' + f(y2);
       };
-      var sx = c.left + c.width / 2 - box.left;
+      var o = toast.getBoundingClientRect();
+      // A wire, plus a data packet travelling along it while it carries data.
+      var wire = function (d, cls, packet) {
+        var out = '<path class="' + cls + '" d="' + d + '"/>';
+        if (packet && !reduce) {
+          out += '<circle class="igs-packet ' + cls + '" r="4.5"><animateMotion dur="1.1s" repeatCount="indefinite" path="' + d + '"/></circle>';
+        }
+        return out;
+      };
+      var cx = c.left + c.width / 2 - box.left;
       var ox = c.right - box.left;
       var oy = c.top + c.height / 2 - box.top;
-      var paths = '<path class="is-in' + (flowing ? ' is-on' : '') + '" d="M' + f(sx) + ',' + f(s.bottom - box.top) + ' V' + f(c.top - box.top) + '"/>';
-      paths += '<path d="' + curve(ox, oy, e.left - box.left, e.top + e.height / 2 - box.top) + '"/>';
+      var ex = e.left + e.width / 2 - box.left;
+      var paths = wire('M' + f(cx) + ',' + f(s.bottom - box.top) + ' V' + f(c.top - box.top), 'is-in' + (flowing ? ' is-on' : ''), flowing);
+      paths += wire(curve(ox, oy, e.left - box.left, e.top + e.height / 2 - box.top), '', false);
       if (active >= 0) {
         var t = targets[active].getBoundingClientRect();
-        paths += '<path class="is-on" d="' + curve(ox, oy, t.left + t.width / 2 - box.left, t.top + t.height / 2 - box.top) + '"/>';
+        paths += wire(curve(ox, oy, t.left + t.width / 2 - box.left, t.top + t.height / 2 - box.top), 'is-on', true);
       }
+      var done = toast.classList.contains('is-on');
+      paths += wire('M' + f(ex) + ',' + f(e.bottom - box.top) + ' V' + f(o.top - box.top), 'is-done' + (done ? ' is-on' : ''), done && running);
       wires.setAttribute('viewBox', '0 0 ' + f(box.width) + ' ' + f(box.height));
       wires.innerHTML = paths;
     };
@@ -141,8 +151,8 @@
           fx.textContent = fxIdle;
           flowing = false;
           active = -1;
-          drawWires();
           toast.classList.add('is-on');
+          drawWires();
         }
       });
       later(r === rows.length - 1 ? 4300 : 2150, function () {
@@ -165,21 +175,14 @@
     };
 
     var sync = function () {
-      var go = onScreen && !document.hidden && !userPaused;
+      var go = onScreen && !document.hidden;
       if (go && !running) {
         running = true;
         step();
       } else if (!go && running) {
         stop();
       }
-      live.classList.toggle('is-paused', userPaused);
-      playButton.setAttribute('aria-label', userPaused ? 'Play the animation' : 'Pause the animation');
     };
-
-    playButton.addEventListener('click', function () {
-      userPaused = !userPaused;
-      sync();
-    });
 
     if (window.ResizeObserver) {
       new window.ResizeObserver(drawWires).observe(live);
@@ -192,8 +195,8 @@
     drawWires();
 
     if (reduce) {
-      userPaused = true;
-      sync();
+      toast.classList.add('is-on');
+      drawWires();
     } else if (canObserve) {
       live.classList.add('is-anim');
       new IntersectionObserver(function (entries) {

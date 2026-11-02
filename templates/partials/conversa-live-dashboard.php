@@ -503,8 +503,16 @@ $lv_agents = array(
 
 	<div class="lv-verticals" role="group" aria-label="See Conversa for your industry">
 		<p>See it for your industry</p>
-		<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
-			<button type="button" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-pressed="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"><span aria-hidden="true"><svg><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg></span><?php echo esc_html( $vertical['label'] ); ?></button>
-		<?php endforeach; ?>
+		<div class="lv-vert-viewport">
+			<div class="lv-vert-track">
+				<?php foreach ( array( false, true ) as $lv_copy ) : ?>
+					<div class="lv-vert-group"<?php echo $lv_copy ? ' aria-hidden="true"' : ''; ?>>
+						<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
+							<button type="button" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-pressed="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"<?php echo $lv_copy ? ' tabindex="-1"' : ''; ?>><span aria-hidden="true"><svg><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg></span><?php echo esc_html( $vertical['label'] ); ?></button>
+						<?php endforeach; ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
 	</div>
 </div>

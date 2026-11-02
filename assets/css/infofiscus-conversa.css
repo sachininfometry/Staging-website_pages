@@ -15976,3 +15976,23 @@ body .infometry-conversa-product .icp-live .lv-verticals button { width: 100%; m
 @media (min-width: 1101px) {
   body .infometry-conversa-product .icp-hero .icp-live { margin-bottom: 40px; }
 }
+
+/* Industry switcher slides like the LLM logo strip; hover or focus pauses it. The second group is a copy for a seamless loop. */
+body .infometry-conversa-product .icp-live .lv-verticals { display: block; max-width: none; }
+body .infometry-conversa-product .icp-live .lv-verticals > p { margin-bottom: 10px; }
+body .infometry-conversa-product .icp-live .lv-vert-viewport { overflow: hidden; padding: 4px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+body .infometry-conversa-product .icp-live .lv-vert-track { display: flex; width: max-content; animation: lv-marquee 26s linear infinite; }
+body .infometry-conversa-product .icp-live .lv-vert-viewport:hover .lv-vert-track,
+body .infometry-conversa-product .icp-live .lv-vert-viewport:focus-within .lv-vert-track { animation-play-state: paused; }
+body .infometry-conversa-product .icp-live .lv-vert-group { display: flex; flex: none; gap: 10px; padding-right: 10px; }
+body .infometry-conversa-product .icp-live .lv-verticals button { width: auto; overflow: visible; }
+
+@keyframes lv-marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .infometry-conversa-product .icp-live .lv-vert-track { animation: none; }
+  body .infometry-conversa-product .icp-live .lv-vert-viewport { overflow-x: auto; }
+  body .infometry-conversa-product .icp-live .lv-vert-group[aria-hidden="true"] { display: none; }
+}

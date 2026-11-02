@@ -1449,3 +1449,358 @@
     }
   });
 }());
+
+/*
+ * Business decision journey: plays the question, the business context feeding
+ * the engine, the four reasoning steps and the decision-ready outputs as four
+ * chapters, looping while on screen. The chapter buttons jump to any part.
+ */
+(function () {
+  'use strict';
+
+  var jr = document.querySelector('[data-icp-journey]');
+  if (!jr) {
+    return;
+  }
+
+  function $(selector) {
+    return jr.querySelector(selector);
+  }
+
+  function all(selector) {
+    return Array.prototype.slice.call(jr.querySelectorAll(selector));
+  }
+
+  var ask = $('.jr-ask');
+  var typed = $('[data-jr-typed]');
+  var question = typed.textContent;
+  var statusText = $('[data-jr-status]');
+  var engine = $('.jr-engine');
+  var orb = $('.jr-orb');
+  var flow = $('.jr-flow');
+  var wires = $('.jr-wires');
+  var chips = all('.jr-context li');
+  var stepList = $('.jr-steps');
+  var steps = all('.jr-steps li');
+  var outputs = all('.jr-outputs article');
+  var count = $('[data-jr-count]');
+  var chapterButtons = all('[data-jr-go]');
+  var playButton = $('[data-jr-play]');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [];
+  var chapter = 0;
+  var playing = false;
+  var userPaused = false;
+  var onScreen = false;
+
+  function later(ms, fn) {
+    timers.push(window.setTimeout(fn, ms));
+  }
+
+  function stopTimers() {
+    timers.forEach(window.clearTimeout);
+    timers = [];
+  }
+
+  function status(text) {
+    statusText.textContent = text;
+  }
+
+  function setCount(value) {
+    count.textContent = '−' + value;
+  }
+
+  // Each wire runs from the right edge of its source to the left edge of its
+  // target; when the target sits below (narrower layouts) it drops from the bottom.
+  function wire(from, to, cls) {
+    var box = flow.getBoundingClientRect();
+    var a = from.getBoundingClientRect();
+    var b = to.getBoundingClientRect();
+    var d;
+    if (b.left >= a.right - 2) {
+      var x1 = a.right - box.left;
+      var y1 = a.top + a.height / 2 - box.top;
+      var x2 = b.left - box.left;
+      var y2 = b.top + b.height / 2 - box.top;
+      var mx = (x1 + x2) / 2;
+      d = 'M' + x1.toFixed(1) + ',' + y1.toFixed(1) + ' C' + mx.toFixed(1) + ',' + y1.toFixed(1) + ' ' + mx.toFixed(1) + ',' + y2.toFixed(1) + ' ' + x2.toFixed(1) + ',' + y2.toFixed(1);
+    } else {
+      var sx = a.left + a.width / 2 - box.left;
+      var sy = a.bottom - box.top;
+      var tx = b.left + b.width / 2 - box.left;
+      var ty = b.top - box.top;
+      var my = (sy + ty) / 2;
+      d = 'M' + sx.toFixed(1) + ',' + sy.toFixed(1) + ' C' + sx.toFixed(1) + ',' + my.toFixed(1) + ' ' + tx.toFixed(1) + ',' + my.toFixed(1) + ' ' + tx.toFixed(1) + ',' + ty.toFixed(1);
+    }
+    var busy = to === stepList ? $('.jr-steps .is-active') : to.classList.contains('is-active');
+    var lit = busy || to.classList.contains('is-on') || to.classList.contains('is-done') || from.classList.contains('is-on') ||
+      (to === stepList && $('.jr-steps .is-done'));
+    var animated = jr.classList.contains('is-anim');
+    var path = '<path class="jr-wire ' + cls + (lit || !animated ? ' is-on' : '') + '" d="' + d + '"/>';
+    if (animated && (from.classList.contains('is-on') || busy)) {
+      path += '<path class="jr-wire-flow ' + cls + '" d="' + d + '"/>';
+    }
+    return path;
+  }
+
+  function drawWires() {
+    if (!flow.offsetWidth || window.getComputedStyle(wires).display === 'none') {
+      return;
+    }
+    var box = flow.getBoundingClientRect();
+    var paths = '';
+    chips.forEach(function (chip) {
+      paths += wire(chip, orb, 'is-in');
+    });
+    // Steps beside the engine get a wire each; stacked under it, one wire feeds the block.
+    if (stepList.getBoundingClientRect().left >= orb.getBoundingClientRect().right - 2) {
+      steps.forEach(function (step) {
+        paths += wire(orb, step, 'is-out');
+      });
+    } else {
+      paths += wire(orb, stepList, 'is-out');
+    }
+    wires.setAttribute('viewBox', '0 0 ' + box.width.toFixed(1) + ' ' + box.height.toFixed(1));
+    wires.innerHTML = paths;
+  }
+
+  // Chapter n: reset() is the state before it plays, done() the state after.
+  var CHAPTERS = [
+    {
+      ms: 2600,
+      reset: function () {
+        typed.textContent = '';
+        ask.classList.remove('is-sent', 'is-typing');
+      },
+      play: function () {
+        status('Asking a question');
+        ask.classList.add('is-typing');
+        var step = 38;
+        for (var i = 1; i <= question.length; i += 1) {
+          (function (n) {
+            later(n * step, function () {
+              typed.textContent = question.slice(0, n);
+            });
+          }(i));
+        }
+        later(question.length * step + 250, function () {
+          ask.classList.remove('is-typing');
+          ask.classList.add('is-sent');
+        });
+      },
+      done: function () {
+        typed.textContent = question;
+        ask.classList.remove('is-typing');
+        ask.classList.add('is-sent');
+      }
+    },
+    {
+      ms: 2600,
+      reset: function () {
+        engine.classList.remove('is-on', 'is-thinking');
+        chips.forEach(function (chip) { chip.classList.remove('is-on'); });
+      },
+      play: function () {
+        status('Reading business context');
+        engine.classList.add('is-on', 'is-thinking');
+        chips.forEach(function (chip, i) {
+          later(250 + i * 300, function () {
+            chip.classList.add('is-on');
+            drawWires();
+          });
+        });
+      },
+      done: function () {
+        engine.classList.add('is-on');
+        chips.forEach(function (chip) { chip.classList.add('is-on'); });
+      }
+    },
+    {
+      ms: 4900,
+      reset: function () {
+        steps.forEach(function (step) { step.classList.remove('is-done', 'is-active'); });
+      },
+      play: function () {
+        engine.classList.add('is-thinking');
+        steps.forEach(function (step, i) {
+          later(i * 1150, function () {
+            status('Investigating · step ' + (i + 1) + ' of ' + steps.length);
+            if (i) {
+              steps[i - 1].classList.remove('is-active');
+              steps[i - 1].classList.add('is-done');
+            }
+            step.classList.add('is-active');
+            drawWires();
+          });
+        });
+        later(steps.length * 1150, function () {
+          steps[steps.length - 1].classList.remove('is-active');
+          steps[steps.length - 1].classList.add('is-done');
+          drawWires();
+        });
+      },
+      done: function () {
+        steps.forEach(function (step) {
+          step.classList.remove('is-active');
+          step.classList.add('is-done');
+        });
+      }
+    },
+    {
+      ms: 5600,
+      reset: function () {
+        outputs.forEach(function (output) { output.classList.remove('is-on'); });
+        setCount(0);
+      },
+      play: function () {
+        status('Decision ready');
+        engine.classList.remove('is-thinking');
+        outputs.forEach(function (output, i) {
+          later(i * 450, function () { output.classList.add('is-on'); });
+        });
+        var target = parseInt(count.getAttribute('data-jr-count'), 10);
+        for (var v = 1; v <= target; v += 1) {
+          (function (n) {
+            later(n * 50, function () { setCount(n); });
+          }(v));
+        }
+      },
+      done: function () {
+        engine.classList.remove('is-thinking');
+        outputs.forEach(function (output) { output.classList.add('is-on'); });
+        setCount(count.getAttribute('data-jr-count'));
+        status('Decision ready');
+      }
+    }
+  ];
+
+  function setProgress(n, runMs) {
+    chapterButtons.forEach(function (button, i) {
+      var bar = button.querySelector('b');
+      button.classList.toggle('is-done', i < n || (i === n && !runMs));
+      button.classList.toggle('is-current', i === n);
+      if (i === n && runMs) {
+        bar.style.transition = 'none';
+        bar.style.width = '0';
+        void bar.offsetWidth;
+        bar.style.transition = 'width ' + runMs + 'ms linear';
+        bar.style.width = '100%';
+      } else {
+        bar.style.transition = 'none';
+        bar.style.width = '';
+      }
+    });
+  }
+
+  // Lay everything out as it stands just before chapter n.
+  function seek(n) {
+    stopTimers();
+    for (var i = CHAPTERS.length - 1; i >= n; i -= 1) {
+      CHAPTERS[i].reset();
+    }
+    for (var j = 0; j < n; j += 1) {
+      CHAPTERS[j].done();
+    }
+    chapter = n;
+  }
+
+  function playFrom(n) {
+    seek(n);
+    playing = true;
+    jr.classList.add('is-playing');
+    playButton.setAttribute('aria-label', 'Pause the journey');
+    setProgress(n, CHAPTERS[n].ms);
+    CHAPTERS[n].play();
+    drawWires();
+    later(CHAPTERS[n].ms, function () {
+      playFrom((n + 1) % CHAPTERS.length);
+    });
+  }
+
+  function pause() {
+    stopTimers();
+    playing = false;
+    jr.classList.remove('is-playing');
+    playButton.setAttribute('aria-label', 'Play the journey');
+    chapterButtons.forEach(function (button) {
+      var bar = button.querySelector('b');
+      if (button.classList.contains('is-current')) {
+        bar.style.width = window.getComputedStyle(bar).width;
+        bar.style.transition = 'none';
+      }
+    });
+  }
+
+  // A chapter shown without playing it: everything up to and including it finished.
+  function show(n) {
+    seek(n);
+    CHAPTERS[n].done();
+    status(['Asking a question', 'Reading business context', 'Investigation complete', 'Decision ready'][n]);
+    setProgress(n, 0);
+    drawWires();
+  }
+
+  playButton.addEventListener('click', function () {
+    if (playing) {
+      userPaused = true;
+      pause();
+    } else {
+      userPaused = false;
+      playFrom(chapter);
+    }
+  });
+
+  chapterButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      var n = parseInt(button.getAttribute('data-jr-go'), 10);
+      if (reduce || userPaused) {
+        show(n);
+      } else {
+        playFrom(n);
+      }
+    });
+  });
+
+  if (window.ResizeObserver) {
+    new window.ResizeObserver(drawWires).observe(flow);
+  } else {
+    window.addEventListener('resize', drawWires);
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(drawWires);
+  }
+
+  // Reduced motion: everything finished and still; the chapters show each part.
+  if (reduce) {
+    jr.classList.add('is-anim');
+    show(CHAPTERS.length - 1);
+    return;
+  }
+
+  jr.classList.add('is-anim');
+  seek(0);
+  setProgress(0, 0);
+  chapterButtons[0].classList.remove('is-done');
+  drawWires();
+
+  // Play while on screen and the tab is visible; a paused chapter restarts on return.
+  function sync() {
+    var on = onScreen && !document.hidden;
+    if (on && !playing && !userPaused) {
+      playFrom(chapter);
+    } else if (!on && playing) {
+      pause();
+    }
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      onScreen = entries.some(function (entry) { return entry.isIntersecting; });
+      sync();
+    }, { threshold: 0.35 }).observe(jr);
+  } else {
+    playFrom(0);
+  }
+
+  document.addEventListener('visibilitychange', sync);
+}());

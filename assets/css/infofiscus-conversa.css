@@ -16018,3 +16018,182 @@ body .infometry-conversa-product .icp-live .lv-verticals .is-supply { --c: #f472
 /* Each industry is a different client: its signed-in user's avatar takes the industry colour. */
 body .infometry-conversa-product .icp-live .lv-top .lv-avatar { background: linear-gradient(135deg, var(--lv-accent), #6c5cff); color: #fff; transition: background .4s ease; }
 body .infometry-conversa-product .icp-live .lv-user-name { white-space: nowrap; }
+
+/* Business decision journey (introduction): a dark product window that plays question -> context -> reasoning -> decision
+   like a short video, with chapter buttons to jump around. The older .icp-architecture frame styling is neutralised here. */
+body .infometry-conversa-product .icp-intro-video-frame.icp-architecture-frame.icp-jr-frame { height: auto !important; padding: 0 !important; overflow: visible !important; border: 0 !important; border-radius: 20px !important; background: transparent !important; box-shadow: none !important; }
+body .infometry-conversa-product .icp-jr { position: relative; overflow: hidden; border: 1px solid rgba(120, 160, 255, .3); border-radius: 20px; background: radial-gradient(circle at 50% 42%, rgba(64, 112, 255, .22), transparent 38%), radial-gradient(circle at 100% 0, rgba(124, 92, 255, .2), transparent 34%), linear-gradient(160deg, #0a1640, #060e2e 60%, #050b26); box-shadow: 0 30px 70px rgba(14, 36, 92, .28), 0 0 0 7px rgba(93, 145, 255, .07); color: #dbe5ff; font-size: 14px; font-size: clamp(12.5px, calc(100cqw / 48), 15.5px); line-height: 1.4; text-align: left; }
+body .infometry-conversa-product .icp-jr::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(130, 170, 255, .16) 1px, transparent 1.3px); background-size: 18px 18px; mask-image: radial-gradient(circle at 50% 45%, #000, transparent 75%); pointer-events: none; }
+body .infometry-conversa-product .icp-jr > * { position: relative; }
+body .infometry-conversa-product .icp-jr svg { display: block; max-width: none; }
+body .infometry-conversa-product .icp-jr .jr-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Window bar */
+body .infometry-conversa-product .icp-jr .jr-chrome { display: flex; align-items: center; gap: .8em; padding: .75em 1.1em; border-bottom: 1px solid rgba(150, 180, 255, .13); background: rgba(255, 255, 255, .025); }
+body .infometry-conversa-product .icp-jr .jr-lights { display: flex; gap: .4em; }
+body .infometry-conversa-product .icp-jr .jr-lights i { width: .62em; height: .62em; border-radius: 50%; background: #ff6f6f; }
+body .infometry-conversa-product .icp-jr .jr-lights i:nth-child(2) { background: #ffc655; }
+body .infometry-conversa-product .icp-jr .jr-lights i:nth-child(3) { background: #50d49a; }
+body .infometry-conversa-product .icp-jr .jr-chrome strong { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: .95em; font-weight: 500; letter-spacing: .01em; white-space: nowrap; }
+body .infometry-conversa-product .icp-jr .jr-status { display: flex; align-items: center; gap: .45em; min-width: 0; margin-left: auto; color: #a9bbe4; font-size: .8em; font-weight: 600; white-space: nowrap; }
+body .infometry-conversa-product .icp-jr .jr-status i { width: .5em; height: .5em; flex: none; border-radius: 50%; background: #2dd48f; box-shadow: 0 0 0 0 rgba(45, 212, 143, .6); }
+body .infometry-conversa-product .icp-jr.is-playing .jr-status i { animation: jr-ping 1.4s ease-out infinite; }
+body .infometry-conversa-product .icp-jr .jr-play { display: grid; width: 2.2em; height: 2.2em; flex: none; place-items: center; margin: 0; padding: 0; border: 1px solid rgba(150, 190, 255, .35); border-radius: 50%; background: rgba(78, 161, 255, .16); color: #fff; cursor: pointer; transition: background .2s ease, transform .2s ease; }
+body .infometry-conversa-product .icp-jr .jr-play:hover { background: rgba(78, 161, 255, .32); transform: scale(1.06); }
+body .infometry-conversa-product .icp-jr .jr-play:focus-visible,
+body .infometry-conversa-product .icp-jr .jr-chapters button:focus-visible { outline: 2px solid #7cc0ff; outline-offset: 2px; }
+body .infometry-conversa-product .icp-jr .jr-play svg { width: 1em; height: 1em; fill: currentColor; }
+body .infometry-conversa-product .icp-jr .jr-icon-pause,
+body .infometry-conversa-product .icp-jr.is-playing .jr-icon-play { display: none; }
+body .infometry-conversa-product .icp-jr.is-playing .jr-icon-pause { display: block; }
+
+@keyframes jr-ping {
+  70% { box-shadow: 0 0 0 .5em rgba(45, 212, 143, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 143, 0); }
+}
+
+body .infometry-conversa-product .icp-jr .jr-body { display: grid; gap: 1.15em; padding: 1.2em 1.3em 1em; }
+
+/* Question */
+body .infometry-conversa-product .icp-jr .jr-ask { display: flex; width: min(100%, 31em); align-items: center; gap: .75em; margin: 0 auto; padding: .45em .45em .45em .5em; border: 1px solid rgba(120, 170, 255, .38); border-radius: 99px; background: rgba(255, 255, 255, .06); box-shadow: 0 10px 30px -12px rgba(47, 123, 255, .55); color: #fff; font-size: 1em; transition: border-color .3s ease, box-shadow .3s ease; }
+body .infometry-conversa-product .icp-jr .jr-avatar { display: grid; width: 2.1em; height: 2.1em; flex: none; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #3b6dff, #7c5cff); }
+body .infometry-conversa-product .icp-jr .jr-avatar img { width: auto; height: 1.15em; }
+body .infometry-conversa-product .icp-jr .jr-question { flex: 1; min-width: 0; min-height: 1.4em; font-size: 1.02em; font-weight: 600; line-height: 1.3; }
+body .infometry-conversa-product .icp-jr .jr-caret { display: none; width: 2px; height: 1.05em; margin-left: 2px; vertical-align: -.15em; background: #7cc0ff; animation: jr-blink .8s steps(1) infinite; }
+body .infometry-conversa-product .icp-jr .jr-ask.is-typing .jr-caret { display: inline-block; }
+body .infometry-conversa-product .icp-jr .jr-send { display: grid; width: 2.1em; height: 2.1em; flex: none; place-items: center; border-radius: 50%; background: #2f7bff; transition: transform .25s ease, background .25s ease; }
+body .infometry-conversa-product .icp-jr .jr-send svg { width: 1.05em; height: 1.05em; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+body .infometry-conversa-product .icp-jr .jr-ask.is-sent .jr-send { animation: jr-send .5s ease; }
+body .infometry-conversa-product .icp-jr .jr-ask.is-sent { border-color: rgba(124, 192, 255, .7); }
+
+@keyframes jr-blink {
+  50% { opacity: 0; }
+}
+
+@keyframes jr-send {
+  40% { transform: scale(.82); background: #2dd48f; }
+}
+
+/* Context -> engine -> reasoning */
+body .infometry-conversa-product .icp-jr .jr-flow { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .82fr) minmax(0, 1.45fr); gap: 2.2em; align-items: center; }
+body .infometry-conversa-product .icp-jr .jr-flow > :not(svg) { position: relative; z-index: 1; min-width: 0; }
+body .infometry-conversa-product .icp-jr .jr-wires { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+body .infometry-conversa-product .icp-jr .jr-wires path { fill: none; stroke-linecap: round; }
+body .infometry-conversa-product .icp-jr .jr-wire { stroke: rgba(150, 180, 255, .16); stroke-width: 1.4; transition: stroke .4s ease; }
+body .infometry-conversa-product .icp-jr .jr-wire.is-on { stroke: rgba(78, 161, 255, .6); }
+body .infometry-conversa-product .icp-jr .jr-wire.is-out.is-on { stroke: rgba(140, 125, 255, .65); }
+body .infometry-conversa-product .icp-jr .jr-wire-flow { stroke: #7cc0ff; stroke-width: 2.6; stroke-dasharray: 1.5 9; animation: jr-flow .7s linear infinite; }
+body .infometry-conversa-product .icp-jr .jr-wire-flow.is-out { stroke: #a99bff; }
+
+@keyframes jr-flow {
+  to { stroke-dashoffset: -10.5; }
+}
+
+body .infometry-conversa-product .icp-jr .jr-context > small,
+body .infometry-conversa-product .icp-jr .jr-outputs small { display: block; color: #8ea3d6; font-size: .7em; font-weight: 700; letter-spacing: .14em; line-height: 1.3; text-transform: uppercase; }
+body .infometry-conversa-product .icp-jr .jr-context > small { margin-bottom: .7em; }
+body .infometry-conversa-product .icp-jr .jr-context ul,
+body .infometry-conversa-product .icp-jr .jr-steps { display: grid; margin: 0; padding: 0; list-style: none; }
+body .infometry-conversa-product .icp-jr .jr-context ul { gap: .45em; }
+body .infometry-conversa-product .icp-jr .jr-context li { position: relative; margin: 0; padding: .48em .7em .48em 1.55em; border: 1px solid rgba(150, 180, 255, .17); border-radius: .6em; background: rgba(255, 255, 255, .04); color: #d3def8; font-size: .88em; font-weight: 600; line-height: 1.25; list-style: none; transition: opacity .4s ease, border-color .4s ease, background .4s ease, color .4s ease, transform .4s ease; }
+body .infometry-conversa-product .icp-jr .jr-context li::before { content: ""; position: absolute; top: 50%; left: .65em; width: .42em; height: .42em; border-radius: 50%; background: #4ea1ff; transform: translateY(-50%); }
+body .infometry-conversa-product .icp-jr .jr-context li.is-on { border-color: rgba(78, 161, 255, .55); background: rgba(78, 161, 255, .12); color: #fff; }
+
+body .infometry-conversa-product .icp-jr .jr-engine { display: flex; flex-direction: column; align-items: center; gap: .55em; text-align: center; transition: opacity .5s ease; }
+body .infometry-conversa-product .icp-jr .jr-orb { position: relative; display: grid; width: 5.2em; height: 5.2em; margin: 1.1em 0 .5em; place-items: center; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #8fdcff, #2f7bff 45%, #5531e0); box-shadow: 0 0 0 .45em rgba(80, 140, 255, .12), 0 0 2.6em rgba(70, 130, 255, .55); transition: filter .5s ease, box-shadow .5s ease; }
+body .infometry-conversa-product .icp-jr .jr-orb svg { width: 2.1em; height: 2.1em; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; }
+body .infometry-conversa-product .icp-jr .jr-orb i { position: absolute; inset: -.6em; border: 1px dashed rgba(140, 190, 255, .5); border-radius: 50%; animation: jr-spin 14s linear infinite; }
+body .infometry-conversa-product .icp-jr .jr-orb i + i { inset: -1.2em; border: 1px solid rgba(140, 190, 255, .16); border-top-color: rgba(140, 190, 255, .7); animation-duration: 3.2s; }
+body .infometry-conversa-product .icp-jr .jr-engine.is-thinking .jr-orb { animation: jr-pulse 1.6s ease-in-out infinite; }
+body .infometry-conversa-product .icp-jr .jr-engine strong { color: #fff; font-family: Roboto, Arial, sans-serif; font-size: .98em; font-weight: 500; line-height: 1.25; }
+body .infometry-conversa-product .icp-jr .jr-engine small { padding: .3em .7em; border: 1px solid rgba(150, 180, 255, .2); border-radius: 99px; color: #a9bbe4; font-size: .72em; font-weight: 600; line-height: 1.3; }
+
+@keyframes jr-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes jr-pulse {
+  50% { box-shadow: 0 0 0 .8em rgba(80, 140, 255, .08), 0 0 3.6em rgba(90, 150, 255, .85); }
+}
+
+body .infometry-conversa-product .icp-jr .jr-steps { gap: .5em; }
+body .infometry-conversa-product .icp-jr .jr-steps li { display: grid; grid-template-columns: 1.9em minmax(0, 1fr); align-items: center; gap: .15em .7em; margin: 0; padding: .55em .75em; border: 1px solid rgba(150, 180, 255, .17); border-radius: .7em; background: rgba(255, 255, 255, .04); list-style: none; transition: opacity .4s ease, border-color .4s ease, background .4s ease, box-shadow .4s ease; }
+body .infometry-conversa-product .icp-jr .jr-steps b { display: grid; width: 1.9em; height: 1.9em; grid-row: span 2; place-items: center; border-radius: 50%; background: rgba(78, 161, 255, .16); color: #8fcaff; font-family: Roboto, Arial, sans-serif; font-size: .9em; font-weight: 700; transition: background .4s ease, color .4s ease; }
+body .infometry-conversa-product .icp-jr .jr-steps li > span { color: #eaf0ff; font-size: .88em; font-weight: 600; line-height: 1.3; }
+body .infometry-conversa-product .icp-jr .jr-steps em { color: #9fb3df; font-size: .8em; font-style: normal; font-weight: 700; line-height: 1.3; }
+body .infometry-conversa-product .icp-jr .jr-steps li:nth-child(n + 3) em { color: #ffab85; }
+body .infometry-conversa-product .icp-jr .jr-steps li.is-done b,
+body .infometry-conversa-product .icp-jr:not(.is-anim) .jr-steps b { background: #2dd48f; color: #04261a; }
+body .infometry-conversa-product .icp-jr .jr-steps li.is-active { border-color: rgba(124, 192, 255, .75); background: rgba(78, 161, 255, .13); box-shadow: 0 0 0 3px rgba(78, 161, 255, .14); }
+body .infometry-conversa-product .icp-jr .jr-steps li.is-active b { background: #4ea1ff; color: #04122f; }
+body .infometry-conversa-product .icp-jr .jr-bars { display: flex; align-items: flex-end; gap: .55em; padding-top: .2em; }
+body .infometry-conversa-product .icp-jr .jr-bars i { display: flex; flex-direction: column; align-items: center; gap: .2em; font-style: normal; }
+body .infometry-conversa-product .icp-jr .jr-bars i::before { content: ""; width: 1.5em; height: calc(var(--h) * .055em + .25em); border-radius: .2em .2em 0 0; background: rgba(124, 192, 255, .55); transition: height .7s cubic-bezier(.2, .8, .2, 1); }
+body .infometry-conversa-product .icp-jr .jr-bars i.is-hot::before { background: #ff8a5c; }
+body .infometry-conversa-product .icp-jr .jr-bars i span { color: #9fb3df; font-size: .95em; font-weight: 600; line-height: 1; }
+body .infometry-conversa-product .icp-jr .jr-bars i.is-hot span { color: #ffab85; }
+
+/* Decision-ready outputs */
+body .infometry-conversa-product .icp-jr .jr-outputs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .7em; }
+body .infometry-conversa-product .icp-jr .jr-outputs article { display: flex; min-width: 0; flex-direction: column; gap: .35em; padding: .75em .9em .8em; border: 1px solid rgba(150, 180, 255, .18); border-radius: .8em; background: linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02)); transition: opacity .5s ease, transform .5s cubic-bezier(.2, .8, .2, 1), border-color .5s ease; }
+body .infometry-conversa-product .icp-jr .jr-outputs strong { color: #ff9a70; font-family: Roboto, Arial, sans-serif; font-size: 1.6em; font-weight: 700; line-height: 1.1; }
+body .infometry-conversa-product .icp-jr .jr-outputs article > span { display: flex; align-items: center; gap: .35em; color: #b9c7e8; font-size: .8em; font-weight: 600; line-height: 1.3; }
+body .infometry-conversa-product .icp-jr .jr-outputs .is-chart svg { width: 100%; height: 3.3em; margin: .1em 0; }
+body .infometry-conversa-product .icp-jr .jr-grid { fill: none; stroke: rgba(150, 180, 255, .13); stroke-width: 1; }
+body .infometry-conversa-product .icp-jr .jr-line { fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s ease; }
+body .infometry-conversa-product .icp-jr .jr-line.is-email { stroke: #ff8a5c; }
+body .infometry-conversa-product .icp-jr .jr-line.is-social { stroke: #4ea1ff; }
+body .infometry-conversa-product .icp-jr .jr-line.is-web { stroke: #9d8cff; }
+body .infometry-conversa-product .icp-jr .jr-drop { fill: #ff8a5c; stroke: #0a1640; stroke-width: 1.5; transition: opacity .3s ease 1.1s; }
+body .infometry-conversa-product .icp-jr .jr-outputs .is-action { border-color: rgba(45, 212, 143, .4); background: linear-gradient(180deg, rgba(45, 212, 143, .12), rgba(45, 212, 143, .03)); }
+body .infometry-conversa-product .icp-jr .jr-outputs .is-action strong { color: #fff; font-size: 1.08em; line-height: 1.25; }
+body .infometry-conversa-product .icp-jr .jr-outputs .is-action svg { width: 1.1em; height: 1.1em; flex: none; fill: none; stroke: #2dd48f; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Chapters: a segmented progress bar that also jumps to each part */
+body .infometry-conversa-product .icp-jr .jr-chapters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .6em; padding: .15em 1.3em 1em; }
+body .infometry-conversa-product .icp-jr .jr-chapters button { display: flex; min-width: 0; flex-direction: column; gap: .5em; margin: 0; padding: .35em 0; border: 0; border-radius: .3em; background: none; color: #8ea3d6; font-size: .8em; font-weight: 700; line-height: 1.2; text-align: left; cursor: pointer; transition: color .2s ease; }
+body .infometry-conversa-product .icp-jr .jr-chapters button:hover,
+body .infometry-conversa-product .icp-jr .jr-chapters button.is-current { color: #fff; }
+body .infometry-conversa-product .icp-jr .jr-chapters i { display: block; height: 4px; overflow: hidden; border-radius: 4px; background: rgba(150, 180, 255, .18); }
+body .infometry-conversa-product .icp-jr .jr-chapters i b { display: block; width: 100%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #4ea1ff, #2dd48f); }
+body .infometry-conversa-product .icp-jr .jr-chapters em { margin-right: .45em; color: #5f77ad; font-style: normal; }
+body .infometry-conversa-product .icp-jr .jr-chapters button.is-current em { color: #7cc0ff; }
+
+/* While the journey plays, parts still to come wait dimmed. Without the script everything shows finished. */
+body .infometry-conversa-product .icp-jr.is-anim .jr-context li:not(.is-on),
+body .infometry-conversa-product .icp-jr.is-anim .jr-steps li:not(.is-done):not(.is-active) { opacity: .32; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-engine:not(.is-on) { opacity: .4; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-engine:not(.is-on) .jr-orb { filter: grayscale(.85); box-shadow: none; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-steps li:not(.is-done):not(.is-active) .jr-bars i::before { height: .25em; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-outputs article:not(.is-on) { opacity: .16; transform: translateY(.6em) scale(.97); }
+body .infometry-conversa-product .icp-jr.is-anim .jr-outputs article:not(.is-on) .jr-line { stroke-dashoffset: 100; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-outputs article:not(.is-on) .jr-drop { opacity: 0; transition-delay: 0s; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-chapters i b { width: 0; }
+body .infometry-conversa-product .icp-jr.is-anim .jr-chapters .is-done i b { width: 100%; }
+
+/* Middle widths: context and engine side by side, the four steps as a 2 x 2 grid under them. */
+@container conversa-architecture (max-width: 640px) {
+  body .infometry-conversa-product .icp-jr .jr-flow { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); row-gap: 2.2em; }
+  body .infometry-conversa-product .icp-jr .jr-steps { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Phones: one column, no wires. */
+@container conversa-architecture (max-width: 560px) {
+  body .infometry-conversa-product .icp-jr { border-radius: 16px; font-size: 13.5px; }
+  body .infometry-conversa-product .icp-jr .jr-status { display: none; }
+  body .infometry-conversa-product .icp-jr .jr-chrome .jr-play { margin-left: auto; }
+  body .infometry-conversa-product .icp-jr .jr-body { padding: 1em .9em .8em; }
+  body .infometry-conversa-product .icp-jr .jr-flow { grid-template-columns: minmax(0, 1fr); gap: 1em; }
+  body .infometry-conversa-product .icp-jr .jr-wires { display: none; }
+  body .infometry-conversa-product .icp-jr .jr-engine { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: .3em 1em; padding: .4em 0; text-align: left; }
+  body .infometry-conversa-product .icp-jr .jr-orb { width: 3.4em; height: 3.4em; margin: .6em; }
+  body .infometry-conversa-product .icp-jr .jr-orb svg { width: 1.5em; height: 1.5em; }
+  body .infometry-conversa-product .icp-jr .jr-orb i { inset: -.4em; }
+  body .infometry-conversa-product .icp-jr .jr-orb i + i { inset: -.75em; }
+  body .infometry-conversa-product .icp-jr .jr-engine strong { flex: 0 1 11em; }
+  body .infometry-conversa-product .icp-jr .jr-engine small { display: none; }
+  body .infometry-conversa-product .icp-jr .jr-steps { grid-template-columns: minmax(0, 1fr); }
+  body .infometry-conversa-product .icp-jr .jr-outputs { grid-template-columns: minmax(0, 1fr); }
+  body .infometry-conversa-product .icp-jr .jr-outputs .is-chart svg { max-width: 15em; }
+  body .infometry-conversa-product .icp-jr .jr-chapters { padding-inline: .9em; }
+}

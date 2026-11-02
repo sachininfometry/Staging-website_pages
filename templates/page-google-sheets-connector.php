@@ -143,7 +143,6 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 	<section class="igs-hero" aria-labelledby="igs-title">
 		<div class="igs-shell igs-hero-grid">
 			<div class="igs-hero-copy">
-				<nav class="igs-crumbs" aria-label="Breadcrumb"><a href="<?php echo esc_url( home_url( '/product/' ) ); ?>">Products</a><span>/</span><a href="<?php echo esc_url( home_url( '/product/informatica-connectors/' ) ); ?>">Informatica Connectors</a><span>/</span><a href="<?php echo esc_url( home_url( '/product/google-cloud-connectors/' ) ); ?>">Google (GCP) Connectors</a><span>/</span><b aria-current="page">Google Sheets</b></nav>
 				<span class="igs-badge"><i></i>100% Informatica Certified · IDMC (formerly IICS)</span>
 				<h1 id="igs-title">Turn Google Sheets into a <em>governed enterprise data source</em></h1>
 				<p>Infometry’s Google Sheets Connector for Informatica Cloud moves forecasts, budgets, SKUs and headcount plans from spreadsheets into your warehouse, data lake and cloud apps, and writes results back.</p>

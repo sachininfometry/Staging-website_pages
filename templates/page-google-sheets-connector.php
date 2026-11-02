@@ -405,22 +405,52 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 			</div>
 			<div class="igs-use-grid">
 				<article class="igs-use is-blue" data-igs-reveal>
-					<span class="igs-use-icon"><?php infometry_ct_igs_img( $img . 'brand-salesforce.png', '' ); ?></span>
+					<div class="igs-use-scene" aria-hidden="true">
+						<span class="igs-use-tile"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+						<span class="igs-use-pipe"><i></i></span>
+						<span class="igs-use-tile is-target"><?php infometry_ct_igs_img( $img . 'google-sheets/eco-salesforce.png', '' ); ?></span>
+					</div>
+					<span class="igs-use-num">Use case 01</span>
 					<h3>Google Sheets to Salesforce</h3>
 					<p>Read data from Google Sheets and write it to Salesforce.</p>
+					<ul class="igs-use-tags"><li>Read → Write</li><li>CRM</li></ul>
 				</article>
 				<article class="igs-use is-violet" data-igs-reveal>
-					<span class="igs-use-icon is-svg"><svg><use href="#igs-db"/></svg></span>
+					<div class="igs-use-scene" aria-hidden="true">
+						<span class="igs-use-tile"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+						<span class="igs-use-pipe"><i></i></span>
+						<span class="igs-use-stack">
+							<span class="igs-use-tile is-sm"><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?></span>
+							<span class="igs-use-tile is-sm"><?php infometry_ct_igs_img( $img . 'google-sheets/eco-databricks.png', '' ); ?></span>
+							<span class="igs-use-tile is-sm"><?php infometry_ct_igs_img( $img . 'google-sheets/eco-aws.png', '' ); ?></span>
+						</span>
+					</div>
+					<span class="igs-use-num">Use case 02</span>
 					<h3>Google Sheets to Enterprise Data Lake or Data Warehouse</h3>
 					<p>Read data from Google Sheets and write it to your Enterprise Data Lake or Data Warehouse.</p>
+					<ul class="igs-use-tags"><li>Batch &amp; real-time</li><li>Warehouse · Lake</li></ul>
 				</article>
 				<article class="igs-use is-amber" data-igs-reveal>
-					<span class="igs-use-icon"><?php infometry_ct_igs_img( $img . 'tech-tableau.png', '' ); ?></span>
+					<div class="igs-use-scene is-merge" aria-hidden="true">
+						<span class="igs-use-sheets"><span class="igs-use-tile is-xs"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span><span class="igs-use-tile is-xs"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span><span class="igs-use-tile is-xs"><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span></span>
+						<span class="igs-use-merge"><svg><use href="#igs-layers"/></svg></span>
+						<span class="igs-use-pipe is-short"><i></i></span>
+						<span class="igs-use-stack">
+							<span class="igs-use-tile is-sm"><?php infometry_ct_igs_img( $img . 'google-sheets/eco-tableau.svg', '' ); ?></span>
+							<span class="igs-use-tile is-sm"><i class="igs-eco-bars"><i></i><i></i><i></i></i></span>
+							<span class="igs-use-tile is-sm"><svg class="igs-pipe-generic"><use href="#igs-chart"/></svg></span>
+						</span>
+					</div>
+					<span class="igs-use-num">Use case 03</span>
 					<h3>Merge multiple sheets for Tableau, Looker or Power BI</h3>
 					<p>Merge data from multiple Google Sheets into a single data source and provide the dataset to analytics and visualization platforms.</p>
+					<ul class="igs-use-tags"><li>Merge</li><li>Tableau · Looker · Power BI</li></ul>
 				</article>
 			</div>
-			<p class="igs-uses-note" data-igs-reveal>With Agentic AI transforming enterprise integration, Infometry’s Google Sheets Connector is not just a data bridge: it’s a foundation for building intelligent, automated and adaptive data pipelines.</p>
+			<div class="igs-uses-note" data-igs-reveal>
+				<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
+				<p>With <b>Agentic AI</b> transforming enterprise integration, Infometry’s Google Sheets Connector is not just a data bridge: it’s a foundation for building <b>intelligent, automated and adaptive data pipelines</b>.</p>
+			</div>
 		</div>
 	</section>
 

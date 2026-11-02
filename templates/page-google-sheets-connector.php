@@ -430,10 +430,19 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 						</article>
 					<?php endforeach; ?>
 				</div>
+
+				<div class="igs-pipe-foot">
+					<span class="igs-pipe-foot-label"><svg><use href="#igs-check"/></svg>Works across</span>
+					<ul>
+						<?php
+						$igs_pipe_tags = array( array( 'db', 'Relational' ), array( 'layers', 'NoSQL' ), array( 'chart', 'Columnar' ), array( 'shield', 'MDM' ), array( 'layers', 'Data Lakes' ), array( 'cloud', 'On-premises & cloud' ), array( 'nodes', 'Multiple environments' ) );
+						foreach ( $igs_pipe_tags as $tag ) :
+							?>
+							<li><svg><use href="#igs-<?php echo esc_attr( $tag[0] ); ?>"/></svg><?php echo esc_html( $tag[1] ); ?></li>
+						<?php endforeach; ?>
+					</ul>
+				</div>
 			</div>
-			<ul class="igs-pipe-tags" data-igs-reveal>
-				<li>Relational</li><li>NoSQL</li><li>Columnar</li><li>MDM</li><li>Data Lakes</li><li>On-premises &amp; cloud</li><li>Multiple environments</li>
-			</ul>
 		</div>
 	</section>
 

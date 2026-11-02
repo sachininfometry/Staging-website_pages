@@ -778,3 +778,37 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 @media (max-width: 640px) {
   .igs-cta { margin-bottom: 40px; }
 }
+
+/* Spacing and stats pass: tighter section rhythm; the stats sit inside the hero as a dark glass strip. */
+.igs-section { padding: 72px 0; }
+.igs-overview { padding-top: 80px; }
+.igs-hero { padding-bottom: 48px; }
+.igs-stats { margin: 44px 0 0 !important; padding: 6px; border: 1px solid rgba(150, 180, 240, .2); border-radius: 20px; background: linear-gradient(90deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .03)); box-shadow: none; backdrop-filter: blur(8px); }
+.igs-stats li { color: #a9b8db; }
+.igs-stats li + li { border-left-color: rgba(150, 180, 240, .16); }
+.igs-stats b { color: #fff; }
+.igs-stats svg { box-shadow: none; }
+
+/* FAQ quick answers under the support card */
+.igs-faq-facts { display: grid; gap: 10px; margin-top: 16px !important; }
+.igs-faq-facts li { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid #e1e7f4; border-radius: 16px; background: #fff; box-shadow: 0 12px 26px -22px rgba(7, 28, 71, .45); }
+.igs-faq-facts span { display: grid; width: 40px; height: 40px; flex: none; place-items: center; border-radius: 12px; background: #eef2ff; color: #4f46e5; font-size: 19px; }
+.igs-faq-facts li:nth-child(2) span { background: #e6f7ee; color: #12a067; }
+.igs-faq-facts li:nth-child(3) span { background: #e9f6fe; color: #0b8fd8; }
+.igs-faq-facts li:nth-child(4) span { background: #fff1e8; color: #f05a1a; }
+.igs-faq-facts small { display: block; color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.igs-faq-facts b { color: #071c47; font-size: 15.5px; line-height: 1.35; }
+.igs-faq-side { position: static; }
+
+@media (max-width: 1180px) {
+  .igs-stats li:nth-child(n + 4) { border-top-color: rgba(150, 180, 240, .16); }
+}
+
+@media (max-width: 640px) {
+  .igs-section { padding: 52px 0; }
+  .igs-overview { padding-top: 56px; }
+  .igs-hero { padding-bottom: 36px; }
+  .igs-stats { margin-top: 32px !important; }
+  .igs-stats li:nth-child(n), .igs-stats li:nth-child(even) { border-color: rgba(150, 180, 240, .16); }
+}
+

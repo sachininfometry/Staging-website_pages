@@ -593,6 +593,12 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 					<a href="mailto:<?php echo esc_attr( $support_email ); ?>"><?php echo esc_html( $support_email ); ?></a>
 					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <svg><use href="#igs-arrow"/></svg></a>
 				</div>
+				<ul class="igs-faq-facts">
+					<li><span><svg><use href="#igs-key"/></svg></span><div><small>License</small><b>Annual, per OrgID · unlimited usage</b></div></li>
+					<li><span><svg><use href="#igs-chat"/></svg></span><div><small>Support</small><b>24/7 · 24–48 hour turnaround</b></div></li>
+					<li><span><svg><use href="#igs-sync"/></svg></span><div><small>Updates</small><b>Automatic and free with IICS releases</b></div></li>
+					<li><span><svg><use href="#igs-shield"/></svg></span><div><small>Security</small><b>Verified by Informatica · holds no data</b></div></li>
+				</ul>
 			</div>
 			<div class="igs-faq-list">
 				<?php foreach ( $igs_faqs as $i => $faq ) : ?>

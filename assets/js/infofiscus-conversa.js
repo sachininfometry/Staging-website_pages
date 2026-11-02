@@ -1001,6 +1001,16 @@
     $('[data-lv-grants]', panel).textContent = count * 3;
   }
 
+  // The highlight behind the chosen industry slides to it; on narrow screens the strip scrolls it into view.
+  function placeGlider() {
+    var tab = $('[data-lv-pick="' + vertical + '"]');
+    var strip = $('.lv-vtabs-wrap');
+    var glider = $('.lv-vtabs-glider');
+    glider.style.width = tab.offsetWidth + 'px';
+    glider.style.transform = 'translateX(' + tab.offsetLeft + 'px)';
+    strip.scrollLeft = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
+  }
+
   // Switch industry: its agent bar, sidebar chats and first conversation.
   function setVertical(key) {
     vertical = key;
@@ -1014,11 +1024,7 @@
     placeholder = 'Ask ' + agent + '...';
     setThread(key + '-0');
     tour.setAttribute('data-vertical', key);
-    var tab = $('[data-lv-pick="' + key + '"]');
-    var strip = $('.lv-vtabs-wrap');
-    $('[data-lv-ws]').textContent = tab.textContent.trim();
-    // On narrow screens the tab strip scrolls; keep the chosen tab in view.
-    strip.scrollLeft = tab.offsetLeft - (strip.clientWidth - tab.offsetWidth) / 2;
+    placeGlider();
     // A short confirmation inside the app that the whole workspace switched.
     $('[data-lv-toast]').textContent = $('[data-lv-pick="' + key + '"]').textContent.trim() + ' workspace · ' + agent;
     toast.classList.remove('is-on');
@@ -1366,6 +1372,11 @@
   });
 
   setStep(1);
+  placeGlider();
+  window.addEventListener('resize', placeGlider);
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(placeGlider);
+  }
 
   // Reduced motion: no tour; the app stays clickable.
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

@@ -18,7 +18,9 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .igs-page ul, .igs-page ol { margin: 0; padding: 0; list-style: none; }
 .igs-page li { margin: 0; }
 .igs-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
-.igs-shell { width: min(calc(100% - 64px), 1240px); margin-inline: auto; }
+/* One container for every section, hero included: 38px side margins line it up with the header logo on
+   laptop screens, and it stops at 1480px and centres on large screens. */
+.igs-shell { width: min(calc(100% - 76px), 1480px); margin-inline: auto; }
 
 /* Buttons */
 .igs-btn { display: inline-flex; min-height: 48px; padding: 0 22px; align-items: center; justify-content: center; gap: 9px; border: 1.5px solid transparent; border-radius: 10px; font-size: 15.5px; font-weight: 700; line-height: 1; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease; }
@@ -485,11 +487,9 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .infometry-footer-column a:hover { color: #66c5ff; transform: translateX(3px); }
 .infometry-footer-bottom { display: flex; margin-top: 40px; padding-top: 21px; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255, 255, 255, .18); color: #cbd5f5; font-size: 14px; font-weight: 500; }
 
-/* From tablet up the site header floats over the hero, so the hero clears it, and the hero's edges line up
-   with the header: the logo's visible mark starts 38px in and the menu ends at the same inset on the right. */
+/* From tablet up the site header floats over the hero, so the hero clears it. */
 @media (min-width: 768px) {
   .igs-hero { padding-top: 112px; }
-  .igs-hero > .igs-shell { width: auto; max-width: none; margin-inline: 38px; }
 }
 
 @media (min-width: 1280px) {
@@ -499,7 +499,6 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 
 /* Large screens */
 @media (min-width: 1600px) {
-  .igs-shell { width: min(calc(100% - 96px), 1400px); }
   .igs-page { font-size: 17px; }
 }
 

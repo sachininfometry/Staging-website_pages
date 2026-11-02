@@ -197,9 +197,9 @@ $lv_databases = array(
 
 // Connections > Permissions: users the visitor can grant access to RETAIL_INVENTORY_AGENT.
 $lv_users = array(
-	array( 'FA', 'Finance Analyst', 'finance@retail.co', true ),
-	array( 'SO', 'Store Ops Lead', 'store.ops@retail.co', true ),
-	array( 'LP', 'Loss Prevention', 'loss.prev@retail.co', false ),
+	array( 'FA', 'Finance Analyst', 'Finance team', true ),
+	array( 'SO', 'Store Ops Lead', 'Store operations', true ),
+	array( 'LP', 'Loss Prevention', 'Loss prevention team', false ),
 );
 
 $lv_policies = array(
@@ -244,7 +244,6 @@ $lv_agents = array(
 		<symbol id="lv-bank" viewBox="0 0 24 24"><path d="m3.5 9 8.5-5 8.5 5zM5 20.5h14M6.5 11v7M10 11v7M14 11v7M17.5 11v7"/></symbol>
 		<symbol id="lv-monitor" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="11.5" rx="1.8"/><path d="M9 20h6M12 16v4"/></symbol>
 		<symbol id="lv-nodes" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="6" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M8.2 6h7.6M7.1 8l3.8 8M16.9 8l-3.8 8"/></symbol>
-		<symbol id="lv-filter" viewBox="0 0 24 24"><path d="M4 5h16l-6.2 7.6V19l-3.6 1.6v-8z"/></symbol>
 		<symbol id="lv-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
 		<symbol id="lv-pause" viewBox="0 0 24 24"><path class="lv-solid" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
 		<linearGradient id="lv-g-bar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7b8cff"/><stop offset="1" stop-color="#4f46e5"/></linearGradient>
@@ -507,7 +506,6 @@ $lv_agents = array(
 
 	<div class="lv-pipe">
 		<svg class="lv-pipe-lines" aria-hidden="true" focusable="false"></svg>
-		<p class="lv-pipe-node"><svg aria-hidden="true"><use href="#lv-filter"/></svg>Filter by industry</p>
 		<div class="lv-verticals" role="group" aria-label="See Conversa for your industry">
 			<?php foreach ( $lv_verticals as $vkey => $vertical ) : ?>
 				<button type="button" class="is-<?php echo esc_attr( $vkey ); ?>" data-lv-pick="<?php echo esc_attr( $vkey ); ?>" aria-pressed="<?php echo $lv_default === $vkey ? 'true' : 'false'; ?>"><span aria-hidden="true"><svg><use href="#lv-<?php echo esc_attr( $vertical['icon'] ); ?>"/></svg></span><b><?php echo esc_html( $vertical['label'] ); ?></b></button>

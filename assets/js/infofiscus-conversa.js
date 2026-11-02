@@ -1002,9 +1002,9 @@
   }
 
   /*
-   * The pipeline under the app: every industry card has a line that joins a bus,
-   * runs through the filter node and up into the window. The chosen industry's
-   * line is lit and its data flows into the app.
+   * The pipeline under the app: every industry card has a line that joins a bus
+   * and runs up into the window. The chosen industry's line is lit and its data
+   * flows into the app.
    */
   function drawPipe() {
     var pipe = $('.lv-pipe');

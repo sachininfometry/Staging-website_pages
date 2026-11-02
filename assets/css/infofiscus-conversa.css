@@ -15963,7 +15963,7 @@ body .infometry-conversa-product .icp-live .lv-toast.is-on { opacity: 1; transfo
   body .infometry-conversa-product .icp-live .lv-toast { left: 50%; font-size: .7em; }
 }
 
-/* Industry pipeline under the app: cards for each vertical, joined by lines through a filter node into the window.
+/* Industry pipeline under the app: cards for each vertical, joined by lines into the window.
    The chosen industry's line is lit, data flows along it, and its colour lights the window frame. */
 body .infometry-conversa-product .icp-live .lv-app { box-shadow: 0 0 0 1px color-mix(in srgb, var(--lv-accent) 45%, transparent), 0 0 46px -14px var(--lv-accent), 0 30px 70px rgba(2, 6, 30, .6); transition: box-shadow .5s ease; }
 body .infometry-conversa-product .icp-live .lv-chrome-title i { color: #5f6f99; font-style: normal; }
@@ -15981,8 +15981,6 @@ body .infometry-conversa-product .icp-live .lv-pipe-dot { fill: var(--lv-accent)
   to { stroke-dashoffset: -12; }
 }
 
-body .infometry-conversa-product .icp-live .lv-pipe-node { position: absolute; top: 9px; left: 50%; z-index: 1; display: flex; align-items: center; gap: 6px; padding: 4px 12px 4px 6px; border: 1px solid color-mix(in srgb, var(--lv-accent) 50%, transparent); border-radius: 99px; background: #0b1433; color: #dbe5ff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transform: translateX(-50%); transition: border-color .4s ease; }
-body .infometry-conversa-product .icp-live .lv-pipe-node svg { width: 18px; height: 18px; padding: 3px; border-radius: 50%; background: var(--lv-accent); color: #081130; transition: background .4s ease; }
 body .infometry-conversa-product .icp-live .lv-verticals { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
 body .infometry-conversa-product .icp-live .lv-verticals button { --c: #7cc0ff; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; min-width: 0; padding: 10px 6px 9px; border: 1px solid rgba(150, 180, 255, .18); border-radius: 12px; background: linear-gradient(180deg, #101a40, #0a1333); color: #c2cfec; text-align: center; cursor: pointer; transition: border-color .25s ease, background .25s ease, color .25s ease, transform .25s ease, box-shadow .25s ease; }
 body .infometry-conversa-product .icp-live .lv-verticals button > span { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--c) 18%, transparent); color: var(--c); transition: background .25s ease, color .25s ease; }
@@ -16008,12 +16006,11 @@ body .infometry-conversa-product .icp-live .lv-verticals .is-supply { --c: #f472
   body .infometry-conversa-product .icp-hero .icp-live { margin-bottom: 40px; }
 }
 
-/* Narrow frames: no room for six branches, so the node becomes a heading over a 3 x 2 grid. */
+/* Narrow frames: no room for six branches, so the cards sit in a 3 x 2 grid. */
 @container lv (max-width: 560px) {
   body .infometry-conversa-product .icp-live .lv-pipe { padding-top: 16px; }
   body .infometry-conversa-product .icp-live .lv-pipe-lines { display: none; }
-  body .infometry-conversa-product .icp-live .lv-pipe-node { position: static; width: max-content; margin: 0 auto 10px; transform: none; }
-  body .infometry-conversa-product .icp-live .lv-verticals { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    body .infometry-conversa-product .icp-live .lv-verticals { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
   body .infometry-conversa-product .icp-live .lv-verticals button { padding: 8px 4px; }
   body .infometry-conversa-product .icp-live .lv-verticals button b { font-size: 11px; }
 }

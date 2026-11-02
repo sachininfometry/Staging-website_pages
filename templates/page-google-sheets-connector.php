@@ -27,14 +27,14 @@ $idmc_icon        = $img . 'informatica-product-mark.png';
 $support_email    = 'info@www.infometry.net';
 $trial_form_id    = 351429;
 
-$igs_ops = array( 'Read', 'Write', 'Update', 'Delete', 'Range', 'Search' );
+$igs_ops = array( 'Read', 'Write', 'Update', 'Delete', 'Range', 'Search', 'Filter' );
 
 $igs_sheet = array(
-	array( 'West', '$1.24M', '$1.20M' ),
-	array( 'East', '$982K', '$1.05M' ),
-	array( 'Central', '$756K', '$700K' ),
-	array( 'South', '$1.08M', '$1.10M' ),
-	array( 'EMEA', '$1.41M', '$1.32M' ),
+	array( 'North America', '$4.2M', '$1.1M' ),
+	array( 'EMEA', '$2.8M', '$0.9M' ),
+	array( 'APAC', '$1.9M', '$0.6M' ),
+	array( 'LATAM', '$0.7M', '$0.3M' ),
+	array( 'India', '$1.2M', '$0.4M' ),
 );
 
 $igs_features = array(
@@ -120,6 +120,7 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 		<symbol id="igs-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></symbol>
 		<symbol id="igs-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5Z"/></symbol>
 		<symbol id="igs-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
+		<symbol id="igs-grid" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 9v12"/></symbol>
 		<symbol id="igs-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 		<symbol id="igs-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
 	</svg>
@@ -127,57 +128,52 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 	<section class="igs-hero" aria-labelledby="igs-title">
 		<div class="igs-shell igs-hero-grid">
 			<div class="igs-hero-copy">
-				<span class="igs-badge"><svg><use href="#igs-shield"/></svg> Informatica Certified Connector</span>
-				<h1 id="igs-title">Effortlessly Sync Google Sheets with <em>Informatica IDMC</em></h1>
-				<p>Infometry’s Google Sheets Connector for Informatica IDMC is <strong>100% Informatica Certified</strong>, supporting all API operations. Read from and write to Google Sheets as a source or target in synchronization tasks, mapping tasks and data integrations.</p>
-				<ul class="igs-ops" aria-label="Supported operations">
-					<?php foreach ( $igs_ops as $op ) : ?>
-						<li><svg><use href="#igs-check"/></svg><?php echo esc_html( $op ); ?></li>
-					<?php endforeach; ?>
-				</ul>
+				<nav class="igs-crumbs" aria-label="Breadcrumb"><a href="<?php echo esc_url( home_url( '/product/' ) ); ?>">Products</a><span>/</span><a href="<?php echo esc_url( home_url( '/product/informatica-connectors/' ) ); ?>">Informatica Connectors</a><span>/</span><a href="<?php echo esc_url( home_url( '/product/google-cloud-connectors/' ) ); ?>">Google (GCP) Connectors</a><span>/</span><b aria-current="page">Google Sheets</b></nav>
+				<span class="igs-badge"><i></i>100% Informatica Certified · IDMC (formerly IICS)</span>
+				<h1 id="igs-title">Turn Google Sheets into a <em>governed enterprise data source</em></h1>
+				<p>Infometry’s Google Sheets Connector for Informatica Cloud moves forecasts, budgets, SKUs and headcount plans from spreadsheets into your warehouse, data lake and cloud apps, and writes results back.</p>
 				<div class="igs-actions">
-					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start Free Trial <svg><use href="#igs-arrow"/></svg></a>
+					<a class="igs-btn igs-btn-primary" href="#freetrialform">Start 30-Day Free Trial <svg><use href="#igs-arrow"/></svg></a>
 					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
 				</div>
+				<ul class="igs-ops" aria-label="Supported operations">
+					<?php foreach ( $igs_ops as $op ) : ?>
+						<li><?php echo esc_html( $op ); ?></li>
+					<?php endforeach; ?>
+				</ul>
 				<p class="igs-hero-links"><a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace <svg><use href="#igs-out"/></svg></a><a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg class="is-star"><use href="#igs-star"/></svg> G2 Product Review <svg><use href="#igs-out"/></svg></a></p>
 			</div>
 
-			<div class="igs-live" data-igs-live aria-label="Animated example: rows from a Google Sheet sync through Informatica IDMC into enterprise targets">
-				<div class="igs-live-bar">
-					<span class="igs-lights" aria-hidden="true"><i></i><i></i><i></i></span>
-					<strong>Informatica IDMC <span>· Mapping task</span></strong>
-					<span class="igs-live-state" aria-hidden="true"><i></i> <b data-igs-op>Read</b></span>
-					<button type="button" class="igs-live-play" data-igs-play aria-label="Pause the animation"><svg class="is-pause"><use href="#igs-pause"/></svg><svg class="is-play"><use href="#igs-play"/></svg></button>
+			<div class="igs-flow" data-igs-live aria-label="Animated example: Google Sheets rows sync through the Infometry connector in Informatica IDMC into Snowflake, Salesforce, a data lake and Power BI">
+				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
+				<div class="igs-sheet" data-igs-sheet>
+					<header><svg><use href="#igs-grid"/></svg>FY27_Sales_Forecast</header>
+					<table>
+						<thead><tr><th></th><th>Region</th><th>Q1 Goal</th><th>OpEx</th></tr></thead>
+						<tbody>
+							<?php foreach ( $igs_sheet as $i => $row ) : ?>
+								<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?></td></tr>
+							<?php endforeach; ?>
+						</tbody>
+					</table>
 				</div>
-				<div class="igs-live-body">
-					<div class="igs-sheet">
-						<header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><span>FY26 Sales Forecast</span></header>
-						<table>
-							<thead><tr><th></th><th>Region</th><th>Forecast</th><th>Goal</th></tr></thead>
-							<tbody>
-								<?php foreach ( $igs_sheet as $i => $row ) : ?>
-									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
-					</div>
-					<div class="igs-wire" aria-hidden="true"><i data-igs-packet></i><span></span></div>
-					<div class="igs-hub" aria-hidden="true">
-						<span class="igs-hub-ring"></span>
-						<span class="igs-hub-logo"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span>
-						<small>IDMC</small>
-					</div>
-					<div class="igs-wire is-out" aria-hidden="true"><i data-igs-packet></i><span></span></div>
-					<ul class="igs-targets" aria-hidden="true">
-						<li data-igs-target><svg><use href="#igs-db"/></svg>Data Warehouse</li>
-						<li data-igs-target><svg><use href="#igs-cloud"/></svg>Salesforce</li>
-						<li data-igs-target><svg><use href="#igs-layers"/></svg>Data Lake</li>
-					</ul>
+				<div class="igs-core" data-igs-core>
+					<span class="igs-core-icon"><svg><use href="#igs-bolt"/></svg></span>
+					<strong>Infometry Connector</strong>
+					<small>Informatica IDMC</small>
+					<span class="igs-core-modes"><b>CDI · Batch</b><b>CAI · Real-time</b></span>
 				</div>
-				<div class="igs-live-foot">
-					<span><b data-igs-count>1,248,320</b> rows synced</span>
-					<span class="is-ok"><svg><use href="#igs-check"/></svg> Last run: success · 0 errors</span>
+				<ul class="igs-targets">
+					<li data-igs-target><i class="is-snowflake"></i>Snowflake</li>
+					<li data-igs-target><i class="is-salesforce"></i>Salesforce</li>
+					<li data-igs-target><i class="is-lake"></i>Data Lake</li>
+					<li data-igs-target><i class="is-powerbi"></i>Power BI</li>
+				</ul>
+				<div class="igs-toast" data-igs-toast>
+					<span><svg><use href="#igs-check"/></svg></span>
+					<div><b>Mapping task completed</b><small>Synced · Scheduled daily 6:00 AM</small></div>
 				</div>
+				<button type="button" class="igs-flow-play" data-igs-play aria-label="Pause the animation"><svg class="is-pause"><use href="#igs-pause"/></svg><svg class="is-play"><use href="#igs-play"/></svg></button>
 			</div>
 		</div>
 

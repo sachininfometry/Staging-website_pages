@@ -15972,3 +15972,7 @@ body .infometry-conversa-product .icp-live .lv-verticals button { width: 100%; m
 @container lv (max-width: 560px) {
   body .infometry-conversa-product .icp-live .lv-verticals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+@media (min-width: 1101px) {
+  body .infometry-conversa-product .icp-hero .icp-live { margin-bottom: 40px; }
+}

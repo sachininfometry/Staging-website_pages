@@ -160,6 +160,7 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 		<symbol id="igs-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5L8 5.5Z"/></symbol>
 		<symbol id="igs-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></symbol>
 		<symbol id="igs-grid" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 9v12"/></symbol>
+		<symbol id="igs-chat" viewBox="0 0 24 24"><path d="M5 4h14a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-7l-5 4v-4H5a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3Z"/><path d="M8 10.5h.01M12 10.5h.01M16 10.5h.01"/></symbol>
 		<symbol id="igs-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
 		<symbol id="igs-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z"/></symbol>
 	</svg>
@@ -581,9 +582,17 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 
 	<section class="igs-section igs-faq" aria-labelledby="igs-faq-title">
 		<div class="igs-shell igs-faq-shell">
-			<div class="igs-head" data-igs-reveal>
+			<div class="igs-faq-side" data-igs-reveal>
 				<span class="igs-kicker">FAQ</span>
 				<h2 id="igs-faq-title">Frequently Asked Questions</h2>
+				<p>Licensing, updates, support and security: what teams ask before they connect Google Sheets to Informatica IDMC.</p>
+				<div class="igs-faq-help">
+					<span><svg><use href="#igs-chat"/></svg></span>
+					<b>Still have questions?</b>
+					<small>Support is available 24/7 with local time-zone coverage.</small>
+					<a href="mailto:<?php echo esc_attr( $support_email ); ?>"><?php echo esc_html( $support_email ); ?></a>
+					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $contact_url ); ?>">Contact Us <svg><use href="#igs-arrow"/></svg></a>
+				</div>
 			</div>
 			<div class="igs-faq-list">
 				<?php foreach ( $igs_faqs as $i => $faq ) : ?>

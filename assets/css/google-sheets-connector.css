@@ -377,10 +377,10 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .igs-use p { flex: 1; margin: 10px 26px 0; color: #c9d5f2; font-size: 16px; line-height: 1.6; }
 .igs-use-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 26px 0 !important; }
 .igs-use-tags li { padding: 6px 12px; border: 1px solid rgba(150, 190, 255, .22); border-radius: 99px; background: rgba(255, 255, 255, .06); color: #e2e9fb; font-size: 13px; font-weight: 700; }
-.igs-uses-note { display: flex; align-items: center; gap: 18px; max-width: 980px; margin: 40px auto 0; padding: 20px 26px; border: 1px solid transparent; border-radius: 20px; background: linear-gradient(#0a2550, #0a2550) padding-box, linear-gradient(110deg, #2ed57d, #4aa6ff, #a855f7) border-box; box-shadow: 0 24px 50px -30px rgba(74, 166, 255, .7); }
+.igs-uses-note { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; max-width: 980px; margin: 40px auto 0; padding: 20px 26px; border: 1px solid transparent; border-radius: 20px; background: linear-gradient(#0a2550, #0a2550) padding-box, linear-gradient(110deg, #2ed57d, #4aa6ff, #a855f7) border-box; box-shadow: 0 24px 50px -30px rgba(74, 166, 255, .7); }
 .igs-uses-note > span { display: grid; width: 48px; height: 48px; flex: none; place-items: center; border-radius: 14px; background: linear-gradient(135deg, #2ed57d, #4aa6ff); color: #fff; font-size: 22px; box-shadow: 0 0 22px rgba(74, 166, 255, .5); }
 .igs-uses-note > span svg { fill: currentColor; stroke: none; }
-.igs-uses-note p { color: #d7e1f8; font-size: 17px; line-height: 1.6; }
+.igs-uses-note p { max-width: 820px; color: #d7e1f8; font-size: 17px; line-height: 1.6; text-align: center; }
 .igs-uses-note b { color: #fff; }
 
 @keyframes igs-use-packet { 0% { left: -14px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { left: 100%; opacity: 0; } }

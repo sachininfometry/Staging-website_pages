@@ -631,12 +631,20 @@ if ( ! function_exists( 'infometry_ct_igs_img' ) ) {
 				<span class="igs-kicker">Free trial</span>
 				<h2 id="igs-cta-title">Bring your Google Sheets data into the enterprise data stack</h2>
 				<p>Start your free 30-day trial and see how easily you can integrate, sync and operationalize Google Sheets data with Informatica IDMC.</p>
-				<ul>
+				<ul class="igs-cta-checks">
 					<li><svg><use href="#igs-check"/></svg>100% Informatica Certified</li>
 					<li><svg><use href="#igs-check"/></svg>Quick and easy setup</li>
-					<li><svg><use href="#igs-check"/></svg>Secure: connectors do not hold any data</li>
-					<li><svg><use href="#igs-check"/></svg>24/7 support with local time-zone coverage</li>
+					<li><svg><use href="#igs-check"/></svg>Connectors hold no data</li>
+					<li><svg><use href="#igs-check"/></svg>24/7 local time-zone support</li>
 				</ul>
+				<div class="igs-cta-next">
+					<b>What happens next</b>
+					<ol>
+						<li><span>1</span><p><strong>Submit your request</strong>Takes under a minute.</p></li>
+						<li><span>2</span><p><strong>We activate your trial</strong>A 30-day trial license for your IDMC org.</p></li>
+						<li><span>3</span><p><strong>Start syncing</strong>Use Google Sheets in your tasks and mappings.</p></li>
+					</ol>
+				</div>
 			</div>
 			<div class="igs-form">
 				<h3>Request Free Trial</h3>

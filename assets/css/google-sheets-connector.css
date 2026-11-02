@@ -261,6 +261,7 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 }
 
 @media (max-width: 640px) {
+  .igs-cta-checks { grid-template-columns: minmax(0, 1fr); }
   .igs-ov-points { grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .igs-ov-visual { aspect-ratio: 5 / 4.6; border-radius: 22px; }
   .igs-ov-visual > * { font-size: 3cqw; }
@@ -588,20 +589,32 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
 .igs-cta { position: relative; overflow: hidden; padding: 96px 0; background: radial-gradient(circle at 14% 35%, rgba(0, 168, 228, .25), transparent 34%), radial-gradient(circle at 82% 48%, rgba(103, 55, 235, .38), transparent 38%), linear-gradient(112deg, #03143f 0%, #073270 47%, #281886 100%); color: #fff; scroll-margin-top: 90px; }
 .igs-cta::before { content: ""; position: absolute; inset: 0; opacity: .3; background-image: radial-gradient(rgba(75, 182, 255, .5) 1px, transparent 1px); background-size: 12px 12px; mask-image: linear-gradient(90deg, #000, transparent 50%); pointer-events: none; }
 .igs-cta > * { position: relative; }
-.igs-cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: center; }
+.igs-cta-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: stretch; }
+.igs-cta-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.igs-cta-copy > * { max-width: 100%; }
+.igs-cta-checks, .igs-cta-next { align-self: stretch; }
 .igs-cta .igs-kicker { background: rgba(255, 255, 255, .12); box-shadow: inset 0 0 0 1px rgba(160, 200, 255, .35); }
 .igs-cta h2 { margin-top: 18px; color: #fff; font-size: clamp(32px, 3.3vw, 46px); font-weight: 800; line-height: 1.1; letter-spacing: -.035em; }
 .igs-cta-copy > p { margin-top: 18px; color: #d3ddf7; font-size: 18px; }
-.igs-cta-copy ul { display: grid; gap: 14px; margin-top: 28px !important; }
-.igs-cta-copy li { display: flex; align-items: center; gap: 11px; color: #eef3ff; font-size: 16.5px; font-weight: 600; }
-.igs-cta-copy li svg { width: 24px; height: 24px; flex: none; padding: 5px; border-radius: 50%; background: #2ed57d; color: #05301a; stroke-width: 3; }
-.igs-form { padding: 36px; border-radius: 24px; background: #fff; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6); color: #071c47; }
+.igs-cta-checks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 28px !important; }
+.igs-cta-checks li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid rgba(160, 200, 255, .2); border-radius: 14px; background: rgba(255, 255, 255, .06); color: #eef3ff; font-size: 15.5px; font-weight: 600; line-height: 1.35; }
+.igs-cta-checks li svg { width: 24px; height: 24px; flex: none; padding: 5px; border-radius: 50%; background: #2ed57d; color: #05301a; stroke-width: 3; }
+.igs-cta-next { margin-top: 28px; padding: 22px 24px; border: 1px solid rgba(160, 200, 255, .2); border-radius: 20px; background: rgba(255, 255, 255, .05); }
+.igs-cta-next > b { color: #8fe3b4; font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.igs-cta-next ol { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 16px !important; }
+.igs-cta-next ol::before { content: ""; position: absolute; top: 17px; left: 17px; right: 33%; height: 2px; background: repeating-linear-gradient(90deg, rgba(160, 200, 255, .5) 0 6px, transparent 6px 12px); }
+.igs-cta-next li { position: relative; }
+.igs-cta-next li > span { position: relative; z-index: 1; display: grid; width: 36px; height: 36px; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #6638ff, #087cff); box-shadow: 0 0 0 5px rgba(102, 56, 255, .2); color: #fff; font-family: Roboto, Arial, sans-serif; font-weight: 800; }
+.igs-cta-next li p { margin-top: 12px; color: #c6d4f3; font-size: 14px; line-height: 1.45; }
+.igs-cta-next strong { display: block; color: #fff; font-size: 15.5px; }
+.igs-form { display: flex; flex-direction: column; justify-content: center; padding: 36px; border-radius: 24px; background: #fff; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .6); color: #071c47; }
 .igs-form > h3 { margin-bottom: 20px; font-size: 25px; font-weight: 800; letter-spacing: -.02em; }
 .igs-form > p a { color: #4f46e5; font-weight: 700; }
 .igs-form .wpforms-container { margin: 0 !important; }
 .igs-form .wpforms-field-medium, .igs-form .wpforms-field-row, .igs-form .wpforms-field-large { max-width: 100% !important; }
-.igs-form .wpforms-field-row { display: flex !important; gap: 12px; }
-.igs-form .wpforms-field-row-block { flex: 1 1 0; width: auto !important; margin: 0 !important; padding: 0 !important; }
+.igs-form .wpforms-container .wpforms-field-row { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; width: 100% !important; max-width: 100% !important; margin: 0 !important; }
+.igs-form .wpforms-container .wpforms-field-row::before, .igs-form .wpforms-container .wpforms-field-row::after { display: none !important; }
+.igs-form .wpforms-container .wpforms-field-row .wpforms-field-row-block { float: none !important; width: 100% !important; max-width: none !important; margin: 0 !important; padding: 0 !important; }
 .igs-form .wpforms-field { padding: 0 0 14px !important; }
 .igs-form .wpforms-field-label { color: #071c47 !important; font-size: 14px !important; font-weight: 700 !important; }
 .igs-form .wpforms-field-sublabel { color: var(--muted) !important; font-size: 12.5px !important; font-weight: 500 !important; }
@@ -665,6 +678,10 @@ body.infometry-google-sheets-page #Content { padding: 0 !important; }
   .igs-stats li:nth-child(n + 4) { border-top: 1px solid #e6edf7; }
   .igs-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .igs-cta-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .igs-cta-next ol { grid-template-columns: minmax(0, 1fr); }
+  .igs-cta-next ol::before { top: 17px; bottom: 30px; left: 17px; right: auto; width: 2px; height: auto; background: repeating-linear-gradient(180deg, rgba(160, 200, 255, .5) 0 6px, transparent 6px 12px); }
+  .igs-cta-next li { display: flex; align-items: flex-start; gap: 14px; }
+  .igs-cta-next li p { margin-top: 4px; }
   .infometry-footer-grid { grid-template-columns: repeat(2, 1fr); gap: 34px; }
 }
 

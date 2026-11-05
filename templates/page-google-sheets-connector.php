@@ -152,7 +152,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 				<div class="igs-proof">
 					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?></span><span><b>Informatica Marketplace</b><small>Certified listing</small></span><svg><use href="#igs-out"/></svg></a>
 					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon is-g2"><svg><use href="#igs-star"/></svg></span><span><b>G2 Product Review</b><small>See customer feedback</small></span><svg><use href="#igs-out"/></svg></a>
-					<!-- TODO CONFIRM: G2 rating + review count -->
+					<?php /* TODO CONFIRM: G2 rating + review count */ ?>
 				</div>
 			</div>
 
@@ -317,7 +317,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 					<ul>
 						<li><svg><use href="#igs-code"/></svg><span><b>Setup:</b> Install driver JAR on Secure Agent and restart</span></li>
 						<li><svg><use href="#igs-code"/></svg><span><b>Operations:</b> Depends on driver (SQL-style access)</span></li>
-						<!-- TODO CONFIRM: JDBC driver "Batch + real-time" value; row hidden until confirmed. -->
+						<?php /* TODO CONFIRM: JDBC driver "Batch + real-time" value; row hidden until confirmed. */ ?>
 						<li><svg><use href="#igs-code"/></svg><span><b>Informatica certification:</b> Third-party driver</span></li>
 						<li><svg><use href="#igs-code"/></svg><span><b>Updates:</b> Manual driver upgrades</span></li>
 						<li><svg><use href="#igs-code"/></svg><span><b>Pricing:</b> Per driver license</span></li>
@@ -450,7 +450,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 		</div>
 	</section>
 
-	<!-- TODO CONFIRM: Technical details section. Render once at least 3 items are confirmed.
+	<?php /* TODO CONFIRM: Technical details section. Render once at least 3 items are confirmed.
 	<section class="igs-section igs-capabilities" aria-labelledby="igs-tech-title">
 		<div class="igs-shell">
 			<div class="igs-head" data-igs-reveal>
@@ -466,8 +466,7 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 				TODO CONFIRM: PowerCenter support
 			</div>
 		</div>
-	</section>
-	-->
+	</section> */ ?>
 
 	<section class="igs-section igs-uses" aria-labelledby="igs-uses-title">
 		<div class="igs-shell">

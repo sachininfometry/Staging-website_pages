@@ -26,7 +26,7 @@ $customers_url    = home_url( '/company/customers-partners/' );
 $img              = INFOMETRY_CT_URL . 'assets/images/';
 $drive_icon       = $img . 'google-connectors/google-drive.png';
 $idmc_icon        = $img . 'informatica-product-mark.png';
-$support_email    = 'info@www.infometry.net';
+$support_email    = 'info@infometry.net';
 $trial_form_id    = 351429;
 
 // Hero: files in the shared drive and the transfer jobs that move them (file index, operation, label, target).

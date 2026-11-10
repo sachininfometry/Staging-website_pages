@@ -208,7 +208,7 @@ body .icl-page .icl-hero {
 
 body .icl-page .icl-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(380px, 470px);
   gap: clamp(32px, 4vw, 64px);
   align-items: center;
 }
@@ -278,9 +278,28 @@ body .icl-page .icl-hero-points li {
 
 body .icl-page .icl-hero-points .icl-check { stroke: #7da2ff; }
 
-body .icl-page .icl-hero-demo { min-width: 0; }
+/* Interactive demo section (the live Conversa product tour). */
+body .icl-page .icl-tour-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 24px 56px;
+  align-items: end;
+}
 
-body .icl-page .icl-hero-demo .icp-live { max-width: none; }
+body .icl-page .icl-tour-head .icl-check-list { margin: 0; }
+
+body .icl-page .icl-tour-demo {
+  min-width: 0;
+  max-width: 1180px;
+  margin: 48px auto 0;
+}
+
+body .icl-page .icl-tour-demo .icp-live { max-width: none; }
+
+body .icl-page .icl-tour-cta {
+  justify-content: center;
+  margin-top: 36px;
+}
 
 /* ---------- Proof strip ---------- */
 body .icl-page .icl-proof {
@@ -479,13 +498,6 @@ body .icl-page .icl-dark {
 body .icl-page .icl-dark h2 { color: #fff; }
 
 body .icl-page .icl-dark .icl-kicker { color: #9fb6ff; }
-
-body .icl-page .icl-demo-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: 56px;
-  align-items: center;
-}
 
 body .icl-page .icl-check-list {
   display: grid;
@@ -985,7 +997,8 @@ body .icl-page .icl-footer a {
   body .icl-page .icl-hero-copy { max-width: 720px; }
   body .icl-page .icl-hero-points { grid-template-columns: repeat(4, minmax(0, auto)); }
   body .icl-page .icl-split,
-  body .icl-page .icl-demo-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  body .icl-page .icl-tour-head { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  body .icl-page .icl-tour-demo { margin-top: 32px; }
   body .icl-page .icl-form-card { justify-self: start; max-width: 560px; }
   body .icl-page .icl-example-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body .icl-page .icl-cap-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1072,3 +1085,7 @@ body .icl-page .icl-footer a {
   body .icl-page .icl-btn { transition: none; }
   body .icl-page .icl-btn:hover { transform: none; }
 }
+
+/* Anchors land below the sticky top bar. */
+body .icl-page .icl-tour,
+body .icl-page .icl-form-card { scroll-margin-top: 96px; }

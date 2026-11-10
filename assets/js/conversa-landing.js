@@ -29,6 +29,18 @@
     });
   });
 
+  // "Try the interactive demo" scrolls to the product tour section.
+  var tourSection = page.querySelector('#icl-tour');
+  Array.prototype.forEach.call(page.querySelectorAll('[data-icl-tour]'), function (link) {
+    link.addEventListener('click', function (event) {
+      if (!tourSection) {
+        return;
+      }
+      event.preventDefault();
+      tourSection.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+    });
+  });
+
   if (form) {
     var time = form.querySelector('[data-icl-time]');
     var url = form.querySelector('[data-icl-url]');

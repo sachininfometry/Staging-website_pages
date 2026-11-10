@@ -5,8 +5,8 @@
  *
  * Paid-traffic landing page for INFOFISCUS Conversa. It prints its own document,
  * so the theme header, site menu and footer are not on the page: the only ways
- * out are the demo form and the Privacy Policy link. The hero reuses the live
- * Conversa product tour (templates/partials/conversa-live-dashboard.php), which
+ * out are the demo form and the Privacy Policy link. The hero holds the demo
+ * form; the section below it reuses the live Conversa product tour (templates/partials/conversa-live-dashboard.php), which
  * is why this page sits inside .infometry-conversa-product and loads the
  * Conversa CSS/JS. Everything else is styled by assets/css/conversa-landing.css.
  *
@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $icl_privacy_url = home_url( '/privacy-policies/' );
-$icl_tour_url    = 'https://app.supademo.com/demo/cmrpbnvrk00aozw0jd3ao0z6v?utm_source=link';
 
 $icl_stats = array(
 	array( '3X', 'Faster time to insights' ),
@@ -134,7 +133,7 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 				<p class="icl-hero-lead">Ask business questions in plain English. Conversa investigates your governed enterprise data, finds the key drivers and hands your leaders decision-ready answers.</p>
 				<div class="icl-actions">
 					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <span aria-hidden="true">→</span></a>
-					<a class="icl-btn icl-btn-ghost" href="<?php echo esc_url( $icl_tour_url ); ?>" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path class="icl-solid" d="m10 8.5 5.5 3.5-5.5 3.5z"/></svg>Try the interactive demo</a>
+					<a class="icl-btn icl-btn-ghost" href="#icl-tour" data-icl-tour><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path class="icl-solid" d="m10 8.5 5.5 3.5-5.5 3.5z"/></svg>Try the interactive demo</a>
 				</div>
 				<ul class="icl-hero-points">
 					<li><?php echo $icl_check; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Trusted Answers</li>
@@ -143,8 +142,32 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 					<li><?php echo $icl_check; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Enterprise-Grade Security</li>
 				</ul>
 			</div>
-			<div class="icl-hero-demo">
-				<?php include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php'; ?>
+			<div class="icl-form-card" id="icl-demo">
+				<?php $icl_status = isset( $_GET['icl_lead'] ) ? sanitize_key( wp_unslash( $_GET['icl_lead'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+				<form class="icl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-icl-form novalidate>
+					<h3>Request your personalized demo</h3>
+					<input type="hidden" name="action" value="infometry_landing_lead">
+					<input type="hidden" name="icl_t" value="" data-icl-time>
+					<input type="hidden" name="icl_url" value="" data-icl-url>
+					<div class="icl-hp" aria-hidden="true"><label>Website <input type="text" name="icl_website" tabindex="-1" autocomplete="off"></label></div>
+					<label for="icl-name">Full name</label>
+					<input id="icl-name" type="text" name="icl_name" placeholder="Jane Smith" autocomplete="name" maxlength="120" required>
+					<label for="icl-email">Company email</label>
+					<input id="icl-email" type="email" name="icl_email" placeholder="jane@company.com" autocomplete="email" maxlength="160" required>
+					<label for="icl-company">Company</label>
+					<input id="icl-company" type="text" name="icl_company" placeholder="Company name" autocomplete="organization" maxlength="160" required>
+					<label for="icl-phone">Contact number <span>(optional)</span></label>
+					<input id="icl-phone" type="tel" name="icl_phone" placeholder="+1 555 000 0000" autocomplete="tel" maxlength="40">
+					<button class="icl-btn icl-btn-primary icl-submit" type="submit">Book My Demo <span aria-hidden="true">→</span></button>
+					<p class="icl-form-msg<?php echo 'ok' === $icl_status ? ' is-ok' : ( 'error' === $icl_status ? ' is-error' : '' ); ?>" role="status" aria-live="polite" data-icl-msg><?php
+					if ( 'ok' === $icl_status ) {
+						echo esc_html( 'Thank you. Our analytics team will connect with you to schedule a time.' );
+					} elseif ( 'error' === $icl_status ) {
+						echo esc_html( 'Please enter your full name, a valid company email and your company.' );
+					}
+					?></p>
+				</form>
+				<p class="icl-form-note">Our analytics team will connect with you to schedule a time.</p>
 			</div>
 		</div>
 	</section>
@@ -199,43 +222,24 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 		</div>
 	</section>
 
-	<section class="icl-section icl-dark icl-demo" id="icl-demo" aria-labelledby="icl-demo-title">
-		<div class="icl-shell icl-demo-grid">
-			<div class="icl-demo-copy">
-				<p class="icl-kicker">Personalized demo</p>
-				<h2 id="icl-demo-title">See Conversa investigate questions from your own industry</h2>
+	<section class="icl-section icl-dark icl-tour" id="icl-tour" aria-labelledby="icl-tour-title">
+		<div class="icl-shell">
+			<div class="icl-tour-head">
+				<div>
+					<p class="icl-kicker">Interactive demo</p>
+					<h2 id="icl-tour-title">See Conversa investigate questions from your own industry</h2>
+				</div>
 				<ul class="icl-check-list">
 					<?php foreach ( $icl_demo_points as $point ) : ?>
 						<li><?php echo $icl_check; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $point ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
-			<div class="icl-form-card">
-				<?php $icl_status = isset( $_GET['icl_lead'] ) ? sanitize_key( wp_unslash( $_GET['icl_lead'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
-				<form class="icl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-icl-form novalidate>
-					<h3>Request your personalized demo</h3>
-					<input type="hidden" name="action" value="infometry_landing_lead">
-					<input type="hidden" name="icl_t" value="" data-icl-time>
-					<input type="hidden" name="icl_url" value="" data-icl-url>
-					<div class="icl-hp" aria-hidden="true"><label>Website <input type="text" name="icl_website" tabindex="-1" autocomplete="off"></label></div>
-					<label for="icl-name">Full name</label>
-					<input id="icl-name" type="text" name="icl_name" placeholder="Jane Smith" autocomplete="name" maxlength="120" required>
-					<label for="icl-email">Company email</label>
-					<input id="icl-email" type="email" name="icl_email" placeholder="jane@company.com" autocomplete="email" maxlength="160" required>
-					<label for="icl-company">Company</label>
-					<input id="icl-company" type="text" name="icl_company" placeholder="Company name" autocomplete="organization" maxlength="160" required>
-					<label for="icl-phone">Contact number <span>(optional)</span></label>
-					<input id="icl-phone" type="tel" name="icl_phone" placeholder="+1 555 000 0000" autocomplete="tel" maxlength="40">
-					<button class="icl-btn icl-btn-primary icl-submit" type="submit">Book My Demo <span aria-hidden="true">→</span></button>
-					<p class="icl-form-msg<?php echo 'ok' === $icl_status ? ' is-ok' : ( 'error' === $icl_status ? ' is-error' : '' ); ?>" role="status" aria-live="polite" data-icl-msg><?php
-					if ( 'ok' === $icl_status ) {
-						echo esc_html( 'Thank you. Our analytics team will connect with you to schedule a time.' );
-					} elseif ( 'error' === $icl_status ) {
-						echo esc_html( 'Please enter your full name, a valid company email and your company.' );
-					}
-					?></p>
-				</form>
-				<p class="icl-form-note">Our analytics team will connect with you to schedule a time.</p>
+			<div class="icl-tour-demo">
+				<?php include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php'; ?>
+			</div>
+			<div class="icl-actions icl-tour-cta">
+				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <span aria-hidden="true">→</span></a>
 			</div>
 		</div>
 	</section>

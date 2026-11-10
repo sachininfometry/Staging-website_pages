@@ -370,6 +370,7 @@ body .icl-page .icl-logo {
   width: auto;
   height: 52px;
   max-width: 100%;
+  margin-left: -14px; /* the logo file has transparent space on its left */
 }
 
 /* ---------- Generic sections ---------- */
@@ -1037,7 +1038,7 @@ body .icl-page .icl-footer a {
 @media (max-width: 720px) {
   body .icl-page .icl-shell { width: min(100% - 32px, 1320px); }
   body .icl-page .icl-hero-brand { margin-bottom: 26px; }
-  body .icl-page .icl-logo { height: 40px; }
+  body .icl-page .icl-logo { height: 40px; margin-left: -11px; }
   body .icl-page .icl-trust { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 20px 16px; text-align: center; }
   body .icl-page .icl-trust-title { padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--icl-line); font-size: 18px; }
   body .icl-page .icl-logo-item { width: 140px; padding: 0 16px; }

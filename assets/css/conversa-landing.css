@@ -1422,6 +1422,11 @@ body .icl-page.icl-js .icl-card[data-icl-reveal].is-in {
 @media (max-width: 480px) {
   body .icl-page .icl-steps { grid-template-columns: minmax(0, 1fr); }
   body .icl-page .icl-stat { min-height: 96px; padding: 10px 8px; }
+  body .icl-page .icl-steps { gap: 10px; }
+  body .icl-page .icl-step { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: 14px; padding: 14px 16px 16px; }
+  body .icl-page .icl-step-icon { grid-row: 1 / span 2; width: 40px; height: 40px; margin: 0; }
+  body .icl-page .icl-step small { margin-top: 2px; }
+  body .icl-page .icl-step-num { top: 12px; font-size: 22px; }
   body .icl-page .icl-team-kpis { grid-template-columns: minmax(0, 1fr); }
 }
 

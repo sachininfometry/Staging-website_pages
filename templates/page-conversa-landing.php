@@ -60,21 +60,25 @@ $icl_steps = array(
 	array( 'check', 'Decide', 'Get a clear, decision-ready business insight.' ),
 );
 
-// The engagement investigation shown on the Conversa product page (templates/partials/conversa-journey.php).
-$icl_context = array( 'Customer segments', 'Campaign reach', 'Engagement KPIs', 'Channel trends', 'Prior-week baseline', 'Engagement target' );
+// Retail example: the "Optimize promotional spend" answer from the Retail workspace
+// of the Conversa demo (templates/partials/conversa-live-verticals.php).
+$icl_context = array( 'Gross sales', 'Net margin', 'Promotion spend', 'Return on spend', '7 promotions', 'Snowflake' );
 // Step index that lights the row, label, result, result style.
 $icl_trail = array(
-	array( 2, 'Compare engagement with the prior week', '50.3K → 41.2K', '' ),
-	array( 2, 'Break down the decline by channel and segment', '4 channels', '' ),
-	array( 3, 'Identify the biggest drop', 'Email −31%', 'is-down' ),
-	array( 3, 'Find the key driver: lower click-through rate', 'CTR 3.8% → 2.1%', 'is-down' ),
+	array( 2, 'Compare promotion sales with net margin', '$459.9M → $43.8M', '' ),
+	array( 2, 'Break down return on spend by promotion', '7 promotions', '' ),
+	array( 3, 'Find where margin leaks: the three deepest discounts', '61% of sales, 37% of margin', 'is-down' ),
+	array( 3, 'Find the best return on spend', 'New Customer Offer 1.83x', 'is-up' ),
 );
-// Channel, decline %, biggest.
+// Promotion, return on promo spend, style.
 $icl_channels = array(
-	array( 'Email', 31, true ),
-	array( 'Social', 9, false ),
-	array( 'Web', 4, false ),
-	array( 'App', 2, false ),
+	array( 'New Customer Offer', 1.83, 'is-best' ),
+	array( '15% Off Electronics', 1.37, '' ),
+	array( 'Loyalty Coupon', 0.95, '' ),
+	array( '20% Off Apparel', 0.37, '' ),
+	array( '25% Off Sitewide', 0.32, '' ),
+	array( 'BOGO Beauty', 0.14, 'is-low' ),
+	array( 'Buy 2 Get 1 Free', 0.06, 'is-low' ),
 );
 
 $icl_demo_points = array(
@@ -297,11 +301,11 @@ $icl_icon = static function ( $name ) {
 				</ol>
 				<div class="icl-example" data-icl-reveal>
 					<div class="icl-example-head">
-						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><small>Example question</small>Why did customer engagement drop last week?</span></h3>
+						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><small>Retail example · Retail Ops Director</small>How should we optimize future promotional spending?</span></h3>
 						<span class="icl-formula">KPIs + Context + Drivers = Action</span>
 					</div>
 					<div class="icl-context" data-icl-ex="1">
-						<small>Business context applied</small>
+						<small>Data and context used</small>
 						<?php foreach ( $icl_context as $item ) : ?>
 							<span><?php echo esc_html( $item ); ?></span>
 						<?php endforeach; ?>
@@ -313,15 +317,15 @@ $icl_icon = static function ( $name ) {
 							<?php endforeach; ?>
 						</ol>
 						<div class="icl-bars" data-icl-ex="2">
-							<small>Engagement decline by channel, week over week</small>
+							<small>Return on promotion spend</small>
 							<?php foreach ( $icl_channels as $ch ) : ?>
-								<div class="icl-bar<?php echo $ch[2] ? ' is-top' : ''; ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( round( $ch[1] / 31 * 100 ) ); ?>%"></i><b>−<?php echo esc_html( $ch[1] ); ?>%</b></div>
+								<div class="icl-bar <?php echo esc_attr( $ch[2] ); ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( max( 3, round( $ch[1] / 1.83 * 100 ) ) ); ?>%"></i><b><?php echo esc_html( number_format( $ch[1], 2 ) ); ?>x</b></div>
 							<?php endforeach; ?>
 						</div>
 					</div>
 					<div class="icl-verdict" data-icl-ex="4">
-						<div class="icl-verdict-kpi"><strong>−18%</strong><span>Engagement down week over week<br>50.3K → 41.2K</span></div>
-						<p class="icl-action-note"><b>Recommended action:</b> Optimize email timing. Shift sends to peak open hours.</p>
+						<div class="icl-verdict-kpi"><strong>9.5%</strong><span>Blended net margin<br>$43.8M on $459.9M of sales</span></div>
+						<p class="icl-action-note"><b>Recommended action:</b> Scale the New Customer Offer, move budget from Buy 2 Get 1 Free to 15% Off Electronics, and cap sitewide discounts at 20% to protect margin.</p>
 					</div>
 				</div>
 			</div>

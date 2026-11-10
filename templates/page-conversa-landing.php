@@ -263,8 +263,8 @@ $icl_icon = static function ( $name ) {
 			</div>
 			<div class="icl-gap-card" data-icl-reveal>
 				<div class="icl-gap-head">
-					<div class="icl-ring" style="--v:80" aria-hidden="true"><span>80%</span></div>
-					<div><b>of business questions never get answered in time</b><small>Here is what holds them up</small></div>
+					<div class="icl-ring" style="--v:80" aria-hidden="true"><span>80%<small>unanswered</small></span></div>
+					<div><b>What slows business answers down</b><small>The four gaps Conversa closes</small></div>
 				</div>
 				<ol class="icl-gap-list">
 					<?php foreach ( $icl_problems as $i => $problem ) : ?>

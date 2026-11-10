@@ -19,6 +19,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $icl_privacy_url = home_url( '/privacy-policies/' );
 
+// The site logo set in the theme (Betheme > Logo), shown on the banner like the other pages.
+$icl_logo = function_exists( 'mfn_opts_get' ) ? mfn_opts_get( 'logo-img' ) : '';
+if ( ! $icl_logo ) {
+	$icl_logo = home_url( '/wp-content/uploads/2025/12/infometry-inc-logo-enabling-ai-for-every-enterprise-e1765295994150.png' );
+}
+
+$icl_customers = array(
+	array( 'Sanofi', 'customer-sanofi-logo.png', 323, 259 ),
+	array( 'Belk', 'customer-belk-logo.png', 423, 179 ),
+	array( 'IBM', 'customer-ibm-logo.png', 403, 171 ),
+	array( 'Informatica', 'customer-informatica-logo.png', 645, 171 ),
+	array( 'Michaels', 'customer-michaels-logo.png', 150, 56 ),
+	array( 'SanDisk', 'customer-sandisk-logo.png', 621, 137 ),
+	array( 'Fusion.io', 'customer-fusionio-logo.png', 363, 198 ),
+);
+
 $icl_stats = array(
 	array( '3X', 'Faster time to insights' ),
 	array( '75%', 'Self-service analytics growth' ),
@@ -118,14 +134,10 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 <?php wp_body_open(); ?>
 <main class="infometry-conversa-product icl-page" id="icl-top">
 
-	<header class="icl-topbar">
-		<div class="icl-shell icl-topbar-inner">
-			<div class="icl-brand"><strong>INFOMETRY INC.</strong><span>Enabling AI for Every Enterprise</span></div>
-			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <span aria-hidden="true">→</span></a>
-		</div>
-	</header>
-
 	<section class="icl-hero" aria-labelledby="icl-hero-title">
+		<div class="icl-shell icl-hero-brand">
+			<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" alt="Infometry Inc. Enabling AI for Every Enterprise">
+		</div>
 		<div class="icl-shell icl-hero-grid">
 			<div class="icl-hero-copy">
 				<p class="icl-pill">INFOFISCUS Conversa™</p>
@@ -179,7 +191,18 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 					<div class="icl-stat"><strong><?php echo esc_html( $stat[0] ); ?></strong><span><?php echo esc_html( $stat[1] ); ?></span></div>
 				<?php endforeach; ?>
 			</div>
-			<p class="icl-trust"><b>Infometry is trusted by 150+ customers worldwide</b><span>Works with Snowflake · Databricks · Google Cloud · BigQuery · Redshift · Oracle · SQL Server</span></p>
+			<div class="icl-trust">
+				<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
+				<div class="icl-logos" role="region" aria-label="Customer logos">
+					<div class="icl-logos-track">
+						<?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
+							<?php foreach ( $icl_customers as $customer ) : ?>
+								<span class="icl-logo-item"<?php echo $loop ? ' aria-hidden="true"' : ''; ?>><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/' . $customer[1] ); ?>" width="<?php echo esc_attr( $customer[2] ); ?>" height="<?php echo esc_attr( $customer[3] ); ?>" loading="lazy" decoding="async" alt="<?php echo $loop ? '' : esc_attr( $customer[0] ); ?>"></span>
+							<?php endforeach; ?>
+						<?php endfor; ?>
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 

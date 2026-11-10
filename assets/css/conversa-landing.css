@@ -1549,9 +1549,9 @@ body .icl-page .icl-ring span small {
   margin-top: 3px;
   color: #aebbdc;
   font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
-  font-size: 10.5px;
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: .04em;
+  letter-spacing: .02em;
   text-transform: uppercase;
 }
 
@@ -1782,7 +1782,7 @@ body .icl-page .icl-stepper.is-live .icl-bars.is-lit { box-shadow: 0 14px 30px r
   body .icl-page .icl-gap-card { padding: 20px; }
   body .icl-page .icl-ring { width: 84px; height: 84px; }
   body .icl-page .icl-ring span { width: 64px; height: 64px; font-size: 20px; }
-  body .icl-page .icl-ring span small { font-size: 8.5px; }
+  body .icl-page .icl-ring span small { font-size: 7.5px; }
   body .icl-page .icl-gap-head b { font-size: 17px; }
   body .icl-page .icl-gap-list li { padding: 14px 6px; }
   body .icl-page .icl-gap-list p { font-size: 15.5px; }

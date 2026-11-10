@@ -45,6 +45,9 @@ require_once INFOMETRY_CT_PATH . 'includes/premium-blog.php';
 /** Lean output (no hidden theme slider/footer, no unused builder assets) on custom-design pages. */
 require_once INFOMETRY_CT_PATH . 'includes/lean-pages.php';
 
+/** Standalone lead form for the Conversa ads landing page (does not use WPForms). */
+require_once INFOMETRY_CT_PATH . 'includes/conversa-landing-form.php';
+
 /** Small SEO fixes with no visible effect (home schema, retired duplicate URLs). */
 require_once INFOMETRY_CT_PATH . 'includes/seo-fixes.php';
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
@@ -1142,23 +1145,8 @@ add_filter( 'wpforms_process_before_form_data', 'infometry_ct_conversa_ajax_conf
  */
 function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
 	$form_id          = absint( $form_data['id'] );
-	$is_landing_form  = INFOMETRY_CT_CONVERSA_FORM_ID === $form_id && infometry_ct_should_use_conversa_landing_template();
 	$is_conversa_form = INFOMETRY_CT_CONVERSA_FORM_ID === $form_id
 		&& ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() );
-
-	// Ads landing page: no demo date/time, just Company plus where the lead came from.
-	if ( $is_landing_form ) {
-		?>
-		<div class="icp-demo-form-head"><strong><?php esc_html_e( 'Request your personalized demo', 'infometry-custom-templates' ); ?></strong></div>
-		<input type="hidden" name="infometry_conversa[source]" value="Conversa ads landing page">
-		<input type="hidden" name="infometry_conversa[landing_url]" value="" data-icl-landing-url>
-		<label class="icp-demo-company">
-			<?php esc_html_e( 'Company', 'infometry-custom-templates' ); ?>
-			<input type="text" name="infometry_conversa[company]" autocomplete="organization" placeholder="Company name">
-		</label>
-		<?php
-		return;
-	}
 	$is_google_form   = INFOMETRY_CT_GOOGLE_FORM_ID === $form_id && infometry_ct_should_use_google_connectors_template();
 
 	if ( ! $is_conversa_form && ! $is_google_form ) {
@@ -1233,17 +1221,6 @@ function infometry_ct_add_conversa_fields_to_notification( $email, $fields, $ent
 	$timezone = isset( $details['preferred_demo_timezone'] ) ? sanitize_text_field( $details['preferred_demo_timezone'] ) : '';
 	$company = isset( $details['company'] ) ? sanitize_text_field( $details['company'] ) : '';
 
-	$source      = isset( $details['source'] ) ? sanitize_text_field( $details['source'] ) : '';
-	$landing_url = isset( $details['landing_url'] ) ? esc_url_raw( $details['landing_url'] ) : '';
-	if ( '' !== $source ) {
-		$extra  = '<h3>' . esc_html__( 'Lead source', 'infometry-custom-templates' ) . '</h3>';
-		$extra .= '<p><strong>' . esc_html__( 'Source:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $source ) . '<br>';
-		$extra .= '<strong>' . esc_html__( 'Landing URL:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $landing_url ?: 'Not provided' ) . '<br>';
-		$extra .= '<strong>' . esc_html__( 'Company:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $company ?: 'Not provided' ) . '</p>';
-		$email['message'] .= $extra;
-		return $email;
-	}
-
 	$extra = '<h3>' . esc_html__( 'Demo preferences', 'infometry-custom-templates' ) . '</h3>';
 	$extra .= '<p><strong>' . esc_html__( 'Preferred Demo Date:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $date ?: 'Not provided' ) . '<br>';
 	$extra .= '<strong>' . esc_html__( 'Preferred Demo Time:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $time ?: 'Not provided' ) . '<br>';
@@ -1281,7 +1258,7 @@ function infometry_ct_is_cloudways_staging_host() {
  * @return bool
  */
 function infometry_ct_disable_staging_recaptcha( $disabled ) {
-	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_conversa_landing_template() || infometry_ct_should_use_informatica_template() || infometry_ct_should_use_google_connectors_template() ) ) {
+	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() || infometry_ct_should_use_google_connectors_template() ) ) {
 		return true;
 	}
 

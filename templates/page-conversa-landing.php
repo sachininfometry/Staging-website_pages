@@ -84,7 +84,7 @@ $icl_compare = array(
 	array( 'Unstructured Data', 'y', 'n', 'n', 'p' ),
 	array( 'Governance', 'y', 'y', 'y', 'p' ),
 );
-$icl_status = array(
+$icl_marks = array(
 	'y' => array( 'is-yes', 'Full support' ),
 	'p' => array( 'is-partial', 'Partial' ),
 	'n' => array( 'is-no', 'Not supported' ),
@@ -122,7 +122,7 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 	<header class="icl-topbar">
 		<div class="icl-shell icl-topbar-inner">
 			<div class="icl-brand"><strong>INFOMETRY INC.</strong><span>Enabling AI for Every Enterprise</span></div>
-			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icp-demo-trigger>Request a Demo <span aria-hidden="true">→</span></a>
+			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <span aria-hidden="true">→</span></a>
 		</div>
 	</header>
 
@@ -133,7 +133,7 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 				<h1 id="icl-hero-title">The Trusted Decision Intelligence Platform <span>for the Enterprise</span></h1>
 				<p class="icl-hero-lead">Ask business questions in plain English. Conversa investigates your governed enterprise data, finds the key drivers and hands your leaders decision-ready answers.</p>
 				<div class="icl-actions">
-					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icp-demo-trigger>Book a Live Demo <span aria-hidden="true">→</span></a>
+					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <span aria-hidden="true">→</span></a>
 					<a class="icl-btn icl-btn-ghost" href="<?php echo esc_url( $icl_tour_url ); ?>" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path class="icl-solid" d="m10 8.5 5.5 3.5-5.5 3.5z"/></svg>Try the interactive demo</a>
 				</div>
 				<ul class="icl-hero-points">
@@ -210,20 +210,31 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 					<?php endforeach; ?>
 				</ul>
 			</div>
-			<div class="icl-form-card" data-icp-wpforms-host>
-				<?php if ( shortcode_exists( 'wpforms' ) ) : ?>
-					<?php
-					echo do_shortcode(
-						sprintf(
-							'[wpforms id="%d" title="false" description="false" ajax="true"]',
-							absint( INFOMETRY_CT_CONVERSA_FORM_ID )
-						)
-					); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					?>
-				<?php else : ?>
-					<div class="icp-demo-form-head"><strong>Request your personalized demo</strong></div>
-					<p>The request form is temporarily unavailable. Email us at <a href="mailto:info@infometry.net">info@infometry.net</a>.</p>
-				<?php endif; ?>
+			<div class="icl-form-card">
+				<?php $icl_status = isset( $_GET['icl_lead'] ) ? sanitize_key( wp_unslash( $_GET['icl_lead'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+				<form class="icl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-icl-form novalidate>
+					<h3>Request your personalized demo</h3>
+					<input type="hidden" name="action" value="infometry_landing_lead">
+					<input type="hidden" name="icl_t" value="" data-icl-time>
+					<input type="hidden" name="icl_url" value="" data-icl-url>
+					<div class="icl-hp" aria-hidden="true"><label>Website <input type="text" name="icl_website" tabindex="-1" autocomplete="off"></label></div>
+					<label for="icl-name">Full name</label>
+					<input id="icl-name" type="text" name="icl_name" placeholder="Jane Smith" autocomplete="name" maxlength="120" required>
+					<label for="icl-email">Company email</label>
+					<input id="icl-email" type="email" name="icl_email" placeholder="jane@company.com" autocomplete="email" maxlength="160" required>
+					<label for="icl-company">Company</label>
+					<input id="icl-company" type="text" name="icl_company" placeholder="Company name" autocomplete="organization" maxlength="160" required>
+					<label for="icl-phone">Contact number <span>(optional)</span></label>
+					<input id="icl-phone" type="tel" name="icl_phone" placeholder="+1 555 000 0000" autocomplete="tel" maxlength="40">
+					<button class="icl-btn icl-btn-primary icl-submit" type="submit">Book My Demo <span aria-hidden="true">→</span></button>
+					<p class="icl-form-msg<?php echo 'ok' === $icl_status ? ' is-ok' : ( 'error' === $icl_status ? ' is-error' : '' ); ?>" role="status" aria-live="polite" data-icl-msg><?php
+					if ( 'ok' === $icl_status ) {
+						echo esc_html( 'Thank you. Our analytics team will connect with you to schedule a time.' );
+					} elseif ( 'error' === $icl_status ) {
+						echo esc_html( 'Please enter your full name, a valid company email and your company.' );
+					}
+					?></p>
+				</form>
 				<p class="icl-form-note">Our analytics team will connect with you to schedule a time.</p>
 			</div>
 		</div>
@@ -269,7 +280,7 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 							<tr>
 								<th scope="row"><?php echo esc_html( $row[0] ); ?></th>
 								<?php for ( $c = 1; $c <= 4; $c++ ) : ?>
-									<?php $s = $icl_status[ $row[ $c ] ]; ?>
+									<?php $s = $icl_marks[ $row[ $c ] ]; ?>
 									<td class="<?php echo 1 === $c ? 'is-conversa' : ''; ?>"><span class="icl-mark <?php echo esc_attr( $s[0] ); ?>" role="img" aria-label="<?php echo esc_attr( $s[1] ); ?>"></span></td>
 								<?php endfor; ?>
 							</tr>
@@ -324,8 +335,8 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 			<h2 id="icl-final-title">Turn every business question into a confident decision</h2>
 			<p>Experience the power of trusted decision intelligence on questions from your own business.</p>
 			<div class="icl-actions">
-				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icp-demo-trigger>Request a Live Demo <span aria-hidden="true">→</span></a>
-				<a class="icl-btn icl-btn-ghost" href="#icl-demo" data-icp-demo-trigger>Start a Conversa Value Sprint</a>
+				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Request a Live Demo <span aria-hidden="true">→</span></a>
+				<a class="icl-btn icl-btn-ghost" href="#icl-demo" data-icl-demo>Start a Conversa Value Sprint</a>
 			</div>
 		</div>
 	</section>

@@ -60,12 +60,21 @@ $icl_steps = array(
 	array( 'check', 'Decide', 'Get a clear, decision-ready business insight.' ),
 );
 
-// Each tile lights up with the step (index into $icl_steps) that produces it.
-$icl_example = array(
-	array( 1, '1 · Compare with prior week', '50.3K → 41.2K', '' ),
-	array( 2, '2 · Break down by channel', 'Email · Social · Web · App', '' ),
-	array( 3, '3 · Biggest drop', 'Email −31%', 'is-down' ),
-	array( 3, '4 · Key driver: click-through rate', 'CTR 3.8% → 2.1%', '' ),
+// The engagement investigation shown on the Conversa product page (templates/partials/conversa-journey.php).
+$icl_context = array( 'Customer segments', 'Campaign reach', 'Engagement KPIs', 'Channel trends', 'Prior-week baseline', 'Engagement target' );
+// Step index that lights the row, label, result, result style.
+$icl_trail = array(
+	array( 2, 'Compare engagement with the prior week', '50.3K → 41.2K', '' ),
+	array( 2, 'Break down the decline by channel and segment', '4 channels', '' ),
+	array( 3, 'Identify the biggest drop', 'Email −31%', 'is-down' ),
+	array( 3, 'Find the key driver: lower click-through rate', 'CTR 3.8% → 2.1%', 'is-down' ),
+);
+// Channel, decline %, biggest.
+$icl_channels = array(
+	array( 'Email', 31, true ),
+	array( 'Social', 9, false ),
+	array( 'Web', 4, false ),
+	array( 'App', 2, false ),
 );
 
 $icl_demo_points = array(
@@ -245,17 +254,23 @@ $icl_icon = static function ( $name ) {
 	</section>
 
 	<section class="icl-section icl-problem" aria-labelledby="icl-problem-title">
-		<div class="icl-shell icl-split">
-			<div data-icl-reveal>
+		<div class="icl-shell icl-problem-layout">
+			<div class="icl-problem-copy" data-icl-reveal>
 				<p class="icl-kicker">Stop searching reports. Start investigating.</p>
-				<h2 id="icl-problem-title"><span class="icl-grad-text">80%</span> of business questions never get answered in time</h2>
+				<h2 id="icl-problem-title"><span class="icl-grad-text">80%</span> of business questions never get answered in time because…</h2>
 				<p class="icl-lead">Dashboards tell you what happened. Your leaders need to know why, and what to do next.</p>
-				<a class="icl-link" href="#icl-demo" data-icl-demo>See how Conversa closes the gap <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>See how Conversa closes the gap <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			</div>
-			<div class="icl-problem-grid">
-				<?php foreach ( $icl_problems as $i => $problem ) : ?>
-					<div class="icl-card icl-problem-card <?php echo esc_attr( $problem[1] ); ?>" data-icl-reveal style="--d:<?php echo esc_attr( $i * 80 ); ?>ms"><span class="icl-tile"><?php echo $icl_icon( $problem[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><p><?php echo esc_html( $problem[2] ); ?></p></div>
-				<?php endforeach; ?>
+			<div class="icl-gap-card" data-icl-reveal>
+				<div class="icl-gap-head">
+					<div class="icl-ring" style="--v:80" aria-hidden="true"><span>80%</span></div>
+					<div><b>of business questions never get answered in time</b><small>Here is what holds them up</small></div>
+				</div>
+				<ol class="icl-gap-list">
+					<?php foreach ( $icl_problems as $i => $problem ) : ?>
+						<li class="<?php echo esc_attr( $problem[1] ); ?>"><span class="icl-tile"><?php echo $icl_icon( $problem[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><p><?php echo esc_html( $problem[2] ); ?></p><em aria-hidden="true">0<?php echo esc_html( $i + 1 ); ?></em></li>
+					<?php endforeach; ?>
+				</ol>
 			</div>
 		</div>
 	</section>
@@ -282,15 +297,32 @@ $icl_icon = static function ( $name ) {
 				</ol>
 				<div class="icl-example" data-icl-reveal>
 					<div class="icl-example-head">
-						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>Example: "Why did customer engagement drop last week?"</h3>
+						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><small>Example question</small>Why did customer engagement drop last week?</span></h3>
 						<span class="icl-formula">KPIs + Context + Drivers = Action</span>
 					</div>
-					<div class="icl-example-grid">
-						<?php foreach ( $icl_example as $tile ) : ?>
-							<div class="icl-example-tile" data-icl-ex="<?php echo esc_attr( $tile[0] ); ?>"><small><?php echo esc_html( $tile[1] ); ?></small><strong class="<?php echo esc_attr( $tile[3] ); ?>"><?php echo esc_html( $tile[2] ); ?></strong></div>
+					<div class="icl-context" data-icl-ex="1">
+						<small>Business context applied</small>
+						<?php foreach ( $icl_context as $item ) : ?>
+							<span><?php echo esc_html( $item ); ?></span>
 						<?php endforeach; ?>
 					</div>
-					<p class="icl-action-note" data-icl-ex="4"><b>Recommended action:</b> Optimize email timing. Shift sends to peak open hours.</p>
+					<div class="icl-example-body">
+						<ol class="icl-trail">
+							<?php foreach ( $icl_trail as $i => $row ) : ?>
+								<li data-icl-ex="<?php echo esc_attr( $row[0] ); ?>"><span class="icl-trail-num"><?php echo esc_html( $i + 1 ); ?></span><p><?php echo esc_html( $row[1] ); ?></p><strong class="<?php echo esc_attr( $row[3] ); ?>"><?php echo esc_html( $row[2] ); ?></strong></li>
+							<?php endforeach; ?>
+						</ol>
+						<div class="icl-bars" data-icl-ex="2">
+							<small>Engagement decline by channel, week over week</small>
+							<?php foreach ( $icl_channels as $ch ) : ?>
+								<div class="icl-bar<?php echo $ch[2] ? ' is-top' : ''; ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( round( $ch[1] / 31 * 100 ) ); ?>%"></i><b>−<?php echo esc_html( $ch[1] ); ?>%</b></div>
+							<?php endforeach; ?>
+						</div>
+					</div>
+					<div class="icl-verdict" data-icl-ex="4">
+						<div class="icl-verdict-kpi"><strong>−18%</strong><span>Engagement down week over week<br>50.3K → 41.2K</span></div>
+						<p class="icl-action-note"><b>Recommended action:</b> Optimize email timing. Shift sends to peak open hours.</p>
+					</div>
 				</div>
 			</div>
 		</div>

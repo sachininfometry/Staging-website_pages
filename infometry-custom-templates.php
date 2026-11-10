@@ -35,6 +35,7 @@ define( 'INFOMETRY_CT_NAVIS_TEMPLATE', 'templates/page-navis-case-study.php' );
 define( 'INFOMETRY_CT_DEMATIC_PM_TEMPLATE', 'templates/page-dematic-pm-case-study.php' );
 define( 'INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE', 'templates/page-conversa-slack-press-release.php' );
 define( 'INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE', 'templates/page-dematic-global-finance-case-study.php' );
+define( 'INFOMETRY_CT_CONVERSA_LANDING_TEMPLATE', 'templates/page-conversa-landing.php' );
 define( 'INFOMETRY_CT_CONVERSA_FORM_ID', 379751 );
 define( 'INFOMETRY_CT_GOOGLE_FORM_ID', 351429 );
 
@@ -126,6 +127,7 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_DEMATIC_PM_TEMPLATE ] = __( 'Dematic Project Schedule Milestone Reporting Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_CONVERSA_SLACK_PR_TEMPLATE ] = __( 'Conversa Slack Integration Press Release', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE ] = __( 'Dematic Global Finance Case Study', 'infometry-custom-templates' );
+	$templates[ INFOMETRY_CT_CONVERSA_LANDING_TEMPLATE ] = __( 'INFOFISCUS Conversa Ads Landing Page', 'infometry-custom-templates' );
 
 	return $templates;
 }
@@ -658,6 +660,58 @@ function infometry_ct_render_conversa_slack_pr_route() {
 }
 add_action( 'template_redirect', 'infometry_ct_render_conversa_slack_pr_route', 99 );
 
+/** Use the Conversa ads landing page (no site menu) when selected or on its URL. */
+function infometry_ct_should_use_conversa_landing_template() {
+	return infometry_ct_should_use_template( INFOMETRY_CT_CONVERSA_LANDING_TEMPLATE )
+		|| infometry_ct_is_conversa_landing_route();
+}
+
+/** Match the Conversa ads landing-page path only on staging. */
+function infometry_ct_is_conversa_landing_route() {
+	if ( ! infometry_ct_is_cloudways_staging_host() || empty( $_SERVER['REQUEST_URI'] ) ) {
+		return false;
+	}
+
+	$path = wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
+	return '/infofiscus-conversa-landing-page' === untrailingslashit( $path );
+}
+
+/**
+ * Serve the Conversa ads landing page. The template prints its own document
+ * (no theme header, menu or footer), so it is rendered here both for the URL
+ * route and for a page that selected the template.
+ */
+function infometry_ct_render_conversa_landing() {
+	if ( ! infometry_ct_should_use_conversa_landing_template() ) {
+		return;
+	}
+
+	$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_CONVERSA_LANDING_TEMPLATE;
+	if ( ! is_readable( $plugin_template ) ) {
+		return;
+	}
+
+	status_header( 200 );
+	include $plugin_template;
+	exit;
+}
+add_action( 'template_redirect', 'infometry_ct_render_conversa_landing', 99 );
+
+/** Title and description for the Conversa ads landing page. */
+function infometry_ct_conversa_landing_title( $title ) {
+	return infometry_ct_should_use_conversa_landing_template() ? 'INFOFISCUS Conversa: Trusted Decision Intelligence Platform | Infometry' : $title;
+}
+add_filter( 'pre_get_document_title', 'infometry_ct_conversa_landing_title', 99 );
+add_filter( 'wpseo_title', 'infometry_ct_conversa_landing_title', 99 );
+add_filter( 'wpseo_opengraph_title', 'infometry_ct_conversa_landing_title', 99 );
+
+/** Meta description for the Conversa ads landing page. */
+function infometry_ct_conversa_landing_description( $description ) {
+	return infometry_ct_should_use_conversa_landing_template() ? 'Ask business questions in plain English. INFOFISCUS Conversa investigates your governed enterprise data, finds the key drivers and hands your leaders decision-ready answers.' : $description;
+}
+add_filter( 'wpseo_metadesc', 'infometry_ct_conversa_landing_description', 99 );
+add_filter( 'wpseo_opengraph_desc', 'infometry_ct_conversa_landing_description', 99 );
+
 /** Use the Dematic global finance case study when selected or on its URL. */
 function infometry_ct_should_use_dematic_finance_template() {
 	return infometry_ct_should_use_template( INFOMETRY_CT_DEMATIC_FINANCE_TEMPLATE )
@@ -942,6 +996,11 @@ function infometry_ct_body_classes( $classes ) {
 		$classes[] = 'infometry-dematic-finance-case-study-page';
 	}
 
+	if ( infometry_ct_should_use_conversa_landing_template() ) {
+		$classes = array_values( array_diff( $classes, array( 'header-transparent', 'template-slider' ) ) );
+		$classes[] = 'infometry-conversa-landing-page';
+	}
+
 	return array_unique( $classes );
 }
 add_filter( 'body_class', 'infometry_ct_body_classes' );
@@ -1083,8 +1142,23 @@ add_filter( 'wpforms_process_before_form_data', 'infometry_ct_conversa_ajax_conf
  */
 function infometry_ct_render_conversa_form_fields( $form_data, $form ) {
 	$form_id          = absint( $form_data['id'] );
+	$is_landing_form  = INFOMETRY_CT_CONVERSA_FORM_ID === $form_id && infometry_ct_should_use_conversa_landing_template();
 	$is_conversa_form = INFOMETRY_CT_CONVERSA_FORM_ID === $form_id
 		&& ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() );
+
+	// Ads landing page: no demo date/time, just Company plus where the lead came from.
+	if ( $is_landing_form ) {
+		?>
+		<div class="icp-demo-form-head"><strong><?php esc_html_e( 'Request your personalized demo', 'infometry-custom-templates' ); ?></strong></div>
+		<input type="hidden" name="infometry_conversa[source]" value="Conversa ads landing page">
+		<input type="hidden" name="infometry_conversa[landing_url]" value="" data-icl-landing-url>
+		<label class="icp-demo-company">
+			<?php esc_html_e( 'Company', 'infometry-custom-templates' ); ?>
+			<input type="text" name="infometry_conversa[company]" autocomplete="organization" placeholder="Company name">
+		</label>
+		<?php
+		return;
+	}
 	$is_google_form   = INFOMETRY_CT_GOOGLE_FORM_ID === $form_id && infometry_ct_should_use_google_connectors_template();
 
 	if ( ! $is_conversa_form && ! $is_google_form ) {
@@ -1159,6 +1233,17 @@ function infometry_ct_add_conversa_fields_to_notification( $email, $fields, $ent
 	$timezone = isset( $details['preferred_demo_timezone'] ) ? sanitize_text_field( $details['preferred_demo_timezone'] ) : '';
 	$company = isset( $details['company'] ) ? sanitize_text_field( $details['company'] ) : '';
 
+	$source      = isset( $details['source'] ) ? sanitize_text_field( $details['source'] ) : '';
+	$landing_url = isset( $details['landing_url'] ) ? esc_url_raw( $details['landing_url'] ) : '';
+	if ( '' !== $source ) {
+		$extra  = '<h3>' . esc_html__( 'Lead source', 'infometry-custom-templates' ) . '</h3>';
+		$extra .= '<p><strong>' . esc_html__( 'Source:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $source ) . '<br>';
+		$extra .= '<strong>' . esc_html__( 'Landing URL:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $landing_url ?: 'Not provided' ) . '<br>';
+		$extra .= '<strong>' . esc_html__( 'Company:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $company ?: 'Not provided' ) . '</p>';
+		$email['message'] .= $extra;
+		return $email;
+	}
+
 	$extra = '<h3>' . esc_html__( 'Demo preferences', 'infometry-custom-templates' ) . '</h3>';
 	$extra .= '<p><strong>' . esc_html__( 'Preferred Demo Date:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $date ?: 'Not provided' ) . '<br>';
 	$extra .= '<strong>' . esc_html__( 'Preferred Demo Time:', 'infometry-custom-templates' ) . '</strong> ' . esc_html( $time ?: 'Not provided' ) . '<br>';
@@ -1196,7 +1281,7 @@ function infometry_ct_is_cloudways_staging_host() {
  * @return bool
  */
 function infometry_ct_disable_staging_recaptcha( $disabled ) {
-	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_informatica_template() || infometry_ct_should_use_google_connectors_template() ) ) {
+	if ( infometry_ct_is_cloudways_staging_host() && ( infometry_ct_should_use_conversa_template() || infometry_ct_should_use_conversa_landing_template() || infometry_ct_should_use_informatica_template() || infometry_ct_should_use_google_connectors_template() ) ) {
 		return true;
 	}
 
@@ -1310,9 +1395,10 @@ function infometry_ct_enqueue_assets() {
 	$use_navis    = infometry_ct_should_use_navis_template();
 	$use_dematic_pm = infometry_ct_should_use_dematic_pm_template();
 	$use_conversa_slack_pr = infometry_ct_should_use_conversa_slack_pr_template();
+	$use_conversa_landing  = infometry_ct_should_use_conversa_landing_template();
 	$use_dematic_finance    = infometry_ct_should_use_dematic_finance_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_google_sheets && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_dematic_pm && ! $use_conversa_slack_pr ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_google_sheets && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_dematic_pm && ! $use_conversa_slack_pr && ! $use_conversa_landing ) {
 		return;
 	}
 
@@ -1600,6 +1686,24 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_script( 'infometry-conversa-slack-pr', INFOMETRY_CT_URL . 'assets/js/conversa-slack-press-release.js', array(), $js_version, true );
 	}
 
+	if ( $use_conversa_landing ) {
+		// The hero reuses the Conversa product tour, so the Conversa CSS/JS load first.
+		$ver = static function ( $file ) {
+			$path = INFOMETRY_CT_PATH . $file;
+			return is_readable( $path ) ? (string) filemtime( $path ) : INFOMETRY_CT_VERSION;
+		};
+		wp_enqueue_style(
+			'infometry-conversa-landing-fonts',
+			'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Roboto:wght@500;600;700;800;900&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style( 'infometry-infofiscus-conversa', INFOMETRY_CT_URL . 'assets/css/infofiscus-conversa.css', array(), $ver( 'assets/css/infofiscus-conversa.css' ) );
+		wp_enqueue_style( 'infometry-conversa-landing', INFOMETRY_CT_URL . 'assets/css/conversa-landing.css', array( 'infometry-conversa-landing-fonts', 'infometry-infofiscus-conversa' ), $ver( 'assets/css/conversa-landing.css' ) );
+		wp_enqueue_script( 'infometry-infofiscus-conversa', INFOMETRY_CT_URL . 'assets/js/infofiscus-conversa.js', array(), $ver( 'assets/js/infofiscus-conversa.js' ), true );
+		wp_enqueue_script( 'infometry-conversa-landing', INFOMETRY_CT_URL . 'assets/js/conversa-landing.js', array(), $ver( 'assets/js/conversa-landing.js' ), true );
+	}
+
 	if ( $use_dematic_finance ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/dematic-global-finance-case-study.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/dematic-case-study.js';
@@ -1644,6 +1748,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_dematic_pm_template()
 		&& ! infometry_ct_should_use_conversa_slack_pr_template()
 		&& ! infometry_ct_should_use_dematic_finance_template()
+		&& ! infometry_ct_should_use_conversa_landing_template()
 	) {
 		return $urls;
 	}

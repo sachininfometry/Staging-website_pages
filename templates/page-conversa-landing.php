@@ -137,6 +137,7 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 	<section class="icl-hero" aria-labelledby="icl-hero-title">
 		<div class="icl-shell icl-hero-brand">
 			<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" alt="Infometry Inc. Enabling AI for Every Enterprise">
+			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <span aria-hidden="true">→</span></a>
 		</div>
 		<div class="icl-shell icl-hero-grid">
 			<div class="icl-hero-copy">

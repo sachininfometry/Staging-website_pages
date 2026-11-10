@@ -363,7 +363,13 @@ body .icl-page .icl-logo-item img {
 }
 
 /* Logo on the banner (the theme logo; no separate header bar). */
-body .icl-page .icl-hero-brand { margin-bottom: 36px; }
+body .icl-page .icl-hero-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 36px;
+}
 
 body .icl-page .icl-logo {
   display: block;
@@ -1039,6 +1045,8 @@ body .icl-page .icl-footer a {
   body .icl-page .icl-shell { width: min(100% - 32px, 1320px); }
   body .icl-page .icl-hero-brand { margin-bottom: 26px; }
   body .icl-page .icl-logo { height: 40px; margin-left: -11px; }
+  body .icl-page .icl-hero-brand .icl-btn-sm { flex: 0 0 auto; min-height: 40px; padding: 0 14px; font-size: 14px; }
+  body .icl-page .icl-actions .icl-btn { flex: 1 1 100%; }
   body .icl-page .icl-trust { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 20px 16px; text-align: center; }
   body .icl-page .icl-trust-title { padding: 0 0 14px; border-right: 0; border-bottom: 1px solid var(--icl-line); font-size: 18px; }
   body .icl-page .icl-logo-item { width: 140px; padding: 0 16px; }

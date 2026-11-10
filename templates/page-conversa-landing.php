@@ -185,22 +185,24 @@ $icl_check = '<svg class="icl-check" viewBox="0 0 24 24" aria-hidden="true" focu
 		</div>
 	</section>
 
-	<section class="icl-proof" aria-label="Results and supported platforms">
+	<section class="icl-proof" aria-label="Results and customers">
 		<div class="icl-shell">
-			<div class="icl-stats">
-				<?php foreach ( $icl_stats as $stat ) : ?>
-					<div class="icl-stat"><strong><?php echo esc_html( $stat[0] ); ?></strong><span><?php echo esc_html( $stat[1] ); ?></span></div>
-				<?php endforeach; ?>
-			</div>
-			<div class="icl-trust">
-				<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
-				<div class="icl-logos" role="region" aria-label="Customer logos">
-					<div class="icl-logos-track">
-						<?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
-							<?php foreach ( $icl_customers as $customer ) : ?>
-								<span class="icl-logo-item"<?php echo $loop ? ' aria-hidden="true"' : ''; ?>><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/' . $customer[1] ); ?>" width="<?php echo esc_attr( $customer[2] ); ?>" height="<?php echo esc_attr( $customer[3] ); ?>" loading="lazy" decoding="async" alt="<?php echo $loop ? '' : esc_attr( $customer[0] ); ?>"></span>
-							<?php endforeach; ?>
-						<?php endfor; ?>
+			<div class="icl-proof-card">
+				<div class="icl-stats">
+					<?php foreach ( $icl_stats as $stat ) : ?>
+						<div class="icl-stat"><strong><?php echo esc_html( $stat[0] ); ?></strong><span><?php echo esc_html( $stat[1] ); ?></span></div>
+					<?php endforeach; ?>
+				</div>
+				<div class="icl-trust">
+					<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
+					<div class="icl-logos" role="region" aria-label="Customer logos">
+						<div class="icl-logos-track">
+							<?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>
+								<?php foreach ( $icl_customers as $customer ) : ?>
+									<span class="icl-logo-item"<?php echo $loop ? ' aria-hidden="true"' : ''; ?>><img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/' . $customer[1] ); ?>" width="<?php echo esc_attr( $customer[2] ); ?>" height="<?php echo esc_attr( $customer[3] ); ?>" loading="lazy" decoding="async" alt="<?php echo $loop ? '' : esc_attr( $customer[0] ); ?>"></span>
+								<?php endforeach; ?>
+							<?php endfor; ?>
+						</div>
 					</div>
 				</div>
 			</div>

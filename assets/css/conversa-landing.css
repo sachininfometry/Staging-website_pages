@@ -208,7 +208,7 @@ body .icl-page .icl-hero {
 
 body .icl-page .icl-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
   gap: clamp(32px, 4vw, 64px);
   align-items: center;
 }
@@ -1006,7 +1006,7 @@ body .icl-page .icl-footer a {
   body.admin-bar .icl-page .icl-topbar { top: 0; }
   body .icl-page .icl-topbar-inner { min-height: 64px; }
   body .icl-page .icl-brand strong { font-size: 18px; }
-  body .icl-page .icl-brand span { font-size: 11.5px; }
+  body .icl-page .icl-brand span { font-size: 11px; white-space: nowrap; }
   body .icl-page .icl-btn-sm { min-height: 40px; padding: 0 14px; font-size: 14px; }
   body .icl-page .icl-hero { padding: 32px 0 44px; }
   body .icl-page .icl-hero-lead { font-size: 17px; }

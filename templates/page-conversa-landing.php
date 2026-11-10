@@ -183,10 +183,10 @@ $icl_icon = static function ( $name ) {
 					<a class="icl-btn icl-btn-ghost" href="#icl-tour" data-icl-tour><?php echo $icl_icon( 'play' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Try the interactive demo</a>
 				</div>
 				<ul class="icl-hero-points">
-					<li class="is-violet"><?php echo $icl_icon( 'shield' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Trusted Answers</li>
-					<li class="is-blue"><?php echo $icl_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Deeper Analysis</li>
-					<li class="is-cyan"><?php echo $icl_icon( 'target' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Actionable Insights</li>
-					<li class="is-green"><?php echo $icl_icon( 'lock' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Enterprise-Grade Security</li>
+					<li><?php echo $icl_icon( 'shield' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Trusted<br>Answers</span></li>
+					<li><?php echo $icl_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Deeper<br>Analysis</span></li>
+					<li><?php echo $icl_icon( 'target' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Actionable<br>Insights</span></li>
+					<li><?php echo $icl_icon( 'lock' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Enterprise-Grade<br>Security</span></li>
 				</ul>
 			</div>
 			<div class="icl-form-card" id="icl-demo">

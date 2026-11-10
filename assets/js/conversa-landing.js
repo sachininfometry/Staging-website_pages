@@ -1,7 +1,8 @@
 /*
  * INFOFISCUS Conversa ads landing page: demo buttons scroll to the form, the
- * lead form submits in place (includes/conversa-landing-form.php), and the team
- * tabs. The hero product tour comes from infofiscus-conversa.js.
+ * lead form submits in place (includes/conversa-landing-form.php), scroll
+ * reveals, counting stats, the "How it works" stepper and the team tabs.
+ * The product tour comes from infofiscus-conversa.js.
  */
 (function () {
   'use strict';
@@ -11,11 +12,58 @@
     return;
   }
 
-  var form = page.querySelector('[data-icl-form]');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve = 'IntersectionObserver' in window;
+  var form = page.querySelector('[data-icl-form]');
 
-  // Every "demo" button brings the visitor to the form and puts the cursor in the first field.
-  Array.prototype.forEach.call(page.querySelectorAll('[data-icl-demo]'), function (link) {
+  function all(selector, root) {
+    return Array.prototype.slice.call((root || page).querySelectorAll(selector));
+  }
+
+  // Call fn once when el first comes into view.
+  function onceVisible(el, fn, threshold) {
+    if (!canObserve) {
+      fn();
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      if (entries.some(function (e) { return e.isIntersecting; })) {
+        io.disconnect();
+        fn();
+      }
+    }, { threshold: threshold || 0.15 });
+    io.observe(el);
+  }
+
+  // Scroll reveals.
+  if (canObserve && !reduce) {
+    page.classList.add('icl-js');
+    all('[data-icl-reveal]').forEach(function (el) {
+      onceVisible(el, function () { el.classList.add('is-in'); }, 0.12);
+    });
+  }
+
+  // Stats count up from zero.
+  all('[data-icl-count]').forEach(function (el) {
+    var target = parseFloat(el.getAttribute('data-icl-count'));
+    if (reduce || !target) {
+      return;
+    }
+    el.textContent = '0';
+    onceVisible(el, function () {
+      var start = null;
+      var step = function (now) {
+        if (!start) { start = now; }
+        var p = Math.min((now - start) / 1400, 1);
+        el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) { window.requestAnimationFrame(step); }
+      };
+      window.requestAnimationFrame(step);
+    }, 0.4);
+  });
+
+  // Demo buttons bring the visitor to the form; "Try the interactive demo" goes to the tour.
+  all('[data-icl-demo]').forEach(function (link) {
     link.addEventListener('click', function (event) {
       if (!form) {
         return;
@@ -29,9 +77,8 @@
     });
   });
 
-  // "Try the interactive demo" scrolls to the product tour section.
   var tourSection = page.querySelector('#icl-tour');
-  Array.prototype.forEach.call(page.querySelectorAll('[data-icl-tour]'), function (link) {
+  all('[data-icl-tour]').forEach(function (link) {
     link.addEventListener('click', function (event) {
       if (!tourSection) {
         return;
@@ -41,6 +88,88 @@
     });
   });
 
+  // "How it works": steps play in turn and light up the matching part of the example.
+  var stepper = page.querySelector('[data-icl-stepper]');
+  if (stepper) {
+    var steps = all('[data-icl-step]', stepper);
+    var parts = all('[data-icl-ex]', stepper);
+    var current = 0;
+    var timer = null;
+    var visible = false;
+    var held = false;
+
+    var show = function (n) {
+      current = (n + steps.length) % steps.length;
+      steps.forEach(function (step, i) {
+        var on = i === current;
+        step.classList.toggle('is-active', on);
+        step.setAttribute('aria-selected', on ? 'true' : 'false');
+        // Restart the progress bar animation.
+        var bar = step.querySelector('.icl-step-bar');
+        if (on && bar) {
+          bar.style.animation = 'none';
+          void bar.offsetWidth;
+          bar.style.animation = '';
+        }
+      });
+      parts.forEach(function (part) {
+        var at = parseInt(part.getAttribute('data-icl-ex'), 10);
+        part.classList.toggle('is-lit', at <= current);
+      });
+    };
+
+    var stop = function () {
+      window.clearInterval(timer);
+      timer = null;
+    };
+
+    var play = function () {
+      if (timer || held || !visible || reduce) {
+        return;
+      }
+      stepper.classList.remove('is-paused');
+      timer = window.setInterval(function () { show(current + 1); }, 3200);
+    };
+
+    stepper.classList.add('is-live');
+    show(0);
+    if (reduce) {
+      stepper.classList.add('is-paused');
+    }
+
+    steps.forEach(function (step, i) {
+      step.addEventListener('click', function () {
+        held = true;
+        stop();
+        stepper.classList.add('is-paused');
+        show(i);
+      });
+    });
+
+    stepper.addEventListener('mouseenter', function () {
+      stop();
+      stepper.classList.add('is-paused');
+    });
+    stepper.addEventListener('mouseleave', function () {
+      if (!held) {
+        show(current);
+        play();
+      }
+    });
+
+    if (canObserve) {
+      new IntersectionObserver(function (entries) {
+        visible = entries.some(function (e) { return e.isIntersecting; });
+        if (visible) {
+          play();
+        } else {
+          stop();
+        }
+      }, { threshold: 0.3 }).observe(stepper);
+    }
+  }
+
+  // Lead form.
   if (form) {
     var time = form.querySelector('[data-icl-time]');
     var url = form.querySelector('[data-icl-url]');
@@ -64,7 +193,8 @@
       var bad = null;
       ['icl-name', 'icl-email', 'icl-company'].forEach(function (id) {
         var input = form.querySelector('#' + id);
-        var ok = input.value.trim() !== '' && (input.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()));
+        var value = input.value.trim();
+        var ok = value !== '' && (input.type !== 'email' || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
         input.setAttribute('aria-invalid', ok ? 'false' : 'true');
         if (!ok && !bad) {
           bad = input;
@@ -123,39 +253,38 @@
   }
 
   // Team tabs.
-  var tabs = Array.prototype.slice.call(page.querySelectorAll('[data-icl-tab]'));
-  var panels = Array.prototype.slice.call(page.querySelectorAll('[data-icl-panel]'));
+  var tabs = all('[data-icl-tab]');
+  var panels = all('[data-icl-panel]');
 
-  function show(index, focus) {
-    var current = (index + tabs.length) % tabs.length;
+  function showTab(index, focus) {
+    var on = (index + tabs.length) % tabs.length;
     tabs.forEach(function (tab, i) {
-      var on = i === current;
-      tab.setAttribute('aria-selected', on ? 'true' : 'false');
-      tab.tabIndex = on ? 0 : -1;
-      if (on && focus) {
+      tab.setAttribute('aria-selected', i === on ? 'true' : 'false');
+      tab.tabIndex = i === on ? 0 : -1;
+      if (i === on && focus) {
         tab.focus();
       }
     });
     panels.forEach(function (panel, i) {
-      panel.hidden = i !== current;
+      panel.hidden = i !== on;
     });
   }
 
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () {
-      show(i);
+      showTab(i);
     });
     tab.addEventListener('keydown', function (event) {
-      var step = { ArrowRight: 1, ArrowLeft: -1 }[event.key];
+      var move = { ArrowRight: 1, ArrowLeft: -1 }[event.key];
       if (event.key === 'Home') {
         event.preventDefault();
-        show(0, true);
+        showTab(0, true);
       } else if (event.key === 'End') {
         event.preventDefault();
-        show(tabs.length - 1, true);
-      } else if (step) {
+        showTab(tabs.length - 1, true);
+      } else if (move) {
         event.preventDefault();
-        show(i + step, true);
+        showTab(i + move, true);
       }
     });
   });

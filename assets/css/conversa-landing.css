@@ -1428,6 +1428,10 @@ body .icl-page.icl-js .icl-card[data-icl-reveal].is-in {
   body .icl-page .icl-step small { margin-top: 2px; }
   body .icl-page .icl-step-num { top: 12px; font-size: 22px; }
   body .icl-page .icl-team-kpis { grid-template-columns: minmax(0, 1fr); }
+  body .icl-page .icl-logo { height: 32px; margin-left: -9px; }
+  body .icl-page .icl-hero-brand { gap: 10px; }
+  body .icl-page .icl-hero-brand .icl-btn-sm { min-height: 36px; padding: 0 12px; gap: 6px; font-size: 13px; }
+  body .icl-page .icl-hero-brand .icl-btn-sm .icl-i { width: 16px; height: 16px; }
 }
 
 /* Big screens: wider shell and a step up in body text. */

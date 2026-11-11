@@ -189,8 +189,8 @@ $icl_icon = static function ( $name ) {
 		<div class="icl-shell icl-hero-grid">
 			<div class="icl-hero-copy">
 				<p class="icl-pill"><span class="icl-pulse" aria-hidden="true"></span>INFOFISCUS Conversa™</p>
-				<h1 id="icl-hero-title">The Trusted Decision Intelligence Platform <span>for the Enterprise</span></h1>
-				<p class="icl-hero-lead">Ask business questions in plain English. Conversa investigates your governed enterprise data, finds the key drivers and hands your leaders decision-ready answers.</p>
+				<h1 id="icl-hero-title">Turn Enterprise Data Into <span>Trusted Decisions.</span></h1>
+				<p class="icl-hero-lead">INFOFISCUS Conversa helps enterprise leaders investigate complex business questions, uncover the drivers behind business performance and turn governed data across multiple platforms into trusted, decision-ready insights.</p>
 				<div class="icl-actions">
 					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 					<a class="icl-btn icl-btn-ghost" href="#icl-tour" data-icl-tour><?php echo $icl_icon( 'play' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Try the interactive demo</a>

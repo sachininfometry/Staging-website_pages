@@ -206,7 +206,7 @@ $icl_icon = static function ( $name ) {
 				<?php $icl_status = isset( $_GET['icl_lead'] ) ? sanitize_key( wp_unslash( $_GET['icl_lead'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
 				<form class="icl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-icl-form novalidate>
 					<p class="icl-form-badge"><span class="icl-pulse" aria-hidden="true"></span>Personalized demo</p>
-					<h3>Request your personalized demo</h3>
+					<h3>See How Conversa Investigates Your Business Questions</h3>
 					<input type="hidden" name="action" value="infometry_landing_lead">
 					<input type="hidden" name="icl_t" value="" data-icl-time>
 					<input type="hidden" name="icl_url" value="" data-icl-url>

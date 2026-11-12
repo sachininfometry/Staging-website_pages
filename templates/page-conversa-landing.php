@@ -123,7 +123,7 @@ $icl_uc = array(
 		'question' => 'Which products are growing our recurring revenue, and which ones are shrinking?',
 		'found'    => 'ARR reached $132.0M. Analytics Cloud leads with $48.2M at 124% net retention, while three products sit below 100% and are shrinking inside their existing accounts.',
 		'drivers'  => array( 'Analytics Cloud: $48.2M ARR at 124% net retention', 'Data Platform: $36.5M ARR at 118% net retention', 'Integrations, Mobile SDK and Legacy: $25.5M below 100% net retention' ),
-		'chart'    => array( 'ARR by Product Line', 'Three product lines are shrinking inside their existing accounts.', 'bar', array( 'Analytics', 'Data Platform', 'Security', 'Integrations', 'Mobile SDK', 'Legacy' ), array( 48.2, 36.5, 21.8, 12.4, 7.9, 5.2 ), array( '$48.2M', '$36.5M', '$21.8M', '$12.4M', '$7.9M', '$5.2M' ), 3 ),
+		'chart'    => array( 'ARR by Product Line', 'Three product lines are shrinking inside their existing accounts.', 'bar', array( 'Analytics', 'Platform', 'Security', 'Integr.', 'SDK', 'Legacy' ), array( 48.2, 36.5, 21.8, 12.4, 7.9, 5.2 ), array( '$48.2M', '$36.5M', '$21.8M', '$12.4M', '$7.9M', '$5.2M' ), 3 ),
 		'takeaway' => 'Three product lines below 100% net retention hold $25.5M of ARR.',
 		'action'   => 'Bundle Integrations into Analytics Cloud renewals and focus expansion sales on Data Platform accounts.',
 		'kpis'     => array( array( 'Total ARR', '$132.0M', '6 product lines', 'is-up' ), array( 'Best net retention', '124%', 'Analytics Cloud', 'is-up' ), array( 'ARR below 100% NRR', '$25.5M', '3 products shrinking', 'is-down' ) ),
@@ -594,7 +594,7 @@ $icl_icon = static function ( $name ) {
 					<div class="icl-uc-panel">
 						<div class="icl-uc-panel-head">
 							<div><h4><?php echo esc_html( $uc['chart'][0] ); ?></h4><p class="icl-uc-ai">AI-generated drill-down</p></div>
-							<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infofiscus-conversa-logo.png' ); ?>" width="714" height="185" loading="lazy" decoding="async" alt="INFOFISCUS Conversa">
+							<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/press-releases/conversa-slack/infofiscus-conversa-logo-white.png' ); ?>" width="667" height="147" loading="lazy" decoding="async" alt="INFOFISCUS Conversa">
 						</div>
 						<p class="icl-uc-sub"><?php echo esc_html( $uc['chart'][1] ); ?></p>
 						<div class="icl-uc-chart"><?php echo $icl_uc_chart( $uc['chart'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>

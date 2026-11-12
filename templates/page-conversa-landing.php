@@ -111,18 +111,156 @@ $icl_approach_rows = array(
 	array( 'Typical output', 'Charts and tables to interpret', 'Answers and visuals within that tool', 'Generated text and analysis', 'Drivers, root causes and recommended actions, with the SQL behind them' ),
 );
 
-// Business plays. Each pairs the question leaders ask with a matching illustrative answer from the
-// Conversa demo environment (templates/partials/conversa-live-verticals.php and the Conversa product page).
-// Icon, tab label, the question leaders ask, demo question, what Conversa found, action, KPIs, secondary.
-$icl_teams = array(
-	'executive'  => array( 'chart', 'Executive Business Review', 'What changed across the business, why, and where should leadership focus?', 'Which products are growing our recurring revenue, and which ones are shrinking?', 'ARR reached $132.0M. Analytics Cloud leads with $48.2M at 124% net retention, while three products sit below 100% and are shrinking inside their existing accounts.', 'Bundle Integrations into Analytics Cloud renewals and focus expansion sales on Data Platform accounts.', array( array( 'Total ARR', '$132.0M', '6 product lines', 'is-up' ), array( 'ARR below 100% NRR', '$25.5M', '3 products shrinking', 'is-down' ) ), false ),
-	'fpa'        => array( 'bank', 'FP&A Intelligence', 'Why are we forecasting below plan? What are the major drivers?', 'Why did net profit improve this quarter, and which drivers contributed most?', 'Net profit increased 11.8% as stronger enterprise pricing and lower fulfillment costs offset a 3.1% rise in operating expenses.', 'Protect enterprise pricing and extend logistics savings across other regions.', array( array( 'Net profit', '$18.6M', 'Up 11.8% vs prior quarter', 'is-up' ), array( 'Gross margin', '31.6%', 'Up 4.2 pts vs prior quarter', 'is-up' ) ), false ),
-	'retail'     => array( 'target', 'Retail Performance', 'Why did sales or margins change, and what drove it?', 'What are the primary root causes driving inventory inaccuracies and stockout exposure?', 'Stockouts cost $176.7M in lost sales against $72.8M of direct shrink, so unavailable inventory costs 2.4 times more than the loss itself.', 'Target theft and shrink with loss prevention, and overhaul scanning procedures.', array( array( 'Lost sales', '$176.7M', 'From stockouts', 'is-down' ), array( 'Shrink loss', '$72.8M', 'Direct asset loss', 'is-down' ) ), false ),
-	'sales'      => array( 'users', 'Sales & Pipeline', 'Where will the quarter land, and why?', 'Why did pipeline conversion improve, and where should sales focus next?', 'Win rate rose to 42.8% because enterprise opportunities moved faster through solution validation, while mid-market deals remain the largest growth gap.', 'Put executive attention on the $3.6M mid-market pipeline.', array( array( 'Win rate', '42.8%', 'Up 8.4 pts vs prior quarter', 'is-up' ), array( 'Sales cycle', '46 days', '12 days faster than last quarter', 'is-up' ) ), false ),
-	'operations' => array( 'nodes', 'Operational Intelligence', 'What is driving delays, costs or operational performance degradation?', 'What is driving fulfillment delays, and which process should we fix first?', 'West-region delays are concentrated in two distribution centers where picking congestion and late carrier handoffs account for 71% of missed SLAs.', 'Fix picking at DC-04 first and add evening carrier capacity.', array( array( 'On-time SLA', '96.4%', 'Up 5.8 pts over six weeks', 'is-up' ), array( 'Backlog', '1,240', 'Down 22% since peak week', 'is-up' ) ), false ),
-	'marketing'  => array( 'spark', 'Marketing', 'Why did customer engagement drop, and what should we change?', 'Why did customer engagement drop last week, and what should we change?', 'Engagement declined 18% because email click-through fell after send times shifted later, while paid social and webinar engagement remained stable.', 'Optimize email timing. Shift sends to peak open hours.', array( array( 'Engagement rate', '24.8%', 'Down 18% vs previous week', 'is-down' ), array( 'Email CTR', '2.9%', 'Down 21% after timing change', 'is-down' ) ), true ),
-	'hr'         => array( 'users', 'HR', 'Why is regrettable attrition increasing, and which teams need attention?', 'Why is regrettable attrition increasing, and which teams need attention?', 'Attrition is concentrated in engineering and customer success employees with 18–30 months of tenure, driven by promotion delays and manager changes.', 'Review promotion timelines for mid-tenure engineering and customer success staff.', array( array( 'Retention', '91.8%', 'Down 2.1 pts vs prior quarter', 'is-down' ), array( 'Regrettable attrition', '6.4%', 'Up 1.7 pts vs prior quarter', 'is-down' ) ), true ),
+// Business plays, each an illustrative investigation from the Conversa demo environment:
+// FP&A, Sales, Operations, Marketing and HR are the use cases on the Conversa product page
+// (templates/page-infofiscus-conversa.php, assets/js/infofiscus-conversa.js); Executive Business
+// Review and Retail are answers from the product tour (templates/partials/conversa-live-verticals.php).
+$icl_uc = array(
+	'executive'  => array(
+		'icon'     => 'chart',
+		'tab'      => 'Executive Business Review',
+		'title'    => 'Executive Business Review',
+		'question' => 'Which products are growing our recurring revenue, and which ones are shrinking?',
+		'found'    => 'ARR reached $132.0M. Analytics Cloud leads with $48.2M at 124% net retention, while three products sit below 100% and are shrinking inside their existing accounts.',
+		'drivers'  => array( 'Analytics Cloud: $48.2M ARR at 124% net retention', 'Data Platform: $36.5M ARR at 118% net retention', 'Integrations, Mobile SDK and Legacy: $25.5M below 100% net retention' ),
+		'chart'    => array( 'ARR by Product Line', 'Three product lines are shrinking inside their existing accounts.', 'bar', array( 'Analytics', 'Data Platform', 'Security', 'Integrations', 'Mobile SDK', 'Legacy' ), array( 48.2, 36.5, 21.8, 12.4, 7.9, 5.2 ), array( '$48.2M', '$36.5M', '$21.8M', '$12.4M', '$7.9M', '$5.2M' ), 3 ),
+		'takeaway' => 'Three product lines below 100% net retention hold $25.5M of ARR.',
+		'action'   => 'Bundle Integrations into Analytics Cloud renewals and focus expansion sales on Data Platform accounts.',
+		'kpis'     => array( array( 'Total ARR', '$132.0M', '6 product lines', 'is-up' ), array( 'Best net retention', '124%', 'Analytics Cloud', 'is-up' ), array( 'ARR below 100% NRR', '$25.5M', '3 products shrinking', 'is-down' ) ),
+	),
+	'fpa'        => array(
+		'icon'     => 'bank',
+		'tab'      => 'FP&A Intelligence',
+		'title'    => 'Finance (FP&A)',
+		'question' => 'Why did net profit improve this quarter, and which drivers contributed most?',
+		'found'    => 'Net profit increased 11.8% as stronger enterprise pricing and lower fulfillment costs offset a 3.1% rise in operating expenses.',
+		'drivers'  => array( 'Enterprise gross margin improved by 4.2 points', 'Logistics cost per order declined by 6.7%', 'North America contributed 58% of profit growth' ),
+		'chart'    => array( 'Net Profit Trend', 'Quarterly profit accelerated after pricing changes introduced in April.', 'line', array( "Q1 '25", "Q2 '25", "Q3 '25", "Q4 '25", "Q1 '26", "Q2 '26" ), array( 14.8, 15.6, 15.4, 16.9, 17.8, 18.6 ), array( '$14.8M', '$15.6M', '$15.4M', '$16.9M', '$17.8M', '$18.6M' ), 3, 'Pricing change' ),
+		'takeaway' => 'Pricing and fulfillment efficiency generated 82% of the quarter’s profit improvement.',
+		'action'   => 'Protect enterprise pricing and extend logistics savings across other regions.',
+		'kpis'     => array( array( 'Net profit', '$18.6M', 'Up 11.8% vs prior quarter', 'is-up' ), array( 'Gross margin', '31.6%', 'Up 4.2 pts vs prior quarter', 'is-up' ), array( 'EBITDA', '$34.2M', 'Up 12.7% vs prior quarter', 'is-up' ) ),
+	),
+	'retail'     => array(
+		'icon'     => 'target',
+		'tab'      => 'Retail Performance',
+		'title'    => 'Retail Performance',
+		'question' => 'What are the primary root causes driving inventory inaccuracies and stockout exposure?',
+		'found'    => 'Stockouts cost $176.7M in lost sales against $72.8M of direct shrink, so unavailable inventory costs 2.4 times more than the loss itself.',
+		'drivers'  => array( 'Theft & shrink: $24.6M shrink, $63.4M lost sales', 'Scanning errors: $17.5M shrink, $44.9M lost sales', 'Misplaced inventory: $13.2M shrink, $33.8M lost sales' ),
+		'chart'    => array( 'Lost Sales by Root Cause', 'Two root causes drive most of the lost sales from stockouts.', 'bar', array( 'Theft & Shrink', 'Scanning', 'Misplaced', 'Returns', 'Damaged' ), array( 63.4, 44.9, 33.8, 20.2, 14.4 ), array( '$63.4M', '$44.9M', '$33.8M', '$20.2M', '$14.4M' ), 2 ),
+		'takeaway' => 'Unavailable inventory costs 2.4 times more than the shrink itself.',
+		'action'   => 'Target theft and shrink with loss prevention, and overhaul scanning procedures.',
+		'kpis'     => array( array( 'Lost sales', '$176.7M', 'From stockouts', 'is-down' ), array( 'Shrink loss', '$72.8M', 'Direct asset loss', 'is-down' ), array( 'Total leakage', '$249.5M', 'Across 5 root causes', 'is-down' ) ),
+	),
+	'sales'      => array(
+		'icon'     => 'users',
+		'tab'      => 'Sales & Pipeline',
+		'title'    => 'Sales & Pipeline',
+		'question' => 'Why did pipeline conversion improve, and where should sales focus next?',
+		'found'    => 'Win rate rose to 42.8% because enterprise opportunities moved faster through solution validation, while mid-market deals remain the largest growth gap.',
+		'drivers'  => array( 'Enterprise win rate increased by 8.4 points', 'Sales cycle shortened by 12 days', '$3.6M mid-market pipeline needs executive action' ),
+		'chart'    => array( 'Pipeline Conversion Trend', 'Conversion improved for three consecutive quarters, led by enterprise deals.', 'line', array( "Q1 '25", "Q2 '25", "Q3 '25", "Q4 '25", "Q1 '26", "Q2 '26" ), array( 34.4, 36.1, 35.7, 39.2, 41.0, 42.8 ), array( '34.4%', '36.1%', '35.7%', '39.2%', '41.0%', '42.8%' ), 3, 'New qualification' ),
+		'takeaway' => 'Enterprise deals are converting faster, while mid-market pipeline remains the largest growth gap.',
+		'action'   => 'Prioritize executive support for the $3.6M mid-market pipeline at risk.',
+		'kpis'     => array( array( 'Win rate', '42.8%', 'Up 8.4 pts vs prior quarter', 'is-up' ), array( 'Qualified pipeline', '$18.7M', 'Up 15.1% vs prior quarter', 'is-up' ), array( 'Sales cycle', '46 days', '12 days faster than last quarter', 'is-up' ) ),
+	),
+	'operations' => array(
+		'icon'     => 'nodes',
+		'tab'      => 'Operational Intelligence',
+		'title'    => 'Operations',
+		'question' => 'What is driving fulfillment delays, and which process should we fix first?',
+		'found'    => 'West-region delays are concentrated in two distribution centers where picking congestion and late carrier handoffs account for 71% of missed SLAs.',
+		'drivers'  => array( 'DC-04 contributes 43% of delayed orders', 'Average picking time is 18 minutes above target', 'Evening carrier capacity is short by 14%' ),
+		'chart'    => array( 'On-Time Fulfillment Trend', 'Service levels recovered after carrier capacity was reallocated in week six.', 'line', array( 'W1', 'W2', 'W3', 'W4', 'W5', 'W6' ), array( 88.2, 89.6, 91.1, 90.4, 93.2, 96.4 ), array( '88.2%', '89.6%', '91.1%', '90.4%', '93.2%', '96.4%' ), 4, 'Capacity reallocated' ),
+		'takeaway' => 'Two distribution centers account for 71% of missed service-level commitments.',
+		'action'   => 'Add evening carrier capacity and reduce picking congestion at DC-04 first.',
+		'kpis'     => array( array( 'On-time SLA', '96.4%', 'Up 5.8 pts over six weeks', 'is-up' ), array( 'Order cycle time', '2.8 days', '18% faster over six weeks', 'is-up' ), array( 'Backlog', '1,240', 'Down 22% since peak week', 'is-up' ) ),
+	),
+	'marketing'  => array(
+		'icon'     => 'spark',
+		'tab'      => 'Marketing',
+		'minor'    => true,
+		'title'    => 'Marketing',
+		'question' => 'Why did customer engagement drop last week, and what should we change?',
+		'found'    => 'Engagement declined 18% because email click-through fell after send times shifted later, while paid social and webinar engagement remained stable.',
+		'drivers'  => array( 'Email generated 74% of the total engagement decline', 'Evening sends underperformed morning sends by 21%', 'Returning customers showed the largest drop' ),
+		'chart'    => array( 'Weekly Engagement Trend', 'The sharp decline begins after the email schedule changed on Wednesday.', 'line', array( 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ), array( 31.5, 30.8, 29.9, 26.2, 24.1, 24.8 ), array( '31.5%', '30.8%', '29.9%', '26.2%', '24.1%', '24.8%' ), 2, 'Send time changed' ),
+		'takeaway' => 'Email timing caused 74% of the engagement decline; other channels remained stable.',
+		'action'   => 'Restore morning sends and run a segmented timing test for returning customers.',
+		'kpis'     => array( array( 'Engagement rate', '24.8%', 'Down 18% vs previous week', 'is-down' ), array( 'Email CTR', '2.9%', 'Down 21% after timing change', 'is-down' ), array( 'Campaign ROAS', '4.3X', 'Stable vs previous week', 'is-flat' ) ),
+	),
+	'hr'         => array(
+		'icon'     => 'users',
+		'tab'      => 'HR',
+		'minor'    => true,
+		'title'    => 'Human Resources',
+		'question' => 'Why is regrettable attrition increasing, and which teams need attention?',
+		'found'    => 'Attrition is concentrated in engineering and customer success employees with 18–30 months of tenure, driven by promotion delays and manager changes.',
+		'drivers'  => array( 'Engineering accounts for 39% of regrettable exits', 'Employees awaiting promotion are 2.4× more likely to leave', 'Three managers show elevated team-level risk' ),
+		'chart'    => array( 'Regrettable Attrition Trend', 'Risk increased after manager changes and peaked among mid-tenure employees.', 'line', array( "Q1 '25", "Q2 '25", "Q3 '25", "Q4 '25", "Q1 '26", "Q2 '26" ), array( 4.7, 4.9, 5.1, 5.6, 6.0, 6.4 ), array( '4.7%', '4.9%', '5.1%', '5.6%', '6.0%', '6.4%' ), 3, 'Manager changes' ),
+		'takeaway' => 'Mid-tenure engineering and customer success employees carry the highest exit risk.',
+		'action'   => 'Accelerate promotion reviews and launch targeted manager interventions.',
+		'kpis'     => array( array( 'Retention', '91.8%', 'Down 2.1 pts vs prior quarter', 'is-down' ), array( 'Regrettable attrition', '6.4%', 'Up 1.7 pts vs prior quarter', 'is-down' ), array( 'Time to fill', '34 days', '22% faster than prior quarter', 'is-up' ) ),
+	),
 );
+
+/**
+ * Chart for a use case: a line (trend over time) or bars (breakdown), 400x210.
+ *
+ * @param array $c Chart spec: title, subtitle, type, labels, values, value labels, highlight/event index, event label.
+ * @return string SVG markup.
+ */
+$icl_uc_chart = static function ( $c ) {
+	list( , , $type, $labels, $values, $shown, $mark ) = $c;
+	$event = isset( $c[7] ) ? $c[7] : '';
+	$n     = count( $values );
+	$left  = 26;
+	$right = 384;
+	$top   = 34;
+	$base  = 168;
+	$step  = ( $right - $left ) / $n;
+	$out   = '<svg class="icl-uc-svg is-' . esc_attr( $type ) . '" viewBox="0 0 400 210" role="img" aria-label="' . esc_attr( $c[0] ) . '" focusable="false">';
+	foreach ( array( 0, 0.5, 1 ) as $k ) {
+		$out .= '<line class="icl-uc-grid" x1="' . $left . '" x2="' . $right . '" y1="' . ( $top + ( $base - $top ) * $k ) . '" y2="' . ( $top + ( $base - $top ) * $k ) . '"/>';
+	}
+	if ( 'bar' === $type ) {
+		$max = max( $values );
+		foreach ( $values as $i => $v ) {
+			$h    = round( ( $base - $top ) * $v / $max, 1 );
+			$x    = round( $left + $step * $i + $step * 0.2, 1 );
+			$w    = round( $step * 0.6, 1 );
+			$cls  = $i < $mark ? 'is-hi' : '';
+			$out .= '<rect class="icl-uc-bar ' . $cls . '" x="' . $x . '" y="' . ( $base - $h ) . '" width="' . $w . '" height="' . $h . '" rx="5" style="--i:' . $i . '"/>';
+			$out .= '<text class="icl-uc-val" x="' . ( $x + $w / 2 ) . '" y="' . ( $base - $h - 8 ) . '">' . esc_html( $shown[ $i ] ) . '</text>';
+			$out .= '<text class="icl-uc-lab" x="' . ( $x + $w / 2 ) . '" y="' . ( $base + 22 ) . '">' . esc_html( $labels[ $i ] ) . '</text>';
+		}
+	} else {
+		$min    = min( $values );
+		$max    = max( $values );
+		$pad    = ( $max - $min ) * 0.18;
+		$lo     = $min - $pad;
+		$hi     = $max + $pad;
+		$points = array();
+		foreach ( $values as $i => $v ) {
+			$points[] = array( round( $left + $step * $i + $step / 2, 1 ), round( $base - ( $base - $top ) * ( $v - $lo ) / ( $hi - $lo ), 1 ) );
+		}
+		$line = implode( ' ', array_map( static function ( $pt ) { return $pt[0] . ',' . $pt[1]; }, $points ) );
+		$last = end( $points );
+		$out .= '<polygon class="icl-uc-area" points="' . $points[0][0] . ',' . $base . ' ' . $line . ' ' . $last[0] . ',' . $base . '"/>';
+		if ( $event ) {
+			$ex   = $points[ $mark ][0];
+			$out .= '<line class="icl-uc-event" x1="' . $ex . '" x2="' . $ex . '" y1="' . ( $top - 14 ) . '" y2="' . $base . '"/>';
+			$out .= '<text class="icl-uc-event-lab" x="' . $ex . '" y="' . ( $top - 20 ) . '">' . esc_html( strtoupper( $event ) ) . '</text>';
+		}
+		$out .= '<polyline class="icl-uc-line" pathLength="1" points="' . $line . '"/>';
+		foreach ( $points as $i => $pt ) {
+			$out .= '<circle class="icl-uc-dot" cx="' . $pt[0] . '" cy="' . $pt[1] . '" r="4.5"/>';
+			$out .= '<text class="icl-uc-val" x="' . $pt[0] . '" y="' . ( $pt[1] - 11 ) . '">' . esc_html( $shown[ $i ] ) . '</text>';
+			$out .= '<text class="icl-uc-lab" x="' . $pt[0] . '" y="' . ( $base + 22 ) . '">' . esc_html( $labels[ $i ] ) . '</text>';
+		}
+	}
+	return $out . '</svg>';
+};
 
 $icl_faqs = array(
 	array( 'What is INFOFISCUS Conversa?', 'An enterprise decision intelligence platform that helps business teams ask complex questions, investigate what changed and why, identify key drivers, and turn governed enterprise data into trusted, decision-ready insights.' ),
@@ -433,27 +571,41 @@ $icl_icon = static function ( $name ) {
 			<div class="icl-head" data-icl-reveal>
 				<p class="icl-kicker">Decision intelligence use cases</p>
 				<h2 id="icl-teams-title">Decision Intelligence for Your Most Important Business Priorities.</h2>
+				<p class="icl-lead">Every answer drills down from the business question to the drivers behind it, and ends with a recommended action.</p>
 			</div>
 			<div class="icl-tabs" role="tablist" aria-label="Use cases">
-				<?php $first = true; foreach ( $icl_teams as $key => $team ) : ?>
-					<button type="button" role="tab" id="icl-tab-<?php echo esc_attr( $key ); ?>" class="<?php echo $team[7] ? 'is-minor' : ''; ?>" aria-controls="icl-panel-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>" data-icl-tab><?php echo $icl_icon( $team[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $team[1] ); ?></button>
+				<?php $first = true; foreach ( $icl_uc as $key => $uc ) : ?>
+					<button type="button" role="tab" id="icl-tab-<?php echo esc_attr( $key ); ?>" class="<?php echo empty( $uc['minor'] ) ? '' : 'is-minor'; ?>" aria-controls="icl-panel-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>" data-icl-tab><?php echo $icl_icon( $uc['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $uc['tab'] ); ?></button>
 				<?php $first = false; endforeach; ?>
 			</div>
-			<?php $first = true; foreach ( $icl_teams as $key => $team ) : ?>
-				<div class="icl-team" role="tabpanel" id="icl-panel-<?php echo esc_attr( $key ); ?>" aria-labelledby="icl-tab-<?php echo esc_attr( $key ); ?>" data-icl-panel<?php echo $first ? '' : ' hidden'; ?>>
-					<div class="icl-team-copy">
-						<small>The question leaders ask</small>
-						<h3><?php echo esc_html( $team[2] ); ?></h3>
-						<div class="icl-team-example">
-							<p class="icl-found"><span><?php echo $icl_icon( 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Example from the Conversa demo</span></p>
-							<p class="icl-team-q"><?php echo esc_html( $team[3] ); ?></p>
-							<p><?php echo esc_html( $team[4] ); ?></p>
-							<p class="icl-action-note"><b>Recommended action:</b> <?php echo esc_html( $team[5] ); ?></p>
+			<?php $first = true; foreach ( $icl_uc as $key => $uc ) : ?>
+				<div class="icl-uc" role="tabpanel" id="icl-panel-<?php echo esc_attr( $key ); ?>" aria-labelledby="icl-tab-<?php echo esc_attr( $key ); ?>" data-icl-panel<?php echo $first ? '' : ' hidden'; ?>>
+					<div class="icl-uc-insight">
+						<p class="icl-uc-label">Business insight</p>
+						<h3><span class="icl-tile"><?php echo $icl_icon( $uc['icon'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php echo esc_html( $uc['title'] ); ?></h3>
+						<div class="icl-uc-question"><small>Business question</small><p><?php echo esc_html( $uc['question'] ); ?></p></div>
+						<div class="icl-uc-found"><small>Conversa found</small><p><?php echo esc_html( $uc['found'] ); ?></p></div>
+						<ol class="icl-uc-drivers">
+							<?php foreach ( $uc['drivers'] as $i => $driver ) : ?>
+								<li><span>0<?php echo esc_html( $i + 1 ); ?></span><?php echo esc_html( $driver ); ?></li>
+							<?php endforeach; ?>
+						</ol>
+					</div>
+					<div class="icl-uc-panel">
+						<div class="icl-uc-panel-head">
+							<div><h4><?php echo esc_html( $uc['chart'][0] ); ?></h4><p class="icl-uc-ai">AI-generated drill-down</p></div>
+							<img src="<?php echo esc_url( INFOMETRY_CT_URL . 'assets/images/infofiscus-conversa-logo.png' ); ?>" width="714" height="185" loading="lazy" decoding="async" alt="INFOFISCUS Conversa">
+						</div>
+						<p class="icl-uc-sub"><?php echo esc_html( $uc['chart'][1] ); ?></p>
+						<div class="icl-uc-chart"><?php echo $icl_uc_chart( $uc['chart'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
+						<div class="icl-uc-out">
+							<article><span class="is-take"><?php echo $icl_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><div><small>Key takeaway</small><p><?php echo esc_html( $uc['takeaway'] ); ?></p></div></article>
+							<article><span class="is-act"><?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><div><small>Recommended action</small><p><?php echo esc_html( $uc['action'] ); ?></p></div></article>
 						</div>
 					</div>
-					<div class="icl-team-kpis">
-						<?php foreach ( $team[6] as $kpi ) : ?>
-							<div class="icl-kpi <?php echo esc_attr( $kpi[3] ); ?>"><small><?php echo esc_html( $kpi[0] ); ?></small><strong><?php echo esc_html( $kpi[1] ); ?></strong><span><?php echo esc_html( $kpi[2] ); ?></span></div>
+					<div class="icl-uc-kpis">
+						<?php foreach ( $uc['kpis'] as $kpi ) : ?>
+							<div class="icl-uc-kpi <?php echo esc_attr( $kpi[3] ); ?>"><small><?php echo esc_html( $kpi[0] ); ?></small><strong><?php echo esc_html( $kpi[1] ); ?></strong><span><i aria-hidden="true"></i><?php echo esc_html( $kpi[2] ); ?></span></div>
 						<?php endforeach; ?>
 					</div>
 				</div>

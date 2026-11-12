@@ -37,6 +37,14 @@ $icl_customers = array(
 	array( 'Fusion.io', 'customer-fusionio-logo.png', 363, 198 ),
 );
 
+// Value, suffix, label. The value counts up when the card scrolls into view.
+$icl_stats = array(
+	array( '3', 'X', 'Faster time to insights' ),
+	array( '75', '%', 'Self-service analytics growth' ),
+	array( '2', 'X', 'Data team productivity boost' ),
+	array( '92', '%+', 'Trusted answers, happier users' ),
+);
+
 // Icon, colour, heading, detail.
 $icl_problems = array(
 	array( 'clock', 'is-amber', 'Reporting Bottlenecks', 'Reports cover predefined questions, so anything new waits for an analyst.' ),
@@ -370,9 +378,14 @@ $icl_icon = static function ( $name ) {
 		</div>
 	</section>
 
-	<section class="icl-proof" aria-label="Infometry customers">
+	<section class="icl-proof" aria-label="Results and customers">
 		<div class="icl-shell">
 			<div class="icl-proof-card" data-icl-reveal>
+				<div class="icl-stats">
+					<?php foreach ( $icl_stats as $stat ) : ?>
+						<div class="icl-stat"><strong><span data-icl-count="<?php echo esc_attr( $stat[0] ); ?>"><?php echo esc_html( $stat[0] ); ?></span><?php echo esc_html( $stat[1] ); ?></strong><span><?php echo esc_html( $stat[2] ); ?></span></div>
+					<?php endforeach; ?>
+				</div>
 				<div class="icl-trust">
 					<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
 					<div class="icl-logos" role="region" aria-label="Customer logos">

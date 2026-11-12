@@ -388,7 +388,7 @@ $icl_icon = static function ( $name ) {
 					<?php endforeach; ?>
 				</div>
 				<div class="icl-trust">
-					<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
+					<h2 class="icl-trust-title">Infometry is trusted by 150+ customers worldwide</h2>
 					<div class="icl-logos" role="region" aria-label="Customer logos">
 						<div class="icl-logos-track">
 							<?php for ( $loop = 0; $loop < 2; $loop++ ) : ?>

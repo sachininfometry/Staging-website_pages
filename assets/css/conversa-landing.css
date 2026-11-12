@@ -2576,6 +2576,7 @@ body .icl-page .icl-approach-ico {
 body .icl-page .icl-approach-ico .icl-i { width: 20px; height: 20px; }
 body .icl-page .icl-approach header small { display: block; color: var(--icl-muted); font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 body .icl-page .icl-approach h3 { font-size: 18px; }
+@media (min-width: 1241px) { body .icl-page .icl-approach header { min-height: 82px; } }
 
 body .icl-page .icl-approach dl { margin: 0; }
 body .icl-page .icl-approach dl > div { padding: 14px 0; border-bottom: 1px solid var(--icl-line); }

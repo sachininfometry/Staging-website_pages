@@ -255,7 +255,7 @@ $icl_icon = static function ( $name ) {
 		<div class="icl-shell icl-problem-layout">
 			<div class="icl-problem-copy" data-icl-reveal>
 				<p class="icl-kicker">The decision gap</p>
-				<h2 id="icl-problem-title">Your Dashboards Show What Changed. <span class="icl-grad-text">Your Leaders Still Need to Know Why.</span></h2>
+				<h2 id="icl-problem-title">Your Dashboards Show What Changed. Your Leaders Still Need to Know Why.</h2>
 				<p class="icl-lead">Business leaders need more than another report. They need to investigate unexpected results, understand contributing factors and identify where action is required.</p>
 				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>See how Conversa closes the gap <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			</div>

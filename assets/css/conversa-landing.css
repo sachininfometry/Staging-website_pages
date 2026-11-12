@@ -2622,7 +2622,11 @@ body .icl-page .icl-approach.is-conversa dd { color: #fff; font-weight: 600; }
   body .icl-page .icl-cap.is-feature h3 { font-size: 21px; }
 }
 
-body .icl-page .icl-tour-how b { flex: 0 0 auto; }
+body .icl-page .icl-tour-how b { flex: 0 0 auto; width: 20px; height: 20px; min-width: 20px; border-radius: 50%; line-height: 1; }
+@media (min-width: 1241px) and (max-width: 1600px) {
+  body .icl-page .icl-tour-how li { gap: 6px; padding: 10px 4px; font-size: 12px; }
+  body .icl-page .icl-tour-how b { width: 18px; height: 18px; min-width: 18px; font-size: 10.5px; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   body .icl-page .icl-hero-bg i,

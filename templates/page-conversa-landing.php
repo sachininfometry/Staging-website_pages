@@ -521,19 +521,27 @@ $icl_icon = static function ( $name ) {
 			</div>
 			<div class="icl-cap-grid">
 				<?php foreach ( $icl_capabilities as $i => $cap ) : ?>
-					<article class="icl-card icl-cap <?php echo esc_attr( $cap[1] ); ?>" data-icl-reveal style="--d:<?php echo esc_attr( ( $i % 3 ) * 90 ); ?>ms">
+					<article class="icl-card icl-cap <?php echo esc_attr( $cap[1] ); ?><?php echo 0 === $i ? ' is-feature' : ''; ?>" data-icl-reveal style="--d:<?php echo esc_attr( ( $i % 3 ) * 90 ); ?>ms">
+						<em class="icl-cap-num" aria-hidden="true">0<?php echo esc_html( $i + 1 ); ?></em>
 						<span class="icl-tile"><?php echo $icl_icon( $cap[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 						<p class="icl-cap-kicker"><?php echo esc_html( $cap[2] ); ?></p>
 						<h3><?php echo esc_html( $cap[3] ); ?></h3>
-						<p><?php echo esc_html( $cap[4] ); ?></p>
+						<p class="icl-cap-copy"><?php echo esc_html( $cap[4] ); ?></p>
+						<?php if ( 0 === $i ) : ?>
+							<ol class="icl-cap-flow" aria-label="How Conversa reasons through a question">
+								<?php foreach ( $icl_steps as $s => $step ) : ?>
+									<li><span><?php echo $icl_icon( $step[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php echo esc_html( $step[1] ); ?></li>
+								<?php endforeach; ?>
+							</ol>
+						<?php endif; ?>
 					</article>
 				<?php endforeach; ?>
-			</div>
-			<div class="icl-cap-support" data-icl-reveal>
-				<p>Also built in</p>
-				<?php foreach ( $icl_cap_support as $item ) : ?>
-					<div><span><?php echo $icl_icon( $item[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><b><?php echo esc_html( $item[1] ); ?></b><small><?php echo esc_html( $item[2] ); ?></small></div>
-				<?php endforeach; ?>
+				<div class="icl-cap-support" data-icl-reveal>
+					<p>Also built in</p>
+					<?php foreach ( $icl_cap_support as $item ) : ?>
+						<div><span><?php echo $icl_icon( $item[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><b><?php echo esc_html( $item[1] ); ?></b><small><?php echo esc_html( $item[2] ); ?></small></div>
+					<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -563,26 +571,21 @@ $icl_icon = static function ( $name ) {
 				<h2 id="icl-compare-title">Already have Tableau or Power BI? Here's what Conversa adds.</h2>
 				<p class="icl-lead">Conversa complements your existing BI tools by adding an investigative Decision Intelligence layer that helps teams explore new business questions, understand performance changes and identify the drivers behind the numbers.</p>
 			</div>
-			<div class="icl-table-wrap" data-icl-reveal>
-				<table class="icl-table is-approach">
-					<thead>
-						<tr><th scope="col">Approach</th>
-							<?php foreach ( $icl_approaches as $c => $name ) : ?>
-								<th scope="col"<?php echo 3 === $c ? ' class="is-conversa"' : ''; ?>><?php echo esc_html( $name ); ?></th>
+			<div class="icl-approach-grid">
+				<?php foreach ( $icl_approaches as $c => $name ) : ?>
+					<?php $is_conversa = 3 === $c; ?>
+					<article class="icl-approach<?php echo $is_conversa ? ' is-conversa' : ''; ?>" data-icl-reveal style="--d:<?php echo esc_attr( $c * 90 ); ?>ms">
+						<header>
+							<span class="icl-approach-ico"><?php echo $icl_icon( array( 'chart', 'nodes', 'chat', 'spark' )[ $c ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+							<div><?php if ( $is_conversa ) : ?><small>Decision intelligence layer</small><?php else : ?><small>Approach 0<?php echo esc_html( $c + 1 ); ?></small><?php endif; ?><h3><?php echo esc_html( $name ); ?></h3></div>
+						</header>
+						<dl>
+							<?php foreach ( $icl_approach_rows as $row ) : ?>
+								<div><dt><?php echo esc_html( $row[0] ); ?></dt><dd><?php echo esc_html( $row[ $c + 1 ] ); ?></dd></div>
 							<?php endforeach; ?>
-						</tr>
-					</thead>
-					<tbody>
-						<?php foreach ( $icl_approach_rows as $row ) : ?>
-							<tr>
-								<th scope="row"><?php echo esc_html( $row[0] ); ?></th>
-								<?php for ( $c = 1; $c <= 4; $c++ ) : ?>
-									<td<?php echo 4 === $c ? ' class="is-conversa"' : ''; ?>><?php echo esc_html( $row[ $c ] ); ?></td>
-								<?php endfor; ?>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
+						</dl>
+					</article>
+				<?php endforeach; ?>
 			</div>
 			<p class="icl-legend"><em>An approach-level view of typical use. Capabilities vary by product and configuration.</em></p>
 		</div>

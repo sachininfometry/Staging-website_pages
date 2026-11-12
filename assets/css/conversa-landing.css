@@ -1916,7 +1916,7 @@ body .icl-page .icl-table.is-approach thead th {
   vertical-align: bottom;
 }
 
-body .icl-page .icl-table.is-approach thead th.is-conversa { letter-spacing: 0; text-transform: none; }
+body .icl-page .icl-table.is-approach thead th.is-conversa { color: #fff; letter-spacing: 0; text-transform: none; }
 body .icl-page .icl-table.is-approach td.is-conversa { color: var(--icl-ink); font-weight: 600; }
 body .icl-page .icl-table.is-approach tbody th { color: var(--icl-ink); font-weight: 700; vertical-align: top; }
 
@@ -1953,6 +1953,7 @@ body .icl-page .icl-team-example .icl-action-note { margin-top: 14px; }
 @media (max-width: 720px) {
   body .icl-page .icl-gap-icon { width: 46px; height: 46px; }
   body .icl-page .icl-gap-list h3 { font-size: 16.5px; }
+  body .icl-page .icl-gap-list em { display: none; }
   body .icl-page .icl-team-copy h3 { font-size: 19px; }
 }
 

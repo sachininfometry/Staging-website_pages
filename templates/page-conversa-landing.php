@@ -37,19 +37,12 @@ $icl_customers = array(
 	array( 'Fusion.io', 'customer-fusionio-logo.png', 363, 198 ),
 );
 
-// Value, suffix, label. The value counts up when the card scrolls into view.
-$icl_stats = array(
-	array( '3', 'X', 'Faster time to insights' ),
-	array( '75', '%', 'Self-service analytics growth' ),
-	array( '2', 'X', 'Data team productivity boost' ),
-	array( '92', '%+', 'Trusted answers, happier users' ),
-);
-
+// Icon, colour, heading, detail.
 $icl_problems = array(
-	array( 'code', 'is-violet', 'Exploring data requires SQL or technical tools' ),
-	array( 'doc', 'is-blue', 'Reports only cover predefined insights' ),
-	array( 'db', 'is-cyan', 'Data lives in multiple warehouses and applications' ),
-	array( 'clock', 'is-amber', 'Decision-makers must wait for analysts' ),
+	array( 'clock', 'is-amber', 'Reporting Bottlenecks', 'Reports cover predefined questions, so anything new waits for an analyst.' ),
+	array( 'db', 'is-cyan', 'Fragmented Enterprise Data', 'Data lives in multiple warehouses and applications.' ),
+	array( 'code', 'is-violet', 'Limited Analytical Access', 'Exploring data still requires SQL or technical tools.' ),
+	array( 'doc', 'is-blue', 'Inconsistent Business Context', 'Teams work from different reports and definitions.' ),
 );
 
 $icl_steps = array(
@@ -92,9 +85,14 @@ $icl_capabilities = array(
 	array( 'brain', 'is-violet', 'Analytical reasoning', 'Investigate complex business questions', 'Multi-step analysis from the question to the drivers, risks, opportunities and follow-ups.' ),
 	array( 'shield', 'is-blue', 'Trusted intelligence', 'Answers grounded in business meaning', 'Governed semantics keep metrics, terminology and business logic consistent.' ),
 	array( 'nodes', 'is-cyan', 'Cross-platform intelligence', 'One question. Many systems. One answer.', 'Investigate across heterogeneous enterprise data platforms, not just one.' ),
-	array( 'chat', 'is-green', 'Natural language', 'Ask business questions naturally', 'Ask follow-ups and explore metrics without writing SQL. Conversa generates optimized queries.' ),
-	array( 'doc', 'is-amber', 'Document intelligence', 'Connect data with enterprise knowledge', 'Search PDFs, contracts, manuals, SOPs and reports alongside your data.' ),
+	array( 'doc', 'is-amber', 'Document intelligence', 'Connect enterprise data with enterprise knowledge', 'Search PDFs, contracts, manuals, SOPs and reports alongside your data.' ),
 	array( 'lock', 'is-pink', 'Enterprise governance', 'Built for governed analytics', 'Role-based access, single sign-on, encryption and audit trails.' ),
+	array( 'spark', 'is-green', 'Enterprise AI economics', 'Scale AI with control', 'Scale AI-assisted analytics with controlled model usage and enterprise-ready efficiency.' ),
+);
+// Supporting capabilities, shown under the main six.
+$icl_cap_support = array(
+	array( 'chat', 'Natural language', 'Ask questions and follow-ups in plain English, without writing SQL.' ),
+	array( 'code', 'SQL generation', 'Conversa generates optimized queries, and the SQL behind each answer can be inspected.' ),
 );
 
 $icl_shift = array(
@@ -104,39 +102,39 @@ $icl_shift = array(
 	array( 'Disconnected decisions', 'Teams work from different reports and definitions.', 'Trusted business context', 'Shared definitions support consistent decision-making.' ),
 );
 
-// Columns: Conversa, Tableau, Power BI, Modern AI Tools. y = full, p = partial, n = not supported.
-$icl_compare = array(
-	array( 'Natural Language Query', 'y', 'p', 'p', 'y' ),
-	array( 'Automated Insights', 'y', 'n', 'n', 'p' ),
-	array( 'Root Cause Analysis', 'y', 'n', 'n', 'y' ),
-	array( 'Predictive Analytics', 'p', 'p', 'n', 'y' ),
-	array( 'Semantic Layer', 'y', 'n', 'p', 'n' ),
-	array( 'SQL Transparency', 'y', 'n', 'n', 'p' ),
-	array( 'Multi Data Sources', 'y', 'y', 'y', 'p' ),
-	array( 'Unstructured Data', 'y', 'n', 'n', 'p' ),
-	array( 'Governance', 'y', 'y', 'y', 'p' ),
-);
-$icl_marks = array(
-	'y' => array( 'is-yes', 'Full support' ),
-	'p' => array( 'is-partial', 'Partial' ),
-	'n' => array( 'is-no', 'Not supported' ),
+// Approach-level comparison: describes typical use, not the limits of any product.
+$icl_approaches = array( 'Traditional BI', 'Platform-native AI copilots', 'General-purpose AI tools', 'INFOFISCUS Conversa' );
+$icl_approach_rows = array(
+	array( 'Built for', 'Monitoring known KPIs through dashboards and reports', 'Asking questions about data inside one vendor platform', 'General questions, writing and analysis on content you provide', 'Investigating new business questions across governed enterprise data' ),
+	array( 'Typical starting point', 'A dashboard designed in advance', 'The data and models in that platform', 'A prompt, plus files or data you supply', 'A business question in plain English' ),
+	array( 'Business context', 'Defined in each report or data model', 'Defined within that platform', 'Supplied by the user in each conversation', 'Governed semantics shared across questions and teams' ),
+	array( 'Typical output', 'Charts and tables to interpret', 'Answers and visuals within that tool', 'Generated text and analysis', 'Drivers, root causes and recommended actions, with the SQL behind them' ),
 );
 
-// Team examples: Finance is the one in the design; the others are the same examples used on the Conversa product page.
+// Business plays. Each pairs the question leaders ask with a matching illustrative answer from the
+// Conversa demo environment (templates/partials/conversa-live-verticals.php and the Conversa product page).
+// Icon, tab label, the question leaders ask, demo question, what Conversa found, action, KPIs, secondary.
 $icl_teams = array(
-	'finance'    => array( 'bank', 'Finance (FP&A)', 'Why did net profit improve this quarter, and which drivers contributed most?', 'Net profit increased 11.8% as stronger enterprise pricing and lower fulfillment costs offset a 3.1% rise in operating expenses.', 'Protect enterprise pricing and extend logistics savings across other regions.', array( array( 'Net profit', '$18.6M', 'Up 11.8% vs prior quarter', 'is-up' ), array( 'Gross margin', '31.6%', 'Up 4.2 pts vs prior quarter', 'is-up' ) ) ),
-	'sales'      => array( 'chart', 'Sales', 'Why did pipeline conversion improve, and where should sales focus next?', 'Win rate rose to 42.8% because enterprise opportunities moved faster through solution validation, while mid-market deals remain the largest growth gap.', 'Put executive attention on the $3.6M mid-market pipeline.', array( array( 'Win rate', '42.8%', 'Up 8.4 pts vs prior quarter', 'is-up' ), array( 'Sales cycle', '46 days', '12 days faster than last quarter', 'is-up' ) ) ),
-	'operations' => array( 'nodes', 'Operations', 'What is driving fulfillment delays, and which process should we fix first?', 'West-region delays are concentrated in two distribution centers where picking congestion and late carrier handoffs account for 71% of missed SLAs.', 'Fix picking at DC-04 first and add evening carrier capacity.', array( array( 'On-time SLA', '96.4%', 'Up 5.8 pts over six weeks', 'is-up' ), array( 'Backlog', '1,240', 'Down 22% since peak week', 'is-up' ) ) ),
-	'marketing'  => array( 'spark', 'Marketing', 'Why did customer engagement drop last week, and what should we change?', 'Engagement declined 18% because email click-through fell after send times shifted later, while paid social and webinar engagement remained stable.', 'Optimize email timing. Shift sends to peak open hours.', array( array( 'Engagement rate', '24.8%', 'Down 18% vs previous week', 'is-down' ), array( 'Email CTR', '2.9%', 'Down 21% after timing change', 'is-down' ) ) ),
-	'hr'         => array( 'users', 'HR', 'Why is regrettable attrition increasing, and which teams need attention?', 'Attrition is concentrated in engineering and customer success employees with 18–30 months of tenure, driven by promotion delays and manager changes.', 'Review promotion timelines for mid-tenure engineering and customer success staff.', array( array( 'Retention', '91.8%', 'Down 2.1 pts vs prior quarter', 'is-down' ), array( 'Regrettable attrition', '6.4%', 'Up 1.7 pts vs prior quarter', 'is-down' ) ) ),
+	'executive'  => array( 'chart', 'Executive Business Review', 'What changed across the business, why, and where should leadership focus?', 'Which products are growing our recurring revenue, and which ones are shrinking?', 'ARR reached $132.0M. Analytics Cloud leads with $48.2M at 124% net retention, while three products sit below 100% and are shrinking inside their existing accounts.', 'Bundle Integrations into Analytics Cloud renewals and focus expansion sales on Data Platform accounts.', array( array( 'Total ARR', '$132.0M', '6 product lines', 'is-up' ), array( 'ARR below 100% NRR', '$25.5M', '3 products shrinking', 'is-down' ) ), false ),
+	'fpa'        => array( 'bank', 'FP&A Intelligence', 'Why are we forecasting below plan? What are the major drivers?', 'Why did net profit improve this quarter, and which drivers contributed most?', 'Net profit increased 11.8% as stronger enterprise pricing and lower fulfillment costs offset a 3.1% rise in operating expenses.', 'Protect enterprise pricing and extend logistics savings across other regions.', array( array( 'Net profit', '$18.6M', 'Up 11.8% vs prior quarter', 'is-up' ), array( 'Gross margin', '31.6%', 'Up 4.2 pts vs prior quarter', 'is-up' ) ), false ),
+	'retail'     => array( 'target', 'Retail Performance', 'Why did sales or margins change, and what drove it?', 'What are the primary root causes driving inventory inaccuracies and stockout exposure?', 'Stockouts cost $176.7M in lost sales against $72.8M of direct shrink, so unavailable inventory costs 2.4 times more than the loss itself.', 'Target theft and shrink with loss prevention, and overhaul scanning procedures.', array( array( 'Lost sales', '$176.7M', 'From stockouts', 'is-down' ), array( 'Shrink loss', '$72.8M', 'Direct asset loss', 'is-down' ) ), false ),
+	'sales'      => array( 'users', 'Sales & Pipeline', 'Where will the quarter land, and why?', 'Why did pipeline conversion improve, and where should sales focus next?', 'Win rate rose to 42.8% because enterprise opportunities moved faster through solution validation, while mid-market deals remain the largest growth gap.', 'Put executive attention on the $3.6M mid-market pipeline.', array( array( 'Win rate', '42.8%', 'Up 8.4 pts vs prior quarter', 'is-up' ), array( 'Sales cycle', '46 days', '12 days faster than last quarter', 'is-up' ) ), false ),
+	'operations' => array( 'nodes', 'Operational Intelligence', 'What is driving delays, costs or operational performance degradation?', 'What is driving fulfillment delays, and which process should we fix first?', 'West-region delays are concentrated in two distribution centers where picking congestion and late carrier handoffs account for 71% of missed SLAs.', 'Fix picking at DC-04 first and add evening carrier capacity.', array( array( 'On-time SLA', '96.4%', 'Up 5.8 pts over six weeks', 'is-up' ), array( 'Backlog', '1,240', 'Down 22% since peak week', 'is-up' ) ), false ),
+	'marketing'  => array( 'spark', 'Marketing', 'Why did customer engagement drop, and what should we change?', 'Why did customer engagement drop last week, and what should we change?', 'Engagement declined 18% because email click-through fell after send times shifted later, while paid social and webinar engagement remained stable.', 'Optimize email timing. Shift sends to peak open hours.', array( array( 'Engagement rate', '24.8%', 'Down 18% vs previous week', 'is-down' ), array( 'Email CTR', '2.9%', 'Down 21% after timing change', 'is-down' ) ), true ),
+	'hr'         => array( 'users', 'HR', 'Why is regrettable attrition increasing, and which teams need attention?', 'Why is regrettable attrition increasing, and which teams need attention?', 'Attrition is concentrated in engineering and customer success employees with 18–30 months of tenure, driven by promotion delays and manager changes.', 'Review promotion timelines for mid-tenure engineering and customer success staff.', array( array( 'Retention', '91.8%', 'Down 2.1 pts vs prior quarter', 'is-down' ), array( 'Regrettable attrition', '6.4%', 'Up 1.7 pts vs prior quarter', 'is-down' ) ), true ),
 );
 
 $icl_faqs = array(
 	array( 'What is INFOFISCUS Conversa?', 'An enterprise decision intelligence platform that helps business teams ask complex questions, investigate what changed and why, identify key drivers, and turn governed enterprise data into trusted, decision-ready insights.' ),
-	array( 'Does Conversa replace our dashboards?', 'No. It complements your existing BI tools by adding a conversational, investigative layer on top of your current analytics stack.' ),
-	array( 'Can Conversa work across multiple data platforms?', 'Yes. It connects to major platforms including Snowflake, Google BigQuery, Amazon Redshift, Azure Synapse, Oracle, SQL Server and PostgreSQL.' ),
-	array( 'Is Conversa secure?', 'Yes. Queries run on your own cloud warehouse with its encryption and access controls, plus SSO, role-based access and audit trails.' ),
-	array( 'How can we evaluate Conversa?', 'Start with a personalized demo, then a Conversa Value Sprint focused on your own business questions.' ),
+	array( 'How is Conversa different from traditional business intelligence tools?', 'Traditional BI tools are built to monitor known metrics through dashboards and reports. Conversa adds an investigative layer: teams ask new questions, see what changed and why, and get the drivers and recommended actions behind the numbers.' ),
+	array( 'Can Conversa investigate complex business questions?', 'Yes. Conversa breaks a question into steps: it compares periods, breaks results down by dimension, follows the evidence to root causes and drivers, and returns a decision-ready answer.' ),
+	array( 'Can Conversa work across multiple enterprise data platforms?', 'Yes. It connects to major platforms including Snowflake, Google BigQuery, Amazon Redshift, Azure Synapse, Oracle, SQL Server and PostgreSQL.' ),
+	array( 'Does Conversa use business context and semantic intelligence?', 'Yes. Governed semantics keep metrics, terminology and business logic consistent, so answers use the same business definitions across teams.' ),
+	array( 'Can Conversa work with enterprise documents?', 'Yes. Conversa can search PDFs, contracts, manuals, SOPs and reports alongside your data.' ),
+	array( 'Can users inspect the analysis behind an answer?', 'Yes. Answers show the steps Conversa took and the SQL it generated, so analysts can check how each result was produced.' ),
+	array( 'Is Conversa designed for enterprise security?', 'Yes. Queries run on your own cloud warehouse with its encryption and access controls, plus SSO, role-based access and audit trails.' ),
+	array( 'Does Conversa replace Tableau or Power BI?', 'No. Conversa complements Tableau, Power BI and other BI tools by adding a conversational, investigative layer on top of your current analytics stack.' ),
+	array( 'What is a Conversa Value Sprint?', 'It is the next step after a personalized demo: a focused engagement on your own business questions, so your team can see how Conversa investigates them.' ),
 );
 
 /**
@@ -190,7 +188,7 @@ $icl_icon = static function ( $name ) {
 			<div class="icl-hero-copy">
 				<p class="icl-pill"><span class="icl-pulse" aria-hidden="true"></span>INFOFISCUS Conversa™</p>
 				<h1 id="icl-hero-title">Turn Enterprise Data Into <span>Trusted Decisions.</span></h1>
-				<p class="icl-hero-lead">INFOFISCUS Conversa helps enterprise leaders investigate complex business questions, uncover the drivers behind business performance and turn governed data across multiple platforms into trusted, decision-ready insights.</p>
+				<p class="icl-hero-lead">INFOFISCUS Conversa helps enterprise teams investigate complex business questions, uncover why business performance changes, and identify the drivers, risks and opportunities behind the numbers, so leaders can make confident, informed decisions.</p>
 				<div class="icl-actions">
 					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 					<a class="icl-btn icl-btn-ghost" href="#icl-tour" data-icl-tour><?php echo $icl_icon( 'play' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Try the interactive demo</a>
@@ -207,6 +205,7 @@ $icl_icon = static function ( $name ) {
 				<form class="icl-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" data-icl-form novalidate>
 					<p class="icl-form-badge"><span class="icl-pulse" aria-hidden="true"></span>Personalized demo</p>
 					<h3>See How Conversa Investigates Your Business Questions</h3>
+					<p class="icl-form-intro">Discover how INFOFISCUS Conversa helps your team investigate business performance, uncover key drivers and turn governed enterprise data into decision-ready insights.</p>
 					<input type="hidden" name="action" value="infometry_landing_lead">
 					<input type="hidden" name="icl_t" value="" data-icl-time>
 					<input type="hidden" name="icl_url" value="" data-icl-url>
@@ -219,7 +218,7 @@ $icl_icon = static function ( $name ) {
 					<input id="icl-company" type="text" name="icl_company" placeholder="Company name" autocomplete="organization" maxlength="160" required>
 					<label for="icl-phone">Contact number <span>(optional)</span></label>
 					<input id="icl-phone" type="tel" name="icl_phone" placeholder="+1 555 000 0000" autocomplete="tel" maxlength="40">
-					<button class="icl-btn icl-btn-primary icl-submit" type="submit">Book My Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></button>
+					<button class="icl-btn icl-btn-primary icl-submit" type="submit">Request My Personalized Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></button>
 					<p class="icl-form-msg<?php echo 'ok' === $icl_status ? ' is-ok' : ( 'error' === $icl_status ? ' is-error' : '' ); ?>" role="status" aria-live="polite" data-icl-msg><?php
 					if ( 'ok' === $icl_status ) {
 						echo esc_html( 'Thank you. Our analytics team will connect with you to schedule a time.' );
@@ -233,14 +232,9 @@ $icl_icon = static function ( $name ) {
 		</div>
 	</section>
 
-	<section class="icl-proof" aria-label="Results and customers">
+	<section class="icl-proof" aria-label="Infometry customers">
 		<div class="icl-shell">
 			<div class="icl-proof-card" data-icl-reveal>
-				<div class="icl-stats">
-					<?php foreach ( $icl_stats as $stat ) : ?>
-						<div class="icl-stat"><strong><span data-icl-count="<?php echo esc_attr( $stat[0] ); ?>"><?php echo esc_html( $stat[0] ); ?></span><?php echo esc_html( $stat[1] ); ?></strong><span><?php echo esc_html( $stat[2] ); ?></span></div>
-					<?php endforeach; ?>
-				</div>
 				<div class="icl-trust">
 					<h2 class="icl-trust-title">Infometry is trusted by <span>150+ customers</span> worldwide</h2>
 					<div class="icl-logos" role="region" aria-label="Customer logos">
@@ -260,19 +254,19 @@ $icl_icon = static function ( $name ) {
 	<section class="icl-section icl-problem" aria-labelledby="icl-problem-title">
 		<div class="icl-shell icl-problem-layout">
 			<div class="icl-problem-copy" data-icl-reveal>
-				<p class="icl-kicker">Stop searching reports. Start investigating.</p>
-				<h2 id="icl-problem-title"><span class="icl-grad-text">80%</span> of business questions never get answered in time because…</h2>
-				<p class="icl-lead">Dashboards tell you what happened. Your leaders need to know why, and what to do next.</p>
+				<p class="icl-kicker">The decision gap</p>
+				<h2 id="icl-problem-title">Your Dashboards Show What Changed. <span class="icl-grad-text">Your Leaders Still Need to Know Why.</span></h2>
+				<p class="icl-lead">Business leaders need more than another report. They need to investigate unexpected results, understand contributing factors and identify where action is required.</p>
 				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>See how Conversa closes the gap <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			</div>
 			<div class="icl-gap-card" data-icl-reveal>
 				<div class="icl-gap-head">
-					<div class="icl-ring" style="--v:80" aria-hidden="true"><span>80%<small>unanswered</small></span></div>
-					<div><b>What slows business answers down</b><small>The four gaps Conversa closes</small></div>
+					<span class="icl-gap-icon" aria-hidden="true"><?php echo $icl_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+					<div><b>Where business answers get stuck</b><small>The four gaps Conversa closes</small></div>
 				</div>
 				<ol class="icl-gap-list">
 					<?php foreach ( $icl_problems as $i => $problem ) : ?>
-						<li class="<?php echo esc_attr( $problem[1] ); ?>"><span class="icl-tile"><?php echo $icl_icon( $problem[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><p><?php echo esc_html( $problem[2] ); ?></p><em aria-hidden="true">0<?php echo esc_html( $i + 1 ); ?></em></li>
+						<li class="<?php echo esc_attr( $problem[1] ); ?>"><span class="icl-tile"><?php echo $icl_icon( $problem[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><div><h3><?php echo esc_html( $problem[2] ); ?></h3><p><?php echo esc_html( $problem[3] ); ?></p></div><em aria-hidden="true">0<?php echo esc_html( $i + 1 ); ?></em></li>
 					<?php endforeach; ?>
 				</ol>
 			</div>
@@ -327,6 +321,7 @@ $icl_icon = static function ( $name ) {
 						<div class="icl-verdict-kpi"><strong>9.5%</strong><span>Blended net margin<br>$43.8M on $459.9M of sales</span></div>
 						<p class="icl-action-note"><b>Recommended action:</b> Scale the New Customer Offer, move budget from Buy 2 Get 1 Free to 15% Off Electronics, and cap sitewide discounts at 20% to protect margin.</p>
 					</div>
+					<p class="icl-demo-note">Illustrative data from the Conversa demo environment.</p>
 				</div>
 			</div>
 		</div>
@@ -337,8 +332,8 @@ $icl_icon = static function ( $name ) {
 		<div class="icl-shell icl-tour-grid">
 			<div class="icl-tour-copy" data-icl-reveal>
 				<p class="icl-kicker">Interactive demo</p>
-				<h2 id="icl-tour-title">See Conversa investigate questions from your own industry</h2>
-				<p class="icl-tour-lead">Pick an industry under the window, then click the chats, charts and views. A working preview of the Conversa app with demo data.</p>
+				<h2 id="icl-tour-title">Explore How Conversa Investigates Real Business Questions</h2>
+				<p class="icl-tour-lead">Explore how Conversa moves from complex business questions to trusted answers, deeper investigation, key drivers and decision-ready insights across different business domains.</p>
 				<ul class="icl-check-list">
 					<?php foreach ( $icl_demo_points as $point ) : ?>
 						<li><?php echo $icl_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $point ); ?></li>
@@ -347,7 +342,12 @@ $icl_icon = static function ( $name ) {
 				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 			</div>
 			<div class="icl-tour-demo">
-				<?php include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php'; ?>
+				<?php
+				// Home screen copy inside the product tour (the Conversa product page keeps its own).
+				$lv_home_title = 'Decision Intelligence That Goes <span>Beyond Traditional Analytics.</span>';
+				$lv_home_copy  = 'INFOFISCUS Conversa helps business teams investigate complex questions, understand performance drivers and uncover insights across governed enterprise data.';
+				include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php';
+				?>
 			</div>
 		</div>
 	</section>
@@ -357,6 +357,7 @@ $icl_icon = static function ( $name ) {
 			<div class="icl-head" data-icl-reveal>
 				<p class="icl-kicker">AI decision intelligence capabilities</p>
 				<h2 id="icl-cap-title">Everything your teams need to move from "what happened" to <span class="icl-grad-text">"why"</span></h2>
+				<p class="icl-lead">Conversa combines analytical reasoning, governed business context and enterprise controls, so teams can investigate questions across the business and trust the answers they get.</p>
 			</div>
 			<div class="icl-cap-grid">
 				<?php foreach ( $icl_capabilities as $i => $cap ) : ?>
@@ -366,6 +367,12 @@ $icl_icon = static function ( $name ) {
 						<h3><?php echo esc_html( $cap[3] ); ?></h3>
 						<p><?php echo esc_html( $cap[4] ); ?></p>
 					</article>
+				<?php endforeach; ?>
+			</div>
+			<div class="icl-cap-support" data-icl-reveal>
+				<p>Also built in</p>
+				<?php foreach ( $icl_cap_support as $item ) : ?>
+					<div><span><?php echo $icl_icon( $item[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><b><?php echo esc_html( $item[1] ); ?></b><small><?php echo esc_html( $item[2] ); ?></small></div>
 				<?php endforeach; ?>
 			</div>
 		</div>
@@ -392,60 +399,66 @@ $icl_icon = static function ( $name ) {
 	<section class="icl-section icl-compare" aria-labelledby="icl-compare-title">
 		<div class="icl-shell">
 			<div class="icl-head" data-icl-reveal>
-				<p class="icl-kicker">Compare decision intelligence tools</p>
+				<p class="icl-kicker">Compare decision intelligence approaches</p>
 				<h2 id="icl-compare-title">Already have Tableau or Power BI? Here's what Conversa adds.</h2>
-				<p class="icl-lead">Conversa doesn't replace your dashboards. It adds automated insights, root cause analysis and a governed semantic layer on top of them.</p>
+				<p class="icl-lead">Conversa complements your existing BI tools by adding an investigative Decision Intelligence layer that helps teams explore new business questions, understand performance changes and identify the drivers behind the numbers.</p>
 			</div>
 			<div class="icl-table-wrap" data-icl-reveal>
-				<table class="icl-table">
+				<table class="icl-table is-approach">
 					<thead>
-						<tr><th scope="col">Capabilities</th><th scope="col" class="is-conversa"><span>Conversa</span></th><th scope="col">Tableau</th><th scope="col">Power BI</th><th scope="col">Modern AI Tools</th></tr>
+						<tr><th scope="col">Approach</th>
+							<?php foreach ( $icl_approaches as $c => $name ) : ?>
+								<th scope="col"<?php echo 3 === $c ? ' class="is-conversa"' : ''; ?>><?php echo esc_html( $name ); ?></th>
+							<?php endforeach; ?>
+						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ( $icl_compare as $row ) : ?>
+						<?php foreach ( $icl_approach_rows as $row ) : ?>
 							<tr>
 								<th scope="row"><?php echo esc_html( $row[0] ); ?></th>
 								<?php for ( $c = 1; $c <= 4; $c++ ) : ?>
-									<?php $s = $icl_marks[ $row[ $c ] ]; ?>
-									<td class="<?php echo 1 === $c ? 'is-conversa' : ''; ?>"><span class="icl-mark <?php echo esc_attr( $s[0] ); ?>" role="img" aria-label="<?php echo esc_attr( $s[1] ); ?>"></span></td>
+									<td<?php echo 4 === $c ? ' class="is-conversa"' : ''; ?>><?php echo esc_html( $row[ $c ] ); ?></td>
 								<?php endfor; ?>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>
 				</table>
 			</div>
-			<p class="icl-legend"><span><i class="icl-mark is-yes" aria-hidden="true"></i>Full support</span><span><i class="icl-mark is-partial" aria-hidden="true"></i>Partial</span><span><i class="icl-mark is-no" aria-hidden="true"></i>Not supported</span><em>Based on Infometry's assessment of out-of-the-box capabilities.</em></p>
+			<p class="icl-legend"><em>An approach-level view of typical use. Capabilities vary by product and configuration.</em></p>
 		</div>
 	</section>
 
 	<section class="icl-section icl-alt icl-teams" aria-labelledby="icl-teams-title">
 		<div class="icl-shell">
 			<div class="icl-head" data-icl-reveal>
-				<p class="icl-kicker">Decision intelligence solutions by team</p>
-				<h2 id="icl-teams-title">One platform for Finance, Sales, Operations, Marketing and HR</h2>
+				<p class="icl-kicker">Decision intelligence use cases</p>
+				<h2 id="icl-teams-title">Decision Intelligence for Your Most Important Business Priorities.</h2>
 			</div>
-			<div class="icl-tabs" role="tablist" aria-label="Teams">
+			<div class="icl-tabs" role="tablist" aria-label="Use cases">
 				<?php $first = true; foreach ( $icl_teams as $key => $team ) : ?>
-					<button type="button" role="tab" id="icl-tab-<?php echo esc_attr( $key ); ?>" aria-controls="icl-panel-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>" data-icl-tab><?php echo $icl_icon( $team[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $team[1] ); ?></button>
+					<button type="button" role="tab" id="icl-tab-<?php echo esc_attr( $key ); ?>" class="<?php echo $team[7] ? 'is-minor' : ''; ?>" aria-controls="icl-panel-<?php echo esc_attr( $key ); ?>" aria-selected="<?php echo $first ? 'true' : 'false'; ?>" tabindex="<?php echo $first ? '0' : '-1'; ?>" data-icl-tab><?php echo $icl_icon( $team[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $team[1] ); ?></button>
 				<?php $first = false; endforeach; ?>
 			</div>
 			<?php $first = true; foreach ( $icl_teams as $key => $team ) : ?>
 				<div class="icl-team" role="tabpanel" id="icl-panel-<?php echo esc_attr( $key ); ?>" aria-labelledby="icl-tab-<?php echo esc_attr( $key ); ?>" data-icl-panel<?php echo $first ? '' : ' hidden'; ?>>
 					<div class="icl-team-copy">
-						<small>Business question</small>
+						<small>The question leaders ask</small>
 						<h3><?php echo esc_html( $team[2] ); ?></h3>
-						<p class="icl-found"><span><?php echo $icl_icon( 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Conversa found</span></p>
-						<p><?php echo esc_html( $team[3] ); ?></p>
-						<p class="icl-action-note"><b>Recommended action:</b> <?php echo esc_html( $team[4] ); ?></p>
+						<div class="icl-team-example">
+							<p class="icl-found"><span><?php echo $icl_icon( 'spark' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>Example from the Conversa demo</span></p>
+							<p class="icl-team-q"><?php echo esc_html( $team[3] ); ?></p>
+							<p><?php echo esc_html( $team[4] ); ?></p>
+							<p class="icl-action-note"><b>Recommended action:</b> <?php echo esc_html( $team[5] ); ?></p>
+						</div>
 					</div>
 					<div class="icl-team-kpis">
-						<?php foreach ( $team[5] as $kpi ) : ?>
+						<?php foreach ( $team[6] as $kpi ) : ?>
 							<div class="icl-kpi <?php echo esc_attr( $kpi[3] ); ?>"><small><?php echo esc_html( $kpi[0] ); ?></small><strong><?php echo esc_html( $kpi[1] ); ?></strong><span><?php echo esc_html( $kpi[2] ); ?></span></div>
 						<?php endforeach; ?>
 					</div>
 				</div>
 			<?php $first = false; endforeach; ?>
-			<p class="icl-footnote">Illustrative example from the Conversa demo environment.</p>
+			<p class="icl-footnote">Illustrative examples from the Conversa demo environment.</p>
 		</div>
 	</section>
 
@@ -467,10 +480,10 @@ $icl_icon = static function ( $name ) {
 	<section class="icl-final icl-dark" aria-labelledby="icl-final-title">
 		<div class="icl-hero-bg" aria-hidden="true"><i></i><i></i><i></i></div>
 		<div class="icl-shell" data-icl-reveal>
-			<h2 id="icl-final-title">Turn every business question into a <span class="icl-grad-text">confident decision</span></h2>
-			<p>Experience the power of trusted decision intelligence on questions from your own business.</p>
+			<h2 id="icl-final-title">Bring Your Most Important Business Questions to <span class="icl-grad-text">Conversa.</span></h2>
+			<p>See how INFOFISCUS Conversa helps your organization investigate complex business questions, uncover what is driving performance and turn governed enterprise data into trusted, decision-ready insights.</p>
 			<div class="icl-actions">
-				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Request a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Request Your Personalized Conversa Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
 				<a class="icl-btn icl-btn-ghost" href="#icl-demo" data-icl-demo>Start a Conversa Value Sprint</a>
 			</div>
 		</div>

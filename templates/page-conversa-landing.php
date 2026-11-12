@@ -82,11 +82,12 @@ $icl_channels = array(
 	array( 'Buy 2 Get 1 Free', 0.06, 'is-low' ),
 );
 
+// Icon, colour, text.
 $icl_demo_points = array(
-	'How Conversa answers multi-step business questions',
-	'Root cause and key drivers, with the SQL behind every answer',
-	'Governance: SSO, role-based access, encryption and audit trails',
-	'How a Conversa Value Sprint works for your team',
+	array( 'chat', 'is-violet', 'How Conversa answers multi-step business questions' ),
+	array( 'target', 'is-blue', 'Root cause and key drivers, with the SQL behind every answer' ),
+	array( 'lock', 'is-cyan', 'Governance: SSO, role-based access, encryption and audit trails' ),
+	array( 'spark', 'is-green', 'How a Conversa Value Sprint works for your team' ),
 );
 
 $icl_capabilities = array(
@@ -483,14 +484,22 @@ $icl_icon = static function ( $name ) {
 		<div class="icl-shell icl-tour-grid">
 			<div class="icl-tour-copy" data-icl-reveal>
 				<p class="icl-kicker">Interactive demo</p>
-				<h2 id="icl-tour-title">Explore How Conversa Investigates Real Business Questions</h2>
+				<h2 id="icl-tour-title">Explore How Conversa Investigates <span class="icl-grad-text">Real Business Questions</span></h2>
 				<p class="icl-tour-lead">Explore how Conversa moves from complex business questions to trusted answers, deeper investigation, key drivers and decision-ready insights across different business domains.</p>
-				<ul class="icl-check-list">
+				<ol class="icl-tour-how" aria-label="How to use the demo">
+					<li><b>1</b>Pick an industry</li>
+					<li><b>2</b>Open a chat</li>
+					<li><b>3</b>Click the charts</li>
+				</ol>
+				<ul class="icl-tour-points">
 					<?php foreach ( $icl_demo_points as $point ) : ?>
-						<li><?php echo $icl_icon( 'check' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $point ); ?></li>
+						<li class="<?php echo esc_attr( $point[1] ); ?>"><span class="icl-tile"><?php echo $icl_icon( $point[0] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><?php echo esc_html( $point[2] ); ?></li>
 					<?php endforeach; ?>
 				</ul>
-				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+				<div class="icl-tour-cta">
+					<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Book a Live Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+					<span>See it on your own business questions</span>
+				</div>
 			</div>
 			<div class="icl-tour-demo">
 				<?php

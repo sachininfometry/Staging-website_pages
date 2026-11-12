@@ -2230,6 +2230,84 @@ body .icl-page .icl-uc-kpi.is-flat > span i::before { content: "→"; }
   body .icl-page .icl-uc-out p { font-size: 16px; }
 }
 
+/* ---------- Interactive demo copy column ---------- */
+body .icl-page .icl-tour h2 { font-size: clamp(30px, 2.5vw, 40px); line-height: 1.14; }
+
+body .icl-page .icl-tour-how {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+body .icl-page .icl-tour-how li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 14px 6px 6px;
+  border: 1px solid rgba(140, 170, 255, .28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .05);
+  color: #e3e9f8;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+body .icl-page .icl-tour-how b {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--icl-grad);
+  color: #fff;
+  font-size: 12.5px;
+}
+
+body .icl-page .icl-tour-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 22px 0 26px;
+  padding: 0;
+  list-style: none;
+}
+
+body .icl-page .icl-tour-points li {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid rgba(140, 170, 255, .18);
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, .02));
+  color: #eef2ff;
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  transition: transform .22s ease, border-color .22s ease, background-color .22s ease;
+}
+
+body .icl-page .icl-tour-points li:hover { border-color: rgba(167, 139, 250, .6); transform: translateY(-3px); }
+body .icl-page .icl-tour-points .icl-tile { width: 38px; height: 38px; border-radius: 10px; }
+body .icl-page .icl-tour-points .icl-tile .icl-i { width: 19px; height: 19px; }
+
+body .icl-page .icl-tour-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }
+body .icl-page .icl-tour-cta span { color: #aebbdc; font-size: 14px; }
+
+@media (max-width: 480px) {
+  body .icl-page .icl-tour-points { grid-template-columns: minmax(0, 1fr); }
+  body .icl-page .icl-tour-points li { flex-direction: row; align-items: center; }
+}
+
+@media (min-width: 1921px) {
+  body .icl-page .icl-tour-points li { font-size: 16px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body .icl-page .icl-hero-bg i,
   body .icl-page .icl-btn-primary::after,

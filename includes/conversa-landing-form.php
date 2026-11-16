@@ -103,14 +103,31 @@ function infometry_ct_landing_lead_redirect( $status ) {
 /**
  * Finish a request: JSON for the page script, a redirect otherwise.
  *
+ * On success the JSON tells the page script where to send the visitor, and the
+ * no-JavaScript path redirects there directly; errors return to the form.
+ *
  * @param bool   $ok      Whether the lead was accepted.
  * @param string $message Message for the visitor.
  */
 function infometry_ct_landing_lead_respond( $ok, $message ) {
+	$thank_you = apply_filters( 'infometry_ct_landing_lead_thankyou_url', 'https://www.infometry.net/thank-you/' );
+
 	if ( ! empty( $_POST['icl_ajax'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		wp_send_json( array( 'ok' => $ok, 'message' => $message ), $ok ? 200 : 400 );
+		$payload = array( 'ok' => $ok, 'message' => $message );
+		if ( $ok ) {
+			$payload['redirect'] = $thank_you;
+		}
+		wp_send_json( $payload, $ok ? 200 : 400 );
 	}
-	infometry_ct_landing_lead_redirect( $ok ? 'ok' : 'error' );
+
+	if ( $ok ) {
+		// Known, hardcoded destination (not user input); wp_redirect so it works
+		// even when the thank-you page is on the production host, not staging.
+		wp_redirect( $thank_you ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
+		exit;
+	}
+
+	infometry_ct_landing_lead_redirect( 'error' );
 }
 
 /** Handle a lead submitted from the landing page. */

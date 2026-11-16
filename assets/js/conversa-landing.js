@@ -242,10 +242,13 @@
             form.reset();
             if (time) { time.value = String(Math.floor(Date.now() / 1000)); }
             if (url) { url.value = window.location.href; }
-            say(result.message, 'ok');
             if (window.dataLayer) {
               window.dataLayer.push({ event: 'conversa_landing_lead' });
             }
+            // Send the visitor to the thank-you page on success.
+            say('Thank you. Redirecting you now...', 'ok');
+            window.location.assign(result.redirect || 'https://www.infometry.net/thank-you/');
+            return;
           } else {
             say((result && result.message) || 'Something went wrong. Please try again.', 'error');
           }

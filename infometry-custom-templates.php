@@ -1698,6 +1698,77 @@ function infometry_ct_enqueue_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'infometry_ct_enqueue_assets', 20 );
 
+/**
+ * The Conversa ads landing page prints its own standalone document (no theme
+ * header, menu, footer, Elementor widgets or tables), so the theme and plugin
+ * front-end assets that WordPress enqueues globally are dead weight here. Drop
+ * them on this template only, to cut unused CSS/JS and speed up the paid page.
+ * Runs late (priority 100) so everything is registered before we dequeue it.
+ */
+function infometry_ct_trim_conversa_landing_assets() {
+	if ( ! infometry_ct_should_use_conversa_landing_template() ) {
+		return;
+	}
+
+	$drop_styles = array(
+		'wp-block-library',
+		'wp-block-library-theme',
+		'global-styles',
+		'classic-theme-styles',
+		'wp-job-manager-job-listings',
+		'tablepress-default',
+		'dashicons',
+		'mfn-be',
+		'mfn-animations',
+		'mfn-font-awesome',
+		'mfn-responsive',
+		'ekit-widget-common',
+		'ekit-nav-menu',
+		'ekit-header-search',
+		'ekit-header-offcanvas',
+		'ekit-header-info',
+		'elementor-frontend',
+		'elementor-icons',
+		'elementor-common',
+		'swiper',
+	);
+
+	$drop_scripts = array(
+		'jquery-migrate',
+		'essential-blocks-blocks-localize',
+		'jquery-ui-core',
+		'jquery-ui-tabs',
+		'mfn-debouncedresize',
+		'mfn-magnificpopup',
+		'mfn-menu',
+		'mfn-visible',
+		'mfn-animations',
+		'mfn-stickysidebar',
+		'mfn-enllax',
+		'mfn-parallax',
+		'mfn-scripts',
+		'elementor-webpack-runtime',
+		'elementor-frontend-modules',
+		'elementor-frontend',
+		'ekit-core',
+		'ekit-nav-menu',
+		'ekit-menu',
+		'ekit-header-search',
+		'ekit-header-offcanvas',
+		'magnific-popup',
+	);
+
+	foreach ( $drop_styles as $handle ) {
+		wp_dequeue_style( $handle );
+		wp_deregister_style( $handle );
+	}
+	foreach ( $drop_scripts as $handle ) {
+		wp_dequeue_script( $handle );
+		wp_deregister_script( $handle );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'infometry_ct_trim_conversa_landing_assets', 100 );
+
 /** Add early Google Fonts connections only on pages that use plugin templates. */
 function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 	if ( 'preconnect' !== $relation_type ) {

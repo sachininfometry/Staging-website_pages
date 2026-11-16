@@ -582,7 +582,6 @@ $icl_icon = static function ( $name ) {
 			<p>See how INFOFISCUS Conversa helps your organization investigate complex business questions, uncover what is driving performance and turn governed enterprise data into trusted, decision-ready insights.</p>
 			<div class="icl-actions">
 				<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>Request Your Personalized Conversa Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-				<a class="icl-btn icl-btn-ghost" href="#icl-demo" data-icl-demo>Start a Conversa Value Sprint</a>
 			</div>
 		</div>
 	</section>

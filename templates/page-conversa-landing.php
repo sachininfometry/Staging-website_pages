@@ -61,25 +61,25 @@ $icl_steps = array(
 	array( 'check', 'Decide', 'Get a clear, decision-ready business insight.' ),
 );
 
-// Retail example: the "Optimize promotional spend" answer from the Retail workspace
+// Retail example: the "Impulse buys and returns" answer from the Retail workspace
 // of the Conversa demo (templates/partials/conversa-live-verticals.php).
-$icl_context = array( 'Gross sales', 'Net margin', 'Promotion spend', 'Return on spend', '7 promotions', 'Snowflake' );
+$icl_context = array( 'Promotion', 'Return rate', 'Full-price probability', 'Return amount', '7 promotions', 'Snowflake' );
 // Step index that lights the row, label, result, result style.
 $icl_trail = array(
-	array( 2, 'Compare promotion sales with net margin', '$459.9M → $43.8M', '' ),
-	array( 2, 'Break down return on spend by promotion', '7 promotions', '' ),
-	array( 3, 'Find where margin leaks: the three deepest discounts', '61% of sales, 37% of margin', 'is-down' ),
-	array( 3, 'Find the best return on spend', 'New Customer Offer 1.83x', 'is-up' ),
+	array( 2, 'Score promoted orders and the returns that followed', '7 promotions', '' ),
+	array( 2, 'Rank promotions by their return rate', '14.4% → 28.0%', '' ),
+	array( 3, 'Find the worst offenders: deep sitewide and apparel deals', '28.0% and 27.3% returns', 'is-down' ),
+	array( 3, 'Find the healthiest offer by full-price probability', 'Loyalty Coupon 65.6%', 'is-up' ),
 );
-// Promotion, return on promo spend, style.
+// Promotion, return rate %, style (higher return rate is worse).
 $icl_channels = array(
-	array( 'New Customer Offer', 1.83, 'is-best' ),
-	array( '15% Off Electronics', 1.37, '' ),
-	array( 'Loyalty Coupon', 0.95, '' ),
-	array( '20% Off Apparel', 0.37, '' ),
-	array( '25% Off Sitewide', 0.32, '' ),
-	array( 'BOGO Beauty', 0.14, 'is-low' ),
-	array( 'Buy 2 Get 1 Free', 0.06, 'is-low' ),
+	array( '25% Off Sitewide', 28.0, 'is-low' ),
+	array( '20% Off Apparel', 27.3, 'is-low' ),
+	array( 'Buy 2 Get 1 Free', 23.3, '' ),
+	array( '15% Off Electronics', 18.8, '' ),
+	array( 'New Customer Offer', 18.6, '' ),
+	array( 'Loyalty Coupon', 14.7, 'is-best' ),
+	array( 'BOGO Beauty', 14.4, 'is-best' ),
 );
 
 // Icon, colour, text.
@@ -450,7 +450,7 @@ $icl_icon = static function ( $name ) {
 				</ol>
 				<div class="icl-example" data-icl-reveal>
 					<div class="icl-example-head">
-						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><small>Retail example · Retail Ops Director</small>How should we optimize future promotional spending?</span></h3>
+						<h3 data-icl-ex="0"><span class="icl-q-dot" aria-hidden="true"><?php echo $icl_icon( 'chat' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span><span><small>Retail example · Retail Ops Director</small>Which promotions are causing customers to buy impulsively and then return products later?</span></h3>
 						<span class="icl-formula">KPIs + Context + Drivers = Action</span>
 					</div>
 					<div class="icl-context" data-icl-ex="1">
@@ -466,15 +466,15 @@ $icl_icon = static function ( $name ) {
 							<?php endforeach; ?>
 						</ol>
 						<div class="icl-bars" data-icl-ex="2">
-							<small>Return on promotion spend</small>
+							<small>Return rate by promotion</small>
 							<?php foreach ( $icl_channels as $ch ) : ?>
-								<div class="icl-bar <?php echo esc_attr( $ch[2] ); ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( max( 3, round( $ch[1] / 1.83 * 100 ) ) ); ?>%"></i><b><?php echo esc_html( number_format( $ch[1], 2 ) ); ?>x</b></div>
+								<div class="icl-bar <?php echo esc_attr( $ch[2] ); ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( max( 3, round( $ch[1] / 28 * 100 ) ) ); ?>%"></i><b><?php echo esc_html( number_format( $ch[1], 1 ) ); ?>%</b></div>
 							<?php endforeach; ?>
 						</div>
 					</div>
 					<div class="icl-verdict" data-icl-ex="4">
-						<div class="icl-verdict-kpi"><strong>9.5%</strong><span>Blended net margin<br>$43.8M on $459.9M of sales</span></div>
-						<p class="icl-action-note"><b>Recommended action:</b> Scale the New Customer Offer, move budget from Buy 2 Get 1 Free to 15% Off Electronics, and cap sitewide discounts at 20% to protect margin.</p>
+						<div class="icl-verdict-kpi"><strong>28.0%</strong><span>Highest return rate<br>25% Off Sitewide, vs 14.4% for BOGO Beauty</span></div>
+						<p class="icl-action-note"><b>Recommended action:</b> Tighten return windows on 25% Off Sitewide, replace deep apparel discounts with loyalty offers, and flag repeat buy-and-return customers for review.</p>
 					</div>
 					<div class="icl-example-cta">
 						<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>See this on your own data <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>

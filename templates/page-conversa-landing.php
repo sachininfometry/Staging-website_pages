@@ -71,15 +71,15 @@ $icl_trail = array(
 	array( 3, 'Find the worst offenders: deep sitewide and apparel deals', '28.0% and 27.3% returns', 'is-down' ),
 	array( 3, 'Find the healthiest offer by full-price probability', 'Loyalty Coupon 65.6%', 'is-up' ),
 );
-// Promotion, return rate %, style (higher return rate is worse).
+// Promotion, total return amount in $M, style (a bigger return bill is worse).
 $icl_channels = array(
-	array( '25% Off Sitewide', 28.0, 'is-low' ),
-	array( '20% Off Apparel', 27.3, 'is-low' ),
-	array( 'Buy 2 Get 1 Free', 23.3, '' ),
-	array( '15% Off Electronics', 18.8, '' ),
-	array( 'New Customer Offer', 18.6, '' ),
-	array( 'Loyalty Coupon', 14.7, 'is-best' ),
-	array( 'BOGO Beauty', 14.4, 'is-best' ),
+	array( '25% Off Sitewide', 30.9, 'is-low' ),
+	array( '20% Off Apparel', 23.3, 'is-low' ),
+	array( 'Buy 2 Get 1 Free', 20.8, '' ),
+	array( '15% Off Electronics', 14.3, '' ),
+	array( 'BOGO Beauty', 7.3, '' ),
+	array( 'Loyalty Coupon', 7.0, 'is-best' ),
+	array( 'New Customer Offer', 4.5, 'is-best' ),
 );
 
 // Icon, colour, text.
@@ -466,9 +466,9 @@ $icl_icon = static function ( $name ) {
 							<?php endforeach; ?>
 						</ol>
 						<div class="icl-bars" data-icl-ex="2">
-							<small>Return rate by promotion</small>
+							<small>Return amount by promotion</small>
 							<?php foreach ( $icl_channels as $ch ) : ?>
-								<div class="icl-bar <?php echo esc_attr( $ch[2] ); ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( max( 3, round( $ch[1] / 28 * 100 ) ) ); ?>%"></i><b><?php echo esc_html( number_format( $ch[1], 1 ) ); ?>%</b></div>
+								<div class="icl-bar <?php echo esc_attr( $ch[2] ); ?>"><span><?php echo esc_html( $ch[0] ); ?></span><i style="--w:<?php echo esc_attr( max( 3, round( $ch[1] / 30.9 * 100 ) ) ); ?>%"></i><b>$<?php echo esc_html( number_format( $ch[1], 1 ) ); ?>M</b></div>
 							<?php endforeach; ?>
 						</div>
 					</div>

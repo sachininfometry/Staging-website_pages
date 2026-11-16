@@ -243,25 +243,31 @@ body .icl-page .icl-dark h2 { color: #fff; }
 body .icl-page .icl-dark .icl-kicker { color: #a9bcff; }
 
 /* ---------- Hero ---------- */
-body .icl-page .icl-hero { padding: 107px 0 132px; }
+body .icl-page .icl-hero { padding: 112px 0 132px; }
 
-/* Fixed top bar: the logo and Request-a-Demo stay in view while scrolling. */
+/* Fixed top bar: the logo and Request-a-Demo stay in view while scrolling,
+   like the site header - dark, semi-transparent, roomy enough not to clip. */
 body .icl-page .icl-topbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 120;
-  padding: 10px 0;
-  background: rgba(6, 11, 36, 0.78);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
-  backdrop-filter: saturate(140%) blur(14px);
-  border-bottom: 1px solid rgba(140, 160, 255, 0.14);
-  box-shadow: 0 6px 24px rgba(3, 7, 30, 0.28);
+  background: rgba(10, 15, 40, 0.72);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  backdrop-filter: saturate(140%) blur(12px);
+  border-bottom: 1px solid rgba(140, 160, 255, 0.12);
 }
 
 body .icl-page .icl-topbar .icl-hero-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 78px;
   margin-bottom: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 body .icl-page .icl-hero-brand {
@@ -274,9 +280,13 @@ body .icl-page .icl-hero-brand {
 body .icl-page .icl-logo {
   display: block;
   width: auto;
-  height: 52px;
+  height: 46px;
   max-width: 100%;
   margin-left: -14px; /* the logo file has transparent space on its left */
+}
+
+body .icl-page .icl-topbar .icl-btn-sm {
+  flex: 0 0 auto;
 }
 
 body .icl-page .icl-hero-grid {
@@ -1389,7 +1399,7 @@ body .icl-page.icl-js .icl-card[data-icl-reveal].is-in {
 }
 
 @media (max-width: 1100px) {
-  body .icl-page .icl-hero { padding: 103px 0 116px; }
+  body .icl-page .icl-hero { padding: 108px 0 116px; }
   body .icl-page .icl-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   body .icl-page .icl-hero-copy { max-width: 720px; }
   body .icl-page .icl-form-card { justify-self: start; max-width: 560px; }
@@ -1412,9 +1422,9 @@ body .icl-page.icl-js .icl-card[data-icl-reveal].is-in {
 
 @media (max-width: 720px) {
   body .icl-page .icl-shell { width: min(100% - 32px, 1320px); }
-  body .icl-page .icl-hero { padding: 83px 0 104px; }
-  body .icl-page .icl-topbar { padding: 9px 0; }
-  body .icl-page .icl-logo { height: 40px; margin-left: -11px; }
+  body .icl-page .icl-hero { padding: 88px 0 104px; }
+  body .icl-page .icl-topbar .icl-hero-brand { min-height: 60px; padding-top: 7px; padding-bottom: 7px; }
+  body .icl-page .icl-logo { height: 38px; margin-left: -11px; }
   body .icl-page .icl-hero-brand .icl-btn-sm { flex: 0 0 auto; min-height: 40px; padding: 0 14px; font-size: 14px; }
   body .icl-page .icl-hero-lead { font-size: 17px; }
   body .icl-page .icl-actions .icl-btn { flex: 1 1 100%; }

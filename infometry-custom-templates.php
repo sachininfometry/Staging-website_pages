@@ -1717,7 +1717,6 @@ function infometry_ct_trim_conversa_landing_assets() {
 		'classic-theme-styles',
 		'wp-job-manager-job-listings',
 		'tablepress-default',
-		'dashicons',
 		'mfn-be',
 		'mfn-animations',
 		'mfn-font-awesome',
@@ -1732,6 +1731,12 @@ function infometry_ct_trim_conversa_landing_assets() {
 		'elementor-common',
 		'swiper',
 	);
+
+	// Dashicons is only dead weight for logged-out visitors; the logged-in admin
+	// bar needs it, so keep it whenever the admin bar is shown.
+	if ( ! is_admin_bar_showing() ) {
+		$drop_styles[] = 'dashicons';
+	}
 
 	$drop_scripts = array(
 		'jquery-migrate',

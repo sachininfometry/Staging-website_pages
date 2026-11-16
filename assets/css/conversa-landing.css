@@ -1848,6 +1848,30 @@ body .icl-page .icl-gap-list li > div p {
   line-height: 1.5;
 }
 
+/* Call to action inside the retail example card. */
+body .icl-page .icl-example-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--icl-line);
+}
+
+body .icl-page .icl-example-cta .icl-btn-primary {
+  flex: 0 0 auto;
+}
+
+body .icl-page .icl-example-cta > span {
+  flex: 1 1 240px;
+  min-width: 0;
+  color: var(--icl-muted);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 body .icl-page .icl-demo-note,
 body .icl-page .icl-footnote {
   margin-top: 14px;

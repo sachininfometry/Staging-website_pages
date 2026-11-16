@@ -473,6 +473,10 @@ $icl_icon = static function ( $name ) {
 						<div class="icl-verdict-kpi"><strong>9.5%</strong><span>Blended net margin<br>$43.8M on $459.9M of sales</span></div>
 						<p class="icl-action-note"><b>Recommended action:</b> Scale the New Customer Offer, move budget from Buy 2 Get 1 Free to 15% Off Electronics, and cap sitewide discounts at 20% to protect margin.</p>
 					</div>
+					<div class="icl-example-cta">
+						<a class="icl-btn icl-btn-primary" href="#icl-demo" data-icl-demo>See this on your own data <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+						<span>Bring your own business questions and watch Conversa investigate them.</span>
+					</div>
 					<p class="icl-demo-note">Illustrative data from the Conversa demo environment.</p>
 				</div>
 			</div>

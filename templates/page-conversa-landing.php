@@ -327,10 +327,12 @@ $icl_icon = static function ( $name ) {
 
 	<section class="icl-hero" aria-labelledby="icl-hero-title">
 		<div class="icl-hero-bg" aria-hidden="true"><i></i><i></i><i></i></div>
-		<div class="icl-shell icl-hero-brand">
-			<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" alt="Infometry Inc. Enabling AI for Every Enterprise">
-			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-		</div>
+		<header class="icl-topbar" data-icl-topbar>
+			<div class="icl-shell icl-hero-brand">
+				<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" fetchpriority="high" decoding="async" alt="Infometry Inc. Enabling AI for Every Enterprise">
+				<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+			</div>
+		</header>
 		<div class="icl-shell icl-hero-grid">
 			<div class="icl-hero-copy">
 				<p class="icl-pill"><span class="icl-pulse" aria-hidden="true"></span>INFOFISCUS Conversa™</p>
@@ -599,21 +601,54 @@ $icl_icon = static function ( $name ) {
 
 	<script type="application/ld+json">
 	<?php
-	$icl_faq_schema = array(
-		'@context'   => 'https://schema.org',
-		'@type'      => 'FAQPage',
-		'mainEntity' => array_map(
-			static function ( $faq ) {
-				return array(
-					'@type'          => 'Question',
-					'name'           => $faq[0],
-					'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $faq[1] ),
-				);
-			},
-			$icl_faqs
+	$icl_page_url = get_permalink();
+	if ( ! $icl_page_url ) {
+		$icl_page_url = home_url( '/' );
+	}
+	$icl_org_id = home_url( '/#organization' );
+	$icl_faq_items = array_map(
+		static function ( $faq ) {
+			return array(
+				'@type'          => 'Question',
+				'name'           => $faq[0],
+				'acceptedAnswer' => array( '@type' => 'Answer', 'text' => $faq[1] ),
+			);
+		},
+		$icl_faqs
+	);
+	$icl_schema = array(
+		'@context' => 'https://schema.org',
+		'@graph'   => array(
+			array(
+				'@type'  => 'Organization',
+				'@id'    => $icl_org_id,
+				'name'   => 'Infometry Inc.',
+				'url'    => home_url( '/' ),
+				'logo'   => $icl_logo,
+				'slogan' => 'Enabling AI for Every Enterprise',
+			),
+			array(
+				'@type'             => 'SoftwareApplication',
+				'name'              => 'INFOFISCUS Conversa',
+				'applicationCategory' => 'BusinessApplication',
+				'operatingSystem'   => 'Web, Windows, macOS',
+				'url'               => $icl_page_url,
+				'description'       => 'INFOFISCUS Conversa is an enterprise conversational AI and decision intelligence application that helps business teams investigate complex questions, uncover performance drivers and turn governed enterprise data into trusted, decision-ready insights.',
+				'publisher'         => array( '@id' => $icl_org_id ),
+				'offers'            => array(
+					'@type'         => 'Offer',
+					'price'         => '0',
+					'priceCurrency' => 'USD',
+					'description'   => 'Request a personalized demo',
+				),
+			),
+			array(
+				'@type'      => 'FAQPage',
+				'mainEntity' => $icl_faq_items,
+			),
 		),
 	);
-	echo wp_json_encode( $icl_faq_schema ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo wp_json_encode( $icl_schema ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 	</script>
 </main>

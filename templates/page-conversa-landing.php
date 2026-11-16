@@ -511,8 +511,9 @@ $icl_icon = static function ( $name ) {
 			<div class="icl-tour-demo">
 				<?php
 				// Home screen copy inside the product tour (the Conversa product page keeps its own).
-				$lv_home_title = 'Decision Intelligence That Goes <span>Beyond Traditional Analytics.</span>';
-				$lv_home_copy  = 'INFOFISCUS Conversa helps business teams investigate complex questions, understand performance drivers and uncover insights across governed enterprise data.';
+				$lv_home_title    = 'Decision Intelligence That Goes <span>Beyond Traditional Analytics.</span>';
+				$lv_home_copy     = 'INFOFISCUS Conversa helps business teams investigate complex questions, understand performance drivers and uncover insights across governed enterprise data.';
+				$lv_show_demo_cta = true; // Show the in-demo request-demo CTA and nudge on the ads landing page only.
 				include INFOMETRY_CT_PATH . 'templates/partials/conversa-live-dashboard.php';
 				?>
 			</div>

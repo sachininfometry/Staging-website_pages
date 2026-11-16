@@ -511,6 +511,7 @@ $lv_agents = array(
 
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
 
+		<?php if ( ! empty( $lv_show_demo_cta ) ) : // The ads landing page opts in; the product page does not. ?>
 		<!-- Always-on request-demo CTA, pinned inside the demo. -->
 		<a class="lv-cta" href="#icl-demo" data-icl-demo data-lv-cta aria-label="Request a live Conversa demo"><svg aria-hidden="true"><use href="#lv-spark"/></svg><span>Request demo</span></a>
 
@@ -521,6 +522,7 @@ $lv_agents = array(
 			<p>Run Conversa on your own business questions and data.</p>
 			<a class="lv-btn is-primary" href="#icl-demo" data-icl-demo data-lv-nudge-go>Request now</a>
 		</div>
+		<?php endif; ?>
 	</div>
 
 	<div class="lv-pipe">

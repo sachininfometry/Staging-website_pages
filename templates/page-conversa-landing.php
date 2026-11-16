@@ -325,14 +325,15 @@ $icl_icon = static function ( $name ) {
 		<symbol id="icl-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></symbol>
 	</svg>
 
+	<header class="icl-topbar" data-icl-topbar>
+		<div class="icl-shell icl-hero-brand">
+			<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" fetchpriority="high" decoding="async" alt="Infometry Inc. Enabling AI for Every Enterprise">
+			<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
+		</div>
+	</header>
+
 	<section class="icl-hero" aria-labelledby="icl-hero-title">
 		<div class="icl-hero-bg" aria-hidden="true"><i></i><i></i><i></i></div>
-		<header class="icl-topbar" data-icl-topbar>
-			<div class="icl-shell icl-hero-brand">
-				<img class="icl-logo" src="<?php echo esc_url( $icl_logo ); ?>" width="428" height="65" fetchpriority="high" decoding="async" alt="Infometry Inc. Enabling AI for Every Enterprise">
-				<a class="icl-btn icl-btn-primary icl-btn-sm" href="#icl-demo" data-icl-demo>Request a Demo <?php echo $icl_icon( 'arrow' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></a>
-			</div>
-		</header>
 		<div class="icl-shell icl-hero-grid">
 			<div class="icl-hero-copy">
 				<p class="icl-pill"><span class="icl-pulse" aria-hidden="true"></span>INFOFISCUS Conversa™</p>

@@ -253,7 +253,7 @@ body .icl-page .icl-topbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 120;
+  z-index: 900;
   background: transparent;
   border-bottom: 1px solid transparent;
   transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;

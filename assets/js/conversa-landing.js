@@ -35,6 +35,20 @@
     io.observe(el);
   }
 
+  // Top bar: transparent on the hero; the dark blurred bar fades in on scroll.
+  var topbar = page.querySelector('[data-icl-topbar]');
+  if (topbar) {
+    var onScroll = function () {
+      if ((window.pageYOffset || document.documentElement.scrollTop || 0) > 20) {
+        topbar.classList.add('is-scrolled');
+      } else {
+        topbar.classList.remove('is-scrolled');
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   // Scroll reveals.
   if (canObserve && !reduce) {
     page.classList.add('icl-js');

@@ -245,18 +245,33 @@ body .icl-page .icl-dark .icl-kicker { color: #a9bcff; }
 /* ---------- Hero ---------- */
 body .icl-page .icl-hero { padding: 112px 0 132px; }
 
-/* Fixed top bar: the logo and Request-a-Demo stay in view while scrolling,
-   like the site header - dark, semi-transparent, roomy enough not to clip. */
+/* Fixed top bar: transparent on the hero at the top; a dark, semi-transparent
+   blurred bar fades in only once the visitor scrolls, so the logo and CTA never
+   mix with the content below. Offset for the WP admin bar when it is present. */
 body .icl-page .icl-topbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 120;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background-color .25s ease, border-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+}
+
+body.admin-bar .icl-page .icl-topbar {
+  top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar .icl-page .icl-topbar { top: 46px; }
+}
+
+body .icl-page .icl-topbar.is-scrolled {
   background: rgba(10, 15, 40, 0.72);
   -webkit-backdrop-filter: saturate(140%) blur(12px);
   backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid rgba(140, 160, 255, 0.12);
+  border-bottom-color: rgba(140, 160, 255, 0.12);
 }
 
 body .icl-page .icl-topbar .icl-hero-brand {

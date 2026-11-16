@@ -510,6 +510,17 @@ $lv_agents = array(
 		</div>
 
 		<span class="lv-cursor" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 3l14 8.2-6.2 1.5L9.6 19z"/></svg></span>
+
+		<!-- Always-on request-demo CTA, pinned inside the demo. -->
+		<a class="lv-cta" href="#icl-demo" data-icl-demo data-lv-cta aria-label="Request a live Conversa demo"><svg aria-hidden="true"><use href="#lv-spark"/></svg><span>Request demo</span></a>
+
+		<!-- Prompt shown when the visitor opens a second chat or switches tabs. -->
+		<div class="lv-nudge" data-lv-nudge hidden role="dialog" aria-label="Request a Conversa demo">
+			<button type="button" class="lv-nudge-x" data-lv-nudge-close aria-label="Dismiss">&times;</button>
+			<b>Like what you see?</b>
+			<p>Run Conversa on your own business questions and data.</p>
+			<a class="lv-btn is-primary" href="#icl-demo" data-icl-demo data-lv-nudge-go>Request now</a>
+		</div>
 	</div>
 
 	<div class="lv-pipe">

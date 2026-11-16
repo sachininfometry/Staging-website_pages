@@ -252,6 +252,73 @@
     });
   }
 
+  // In-demo "Request demo" nudge: appears when the visitor opens another chat
+  // or switches a dashboard tab, and can be dismissed for the rest of the visit.
+  var liveApp = page.querySelector('[data-lv-app]');
+  var nudge = page.querySelector('[data-lv-nudge]');
+  if (liveApp && nudge) {
+    var nudgeClose = nudge.querySelector('[data-lv-nudge-close]');
+    var nudgeTimer = null;
+    var interactions = 0;
+    var dismissed = false;
+    var nudgeShown = false;
+
+    var hideNudge = function () {
+      nudge.hidden = true;
+      nudge.classList.remove('is-in');
+      window.clearTimeout(nudgeTimer);
+    };
+
+    var showNudge = function () {
+      if (dismissed || nudgeShown) {
+        return;
+      }
+      nudgeShown = true;
+      nudge.hidden = false;
+      // Next frame so the entrance transition runs.
+      window.requestAnimationFrame(function () { nudge.classList.add('is-in'); });
+      // Auto-hide after a while if ignored; it can come back on the next switch.
+      window.clearTimeout(nudgeTimer);
+      nudgeTimer = window.setTimeout(function () {
+        hideNudge();
+        nudgeShown = false;
+      }, 9000);
+    };
+
+    if (nudgeClose) {
+      nudgeClose.addEventListener('click', function () {
+        dismissed = true;
+        hideNudge();
+      });
+    }
+
+    // "Request now" and the pinned CTA already scroll to the form via
+    // [data-icl-demo]; dismiss the nudge once the visitor acts on it.
+    nudge.addEventListener('click', function (event) {
+      if (event.target.closest('[data-lv-nudge-go]')) {
+        dismissed = true;
+        hideNudge();
+      }
+    });
+
+    // Count meaningful interactions; prompt from the second one on (e.g. a
+    // second chat, or switching the dashboard tab / nav / industry).
+    liveApp.addEventListener('click', function (event) {
+      if (dismissed) {
+        return;
+      }
+      var trigger = event.target.closest('[data-lv-chat], [data-lv-tab], [data-lv-go], [data-lv-pick]');
+      if (!trigger || nudge.contains(trigger)) {
+        return;
+      }
+      interactions += 1;
+      if (interactions >= 2) {
+        nudgeShown = false; // allow it to reappear on later switches
+        showNudge();
+      }
+    });
+  }
+
   // Team tabs.
   var tabs = all('[data-icl-tab]');
   var panels = all('[data-icl-panel]');

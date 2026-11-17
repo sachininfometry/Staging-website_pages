@@ -348,7 +348,7 @@ $icl_icon = static function ( $name ) {
 					<li><?php echo $icl_icon( 'search' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Deeper<br>Analysis</span></li>
 					<li><?php echo $icl_icon( 'brain' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Frontier LLMs<br>and SLM</span></li>
 					<li><?php echo $icl_icon( 'lock' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>Enterprise-Grade<br>Security</span></li>
-					<li><?php echo $icl_icon( 'db' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>11+ Database<br>Support</span></li>
+					<li><?php echo $icl_icon( 'db' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>11+ Database<br>Analysis</span></li>
 				</ul>
 			</div>
 			<div class="icl-form-card" id="icl-demo">

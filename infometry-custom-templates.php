@@ -21,6 +21,22 @@ define( 'INFOMETRY_CT_GOOGLE_CONNECTORS_TEMPLATE', 'templates/page-google-cloud-
 define( 'INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE', 'templates/page-google-drive-connector.php' );
 define( 'INFOMETRY_CT_GOOGLE_SHEETS_TEMPLATE', 'templates/page-google-sheets-connector.php' );
 define( 'INFOMETRY_CT_GOOGLE_ADS_TEMPLATE', 'templates/page-google-ads-connector.php' );
+
+/**
+ * Redesigned connector and native-app product pages. Each page has its own template and its own
+ * stylesheet (assets/css/<css>.css); they share only the existing connector base (Sheets/Drive CSS + JS).
+ * Key = the page slug, served automatically on the Cloudways staging host.
+ */
+function infometry_ct_product_pages() {
+	return array(
+		'google-bigtable-connector'       => array( 'template' => 'templates/page-google-bigtable-connector.php', 'css' => 'google-bigtable-connector', 'body' => 'infometry-google-bigtable-page', 'label' => 'Google BigTable Connector Product' ),
+		'google-pub-sub'                  => array( 'template' => 'templates/page-google-pubsub-connector.php', 'css' => 'google-pubsub-connector', 'body' => 'infometry-google-pubsub-page', 'label' => 'Google Pub/Sub Connector Product' ),
+		'netsuite-to-snowflake-connector' => array( 'template' => 'templates/page-netsuite-snowflake-connector.php', 'css' => 'netsuite-snowflake-connector', 'body' => 'infometry-netsuite-snowflake-page', 'label' => 'NetSuite to Snowflake Connector Product' ),
+		'marketo-to-snowflake-connector'  => array( 'template' => 'templates/page-marketo-snowflake-connector.php', 'css' => 'marketo-snowflake-connector', 'body' => 'infometry-marketo-snowflake-page', 'label' => 'Marketo to Snowflake Connector Product' ),
+		'sales-analytics-native-app'      => array( 'template' => 'templates/page-sales-analytics-native-app.php', 'css' => 'sales-analytics-native-app', 'body' => 'infometry-sales-analytics-page', 'label' => 'Sales Analytics Native App Product' ),
+		'finance-analytics-native-app'    => array( 'template' => 'templates/page-finance-analytics-native-app.php', 'css' => 'finance-analytics-native-app', 'body' => 'infometry-finance-analytics-page', 'label' => 'Finance Analytics Native App Product' ),
+	);
+}
 define( 'INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE', 'templates/page-snowflake-native-apps.php' );
 define( 'INFOMETRY_CT_ASANA_FDP_TEMPLATE', 'templates/page-asana-fdp-case-study.php' );
 define( 'INFOMETRY_CT_ASANA_FDP_ASSET_VERSION', '2.15.11' );
@@ -118,6 +134,9 @@ function infometry_ct_register_page_template( $templates ) {
 	$templates[ INFOMETRY_CT_GOOGLE_DRIVE_TEMPLATE ] = __( 'Google Drive Connector Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_GOOGLE_SHEETS_TEMPLATE ] = __( 'Google Sheets Connector Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_GOOGLE_ADS_TEMPLATE ] = __( 'Google Ads Connector Product', 'infometry-custom-templates' );
+	foreach ( infometry_ct_product_pages() as $product_page ) {
+		$templates[ $product_page['template'] ] = $product_page['label'];
+	}
 	$templates[ INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE ] = __( 'Snowflake Native Apps Product', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_ASANA_FDP_TEMPLATE ] = __( 'Asana FDP Snowflake Case Study', 'infometry-custom-templates' );
 	$templates[ INFOMETRY_CT_INSURANCE_SNOWFLAKE_TEMPLATE ] = __( 'Insurance Snowflake Modernization Case Study', 'infometry-custom-templates' );
@@ -343,6 +362,35 @@ function infometry_ct_should_use_google_ads_template() {
 	}
 	$path = empty( $_SERVER['REQUEST_URI'] ) ? '' : wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH );
 	return '/product/google-ads-connector' === untrailingslashit( (string) $path );
+}
+
+/**
+ * The redesigned product page active for this request (its slug key in infometry_ct_product_pages()),
+ * or '' — when its template is selected, or on staging for its page or URL.
+ */
+function infometry_ct_current_product_page() {
+	$pages   = infometry_ct_product_pages();
+	$page_id = infometry_ct_get_current_page_id();
+	$slug    = $page_id ? get_post_field( 'post_name', $page_id ) : '';
+
+	foreach ( $pages as $key => $product_page ) {
+		if ( infometry_ct_should_use_template( $product_page['template'] ) ) {
+			return $key;
+		}
+	}
+	if ( ! infometry_ct_is_cloudways_staging_host() ) {
+		return '';
+	}
+	if ( is_singular() && isset( $pages[ $slug ] ) ) {
+		return $slug;
+	}
+	$path = empty( $_SERVER['REQUEST_URI'] ) ? '' : untrailingslashit( (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) );
+	foreach ( array_keys( $pages ) as $key ) {
+		if ( '/product/' . $key === $path ) {
+			return $key;
+		}
+	}
+	return '';
 }
 
 /** Use the redesigned Asana FDP case study when selected or on its staging URL. */
@@ -824,6 +872,15 @@ function infometry_ct_load_page_template( $template ) {
 		}
 	}
 
+	$product_page = infometry_ct_current_product_page();
+	if ( $product_page ) {
+		$pages           = infometry_ct_product_pages();
+		$plugin_template = INFOMETRY_CT_PATH . $pages[ $product_page ]['template'];
+		if ( is_readable( $plugin_template ) ) {
+			return $plugin_template;
+		}
+	}
+
 	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
 		$plugin_template = INFOMETRY_CT_PATH . INFOMETRY_CT_SNOWFLAKE_NATIVE_APPS_TEMPLATE;
 		if ( is_readable( $plugin_template ) ) {
@@ -960,6 +1017,12 @@ function infometry_ct_body_classes( $classes ) {
 
 	if ( infometry_ct_should_use_google_ads_template() ) {
 		$classes[] = 'infometry-google-ads-page';
+	}
+
+	$product_page = infometry_ct_current_product_page();
+	if ( $product_page ) {
+		$pages     = infometry_ct_product_pages();
+		$classes[] = $pages[ $product_page ]['body'];
 	}
 
 	if ( infometry_ct_should_use_snowflake_native_apps_template() ) {
@@ -1391,6 +1454,7 @@ function infometry_ct_enqueue_assets() {
 	$use_google_drive = infometry_ct_should_use_google_drive_template();
 	$use_google_sheets = infometry_ct_should_use_google_sheets_template();
 	$use_google_ads = infometry_ct_should_use_google_ads_template();
+	$use_product_page = infometry_ct_current_product_page();
 	$use_snowflake_native_apps = infometry_ct_should_use_snowflake_native_apps_template();
 	$use_asana_fdp = infometry_ct_should_use_asana_fdp_template();
 	$use_insurance_snowflake = infometry_ct_should_use_insurance_snowflake_template();
@@ -1407,7 +1471,7 @@ function infometry_ct_enqueue_assets() {
 	$use_conversa_landing  = infometry_ct_should_use_conversa_landing_template();
 	$use_dematic_finance    = infometry_ct_should_use_dematic_finance_template();
 
-	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_google_sheets && ! $use_google_ads && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_dematic_pm && ! $use_conversa_slack_pr && ! $use_conversa_landing ) {
+	if ( ! $use_home && ! $use_conversa && ! $use_informatica && ! $use_google_connectors && ! $use_google_drive && ! $use_google_sheets && ! $use_google_ads && ! $use_product_page && ! $use_snowflake_native_apps && ! $use_asana_fdp && ! $use_insurance_snowflake && ! $use_sunrise_case_study && ! $use_dematic_case_study && ! $use_dematic_finance && ! $use_conns && ! $use_expedia && ! $use_belk && ! $use_tellus && ! $use_codexis && ! $use_navis && ! $use_dematic_pm && ! $use_conversa_slack_pr && ! $use_conversa_landing ) {
 		return;
 	}
 
@@ -1488,7 +1552,7 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	// Sheets, Drive and Ads share one connector design system.
-	if ( $use_google_sheets || $use_google_drive || $use_google_ads ) {
+	if ( $use_google_sheets || $use_google_drive || $use_google_ads || $use_product_page ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-sheets-connector.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-sheets-connector.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
@@ -1499,7 +1563,7 @@ function infometry_ct_enqueue_assets() {
 	}
 
 	// The Drive page adds its own layout and animations on top of the shared connector base; the Ads page reuses them.
-	if ( $use_google_drive || $use_google_ads ) {
+	if ( $use_google_drive || $use_google_ads || $use_product_page ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-drive-connector.css';
 		$js_path     = INFOMETRY_CT_PATH . 'assets/js/google-drive-connector.js';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
@@ -1512,6 +1576,15 @@ function infometry_ct_enqueue_assets() {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-ads-connector.css';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style( 'infometry-google-ads-connector', INFOMETRY_CT_URL . 'assets/css/google-ads-connector.css', array( 'infometry-google-drive-connector' ), $css_version );
+	}
+
+	// Each redesigned product page loads only its own stylesheet on top of the connector base.
+	if ( $use_product_page ) {
+		$pages       = infometry_ct_product_pages();
+		$css_name    = $pages[ $use_product_page ]['css'];
+		$css_path    = INFOMETRY_CT_PATH . 'assets/css/' . $css_name . '.css';
+		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
+		wp_enqueue_style( 'infometry-' . $css_name, INFOMETRY_CT_URL . 'assets/css/' . $css_name . '.css', array( 'infometry-google-drive-connector' ), $css_version );
 	}
 
 	if ( $use_snowflake_native_apps ) {
@@ -1826,6 +1899,7 @@ function infometry_ct_font_resource_hints( $urls, $relation_type ) {
 		&& ! infometry_ct_should_use_google_drive_template()
 		&& ! infometry_ct_should_use_google_sheets_template()
 		&& ! infometry_ct_should_use_google_ads_template()
+		&& ! infometry_ct_current_product_page()
 		&& ! infometry_ct_should_use_snowflake_native_apps_template()
 		&& ! infometry_ct_should_use_asana_fdp_template()
 		&& ! infometry_ct_should_use_insurance_snowflake_template()

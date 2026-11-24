@@ -69,7 +69,7 @@ $gac_uses = array(
 
 $gac_faqs = array(
 	array( 'What are the types of Licenses you offer?', 'Infometry connector annual subscription license is charged for a given OrgID. Customers will get un-limited usage of the connectors within an OrgID.' ),
-	array( 'How Updates on the new features are released to the customer?', 'Infometry Connector team continue to add new features and support newer API releases for each product. Infometry release cycles are synched with the Informatica Cloud platform and customers will get the updates automatically along with IICS release updates. All our new releases are auto-updated at the customer end and are free of charge.' ),
+	array( 'How Updates on the new features are released to the customer?', 'Infometry Connector team continue to add new features and support newer API releases for each product Infometry release cycles are synched with the Informatica Cloud platform and customers will get the updates automatically along with IICS release updates. All our new releases are auto-updated at the customer end and are free of charge.' ),
 	array( 'Whom to contact for Implementation and License?', 'You can contact Infometry at <a href="mailto:' . $support_email . '">' . $support_email . '</a>.' ),
 	array( 'Is it Certified by Informatica?', 'Yes, all our connectors are 100% Certified by Informatica and also listed on <a href="' . $marketplace_url . '" target="_blank" rel="noopener">Informatica marketplace</a>.' ),
 	array( 'How does your Customer Support work?', 'Our Support is available 24/7 and we provide local time-zone support to all our customers globally.' ),
@@ -289,6 +289,7 @@ $gac_step_icon = function ( $key ) use ( $ads_icon, $idmc_icon ) {
 				<span class="igs-kicker">Connector features</span>
 				<h2 id="gac-features-title">Google Ads Connector Features</h2>
 			</div>
+			<figure class="gac-feat-logo" data-igs-reveal><img src="<?php echo esc_url( home_url( '/wp-content/uploads/elementor/thumbs/Google-Ads-connecoter-rruxo8l12jpgs2vt6qatc4sfmuc3coc9pzipadwzms.png' ) ); ?>" alt="Informatica Google Ads Connector logo" loading="lazy" decoding="async"></figure>
 			<div class="gdc-feat-grid gac-feat-grid">
 				<?php foreach ( $gac_feature_groups as $group ) : ?>
 					<article class="gdc-feat <?php echo esc_attr( $group[1] ); ?>" data-igs-reveal>
@@ -323,6 +324,7 @@ $gac_step_icon = function ( $key ) use ( $ads_icon, $idmc_icon ) {
 				<h2 id="gac-how-title">How Can You Use Our Connector</h2>
 			</div>
 			<div class="gdc-how-grid">
+				<div class="gac-how-left">
 				<ol class="gdc-timeline" data-igs-reveal>
 					<?php foreach ( $gac_steps as $i => $step ) : ?>
 						<li>
@@ -337,6 +339,8 @@ $gac_step_icon = function ( $key ) use ( $ads_icon, $idmc_icon ) {
 						</li>
 					<?php endforeach; ?>
 				</ol>
+				<figure class="gac-how-img" data-igs-reveal><img src="<?php echo esc_url( home_url( '/wp-content/uploads/2022/03/Infometry-Google-Ads-Connector.png' ) ); ?>" alt="Google Ads and Informatica integration concept showing keywords like budget, campaign, demographics, and analytics." loading="lazy" decoding="async"></figure>
+				</div>
 
 				<div class="gdc-hub" aria-hidden="true" data-igs-reveal>
 					<svg class="gdc-hub-lines" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
@@ -493,11 +497,11 @@ $gac_step_icon = function ( $key ) use ( $ads_icon, $idmc_icon ) {
 			</div>
 			<div class="igs-related-grid">
 				<a class="igs-related-card" href="<?php echo esc_url( $drive_url ); ?>" data-igs-reveal>
-					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-drive.png', '' ); ?></span>
+					<span><img src="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/global-connectors-icon-1.png' ) ); ?>" alt="Icon used to reperesent Connectors" loading="lazy" decoding="async"></span>
 					<div><h3>Google Drive Connector</h3><p>Google Drive Connector can be used to provide connectivity to Google Drive to and from a variety of external sources.</p><em>Read more <svg><use href="#igs-arrow"/></svg></em></div>
 				</a>
 				<a class="igs-related-card" href="<?php echo esc_url( $sheets_url ); ?>" data-igs-reveal>
-					<span><?php infometry_ct_igs_img( $img . 'google-connectors/google-sheets.png', '' ); ?></span>
+					<span><img src="<?php echo esc_url( home_url( '/wp-content/uploads/2020/12/analytics-solutions-icon.png' ) ); ?>" alt="Analytics icon reperesenting Google Connectors" loading="lazy" decoding="async"></span>
 					<div><h3>Google Sheets Connector</h3><p>Google Sheet Connector, built with Informatica’s native interface, supports all API operations, including read, write, update, delete, range, and search.</p><em>Read more <svg><use href="#igs-arrow"/></svg></em></div>
 				</a>
 			</div>

@@ -67,6 +67,9 @@ require_once INFOMETRY_CT_PATH . 'includes/conversa-landing-form.php';
 
 /** Small SEO fixes with no visible effect (home schema, retired duplicate URLs). */
 require_once INFOMETRY_CT_PATH . 'includes/seo-fixes.php';
+
+// Modern mega-menu design for the theme's main menu (content still comes from Appearance → Menus).
+require_once INFOMETRY_CT_PATH . 'includes/mega-menu.php';
 define( 'INFOMETRY_CT_HOME_META_TITLE', 'Enterprise Data Analytics & AI Solutions | Infometry' );
 define( 'INFOMETRY_CT_HOME_META_DESCRIPTION', 'Explore Infometry’s data analytics, AI, cloud data, integration, Snowflake, Databricks, and pre-built solutions designed to accelerate enterprise transformation.' );
 

@@ -14,7 +14,7 @@
   .imm-shell { position: absolute; top: 100%; left: 50%; z-index: 9990; width: min(1280px, calc(100vw - 48px)); transform: translateX(-50%); pointer-events: none; }
   .imm-veil { position: fixed; inset: 0; z-index: 9980; background: rgba(4, 10, 30, .38); backdrop-filter: blur(2px); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
   body.imm-active .imm-veil { opacity: 1; pointer-events: auto; }
-  body.imm-active #Top_bar { z-index: 9995 !important; }
+  body.imm-active #Top_bar { z-index: 9995 !important; opacity: 1 !important; }
 
   /* Panel */
   .imm-panel { position: absolute; top: 10px; right: 0; left: 0; display: grid; grid-template-columns: minmax(0, 1fr) 300px; overflow: hidden; border-radius: 22px; background: #fff; box-shadow: 0 40px 90px -30px rgba(4, 12, 40, .55), 0 0 0 1px rgba(7, 28, 71, .06); color: #0b1f3a; font-family: "Open Sans", "Segoe UI", Arial, sans-serif; opacity: 0; transform: translateY(10px) scale(.985); transform-origin: top center; transition: opacity .22s ease, transform .28s cubic-bezier(.2, .8, .2, 1); pointer-events: auto; }

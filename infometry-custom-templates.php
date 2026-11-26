@@ -1585,6 +1585,12 @@ function infometry_ct_enqueue_assets() {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/' . $css_name . '.css';
 		$css_version = is_readable( $css_path ) ? (string) filemtime( $css_path ) : INFOMETRY_CT_VERSION;
 		wp_enqueue_style( 'infometry-' . $css_name, INFOMETRY_CT_URL . 'assets/css/' . $css_name . '.css', array( 'infometry-google-drive-connector' ), $css_version );
+
+		// Its own animations, when the page has a script (assets/js/<css>.js).
+		$js_path = INFOMETRY_CT_PATH . 'assets/js/' . $css_name . '.js';
+		if ( is_readable( $js_path ) ) {
+			wp_enqueue_script( 'infometry-' . $css_name, INFOMETRY_CT_URL . 'assets/js/' . $css_name . '.js', array( 'infometry-google-sheets-connector' ), (string) filemtime( $js_path ), true );
+		}
 	}
 
 	if ( $use_snowflake_native_apps ) {

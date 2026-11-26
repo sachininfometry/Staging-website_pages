@@ -3,10 +3,9 @@
  * Template Name: NetSuite to Snowflake Connector Product
  * Template Post Type: page, product
  *
- * INFOFISCUS NetSuite to Snowflake connector page, built like the Google Sheets connector page:
- * the hero plays NetSuite objects replicating into Snowflake, the architecture map streams data,
- * and the demo form, FAQ and videos match (google-sheets-connector.css/.js). This page's own
- * styles: netsuite-snowflake-connector.css. Every heading and line of copy from the original page is kept.
+ * Own design for this product (hero, sections and animations built around what it does);
+ * shares only the connector base (shell, buttons, FAQ, form, footer) with the other product pages.
+ * Every heading and line of copy from the original page is kept.
  *
  * @package Infometry_Custom_Templates
  */
@@ -21,194 +20,6 @@ $sf             = 'google-sheets/eco-snowflake.png';
 $e              = 'google-sheets/eco-';
 
 $pg = array(
-	'class'       => 'is-snow pg-netsuite',
-	'sheet_class' => 'is-snow',
-	'hero'        => array(
-		'badge'     => 'INFOFISCUS NetSuite Connector 3.0 · Snowflake Native App',
-		'h1'        => 'NetSuite to Snowflake Connector | <em>Real-Time ERP Data Integration</em>',
-		'lead'      => 'Migrating or syncing data from NetSuite to Snowflake can be complex, often requiring costly ETL tools or custom code to overcome NetSuite’s API limitations. Customers want a simple, no-code solution to replicate data with minimal effort.',
-		'primary'   => array( 'Request a Free Demo', '#request-demo' ),
-		'secondary' => array( 'Snowflake Marketplace', $sf_market_url, 'igs-out' ),
-		'ops_label' => 'Versions',
-		'ops'       => array( 'API', 'ODBC', 'No-code', 'Bulk', 'Incremental', 'Near real-time' ),
-		'proof'     => array(
-			array( $api_guide_url, 'svg:igs-down', 'API Connector User Guide', 'Setup & configuration' ),
-			array( $odbc_guide_url, 'svg:igs-down', 'ODBC Connector User Guide', 'Setup & configuration' ),
-		),
-		'aria'      => 'Animated example: NetSuite objects such as customers, sales orders and invoices replicate into Snowflake landing tables through the INFOFISCUS NetSuite Connector native app',
-		'sheet'     => array(
-			'icon'     => $ns,
-			'title'    => 'NetSuite → Snowflake',
-			'sub'      => 'INFOFISCUS Connector 3.0 · ENV: PROD',
-			'live'     => 'Replicating',
-			'fx_label' => 'sync',
-			'fx'       => 'Replicating 5 objects · API',
-			'verb'     => 'Replicating',
-			'letters'  => array( 'object', 'records', 'load' ),
-			'cols'     => array( 'NetSuite object', 'Records', 'Load' ),
-			'rows'     => array(
-				array( 'Customer', '184,220', 'Incremental' ),
-				array( 'Sales Order', '1,204,918', 'Bulk' ),
-				array( 'Invoice', '962,507', 'Incremental' ),
-				array( 'Vendor Bill', '311,846', 'Incremental' ),
-				array( 'Item', '48,390', 'Bulk' ),
-			),
-			'tabs'     => array( 'PROD', 'QA', 'DEV' ),
-		),
-		'core'      => array( 'icon' => $sf, 'title' => 'INFOFISCUS Native App', 'sub' => 'Runs inside your Snowflake account', 'modes' => array( 'API', 'ODBC' ) ),
-		'eco'       => array(
-			'title' => 'Into Snowflake',
-			'sub'   => 'Landing tables, ready for analytics',
-			'items' => array(
-				array( 'Tables', 'svg:pg-table' ), array( 'Snowflake', $sf ), array( 'Data models', 'svg:igs-layers' ),
-				array( 'Tableau', $e . 'tableau.svg' ), array( 'Power BI', 'bars' ), array( 'Dashboards', 'svg:igs-chart' ),
-				array( 'AI/ML', 'svg:igs-bolt' ), array( 'Scorecards', 'svg:pg-target' ), array( 'Reports', 'svg:igs-file' ),
-			),
-			'foot'  => 'Data stays secure within Snowflake',
-		),
-		'toast'     => array( 'Replication completed', '3M records in under an hour' ),
-	),
-	'overview'    => array(
-		'kicker'     => 'INFOFISCUS NetSuite Connector 3.0',
-		'h2'         => 'The #1 Fastest <em>NetSuite Connector</em> for Snowflake',
-		'paras'      => array(
-			'Infometry’s INFOFISCUS NetSuite Connector for Snowflake delivers exactly that—a next-gen, no-code native application that extracts and replicates NetSuite data directly into your Snowflake account with blazing speed and reliability. Available on the <a href="' . $sf_market_url . '" target="_blank" rel="noopener">Snowflake Marketplace</a>, this connector ensures seamless, near real-time data synchronization without the hassle of ETL or manual processes.',
-			'With the newly released INFOFISCUS NetSuite Connector 3.0, customers gain access to massive performance improvements, accurate schema generation, and optimized pipelines—all built natively for Snowflake.',
-		),
-		'sets_label' => 'Data types supported in target tables',
-		'sets'       => array( 'STRING', 'DOUBLE', 'TIMESTAMP', 'FLOAT', 'Bulk loads', 'Incremental loads' ),
-		'labels'     => array( 'NetSuite ERP', 'Your Snowflake' ),
-		'deck'       => array( array( $ns, 'Customers' ), array( $ns, 'Invoices' ), array( $ns, 'Sales Orders' ) ),
-		'core_icon'  => 'pg-snow',
-		'core'       => 'INFOFISCUS<br>Native App',
-		'dest'       => array(
-			array( 'pg-table', 'Landing Tables', array( $sf, 'svg:pg-table' ) ),
-			array( 'igs-chart', 'BI & Dashboards', array( $e . 'tableau.svg', 'svg:igs-chart' ) ),
-			array( 'igs-bolt', 'AI/ML & Analytics', array( 'svg:igs-bolt', 'svg:igs-layers' ) ),
-		),
-	),
-	'blocks'      => array(
-		array(
-			'type'   => 'features',
-			'kicker' => 'What’s new in 3.0',
-			'h2'     => 'Key Highlights of Version 3.0',
-			'items'  => array(
-				array( 'pg-rocket', 'Improved Replication Performance & Reliability', 'Handle millions of records with confidence. The connector delivers up to 3 million records in less than an hour, ensuring error-free transfers without timeouts or delays.' ),
-				array( 'pg-table', 'Metadata-Driven Target Tables', 'Target tables are automatically created based on NetSuite metadata, with full support for STRING, DOUBLE, TIMESTAMP, and FLOAT data types.' ),
-				array( 'igs-sync', 'Optimized ETL/ELT Pipelines', 'Accurate data types are applied at ingestion, eliminating unnecessary transformations and delivering faster, more efficient pipelines with reduced processing time.' ),
-				array( 'pg-clock', 'Best Practices for Performance', 'Built-in guidance helps you optimize bulk or incremental loads by scheduling jobs during off-peak hours, ensuring minimal impact on NetSuite performance.' ),
-			),
-		),
-		array(
-			'type'   => 'plans',
-			'kicker' => 'API or ODBC',
-			'h2'     => 'Two Powerful Connector Versions',
-			'p'      => 'Infometry offers two types of connectors to meet your integration needs:',
-			'plans'  => array(
-				array( 'dark' => true, 'h2' => true, 'item_h3' => true, 'icon' => 'pg-api', 'title' => '1. NetSuite API Connector for Snowflake', 'intro' => 'A pre-built, native application that seamlessly extracts NetSuite data into Snowflake with a single click.', 'items' => array( array( 'One-Click Data Sync', 'Sync data in near real-time.' ), array( 'No API Knowledge Required', 'Skip custom pipelines or API complexity.' ), array( 'Landing Tables for Analytics', 'Access ready-to-use data in Snowflake.' ) ), 'btn' => array( 'API Connector User Guide', $api_guide_url, 'igs-down' ) ),
-				array( 'h2' => true, 'item_h3' => true, 'icon' => 'pg-plug', 'title' => '2. NetSuite ODBC Connector for Snowflake', 'intro' => 'A robust, pre-built application leveraging the NetSuite ODBC driver for high-frequency, high-volume data syncs.', 'items' => array( array( 'Easy ODBC Connectivity', 'Seamless, fast, and reliable data integration for effortless workflows.' ), array( 'Near Real-Time Sync', 'Emphasizes both speed and accuracy in moving data' ), array( 'Simplified Access', 'Quick Snowflake insights with landing tables.' ) ), 'btn' => array( 'ODBC Connector User Guide', $odbc_guide_url, 'igs-down' ) ),
-			),
-		),
-		array(
-			'type' => 'band',
-			'icon' => 'igs-sync',
-			'h2'   => 'Choose Your Ideal Connector and Start Syncing!',
-			'p'    => 'Both connectors offer powerful, easy-to-use solutions to move your NetSuite data to Snowflake in near real-time. Explore both solutions on the Snowflake Marketplace and unlock seamless NetSuite data integration today!',
-			'btns' => array( array( 'ODBC Connector User Guide', $odbc_guide_url, 'igs-down' ), array( 'API Connector User Guide', $api_guide_url, 'igs-down' ) ),
-		),
-		array(
-			'type'   => 'stats',
-			'dark'   => true,
-			'kicker' => 'Proven results',
-			'h2'     => 'Why Choose INFOFISCUS Connectors?',
-			'sub'    => 'Exceptional Results in Numbers:',
-			'num_in' => true,
-			'items'  => array(
-				array( 'icon' => 'igs-check', 'num' => '99.9%', 'label' => 'Uptime', 'text' => 'Consistent, reliable, and uninterrupted data synchronization.' ),
-				array( 'icon' => 'pg-rocket', 'pre' => 'Up to', 'num' => '150%', 'label' => 'Faster Replication', 'text' => 'Millions of records processed in record time.' ),
-				array( 'icon' => 'pg-coin', 'num' => '50%', 'label' => 'Cost Savings', 'text' => 'Scalable architecture cuts overhead and boosts efficiency.' ),
-				array( 'icon' => 'pg-search', 'num' => '30%', 'label' => 'Faster Queries', 'text' => 'Speed up decision-making with efficient schemas.' ),
-				array( 'icon' => 'pg-target', 'num' => '100%', 'label' => 'Data Accuracy', 'text' => 'Accelerate your processes, reducing integration time from days to mere hours.' ),
-				array( 'icon' => 'pg-lock', 'num' => '100%', 'label' => 'Data Security', 'text' => 'Your data remains secure within the Snowflake environment.' ),
-			),
-		),
-		array(
-			'type'   => 'features',
-			'tint'   => true,
-			'kicker' => 'Key features',
-			'h2'     => 'Key Features of NetSuite API/ODBC Connector',
-			'items'  => array(
-				array( 'igs-layers', 'Incremental and Bulk Data Support', 'Easily manage incremental updates & large data loads' ),
-				array( 'igs-db', 'High-Volume Processing', 'Efficiently process millions of rows in a single run.' ),
-				array( 'igs-calendar', 'Automated Scheduling', 'Easily schedule data loads with built-in automation.' ),
-				array( 'pg-rocket', 'Quick Setup', 'Bypass ETL complexity—start instantly!' ),
-			),
-		),
-		array(
-			'type'   => 'steps',
-			'kicker' => 'Get started',
-			'h2'     => 'Get Started in 4 Easy Steps',
-			'p'      => 'From the Snowflake Marketplace to replicated NetSuite data.',
-			'steps'  => array(
-				array( 'label' => 'Visit', 'title' => 'Step 1:', 'text' => '<a href="' . $sf_market_url . '" target="_blank" rel="noopener">Visit the Snowflake Marketplace</a> – Ensure your Snowflake paid subscription is active.', 'ui' => array( 'type' => 'search', 'query' => 'Snowflake Marketplace', 'result' => array( $sf, 'Infometry', 'Provider · Native Apps' ), 'cta' => 'Open listings' ) ),
-				array( 'label' => 'Get', 'title' => 'Step 2:', 'text' => 'Search INFOFISCUS Connectors – Select either API or ODBC, then click ‘Get’ to start integrating your data.', 'ui' => array( 'type' => 'search', 'query' => 'INFOFISCUS', 'result' => array( $ns, 'INFOFISCUS NetSuite Connector', 'API · ODBC' ), 'cta' => 'Get' ) ),
-				array( 'label' => 'Connect', 'title' => 'Step 3:', 'text' => 'Set up your connection by entering your NetSuite details and testing it to ensure everything works smoothly.', 'ui' => array( 'type' => 'form', 'bar' => array( $ns, 'NetSuite connection' ), 'fields' => array( array( 'Account ID', '1234567_SB1' ), array( 'Credentials', '••••••••••••' ) ), 'ok' => 'Connection tested' ) ),
-				array( 'label' => 'Sync', 'title' => 'Step 4:', 'text' => 'Start Syncing Data – Select your environment (QA, DEV, PROD) and replicate with a click.', 'ui' => array( 'type' => 'env', 'envs' => array( 'QA', 'DEV', 'PROD' ), 'active' => 2, 'title' => 'Replicating 5 objects', 'sub' => 'Customer · Sales Order · Invoice …' ) ),
-			),
-			'note'   => 'Unlock seamless, blazing-fast, and reliable NetSuite-to-Snowflake integration with INFOFISCUS NetSuite Connector 3.0—your simplest path to real-time analytics and smarter decisions.',
-		),
-		array(
-			'type'       => 'pipe',
-			'kicker'     => 'Architecture',
-			'h2'         => 'Architecture of INFOFISCUS Connector for NetSuite - Snowflake',
-			'p'          => 'The INFOFISCUS NetSuite Connector native app synchronizes data between NetSuite and Snowflake using API or ODBC-based connectivity.',
-			'source'     => array( $ns, 'NetSuite', 'ERP source', array( 'API', 'ODBC', 'SuiteAnalytics', 'Bulk', 'Incremental' ) ),
-			'hub'        => array( $sf, 'INFOFISCUS Native App', 'Runs inside your Snowflake account', array( 'API Connector', 'ODBC Connector' ) ),
-			'groups'     => array(
-				array( 'blue', 'pg-table', 'Landing Tables', 'Metadata-driven, typed target tables', array( array( 'Customer', 'svg:pg-table' ), array( 'Sales Order', 'svg:pg-table' ), array( 'Invoice', 'svg:pg-table' ), array( 'Vendor Bill', 'svg:pg-table' ), array( 'Item', 'svg:pg-table' ) ) ),
-				array( 'violet', 'igs-nodes', 'Environments', 'Replicate per environment', array( array( 'QA', 'svg:igs-layers' ), array( 'DEV', 'svg:igs-code' ), array( 'PROD', 'svg:igs-shield' ) ) ),
-				array( 'orange', 'igs-chart', 'Analytics & BI', 'Analytics-ready data in Snowflake', array( array( 'Tableau', $e . 'tableau.svg' ), array( 'Power BI', 'bars' ), array( 'Sales app', 'svg:igs-chart' ), array( 'Finance app', 'svg:pg-coin' ) ) ),
-			),
-			'foot_label' => 'Built for',
-			'foot'       => array( array( 'pg-clock', 'Near real-time' ), array( 'igs-layers', 'Bulk & incremental' ), array( 'igs-calendar', 'Scheduled loads' ), array( 'pg-lock', 'Data stays in Snowflake' ), array( 'pg-rocket', '3M records < 1 hour' ) ),
-		),
-		array(
-			'type'       => 'videos',
-			'kicker'     => 'See it in action',
-			'h2'         => 'Learn More About INFOFISCUS Connector for NetSuite - Snowflake',
-			'p'          => 'Short videos on replicating NetSuite data into Snowflake with INFOFISCUS.',
-			'logos'      => array( $ns, $sf ),
-			'series'     => 'INFOFISCUS',
-			'list_title' => 'Videos',
-			'videos'     => array(
-				array( 'qF3ZnsvyUE8', 'INFOFISCUS NetSuite to Snowflake Connector', 'Overview' ),
-				array( 'IKSrRt4jtDE', 'NetSuite data into Snowflake with the INFOFISCUS Native App', 'Demo' ),
-			),
-			'aside'      => array( 'title' => 'Want a guided walkthrough?', 'text' => 'Book a free demo with our NetSuite and Snowflake team.', 'btns' => array( array( 'Request a Free Demo', '#request-demo' ) ) ),
-		),
-		array(
-			'type'      => 'cta',
-			'id'        => 'request-demo',
-			'anchor2'   => 'freetrial',
-			'kicker'    => 'Free demo',
-			'h2'        => 'Request a Free Demo of the NetSuite to Snowflake Connector',
-			'p'         => 'See how INFOFISCUS replicates your NetSuite data into Snowflake in near real-time, with no code and no ETL tools.',
-			'checks'    => array( 'No-code Snowflake Native App', 'API & ODBC versions', 'Data stays in Snowflake', '99.9% uptime' ),
-			'next'      => array( array( 'Submit your request', 'Takes under a minute.' ), array( 'We schedule your demo', 'With our NetSuite & Snowflake team.' ), array( 'Start syncing', 'Get the connector from the Snowflake Marketplace.' ) ),
-			'form_id'   => 376110,
-			'form_head' => 'Request a Free Demo',
-		),
-		array(
-			'type'   => 'logos',
-			'kicker' => 'Customers',
-			'h2'     => 'Trusted by 150+ Customers Worldwide',
-			'logos'  => array(
-				array( 'customer-ibm-logo.png', 'IBM' ), array( 'customer-sandisk-logo.png', 'SanDisk' ), array( 'customer-michaels-logo.png', 'Michaels' ),
-				array( 'customer-fusionio-logo.png', 'Fusion-io' ), array( 'customer-adaptive-insights-logo.png', 'Adaptive Insights' ), array( 'customer-asana-logo.png', 'Asana' ),
-				array( 'customer-belk-logo.png', 'Belk' ), array( 'customer-sanofi-logo.png', 'Sanofi' ), array( 'customer-informatica-logo.png', 'Informatica' ),
-			),
-		),
-	),
 	'faq'         => array(
 		'intro' => 'ODBC vs API, setup, synchronization and support: what teams ask before they move NetSuite data into Snowflake.',
 		'help'  => 'Our team helps you through every step of your integration.',
@@ -362,11 +173,9 @@ $pg_cta = function ( $c ) use ( $pg_html ) {
 	</section>
 	<?php
 };
-$h = $pg['hero'];
-$o = $pg['overview'];
-?>
-<main class="igs-page pg-page <?php echo esc_attr( $pg['class'] ); ?>" id="igs-main">
-	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+/** Page icons (pg-*) on top of the shared igs-* sprite. */
+$pg_sprite = function () {
+	?>
 	<svg class="igs-sprite" aria-hidden="true" focusable="false">
 		<symbol id="pg-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
 		<symbol id="pg-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
@@ -390,443 +199,276 @@ $o = $pg['overview'];
 		<symbol id="pg-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9Z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15V3.5Z"/></symbol>
 		<symbol id="pg-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l1-3.5-3.5-1M20 13.5l-1 3.5 3.5 1M4 13.5 5 17l-3.5 1M20 10.5 19 7l3.5-1"/></symbol>
 	</svg>
+	<?php
+};
+$ns_objects = array(
+	array( 'Customer', '184,220', 'INCR' ),
+	array( 'Sales Order', '1,204,918', 'BULK' ),
+	array( 'Invoice', '962,507', 'INCR' ),
+	array( 'Vendor Bill', '311,846', 'INCR' ),
+	array( 'Item', '48,390', 'BULK' ),
+);
+$ns_stats = array(
+	array( '99.9%', 'Uptime', 'Consistent, reliable, and uninterrupted data synchronization.', 99.9, '' ),
+	array( '150%', 'Faster Replication', 'Millions of records processed in record time.', 100, 'Up to' ),
+	array( '50%', 'Cost Savings', 'Scalable architecture cuts overhead and boosts efficiency.', 50, '' ),
+	array( '30%', 'Faster Queries', 'Speed up decision-making with efficient schemas.', 30, '' ),
+	array( '100%', 'Data Accuracy', 'Accelerate your processes, reducing integration time from days to mere hours.', 100, '' ),
+	array( '100%', 'Data Security', 'Your data remains secure within the Snowflake environment.', 100, '' ),
+);
+$ns_logos = array(
+	array( 'customer-ibm-logo.png', 'IBM' ), array( 'customer-sandisk-logo.png', 'SanDisk' ), array( 'customer-michaels-logo.png', 'Michaels' ),
+	array( 'customer-fusionio-logo.png', 'Fusion-io' ), array( 'customer-adaptive-insights-logo.png', 'Adaptive Insights' ), array( 'customer-asana-logo.png', 'Asana' ),
+	array( 'customer-belk-logo.png', 'Belk' ), array( 'customer-sanofi-logo.png', 'Sanofi' ), array( 'customer-informatica-logo.png', 'Informatica' ),
+);
+?>
+<main class="igs-page pg-page ns-page" id="igs-main">
+	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+	<?php $pg_sprite(); ?>
 
-	<!-- Hero -->
-	<section class="igs-hero" aria-labelledby="pg-title">
-		<div class="igs-shell igs-hero-grid">
+	<!-- Hero: replication console -->
+	<section class="igs-hero ns-hero" aria-labelledby="ns-title">
+		<div class="igs-shell igs-hero-grid ns-hero-grid">
 			<div class="igs-hero-copy">
-				<span class="igs-badge"><i></i><?php echo esc_html( $h['badge'] ); ?></span>
-				<h1 id="pg-title"><?php $pg_html( $h['h1'] ); ?></h1>
-				<p><?php $pg_html( $h['lead'] ); ?></p>
-				<?php if ( ! empty( $h['lead2'] ) ) : ?><p class="pg-lead2"><?php $pg_html( $h['lead2'] ); ?></p><?php endif; ?>
+				<span class="igs-badge"><i></i>INFOFISCUS NetSuite Connector 3.0 · Snowflake Native App</span>
+				<h1 id="ns-title">NetSuite to Snowflake Connector | <em>Real-Time ERP Data Integration</em></h1>
+				<p>Migrating or syncing data from NetSuite to Snowflake can be complex, often requiring costly ETL tools or custom code to overcome NetSuite’s API limitations. Customers want a simple, no-code solution to replicate data with minimal effort.</p>
 				<div class="igs-actions">
-					<?php $pg_btn( $h['primary'], 'igs-btn-primary' ); ?>
-					<?php $pg_btn( $h['secondary'], 'igs-btn-ghost' ); ?>
+					<a class="igs-btn igs-btn-primary x-btn" href="#request-demo">Request a Free Demo <svg><use href="#igs-arrow"/></svg></a>
+					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $sf_market_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-out"/></svg> Snowflake Marketplace</a>
 				</div>
-				<div class="igs-ops-bar">
-					<span><?php echo esc_html( $h['ops_label'] ); ?></span>
-					<ul class="igs-ops" aria-label="<?php echo esc_attr( $h['ops_label'] ); ?>">
-						<?php foreach ( $h['ops'] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?>
-					</ul>
-				</div>
-				<div class="igs-proof">
-					<?php foreach ( $h['proof'] as $proof ) : ?>
-						<a href="<?php echo esc_url( $proof[0] ); ?>"<?php echo 0 === strpos( $proof[0], 'http' ) ? ' target="_blank" rel="noopener"' : ''; ?>><span class="igs-proof-icon<?php echo ! empty( $proof[4] ) ? ' ' . esc_attr( $proof[4] ) : ''; ?>"><?php $pgi( $proof[1] ); ?></span><span><b><?php echo esc_html( $proof[2] ); ?></b><small><?php echo esc_html( $proof[3] ); ?></small></span><svg><use href="#igs-out"/></svg></a>
-					<?php endforeach; ?>
+				<div class="ns-hero-guides">
+					<a href="<?php echo esc_url( $api_guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg>API Connector User Guide</a>
+					<a href="<?php echo esc_url( $odbc_guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg>ODBC Connector User Guide</a>
 				</div>
 			</div>
 
-			<div class="igs-flow" data-igs-live data-igs-fx-verb="<?php echo esc_attr( $h['sheet']['verb'] ); ?>" aria-label="<?php echo esc_attr( $h['aria'] ); ?>">
-				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-sheet <?php echo esc_attr( $pg['sheet_class'] ); ?>" data-igs-sheet>
-					<header>
-						<span class="igs-sheet-icon"><?php $pgi( $h['sheet']['icon'] ); ?></span>
-						<span class="igs-sheet-name"><b><?php echo esc_html( $h['sheet']['title'] ); ?></b><small><?php echo esc_html( $h['sheet']['sub'] ); ?></small></span>
-						<span class="igs-sheet-live"><i></i><?php echo esc_html( $h['sheet']['live'] ); ?></span>
-					</header>
-					<div class="igs-sheet-fx"><b><?php echo esc_html( $h['sheet']['fx_label'] ); ?></b><span data-igs-fx><?php echo esc_html( $h['sheet']['fx'] ); ?></span></div>
-					<div class="igs-sheet-grid">
-						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
-						<table>
-							<thead>
-								<tr class="igs-sheet-cols"><th></th><?php foreach ( $h['sheet']['letters'] as $letter ) : ?><th><?php echo esc_html( $letter ); ?></th><?php endforeach; ?></tr>
-								<tr><th>1</th><?php foreach ( $h['sheet']['cols'] as $col ) : ?><th><?php echo esc_html( $col ); ?></th><?php endforeach; ?></tr>
-							</thead>
-							<tbody>
-								<?php foreach ( $h['sheet']['rows'] as $i => $row ) : ?>
-									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
-					</div>
-					<footer aria-hidden="true"><?php foreach ( $h['sheet']['tabs'] as $t => $tab ) : ?><span<?php echo 0 === $t ? ' class="is-on"' : ''; ?>><?php echo esc_html( $tab ); ?></span><?php endforeach; ?><i>+</i></footer>
+			<div class="ns-console" data-ns-console aria-label="Animated example: the INFOFISCUS NetSuite Connector replicates NetSuite objects into Snowflake tables created from NetSuite metadata, through either the API or the ODBC connector">
+				<header aria-hidden="true">
+					<span class="ns-c-logos"><i><?php $pgi( $ns ); ?></i><b></b><i><?php $pgi( $sf ); ?></i></span>
+					<div><b>INFOFISCUS Replication</b><small>Snowflake Native App · ENV <em>PROD</em></small></div>
+					<span class="ns-c-mode"><i data-ns-mode="API" class="is-on">API</i><i data-ns-mode="ODBC">ODBC</i></span>
+				</header>
+				<div class="ns-c-count" aria-hidden="true">
+					<div><small>Records replicated</small><b data-ns-count>2,712,880</b></div>
+					<div><small>Elapsed</small><b class="x-mono" data-ns-time>00:52:14</b></div>
+					<div class="ns-c-bar"><i data-ns-bar style="width:90%"></i><span>Target: 3M records &lt; 1 hour</span></div>
 				</div>
-				<div class="igs-core" data-igs-core>
-					<span class="igs-core-icon"><?php $pgi( $h['core']['icon'] ); ?></span>
-					<strong><?php echo esc_html( $h['core']['title'] ); ?></strong>
-					<small><?php echo esc_html( $h['core']['sub'] ); ?></small>
-					<span class="igs-core-modes"><?php foreach ( $h['core']['modes'] as $mode ) : ?><b><?php echo esc_html( $mode ); ?></b><?php endforeach; ?></span>
-				</div>
-				<div class="igs-eco" data-igs-eco>
-					<header><b><?php echo esc_html( $h['eco']['title'] ); ?></b><small><?php echo esc_html( $h['eco']['sub'] ); ?></small></header>
-					<ul>
-						<?php foreach ( $h['eco']['items'] as $target ) : ?>
-							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>"><span><?php $pgi( $target[1], '', 'igs-pipe-generic' ); ?></span><small><?php echo esc_html( $target[0] ); ?></small></li>
+				<div class="ns-c-body" aria-hidden="true">
+					<ul class="ns-c-objs">
+						<?php foreach ( $ns_objects as $i => $o ) : ?>
+							<li data-ns-obj class="<?php echo $i < 3 ? 'is-done' : ( 3 === $i ? 'is-run' : '' ); ?>"><i></i><b><?php echo esc_html( $o[0] ); ?></b><span class="x-mono"><?php echo esc_html( $o[1] ); ?></span><em><?php echo esc_html( $o[2] ); ?></em></li>
 						<?php endforeach; ?>
 					</ul>
-					<footer><?php echo esc_html( $h['eco']['foot'] ); ?></footer>
-				</div>
-				<div class="igs-toast" data-igs-toast>
-					<span><svg><use href="#igs-check"/></svg></span>
-					<div><b><?php echo esc_html( $h['toast'][0] ); ?></b><small><?php echo esc_html( $h['toast'][1] ); ?></small></div>
+					<pre class="ns-c-ddl x-mono"><span class="c">-- created from NetSuite metadata</span>
+<span class="k">CREATE TABLE</span> NS_SALES_ORDER (
+  ID          <span class="t">STRING</span>,
+  AMOUNT      <span class="t">DOUBLE</span>,
+  TAX_RATE    <span class="t">FLOAT</span>,
+  CREATED_AT  <span class="t">TIMESTAMP</span>
+);</pre>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Overview -->
-	<section class="igs-section igs-overview" aria-labelledby="pg-overview-title">
-		<div class="igs-shell igs-ov">
-			<div class="igs-ov-copy" data-igs-reveal>
-				<span class="igs-kicker"><?php echo esc_html( $o['kicker'] ); ?></span>
-				<h2 id="pg-overview-title"><?php $pg_html( $o['h2'] ); ?></h2>
-				<?php foreach ( $o['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?>
-				<?php if ( ! empty( $o['sets'] ) ) : ?>
-					<ul class="igs-ov-sets" aria-label="<?php echo esc_attr( $o['sets_label'] ); ?>">
-						<?php foreach ( $o['sets'] as $set ) : ?><li><?php echo esc_html( $set ); ?></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['checks'] ) ) : ?>
-					<ul class="pg-checks">
-						<?php foreach ( $o['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><span><?php $pg_html( $check ); ?></span></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['points'] ) ) : ?>
-					<div class="igs-ov-points<?php echo count( $o['points'] ) > 2 ? ' pg-points-many' : ''; ?>">
-						<?php foreach ( $o['points'] as $point ) : ?>
-							<div><span><svg><use href="#<?php echo esc_attr( $point[0] ); ?>"/></svg></span><?php echo ! empty( $point[3] ) ? '<h3>' . esc_html( $point[1] ) . '</h3>' : '<b>' . esc_html( $point[1] ) . '</b>'; ?><p><?php $pg_html( $point[2] ); ?></p></div>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['btn'] ) ) : ?><p class="pg-ov-btn"><?php $pg_btn( $o['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
+	<!-- #1 fastest + release notes -->
+	<section class="x-sec ns-fast" aria-labelledby="ns-fast-title">
+		<div class="igs-shell ns-fast-grid">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">INFOFISCUS NetSuite Connector 3.0</span>
+				<h2 id="ns-fast-title">The #1 Fastest <em>NetSuite Connector</em> for Snowflake</h2>
+				<p>Infometry’s INFOFISCUS NetSuite Connector for Snowflake delivers exactly that—a next-gen, no-code native application that extracts and replicates NetSuite data directly into your Snowflake account with blazing speed and reliability. Available on the <a href="<?php echo esc_url( $sf_market_url ); ?>" target="_blank" rel="noopener">Snowflake Marketplace</a>, this connector ensures seamless, near real-time data synchronization without the hassle of ETL or manual processes.</p>
+				<p>With the newly released INFOFISCUS NetSuite Connector 3.0, customers gain access to massive performance improvements, accurate schema generation, and optimized pipelines—all built natively for Snowflake.</p>
 			</div>
+			<div class="ns-notes" data-igs-reveal>
+				<header><span class="x-mono">v3.0</span><h2>Key Highlights of Version 3.0</h2></header>
+				<article><em class="is-perf">PERF</em><div><h3>Improved Replication Performance &amp; Reliability</h3><p>Handle millions of records with confidence. The connector delivers up to 3 million records in less than an hour, ensuring error-free transfers without timeouts or delays.</p></div></article>
+				<article><em class="is-schema">SCHEMA</em><div><h3>Metadata-Driven Target Tables</h3><p>Target tables are automatically created based on NetSuite metadata, with full support for STRING, DOUBLE, TIMESTAMP, and FLOAT data types.</p></div></article>
+				<article><em class="is-pipe">PIPELINE</em><div><h3>Optimized ETL/ELT Pipelines</h3><p>Accurate data types are applied at ingestion, eliminating unnecessary transformations and delivering faster, more efficient pipelines with reduced processing time.</p></div></article>
+				<article><em class="is-guide">GUIDE</em><div><h3>Best Practices for Performance</h3><p>Built-in guidance helps you optimize bulk or incremental loads by scheduling jobs during off-peak hours, ensuring minimal impact on NetSuite performance.</p></div></article>
+			</div>
+		</div>
+	</section>
 
-			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
-				<svg class="igs-ov-wires" viewBox="0 0 500 400" preserveAspectRatio="none" focusable="false">
-					<path id="pg-ov-p0" class="is-in" d="M196 200 H222"/>
-					<path id="pg-ov-p1" d="M278 200 C305 200 300 84 330 84"/>
-					<path id="pg-ov-p2" d="M278 200 H330"/>
-					<path id="pg-ov-p3" d="M278 200 C305 200 300 316 330 316"/>
-					<circle class="igs-ov-dot is-in" r="3.5"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#pg-ov-p0"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#pg-ov-p1"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".6s"><mpath href="#pg-ov-p2"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#pg-ov-p3"/></animateMotion></circle>
-				</svg>
-				<span class="igs-ov-label is-left"><?php echo esc_html( $o['labels'][0] ); ?></span>
-				<span class="igs-ov-label is-right"><?php echo esc_html( $o['labels'][1] ); ?></span>
-				<div class="igs-ov-deck">
-					<div class="igs-ov-sheet is-back2"><header><?php $pgi( $o['deck'][0][0] ); ?><b><?php echo esc_html( $o['deck'][0][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-back1"><header><?php $pgi( $o['deck'][1][0] ); ?><b><?php echo esc_html( $o['deck'][1][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-front">
-						<header><?php $pgi( $o['deck'][2][0] ); ?><b><?php echo esc_html( $o['deck'][2][1] ); ?></b></header>
-						<div class="igs-ov-rows"><i></i><i></i><i></i><i></i></div>
-						<svg class="igs-ov-spark" viewBox="0 0 100 30" preserveAspectRatio="none" focusable="false"><path d="M0 24 18 20 34 22 50 12 66 15 82 6 100 8"/></svg>
-					</div>
+	<!-- API vs ODBC -->
+	<section class="x-sec x-soft ns-vs" aria-labelledby="ns-vs-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">API or ODBC</span>
+				<h2 id="ns-vs-title">Two Powerful Connector Versions</h2>
+				<p>Infometry offers two types of connectors to meet your integration needs:</p>
+			</div>
+			<div class="ns-vs-grid">
+				<article class="ns-ver is-api" data-igs-reveal>
+					<div class="ns-route" aria-hidden="true"><i><?php $pgi( $ns ); ?></i><span><b class="x-mono">REST API</b></span><i><?php $pgi( $sf ); ?></i></div>
+					<h2>1. NetSuite API Connector for Snowflake</h2>
+					<p>A pre-built, native application that seamlessly extracts NetSuite data into Snowflake with a single click.</p>
+					<ul>
+						<li><h3>One-Click Data Sync</h3><p>Sync data in near real-time.</p></li>
+						<li><h3>No API Knowledge Required</h3><p>Skip custom pipelines or API complexity.</p></li>
+						<li><h3>Landing Tables for Analytics</h3><p>Access ready-to-use data in Snowflake.</p></li>
+					</ul>
+				</article>
+				<span class="ns-vs-badge" aria-hidden="true">VS</span>
+				<article class="ns-ver is-odbc" data-igs-reveal>
+					<div class="ns-route" aria-hidden="true"><i><?php $pgi( $ns ); ?></i><span><b class="x-mono">ODBC driver</b></span><i><?php $pgi( $sf ); ?></i></div>
+					<h2>2. NetSuite ODBC Connector for Snowflake</h2>
+					<p>A robust, pre-built application leveraging the NetSuite ODBC driver for high-frequency, high-volume data syncs.</p>
+					<ul>
+						<li><h3>Easy ODBC Connectivity</h3><p>Seamless, fast, and reliable data integration for effortless workflows.</p></li>
+						<li><h3>Near Real-Time Sync</h3><p>Emphasizes both speed and accuracy in moving data</p></li>
+						<li><h3>Simplified Access</h3><p>Quick Snowflake insights with landing tables.</p></li>
+					</ul>
+				</article>
+			</div>
+			<div class="ns-choose" data-igs-reveal>
+				<div><h2>Choose Your Ideal Connector and Start Syncing!</h2><p>Both connectors offer powerful, easy-to-use solutions to move your NetSuite data to Snowflake in near real-time. Explore both solutions on the Snowflake Marketplace and unlock seamless NetSuite data integration today!</p></div>
+				<div class="pg-btns">
+					<a class="igs-btn igs-btn-primary" href="<?php echo esc_url( $odbc_guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> ODBC Connector User Guide</a>
+					<a class="igs-btn igs-btn-outline" href="<?php echo esc_url( $api_guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> API Connector User Guide</a>
 				</div>
-				<div class="igs-ov-core">
-					<span class="igs-ov-orbit"></span>
-					<span class="igs-ov-orb"><svg><use href="#<?php echo esc_attr( $o['core_icon'] ); ?>"/></svg></span>
-					<small><?php $pg_html( $o['core'] ); ?></small>
+			</div>
+		</div>
+	</section>
+
+	<!-- Results: ring gauges -->
+	<section class="x-sec x-dark ns-stats" aria-labelledby="ns-why-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">Proven results</span>
+				<h2 id="ns-why-title">Why Choose INFOFISCUS Connectors?</h2>
+				<h3 class="ns-sub">Exceptional Results in Numbers:</h3>
+			</div>
+			<div class="ns-gauges">
+				<?php foreach ( $ns_stats as $si => $s ) : ?>
+					<article data-igs-reveal style="--p:<?php echo esc_attr( $s[3] ); ?>">
+						<span class="ns-ring" aria-hidden="true"><i></i></span>
+						<h3><?php if ( $s[4] ) : ?><small><?php echo esc_html( $s[4] ); ?></small> <?php endif; ?><b><?php echo esc_html( $s[0] ); ?></b> <?php echo esc_html( $s[1] ); ?></h3>
+						<p><?php echo esc_html( $s[2] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<!-- Key features as pipeline settings -->
+	<section class="x-sec ns-set" aria-labelledby="ns-set-title">
+		<div class="igs-shell ns-set-grid">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">Key features</span>
+				<h2 id="ns-set-title">Key Features of NetSuite API/ODBC Connector</h2>
+				<p>Everything you configure for a replication job, in one place.</p>
+			</div>
+			<div class="ns-panel" data-igs-reveal>
+				<header><svg><use href="#igs-sync"/></svg><b>Replication job settings</b><small class="x-mono">job: ns_to_snowflake</small></header>
+				<div class="ns-row"><span><svg><use href="#igs-layers"/></svg></span><div><h3>Incremental and Bulk Data Support</h3><p>Easily manage incremental updates &amp; large data loads</p></div><em class="ns-seg" aria-hidden="true"><i class="is-on">Incremental</i><i>Bulk</i></em></div>
+				<div class="ns-row"><span><svg><use href="#igs-db"/></svg></span><div><h3>High-Volume Processing</h3><p>Efficiently process millions of rows in a single run.</p></div><em class="ns-val x-mono" aria-hidden="true">1,000,000+ rows</em></div>
+				<div class="ns-row"><span><svg><use href="#igs-calendar"/></svg></span><div><h3>Automated Scheduling</h3><p>Easily schedule data loads with built-in automation.</p></div><em class="ns-val x-mono" aria-hidden="true">02:00 · off-peak</em></div>
+				<div class="ns-row"><span><svg><use href="#pg-rocket"/></svg></span><div><h3>Quick Setup</h3><p>Bypass ETL complexity—start instantly!</p></div><em class="ns-toggle" aria-hidden="true"><i></i></em></div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Get started: vertical stepper -->
+	<section class="x-sec x-soft ns-steps" aria-labelledby="ns-steps-title">
+		<div class="igs-shell ns-steps-grid">
+			<div class="x-copy ns-steps-head" data-igs-reveal>
+				<span class="igs-kicker">Get started</span>
+				<h2 id="ns-steps-title">Get Started in 4 Easy Steps</h2>
+				<p>Unlock seamless, blazing-fast, and reliable NetSuite-to-Snowflake integration with INFOFISCUS NetSuite Connector 3.0—your simplest path to real-time analytics and smarter decisions.</p>
+				<p><a class="igs-btn igs-btn-primary" href="#request-demo">Request a Free Demo <svg><use href="#igs-arrow"/></svg></a></p>
+			</div>
+			<ol class="ns-stepper">
+				<li data-igs-reveal><b>1</b><div><h3>Step 1:</h3><p><a href="<?php echo esc_url( $sf_market_url ); ?>" target="_blank" rel="noopener">Visit the Snowflake Marketplace</a> – Ensure your Snowflake paid subscription is active.</p></div></li>
+				<li data-igs-reveal><b>2</b><div><h3>Step 2:</h3><p>Search INFOFISCUS Connectors – Select either API or ODBC, then click ‘Get’ to start integrating your data.</p></div></li>
+				<li data-igs-reveal><b>3</b><div><h3>Step 3:</h3><p>Set up your connection by entering your NetSuite details and testing it to ensure everything works smoothly.</p></div></li>
+				<li data-igs-reveal><b>4</b><div><h3>Step 4:</h3><p>Start Syncing Data – Select your environment (QA, DEV, PROD) and replicate with a click.</p><span class="ns-envs" aria-hidden="true"><i>QA</i><i>DEV</i><i class="is-on">PROD</i></span></div></li>
+			</ol>
+		</div>
+	</section>
+
+	<!-- Architecture -->
+	<section class="x-sec ns-arch" aria-labelledby="ns-arch-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Architecture</span>
+				<h2 id="ns-arch-title">Architecture of INFOFISCUS Connector for NetSuite - Snowflake</h2>
+			</div>
+			<div class="ns-arch-map" data-igs-reveal aria-label="NetSuite data flows through the API or ODBC connector into the INFOFISCUS Native App inside the customer's Snowflake account, lands in tables and feeds analytics">
+				<div class="ns-a-src"><span><?php $pgi( $ns ); ?></span><b>NetSuite</b><small>ERP</small></div>
+				<div class="ns-a-lanes" aria-hidden="true">
+					<span><i></i><b class="x-mono">API</b></span>
+					<span><i></i><b class="x-mono">ODBC</b></span>
 				</div>
-				<ul class="igs-ov-dest">
-					<?php foreach ( $o['dest'] as $dest ) : ?>
-						<li><span><svg><use href="#<?php echo esc_attr( $dest[0] ); ?>"/></svg></span><b><?php echo esc_html( $dest[1] ); ?></b><i><?php foreach ( $dest[2] as $spec ) { $pgi( $spec, '', 'igs-pipe-generic' ); } ?></i></li>
+				<div class="ns-a-acct">
+					<small class="ns-a-tag"><?php $pgi( $sf ); ?>Your Snowflake account</small>
+					<div class="ns-a-app"><b>INFOFISCUS Native App</b><span>QA · DEV · PROD</span></div>
+					<i class="ns-a-down" aria-hidden="true"></i>
+					<div class="ns-a-tables"><span>NS_CUSTOMER</span><span>NS_SALES_ORDER</span><span>NS_INVOICE</span><span>NS_ITEM</span></div>
+					<i class="ns-a-down" aria-hidden="true"></i>
+					<div class="ns-a-bi"><span><svg><use href="#igs-chart"/></svg>BI &amp; dashboards</span><span><svg><use href="#igs-bolt"/></svg>AI/ML</span><span><svg><use href="#igs-layers"/></svg>Analytics layer</span></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Videos -->
+	<section class="x-sec x-dark ns-videos" aria-labelledby="ns-video-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">See it in action</span>
+				<h2 id="ns-video-title">Learn More About INFOFISCUS Connector for NetSuite - Snowflake</h2>
+			</div>
+			<div class="ns-vid-grid">
+				<?php foreach ( array( array( 'qF3ZnsvyUE8', 'INFOFISCUS NetSuite to Snowflake Connector', 'Overview' ), array( 'IKSrRt4jtDE', 'NetSuite data into Snowflake with the INFOFISCUS Native App', 'Demo' ) ) as $v ) : ?>
+					<a class="ns-vid" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $v[0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $v[0] ); ?>" data-igs-reveal>
+						<span class="ns-vid-scr" aria-hidden="true"><i><?php $pgi( $ns ); ?></i><em></em><i><?php $pgi( $sf ); ?></i><span class="ns-vid-play"><svg><use href="#igs-play"/></svg></span></span>
+						<span class="ns-vid-cap"><em><?php echo esc_html( $v[2] ); ?></em><b><?php echo esc_html( $v[1] ); ?></b></span>
+					</a>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<div class="igs-modal" data-igs-modal hidden>
+			<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Video">
+				<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
+				<div class="igs-modal-frame" data-igs-frame></div>
+			</div>
+		</div>
+	</section>
+
+	<?php
+	$pg_cta(
+		array(
+			'id'        => 'request-demo',
+			'anchor2'   => 'freetrial',
+			'kicker'    => 'Free demo',
+			'h2'        => 'Request a Free Demo of the NetSuite to Snowflake Connector',
+			'p'         => 'See how INFOFISCUS replicates your NetSuite data into Snowflake in near real-time, with no code and no ETL tools.',
+			'checks'    => array( 'No-code Snowflake Native App', 'API & ODBC versions', 'Data stays in Snowflake', '99.9% uptime' ),
+			'next'      => array( array( 'Submit your request', 'Takes under a minute.' ), array( 'We schedule your demo', 'With our NetSuite & Snowflake team.' ), array( 'Start syncing', 'Get the connector from the Snowflake Marketplace.' ) ),
+			'form_id'   => 376110,
+			'form_head' => 'Request a Free Demo',
+		)
+	);
+	?>
+
+	<!-- Customers -->
+	<section class="x-sec ns-logos" aria-labelledby="ns-logos-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Customers</span>
+				<h2 id="ns-logos-title">Trusted by 150+ Customers Worldwide</h2>
+			</div>
+			<div class="ns-marquee" data-igs-reveal>
+				<ul>
+					<?php foreach ( array_merge( $ns_logos, $ns_logos ) as $li => $logo ) : ?>
+						<li<?php echo $li >= count( $ns_logos ) ? ' aria-hidden="true"' : ''; ?>><?php $pgi( $logo[0], $li >= count( $ns_logos ) ? '' : $logo[1] ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
 		</div>
 	</section>
-
-	<?php foreach ( $pg['blocks'] as $bi => $b ) : ?>
-		<?php
-		$bid  = 'pg-b' . $bi;
-		$type = $b['type'];
-		$head = function ( $light = false ) use ( $b, $bid, $pg_html ) {
-			if ( empty( $b['h2'] ) ) {
-				return;
-			}
-			?>
-			<div class="igs-head<?php echo $light ? ' is-light' : ''; ?>" data-igs-reveal>
-				<?php if ( ! empty( $b['kicker'] ) ) : ?><span class="igs-kicker"><?php echo esc_html( $b['kicker'] ); ?></span><?php endif; ?>
-				<h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2>
-				<?php if ( ! empty( $b['sub'] ) ) : ?><h3 class="pg-head-sub"><?php echo esc_html( $b['sub'] ); ?></h3><?php endif; ?>
-				<?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?>
-			</div>
-			<?php
-		};
-		$labelled = ! empty( $b['h2'] ) ? ' aria-labelledby="' . esc_attr( $bid ) . '"' : '';
-		?>
-
-		<?php if ( 'features' === $type ) : ?>
-			<section class="igs-section igs-capabilities pg-features<?php echo ! empty( $b['tint'] ) ? ' is-tint' : ''; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-feature-grid pg-cols-<?php echo (int) ( isset( $b['cols'] ) ? $b['cols'] : 4 ); ?>">
-						<?php foreach ( $b['items'] as $i => $item ) : ?>
-							<article class="igs-feature is-c<?php echo (int) ( $i % 4 ); ?><?php echo ! empty( $item[3] ) ? ' is-wide' : ''; ?>" data-igs-reveal>
-								<span><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span>
-								<h3><?php echo esc_html( $item[1] ); ?></h3>
-								<p><?php $pg_html( $item[2] ); ?></p>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['btn'] ) ) : ?><p class="pg-center" data-igs-reveal><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'plans' === $type ) : ?>
-			<section class="igs-section igs-license pg-plans"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="<?php echo 3 === count( $b['plans'] ) ? 'igs-use-grid' : 'igs-license-grid'; ?>">
-						<?php foreach ( $b['plans'] as $plan ) : ?>
-							<article class="igs-plan<?php echo ! empty( $plan['dark'] ) ? ' is-dark' : ''; ?>" data-igs-reveal>
-								<header><span><svg><use href="#<?php echo esc_attr( $plan['icon'] ); ?>"/></svg></span><?php echo ! empty( $plan['h2'] ) ? '<h2 class="pg-plan-h">' . esc_html( $plan['title'] ) . '</h2>' : '<h3>' . esc_html( $plan['title'] ) . '</h3>'; ?></header>
-								<?php if ( ! empty( $plan['intro'] ) ) : ?><p class="pg-plan-intro"><?php $pg_html( $plan['intro'] ); ?></p><?php endif; ?>
-								<ul>
-									<?php foreach ( $plan['items'] as $item ) : ?>
-										<li><svg><use href="#igs-check"/></svg><span><?php if ( is_array( $item ) ) : ?><?php echo ! empty( $plan['item_h3'] ) ? '<h3 class="pg-li-h">' . esc_html( $item[0] ) . '</h3>' : '<b>' . esc_html( $item[0] ) . '</b> '; ?><?php $pg_html( $item[1] ); ?><?php else : ?><?php $pg_html( $item ); ?><?php endif; ?></span></li>
-									<?php endforeach; ?>
-								</ul>
-								<?php if ( ! empty( $plan['btn'] ) ) : ?><?php $pg_btn( $plan['btn'], ! empty( $plan['dark'] ) ? 'igs-btn-primary' : 'igs-btn-outline' ); ?><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'steps' === $type ) : ?>
-			<section class="igs-section igs-steps-section"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<ol class="igs-steps<?php echo 4 === count( $b['steps'] ) ? ' pg-steps-4' : ''; ?>" data-igs-steps>
-						<?php foreach ( $b['steps'] as $si => $step ) : ?>
-							<?php $ui = $step['ui']; ?>
-							<li class="is-s<?php echo (int) $si + 1; ?>">
-								<div class="igs-step-head"><b><?php echo esc_html( sprintf( '%02d', $si + 1 ) ); ?></b><span><?php echo esc_html( $step['label'] ); ?></span></div>
-								<div class="igs-step-ui" aria-hidden="true">
-									<?php if ( 'toggle' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<?php if ( ! empty( $row[2] ) ) : ?>
-												<div class="igs-ui-row is-main"><?php $pgi( $row[2] ); ?><span><?php echo esc_html( $row[0] ); ?><small><?php echo esc_html( $row[1] ); ?></small></span><em class="igs-ui-switch is-flip"></em></div>
-											<?php else : ?>
-												<div class="igs-ui-row is-muted"><i></i><span><?php echo esc_html( $row[0] ); ?></span><em class="igs-ui-switch<?php echo ! empty( $row[1] ) ? ' is-on' : ''; ?>"></em></div>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									<?php elseif ( 'search' === $ui['type'] ) : ?>
-										<div class="igs-ui-search"><svg><use href="#igs-out"/></svg><span class="igs-ui-type" style="--n:<?php echo (int) strlen( $ui['query'] ); ?>"><?php echo esc_html( $ui['query'] ); ?></span></div>
-										<div class="igs-ui-result"><?php $pgi( $ui['result'][0] ); ?><span><?php echo esc_html( $ui['result'][1] ); ?><small><?php echo esc_html( $ui['result'][2] ); ?></small></span></div>
-										<span class="igs-ui-cta"><?php echo esc_html( $ui['cta'] ); ?></span>
-									<?php elseif ( 'license' === $ui['type'] ) : ?>
-										<div class="igs-ui-license"><span><svg><use href="#igs-key"/></svg></span><div><b><?php echo esc_html( $ui['title'] ); ?></b><small><?php echo esc_html( $ui['sub'] ); ?></small></div><em><?php echo esc_html( $ui['badge'] ); ?></em></div>
-										<div class="igs-ui-meter"><span><i></i></span><small><?php $pg_html( $ui['meter'] ); ?></small></div>
-									<?php elseif ( 'form' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['fields'] as $field ) : ?>
-											<div class="pg-ui-field"><small><?php echo esc_html( $field[0] ); ?></small><span><?php echo esc_html( $field[1] ); ?></span></div>
-										<?php endforeach; ?>
-										<span class="pg-ui-ok"><svg><use href="#igs-check"/></svg><?php echo esc_html( $ui['ok'] ); ?></span>
-									<?php elseif ( 'env' === $ui['type'] ) : ?>
-										<div class="pg-ui-env"><?php foreach ( $ui['envs'] as $e => $env ) : ?><span<?php echo $e === $ui['active'] ? ' class="is-on"' : ''; ?>><?php echo esc_html( $env ); ?></span><?php endforeach; ?></div>
-										<div class="pg-ui-run"><b><?php echo esc_html( $ui['title'] ); ?></b><span><i></i></span><small><?php echo esc_html( $ui['sub'] ); ?></small></div>
-									<?php elseif ( 'objects' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<div class="pg-ui-obj<?php echo $row[1] ? ' is-on' : ''; ?>"><i><svg><use href="#igs-check"/></svg></i><span><?php echo esc_html( $row[0] ); ?></span><small><?php echo esc_html( $row[2] ); ?></small></div>
-										<?php endforeach; ?>
-									<?php endif; ?>
-								</div>
-								<h3><?php echo esc_html( $step['title'] ); ?></h3>
-								<?php foreach ( (array) $step['text'] as $text ) : ?><p><?php $pg_html( $text ); ?></p><?php endforeach; ?>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-					<?php if ( ! empty( $b['note'] ) ) : ?><p class="pg-steps-note" data-igs-reveal><?php $pg_html( $b['note'] ); ?></p><?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'pipe' === $type ) : ?>
-			<section class="igs-section igs-connect"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-pipe" data-igs-pipe data-igs-reveal>
-						<svg class="igs-pipe-svg" aria-hidden="true" focusable="false"></svg>
-						<div class="igs-pipe-dots" aria-hidden="true"></div>
-						<div class="igs-pipe-source" data-igs-pipe-source>
-							<span class="igs-pipe-logo"><?php $pgi( $b['source'][0] ); ?></span>
-							<b><?php echo esc_html( $b['source'][1] ); ?></b>
-							<small><?php echo esc_html( $b['source'][2] ); ?></small>
-							<ul aria-label="<?php echo esc_attr( $b['source'][1] ); ?>"><?php foreach ( $b['source'][3] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?></ul>
-						</div>
-						<div class="igs-pipe-hub" data-igs-pipe-hub>
-							<span class="igs-pipe-ring" aria-hidden="true"></span>
-							<span class="igs-pipe-logo is-hub"><?php $pgi( $b['hub'][0] ); ?></span>
-							<b><?php echo esc_html( $b['hub'][1] ); ?></b>
-							<small><?php echo esc_html( $b['hub'][2] ); ?></small>
-							<span class="igs-pipe-modes"><?php foreach ( $b['hub'][3] as $mode ) : ?><em><?php echo esc_html( $mode ); ?></em><?php endforeach; ?></span>
-						</div>
-						<div class="igs-pipe-targets">
-							<?php foreach ( $b['groups'] as $group ) : ?>
-								<article class="igs-pipe-group is-<?php echo esc_attr( $group[0] ); ?>" data-igs-pipe-group>
-									<header><span><svg><use href="#<?php echo esc_attr( $group[1] ); ?>"/></svg></span><div><h3><?php echo esc_html( $group[2] ); ?></h3><small><?php echo esc_html( $group[3] ); ?></small></div></header>
-									<ul>
-										<?php foreach ( $group[4] as $item ) : ?><li><?php $pgi( $item[1], '', 'igs-pipe-generic' ); ?><small><?php echo esc_html( $item[0] ); ?></small></li><?php endforeach; ?>
-									</ul>
-								</article>
-							<?php endforeach; ?>
-						</div>
-						<div class="igs-pipe-foot">
-							<span class="igs-pipe-foot-label"><svg><use href="#igs-check"/></svg><?php echo esc_html( $b['foot_label'] ); ?></span>
-							<ul><?php foreach ( $b['foot'] as $tag ) : ?><li><svg><use href="#<?php echo esc_attr( $tag[0] ); ?>"/></svg><?php echo esc_html( $tag[1] ); ?></li><?php endforeach; ?></ul>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'uses' === $type ) : ?>
-			<section class="igs-section igs-uses"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-use-grid<?php echo 4 === count( $b['items'] ) ? ' pg-cols-2' : ''; ?>">
-						<?php foreach ( $b['items'] as $ui => $use ) : ?>
-							<article class="igs-use is-<?php echo esc_attr( $use['tone'] ); ?>" data-igs-reveal>
-								<div class="igs-use-scene<?php echo count( $use['from'] ) > 1 ? ' is-merge' : ''; ?>" aria-hidden="true">
-									<?php if ( count( $use['from'] ) > 1 ) : ?>
-										<span class="igs-use-sheets"><?php foreach ( $use['from'] as $spec ) : ?><span class="igs-use-tile is-xs"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-										<span class="igs-use-merge"><svg><use href="#<?php echo esc_attr( isset( $use['via'] ) ? $use['via'] : 'igs-layers' ); ?>"/></svg></span>
-										<span class="igs-use-pipe is-short"><i></i></span>
-									<?php else : ?>
-										<span class="igs-use-tile"><?php $pgi( $use['from'][0], '', 'igs-pipe-generic' ); ?></span>
-										<span class="igs-use-pipe"><i></i></span>
-									<?php endif; ?>
-									<?php if ( count( $use['to'] ) > 1 ) : ?>
-										<span class="igs-use-stack"><?php foreach ( $use['to'] as $spec ) : ?><span class="igs-use-tile is-sm"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-									<?php else : ?>
-										<span class="igs-use-tile is-target"><?php $pgi( $use['to'][0], '', 'igs-pipe-generic' ); ?></span>
-									<?php endif; ?>
-								</div>
-								<span class="igs-use-num"><?php echo esc_html( sprintf( 'Use case %02d', $ui + 1 ) ); ?></span>
-								<h3><?php echo esc_html( $use['title'] ); ?></h3>
-								<p><?php $pg_html( $use['text'] ); ?></p>
-								<ul class="igs-use-tags"><?php foreach ( $use['tags'] as $tag ) : ?><li><?php echo esc_html( $tag ); ?></li><?php endforeach; ?></ul>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['note'] ) ) : ?>
-						<div class="igs-uses-note" data-igs-reveal>
-							<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
-							<p><?php $pg_html( $b['note'] ); ?></p>
-							<?php if ( ! empty( $b['btn'] ) ) : ?><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?><?php endif; ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'videos' === $type ) : ?>
-			<?php $vids = $b['videos']; ?>
-			<section class="igs-section igs-videos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-tv" data-igs-tv data-igs-reveal>
-						<a class="igs-tv-stage" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $vids[0][0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $vids[0][0] ); ?>" data-igs-stage>
-							<span class="igs-tv-scene" aria-hidden="true">
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][0] ); ?></span>
-								<span class="igs-tv-pipe"><i></i></span>
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][1] ); ?></span>
-							</span>
-							<span class="igs-tv-play" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
-							<span class="igs-tv-info">
-								<span class="igs-tv-meta"><em data-igs-stage-op><?php echo esc_html( $vids[0][2] ); ?></em><span data-igs-stage-ep>Episode 01</span> · <?php echo esc_html( $b['series'] ); ?></span>
-								<b data-igs-stage-title><?php echo esc_html( $vids[0][1] ); ?></b>
-								<span class="igs-tv-cta">Watch video <svg><use href="#igs-arrow"/></svg></span>
-							</span>
-						</a>
-						<div class="igs-tv-list">
-							<header><b><?php echo esc_html( $b['list_title'] ); ?></b><small><?php echo esc_html( count( $vids ) . ( 1 === count( $vids ) ? ' video' : ' videos' ) ); ?></small></header>
-							<ol>
-								<?php foreach ( $vids as $vi => $video ) : ?>
-									<li><a href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-pick="<?php echo esc_attr( $video[0] ); ?>" data-op="<?php echo esc_attr( $video[2] ); ?>" data-ep="<?php echo esc_attr( sprintf( 'Episode %02d', $vi + 1 ) ); ?>"<?php echo 0 === $vi ? ' aria-current="true"' : ''; ?>><span class="igs-tv-num"><?php echo esc_html( sprintf( '%02d', $vi + 1 ) ); ?></span><span class="igs-tv-item"><em><?php echo esc_html( $video[2] ); ?></em><b><?php echo esc_html( $video[1] ); ?></b></span><span class="igs-tv-go" aria-hidden="true"><svg><use href="#igs-play"/></svg></span></a></li>
-								<?php endforeach; ?>
-							</ol>
-							<?php if ( ! empty( $b['aside'] ) ) : ?>
-								<div class="pg-tv-aside"><?php echo ! empty( $b['aside']['h2'] ) ? '<h2>' . esc_html( $b['aside']['title'] ) . '</h2>' : '<b>' . esc_html( $b['aside']['title'] ) . '</b>'; ?><?php if ( ! empty( $b['aside']['text'] ) ) : ?><p><?php $pg_html( $b['aside']['text'] ); ?></p><?php endif; ?><div class="pg-btns"><?php foreach ( $b['aside']['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-outline' ); } ?></div></div>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
-				<div class="igs-modal" data-igs-modal hidden>
-					<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Video">
-						<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
-						<div class="igs-modal-frame" data-igs-frame></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'stats' === $type ) : ?>
-			<section class="igs-section<?php echo ! empty( $b['dark'] ) ? ' igs-steps-section pg-stats-dark' : ' pg-stats-light'; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( ! empty( $b['dark'] ) ); ?>
-					<div class="pg-stats pg-n<?php echo (int) count( $b['items'] ); ?>">
-						<?php foreach ( $b['items'] as $si => $stat ) : ?>
-							<article class="is-c<?php echo (int) ( $si % 4 ); ?>" data-igs-reveal>
-								<?php if ( ! empty( $stat['icon'] ) ) : ?><span class="pg-stat-ic"><svg><use href="#<?php echo esc_attr( $stat['icon'] ); ?>"/></svg></span><?php endif; ?>
-								<?php if ( ! empty( $b['num_in'] ) ) : ?>
-									<h3><?php if ( ! empty( $stat['pre'] ) ) : ?><small><?php echo esc_html( $stat['pre'] ); ?></small> <?php endif; ?><b><?php echo esc_html( $stat['num'] ); ?></b> <?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php else : ?>
-									<b class="pg-stat-num" aria-hidden="true"><?php echo esc_html( $stat['num'] ); ?></b>
-									<h3><?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php endif; ?>
-								<?php if ( ! empty( $stat['text'] ) ) : ?><p><?php $pg_html( $stat['text'] ); ?></p><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['checks'] ) ) : ?>
-						<ul class="pg-check-row" data-igs-reveal><?php foreach ( $b['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><?php echo esc_html( $check ); ?></li><?php endforeach; ?></ul>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'split' === $type ) : ?>
-			<section class="igs-section igs-steps-section pg-split"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<div class="pg-split-grid">
-						<div class="pg-split-copy" data-igs-reveal><?php foreach ( $b['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?></div>
-						<?php if ( ! empty( $b['chain'] ) ) : ?>
-							<ol class="pg-chain" data-igs-reveal aria-label="<?php echo esc_attr( $b['chain_label'] ); ?>">
-								<?php foreach ( $b['chain'] as $link ) : ?><li><span><?php $pgi( $link[0], '', 'pg-chain-svg' ); ?></span><div><b><?php echo esc_html( $link[1] ); ?></b><small><?php echo esc_html( $link[2] ); ?></small></div></li><?php endforeach; ?>
-							</ol>
-						<?php else : ?>
-							<ul class="pg-values" data-igs-reveal>
-								<?php foreach ( $b['values'] as $value ) : ?>
-									<li<?php echo $value[0] ? ' class="is-num"' : ''; ?>><?php if ( $value[0] ) : ?><b><?php echo esc_html( $value[0] ); ?></b> <?php else : ?><svg><use href="#igs-check"/></svg><?php endif; ?><span><?php echo esc_html( $value[1] ); ?></span></li>
-								<?php endforeach; ?>
-							</ul>
-						<?php endif; ?>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'band' === $type ) : ?>
-			<section class="igs-section pg-band-sec"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<div class="pg-band" data-igs-reveal>
-						<span class="pg-band-ic" aria-hidden="true"><svg><use href="#<?php echo esc_attr( isset( $b['icon'] ) ? $b['icon'] : 'igs-bolt' ); ?>"/></svg></span>
-						<div><h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2><?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?></div>
-						<div class="pg-btns"><?php foreach ( $b['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-ghost' ); } ?></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'logos' === $type ) : ?>
-			<section class="igs-section pg-logos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="pg-marquee" data-igs-reveal>
-						<ul>
-							<?php foreach ( array_merge( $b['logos'], $b['logos'] ) as $li => $logo ) : ?>
-								<li<?php echo $li >= count( $b['logos'] ) ? ' aria-hidden="true"' : ''; ?>><?php $pgi( $logo[0], $li >= count( $b['logos'] ) ? '' : $logo[1] ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'cta' === $type ) : ?>
-			<?php $pg_cta( $b ); ?>
-		<?php endif; ?>
-	<?php endforeach; ?>
 
 	<!-- FAQ -->
 	<section class="igs-section igs-faq" aria-labelledby="pg-faq-title">

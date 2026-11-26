@@ -3,9 +3,8 @@
  * Template Name: Google BigTable Connector Product
  * Template Post Type: page, product
  *
- * Google BigTable connector page, built like the Google Sheets connector page: the hero plays
- * Bigtable rows syncing through IDMC, the connectivity map streams data and the video opens in a
- * player (google-sheets-connector.css/.js). This page's own styles: google-bigtable-connector.css.
+ * Own design for this product (hero, sections and animations built around what it does);
+ * shares only the connector base (shell, buttons, FAQ, form, footer) with the other product pages.
  * Every heading and line of copy from the original page is kept.
  *
  * @package Infometry_Custom_Templates
@@ -21,183 +20,6 @@ $idmc            = 'informatica-product-mark.png';
 $e               = 'google-sheets/eco-';
 
 $pg = array(
-	'class'       => 'is-drive pg-bigtable',
-	'sheet_class' => 'is-drive',
-	'hero'        => array(
-		'badge'     => '100% Informatica Certified · IDMC (formerly IICS)',
-		'h1'        => 'Infometry’s Google BigTable Connector for <em>Informatica</em>',
-		'lead'      => 'Infometry’s Google Bigtable Connector for Informatica IDMC is 100% Informatica Certified, providing seamless integration and real-time Data Analytics. With Infometry’s connector, you can read, insert, and delete data from Google Bigtable effortlessly. It enables seamless data retrieval, column reading, row insertion, and row deletion using a row key.',
-		'primary'   => array( 'Start 30-Day Free Trial', '#freetrial' ),
-		'secondary' => array( 'Download User Guide', $guide_url, 'igs-down' ),
-		'ops_label' => 'Operations',
-		'ops'       => array( 'Read', 'Insert', 'Delete', 'Row key', 'Columns', 'Column families' ),
-		'proof'     => array(
-			array( $marketplace_url, $idmc, 'Informatica Marketplace', 'Certified listing' ),
-			array( $g2_url, 'svg:igs-star', 'G2 Product Reviews', 'See customer feedback', 'is-g2' ),
-		),
-		'aria'      => 'Animated example: rows from a Google Cloud Bigtable table are read by row key through the Infometry connector in Informatica IDMC and land in enterprise targets such as Snowflake, Oracle and Salesforce',
-		'sheet'     => array(
-			'icon'     => $bt,
-			'title'    => 'customer_events',
-			'sub'      => 'Cloud Bigtable · instance prod-analytics',
-			'live'     => 'Live read',
-			'fx_label' => 'key',
-			'fx'       => 'Scanning rows · prefix user#',
-			'verb'     => 'Reading',
-			'letters'  => array( 'row key', 'cf: profile', 'cf: metrics' ),
-			'cols'     => array( 'Row key', 'name', 'clicks' ),
-			'rows'     => array(
-				array( 'user#1042', 'Emily Carter', '1,284' ),
-				array( 'user#2219', 'Liam Smith', '846' ),
-				array( 'user#3307', 'Ana Ruiz', '2,051' ),
-				array( 'user#4410', 'Kenji Mori', '1,102' ),
-				array( 'user#5126', 'Priya Nair', '1,733' ),
-			),
-			'tabs'     => array( 'customer_events', 'orders', 'sessions' ),
-		),
-		'core'      => array( 'icon' => 'svg:igs-bolt', 'title' => 'Infometry Connector', 'sub' => 'Informatica IDMC', 'modes' => array( 'Mapping Task', 'Data Sync' ) ),
-		'eco'       => array(
-			'title' => 'Sources & targets',
-			'sub'   => 'Any IDMC connection',
-			'items' => array(
-				array( 'Snowflake', $e . 'snowflake.png' ), array( 'Oracle', $e . 'oracle.png' ), array( 'SQL Server', $e . 'sqlserver.png' ),
-				array( 'Databricks', $e . 'databricks.png' ), array( 'AWS', $e . 'aws.png' ), array( 'Azure', $e . 'azure.png' ),
-				array( 'Salesforce', $e . 'salesforce.png' ), array( 'NetSuite', $e . 'netsuite.png' ), array( 'SAP', $e . 'sap.png' ),
-				array( 'Workday', $e . 'workday.png' ), array( 'Tableau', $e . 'tableau.svg' ), array( 'Power BI', 'bars' ),
-			),
-			'foot'  => '+ MySQL, BigQuery & every IDMC connection',
-		),
-		'toast'     => array( 'Mapping task completed', 'Rows read · no data stored' ),
-	),
-	'overview'    => array(
-		'kicker'     => 'How it works',
-		'h2'         => 'How Google Cloud <em>Bigtable</em> Works',
-		'paras'      => array( 'Google Cloud Bigtable is a highly scalable, sparsely populated table designed to handle billions of rows and thousands of columns, making it ideal for storing terabytes to petabytes of data. It operates as a distributed, persistent, multidimensional sorted map, widely used for large-scale analytics and operational workloads.' ),
-		'sets_label' => 'What Bigtable holds',
-		'sets'       => array( 'Billions of rows', 'Thousands of columns', 'Terabytes to petabytes', 'Sorted key/value map' ),
-		'points'     => array(
-			array( 'pg-table', 'Massively scalable tables', 'Google Cloud Bigtable structures data in massively scalable tables, functioning as a sorted key/value map.' ),
-			array( 'pg-row', 'Rows and columns', 'Each table consists of rows representing individual entities and columns storing corresponding values.' ),
-			array( 'igs-key', 'Row keys & column families', 'Rows are indexed using a unique row key, while related columns are grouped into column families.' ),
-			array( 'igs-layers', 'Family + qualifier', 'Each column is uniquely identified by a combination of the column family and a column qualifier.' ),
-		),
-		'labels'     => array( 'Your Bigtable', 'Your enterprise' ),
-		'deck'       => array( array( $bt, 'sessions' ), array( $bt, 'orders' ), array( $bt, 'customer_events' ) ),
-		'core_icon'  => 'igs-bolt',
-		'core'       => 'Infometry<br>Connector',
-		'dest'       => array(
-			array( 'igs-db', 'Data Warehouses', array( $e . 'snowflake.png', $e . 'oracle.png', $e . 'sqlserver.png' ) ),
-			array( 'igs-cloud', 'Cloud Applications', array( $e . 'salesforce.png', $e . 'netsuite.png', $e . 'workday.png' ) ),
-			array( 'igs-layers', 'Data Lakes', array( $e . 'databricks.png', $e . 'aws.png', $e . 'azure.png' ) ),
-		),
-	),
-	'blocks'      => array(
-		array(
-			'type'   => 'features',
-			'kicker' => 'The connector',
-			'h2'     => 'Informatica Google BigTable Connector',
-			'items'  => array(
-				array( 'igs-code', 'Read, write & delete', 'Read, Write, or Delete data to Bigtable using Infometry’s Connector for Informatica.' ),
-				array( 'igs-layers', 'Enterprise data flows', 'Supports Enterprise-Level Data Flows.' ),
-				array( 'igs-db', 'Billions of rows', 'Handles billions of rows and thousands of columns without performance loss.' ),
-				array( 'igs-cloud', 'Faster consolidation', 'Faster data consolidation across cloud and on-prem systems.' ),
-				array( 'igs-grid', 'All data types', 'Supports all data types.' ),
-				array( 'igs-sync', 'Mapping tasks & sync', 'Enables Mapping Tasks and Data Synchronization.' ),
-				array( 'igs-nodes', 'Native database integration', 'Integrates natively with other databases like MySQL, Oracle, and BigQuery.' ),
-				array( 'igs-bolt', 'Agentic AI-enabled intelligence', 'With Agentic AI-enabled intelligence, Bigtable integrations powered by Infometry go beyond data pipelines — enabling adaptive ETL, smart query optimization, and automated data-driven decisioning for enterprises.' ),
-			),
-		),
-		array(
-			'type'   => 'steps',
-			'kicker' => 'How it works',
-			'h2'     => 'How Can You Use Our Connector',
-			'p'      => 'From the Informatica Marketplace to a live Bigtable pipeline in IDMC.',
-			'steps'  => array(
-				array(
-					'label' => 'Enable',
-					'title' => 'Enable it from IDMC',
-					'text'  => 'Enable it directly from IDMC (formerly IICS) and reach out to us for license activation.',
-					'ui'    => array( 'type' => 'toggle', 'bar' => array( $idmc, 'IDMC · Add-on connectors' ), 'rows' => array( array( 'Salesforce Connector', true ), array( 'Google BigTable Connector', 'by Infometry', $bt ), array( 'Workday Connector', false ) ) ),
-				),
-				array(
-					'label' => 'Request',
-					'title' => 'Request a free trial',
-					'text'  => 'Go to <a href="' . $marketplace_url . '" target="_blank" rel="noopener">Informatica Marketplace</a>, search for Infometry’s Connector for Informatica, and click on the Start Free Trial button.',
-					'ui'    => array( 'type' => 'search', 'query' => 'Google BigTable', 'result' => array( $bt, 'Google BigTable Connector', 'Infometry · Certified' ), 'cta' => 'Start Free Trial' ),
-				),
-				array(
-					'label' => 'Activate',
-					'title' => 'Activate your license',
-					'text'  => array( 'Two licensing options available: Trial license (30 days) & Paid subscription license', 'For paid or subscription licenses, contact us and we’ll help with provisioning.' ),
-					'ui'    => array( 'type' => 'license', 'title' => 'License · Trial', 'sub' => 'Trial or paid subscription', 'badge' => 'Active', 'meter' => '<b>30 days</b> trial license' ),
-				),
-			),
-		),
-		array(
-			'type'       => 'pipe',
-			'kicker'     => 'Connectivity',
-			'h2'         => 'Bigtable to every source or target in IDMC',
-			'p'          => 'Move Bigtable rows into enterprise data warehouses, data lakes and cloud or on-premises applications through one certified connector.',
-			'source'     => array( $bt, 'Google Cloud Bigtable', 'Source & target', array( 'Read', 'Insert', 'Delete', 'Row key', 'Columns' ) ),
-			'hub'        => array( $idmc, 'Informatica IDMC', 'Infometry Google BigTable Connector', array( 'Mapping Task', 'Data Sync' ) ),
-			'groups'     => array(
-				array( 'violet', 'igs-db', 'Databases & Warehouses', 'Relational, columnar & cloud warehouses', array( array( 'Snowflake', $e . 'snowflake.png' ), array( 'Oracle', $e . 'oracle.png' ), array( 'SQL Server', $e . 'sqlserver.png' ), array( 'MySQL', 'svg:igs-db' ), array( 'BigQuery', 'svg:pg-table' ) ) ),
-				array( 'blue', 'igs-layers', 'Data Lakes', 'Petabyte-scale storage', array( array( 'Databricks', $e . 'databricks.png' ), array( 'AWS', $e . 'aws.png' ), array( 'Azure', $e . 'azure.png' ) ) ),
-				array( 'orange', 'igs-cloud', 'Cloud & On-prem Apps', 'Continuous data sync', array( array( 'Salesforce', $e . 'salesforce.png' ), array( 'NetSuite', $e . 'netsuite.png' ), array( 'SAP', $e . 'sap.png' ), array( 'Workday', $e . 'workday.png' ) ) ),
-			),
-			'foot_label' => 'Works with',
-			'foot'       => array( array( 'pg-row', 'Row-level operations' ), array( 'igs-layers', 'Column families' ), array( 'igs-grid', 'All data types' ), array( 'igs-sync', 'Data Synchronization' ), array( 'igs-cloud', 'Cloud & on-prem' ) ),
-		),
-		array(
-			'type'   => 'features',
-			'tint'   => true,
-			'kicker' => 'Features',
-			'h2'     => 'Features of Google BigTable Connector',
-			'p'      => 'Infometry’s Google Connectors are 100% Informatica Certified and provide native interfaces. Our Connectors enable seamless integration and real-time Data Analytics. Infometry’s Google Connector for Informatica enables easy application integration, data extraction for downstream applications, and ETL for Enterprise Data Warehouse.',
-			'items'  => array(
-				array( 'igs-shield', 'Certified native interface', '100% Informatica Certified native interface.' ),
-				array( 'igs-chart', 'Real-time analytics', 'Real-Time Data Analytics powered by direct integration.' ),
-				array( 'igs-layers', 'Rows & column families', 'Supports row-level and column-family operations.' ),
-				array( 'pg-rocket', 'Operations at scale', 'Enables read, insert, and delete operations at scale.' ),
-				array( 'igs-sync', 'Sync & ETL ready', 'Data Synchronization & ETL-ready for enterprise workloads.' ),
-				array( 'igs-db', 'Apps & databases', 'Integrates with enterprise apps and databases including Oracle, MySQL, and BigQuery.' ),
-				array( 'igs-bolt', 'Agentic AI Advantage', 'Adaptive, self-optimizing pipelines that intelligently manage queries, automate workflows, and improve decision-making from Bigtable datasets.', true ),
-			),
-		),
-		array(
-			'type'       => 'videos',
-			'kicker'     => 'See it in action',
-			'h2'         => 'Learn About Google BigTable Connector',
-			'p'          => 'A quick walkthrough of the connector in Informatica IDMC.',
-			'logos'      => array( $bt, $idmc ),
-			'series'     => 'Knowledge series',
-			'list_title' => 'Videos',
-			'videos'     => array( array( '9nnH7rYPX80', 'Infometry’s Google BigTable Connector for Informatica', 'Overview' ) ),
-			'aside'      => array( 'title' => 'Have a Bigtable use case?', 'text' => 'Talk to our connector team about your workloads.', 'btns' => array( array( 'Contact us', home_url( '/contact-us/' ) ) ) ),
-		),
-		array(
-			'type'   => 'uses',
-			'kicker' => 'Use cases',
-			'h2'     => 'Popular Use Cases',
-			'items'  => array(
-				array( 'tone' => 'blue', 'from' => array( $bt ), 'to' => array( $e . 'snowflake.png', $e . 'databricks.png', $e . 'aws.png' ), 'title' => 'Bigtable to warehouses & lakes', 'text' => 'Consolidating massive operational datasets into Data Warehouses and Data Lakes.', 'tags' => array( 'Consolidation', 'Warehouse · Lake' ) ),
-				array( 'tone' => 'violet', 'from' => array( $bt ), 'to' => array( 'svg:igs-chart' ), 'title' => 'Real-time petabyte analytics', 'text' => 'Running real-time analytics on petabyte-scale Bigtable datasets.', 'tags' => array( 'Real-time', 'Petabyte scale' ) ),
-				array( 'tone' => 'amber', 'from' => array( $e . 'salesforce.png', $e . 'netsuite.png', $e . 'oracle.png' ), 'via' => 'igs-sync', 'to' => array( $bt ), 'title' => 'Continuous app sync', 'text' => 'Integrating Bigtable with cloud and on-prem applications for continuous data sync.', 'tags' => array( 'Cloud & on-prem', 'Continuous sync' ) ),
-				array( 'tone' => 'blue', 'from' => array( $bt ), 'to' => array( 'svg:igs-bolt' ), 'title' => 'Agentic AI pipelines', 'text' => 'Using Agentic AI-powered pipelines to optimize queries, detect anomalies, and drive predictive insights.', 'tags' => array( 'Agentic AI', 'Predictive insights' ) ),
-			),
-			'note'   => 'Infometry’s Google Bigtable Connector for Informatica ensures fast, reliable, and intelligent data integration, making it the perfect choice for enterprises building scalable, AI-driven data platforms.',
-		),
-		array(
-			'type'   => 'plans',
-			'kicker' => 'Licensing',
-			'h2'     => 'Try it free, then go to production',
-			'p'      => 'Two licensing options: a 30-day trial license and a paid subscription license.',
-			'plans'  => array(
-				array( 'icon' => 'igs-calendar', 'title' => '30-Day Trial', 'items' => array( 'Trial license valid for 30 days', 'Request it from the Informatica Marketplace', 'Or enable it directly from IDMC (formerly IICS)' ), 'btn' => array( 'Start Free Trial', '#freetrial' ) ),
-				array( 'dark' => true, 'icon' => 'igs-layers', 'title' => 'Paid Subscription', 'items' => array( 'Annual subscription license for a given OrgID', 'Unlimited usage of the connectors within an OrgID', 'Charged by Prod and Non-Prod licenses, not by data size or rows', 'New releases auto-updated and free of charge' ), 'btn' => array( 'Talk to Sales', home_url( '/contact-us/' ) ) ),
-			),
-		),
-	),
 	'faq'         => array(
 		'intro' => 'Licensing, updates, support and security: what teams ask before they connect Google Bigtable to Informatica IDMC.',
 		'help'  => 'Support is available 24/7 with local time-zone coverage.',
@@ -327,11 +149,9 @@ $pg_cta = function ( $c ) use ( $pg_html ) {
 	</section>
 	<?php
 };
-$h = $pg['hero'];
-$o = $pg['overview'];
-?>
-<main class="igs-page pg-page <?php echo esc_attr( $pg['class'] ); ?>" id="igs-main">
-	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+/** Page icons (pg-*) on top of the shared igs-* sprite. */
+$pg_sprite = function () {
+	?>
 	<svg class="igs-sprite" aria-hidden="true" focusable="false">
 		<symbol id="pg-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
 		<symbol id="pg-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
@@ -355,443 +175,238 @@ $o = $pg['overview'];
 		<symbol id="pg-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9Z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15V3.5Z"/></symbol>
 		<symbol id="pg-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l1-3.5-3.5-1M20 13.5l-1 3.5 3.5 1M4 13.5 5 17l-3.5 1M20 10.5 19 7l3.5-1"/></symbol>
 	</svg>
+	<?php
+};
+$bt_rows = array(
+	array( 'user#1042#20261121', 'Emily Carter', 'US', '1,317', '$428.10' ),
+	array( 'user#1042#20261120', 'Emily Carter', 'US', '1,284', '$412.90' ),
+	array( 'user#2219#20261121', 'Liam Smith', 'UK', '846', '$203.55' ),
+	array( 'user#3307#20261121', 'Ana Ruiz', 'ES', '2,051', '$690.00' ),
+	array( 'user#4410#20261122', 'Kenji Mori', 'JP', '1,102', '$356.75' ),
+	array( 'user#5126#20261122', 'Priya Nair', 'IN', '1,733', '$512.40' ),
+);
+$bt_connector = array(
+	'Read, Write, or Delete data to Bigtable using Infometry’s Connector for Informatica.',
+	'Supports Enterprise-Level Data Flows.',
+	'Handles billions of rows and thousands of columns without performance loss.',
+	'Faster data consolidation across cloud and on-prem systems.',
+	'Supports all data types.',
+	'Enables Mapping Tasks and Data Synchronization.',
+	'Integrates natively with other databases like MySQL, Oracle, and BigQuery.',
+);
+$bt_features = array(
+	array( 'igs-shield', '100% Informatica Certified native interface.', 'is-a' ),
+	array( 'igs-chart', 'Real-Time Data Analytics powered by direct integration.', 'is-b' ),
+	array( 'igs-layers', 'Supports row-level and column-family operations.', 'is-a' ),
+	array( 'pg-rocket', 'Enables read, insert, and delete operations at scale.', 'is-b' ),
+	array( 'igs-sync', 'Data Synchronization & ETL-ready for enterprise workloads.', 'is-a' ),
+	array( 'igs-db', 'Integrates with enterprise apps and databases including Oracle, MySQL, and BigQuery.', 'is-b' ),
+);
+?>
+<main class="igs-page pg-page bt-page" id="igs-main">
+	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+	<?php $pg_sprite(); ?>
 
-	<!-- Hero -->
-	<section class="igs-hero" aria-labelledby="pg-title">
-		<div class="igs-shell igs-hero-grid">
+	<!-- Hero: a wide-column table being scanned by row key -->
+	<section class="igs-hero bt-hero" aria-labelledby="bt-title">
+		<div class="igs-shell igs-hero-grid bt-hero-grid">
 			<div class="igs-hero-copy">
-				<span class="igs-badge"><i></i><?php echo esc_html( $h['badge'] ); ?></span>
-				<h1 id="pg-title"><?php $pg_html( $h['h1'] ); ?></h1>
-				<p><?php $pg_html( $h['lead'] ); ?></p>
-				<?php if ( ! empty( $h['lead2'] ) ) : ?><p class="pg-lead2"><?php $pg_html( $h['lead2'] ); ?></p><?php endif; ?>
+				<span class="igs-badge"><i></i>100% Informatica Certified · IDMC (formerly IICS)</span>
+				<h1 id="bt-title">Infometry’s Google BigTable Connector for <em>Informatica</em></h1>
+				<p>Infometry’s Google Bigtable Connector for Informatica IDMC is 100% Informatica Certified, providing seamless integration and real-time Data Analytics. With Infometry’s connector, you can read, insert, and delete data from Google Bigtable effortlessly. It enables seamless data retrieval, column reading, row insertion, and row deletion using a row key.</p>
 				<div class="igs-actions">
-					<?php $pg_btn( $h['primary'], 'igs-btn-primary' ); ?>
-					<?php $pg_btn( $h['secondary'], 'igs-btn-ghost' ); ?>
-				</div>
-				<div class="igs-ops-bar">
-					<span><?php echo esc_html( $h['ops_label'] ); ?></span>
-					<ul class="igs-ops" aria-label="<?php echo esc_attr( $h['ops_label'] ); ?>">
-						<?php foreach ( $h['ops'] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?>
-					</ul>
+					<a class="igs-btn igs-btn-primary x-btn" href="#freetrial">Free Trial <svg><use href="#igs-arrow"/></svg></a>
+					<a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download User Guide</a>
 				</div>
 				<div class="igs-proof">
-					<?php foreach ( $h['proof'] as $proof ) : ?>
-						<a href="<?php echo esc_url( $proof[0] ); ?>"<?php echo 0 === strpos( $proof[0], 'http' ) ? ' target="_blank" rel="noopener"' : ''; ?>><span class="igs-proof-icon<?php echo ! empty( $proof[4] ) ? ' ' . esc_attr( $proof[4] ) : ''; ?>"><?php $pgi( $proof[1] ); ?></span><span><b><?php echo esc_html( $proof[2] ); ?></b><small><?php echo esc_html( $proof[3] ); ?></small></span><svg><use href="#igs-out"/></svg></a>
-					<?php endforeach; ?>
+					<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon"><?php $pgi( $idmc ); ?></span><span><b>Informatica Marketplace</b><small>Certified listing</small></span><svg><use href="#igs-out"/></svg></a>
+					<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><span class="igs-proof-icon is-g2"><svg><use href="#igs-star"/></svg></span><span><b>G2 Product Reviews</b><small>See customer feedback</small></span><svg><use href="#igs-out"/></svg></a>
 				</div>
 			</div>
 
-			<div class="igs-flow" data-igs-live data-igs-fx-verb="<?php echo esc_attr( $h['sheet']['verb'] ); ?>" aria-label="<?php echo esc_attr( $h['aria'] ); ?>">
-				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-sheet <?php echo esc_attr( $pg['sheet_class'] ); ?>" data-igs-sheet>
-					<header>
-						<span class="igs-sheet-icon"><?php $pgi( $h['sheet']['icon'] ); ?></span>
-						<span class="igs-sheet-name"><b><?php echo esc_html( $h['sheet']['title'] ); ?></b><small><?php echo esc_html( $h['sheet']['sub'] ); ?></small></span>
-						<span class="igs-sheet-live"><i></i><?php echo esc_html( $h['sheet']['live'] ); ?></span>
-					</header>
-					<div class="igs-sheet-fx"><b><?php echo esc_html( $h['sheet']['fx_label'] ); ?></b><span data-igs-fx><?php echo esc_html( $h['sheet']['fx'] ); ?></span></div>
-					<div class="igs-sheet-grid">
-						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
-						<table>
-							<thead>
-								<tr class="igs-sheet-cols"><th></th><?php foreach ( $h['sheet']['letters'] as $letter ) : ?><th><?php echo esc_html( $letter ); ?></th><?php endforeach; ?></tr>
-								<tr><th>1</th><?php foreach ( $h['sheet']['cols'] as $col ) : ?><th><?php echo esc_html( $col ); ?></th><?php endforeach; ?></tr>
-							</thead>
-							<tbody>
-								<?php foreach ( $h['sheet']['rows'] as $i => $row ) : ?>
-									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
-					</div>
-					<footer aria-hidden="true"><?php foreach ( $h['sheet']['tabs'] as $t => $tab ) : ?><span<?php echo 0 === $t ? ' class="is-on"' : ''; ?>><?php echo esc_html( $tab ); ?></span><?php endforeach; ?><i>+</i></footer>
+			<div class="bt-explorer" data-bt-explorer aria-label="Animated example: the Infometry connector scans a Google Cloud Bigtable table by row key, reads cells from two column families and sends them to Informatica IDMC">
+				<div class="bt-x-top" aria-hidden="true">
+					<span class="bt-x-logo"><?php $pgi( $bt ); ?></span>
+					<div><b>customer_events</b><small>instance prod-analytics · us-central1</small></div>
+					<span class="bt-x-nodes"><i></i><i></i><i></i>3 nodes</span>
 				</div>
-				<div class="igs-core" data-igs-core>
-					<span class="igs-core-icon"><?php $pgi( $h['core']['icon'] ); ?></span>
-					<strong><?php echo esc_html( $h['core']['title'] ); ?></strong>
-					<small><?php echo esc_html( $h['core']['sub'] ); ?></small>
-					<span class="igs-core-modes"><?php foreach ( $h['core']['modes'] as $mode ) : ?><b><?php echo esc_html( $mode ); ?></b><?php endforeach; ?></span>
+				<div class="bt-x-scan x-mono" aria-hidden="true"><span>SCAN</span> prefix <b>user#</b> · limit 6 <em data-bt-status>reading…</em></div>
+				<div class="bt-x-table" aria-hidden="true">
+					<div class="bt-x-fam"><span></span><span class="is-a">cf: profile</span><span class="is-b">cf: metrics</span></div>
+					<div class="bt-x-row is-head"><span>row key ↓ sorted</span><span>name</span><span>country</span><span>clicks</span><span>spend</span></div>
+					<?php foreach ( $bt_rows as $i => $row ) : ?>
+						<div class="bt-x-row" data-bt-row>
+							<span class="x-mono"><?php echo esc_html( $row[0] ); ?></span>
+							<span><?php echo esc_html( $row[1] ); ?></span>
+							<span><?php echo esc_html( $row[2] ); ?></span>
+							<span><?php echo esc_html( $row[3] ); ?><?php if ( 0 === $i ) : ?><i class="bt-x-ver" title="3 versions">3</i><?php endif; ?></span>
+							<span><?php echo esc_html( $row[4] ); ?></span>
+						</div>
+					<?php endforeach; ?>
+					<div class="bt-x-more">… billions more rows</div>
 				</div>
-				<div class="igs-eco" data-igs-eco>
-					<header><b><?php echo esc_html( $h['eco']['title'] ); ?></b><small><?php echo esc_html( $h['eco']['sub'] ); ?></small></header>
-					<ul>
-						<?php foreach ( $h['eco']['items'] as $target ) : ?>
-							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>"><span><?php $pgi( $target[1], '', 'igs-pipe-generic' ); ?></span><small><?php echo esc_html( $target[0] ); ?></small></li>
-						<?php endforeach; ?>
-					</ul>
-					<footer><?php echo esc_html( $h['eco']['foot'] ); ?></footer>
+				<div class="bt-versions" aria-hidden="true">
+					<b>metrics:clicks</b>
+					<span class="is-now"><em>t3</em>1,317<small>now</small></span>
+					<span><em>t2</em>1,284<small>−1 day</small></span>
+					<span><em>t1</em>1,190<small>−2 days</small></span>
 				</div>
-				<div class="igs-toast" data-igs-toast>
-					<span><svg><use href="#igs-check"/></svg></span>
-					<div><b><?php echo esc_html( $h['toast'][0] ); ?></b><small><?php echo esc_html( $h['toast'][1] ); ?></small></div>
+				<div class="bt-x-out" aria-hidden="true">
+					<span class="bt-x-chip"><?php $pgi( $idmc ); ?>Informatica IDMC</span>
+					<span class="bt-x-flow"><i></i></span>
+					<span class="bt-x-chip"><?php $pgi( $e . 'snowflake.png' ); ?>Snowflake</span>
+					<span class="bt-x-chip"><?php $pgi( $e . 'oracle.png' ); ?>Oracle</span>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Overview -->
-	<section class="igs-section igs-overview" aria-labelledby="pg-overview-title">
-		<div class="igs-shell igs-ov">
-			<div class="igs-ov-copy" data-igs-reveal>
-				<span class="igs-kicker"><?php echo esc_html( $o['kicker'] ); ?></span>
-				<h2 id="pg-overview-title"><?php $pg_html( $o['h2'] ); ?></h2>
-				<?php foreach ( $o['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?>
-				<?php if ( ! empty( $o['sets'] ) ) : ?>
-					<ul class="igs-ov-sets" aria-label="<?php echo esc_attr( $o['sets_label'] ); ?>">
-						<?php foreach ( $o['sets'] as $set ) : ?><li><?php echo esc_html( $set ); ?></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['checks'] ) ) : ?>
-					<ul class="pg-checks">
-						<?php foreach ( $o['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><span><?php $pg_html( $check ); ?></span></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['points'] ) ) : ?>
-					<div class="igs-ov-points<?php echo count( $o['points'] ) > 2 ? ' pg-points-many' : ''; ?>">
-						<?php foreach ( $o['points'] as $point ) : ?>
-							<div><span><svg><use href="#<?php echo esc_attr( $point[0] ); ?>"/></svg></span><?php echo ! empty( $point[3] ) ? '<h3>' . esc_html( $point[1] ) . '</h3>' : '<b>' . esc_html( $point[1] ) . '</b>'; ?><p><?php $pg_html( $point[2] ); ?></p></div>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['btn'] ) ) : ?><p class="pg-ov-btn"><?php $pg_btn( $o['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
+	<!-- How Bigtable works: one row, exploded -->
+	<section class="x-sec bt-works" aria-labelledby="bt-works-title">
+		<div class="igs-shell x-grid2">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">Wide-column storage</span>
+				<h2 id="bt-works-title">How Google Cloud <em>Bigtable</em> Works</h2>
+				<p>Google Cloud Bigtable is a highly scalable, sparsely populated table designed to handle billions of rows and thousands of columns, making it ideal for storing terabytes to petabytes of data. It operates as a distributed, persistent, multidimensional sorted map, widely used for large-scale analytics and operational workloads.</p>
+				<ol class="bt-notes">
+					<li><b>1</b><p>Google Cloud Bigtable structures data in massively scalable tables, functioning as a sorted key/value map.</p></li>
+					<li><b>2</b><p>Each table consists of rows representing individual entities and columns storing corresponding values.</p></li>
+					<li><b>3</b><p>Rows are indexed using a unique row key, while related columns are grouped into column families.</p></li>
+					<li><b>4</b><p>Each column is uniquely identified by a combination of the column family and a column qualifier.</p></li>
+				</ol>
 			</div>
-
-			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
-				<svg class="igs-ov-wires" viewBox="0 0 500 400" preserveAspectRatio="none" focusable="false">
-					<path id="pg-ov-p0" class="is-in" d="M196 200 H222"/>
-					<path id="pg-ov-p1" d="M278 200 C305 200 300 84 330 84"/>
-					<path id="pg-ov-p2" d="M278 200 H330"/>
-					<path id="pg-ov-p3" d="M278 200 C305 200 300 316 330 316"/>
-					<circle class="igs-ov-dot is-in" r="3.5"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#pg-ov-p0"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#pg-ov-p1"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".6s"><mpath href="#pg-ov-p2"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#pg-ov-p3"/></animateMotion></circle>
-				</svg>
-				<span class="igs-ov-label is-left"><?php echo esc_html( $o['labels'][0] ); ?></span>
-				<span class="igs-ov-label is-right"><?php echo esc_html( $o['labels'][1] ); ?></span>
-				<div class="igs-ov-deck">
-					<div class="igs-ov-sheet is-back2"><header><?php $pgi( $o['deck'][0][0] ); ?><b><?php echo esc_html( $o['deck'][0][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-back1"><header><?php $pgi( $o['deck'][1][0] ); ?><b><?php echo esc_html( $o['deck'][1][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-front">
-						<header><?php $pgi( $o['deck'][2][0] ); ?><b><?php echo esc_html( $o['deck'][2][1] ); ?></b></header>
-						<div class="igs-ov-rows"><i></i><i></i><i></i><i></i></div>
-						<svg class="igs-ov-spark" viewBox="0 0 100 30" preserveAspectRatio="none" focusable="false"><path d="M0 24 18 20 34 22 50 12 66 15 82 6 100 8"/></svg>
+			<figure class="bt-anatomy" data-igs-reveal aria-label="Anatomy of a Bigtable table: a sorted map of row keys to column families, column qualifiers and cells">
+				<figcaption><span class="x-mono">table</span> customer_events <small>sorted key/value map</small><i>1</i></figcaption>
+				<div class="bt-an-row">
+					<div class="bt-an-key"><small>row key</small><b class="x-mono">user#1042#20261121</b><i>3</i></div>
+					<div class="bt-an-fams">
+						<div class="bt-an-fam is-a">
+							<header><span>column family</span><b>profile</b></header>
+							<div><code>profile:<b>name</b></code><span>Emily Carter</span></div>
+							<div><code>profile:<b>country</b></code><span>US</span></div>
+						</div>
+						<div class="bt-an-fam is-b">
+							<header><span>column family</span><b>metrics</b><i>4</i></header>
+							<div><code>metrics:<b>clicks</b></code><span>1,317</span></div>
+							<div><code>metrics:<b>spend</b></code><span>$428.10</span></div>
+						</div>
 					</div>
 				</div>
-				<div class="igs-ov-core">
-					<span class="igs-ov-orbit"></span>
-					<span class="igs-ov-orb"><svg><use href="#<?php echo esc_attr( $o['core_icon'] ); ?>"/></svg></span>
-					<small><?php $pg_html( $o['core'] ); ?></small>
+				<div class="bt-an-rows"><span>row = one entity</span><i>2</i><em class="x-mono">user#1042#20261120</em><em class="x-mono">user#2219#20261121</em><em class="x-mono">user#3307#20261121</em></div>
+			</figure>
+		</div>
+	</section>
+
+	<!-- The connector: scale meter + capabilities -->
+	<section class="x-sec x-dark bt-conn" aria-labelledby="bt-conn-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">The connector</span>
+				<h2 id="bt-conn-title">Informatica Google BigTable Connector</h2>
+			</div>
+			<div class="bt-conn-grid">
+				<div class="bt-scale" data-igs-reveal aria-hidden="true">
+					<div class="bt-scale-dim"><b>10<sup>9</sup></b><span>rows</span></div>
+					<i>×</i>
+					<div class="bt-scale-dim"><b>10<sup>3</sup></b><span>columns</span></div>
+					<div class="bt-scale-bars"><?php for ( $k = 0; $k < 28; $k++ ) : ?><i style="--d:<?php echo (int) ( $k * 70 ); ?>ms;--h:<?php echo (int) ( 30 + ( ( $k * 37 ) % 70 ) ); ?>%"></i><?php endfor; ?></div>
+					<small>terabytes → petabytes · without performance loss</small>
 				</div>
-				<ul class="igs-ov-dest">
-					<?php foreach ( $o['dest'] as $dest ) : ?>
-						<li><span><svg><use href="#<?php echo esc_attr( $dest[0] ); ?>"/></svg></span><b><?php echo esc_html( $dest[1] ); ?></b><i><?php foreach ( $dest[2] as $spec ) { $pgi( $spec, '', 'igs-pipe-generic' ); } ?></i></li>
+				<ul class="bt-caps" data-igs-reveal>
+					<?php foreach ( $bt_connector as $i => $line ) : ?>
+						<li><span class="x-mono"><?php echo esc_html( sprintf( '%02d', $i + 1 ) ); ?></span><?php echo esc_html( $line ); ?></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
+			<p class="bt-ai" data-igs-reveal><svg><use href="#igs-bolt"/></svg><span>With Agentic AI-enabled intelligence, Bigtable integrations powered by Infometry go beyond data pipelines — enabling adaptive ETL, smart query optimization, and automated data-driven decisioning for enterprises.</span></p>
+			<div class="bt-links" data-igs-reveal>
+				<a href="#freetrial"><svg><use href="#igs-arrow"/></svg>Free Trial</a>
+				<a href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg>Download User Guide</a>
+				<a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-out"/></svg>Informatica Marketplace</a>
+				<a href="<?php echo esc_url( $g2_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-star"/></svg>G2 Product Reviews</a>
+			</div>
 		</div>
 	</section>
 
-	<?php foreach ( $pg['blocks'] as $bi => $b ) : ?>
-		<?php
-		$bid  = 'pg-b' . $bi;
-		$type = $b['type'];
-		$head = function ( $light = false ) use ( $b, $bid, $pg_html ) {
-			if ( empty( $b['h2'] ) ) {
-				return;
-			}
-			?>
-			<div class="igs-head<?php echo $light ? ' is-light' : ''; ?>" data-igs-reveal>
-				<?php if ( ! empty( $b['kicker'] ) ) : ?><span class="igs-kicker"><?php echo esc_html( $b['kicker'] ); ?></span><?php endif; ?>
-				<h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2>
-				<?php if ( ! empty( $b['sub'] ) ) : ?><h3 class="pg-head-sub"><?php echo esc_html( $b['sub'] ); ?></h3><?php endif; ?>
-				<?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?>
+	<!-- How to use: a horizontal track -->
+	<section class="x-sec bt-how" aria-labelledby="bt-how-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Get started</span>
+				<h2 id="bt-how-title">How Can You Use Our Connector</h2>
 			</div>
-			<?php
-		};
-		$labelled = ! empty( $b['h2'] ) ? ' aria-labelledby="' . esc_attr( $bid ) . '"' : '';
-		?>
+			<ol class="bt-track" data-igs-reveal>
+				<li><span class="bt-node"><svg><use href="#pg-search"/></svg></span><em>Marketplace</em><p>Go to <a href="<?php echo esc_url( $marketplace_url ); ?>" target="_blank" rel="noopener">Informatica Marketplace</a>, search for Infometry’s Connector for Informatica, and click on the Start Free Trial button.</p></li>
+				<li><span class="bt-node"><svg><use href="#igs-chat"/></svg></span><em>Provisioning</em><p>For paid or subscription licenses, contact us and we’ll help with provisioning.</p></li>
+				<li><span class="bt-node"><?php $pgi( $idmc ); ?></span><em>IDMC</em><p>Enable it directly from IDMC (formerly IICS) and reach out to us for license activation.</p></li>
+				<li><span class="bt-node"><svg><use href="#igs-key"/></svg></span><em>License</em><p>Two licensing options available: Trial license (30 days) &amp; Paid subscription license</p><span class="bt-lic"><b>30-day trial</b><b>Paid subscription</b></span></li>
+			</ol>
+		</div>
+	</section>
 
-		<?php if ( 'features' === $type ) : ?>
-			<section class="igs-section igs-capabilities pg-features<?php echo ! empty( $b['tint'] ) ? ' is-tint' : ''; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-feature-grid pg-cols-<?php echo (int) ( isset( $b['cols'] ) ? $b['cols'] : 4 ); ?>">
-						<?php foreach ( $b['items'] as $i => $item ) : ?>
-							<article class="igs-feature is-c<?php echo (int) ( $i % 4 ); ?><?php echo ! empty( $item[3] ) ? ' is-wide' : ''; ?>" data-igs-reveal>
-								<span><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span>
-								<h3><?php echo esc_html( $item[1] ); ?></h3>
-								<p><?php $pg_html( $item[2] ); ?></p>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['btn'] ) ) : ?><p class="pg-center" data-igs-reveal><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
-				</div>
-			</section>
+	<!-- Features: tiles coloured like column families -->
+	<section class="x-sec x-soft bt-feat" aria-labelledby="bt-feat-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Features</span>
+				<h2 id="bt-feat-title">Features of Google BigTable Connector</h2>
+				<p>Infometry’s Google Connectors are 100% Informatica Certified and provide native interfaces. Our Connectors enable seamless integration and real-time Data Analytics. Infometry’s Google Connector for Informatica enables easy application integration, data extraction for downstream applications, and ETL for Enterprise Data Warehouse.</p>
+			</div>
+			<div class="bt-cells">
+				<?php foreach ( $bt_features as $i => $f ) : ?>
+					<article class="bt-cell <?php echo esc_attr( $f[2] ); ?>" data-igs-reveal>
+						<header><code class="x-mono"><?php echo esc_html( 'is-a' === $f[2] ? 'connector:' : 'analytics:' ); ?><b><?php echo esc_html( sprintf( 'f%02d', $i + 1 ) ); ?></b></code><span><svg><use href="#<?php echo esc_attr( $f[0] ); ?>"/></svg></span></header>
+						<p><?php echo esc_html( $f[1] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+				<article class="bt-cell is-ai" data-igs-reveal>
+					<header><code class="x-mono">agentic:<b>ai</b></code><span><svg><use href="#igs-bolt"/></svg></span></header>
+					<p><b>Agentic AI Advantage</b> – Adaptive, self-optimizing pipelines that intelligently manage queries, automate workflows, and improve decision-making from Bigtable datasets.</p>
+				</article>
+			</div>
+		</div>
+	</section>
 
-		<?php elseif ( 'plans' === $type ) : ?>
-			<section class="igs-section igs-license pg-plans"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="<?php echo 3 === count( $b['plans'] ) ? 'igs-use-grid' : 'igs-license-grid'; ?>">
-						<?php foreach ( $b['plans'] as $plan ) : ?>
-							<article class="igs-plan<?php echo ! empty( $plan['dark'] ) ? ' is-dark' : ''; ?>" data-igs-reveal>
-								<header><span><svg><use href="#<?php echo esc_attr( $plan['icon'] ); ?>"/></svg></span><?php echo ! empty( $plan['h2'] ) ? '<h2 class="pg-plan-h">' . esc_html( $plan['title'] ) . '</h2>' : '<h3>' . esc_html( $plan['title'] ) . '</h3>'; ?></header>
-								<?php if ( ! empty( $plan['intro'] ) ) : ?><p class="pg-plan-intro"><?php $pg_html( $plan['intro'] ); ?></p><?php endif; ?>
-								<ul>
-									<?php foreach ( $plan['items'] as $item ) : ?>
-										<li><svg><use href="#igs-check"/></svg><span><?php if ( is_array( $item ) ) : ?><?php echo ! empty( $plan['item_h3'] ) ? '<h3 class="pg-li-h">' . esc_html( $item[0] ) . '</h3>' : '<b>' . esc_html( $item[0] ) . '</b> '; ?><?php $pg_html( $item[1] ); ?><?php else : ?><?php $pg_html( $item ); ?><?php endif; ?></span></li>
-									<?php endforeach; ?>
-								</ul>
-								<?php if ( ! empty( $plan['btn'] ) ) : ?><?php $pg_btn( $plan['btn'], ! empty( $plan['dark'] ) ? 'igs-btn-primary' : 'igs-btn-outline' ); ?><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-				</div>
-			</section>
+	<!-- Video -->
+	<section class="x-sec bt-video" aria-labelledby="bt-video-title">
+		<div class="igs-shell bt-video-grid">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">See it in action</span>
+				<h2 id="bt-video-title">Learn About Google BigTable Connector</h2>
+				<p>A walkthrough of reading, inserting and deleting Bigtable data from Informatica IDMC.</p>
+				<p><a class="igs-btn igs-btn-primary" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact us <svg><use href="#igs-arrow"/></svg></a></p>
+			</div>
+			<a class="bt-player" href="https://www.youtube.com/watch?v=9nnH7rYPX80" target="_blank" rel="noopener" data-igs-video="9nnH7rYPX80" data-igs-reveal>
+				<span class="bt-player-grid" aria-hidden="true"><?php for ( $k = 0; $k < 40; $k++ ) : ?><i></i><?php endfor; ?></span>
+				<span class="bt-player-logos" aria-hidden="true"><span><?php $pgi( $bt ); ?></span><span><?php $pgi( $idmc ); ?></span></span>
+				<span class="bt-player-play" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
+				<span class="bt-player-cap"><em>Video</em><b>Infometry’s Google BigTable Connector for Informatica</b></span>
+			</a>
+		</div>
+		<div class="igs-modal" data-igs-modal hidden>
+			<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Video">
+				<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
+				<div class="igs-modal-frame" data-igs-frame></div>
+			</div>
+		</div>
+	</section>
 
-		<?php elseif ( 'steps' === $type ) : ?>
-			<section class="igs-section igs-steps-section"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<ol class="igs-steps<?php echo 4 === count( $b['steps'] ) ? ' pg-steps-4' : ''; ?>" data-igs-steps>
-						<?php foreach ( $b['steps'] as $si => $step ) : ?>
-							<?php $ui = $step['ui']; ?>
-							<li class="is-s<?php echo (int) $si + 1; ?>">
-								<div class="igs-step-head"><b><?php echo esc_html( sprintf( '%02d', $si + 1 ) ); ?></b><span><?php echo esc_html( $step['label'] ); ?></span></div>
-								<div class="igs-step-ui" aria-hidden="true">
-									<?php if ( 'toggle' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<?php if ( ! empty( $row[2] ) ) : ?>
-												<div class="igs-ui-row is-main"><?php $pgi( $row[2] ); ?><span><?php echo esc_html( $row[0] ); ?><small><?php echo esc_html( $row[1] ); ?></small></span><em class="igs-ui-switch is-flip"></em></div>
-											<?php else : ?>
-												<div class="igs-ui-row is-muted"><i></i><span><?php echo esc_html( $row[0] ); ?></span><em class="igs-ui-switch<?php echo ! empty( $row[1] ) ? ' is-on' : ''; ?>"></em></div>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									<?php elseif ( 'search' === $ui['type'] ) : ?>
-										<div class="igs-ui-search"><svg><use href="#igs-out"/></svg><span class="igs-ui-type" style="--n:<?php echo (int) strlen( $ui['query'] ); ?>"><?php echo esc_html( $ui['query'] ); ?></span></div>
-										<div class="igs-ui-result"><?php $pgi( $ui['result'][0] ); ?><span><?php echo esc_html( $ui['result'][1] ); ?><small><?php echo esc_html( $ui['result'][2] ); ?></small></span></div>
-										<span class="igs-ui-cta"><?php echo esc_html( $ui['cta'] ); ?></span>
-									<?php elseif ( 'license' === $ui['type'] ) : ?>
-										<div class="igs-ui-license"><span><svg><use href="#igs-key"/></svg></span><div><b><?php echo esc_html( $ui['title'] ); ?></b><small><?php echo esc_html( $ui['sub'] ); ?></small></div><em><?php echo esc_html( $ui['badge'] ); ?></em></div>
-										<div class="igs-ui-meter"><span><i></i></span><small><?php $pg_html( $ui['meter'] ); ?></small></div>
-									<?php elseif ( 'form' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['fields'] as $field ) : ?>
-											<div class="pg-ui-field"><small><?php echo esc_html( $field[0] ); ?></small><span><?php echo esc_html( $field[1] ); ?></span></div>
-										<?php endforeach; ?>
-										<span class="pg-ui-ok"><svg><use href="#igs-check"/></svg><?php echo esc_html( $ui['ok'] ); ?></span>
-									<?php elseif ( 'env' === $ui['type'] ) : ?>
-										<div class="pg-ui-env"><?php foreach ( $ui['envs'] as $e => $env ) : ?><span<?php echo $e === $ui['active'] ? ' class="is-on"' : ''; ?>><?php echo esc_html( $env ); ?></span><?php endforeach; ?></div>
-										<div class="pg-ui-run"><b><?php echo esc_html( $ui['title'] ); ?></b><span><i></i></span><small><?php echo esc_html( $ui['sub'] ); ?></small></div>
-									<?php elseif ( 'objects' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<div class="pg-ui-obj<?php echo $row[1] ? ' is-on' : ''; ?>"><i><svg><use href="#igs-check"/></svg></i><span><?php echo esc_html( $row[0] ); ?></span><small><?php echo esc_html( $row[2] ); ?></small></div>
-										<?php endforeach; ?>
-									<?php endif; ?>
-								</div>
-								<h3><?php echo esc_html( $step['title'] ); ?></h3>
-								<?php foreach ( (array) $step['text'] as $text ) : ?><p><?php $pg_html( $text ); ?></p><?php endforeach; ?>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-					<?php if ( ! empty( $b['note'] ) ) : ?><p class="pg-steps-note" data-igs-reveal><?php $pg_html( $b['note'] ); ?></p><?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'pipe' === $type ) : ?>
-			<section class="igs-section igs-connect"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-pipe" data-igs-pipe data-igs-reveal>
-						<svg class="igs-pipe-svg" aria-hidden="true" focusable="false"></svg>
-						<div class="igs-pipe-dots" aria-hidden="true"></div>
-						<div class="igs-pipe-source" data-igs-pipe-source>
-							<span class="igs-pipe-logo"><?php $pgi( $b['source'][0] ); ?></span>
-							<b><?php echo esc_html( $b['source'][1] ); ?></b>
-							<small><?php echo esc_html( $b['source'][2] ); ?></small>
-							<ul aria-label="<?php echo esc_attr( $b['source'][1] ); ?>"><?php foreach ( $b['source'][3] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?></ul>
-						</div>
-						<div class="igs-pipe-hub" data-igs-pipe-hub>
-							<span class="igs-pipe-ring" aria-hidden="true"></span>
-							<span class="igs-pipe-logo is-hub"><?php $pgi( $b['hub'][0] ); ?></span>
-							<b><?php echo esc_html( $b['hub'][1] ); ?></b>
-							<small><?php echo esc_html( $b['hub'][2] ); ?></small>
-							<span class="igs-pipe-modes"><?php foreach ( $b['hub'][3] as $mode ) : ?><em><?php echo esc_html( $mode ); ?></em><?php endforeach; ?></span>
-						</div>
-						<div class="igs-pipe-targets">
-							<?php foreach ( $b['groups'] as $group ) : ?>
-								<article class="igs-pipe-group is-<?php echo esc_attr( $group[0] ); ?>" data-igs-pipe-group>
-									<header><span><svg><use href="#<?php echo esc_attr( $group[1] ); ?>"/></svg></span><div><h3><?php echo esc_html( $group[2] ); ?></h3><small><?php echo esc_html( $group[3] ); ?></small></div></header>
-									<ul>
-										<?php foreach ( $group[4] as $item ) : ?><li><?php $pgi( $item[1], '', 'igs-pipe-generic' ); ?><small><?php echo esc_html( $item[0] ); ?></small></li><?php endforeach; ?>
-									</ul>
-								</article>
-							<?php endforeach; ?>
-						</div>
-						<div class="igs-pipe-foot">
-							<span class="igs-pipe-foot-label"><svg><use href="#igs-check"/></svg><?php echo esc_html( $b['foot_label'] ); ?></span>
-							<ul><?php foreach ( $b['foot'] as $tag ) : ?><li><svg><use href="#<?php echo esc_attr( $tag[0] ); ?>"/></svg><?php echo esc_html( $tag[1] ); ?></li><?php endforeach; ?></ul>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'uses' === $type ) : ?>
-			<section class="igs-section igs-uses"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-use-grid<?php echo 4 === count( $b['items'] ) ? ' pg-cols-2' : ''; ?>">
-						<?php foreach ( $b['items'] as $ui => $use ) : ?>
-							<article class="igs-use is-<?php echo esc_attr( $use['tone'] ); ?>" data-igs-reveal>
-								<div class="igs-use-scene<?php echo count( $use['from'] ) > 1 ? ' is-merge' : ''; ?>" aria-hidden="true">
-									<?php if ( count( $use['from'] ) > 1 ) : ?>
-										<span class="igs-use-sheets"><?php foreach ( $use['from'] as $spec ) : ?><span class="igs-use-tile is-xs"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-										<span class="igs-use-merge"><svg><use href="#<?php echo esc_attr( isset( $use['via'] ) ? $use['via'] : 'igs-layers' ); ?>"/></svg></span>
-										<span class="igs-use-pipe is-short"><i></i></span>
-									<?php else : ?>
-										<span class="igs-use-tile"><?php $pgi( $use['from'][0], '', 'igs-pipe-generic' ); ?></span>
-										<span class="igs-use-pipe"><i></i></span>
-									<?php endif; ?>
-									<?php if ( count( $use['to'] ) > 1 ) : ?>
-										<span class="igs-use-stack"><?php foreach ( $use['to'] as $spec ) : ?><span class="igs-use-tile is-sm"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-									<?php else : ?>
-										<span class="igs-use-tile is-target"><?php $pgi( $use['to'][0], '', 'igs-pipe-generic' ); ?></span>
-									<?php endif; ?>
-								</div>
-								<span class="igs-use-num"><?php echo esc_html( sprintf( 'Use case %02d', $ui + 1 ) ); ?></span>
-								<h3><?php echo esc_html( $use['title'] ); ?></h3>
-								<p><?php $pg_html( $use['text'] ); ?></p>
-								<ul class="igs-use-tags"><?php foreach ( $use['tags'] as $tag ) : ?><li><?php echo esc_html( $tag ); ?></li><?php endforeach; ?></ul>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['note'] ) ) : ?>
-						<div class="igs-uses-note" data-igs-reveal>
-							<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
-							<p><?php $pg_html( $b['note'] ); ?></p>
-							<?php if ( ! empty( $b['btn'] ) ) : ?><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?><?php endif; ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'videos' === $type ) : ?>
-			<?php $vids = $b['videos']; ?>
-			<section class="igs-section igs-videos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-tv" data-igs-tv data-igs-reveal>
-						<a class="igs-tv-stage" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $vids[0][0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $vids[0][0] ); ?>" data-igs-stage>
-							<span class="igs-tv-scene" aria-hidden="true">
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][0] ); ?></span>
-								<span class="igs-tv-pipe"><i></i></span>
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][1] ); ?></span>
-							</span>
-							<span class="igs-tv-play" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
-							<span class="igs-tv-info">
-								<span class="igs-tv-meta"><em data-igs-stage-op><?php echo esc_html( $vids[0][2] ); ?></em><span data-igs-stage-ep>Episode 01</span> · <?php echo esc_html( $b['series'] ); ?></span>
-								<b data-igs-stage-title><?php echo esc_html( $vids[0][1] ); ?></b>
-								<span class="igs-tv-cta">Watch video <svg><use href="#igs-arrow"/></svg></span>
-							</span>
-						</a>
-						<div class="igs-tv-list">
-							<header><b><?php echo esc_html( $b['list_title'] ); ?></b><small><?php echo esc_html( count( $vids ) . ( 1 === count( $vids ) ? ' video' : ' videos' ) ); ?></small></header>
-							<ol>
-								<?php foreach ( $vids as $vi => $video ) : ?>
-									<li><a href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-pick="<?php echo esc_attr( $video[0] ); ?>" data-op="<?php echo esc_attr( $video[2] ); ?>" data-ep="<?php echo esc_attr( sprintf( 'Episode %02d', $vi + 1 ) ); ?>"<?php echo 0 === $vi ? ' aria-current="true"' : ''; ?>><span class="igs-tv-num"><?php echo esc_html( sprintf( '%02d', $vi + 1 ) ); ?></span><span class="igs-tv-item"><em><?php echo esc_html( $video[2] ); ?></em><b><?php echo esc_html( $video[1] ); ?></b></span><span class="igs-tv-go" aria-hidden="true"><svg><use href="#igs-play"/></svg></span></a></li>
-								<?php endforeach; ?>
-							</ol>
-							<?php if ( ! empty( $b['aside'] ) ) : ?>
-								<div class="pg-tv-aside"><?php echo ! empty( $b['aside']['h2'] ) ? '<h2>' . esc_html( $b['aside']['title'] ) . '</h2>' : '<b>' . esc_html( $b['aside']['title'] ) . '</b>'; ?><?php if ( ! empty( $b['aside']['text'] ) ) : ?><p><?php $pg_html( $b['aside']['text'] ); ?></p><?php endif; ?><div class="pg-btns"><?php foreach ( $b['aside']['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-outline' ); } ?></div></div>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
-				<div class="igs-modal" data-igs-modal hidden>
-					<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Video">
-						<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
-						<div class="igs-modal-frame" data-igs-frame></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'stats' === $type ) : ?>
-			<section class="igs-section<?php echo ! empty( $b['dark'] ) ? ' igs-steps-section pg-stats-dark' : ' pg-stats-light'; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( ! empty( $b['dark'] ) ); ?>
-					<div class="pg-stats pg-n<?php echo (int) count( $b['items'] ); ?>">
-						<?php foreach ( $b['items'] as $si => $stat ) : ?>
-							<article class="is-c<?php echo (int) ( $si % 4 ); ?>" data-igs-reveal>
-								<?php if ( ! empty( $stat['icon'] ) ) : ?><span class="pg-stat-ic"><svg><use href="#<?php echo esc_attr( $stat['icon'] ); ?>"/></svg></span><?php endif; ?>
-								<?php if ( ! empty( $b['num_in'] ) ) : ?>
-									<h3><?php if ( ! empty( $stat['pre'] ) ) : ?><small><?php echo esc_html( $stat['pre'] ); ?></small> <?php endif; ?><b><?php echo esc_html( $stat['num'] ); ?></b> <?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php else : ?>
-									<b class="pg-stat-num" aria-hidden="true"><?php echo esc_html( $stat['num'] ); ?></b>
-									<h3><?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php endif; ?>
-								<?php if ( ! empty( $stat['text'] ) ) : ?><p><?php $pg_html( $stat['text'] ); ?></p><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['checks'] ) ) : ?>
-						<ul class="pg-check-row" data-igs-reveal><?php foreach ( $b['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><?php echo esc_html( $check ); ?></li><?php endforeach; ?></ul>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'split' === $type ) : ?>
-			<section class="igs-section igs-steps-section pg-split"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<div class="pg-split-grid">
-						<div class="pg-split-copy" data-igs-reveal><?php foreach ( $b['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?></div>
-						<?php if ( ! empty( $b['chain'] ) ) : ?>
-							<ol class="pg-chain" data-igs-reveal aria-label="<?php echo esc_attr( $b['chain_label'] ); ?>">
-								<?php foreach ( $b['chain'] as $link ) : ?><li><span><?php $pgi( $link[0], '', 'pg-chain-svg' ); ?></span><div><b><?php echo esc_html( $link[1] ); ?></b><small><?php echo esc_html( $link[2] ); ?></small></div></li><?php endforeach; ?>
-							</ol>
-						<?php else : ?>
-							<ul class="pg-values" data-igs-reveal>
-								<?php foreach ( $b['values'] as $value ) : ?>
-									<li<?php echo $value[0] ? ' class="is-num"' : ''; ?>><?php if ( $value[0] ) : ?><b><?php echo esc_html( $value[0] ); ?></b> <?php else : ?><svg><use href="#igs-check"/></svg><?php endif; ?><span><?php echo esc_html( $value[1] ); ?></span></li>
-								<?php endforeach; ?>
-							</ul>
-						<?php endif; ?>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'band' === $type ) : ?>
-			<section class="igs-section pg-band-sec"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<div class="pg-band" data-igs-reveal>
-						<span class="pg-band-ic" aria-hidden="true"><svg><use href="#<?php echo esc_attr( isset( $b['icon'] ) ? $b['icon'] : 'igs-bolt' ); ?>"/></svg></span>
-						<div><h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2><?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?></div>
-						<div class="pg-btns"><?php foreach ( $b['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-ghost' ); } ?></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'logos' === $type ) : ?>
-			<section class="igs-section pg-logos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="pg-marquee" data-igs-reveal>
-						<ul>
-							<?php foreach ( array_merge( $b['logos'], $b['logos'] ) as $li => $logo ) : ?>
-								<li<?php echo $li >= count( $b['logos'] ) ? ' aria-hidden="true"' : ''; ?>><?php $pgi( $logo[0], $li >= count( $b['logos'] ) ? '' : $logo[1] ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'cta' === $type ) : ?>
-			<?php $pg_cta( $b ); ?>
-		<?php endif; ?>
-	<?php endforeach; ?>
+	<!-- Use cases: data paths -->
+	<section class="x-sec x-dark bt-uses" aria-labelledby="bt-uses-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">Use cases</span>
+				<h2 id="bt-uses-title">Popular Use Cases</h2>
+			</div>
+			<ol class="bt-paths">
+				<li data-igs-reveal><b class="x-mono">01</b><p>Consolidating massive operational datasets into Data Warehouses and Data Lakes.</p><span class="bt-path" aria-hidden="true"><i><?php $pgi( $bt ); ?></i><em></em><i><?php $pgi( $e . 'snowflake.png' ); ?></i><i><?php $pgi( $e . 'databricks.png' ); ?></i></span></li>
+				<li data-igs-reveal><b class="x-mono">02</b><p>Running real-time analytics on petabyte-scale Bigtable datasets.</p><span class="bt-path" aria-hidden="true"><i><?php $pgi( $bt ); ?></i><em></em><i><svg><use href="#igs-chart"/></svg></i></span></li>
+				<li data-igs-reveal><b class="x-mono">03</b><p>Integrating Bigtable with cloud and on-prem applications for continuous data sync.</p><span class="bt-path" aria-hidden="true"><i><?php $pgi( $e . 'salesforce.png' ); ?></i><em class="is-both"></em><i><?php $pgi( $bt ); ?></i></span></li>
+				<li data-igs-reveal><b class="x-mono">04</b><p>Using Agentic AI-powered pipelines to optimize queries, detect anomalies, and drive predictive insights.</p><span class="bt-path" aria-hidden="true"><i><?php $pgi( $bt ); ?></i><em></em><i><svg><use href="#igs-bolt"/></svg></i></span></li>
+			</ol>
+			<p class="bt-uses-note" data-igs-reveal>Infometry’s Google Bigtable Connector for Informatica ensures fast, reliable, and intelligent data integration, making it the perfect choice for enterprises building scalable, AI-driven data platforms.</p>
+		</div>
+	</section>
 
 	<!-- FAQ -->
 	<section class="igs-section igs-faq" aria-labelledby="pg-faq-title">

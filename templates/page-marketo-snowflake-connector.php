@@ -3,10 +3,9 @@
  * Template Name: Marketo to Snowflake Connector Product
  * Template Post Type: page, product
  *
- * INFOFISCUS Marketo to Snowflake connector page, built like the Google Sheets connector page:
- * the hero plays Marketo objects syncing into Snowflake, the architecture map streams data and
- * the FAQ and trial blocks match (google-sheets-connector.css/.js). This page's own styles:
- * marketo-snowflake-connector.css. Every heading and line of copy from the original page is kept.
+ * Own design for this product (hero, sections and animations built around what it does);
+ * shares only the connector base (shell, buttons, FAQ, form, footer) with the other product pages.
+ * Every heading and line of copy from the original page is kept.
  *
  * @package Infometry_Custom_Templates
  */
@@ -20,154 +19,6 @@ $sf          = 'google-sheets/eco-snowflake.png';
 $e           = 'google-sheets/eco-';
 
 $pg = array(
-	'class'       => 'is-snow pg-marketo',
-	'sheet_class' => 'is-snow',
-	'hero'        => array(
-		'badge'     => 'INFOFISCUS Marketo Connector · Snowflake Native App',
-		'h1'        => 'Unlock the Power of Your <em>Marketo Data</em> with Infometry',
-		'lead'      => 'Welcome to the future of marketing data integration with the INFOFISCUS Marketo Connector, a pre-built and comprehensive solution available as a Native Application in the <a href="' . $listing_url . '" target="_blank" rel="noopener">Snowflake Marketplace</a>. Designed by Infometry, this NO-CODE connector revolutionizes the way you integrate Marketo, offering a seamless, single-click data extraction process powered by Agentic AI for smarter, automated workflows.',
-		'primary'   => array( 'Download Our User Guide Now!', $guide_url, 'igs-down' ),
-		'secondary' => array( 'Free Trial', '#freetrial' ),
-		'ops_label' => 'Highlights',
-		'ops'       => array( 'No-code', 'Single-click', 'Near real-time', 'Agentic AI' ),
-		'proof'     => array(
-			array( $listing_url, $sf, 'Snowflake Marketplace', 'INFOFISCUS Marketo Connector' ),
-			array( home_url( '/contact-us/' ), 'svg:igs-chat', 'Contact Us', 'Talk to an expert' ),
-		),
-		'aria'      => 'Animated example: Marketo objects sync into Snowflake landing tables through the INFOFISCUS Marketo Connector native app',
-		'sheet'     => array(
-			'icon'     => $mk,
-			'title'    => 'Marketo → Snowflake',
-			'sub'      => 'INFOFISCUS Marketo Connector',
-			'live'     => 'Syncing',
-			'fx_label' => 'sync',
-			'fx'       => 'Syncing 5 objects · near real-time',
-			'verb'     => 'Syncing',
-			'letters'  => array( 'object', 'records', 'frequency' ),
-			'cols'     => array( 'Marketo object', 'Records', 'Frequency' ),
-			'rows'     => array(
-				array( 'Leads', '486,210', 'Hourly' ),
-				array( 'Activities', '3,918,402', 'Hourly' ),
-				array( 'Programs', '1,284', 'Daily' ),
-				array( 'Campaigns', '762', 'Daily' ),
-				array( 'Emails', '58,907', 'Hourly' ),
-			),
-			'tabs'     => array( 'Objects', 'Schedule', 'Logs' ),
-		),
-		'core'      => array( 'icon' => $sf, 'title' => 'INFOFISCUS Native App', 'sub' => 'Runs inside your Snowflake account', 'modes' => array( 'No-code', 'Agentic AI' ) ),
-		'eco'       => array(
-			'title' => 'Into Snowflake',
-			'sub'   => 'Landing tables & analytical layers',
-			'items' => array(
-				array( 'Tables', 'svg:pg-table' ), array( 'Snowflake', $sf ), array( 'Models', 'svg:igs-layers' ),
-				array( 'Tableau', $e . 'tableau.svg' ), array( 'Power BI', 'bars' ), array( 'Dashboards', 'svg:igs-chart' ),
-				array( 'Salesforce', $e . 'salesforce.png' ), array( 'HubSpot', $e . 'hubspot.png' ), array( 'AI insights', 'svg:igs-bolt' ),
-			),
-			'foot'  => 'Enterprise-grade security in Snowflake',
-		),
-		'toast'     => array( 'Sync completed', 'Up to 5x faster integration' ),
-	),
-	'overview'    => array(
-		'kicker'     => 'Why INFOFISCUS',
-		'h2'         => 'Why Choose INFOFISCUS <em>Marketo Connector</em>?',
-		'paras'      => array(
-			'Infometry’s Marketo Connector Snowflake Native App is crafted to eliminate the complexities of Marketo connectivity, APIs, and drivers. Instead of investing time and resources in designing an optimal pipeline, you can now efficiently synchronize your Marketo data with Snowflake in near real-time.',
-			'With INFOFISCUS, your data moves smoothly from Marketo to Snowflake, enabling you to build powerful analytical layers from your landing tables. And with Agentic AI embedded into our approach, your business can unlock intelligent decision-making, adaptive automations, and next-gen data insights.',
-		),
-		'sets_label' => 'What you skip',
-		'sets'       => array( 'No APIs to learn', 'No drivers', 'No pipeline design', 'No ETL tools' ),
-		'btn'        => array( 'Contact Us', home_url( '/contact-us/' ) ),
-		'labels'     => array( 'Marketo', 'Your Snowflake' ),
-		'deck'       => array( array( $mk, 'Programs' ), array( $mk, 'Activities' ), array( $mk, 'Leads' ) ),
-		'core_icon'  => 'pg-snow',
-		'core'       => 'INFOFISCUS<br>Native App',
-		'dest'       => array(
-			array( 'pg-table', 'Landing Tables', array( $sf, 'svg:pg-table' ) ),
-			array( 'igs-layers', 'Analytical Layers', array( $e . 'tableau.svg', 'svg:igs-chart' ) ),
-			array( 'igs-bolt', 'Agentic AI Insights', array( 'svg:igs-bolt', 'svg:pg-target' ) ),
-		),
-	),
-	'blocks'      => array(
-		array(
-			'type'   => 'stats',
-			'kicker' => 'Results',
-			'h2'     => 'Proven Success with Infometry',
-			'items'  => array(
-				array( 'icon' => 'pg-users', 'num' => '200+', 'label' => 'Growing Adoption', 'text' => 'Over 200 organizations have enhanced their data strategies with Infometry.' ),
-				array( 'icon' => 'pg-rocket', 'num' => '40%', 'label' => 'Efficiency Gains', 'text' => 'Experience up to a 40% increase in data processing efficiency.' ),
-				array( 'icon' => 'pg-coin', 'num' => '30%', 'label' => 'Cost Savings', 'text' => 'Save an average of 30% on integration costs with Infometry’s solution.' ),
-			),
-		),
-		array(
-			'type'   => 'features',
-			'cols'   => 5,
-			'kicker' => 'At a glance',
-			'h2'     => 'Key Highlights',
-			'items'  => array(
-				array( 'pg-clock', 'Near real-time ingestion', 'Efficient and near real-time data ingestion from Marketo to Snowflake.' ),
-				array( 'igs-sync', 'Always up to date', 'Seamlessly integrated for always up-to-date data.' ),
-				array( 'pg-funnel', 'Your objects, your schedule', 'Select specific Marketo objects and customize sync frequency.' ),
-				array( 'pg-rocket', 'Regular updates', 'Regular updates with new features for agile data strategy.' ),
-				array( 'igs-shield', 'Integrity, AI & security', 'Infometry ensures data integrity, Agentic AI–driven intelligence, and enterprise-grade security.' ),
-			),
-		),
-		array(
-			'type'   => 'steps',
-			'kicker' => 'Get started',
-			'h2'     => 'How You Can Use Our INFOFISCUS Marketo to Snowflake Connector',
-			'p'      => 'Four steps from the Snowflake Marketplace to Marketo data in your landing tables.',
-			'steps'  => array(
-				array( 'label' => 'Find', 'title' => 'Find the connector', 'text' => 'Navigate to the Snowflake Marketplace and search for the INFOFISCUS Marketo Connector.', 'ui' => array( 'type' => 'search', 'query' => 'INFOFISCUS Marketo', 'result' => array( $mk, 'INFOFISCUS Marketo Connector', 'Infometry · Native App' ), 'cta' => 'View listing' ) ),
-				array( 'label' => 'Install', 'title' => 'Install & start your trial', 'text' => 'Click on Get to install and start using its free trial.', 'ui' => array( 'type' => 'license', 'title' => 'INFOFISCUS Marketo Connector', 'sub' => 'Snowflake Native App', 'badge' => 'Get', 'meter' => '<b>Free trial</b> · installs in your account' ) ),
-				array( 'label' => 'Authorize', 'title' => 'Authorize Marketo', 'text' => 'Use your Marketo credentials to log in and authorize the connector.', 'ui' => array( 'type' => 'form', 'bar' => array( $mk, 'Marketo authorization' ), 'fields' => array( array( 'Client ID', 'a3f9-••••-71c2' ), array( 'Client secret', '••••••••••••' ) ), 'ok' => 'Connector authorized' ) ),
-				array( 'label' => 'Select', 'title' => 'Pick your objects', 'text' => 'Choose specific data objects from Marketo that you want to sync with Snowflake.', 'ui' => array( 'type' => 'objects', 'bar' => array( $mk, 'Objects to sync' ), 'rows' => array( array( 'Leads', true, 'Hourly' ), array( 'Activities', true, 'Hourly' ), array( 'Programs', true, 'Daily' ), array( 'Campaigns', false, 'Off' ) ) ) ),
-			),
-		),
-		array(
-			'type'   => 'features',
-			'cols'   => 2,
-			'tint'   => true,
-			'kicker' => 'Real-time',
-			'h2'     => 'Real-Time Integration at Your Fingertips',
-			'items'  => array(
-				array( 'igs-sync', 'Streamlined Processes', 'Join the growing number of businesses leveraging the INFOFISCUS Marketo Connector, designed by Infometry, to streamline their data integration processes with the added intelligence of Agentic AI.' ),
-				array( 'igs-check', 'Seamless Synchronization', 'Infometry’s expertise ensures seamless data synchronization, allowing you to focus on deriving actionable insights and driving business growth.' ),
-			),
-		),
-		array(
-			'type'       => 'pipe',
-			'kicker'     => 'Architecture',
-			'h2'         => 'INFOFISCUS Marketo to Snowflake Connector Architecture',
-			'p'          => 'The INFOFISCUS Marketo Connector Native App for Snowflake moves Marketo data into landing tables inside your Snowflake account, ready for analytical layers.',
-			'source'     => array( $mk, 'Marketo', 'Marketing source', array( 'Objects', 'Sync frequency', 'Single-click' ) ),
-			'hub'        => array( $sf, 'INFOFISCUS Native App', 'Runs inside your Snowflake account', array( 'No-code', 'Agentic AI' ) ),
-			'groups'     => array(
-				array( 'blue', 'pg-table', 'Landing Tables', 'Always up-to-date Marketo data', array( array( 'Leads', 'svg:pg-table' ), array( 'Activities', 'svg:pg-table' ), array( 'Programs', 'svg:pg-table' ), array( 'Campaigns', 'svg:pg-table' ) ) ),
-				array( 'violet', 'igs-layers', 'Analytical Layers', 'Built from your landing tables', array( array( 'Data models', 'svg:igs-layers' ), array( 'Tableau', $e . 'tableau.svg' ), array( 'Power BI', 'bars' ) ) ),
-				array( 'orange', 'igs-bolt', 'Agentic AI', 'Intelligent decision-making', array( array( 'Automations', 'svg:igs-sync' ), array( 'Insights', 'svg:igs-chart' ), array( 'Targeting', 'svg:pg-target' ) ) ),
-			),
-			'foot_label' => 'Built for',
-			'foot'       => array( array( 'pg-clock', 'Near real-time' ), array( 'pg-funnel', 'Selected objects' ), array( 'igs-calendar', 'Custom sync frequency' ), array( 'igs-check', 'Up to 99.9% accuracy' ), array( 'pg-lock', 'Enterprise-grade security' ) ),
-		),
-		array(
-			'type'   => 'features',
-			'kicker' => 'Why Infometry',
-			'h2'     => 'Infometry Expertise',
-			'items'  => array(
-				array( 'igs-nodes', 'Specialists in Data Integration', 'Experts in developing advanced data integration solutions tailored for Snowflake.' ),
-				array( 'pg-target', 'Proven Track Record', 'Years of experience delivering reliable connectors that streamline data pipelines.' ),
-				array( 'igs-star', 'Trusted by Industry Leaders', 'Commitment to innovation ensures cutting-edge solutions for seamless integration, now enhanced with Agentic AI capabilities.' ),
-				array( 'pg-users', 'Customer-Centric Approach', 'Focus on customer satisfaction, providing robust support and tailored solution' ),
-			),
-		),
-		array(
-			'type' => 'band',
-			'icon' => 'igs-sync',
-			'h2'   => 'Ready to experience seamless Marketo integration?',
-			'p'    => 'Get the INFOFISCUS Marketo Connector and start syncing in near real-time.',
-			'btns' => array( array( 'Free Trial', '#freetrial' ), array( 'Contact Us', home_url( '/contact-us/' ) ) ),
-		),
-	),
 	'faq'         => array(
 		'intro' => 'Speed, objects, security and results: what teams ask before they sync Marketo data into Snowflake.',
 		'help'  => 'Our team helps you through every step of your integration.',
@@ -296,11 +147,9 @@ $pg_cta = function ( $c ) use ( $pg_html ) {
 	</section>
 	<?php
 };
-$h = $pg['hero'];
-$o = $pg['overview'];
-?>
-<main class="igs-page pg-page <?php echo esc_attr( $pg['class'] ); ?>" id="igs-main">
-	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+/** Page icons (pg-*) on top of the shared igs-* sprite. */
+$pg_sprite = function () {
+	?>
 	<svg class="igs-sprite" aria-hidden="true" focusable="false">
 		<symbol id="pg-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></symbol>
 		<symbol id="pg-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
@@ -324,443 +173,170 @@ $o = $pg['overview'];
 		<symbol id="pg-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9Z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15V3.5Z"/></symbol>
 		<symbol id="pg-snow" viewBox="0 0 24 24"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 10.5l1-3.5-3.5-1M20 13.5l-1 3.5 3.5 1M4 13.5 5 17l-3.5 1M20 10.5 19 7l3.5-1"/></symbol>
 	</svg>
+	<?php
+};
+$mk_funnel = array(
+	array( 'Leads', '486,210', 'MKTO_LEADS' ),
+	array( 'Activities', '3,918,402', 'MKTO_ACTIVITIES' ),
+	array( 'Programs', '1,284', 'MKTO_PROGRAMS' ),
+	array( 'Smart Campaigns', '762', 'MKTO_CAMPAIGNS' ),
+	array( 'Email Performance', '58,907', 'MKTO_EMAILS' ),
+);
+?>
+<main class="igs-page pg-page mk-page" id="igs-main">
+	<?php include INFOMETRY_CT_PATH . 'templates/partials/connector-sprite.php'; ?>
+	<?php $pg_sprite(); ?>
 
-	<!-- Hero -->
-	<section class="igs-hero" aria-labelledby="pg-title">
-		<div class="igs-shell igs-hero-grid">
+	<!-- Hero: Marketo funnel draining into Snowflake landing tables -->
+	<section class="igs-hero mk-hero" aria-labelledby="mk-title">
+		<div class="igs-shell igs-hero-grid mk-hero-grid">
 			<div class="igs-hero-copy">
-				<span class="igs-badge"><i></i><?php echo esc_html( $h['badge'] ); ?></span>
-				<h1 id="pg-title"><?php $pg_html( $h['h1'] ); ?></h1>
-				<p><?php $pg_html( $h['lead'] ); ?></p>
-				<?php if ( ! empty( $h['lead2'] ) ) : ?><p class="pg-lead2"><?php $pg_html( $h['lead2'] ); ?></p><?php endif; ?>
+				<span class="igs-badge"><i></i>INFOFISCUS Marketo Connector · Snowflake Native App</span>
+				<h1 id="mk-title">Unlock the Power of Your <em>Marketo Data</em> with Infometry</h1>
+				<p>Welcome to the future of marketing data integration with the INFOFISCUS Marketo Connector, a pre-built and comprehensive solution available as a Native Application in the <a href="<?php echo esc_url( $listing_url ); ?>" target="_blank" rel="noopener">Snowflake Marketplace</a>. Designed by Infometry, this NO-CODE connector revolutionizes the way you integrate Marketo, offering a seamless, single-click data extraction process powered by Agentic AI for smarter, automated workflows.</p>
 				<div class="igs-actions">
-					<?php $pg_btn( $h['primary'], 'igs-btn-primary' ); ?>
-					<?php $pg_btn( $h['secondary'], 'igs-btn-ghost' ); ?>
+					<a class="igs-btn igs-btn-primary x-btn" href="<?php echo esc_url( $guide_url ); ?>" target="_blank" rel="noopener"><svg><use href="#igs-down"/></svg> Download Our User Guide Now!</a>
+					<a class="igs-btn igs-btn-ghost" href="#freetrial">Free Trial <svg><use href="#igs-arrow"/></svg></a>
 				</div>
-				<div class="igs-ops-bar">
-					<span><?php echo esc_html( $h['ops_label'] ); ?></span>
-					<ul class="igs-ops" aria-label="<?php echo esc_attr( $h['ops_label'] ); ?>">
-						<?php foreach ( $h['ops'] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?>
-					</ul>
-				</div>
-				<div class="igs-proof">
-					<?php foreach ( $h['proof'] as $proof ) : ?>
-						<a href="<?php echo esc_url( $proof[0] ); ?>"<?php echo 0 === strpos( $proof[0], 'http' ) ? ' target="_blank" rel="noopener"' : ''; ?>><span class="igs-proof-icon<?php echo ! empty( $proof[4] ) ? ' ' . esc_attr( $proof[4] ) : ''; ?>"><?php $pgi( $proof[1] ); ?></span><span><b><?php echo esc_html( $proof[2] ); ?></b><small><?php echo esc_html( $proof[3] ); ?></small></span><svg><use href="#igs-out"/></svg></a>
-					<?php endforeach; ?>
-				</div>
+				<ul class="mk-hero-tags" aria-label="Highlights"><li>No-code</li><li>Single-click extraction</li><li>Near real-time</li><li>Agentic AI</li></ul>
 			</div>
 
-			<div class="igs-flow" data-igs-live data-igs-fx-verb="<?php echo esc_attr( $h['sheet']['verb'] ); ?>" aria-label="<?php echo esc_attr( $h['aria'] ); ?>">
-				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-sheet <?php echo esc_attr( $pg['sheet_class'] ); ?>" data-igs-sheet>
-					<header>
-						<span class="igs-sheet-icon"><?php $pgi( $h['sheet']['icon'] ); ?></span>
-						<span class="igs-sheet-name"><b><?php echo esc_html( $h['sheet']['title'] ); ?></b><small><?php echo esc_html( $h['sheet']['sub'] ); ?></small></span>
-						<span class="igs-sheet-live"><i></i><?php echo esc_html( $h['sheet']['live'] ); ?></span>
-					</header>
-					<div class="igs-sheet-fx"><b><?php echo esc_html( $h['sheet']['fx_label'] ); ?></b><span data-igs-fx><?php echo esc_html( $h['sheet']['fx'] ); ?></span></div>
-					<div class="igs-sheet-grid">
-						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
-						<table>
-							<thead>
-								<tr class="igs-sheet-cols"><th></th><?php foreach ( $h['sheet']['letters'] as $letter ) : ?><th><?php echo esc_html( $letter ); ?></th><?php endforeach; ?></tr>
-								<tr><th>1</th><?php foreach ( $h['sheet']['cols'] as $col ) : ?><th><?php echo esc_html( $col ); ?></th><?php endforeach; ?></tr>
-							</thead>
-							<tbody>
-								<?php foreach ( $h['sheet']['rows'] as $i => $row ) : ?>
-									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
-					</div>
-					<footer aria-hidden="true"><?php foreach ( $h['sheet']['tabs'] as $t => $tab ) : ?><span<?php echo 0 === $t ? ' class="is-on"' : ''; ?>><?php echo esc_html( $tab ); ?></span><?php endforeach; ?><i>+</i></footer>
-				</div>
-				<div class="igs-core" data-igs-core>
-					<span class="igs-core-icon"><?php $pgi( $h['core']['icon'] ); ?></span>
-					<strong><?php echo esc_html( $h['core']['title'] ); ?></strong>
-					<small><?php echo esc_html( $h['core']['sub'] ); ?></small>
-					<span class="igs-core-modes"><?php foreach ( $h['core']['modes'] as $mode ) : ?><b><?php echo esc_html( $mode ); ?></b><?php endforeach; ?></span>
-				</div>
-				<div class="igs-eco" data-igs-eco>
-					<header><b><?php echo esc_html( $h['eco']['title'] ); ?></b><small><?php echo esc_html( $h['eco']['sub'] ); ?></small></header>
+			<div class="mk-funnel" data-mk-funnel aria-label="Animated example: Marketo leads, activities, programs, smart campaigns and email performance sync one by one into Snowflake landing tables through the INFOFISCUS Marketo Connector">
+				<div class="mk-f-head" aria-hidden="true"><span class="mk-f-logo">M</span><div><b>Marketo</b><small>Marketing automation</small></div><em><i></i>Syncing</em></div>
+				<ol class="mk-f-levels" aria-hidden="true">
+					<?php foreach ( $mk_funnel as $i => $f ) : ?>
+						<li data-mk-level style="--w:<?php echo (int) ( 100 - $i * 11 ); ?>%"><span><b><?php echo esc_html( $f[0] ); ?></b><em class="x-mono"><?php echo esc_html( $f[1] ); ?></em></span></li>
+					<?php endforeach; ?>
+				</ol>
+				<div class="mk-f-drop" aria-hidden="true"><i></i><i></i><i></i></div>
+				<div class="mk-f-sink" aria-hidden="true">
+					<header><?php $pgi( $sf ); ?><b>Snowflake</b><small>landing tables</small></header>
 					<ul>
-						<?php foreach ( $h['eco']['items'] as $target ) : ?>
-							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>"><span><?php $pgi( $target[1], '', 'igs-pipe-generic' ); ?></span><small><?php echo esc_html( $target[0] ); ?></small></li>
+						<?php foreach ( $mk_funnel as $f ) : ?>
+							<li data-mk-table class="x-mono"><?php echo esc_html( $f[2] ); ?><i>✓</i></li>
 						<?php endforeach; ?>
 					</ul>
-					<footer><?php echo esc_html( $h['eco']['foot'] ); ?></footer>
-				</div>
-				<div class="igs-toast" data-igs-toast>
-					<span><svg><use href="#igs-check"/></svg></span>
-					<div><b><?php echo esc_html( $h['toast'][0] ); ?></b><small><?php echo esc_html( $h['toast'][1] ); ?></small></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<!-- Overview -->
-	<section class="igs-section igs-overview" aria-labelledby="pg-overview-title">
-		<div class="igs-shell igs-ov">
-			<div class="igs-ov-copy" data-igs-reveal>
-				<span class="igs-kicker"><?php echo esc_html( $o['kicker'] ); ?></span>
-				<h2 id="pg-overview-title"><?php $pg_html( $o['h2'] ); ?></h2>
-				<?php foreach ( $o['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?>
-				<?php if ( ! empty( $o['sets'] ) ) : ?>
-					<ul class="igs-ov-sets" aria-label="<?php echo esc_attr( $o['sets_label'] ); ?>">
-						<?php foreach ( $o['sets'] as $set ) : ?><li><?php echo esc_html( $set ); ?></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['checks'] ) ) : ?>
-					<ul class="pg-checks">
-						<?php foreach ( $o['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><span><?php $pg_html( $check ); ?></span></li><?php endforeach; ?>
-					</ul>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['points'] ) ) : ?>
-					<div class="igs-ov-points<?php echo count( $o['points'] ) > 2 ? ' pg-points-many' : ''; ?>">
-						<?php foreach ( $o['points'] as $point ) : ?>
-							<div><span><svg><use href="#<?php echo esc_attr( $point[0] ); ?>"/></svg></span><?php echo ! empty( $point[3] ) ? '<h3>' . esc_html( $point[1] ) . '</h3>' : '<b>' . esc_html( $point[1] ) . '</b>'; ?><p><?php $pg_html( $point[2] ); ?></p></div>
-						<?php endforeach; ?>
-					</div>
-				<?php endif; ?>
-				<?php if ( ! empty( $o['btn'] ) ) : ?><p class="pg-ov-btn"><?php $pg_btn( $o['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
+	<!-- Proven success -->
+	<section class="x-sec mk-proof" aria-labelledby="mk-proof-title">
+		<div class="igs-shell">
+			<div class="mk-proof-band" data-igs-reveal>
+				<div class="mk-proof-head"><span class="igs-kicker">Results</span><h2 id="mk-proof-title">Proven Success with Infometry</h2></div>
+				<div class="mk-proof-grid">
+					<article><b aria-hidden="true">200+</b><h3>Growing Adoption</h3><p>Over 200 organizations have enhanced their data strategies with Infometry.</p></article>
+					<article><b aria-hidden="true">40%</b><h3>Efficiency Gains</h3><p>Experience up to a 40% increase in data processing efficiency.</p></article>
+					<article><b aria-hidden="true">30%</b><h3>Cost Savings</h3><p>Save an average of 30% on integration costs with Infometry’s solution.</p></article>
+				</div>
 			</div>
+		</div>
+	</section>
 
-			<div class="igs-ov-visual" aria-hidden="true" data-igs-reveal>
-				<svg class="igs-ov-wires" viewBox="0 0 500 400" preserveAspectRatio="none" focusable="false">
-					<path id="pg-ov-p0" class="is-in" d="M196 200 H222"/>
-					<path id="pg-ov-p1" d="M278 200 C305 200 300 84 330 84"/>
-					<path id="pg-ov-p2" d="M278 200 H330"/>
-					<path id="pg-ov-p3" d="M278 200 C305 200 300 316 330 316"/>
-					<circle class="igs-ov-dot is-in" r="3.5"><animateMotion dur="1.4s" repeatCount="indefinite"><mpath href="#pg-ov-p0"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="0s"><mpath href="#pg-ov-p1"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin=".6s"><mpath href="#pg-ov-p2"/></animateMotion></circle>
-					<circle class="igs-ov-dot" r="3.5"><animateMotion dur="1.8s" repeatCount="indefinite" begin="1.2s"><mpath href="#pg-ov-p3"/></animateMotion></circle>
-				</svg>
-				<span class="igs-ov-label is-left"><?php echo esc_html( $o['labels'][0] ); ?></span>
-				<span class="igs-ov-label is-right"><?php echo esc_html( $o['labels'][1] ); ?></span>
-				<div class="igs-ov-deck">
-					<div class="igs-ov-sheet is-back2"><header><?php $pgi( $o['deck'][0][0] ); ?><b><?php echo esc_html( $o['deck'][0][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-back1"><header><?php $pgi( $o['deck'][1][0] ); ?><b><?php echo esc_html( $o['deck'][1][1] ); ?></b></header></div>
-					<div class="igs-ov-sheet is-front">
-						<header><?php $pgi( $o['deck'][2][0] ); ?><b><?php echo esc_html( $o['deck'][2][1] ); ?></b></header>
-						<div class="igs-ov-rows"><i></i><i></i><i></i><i></i></div>
-						<svg class="igs-ov-spark" viewBox="0 0 100 30" preserveAspectRatio="none" focusable="false"><path d="M0 24 18 20 34 22 50 12 66 15 82 6 100 8"/></svg>
-					</div>
-				</div>
-				<div class="igs-ov-core">
-					<span class="igs-ov-orbit"></span>
-					<span class="igs-ov-orb"><svg><use href="#<?php echo esc_attr( $o['core_icon'] ); ?>"/></svg></span>
-					<small><?php $pg_html( $o['core'] ); ?></small>
-				</div>
-				<ul class="igs-ov-dest">
-					<?php foreach ( $o['dest'] as $dest ) : ?>
-						<li><span><svg><use href="#<?php echo esc_attr( $dest[0] ); ?>"/></svg></span><b><?php echo esc_html( $dest[1] ); ?></b><i><?php foreach ( $dest[2] as $spec ) { $pgi( $spec, '', 'igs-pipe-generic' ); } ?></i></li>
-					<?php endforeach; ?>
+	<!-- Why choose + key highlights as sync settings -->
+	<section class="x-sec mk-why" aria-labelledby="mk-why-title">
+		<div class="igs-shell x-grid2">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">Why INFOFISCUS</span>
+				<h2 id="mk-why-title">Why Choose INFOFISCUS Marketo Connector?</h2>
+				<p>Infometry’s Marketo Connector Snowflake Native App is crafted to eliminate the complexities of Marketo connectivity, APIs, and drivers. Instead of investing time and resources in designing an optimal pipeline, you can now efficiently synchronize your Marketo data with Snowflake in near real-time.</p>
+				<p>With INFOFISCUS, your data moves smoothly from Marketo to Snowflake, enabling you to build powerful analytical layers from your landing tables. And with Agentic AI embedded into our approach, your business can unlock intelligent decision-making, adaptive automations, and next-gen data insights.</p>
+				<p><a class="igs-btn igs-btn-primary" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact Us <svg><use href="#igs-arrow"/></svg></a></p>
+			</div>
+			<div class="mk-card" data-igs-reveal>
+				<header><span class="mk-f-logo">M</span><h2>Key Highlights</h2><em>INFOFISCUS</em></header>
+				<ul>
+					<li><svg><use href="#pg-clock"/></svg><span>Efficient and near real-time data ingestion from Marketo to Snowflake.</span></li>
+					<li><svg><use href="#igs-sync"/></svg><span>Seamlessly integrated for always up-to-date data.</span></li>
+					<li><svg><use href="#pg-funnel"/></svg><span>Select specific Marketo objects and customize sync frequency.</span><em class="mk-freq" aria-hidden="true"><i class="is-on">Hourly</i><i>Daily</i></em></li>
+					<li><svg><use href="#pg-rocket"/></svg><span>Regular updates with new features for agile data strategy.</span></li>
+					<li><svg><use href="#igs-shield"/></svg><span>Infometry ensures data integrity, Agentic AI–driven intelligence, and enterprise-grade security.</span></li>
 				</ul>
 			</div>
 		</div>
 	</section>
 
-	<?php foreach ( $pg['blocks'] as $bi => $b ) : ?>
-		<?php
-		$bid  = 'pg-b' . $bi;
-		$type = $b['type'];
-		$head = function ( $light = false ) use ( $b, $bid, $pg_html ) {
-			if ( empty( $b['h2'] ) ) {
-				return;
-			}
-			?>
-			<div class="igs-head<?php echo $light ? ' is-light' : ''; ?>" data-igs-reveal>
-				<?php if ( ! empty( $b['kicker'] ) ) : ?><span class="igs-kicker"><?php echo esc_html( $b['kicker'] ); ?></span><?php endif; ?>
-				<h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2>
-				<?php if ( ! empty( $b['sub'] ) ) : ?><h3 class="pg-head-sub"><?php echo esc_html( $b['sub'] ); ?></h3><?php endif; ?>
-				<?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?>
+	<!-- How to use: onboarding wizard -->
+	<section class="x-sec x-dark mk-wizard-sec" aria-labelledby="mk-how-title">
+		<div class="igs-shell">
+			<div class="igs-head is-light" data-igs-reveal>
+				<span class="igs-kicker">Get started</span>
+				<h2 id="mk-how-title">How You Can Use Our INFOFISCUS Marketo to Snowflake Connector</h2>
 			</div>
-			<?php
-		};
-		$labelled = ! empty( $b['h2'] ) ? ' aria-labelledby="' . esc_attr( $bid ) . '"' : '';
-		?>
+			<div class="mk-wizard" data-mk-wizard data-igs-reveal>
+				<div class="mk-w-bar" aria-hidden="true"><i data-mk-progress></i></div>
+				<ol>
+					<li data-mk-step class="is-on"><b>1</b><em>Find</em><p>Navigate to the Snowflake Marketplace and search for the INFOFISCUS Marketo Connector.</p></li>
+					<li data-mk-step><b>2</b><em>Install</em><p>Click on Get to install and start using its free trial.</p></li>
+					<li data-mk-step><b>3</b><em>Authorize</em><p>Use your Marketo credentials to log in and authorize the connector.</p></li>
+					<li data-mk-step><b>4</b><em>Select</em><p>Choose specific data objects from Marketo that you want to sync with Snowflake.</p></li>
+				</ol>
+			</div>
+		</div>
+	</section>
 
-		<?php if ( 'features' === $type ) : ?>
-			<section class="igs-section igs-capabilities pg-features<?php echo ! empty( $b['tint'] ) ? ' is-tint' : ''; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-feature-grid pg-cols-<?php echo (int) ( isset( $b['cols'] ) ? $b['cols'] : 4 ); ?>">
-						<?php foreach ( $b['items'] as $i => $item ) : ?>
-							<article class="igs-feature is-c<?php echo (int) ( $i % 4 ); ?><?php echo ! empty( $item[3] ) ? ' is-wide' : ''; ?>" data-igs-reveal>
-								<span><svg><use href="#<?php echo esc_attr( $item[0] ); ?>"/></svg></span>
-								<h3><?php echo esc_html( $item[1] ); ?></h3>
-								<p><?php $pg_html( $item[2] ); ?></p>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['btn'] ) ) : ?><p class="pg-center" data-igs-reveal><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?></p><?php endif; ?>
-				</div>
-			</section>
+	<!-- Real-time integration -->
+	<section class="x-sec mk-rt" aria-labelledby="mk-rt-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Real-time</span>
+				<h2 id="mk-rt-title">Real-Time Integration at Your Fingertips</h2>
+			</div>
+			<div class="mk-rt-grid">
+				<article data-igs-reveal><span class="mk-pulse" aria-hidden="true"><i></i><i></i><svg><use href="#igs-sync"/></svg></span><div><h3>Streamlined Processes</h3><p>Join the growing number of businesses leveraging the INFOFISCUS Marketo Connector, designed by Infometry, to streamline their data integration processes with the added intelligence of Agentic AI.</p></div></article>
+				<article data-igs-reveal><span class="mk-pulse is-b" aria-hidden="true"><i></i><i></i><svg><use href="#igs-check"/></svg></span><div><h3>Seamless Synchronization</h3><p>Infometry’s expertise ensures seamless data synchronization, allowing you to focus on deriving actionable insights and driving business growth.</p></div></article>
+			</div>
+		</div>
+	</section>
 
-		<?php elseif ( 'plans' === $type ) : ?>
-			<section class="igs-section igs-license pg-plans"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="<?php echo 3 === count( $b['plans'] ) ? 'igs-use-grid' : 'igs-license-grid'; ?>">
-						<?php foreach ( $b['plans'] as $plan ) : ?>
-							<article class="igs-plan<?php echo ! empty( $plan['dark'] ) ? ' is-dark' : ''; ?>" data-igs-reveal>
-								<header><span><svg><use href="#<?php echo esc_attr( $plan['icon'] ); ?>"/></svg></span><?php echo ! empty( $plan['h2'] ) ? '<h2 class="pg-plan-h">' . esc_html( $plan['title'] ) . '</h2>' : '<h3>' . esc_html( $plan['title'] ) . '</h3>'; ?></header>
-								<?php if ( ! empty( $plan['intro'] ) ) : ?><p class="pg-plan-intro"><?php $pg_html( $plan['intro'] ); ?></p><?php endif; ?>
-								<ul>
-									<?php foreach ( $plan['items'] as $item ) : ?>
-										<li><svg><use href="#igs-check"/></svg><span><?php if ( is_array( $item ) ) : ?><?php echo ! empty( $plan['item_h3'] ) ? '<h3 class="pg-li-h">' . esc_html( $item[0] ) . '</h3>' : '<b>' . esc_html( $item[0] ) . '</b> '; ?><?php $pg_html( $item[1] ); ?><?php else : ?><?php $pg_html( $item ); ?><?php endif; ?></span></li>
-									<?php endforeach; ?>
-								</ul>
-								<?php if ( ! empty( $plan['btn'] ) ) : ?><?php $pg_btn( $plan['btn'], ! empty( $plan['dark'] ) ? 'igs-btn-primary' : 'igs-btn-outline' ); ?><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
+	<!-- Architecture -->
+	<section class="x-sec x-soft mk-arch" aria-labelledby="mk-arch-title">
+		<div class="igs-shell">
+			<div class="igs-head" data-igs-reveal>
+				<span class="igs-kicker">Architecture</span>
+				<h2 id="mk-arch-title">INFOFISCUS Marketo to Snowflake Connector Architecture</h2>
+			</div>
+			<div class="mk-arch-flow" data-igs-reveal aria-label="Marketo data flows into the INFOFISCUS Marketo Connector native app inside the customer's Snowflake account, lands in tables and feeds analytical layers and Agentic AI">
+				<div class="mk-a-node is-src"><span class="mk-f-logo">M</span><b>Marketo</b><small>Objects · sync frequency</small></div>
+				<i class="mk-a-link" aria-hidden="true"></i>
+				<div class="mk-a-acct">
+					<small class="mk-a-tag"><?php $pgi( $sf ); ?>Your Snowflake account</small>
+					<div class="mk-a-node"><svg><use href="#igs-bolt"/></svg><b>INFOFISCUS Native App</b><small>No-code · single click</small></div>
+					<i class="mk-a-link" aria-hidden="true"></i>
+					<div class="mk-a-node"><svg><use href="#pg-table"/></svg><b>Landing tables</b><small>Always up to date</small></div>
+					<i class="mk-a-link" aria-hidden="true"></i>
+					<div class="mk-a-node"><svg><use href="#igs-layers"/></svg><b>Analytical layers</b><small>Models · dashboards</small></div>
+					<i class="mk-a-link" aria-hidden="true"></i>
+					<div class="mk-a-node is-ai"><svg><use href="#igs-chart"/></svg><b>Agentic AI insights</b><small>Decisions · automations</small></div>
 				</div>
-			</section>
+			</div>
+		</div>
+	</section>
 
-		<?php elseif ( 'steps' === $type ) : ?>
-			<section class="igs-section igs-steps-section"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<ol class="igs-steps<?php echo 4 === count( $b['steps'] ) ? ' pg-steps-4' : ''; ?>" data-igs-steps>
-						<?php foreach ( $b['steps'] as $si => $step ) : ?>
-							<?php $ui = $step['ui']; ?>
-							<li class="is-s<?php echo (int) $si + 1; ?>">
-								<div class="igs-step-head"><b><?php echo esc_html( sprintf( '%02d', $si + 1 ) ); ?></b><span><?php echo esc_html( $step['label'] ); ?></span></div>
-								<div class="igs-step-ui" aria-hidden="true">
-									<?php if ( 'toggle' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<?php if ( ! empty( $row[2] ) ) : ?>
-												<div class="igs-ui-row is-main"><?php $pgi( $row[2] ); ?><span><?php echo esc_html( $row[0] ); ?><small><?php echo esc_html( $row[1] ); ?></small></span><em class="igs-ui-switch is-flip"></em></div>
-											<?php else : ?>
-												<div class="igs-ui-row is-muted"><i></i><span><?php echo esc_html( $row[0] ); ?></span><em class="igs-ui-switch<?php echo ! empty( $row[1] ) ? ' is-on' : ''; ?>"></em></div>
-											<?php endif; ?>
-										<?php endforeach; ?>
-									<?php elseif ( 'search' === $ui['type'] ) : ?>
-										<div class="igs-ui-search"><svg><use href="#igs-out"/></svg><span class="igs-ui-type" style="--n:<?php echo (int) strlen( $ui['query'] ); ?>"><?php echo esc_html( $ui['query'] ); ?></span></div>
-										<div class="igs-ui-result"><?php $pgi( $ui['result'][0] ); ?><span><?php echo esc_html( $ui['result'][1] ); ?><small><?php echo esc_html( $ui['result'][2] ); ?></small></span></div>
-										<span class="igs-ui-cta"><?php echo esc_html( $ui['cta'] ); ?></span>
-									<?php elseif ( 'license' === $ui['type'] ) : ?>
-										<div class="igs-ui-license"><span><svg><use href="#igs-key"/></svg></span><div><b><?php echo esc_html( $ui['title'] ); ?></b><small><?php echo esc_html( $ui['sub'] ); ?></small></div><em><?php echo esc_html( $ui['badge'] ); ?></em></div>
-										<div class="igs-ui-meter"><span><i></i></span><small><?php $pg_html( $ui['meter'] ); ?></small></div>
-									<?php elseif ( 'form' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['fields'] as $field ) : ?>
-											<div class="pg-ui-field"><small><?php echo esc_html( $field[0] ); ?></small><span><?php echo esc_html( $field[1] ); ?></span></div>
-										<?php endforeach; ?>
-										<span class="pg-ui-ok"><svg><use href="#igs-check"/></svg><?php echo esc_html( $ui['ok'] ); ?></span>
-									<?php elseif ( 'env' === $ui['type'] ) : ?>
-										<div class="pg-ui-env"><?php foreach ( $ui['envs'] as $e => $env ) : ?><span<?php echo $e === $ui['active'] ? ' class="is-on"' : ''; ?>><?php echo esc_html( $env ); ?></span><?php endforeach; ?></div>
-										<div class="pg-ui-run"><b><?php echo esc_html( $ui['title'] ); ?></b><span><i></i></span><small><?php echo esc_html( $ui['sub'] ); ?></small></div>
-									<?php elseif ( 'objects' === $ui['type'] ) : ?>
-										<div class="igs-ui-bar"><?php $pgi( $ui['bar'][0] ); ?><span><?php echo esc_html( $ui['bar'][1] ); ?></span></div>
-										<?php foreach ( $ui['rows'] as $row ) : ?>
-											<div class="pg-ui-obj<?php echo $row[1] ? ' is-on' : ''; ?>"><i><svg><use href="#igs-check"/></svg></i><span><?php echo esc_html( $row[0] ); ?></span><small><?php echo esc_html( $row[2] ); ?></small></div>
-										<?php endforeach; ?>
-									<?php endif; ?>
-								</div>
-								<h3><?php echo esc_html( $step['title'] ); ?></h3>
-								<?php foreach ( (array) $step['text'] as $text ) : ?><p><?php $pg_html( $text ); ?></p><?php endforeach; ?>
-							</li>
-						<?php endforeach; ?>
-					</ol>
-					<?php if ( ! empty( $b['note'] ) ) : ?><p class="pg-steps-note" data-igs-reveal><?php $pg_html( $b['note'] ); ?></p><?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'pipe' === $type ) : ?>
-			<section class="igs-section igs-connect"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-pipe" data-igs-pipe data-igs-reveal>
-						<svg class="igs-pipe-svg" aria-hidden="true" focusable="false"></svg>
-						<div class="igs-pipe-dots" aria-hidden="true"></div>
-						<div class="igs-pipe-source" data-igs-pipe-source>
-							<span class="igs-pipe-logo"><?php $pgi( $b['source'][0] ); ?></span>
-							<b><?php echo esc_html( $b['source'][1] ); ?></b>
-							<small><?php echo esc_html( $b['source'][2] ); ?></small>
-							<ul aria-label="<?php echo esc_attr( $b['source'][1] ); ?>"><?php foreach ( $b['source'][3] as $op ) : ?><li><?php echo esc_html( $op ); ?></li><?php endforeach; ?></ul>
-						</div>
-						<div class="igs-pipe-hub" data-igs-pipe-hub>
-							<span class="igs-pipe-ring" aria-hidden="true"></span>
-							<span class="igs-pipe-logo is-hub"><?php $pgi( $b['hub'][0] ); ?></span>
-							<b><?php echo esc_html( $b['hub'][1] ); ?></b>
-							<small><?php echo esc_html( $b['hub'][2] ); ?></small>
-							<span class="igs-pipe-modes"><?php foreach ( $b['hub'][3] as $mode ) : ?><em><?php echo esc_html( $mode ); ?></em><?php endforeach; ?></span>
-						</div>
-						<div class="igs-pipe-targets">
-							<?php foreach ( $b['groups'] as $group ) : ?>
-								<article class="igs-pipe-group is-<?php echo esc_attr( $group[0] ); ?>" data-igs-pipe-group>
-									<header><span><svg><use href="#<?php echo esc_attr( $group[1] ); ?>"/></svg></span><div><h3><?php echo esc_html( $group[2] ); ?></h3><small><?php echo esc_html( $group[3] ); ?></small></div></header>
-									<ul>
-										<?php foreach ( $group[4] as $item ) : ?><li><?php $pgi( $item[1], '', 'igs-pipe-generic' ); ?><small><?php echo esc_html( $item[0] ); ?></small></li><?php endforeach; ?>
-									</ul>
-								</article>
-							<?php endforeach; ?>
-						</div>
-						<div class="igs-pipe-foot">
-							<span class="igs-pipe-foot-label"><svg><use href="#igs-check"/></svg><?php echo esc_html( $b['foot_label'] ); ?></span>
-							<ul><?php foreach ( $b['foot'] as $tag ) : ?><li><svg><use href="#<?php echo esc_attr( $tag[0] ); ?>"/></svg><?php echo esc_html( $tag[1] ); ?></li><?php endforeach; ?></ul>
-						</div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'uses' === $type ) : ?>
-			<section class="igs-section igs-uses"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-use-grid<?php echo 4 === count( $b['items'] ) ? ' pg-cols-2' : ''; ?>">
-						<?php foreach ( $b['items'] as $ui => $use ) : ?>
-							<article class="igs-use is-<?php echo esc_attr( $use['tone'] ); ?>" data-igs-reveal>
-								<div class="igs-use-scene<?php echo count( $use['from'] ) > 1 ? ' is-merge' : ''; ?>" aria-hidden="true">
-									<?php if ( count( $use['from'] ) > 1 ) : ?>
-										<span class="igs-use-sheets"><?php foreach ( $use['from'] as $spec ) : ?><span class="igs-use-tile is-xs"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-										<span class="igs-use-merge"><svg><use href="#<?php echo esc_attr( isset( $use['via'] ) ? $use['via'] : 'igs-layers' ); ?>"/></svg></span>
-										<span class="igs-use-pipe is-short"><i></i></span>
-									<?php else : ?>
-										<span class="igs-use-tile"><?php $pgi( $use['from'][0], '', 'igs-pipe-generic' ); ?></span>
-										<span class="igs-use-pipe"><i></i></span>
-									<?php endif; ?>
-									<?php if ( count( $use['to'] ) > 1 ) : ?>
-										<span class="igs-use-stack"><?php foreach ( $use['to'] as $spec ) : ?><span class="igs-use-tile is-sm"><?php $pgi( $spec, '', 'igs-pipe-generic' ); ?></span><?php endforeach; ?></span>
-									<?php else : ?>
-										<span class="igs-use-tile is-target"><?php $pgi( $use['to'][0], '', 'igs-pipe-generic' ); ?></span>
-									<?php endif; ?>
-								</div>
-								<span class="igs-use-num"><?php echo esc_html( sprintf( 'Use case %02d', $ui + 1 ) ); ?></span>
-								<h3><?php echo esc_html( $use['title'] ); ?></h3>
-								<p><?php $pg_html( $use['text'] ); ?></p>
-								<ul class="igs-use-tags"><?php foreach ( $use['tags'] as $tag ) : ?><li><?php echo esc_html( $tag ); ?></li><?php endforeach; ?></ul>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['note'] ) ) : ?>
-						<div class="igs-uses-note" data-igs-reveal>
-							<span aria-hidden="true"><svg><use href="#igs-star"/></svg></span>
-							<p><?php $pg_html( $b['note'] ); ?></p>
-							<?php if ( ! empty( $b['btn'] ) ) : ?><?php $pg_btn( $b['btn'], 'igs-btn-primary' ); ?><?php endif; ?>
-						</div>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'videos' === $type ) : ?>
-			<?php $vids = $b['videos']; ?>
-			<section class="igs-section igs-videos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="igs-tv" data-igs-tv data-igs-reveal>
-						<a class="igs-tv-stage" href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $vids[0][0] ); ?>" target="_blank" rel="noopener" data-igs-video="<?php echo esc_attr( $vids[0][0] ); ?>" data-igs-stage>
-							<span class="igs-tv-scene" aria-hidden="true">
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][0] ); ?></span>
-								<span class="igs-tv-pipe"><i></i></span>
-								<span class="igs-tv-tile"><?php $pgi( $b['logos'][1] ); ?></span>
-							</span>
-							<span class="igs-tv-play" aria-hidden="true"><svg><use href="#igs-play"/></svg></span>
-							<span class="igs-tv-info">
-								<span class="igs-tv-meta"><em data-igs-stage-op><?php echo esc_html( $vids[0][2] ); ?></em><span data-igs-stage-ep>Episode 01</span> · <?php echo esc_html( $b['series'] ); ?></span>
-								<b data-igs-stage-title><?php echo esc_html( $vids[0][1] ); ?></b>
-								<span class="igs-tv-cta">Watch video <svg><use href="#igs-arrow"/></svg></span>
-							</span>
-						</a>
-						<div class="igs-tv-list">
-							<header><b><?php echo esc_html( $b['list_title'] ); ?></b><small><?php echo esc_html( count( $vids ) . ( 1 === count( $vids ) ? ' video' : ' videos' ) ); ?></small></header>
-							<ol>
-								<?php foreach ( $vids as $vi => $video ) : ?>
-									<li><a href="<?php echo esc_url( 'https://www.youtube.com/watch?v=' . $video[0] ); ?>" target="_blank" rel="noopener" data-igs-pick="<?php echo esc_attr( $video[0] ); ?>" data-op="<?php echo esc_attr( $video[2] ); ?>" data-ep="<?php echo esc_attr( sprintf( 'Episode %02d', $vi + 1 ) ); ?>"<?php echo 0 === $vi ? ' aria-current="true"' : ''; ?>><span class="igs-tv-num"><?php echo esc_html( sprintf( '%02d', $vi + 1 ) ); ?></span><span class="igs-tv-item"><em><?php echo esc_html( $video[2] ); ?></em><b><?php echo esc_html( $video[1] ); ?></b></span><span class="igs-tv-go" aria-hidden="true"><svg><use href="#igs-play"/></svg></span></a></li>
-								<?php endforeach; ?>
-							</ol>
-							<?php if ( ! empty( $b['aside'] ) ) : ?>
-								<div class="pg-tv-aside"><?php echo ! empty( $b['aside']['h2'] ) ? '<h2>' . esc_html( $b['aside']['title'] ) . '</h2>' : '<b>' . esc_html( $b['aside']['title'] ) . '</b>'; ?><?php if ( ! empty( $b['aside']['text'] ) ) : ?><p><?php $pg_html( $b['aside']['text'] ); ?></p><?php endif; ?><div class="pg-btns"><?php foreach ( $b['aside']['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-outline' ); } ?></div></div>
-							<?php endif; ?>
-						</div>
-					</div>
-				</div>
-				<div class="igs-modal" data-igs-modal hidden>
-					<div class="igs-modal-box" role="dialog" aria-modal="true" aria-label="Video">
-						<button type="button" class="igs-modal-close" data-igs-close aria-label="Close video"><svg><use href="#igs-plus"/></svg></button>
-						<div class="igs-modal-frame" data-igs-frame></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'stats' === $type ) : ?>
-			<section class="igs-section<?php echo ! empty( $b['dark'] ) ? ' igs-steps-section pg-stats-dark' : ' pg-stats-light'; ?>"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( ! empty( $b['dark'] ) ); ?>
-					<div class="pg-stats pg-n<?php echo (int) count( $b['items'] ); ?>">
-						<?php foreach ( $b['items'] as $si => $stat ) : ?>
-							<article class="is-c<?php echo (int) ( $si % 4 ); ?>" data-igs-reveal>
-								<?php if ( ! empty( $stat['icon'] ) ) : ?><span class="pg-stat-ic"><svg><use href="#<?php echo esc_attr( $stat['icon'] ); ?>"/></svg></span><?php endif; ?>
-								<?php if ( ! empty( $b['num_in'] ) ) : ?>
-									<h3><?php if ( ! empty( $stat['pre'] ) ) : ?><small><?php echo esc_html( $stat['pre'] ); ?></small> <?php endif; ?><b><?php echo esc_html( $stat['num'] ); ?></b> <?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php else : ?>
-									<b class="pg-stat-num" aria-hidden="true"><?php echo esc_html( $stat['num'] ); ?></b>
-									<h3><?php echo esc_html( $stat['label'] ); ?></h3>
-								<?php endif; ?>
-								<?php if ( ! empty( $stat['text'] ) ) : ?><p><?php $pg_html( $stat['text'] ); ?></p><?php endif; ?>
-							</article>
-						<?php endforeach; ?>
-					</div>
-					<?php if ( ! empty( $b['checks'] ) ) : ?>
-						<ul class="pg-check-row" data-igs-reveal><?php foreach ( $b['checks'] as $check ) : ?><li><svg><use href="#igs-check"/></svg><?php echo esc_html( $check ); ?></li><?php endforeach; ?></ul>
-					<?php endif; ?>
-				</div>
-			</section>
-
-		<?php elseif ( 'split' === $type ) : ?>
-			<section class="igs-section igs-steps-section pg-split"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head( true ); ?>
-					<div class="pg-split-grid">
-						<div class="pg-split-copy" data-igs-reveal><?php foreach ( $b['paras'] as $para ) : ?><p><?php $pg_html( $para ); ?></p><?php endforeach; ?></div>
-						<?php if ( ! empty( $b['chain'] ) ) : ?>
-							<ol class="pg-chain" data-igs-reveal aria-label="<?php echo esc_attr( $b['chain_label'] ); ?>">
-								<?php foreach ( $b['chain'] as $link ) : ?><li><span><?php $pgi( $link[0], '', 'pg-chain-svg' ); ?></span><div><b><?php echo esc_html( $link[1] ); ?></b><small><?php echo esc_html( $link[2] ); ?></small></div></li><?php endforeach; ?>
-							</ol>
-						<?php else : ?>
-							<ul class="pg-values" data-igs-reveal>
-								<?php foreach ( $b['values'] as $value ) : ?>
-									<li<?php echo $value[0] ? ' class="is-num"' : ''; ?>><?php if ( $value[0] ) : ?><b><?php echo esc_html( $value[0] ); ?></b> <?php else : ?><svg><use href="#igs-check"/></svg><?php endif; ?><span><?php echo esc_html( $value[1] ); ?></span></li>
-								<?php endforeach; ?>
-							</ul>
-						<?php endif; ?>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'band' === $type ) : ?>
-			<section class="igs-section pg-band-sec"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<div class="pg-band" data-igs-reveal>
-						<span class="pg-band-ic" aria-hidden="true"><svg><use href="#<?php echo esc_attr( isset( $b['icon'] ) ? $b['icon'] : 'igs-bolt' ); ?>"/></svg></span>
-						<div><h2 id="<?php echo esc_attr( $bid ); ?>"><?php $pg_html( $b['h2'] ); ?></h2><?php if ( ! empty( $b['p'] ) ) : ?><p><?php $pg_html( $b['p'] ); ?></p><?php endif; ?></div>
-						<div class="pg-btns"><?php foreach ( $b['btns'] as $k => $btn ) { $pg_btn( $btn, 0 === $k ? 'igs-btn-primary' : 'igs-btn-ghost' ); } ?></div>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'logos' === $type ) : ?>
-			<section class="igs-section pg-logos"<?php echo $labelled; // phpcs:ignore ?>>
-				<div class="igs-shell">
-					<?php $head(); ?>
-					<div class="pg-marquee" data-igs-reveal>
-						<ul>
-							<?php foreach ( array_merge( $b['logos'], $b['logos'] ) as $li => $logo ) : ?>
-								<li<?php echo $li >= count( $b['logos'] ) ? ' aria-hidden="true"' : ''; ?>><?php $pgi( $logo[0], $li >= count( $b['logos'] ) ? '' : $logo[1] ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				</div>
-			</section>
-
-		<?php elseif ( 'cta' === $type ) : ?>
-			<?php $pg_cta( $b ); ?>
-		<?php endif; ?>
-	<?php endforeach; ?>
+	<!-- Expertise -->
+	<section class="x-sec mk-exp" aria-labelledby="mk-exp-title">
+		<div class="igs-shell mk-exp-grid">
+			<div class="x-copy" data-igs-reveal>
+				<span class="igs-kicker">Why Infometry</span>
+				<h2 id="mk-exp-title">Infometry Expertise</h2>
+			</div>
+			<ol class="mk-exp-list">
+				<li data-igs-reveal><b>01</b><div><h3>Specialists in Data Integration</h3><p>Experts in developing advanced data integration solutions tailored for Snowflake.</p></div></li>
+				<li data-igs-reveal><b>02</b><div><h3>Proven Track Record</h3><p>Years of experience delivering reliable connectors that streamline data pipelines.</p></div></li>
+				<li data-igs-reveal><b>03</b><div><h3>Trusted by Industry Leaders</h3><p>Commitment to innovation ensures cutting-edge solutions for seamless integration, now enhanced with Agentic AI capabilities.</p></div></li>
+				<li data-igs-reveal><b>04</b><div><h3>Customer-Centric Approach</h3><p>Focus on customer satisfaction, providing robust support and tailored solution</p></div></li>
+			</ol>
+		</div>
+		<div class="igs-shell">
+			<div class="mk-ready" data-igs-reveal>
+				<span class="mk-f-logo" aria-hidden="true">M</span>
+				<h2>Ready to experience seamless Marketo integration?</h2>
+				<div class="pg-btns"><a class="igs-btn igs-btn-primary" href="#freetrial">Free Trial <svg><use href="#igs-arrow"/></svg></a><a class="igs-btn igs-btn-ghost" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>">Contact Us</a></div>
+			</div>
+		</div>
+	</section>
 
 	<!-- FAQ -->
 	<section class="igs-section igs-faq" aria-labelledby="pg-faq-title">

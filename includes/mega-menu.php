@@ -162,6 +162,9 @@ function infometry_ct_megamenu_icon( $url, $title ) {
 /** Built-in short line for well-known pages, used only when the menu item has no Description. */
 function infometry_ct_megamenu_default_desc( $url ) {
 	$path  = infometry_ct_megamenu_path( $url );
+	if ( false !== strpos( $path, '/category/' ) ) {
+		return '';
+	}
 	$roots = array(
 		'/product/'   => 'Connectors, native apps and accelerators for your data stack.',
 		'/resources/' => 'Blogs, case studies, whitepapers and events.',
@@ -186,6 +189,42 @@ function infometry_ct_megamenu_default_desc( $url ) {
 		'sales-analytics-native-app'                        => 'Pipeline, forecast, MQL and SQL insights.',
 		'finance-analytics-native-app'                      => 'FP&A dashboards with Agentic AI.',
 		'pre-built-analytics-apps'                          => 'Ready-made analytics for IDMC and Matillion.',
+		'prebuilt-finance-analytics' => 'Finance KPIs and dashboards, ready to deploy.',
+		'prebuilt-sales-marketing' => 'Pipeline, campaign and revenue analytics.',
+		'prebuilt-supply-chain' => 'Inventory, orders and logistics insights.',
+		'prebuilt-marketo' => 'Replicate Marketo data into your warehouse.',
+		'metadata-discovery' => 'Scan and catalogue legacy ETL metadata.',
+		'cloud-data-warehouse-testing' => 'Automate data validation for migrations.',
+		'ddl-automation' => 'Generate Snowflake DDL automatically.',
+		'adaptive-insight' => 'Planning data in and out of Adaptive.',
+		'hubspot-connector' => 'CRM and marketing data for IDMC.',
+		'snowflake-to-databricks' => 'Move workloads from Snowflake to Databricks.',
+		'databricks-strategy' => 'Lakehouse roadmap and delivery.',
+		'dbt-migration' => 'Modernize transformations with dbt.',
+		'pc-to-cloud' => 'PowerCenter to IDMC, faster and safer.',
+		'goanywhere' => 'Secure, automated file transfer.',
+		'cloud-data-orchestration' => 'Schedule and monitor data pipelines.',
+		'data-quality' => 'Clean, validate and enrich your data.',
+		'metadata-management' => 'Lineage and governance across systems.',
+		'master-data' => 'One trusted view of customers and products.',
+		'oem-strategy' => 'Embed analytics in your product.',
+		'advanced-analytics' => 'Forecasting, ML and deeper insight.',
+		'enterprise-performance' => 'Planning, budgeting and consolidation.',
+		'data-strategy' => 'Roadmaps and modern data architecture.',
+		'business-intelligence' => 'Dashboards people actually use.',
+		'mulesoft' => 'API-led integration with MuleSoft.',
+		'matillion' => 'Cloud ELT pipelines with Matillion.',
+		'/data-warehouse/' => 'Cloud data warehouses, built right.',
+		'hi-tech' => 'Analytics for semiconductor and tech leaders.',
+		'retail' => 'Customer, inventory and sales analytics.',
+		'/finance/' => 'Close faster with trusted financial data.',
+		'manufacturing' => 'Visibility across plants and supply chain.',
+		'solar' => 'Data platforms for energy and solar.',
+		'healthcare' => 'Secure, compliant healthcare analytics.',
+		'life-at-infometry' => 'Our culture and team.',
+		'infometry-cares' => 'Giving back to our communities.',
+		'testimonials' => 'What our customers say.',
+		'gallery' => 'Moments from events and teams.',
 		'accelerators-for-data-warehouse'                   => 'Tools that speed up warehouse migration.',
 		'databricks-solutions'                              => 'Strategy, implementation and migration.',
 		'snowflake-solutions'                               => 'Modern data cloud consulting.',
@@ -233,7 +272,7 @@ function infometry_ct_megamenu_row( $item, $class = 'imm-row' ) {
 	$desc = infometry_ct_megamenu_desc( $item );
 	return '<a class="' . esc_attr( $class ) . '"' . infometry_ct_megamenu_attrs( $item ) . '>'
 		. infometry_ct_megamenu_icon_html( $item )
-		. '<span class="imm-tx"><b>' . esc_html( $item['title'] ) . '</b>' . ( $desc ? '<small>' . esc_html( $desc ) . '</small>' : '' ) . '</span></a>';
+		. '<span class="imm-tx"><b>' . esc_html( $item['title'] ) . '</b>' . ( $desc ? '<small>' . esc_html( $desc ) . '</small>' : '' ) . '</span><svg class="imm-go" aria-hidden="true"><use href="#imm-arrow"/></svg></a>';
 }
 
 /** A plain link with a small icon (used inside group columns). */
@@ -244,6 +283,101 @@ function infometry_ct_megamenu_link( $item ) {
 /** Title-case a menu label typed in capitals (PRODUCTS → Products) for headings inside the panel. */
 function infometry_ct_megamenu_label( $title ) {
 	return ( strtoupper( $title ) === $title && strlen( $title ) > 3 ) ? ucwords( strtolower( $title ) ) : $title;
+}
+
+/**
+ * Spotlight card shown beside a section: an animated visual, short points and a link.
+ * Picked from the section link; sections without a match get a generic card.
+ */
+function infometry_ct_megamenu_spot( $item ) {
+	$path  = infometry_ct_megamenu_path( $item['url'] );
+	$img   = INFOMETRY_CT_URL . 'assets/images/';
+	$cards = array(
+		'infofiscus-conversa'     => array( 'chat', 'is-violet', 'Ask your data anything', array( 'Ask in natural language', 'Instant business insights', 'Enterprise-grade security', 'Actionable recommendations' ), 'Explore Conversa' ),
+		'informatica-connectors'  => array( 'flow', 'is-blue', '100% Informatica Certified', array( 'Native IDMC connectors', 'No-code setup', 'Unlimited usage per OrgID' ), 'See all connectors' ),
+		'google-cloud-connectors' => array( 'flow', 'is-blue', 'Google Cloud, inside IDMC', array( 'Drive, Sheets, Ads, Pub/Sub, BigTable', 'Batch and real-time' ), 'Explore Google connectors' ),
+		'snowflake-native-apps'   => array( 'snow', 'is-sky', 'Runs inside Snowflake', array( 'No-code native apps', 'Near real-time sync', 'Data never leaves Snowflake' ), 'Explore native apps' ),
+		'pre-built-analytics'     => array( 'bars', 'is-green', 'Analytics, ready on day one', array( 'Pre-built models and KPIs', 'For IDMC and Matillion', 'Finance, sales, supply chain' ), 'Explore pre-built apps' ),
+		'accelerators'            => array( 'rocket', 'is-orange', 'Migrate faster', array( 'Metadata discovery', 'Automated testing', 'DDL generation' ), 'Explore accelerators' ),
+		'databricks'              => array( 'bars', 'is-orange', 'Lakehouse, done right', array( 'Strategy and implementation', 'Snowflake to Databricks' ), 'Explore Databricks' ),
+		'/resources/blog/'        => array( 'book', 'is-violet', 'Learn from our data team', array( 'How-tos and deep dives', 'Snowflake, IDMC, Databricks' ), 'Read the blog' ),
+	);
+	$c = null;
+	foreach ( $cards as $needle => $card ) {
+		if ( false !== strpos( $path, $needle ) ) {
+			$c = $card;
+			break;
+		}
+	}
+	if ( ! $c ) {
+		$c = array( 'spark', 'is-blue', infometry_ct_megamenu_label( $item['title'] ), array(), 'Explore' );
+		$d = infometry_ct_megamenu_desc( $item );
+		if ( $d ) {
+			$c[3] = array( $d );
+		}
+	}
+	$im = function ( $f ) use ( $img ) {
+		return '<img src="' . esc_url( $img . $f ) . '" alt="" loading="lazy">';
+	};
+	switch ( $c[0] ) {
+		case 'chat':
+			$viz = '<div class="imm-v-chat"><p class="is-q">Why is Q3 revenue below plan?</p><p class="is-a"><i></i><i></i><i></i><span>Lower demand in North America and longer sales cycles.</span></p></div>';
+			break;
+		case 'flow':
+			$viz = '<div class="imm-v-flow"><span>' . $im( 'google-connectors/google-sheets.png' ) . '</span><em></em><span class="is-hub">' . $im( 'informatica-product-mark.png' ) . '</span><em></em><span>' . $im( 'google-sheets/eco-snowflake.png' ) . '</span></div>';
+			break;
+		case 'snow':
+			$viz = '<div class="imm-v-snow"><span class="imm-v-core">' . $im( 'snowflake-product-mark.png' ) . '</span><i style="--a:0deg">' . $im( 'google-sheets/eco-netsuite.png' ) . '</i><i style="--a:120deg">' . $im( 'google-sheets/eco-salesforce.png' ) . '</i><i style="--a:240deg">' . $im( 'google-sheets/eco-workday.png' ) . '</i></div>';
+			break;
+		case 'bars':
+			$viz = '<div class="imm-v-bars"><i style="--h:38%"></i><i style="--h:56%"></i><i style="--h:44%"></i><i style="--h:72%"></i><i style="--h:64%"></i><i style="--h:90%"></i></div>';
+			break;
+		case 'rocket':
+			$viz = '<div class="imm-v-rocket"><b>Migration progress</b><span><i></i></span><ul><li>Discover</li><li>Convert</li><li>Test</li><li>Go live</li></ul></div>';
+			break;
+		case 'book':
+			$viz = '<div class="imm-v-book"><span></span><span></span><span></span></div>';
+			break;
+		default:
+			$viz = '<div class="imm-v-spark"><svg aria-hidden="true"><use href="#imm-spark"/></svg></div>';
+	}
+	$html  = '<aside class="imm-spot ' . esc_attr( $c[1] ) . '"><div class="imm-spot-viz" aria-hidden="true">' . $viz . '</div>';
+	$html .= '<b class="imm-spot-t">' . esc_html( $c[2] ) . '</b>';
+	if ( $c[3] ) {
+		$html .= '<ul class="imm-spot-pts">';
+		foreach ( $c[3] as $pt ) {
+			$html .= '<li>' . esc_html( $pt ) . '</li>';
+		}
+		$html .= '</ul>';
+	}
+	if ( $item['url'] && '#' !== $item['url'] ) {
+		$html .= '<a class="imm-spot-btn"' . infometry_ct_megamenu_attrs( $item ) . '>' . esc_html( $c[4] ) . ' <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>';
+	}
+	return $html . '</aside>';
+}
+
+
+/** Feature tiles under a single-item section (e.g. INFOFISCUS Conversa), so the pane is not empty. */
+function infometry_ct_megamenu_solo_feats( $item ) {
+	$path  = infometry_ct_megamenu_path( $item['url'] );
+	$feats = array(
+		'infofiscus-conversa' => array(
+			array( 'chat', 'Ask in natural language', 'Plain-English questions, no SQL.' ),
+			array( 'chart', 'Instant business insights', 'Answers in seconds from governed data.' ),
+			array( 'check', 'Enterprise-grade security', 'Role-based access and audit trails.' ),
+			array( 'target', 'Actionable recommendations', 'Next steps, not just numbers.' ),
+		),
+	);
+	foreach ( $feats as $needle => $list ) {
+		if ( false !== strpos( $path, $needle ) ) {
+			$html = '<div class="imm-feats">';
+			foreach ( $list as $f ) {
+				$html .= '<div class="imm-feat"><span class="imm-ic is-line"><svg aria-hidden="true"><use href="#imm-' . esc_attr( $f[0] ) . '"/></svg></span><b>' . esc_html( $f[1] ) . '</b><small>' . esc_html( $f[2] ) . '</small></div>';
+			}
+			return $html . '</div>';
+		}
+	}
+	return '';
 }
 
 /** The dropdown for one top-level item. */
@@ -286,6 +420,7 @@ function infometry_ct_megamenu_panel( $top ) {
 						$d = infometry_ct_megamenu_desc( $kid );
 						?>
 						<div class="imm-pane<?php echo 0 === $k ? ' is-on' : ''; ?>" data-imm-pane="<?php echo (int) $kid['id']; ?>">
+							<div class="imm-pane-body">
 							<header class="imm-pane-head">
 								<div><a class="imm-pane-t"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>><?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?></a><?php echo $d ? '<p>' . esc_html( $d ) . '</p>' : ''; ?></div>
 								<a class="imm-all"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>>View all <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>
@@ -314,17 +449,21 @@ function infometry_ct_megamenu_panel( $top ) {
 									<?php echo infometry_ct_megamenu_icon_html( $kid ); // phpcs:ignore ?>
 									<span><b><?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?></b><em>Explore <?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?> <svg aria-hidden="true"><use href="#imm-arrow"/></svg></em></span>
 								</a>
+								<?php echo infometry_ct_megamenu_solo_feats( $kid ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							<?php endif; ?>
+							</div>
+							<?php echo infometry_ct_megamenu_spot( $kid ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped while built. ?>
 						</div>
 					<?php endforeach; ?>
 				</div>
 			<?php else : ?>
 				<div class="imm-flat">
-					<div class="imm-list<?php echo count( $kids ) > 6 ? ' is-3' : ''; ?>">
+					<div class="imm-list">
 						<?php foreach ( $kids as $kid ) : ?>
 							<?php echo infometry_ct_megamenu_row( $kid ); // phpcs:ignore ?>
 						<?php endforeach; ?>
 					</div>
+					<?php echo infometry_ct_megamenu_spot( $top ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 			<?php endif; ?>
 		</div>

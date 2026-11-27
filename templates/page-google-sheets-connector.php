@@ -347,51 +347,6 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 		</div>
 	</section>
 
-	<section class="igs-section igs-license" aria-labelledby="igs-compare-title">
-		<div class="igs-shell">
-			<div class="igs-head" data-igs-reveal>
-				<span class="igs-kicker">Why Infometry</span>
-				<h2 id="igs-compare-title">Infometry connector vs JDBC drivers vs REST V2</h2>
-				<p>Three common ways to connect Google Sheets to Informatica IDMC, compared.</p>
-			</div>
-			<div class="igs-use-grid">
-				<article class="igs-plan is-dark" data-igs-reveal>
-					<header><span><svg><use href="#igs-shield"/></svg></span><h3>Infometry Google Sheets Connector</h3></header>
-					<ul>
-						<li><svg><use href="#igs-check"/></svg><span><b>Setup:</b> Enable from IDMC Add-on Connectors</span></li>
-						<li><svg><use href="#igs-check"/></svg><span><b>Operations:</b> Read, Write, Update, Delete, Range, Search, Filter</span></li>
-						<li><svg><use href="#igs-check"/></svg><span><b>Batch + real-time:</b> CDI and CAI</span></li>
-						<li><svg><use href="#igs-check"/></svg><span><b>Informatica certification:</b> 100% certified, listed on Informatica Marketplace</span></li>
-						<li><svg><use href="#igs-check"/></svg><span><b>Updates:</b> Automatic with IDMC releases, free</span></li>
-						<li><svg><use href="#igs-check"/></svg><span><b>Pricing:</b> Annual per OrgID, unlimited usage, independent of data volume</span></li>
-					</ul>
-				</article>
-				<article class="igs-plan" data-igs-reveal>
-					<header><span><svg><use href="#igs-db"/></svg></span><h3>JDBC driver</h3></header>
-					<ul>
-						<li><svg><use href="#igs-code"/></svg><span><b>Setup:</b> Install driver JAR on Secure Agent and restart</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Operations:</b> Depends on driver (SQL-style access)</span></li>
-						<?php /* TODO CONFIRM: JDBC driver "Batch + real-time" value; row hidden until confirmed. */ ?>
-						<li><svg><use href="#igs-code"/></svg><span><b>Informatica certification:</b> Third-party driver</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Updates:</b> Manual driver upgrades</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Pricing:</b> Per driver license</span></li>
-					</ul>
-				</article>
-				<article class="igs-plan" data-igs-reveal>
-					<header><span><svg><use href="#igs-sync"/></svg></span><h3>Generic REST V2</h3></header>
-					<ul>
-						<li><svg><use href="#igs-code"/></svg><span><b>Setup:</b> Build and maintain API calls yourself</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Operations:</b> Whatever you build</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Batch + real-time:</b> Manual</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Informatica certification:</b> n/a</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Updates:</b> You maintain it</span></li>
-						<li><svg><use href="#igs-code"/></svg><span><b>Pricing:</b> Engineering time</span></li>
-					</ul>
-				</article>
-			</div>
-		</div>
-	</section>
-
 	<section class="igs-section igs-steps-section" aria-labelledby="igs-steps-title">
 		<div class="igs-shell">
 			<div class="igs-head is-light" data-igs-reveal>

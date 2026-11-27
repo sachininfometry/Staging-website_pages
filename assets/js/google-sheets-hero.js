@@ -33,6 +33,8 @@
   var rows = q('[data-isw-rows]');
   var toastRows = q('[data-isw-toast-rows]');
   var steps = qa('[data-isw-step]');
+  var rail = q('[data-isw-rail]');
+  var mrows = qa('[data-isw-mrow]');
   var connImg = conn.querySelector('img');
   var imgs = {};
   cards.forEach(function (c) { imgs[c.getAttribute('data-isw-card')] = c.querySelector('img').getAttribute('src'); });
@@ -64,6 +66,7 @@
       s.classList.toggle('is-done', k < n);
       s.classList.toggle('is-on', k === n);
     });
+    if (rail) { rail.style.width = (Math.min(n, 4) - 1) / 3 * 100 + '%'; }
   }
   function setConn(key, label, object) {
     if (!key) {
@@ -123,6 +126,7 @@
     setConn(null);
     find.textContent = '';
     rows.textContent = '0';
+    mrows.forEach(function (r) { r.classList.remove('is-send'); });
     step(1);
   }
 
@@ -178,6 +182,7 @@
       status.textContent = 'Running';
       box.classList.add('is-flow');
       count(1284, 2600);
+      mrows.forEach(function (r, i) { at(i * 550, function () { r.classList.add('is-send'); }); });
     });
     at(20800, function () {
       box.classList.remove('is-flow');

@@ -177,14 +177,16 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 			<div class="isw" data-isw aria-label="Animated example of the workflow in Informatica IDMC Data Integration: create a mapping, open the Source, choose New Connection, pick the Infometry Google Sheets connector, set a Snowflake target the same way, then run the mapping">
 				<div class="isw-glow" aria-hidden="true"></div>
 				<ol class="isw-steps" aria-hidden="true">
-					<li data-isw-step="1" class="is-done"><b>1</b>Mapping</li>
-					<li data-isw-step="2" class="is-done"><b>2</b>Source</li>
-					<li data-isw-step="3" class="is-done"><b>3</b>Target</li>
-					<li data-isw-step="4" class="is-on"><b>4</b>Run</li>
+					<li class="isw-rail"><i data-isw-rail></i></li>
+					<li data-isw-step="1" class="is-done"><b><svg><use href="#igs-nodes"/></svg></b><span>Mapping</span></li>
+					<li data-isw-step="2" class="is-done"><b><svg><use href="#igs-db"/></svg></b><span>Source</span></li>
+					<li data-isw-step="3" class="is-done"><b><svg><use href="#igs-down"/></svg></b><span>Target</span></li>
+					<li data-isw-step="4" class="is-on"><b><svg><use href="#igs-play"/></svg></b><span>Run</span></li>
 				</ol>
 
 				<div class="isw-app" aria-hidden="true">
 					<header class="isw-top">
+						<span class="isw-dots3"><i></i><i></i><i></i></span>
 						<span class="isw-brand"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><b>Data Integration</b></span>
 						<span class="isw-map"><svg><use href="#igs-nodes"/></svg>Sheets_to_Snowflake</span>
 						<span class="isw-valid" data-isw-valid><i></i><em data-isw-status>Valid</em></span>
@@ -201,21 +203,23 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 						</ul>
 						<div class="isw-canvas">
 							<div class="isw-node is-src is-set" data-isw-node="src">
-								<small>Source</small>
+								<small><svg><use href="#igs-db"/></svg>Source</small>
 								<span class="isw-node-ic"><i class="isw-empty"><svg><use href="#igs-db"/></svg></i><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
 								<b class="isw-node-name">Google Sheets</b>
 								<em class="isw-node-obj">FY27_Sales_Forecast</em>
+								<span class="isw-node-meta"><i>Read</i><i>Range</i><i>4 fields</i></span>
 							</div>
 							<div class="isw-link" data-isw-link>
 								<i class="isw-link-line"></i>
 								<span class="isw-bolt"><svg><use href="#igs-bolt"/></svg></span>
-								<span class="isw-dots"><i></i><i></i><i></i><i></i></span>
+								<span class="isw-dots"><i></i><i></i><i></i><i></i><i></i><i></i></span>
 							</div>
 							<div class="isw-node is-tgt is-set" data-isw-node="tgt">
-								<small>Target</small>
+								<small><svg><use href="#igs-down"/></svg>Target</small>
 								<span class="isw-node-ic"><i class="isw-empty"><svg><use href="#igs-down"/></svg></i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?></span>
 								<b class="isw-node-name">Snowflake</b>
 								<em class="isw-node-obj">SALES_FORECAST</em>
+								<span class="isw-node-meta"><i>Insert</i><i>Upsert</i><i>4 fields</i></span>
 							</div>
 							<span class="isw-rows" data-isw-rows-wrap><b data-isw-rows>1,284</b> rows</span>
 						</div>
@@ -250,8 +254,15 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 					<span><svg><use href="#igs-check"/></svg></span>
 					<div><b>Mapping task completed</b><small>Google Sheets → Snowflake · <em data-isw-toast-rows>1,284</em> rows</small></div>
 				</div>
-				<span class="isw-chip is-a" aria-hidden="true"><svg><use href="#igs-shield"/></svg>100% Informatica Certified</span>
-				<span class="isw-chip is-b" aria-hidden="true"><svg><use href="#igs-sync"/></svg>Read · Write · Update</span>
+				<div class="isw-mini" aria-hidden="true">
+					<header><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b>FY27_Sales_Forecast</b></header>
+					<table>
+						<tr><th></th><th>Region</th><th>Q1 Goal</th></tr>
+						<?php foreach ( array_slice( $igs_sheet, 0, 4 ) as $mi => $mrow ) : ?>
+							<tr data-isw-mrow><td><?php echo (int) $mi + 2; ?></td><td><?php echo esc_html( $mrow[0] ); ?></td><td><?php echo esc_html( $mrow[1] ); ?></td></tr>
+						<?php endforeach; ?>
+					</table>
+				</div>
 			</div>
 		</div>
 

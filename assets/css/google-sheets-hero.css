@@ -215,3 +215,86 @@
 @media (prefers-reduced-motion: reduce) {
   .isw *, .isw *::before, .isw *::after { animation: none !important; transition: none !important; }
 }
+
+/* ---------- Why choose Infometry's Google Sheets Connector (.igw-*) ---------- */
+.igw { background: radial-gradient(circle at 0 0, rgba(46, 213, 125, .08), transparent 40%), radial-gradient(circle at 100% 100%, rgba(124, 92, 255, .08), transparent 40%), #fff; }
+.igw-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.igw-card { --c1: #2ed57d; --c2: #12b981; --t: #ebfaf3; position: relative; display: flex; flex-direction: column; padding: 18px 18px 26px; overflow: hidden; border: 1px solid #e1e7f4; border-radius: 24px; background: #fff; box-shadow: 0 22px 46px -36px rgba(7, 28, 71, .55); transition: transform .3s ease, box-shadow .3s ease; }
+.igw-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 3px; background: linear-gradient(90deg, var(--c1), var(--c2)); }
+.igw-card:hover { box-shadow: 0 32px 60px -34px rgba(7, 28, 71, .55); transform: translateY(-6px); }
+.igw-card.is-ops { --c1: #4aa6ff; --c2: #1f6fff; --t: #eaf3ff; }
+.igw-card.is-modes { --c1: #8b6bff; --c2: #6638ff; --t: #f1edff; }
+.igw-card.is-cert { --c1: #ff7a2f; --c2: #f43f5e; --t: #fff1ea; }
+.igw-card.is-upd { --c1: #00c2ff; --c2: #0b6fd8; --t: #e7f7fe; }
+.igw-card.is-price { --c1: #f5b82e; --c2: #f08a24; --t: #fff6e3; }
+.igw-viz { position: relative; display: flex; flex-direction: column; justify-content: center; gap: 10px; height: 150px; margin-bottom: 20px; padding: 18px; overflow: hidden; border-radius: 18px; background: radial-gradient(circle at 85% 15%, color-mix(in srgb, var(--c1) 25%, transparent), transparent 55%), var(--t); }
+.igw-tag { align-self: flex-start; margin-left: 4px; padding: 5px 11px; border-radius: 99px; background: var(--t); color: var(--c2); font-size: 11.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.igw-card h3 { margin-top: 12px; padding: 0 4px; color: #071c47; font-size: 20px; font-weight: 800; letter-spacing: -.01em; }
+.igw-card > p { margin-top: 8px !important; padding: 0 4px; color: #24364d; font-size: 16px; line-height: 1.6; }
+.igw-card > p a { color: #1f6fff; font-weight: 700; }
+.igw .igw-viz svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Setup: toggle switching on */
+.igw-tog { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 14px; background: #fff; box-shadow: 0 10px 22px -14px rgba(7, 28, 71, .5); }
+.igw-tog img { width: 26px; }
+.igw-tog b { flex: 1; color: #071c47; font-size: 13.5px; }
+.igw-tog i { position: relative; width: 42px; height: 24px; flex: none; border-radius: 99px; background: #d3dbe8; animation: igw-tog-bg 3.6s ease-in-out infinite; }
+.igw-tog i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, .25); animation: igw-tog-dot 3.6s ease-in-out infinite; }
+@keyframes igw-tog-bg { 0%, 30% { background: #d3dbe8; } 45%, 100% { background: #2ed57d; } }
+@keyframes igw-tog-dot { 0%, 30% { transform: none; } 45%, 100% { transform: translateX(18px); } }
+.igw-viz > small { color: #3b5a4a; font-size: 12px; font-weight: 700; text-align: center; }
+
+/* Operations: chips lighting up in turn */
+.igw-ops { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px; }
+.igw-ops li { padding: 7px 12px; border-radius: 10px; background: #fff; color: #33415c; font: 700 12.5px/1 ui-monospace, Consolas, monospace; box-shadow: 0 6px 14px -10px rgba(7, 28, 71, .5); animation: igw-op 1.82s ease-in-out var(--d) infinite; }
+@keyframes igw-op { 0%, 60%, 100% { background: #fff; color: #33415c; transform: none; } 20% { background: #1f6fff; color: #fff; transform: translateY(-3px); } }
+
+/* Modes: slow batch lane, fast real-time lane */
+.igw-lane { display: grid; grid-template-columns: 40px minmax(0, 1fr) 70px; align-items: center; gap: 10px; }
+.igw-lane b { padding: 5px 0; border-radius: 8px; background: #fff; color: #4b2fcf; font: 800 11.5px/1 ui-monospace, Consolas, monospace; text-align: center; }
+.igw-lane span { position: relative; height: 10px; overflow: hidden; border-radius: 10px; background: rgba(255, 255, 255, .8); }
+.igw-lane span i { position: absolute; top: 2px; left: -12px; width: 12px; height: 6px; border-radius: 3px; background: #8b6bff; animation: igw-lane 3s linear infinite; }
+.igw-lane span i:nth-child(2) { animation-delay: 1s; }
+.igw-lane span i:nth-child(3) { animation-delay: 2s; }
+.igw-lane.is-rt span i { width: 7px; background: #ec4899; animation-duration: 1.2s; }
+.igw-lane.is-rt span i:nth-child(2) { animation-delay: .24s; }
+.igw-lane.is-rt span i:nth-child(3) { animation-delay: .48s; }
+.igw-lane.is-rt span i:nth-child(4) { animation-delay: .72s; }
+.igw-lane.is-rt span i:nth-child(5) { animation-delay: .96s; }
+@keyframes igw-lane { to { left: 100%; } }
+.igw-lane em { color: #4b2fcf; font-size: 12px; font-style: normal; font-weight: 800; }
+
+/* Certification: rotating seal */
+.igw-viz:has(.igw-seal) { flex-direction: row; align-items: center; justify-content: center; gap: 16px; }
+.igw-seal { position: relative; display: grid; width: 92px; height: 92px; flex: none; place-content: center; text-align: center; }
+.igw-seal i { position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(#ff7a2f, #f43f5e, #ffb347, #ff7a2f); animation: igs-spin 8s linear infinite; -webkit-mask: radial-gradient(circle, transparent 36px, #000 37px); mask: radial-gradient(circle, transparent 36px, #000 37px); }
+.igw-seal b { position: relative; color: #c2410c; font: 900 22px/1 Roboto, Arial, sans-serif; }
+.igw-seal small { position: relative; color: #9a3412; font-size: 10.5px; font-weight: 800; text-transform: uppercase; }
+.igw-mp { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border-radius: 12px; background: #fff; box-shadow: 0 8px 18px -12px rgba(7, 28, 71, .5); color: #071c47; font-size: 12.5px; font-weight: 800; }
+.igw-mp img { width: 20px; }
+
+/* Updates: spinning sync + release list */
+.igw-viz:has(.igw-ring) { flex-direction: row; align-items: center; gap: 16px; }
+.igw-ring { display: grid; width: 62px; height: 62px; flex: none; place-items: center; border-radius: 50%; background: linear-gradient(135deg, #00c2ff, #0b6fd8); box-shadow: 0 0 0 8px rgba(0, 194, 255, .15); color: #fff; font-size: 28px; }
+.igw-ring svg { animation: igs-spin 3s linear infinite; }
+.igw-rel { display: grid; gap: 6px; }
+.igw-rel li { position: relative; padding: 6px 10px 6px 26px; border-radius: 9px; background: #fff; color: #0b3a5c; font-size: 12.5px; font-weight: 700; opacity: .4; animation: igw-rel 3.6s ease-in-out infinite; }
+.igw-rel li::before { content: "✓"; position: absolute; top: 50%; left: 8px; color: #0b6fd8; font-weight: 900; transform: translateY(-50%); }
+.igw-rel li:nth-child(2) { animation-delay: .6s; }
+.igw-rel li:nth-child(3) { animation-delay: 1.2s; }
+@keyframes igw-rel { 0%, 10% { opacity: .4; transform: translateX(-4px); } 25%, 90% { opacity: 1; transform: none; } 100% { opacity: .4; } }
+
+/* Pricing: rows grow, price stays flat */
+.igw-meter span, .igw-meter em { display: block; color: #8a5a00; font-size: 12px; font-weight: 800; }
+.igw-meter em { margin-top: 6px; color: #0f9d6b; font-style: normal; }
+.igw-meter i { display: block; height: 10px; margin-top: 6px; overflow: hidden; border-radius: 10px; background: rgba(255, 255, 255, .85); }
+.igw-meter b { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #f5b82e, #f08a24); animation: igw-meter 3.2s ease-in-out infinite; }
+@keyframes igw-meter { 0% { width: 8%; } 80%, 100% { width: 100%; } }
+.igw-inf { color: #c2410c; font: 900 34px/1 Roboto, Arial, sans-serif; }
+.igw-inf small { color: #8a5a00; font: 700 12.5px/1 "Open Sans", Arial, sans-serif; }
+
+@media (min-width: 1601px) { .igw-card > p { font-size: 17px; } .igw-card h3 { font-size: 21px; } }
+@media (min-width: 1920px) { .igw-card > p { font-size: 18px; } }
+@media (max-width: 1100px) { .igw-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .igw-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .igw *, .igw *::before, .igw *::after { animation: none !important; } }

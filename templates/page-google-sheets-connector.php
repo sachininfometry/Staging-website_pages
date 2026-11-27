@@ -156,59 +156,102 @@ require_once INFOMETRY_CT_PATH . 'templates/partials/connector-kit.php';
 				</div>
 			</div>
 
-			<div class="igs-flow" data-igs-live aria-label="Animated example: Google Sheets rows sync through the Infometry connector in Informatica IDMC into enterprise sources and targets such as Snowflake, Salesforce, NetSuite and Power BI">
-				<svg class="igs-flow-wires" aria-hidden="true" focusable="false"></svg>
-				<div class="igs-sheet" data-igs-sheet>
-					<header>
-						<span class="igs-sheet-icon"><svg><use href="#igs-grid"/></svg></span>
-						<span class="igs-sheet-name"><b>FY27_Sales_Forecast</b><small>Finance · Planning</small></span>
-						<span class="igs-sheet-live"><i></i>Live sync</span>
+			<?php
+			// Hero: the IDMC mapping workflow — Source → New Connection → Google Sheets, Target → Snowflake, Run.
+			// Animated by assets/js/google-sheets-hero.js; without it the finished mapping shows.
+			$isw_cards = array(
+				array( 'sheets', 'Google Sheets', 'google-connectors/google-sheets.png', true ),
+				array( 'drive', 'Google Drive', 'google-connectors/google-drive.png', true ),
+				array( 'ads', 'Google Ads', 'google-connectors/google-ads.png', true ),
+				array( 'bigtable', 'Google BigTable', 'google-connectors/google-bigtable.png', true ),
+				array( 'pubsub', 'Google Pub/Sub', 'google-connectors/google-pubsub.png', true ),
+				array( 'hubspot', 'HubSpot', 'google-sheets/eco-hubspot.png', false ),
+				array( 'snowflake', 'Snowflake', 'google-sheets/eco-snowflake.png', false ),
+				array( 'salesforce', 'Salesforce', 'google-sheets/eco-salesforce.png', false ),
+				array( 'netsuite', 'NetSuite', 'google-sheets/eco-netsuite.png', false ),
+				array( 'oracle', 'Oracle', 'google-sheets/eco-oracle.png', false ),
+				array( 'sap', 'SAP', 'google-sheets/eco-sap.png', false ),
+				array( 'databricks', 'Databricks', 'google-sheets/eco-databricks.png', false ),
+			);
+			?>
+			<div class="isw" data-isw aria-label="Animated example of the workflow in Informatica IDMC Data Integration: create a mapping, open the Source, choose New Connection, pick the Infometry Google Sheets connector, set a Snowflake target the same way, then run the mapping">
+				<div class="isw-glow" aria-hidden="true"></div>
+				<ol class="isw-steps" aria-hidden="true">
+					<li data-isw-step="1" class="is-done"><b>1</b>Mapping</li>
+					<li data-isw-step="2" class="is-done"><b>2</b>Source</li>
+					<li data-isw-step="3" class="is-done"><b>3</b>Target</li>
+					<li data-isw-step="4" class="is-on"><b>4</b>Run</li>
+				</ol>
+
+				<div class="isw-app" aria-hidden="true">
+					<header class="isw-top">
+						<span class="isw-brand"><?php infometry_ct_igs_img( $idmc_icon, '' ); ?><b>Data Integration</b></span>
+						<span class="isw-map"><svg><use href="#igs-nodes"/></svg>Sheets_to_Snowflake</span>
+						<span class="isw-valid" data-isw-valid><i></i><em data-isw-status>Valid</em></span>
+						<span class="isw-btn is-save">Save</span>
+						<span class="isw-btn is-run" data-isw-run><svg><use href="#igs-play"/></svg>Run</span>
 					</header>
-					<div class="igs-sheet-fx"><b>fx</b><span data-igs-fx>Reading rows · Q1 Goal, OpEx</span></div>
-					<div class="igs-sheet-grid">
-						<span class="igs-sheet-select" data-igs-select aria-hidden="true"></span>
-						<table>
-							<thead>
-								<tr class="igs-sheet-cols"><th></th><th>A</th><th>B</th><th>C</th></tr>
-								<tr><th>1</th><th>Region</th><th>Q1 Goal</th><th>OpEx</th></tr>
-							</thead>
-							<tbody>
-								<?php foreach ( $igs_sheet as $i => $row ) : ?>
-									<tr data-igs-row><td><?php echo (int) $i + 2; ?></td><td><?php echo esc_html( $row[0] ); ?></td><td><?php echo esc_html( $row[1] ); ?></td><td><?php echo esc_html( $row[2] ); ?><em class="igs-row-state" aria-hidden="true"></em></td></tr>
-								<?php endforeach; ?>
-							</tbody>
-						</table>
+
+					<div class="isw-body">
+						<ul class="isw-palette">
+							<li><svg><use href="#igs-db"/></svg>Source</li>
+							<li><svg><use href="#igs-down"/></svg>Target</li>
+							<li><svg><use href="#igs-shield"/></svg>Policy</li>
+							<li><svg><use href="#igs-layers"/></svg>Aggregator</li>
+						</ul>
+						<div class="isw-canvas">
+							<div class="isw-node is-src is-set" data-isw-node="src">
+								<small>Source</small>
+								<span class="isw-node-ic"><i class="isw-empty"><svg><use href="#igs-db"/></svg></i><?php infometry_ct_igs_img( $sheets_icon, '' ); ?></span>
+								<b class="isw-node-name">Google Sheets</b>
+								<em class="isw-node-obj">FY27_Sales_Forecast</em>
+							</div>
+							<div class="isw-link" data-isw-link>
+								<i class="isw-link-line"></i>
+								<span class="isw-bolt"><svg><use href="#igs-bolt"/></svg></span>
+								<span class="isw-dots"><i></i><i></i><i></i><i></i></span>
+							</div>
+							<div class="isw-node is-tgt is-set" data-isw-node="tgt">
+								<small>Target</small>
+								<span class="isw-node-ic"><i class="isw-empty"><svg><use href="#igs-down"/></svg></i><?php infometry_ct_igs_img( $img . 'google-sheets/eco-snowflake.png', '' ); ?></span>
+								<b class="isw-node-name">Snowflake</b>
+								<em class="isw-node-obj">SALES_FORECAST</em>
+							</div>
+							<span class="isw-rows" data-isw-rows-wrap><b data-isw-rows>1,284</b> rows</span>
+						</div>
 					</div>
-					<footer aria-hidden="true"><span class="is-on">Q1 Plan</span><span>Headcount</span><span>OpEx</span><i>+</i></footer>
+
+					<div class="isw-props">
+						<nav><span data-isw-tab="gen">General</span><span data-isw-tab="conn" class="is-on" data-isw-tabname>Source</span><span>Fields</span><span>Field Mapping</span></nav>
+						<div class="isw-form">
+							<label>Connection<span class="isw-field" data-isw-conn><?php infometry_ct_igs_img( $sheets_icon, '' ); ?><b data-isw-conn-name>Google Sheets · Infometry</b></span></label>
+							<span class="isw-btn is-new" data-isw-new><svg><use href="#igs-plus"/></svg>New Connection…</span>
+							<label>Object<span class="isw-field is-obj" data-isw-obj>FY27_Sales_Forecast</span></label>
+						</div>
+					</div>
+
+					<div class="isw-modal" data-isw-modal>
+						<div class="isw-dialog">
+							<header><b>New Connection</b><span class="isw-find"><svg><use href="#igs-out"/></svg><em data-isw-find></em></span></header>
+							<p>Connect to: <i class="is-on"></i>Actual data <i></i>Sample data</p>
+							<ul class="isw-cards">
+								<?php foreach ( $isw_cards as $card ) : ?>
+									<li data-isw-card="<?php echo esc_attr( $card[0] ); ?>"><?php infometry_ct_igs_img( $img . $card[2], '' ); ?><b><?php echo esc_html( $card[1] ); ?></b><?php if ( $card[3] ) : ?><small>by Infometry</small><?php endif; ?></li>
+								<?php endforeach; ?>
+							</ul>
+							<footer><span>1 – 28 of 28 connectors</span><span class="isw-btn is-cont" data-isw-cont>Continue Setup</span></footer>
+						</div>
+					</div>
 				</div>
-				<div class="igs-core" data-igs-core>
-					<span class="igs-core-icon"><svg><use href="#igs-bolt"/></svg></span>
-					<strong>Infometry Connector</strong>
-					<small>Informatica IDMC</small>
-					<span class="igs-core-modes"><b>CDI · Batch</b><b>CAI · Real-time</b></span>
-				</div>
-				<div class="igs-eco" data-igs-eco>
-					<header><b>Sources &amp; targets</b><small>Any IDMC connection</small></header>
-					<ul>
-						<?php foreach ( $igs_targets as $target ) : ?>
-							<li data-igs-target data-name="<?php echo esc_attr( $target[0] ); ?>">
-								<span>
-									<?php if ( $target[1] ) : ?>
-										<?php infometry_ct_igs_img( $img . $target[1], '' ); ?>
-									<?php else : ?>
-										<i class="igs-eco-bars"><i></i><i></i><i></i></i>
-									<?php endif; ?>
-								</span>
-								<small><?php echo esc_html( $target[0] ); ?></small>
-							</li>
-						<?php endforeach; ?>
-					</ul>
-					<footer>+ data lakes, MDM &amp; every IDMC connection</footer>
-				</div>
-				<div class="igs-toast" data-igs-toast>
+
+				<span class="isw-cursor" data-isw-cursor aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 2.5 19.5 13l-7 1.4-3.6 6.6L4 2.5Z"/></svg><i></i></span>
+
+				<div class="isw-toast" data-isw-toast aria-hidden="true">
 					<span><svg><use href="#igs-check"/></svg></span>
-					<div><b>Mapping task completed</b><small>Synced · Scheduled daily 6:00 AM</small></div>
+					<div><b>Mapping task completed</b><small>Google Sheets → Snowflake · <em data-isw-toast-rows>1,284</em> rows</small></div>
 				</div>
+				<span class="isw-chip is-a" aria-hidden="true"><svg><use href="#igs-shield"/></svg>100% Informatica Certified</span>
+				<span class="isw-chip is-b" aria-hidden="true"><svg><use href="#igs-sync"/></svg>Read · Write · Update</span>
 			</div>
 		</div>
 

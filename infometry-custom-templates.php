@@ -1565,6 +1565,19 @@ function infometry_ct_enqueue_assets() {
 		wp_enqueue_script( 'infometry-google-sheets-connector', INFOMETRY_CT_URL . 'assets/js/google-sheets-connector.js', array(), $js_version, true );
 	}
 
+	// The Google Sheets page hero plays the IDMC mapping workflow (its own CSS and JS, Sheets page only).
+	if ( $use_google_sheets ) {
+		foreach ( array( 'css' => 'assets/css/google-sheets-hero.css', 'js' => 'assets/js/google-sheets-hero.js' ) as $kind => $rel ) {
+			$path = INFOMETRY_CT_PATH . $rel;
+			$ver  = is_readable( $path ) ? (string) filemtime( $path ) : INFOMETRY_CT_VERSION;
+			if ( 'css' === $kind ) {
+				wp_enqueue_style( 'infometry-google-sheets-hero', INFOMETRY_CT_URL . $rel, array( 'infometry-google-sheets-connector' ), $ver );
+			} else {
+				wp_enqueue_script( 'infometry-google-sheets-hero', INFOMETRY_CT_URL . $rel, array(), $ver, true );
+			}
+		}
+	}
+
 	// The Drive page adds its own layout and animations on top of the shared connector base; the Ads page reuses them.
 	if ( $use_google_drive || $use_google_ads || $use_product_page ) {
 		$css_path    = INFOMETRY_CT_PATH . 'assets/css/google-drive-connector.css';

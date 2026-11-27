@@ -236,6 +236,16 @@ function infometry_ct_megamenu_row( $item, $class = 'imm-row' ) {
 		. '<span class="imm-tx"><b>' . esc_html( $item['title'] ) . '</b>' . ( $desc ? '<small>' . esc_html( $desc ) . '</small>' : '' ) . '</span></a>';
 }
 
+/** A plain link with a small icon (used inside group columns). */
+function infometry_ct_megamenu_link( $item ) {
+	return '<a class="imm-link"' . infometry_ct_megamenu_attrs( $item ) . '>' . infometry_ct_megamenu_icon_html( $item ) . '<span>' . esc_html( $item['title'] ) . '</span></a>';
+}
+
+/** Title-case a menu label typed in capitals (PRODUCTS → Products) for headings inside the panel. */
+function infometry_ct_megamenu_label( $title ) {
+	return ( strtoupper( $title ) === $title && strlen( $title ) > 3 ) ? ucwords( strtolower( $title ) ) : $title;
+}
+
 /** The dropdown for one top-level item. */
 function infometry_ct_megamenu_panel( $top ) {
 	$kids = $top['children'];
@@ -246,46 +256,63 @@ function infometry_ct_megamenu_panel( $top ) {
 			break;
 		}
 	}
+	$label = infometry_ct_megamenu_label( $top['title'] );
 	ob_start();
 	?>
-	<div class="imm-panel<?php echo $deep ? ' is-tabs' : ' is-grid'; ?><?php echo count( $kids ) > 7 ? ' is-long' : ''; ?>" data-imm-panel="<?php echo (int) $top['id']; ?>" role="region" aria-label="<?php echo esc_attr( $top['title'] ); ?>" hidden>
+	<div class="imm-panel<?php echo $deep ? ' is-tabs' : ' is-grid'; ?><?php echo count( $kids ) > 7 ? ' is-long' : ''; ?>" data-imm-panel="<?php echo (int) $top['id']; ?>" role="region" aria-label="<?php echo esc_attr( $label ); ?>" hidden>
 		<div class="imm-main">
 			<?php if ( $deep ) : ?>
-				<div class="imm-nav" role="tablist" aria-label="<?php echo esc_attr( $top['title'] ); ?>">
-					<small class="imm-label"><?php echo esc_html( $top['title'] ); ?></small>
+				<div class="imm-nav" role="tablist" aria-label="<?php echo esc_attr( $label ); ?>">
 					<?php foreach ( $kids as $k => $kid ) : ?>
 						<a class="imm-tab<?php echo 0 === $k ? ' is-on' : ''; ?>"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?> data-imm-tab="<?php echo (int) $kid['id']; ?>">
 							<?php echo infometry_ct_megamenu_icon_html( $kid ); // phpcs:ignore ?>
-							<span class="imm-tx"><b><?php echo esc_html( $kid['title'] ); ?></b><?php $d = infometry_ct_megamenu_desc( $kid ); echo $d ? '<small>' . esc_html( $d ) . '</small>' : ''; ?></span>
+							<span class="imm-tab-t"><?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?></span>
 							<?php if ( $kid['children'] ) : ?><svg class="imm-chev" aria-hidden="true"><use href="#imm-chev"/></svg><?php endif; ?>
 						</a>
 					<?php endforeach; ?>
 				</div>
 				<div class="imm-panes">
 					<?php foreach ( $kids as $k => $kid ) : ?>
+						<?php
+						$groups = array();
+						$plain  = array();
+						foreach ( $kid['children'] as $g ) {
+							if ( $g['children'] ) {
+								$groups[] = $g;
+							} else {
+								$plain[] = $g;
+							}
+						}
+						$d = infometry_ct_megamenu_desc( $kid );
+						?>
 						<div class="imm-pane<?php echo 0 === $k ? ' is-on' : ''; ?>" data-imm-pane="<?php echo (int) $kid['id']; ?>">
-							<header><small class="imm-label"><?php echo esc_html( $kid['title'] ); ?></small><a class="imm-all"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>>View all <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a></header>
-							<?php if ( $kid['children'] ) : ?>
-								<div class="imm-cards<?php echo count( $kid['children'] ) > 6 ? ' is-many' : ''; ?>">
-									<?php foreach ( $kid['children'] as $g ) : ?>
-										<?php if ( $g['children'] ) : ?>
-											<div class="imm-group">
-												<?php echo infometry_ct_megamenu_row( $g, 'imm-row is-head' ); // phpcs:ignore ?>
-												<div class="imm-chips">
-													<?php foreach ( $g['children'] as $c ) : ?>
-														<a class="imm-chip"<?php echo infometry_ct_megamenu_attrs( $c ); // phpcs:ignore ?>><?php echo infometry_ct_megamenu_icon_html( $c ); // phpcs:ignore ?><?php echo esc_html( $c['title'] ); ?></a>
-													<?php endforeach; ?>
-												</div>
-											</div>
-										<?php else : ?>
-											<?php echo infometry_ct_megamenu_row( $g ); // phpcs:ignore ?>
-										<?php endif; ?>
+							<header class="imm-pane-head">
+								<div><a class="imm-pane-t"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>><?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?></a><?php echo $d ? '<p>' . esc_html( $d ) . '</p>' : ''; ?></div>
+								<a class="imm-all"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>>View all <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>
+							</header>
+							<?php if ( $groups ) : ?>
+								<div class="imm-cols">
+									<?php foreach ( $groups as $g ) : ?>
+										<div class="imm-col">
+											<a class="imm-col-h"<?php echo infometry_ct_megamenu_attrs( $g ); // phpcs:ignore ?>><?php echo esc_html( $g['title'] ); ?><svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>
+											<?php foreach ( $g['children'] as $c ) : ?>
+												<?php echo infometry_ct_megamenu_link( $c ); // phpcs:ignore ?>
+											<?php endforeach; ?>
+										</div>
 									<?php endforeach; ?>
 								</div>
-							<?php else : ?>
+							<?php endif; ?>
+							<?php if ( $plain ) : ?>
+								<div class="imm-list<?php echo count( $plain ) > 6 ? ' is-3' : ''; ?>">
+									<?php foreach ( $plain as $g ) : ?>
+										<?php echo infometry_ct_megamenu_row( $g ); // phpcs:ignore ?>
+									<?php endforeach; ?>
+								</div>
+							<?php endif; ?>
+							<?php if ( ! $kid['children'] ) : ?>
 								<a class="imm-solo"<?php echo infometry_ct_megamenu_attrs( $kid ); // phpcs:ignore ?>>
 									<?php echo infometry_ct_megamenu_icon_html( $kid ); // phpcs:ignore ?>
-									<span><b><?php echo esc_html( $kid['title'] ); ?></b><?php $d = infometry_ct_megamenu_desc( $kid ); echo $d ? '<small>' . esc_html( $d ) . '</small>' : ''; ?><em>Explore <svg aria-hidden="true"><use href="#imm-arrow"/></svg></em></span>
+									<span><b><?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?></b><em>Explore <?php echo esc_html( infometry_ct_megamenu_label( $kid['title'] ) ); ?> <svg aria-hidden="true"><use href="#imm-arrow"/></svg></em></span>
 								</a>
 							<?php endif; ?>
 						</div>
@@ -293,8 +320,7 @@ function infometry_ct_megamenu_panel( $top ) {
 				</div>
 			<?php else : ?>
 				<div class="imm-flat">
-					<small class="imm-label"><?php echo esc_html( $top['title'] ); ?></small>
-					<div class="imm-cards is-flat">
+					<div class="imm-list<?php echo count( $kids ) > 6 ? ' is-3' : ''; ?>">
 						<?php foreach ( $kids as $kid ) : ?>
 							<?php echo infometry_ct_megamenu_row( $kid ); // phpcs:ignore ?>
 						<?php endforeach; ?>
@@ -302,16 +328,14 @@ function infometry_ct_megamenu_panel( $top ) {
 				</div>
 			<?php endif; ?>
 		</div>
-		<aside class="imm-promo">
-			<span class="imm-spark" aria-hidden="true"><svg><use href="#imm-spark"/></svg></span>
-			<b><?php echo esc_html( $top['title'] ); ?></b>
-			<?php $d = infometry_ct_megamenu_desc( $top ); ?>
-			<p><?php echo esc_html( $d ? $d : 'Explore everything in ' . $top['title'] . '.' ); ?></p>
+		<footer class="imm-foot">
 			<?php if ( $top['url'] && '#' !== $top['url'] ) : ?>
-				<a class="imm-promo-btn"<?php echo infometry_ct_megamenu_attrs( $top ); // phpcs:ignore ?>>View all <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>
+				<a class="imm-foot-all"<?php echo infometry_ct_megamenu_attrs( $top ); // phpcs:ignore ?>>View all <?php echo esc_html( $label ); ?> <svg aria-hidden="true"><use href="#imm-arrow"/></svg></a>
+			<?php else : ?>
+				<span class="imm-foot-note"><?php echo esc_html( $label ); ?> at Infometry</span>
 			<?php endif; ?>
-			<a class="imm-promo-contact" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>"><svg aria-hidden="true"><use href="#imm-chat"/></svg>Talk to an expert</a>
-		</aside>
+			<a class="imm-foot-cta" href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>"><svg aria-hidden="true"><use href="#imm-chat"/></svg>Talk to an expert</a>
+		</footer>
 	</div>
 	<?php
 	return ob_get_clean();
